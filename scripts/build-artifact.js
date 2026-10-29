@@ -33,7 +33,7 @@ ${scripts.replace(/<\/script>/g, '<\\/script>')}
 </script>
 `;
 fs.writeFileSync(path.join(OUT, 'index.html'), page, 'utf8');
-for (const f of ['topics.json', 'questions.json', 'notes.json', 'plan.json']) {
+for (const f of ['topics.json', 'questions.json', 'notes.json', 'plan.json', 'notes_en.json', 'plan_en.json']) {
   const src = path.join(ROOT, 'data', f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(OUT, 'data', f));
 }

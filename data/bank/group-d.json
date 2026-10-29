@@ -41,6 +41,28 @@
     "keyConcept": "Kimlik tanımlama = iddia (kullanıcı adı), kimlik doğrulama = kanıt (parola, OTP, biyometri), yetkilendirme = izin verilen işlemler. Sıra: tanımla → doğrula → yetkilendir.",
     "examTip": "Senaryoda \"kim olduğunu söyler\" kimlik tanımlama, \"kanıtlar\" kimlik doğrulama, \"neye erişebileceği belirlenir\" yetkilendirmedir. Sırayı değiştiren seçenekleri hemen eleyin.",
     "simpleExplanation": "Bir binaya girmeyi düşünün. Kapıdaki görevliye adınızı söylemeniz kimlik tanımlamadır: \"Ben buyum\" dersiniz. Görevlinin kimlik kartınıza bakıp gerçekten siz olduğunuzu anlaması kimlik doğrulamadır. İçeri girdikten sonra hangi katlara ve odalara girebileceğinizin belirlenmesi ise yetkilendirmedir. Sistemde de sıra aynıdır: kullanıcı adı yazarsınız, parola ve telefon kodu ile kanıtlarsınız, sistem de size neyi görebileceğinizi söyler. Kim olduğu kanıtlanmamış birine oda anahtarı verilmediği gibi, doğrulama yapılmadan yetki de verilmez.",
+    "en": {
+      "subtopic": "Identification, authentication and authorization",
+      "question": "A branch user types their username to enter the core banking system, then enters their password and the one-time code sent to their phone; the system then decides that the user may view only the customer accounts of their own branch. Which three concepts take place in this flow, in order?",
+      "options": {
+        "A": "Authorization, authentication, identification",
+        "B": "Authentication, authorization, accountability",
+        "C": "Identification, authentication, authorization",
+        "D": "Identification, authorization, authentication",
+        "E": "Authentication, identification, access control"
+      },
+      "explanation": "Typing the username presents the claim \"this is who I am\" to the system; that is identification. The password and the one-time code prove that this claim is true; that is authentication. Deciding which resources the verified user may access (only their own branch's accounts) is authorization. The order is always identify → authenticate → authorize; permissions cannot be assigned to a user whose identity has not been proven.",
+      "optionExplanations": {
+        "A": "The order is reversed. Authorization cannot happen before the identity has been verified; the first step is presenting the username, i.e. identification.",
+        "B": "The step of typing the username (identification) is skipped. Accountability is a separate principle provided through audit logs; the step decided in the scenario is authorization.",
+        "C": "Correct. Username = identification, password + OTP = authentication, the decision on access to branch accounts = authorization.",
+        "D": "Authentication and authorization have been swapped. Granting access rights to a user whose identity has not been proven makes no sense.",
+        "E": "Identification comes before authentication. Also, access control is the general umbrella term covering all three concepts; the specific name of the third step is authorization."
+      },
+      "keyConcept": "Identification = the claim (username), authentication = the proof (password, OTP, biometrics), authorization = the permitted actions. Order: identify → authenticate → authorize.",
+      "examTip": "In a scenario, \"says who they are\" is identification, \"proves it\" is authentication, \"what they may access is determined\" is authorization. Eliminate any option that changes the order right away.",
+      "simpleExplanation": "Think of entering a building. Telling the guard at the door your name is identification: you say \"this is who I am\". The guard looking at your ID card and confirming it really is you is authentication. Once you are inside, deciding which floors and rooms you may enter is authorization. The order is the same in a system: you type a username, prove it with a password and a phone code, and the system tells you what you may see. Just as nobody hands a room key to someone whose identity has not been proven, no permissions are granted before verification."
+    },
     "references": [
       "NIST SP 800-63-3, Digital Identity Guidelines",
       "ISACA CISA Review Manual, Domain 5: Protection of Information Assets"
@@ -90,6 +112,28 @@
     "keyConcept": "MFA = farklı kategorilerden en az iki faktör: bildiğin, sahip olduğun, olduğun bir şey. Aynı kategoriden iki bileşen MFA sayılmaz.",
     "examTip": "Seçeneklerdeki her bileşeni kategorisine yerleştirin; iki bileşen aynı kutuya düşüyorsa MFA değildir.",
     "simpleExplanation": "Çok faktörlü doğrulama, kapıya iki ayrı türden kilit takmak gibidir: biri ezberlediğiniz bir şey (parola), diğeri yanınızda taşıdığınız bir şey (telefon) veya vücudunuza ait bir şey (parmak izi). Buradaki tasarımda ise hem şifre hem güvenlik sorusu \"ezberlediğiniz\" türündedir; yani aynı türden iki kilit vardır. Sizi tanıyan veya sosyal medyanızı inceleyen biri ikisini de öğrenebilir. İki adım olması, iki faktör olması anlamına gelmez. Gerçek koruma için farklı türden bir ikinci kilit eklenmelidir.",
+    "en": {
+      "subtopic": "Multi-factor authentication (MFA) factor types",
+      "question": "A bank's mobile banking app asks the customer at login for a six-digit customer password and then, as a security question, for their \"mother's maiden name\". When the IT auditor evaluates this design from a multi-factor authentication (MFA) perspective, which finding is correct?",
+      "options": {
+        "A": "Although two separate pieces of information are requested, both belong to the \"something you know\" factor, so this is not genuine MFA; a different factor (e.g. a device or biometrics) should be added.",
+        "B": "Because the password and the security question are two independent secrets, the design is a valid two-factor authentication.",
+        "C": "Because the security question falls under the \"something you are\" factor, the design contains two different factors.",
+        "D": "Because the customer password counts as \"something you have\", the design is sufficient; no additional factor is needed.",
+        "E": "MFA is required only for internal staff; a single factor is considered sufficient for customer login."
+      },
+      "explanation": "MFA requires at least two factors from different categories to be used together: something you know (password, PIN, security question), something you have (phone, token, smart card), something you are (fingerprint, face). Since the password and the security question are both knowledge-based, they fall into the same category; an attacker can learn both through social engineering. This design is therefore two-step but single-factor. The BDDK electronic banking regulation also requires customer logins to use authentication made up of at least two mutually independent components.",
+      "optionExplanations": {
+        "A": "Correct. Both secrets are in the same factor category (knowledge); genuine MFA requires a component from a different category.",
+        "B": "A typical misconception: \"two steps = two factors\" is false. What matters is not the number of factors but that their categories differ.",
+        "C": "A security question is a knowledge-based factor, not a biometric one; \"something you are\" refers to physical characteristics such as a fingerprint, face or voice.",
+        "D": "A password is memorised information, not a physical object you possess. Examples of a possession factor are a phone, a hardware token or a smart card.",
+        "E": "Customer authentication in electronic banking is a regulatory requirement; a single factor is not accepted. MFA is also not a concept limited to staff."
+      },
+      "keyConcept": "MFA = at least two factors from different categories: something you know, something you have, something you are. Two components from the same category do not count as MFA.",
+      "examTip": "Place every component in the options into its category; if two components fall into the same box, it is not MFA.",
+      "simpleExplanation": "Multi-factor authentication is like fitting two different kinds of lock to a door: one is something you have memorised (a password), the other is something you carry with you (a phone) or something that is part of your body (a fingerprint). In this design, both the password and the security question are of the \"memorised\" kind; so there are two locks of the same kind. Someone who knows you or studies your social media could learn both. Having two steps does not mean having two factors. For real protection, a second lock of a different kind must be added."
+    },
     "references": [
       "NIST SP 800-63B, Authentication and Lifecycle Management",
       "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020)"
@@ -139,6 +183,28 @@
     "keyConcept": "SoD: başlatma, onaylama, kaydetme ve varlık koruma görevleri aynı kişide toplanmamalı. Çatışma, roller arasında aranır; tek rol ihlal değildir.",
     "examTip": "Yetki matrisi sorularında her kullanıcı için \"bu kişi tek başına bir işlemi hem yapıp hem onaylayabilir mi?\" diye sorun. Salt okunur yetkiler çatışma yaratmaz.",
     "simpleExplanation": "Görevler ayrılığı, bir işi tek kişinin baştan sona yapıp kendi hatasını veya hilesini gizleyemeyeceği şekilde bölmektir. Bir mağazada kasadaki parayı sayan kişinin aynı zamanda kayıtları da tutmaması gibi düşünün. Tabloda U2 hem yeni müşteri hesabı açabiliyor hem de kredi onaylayabiliyor; bu kişi uydurma bir müşteri yaratıp ona kredi verip parayı alabilir. Diğer kullanıcıların yetkileri böyle tehlikeli bir ikili oluşturmuyor. Önemli olan tek bir yetkinin \"çok\" olması değil, birbiriyle çelişen iki yetkinin aynı kişide toplanmasıdır.",
+    "en": {
+      "subtopic": "Segregation of duties",
+      "question": "While reviewing the user authorization matrix in the core banking system, an IT auditor obtained the table below. Which user has a segregation of duties (SoD) violation?",
+      "options": {
+        "A": "U1, because the credit allocation analyst performs the credit assessment alone.",
+        "B": "U4, because it is inappropriate for the person approving credit to see credit reports.",
+        "C": "U5, because the person who opens accounts can also update customer information.",
+        "D": "U2, because the same person can both open a customer account and approve credit to that account; this concentrates in one person the risk of creating a fictitious customer and disbursing a loan.",
+        "E": "U3, because the teller is the single person who both records and performs cash transactions."
+      },
+      "explanation": "The purpose of segregation of duties (görevler ayrılığı) is to prevent an error or fraud from being both committed and concealed by a single person. To that end, incompatible duties such as initiating a transaction, approving it, recording it and having custody of the asset are distributed among different people. U2 can both open accounts (initiation) and approve credit (approval); this person could open an account in the name of a fake customer and transfer a loan they approved themselves into that account. No such incompatible pair exists among the other users' roles: read-only reporting does not conflict with approval authority; account opening and information updating are parts of the same workflow.",
+      "optionExplanations": {
+        "A": "A single role on its own does not create an SoD violation; the analyst assesses, approval lies with someone else. A violation requires incompatible duties to be combined in the same person.",
+        "B": "Read-only reporting is a monitoring/viewing permission; it does not conflict with approval authority. In fact, it is expected that the approver can see their own portfolio.",
+        "C": "Account opening and customer information updating are parts of the same operational job; both are initiation in nature, and there is no approve-versus-initiate conflict between them.",
+        "D": "Correct. Initiation (account opening) and approval (credit approval) are combined in the same person; the classic fictitious customer/loan fraud scenario.",
+        "E": "Being a teller is a single role; performing cash transactions is that role's job. In the scenario, U3 has not been given a second incompatible duty such as reconciling the records."
+      },
+      "keyConcept": "SoD: the duties of initiating, approving, recording and asset custody must not be concentrated in the same person. Conflicts are looked for between roles; a single role is not a violation.",
+      "examTip": "In authorization matrix questions, ask for each user: \"can this person both perform and approve a transaction on their own?\" Read-only permissions do not create conflicts.",
+      "simpleExplanation": "Segregation of duties means splitting a job so that no single person can do it from start to finish and hide their own mistake or fraud. Think of a shop where the person counting the cash in the till should not also be the one keeping the books. In the table, U2 can both open new customer accounts and approve loans; this person could invent a customer, grant them a loan and take the money. The other users' permissions do not form such a dangerous pair. What matters is not that a single permission is \"a lot\", but that two conflicting permissions are concentrated in the same person."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 2: Governance and Management of IT (Segregation of Duties)",
       "COBIT 2019, DSS06 Managed Business Process Controls",
@@ -189,6 +255,28 @@
     "keyConcept": "RBAC: rol → izin. ABAC: kullanıcı + kaynak + ortam öznitelikleri → politika kararı. DAC: sahip karar verir. MAC: etiket ve yetki seviyesi, merkezi ve değiştirilemez.",
     "examTip": "Senaryoda \"saat\", \"konum\", \"ağ\", \"kaynağın özelliği ile kullanıcının özelliği eşleşsin\" gibi bağlam koşulları varsa cevap ABAC'tır.",
     "simpleExplanation": "Erişim kuralını bir kulüp kapısındaki görevliye verilen talimat gibi düşünün. \"Üye kartı olan girsin\" demek rol tabanlı yaklaşımdır: sadece kim olduğuna bakılır. Oysa buradaki kural \"üye olsun, saat 22:00'den önce gelsin, ana kapıdan girsin ve kendi şehrinin şubesine gitsin\" diyor. Yani kişinin özelliği, girilen yerin özelliği ve ortamın koşulları (saat, ağ) birlikte değerlendiriliyor. Bu kadar çok koşulu tek kuralda birleştirebilen yaklaşım öznitelik tabanlı erişim kontrolüdür. Rol tabanlı modelle bunu yapmaya kalkarsanız her şube ve her saat için ayrı rol açmak zorunda kalırsınız.",
+    "en": {
+      "subtopic": "Access control models (RBAC, ABAC, DAC, MAC)",
+      "question": "A bank wants to enforce the following rule in its mobile banking back end: \"A customer representative may view customer information only during working hours, only if connecting from the bank network, and only if the customer's registered branch is the same as their own branch.\" Which access control model can express all the conditions of this rule most naturally?",
+      "options": {
+        "A": "Discretionary Access Control (DAC), because the data owner, the branch manager, grants access themselves.",
+        "B": "Attribute-Based Access Control (ABAC), because the decision is made by policies that evaluate user, resource and environment attributes (time, network, branch match) together.",
+        "C": "Role-Based Access Control (RBAC), because \"customer representative\" is a role and roles cover every condition.",
+        "D": "Mandatory Access Control (MAC), because the rule is set centrally and cannot be changed by the user.",
+        "E": "A rule-based firewall access list (ACL), because the conditions are checked at the network level."
+      },
+      "explanation": "The rule evaluates four different kinds of information together: a user attribute (role and branch), a resource attribute (the customer's registered branch), environment attributes (time, the network connected from) and a relationship between them (equality of the branches). ABAC works precisely by combining such attributes in a policy engine (e.g. XACML). RBAC only maps roles to permissions; it cannot naturally express contextual conditions such as time or network, nor dynamic comparisons such as \"user's branch = customer's branch\"; a separate role would have to be created for every branch (role explosion).",
+      "optionExplanations": {
+        "A": "In DAC, the access decision is left to the owner of the resource (like a file owner granting permission). In the scenario, the decision is made by a central policy with contextual conditions; there is no owner discretion.",
+        "B": "Correct. The model that combines attributes such as time, network location, user branch and resource branch in a single policy is ABAC.",
+        "C": "A typical misconception: RBAC is a role-to-permission mapping; it cannot express environmental conditions such as working hours or network. Branch matching would require a separate role per branch, leading to role explosion.",
+        "D": "MAC works with security labels (confidential, top secret) and clearance levels; it is military/classification oriented. Being central does not make something MAC; time and branch comparison do not fit the label model.",
+        "E": "A firewall ACL works only at the IP/port level; it cannot evaluate application data such as the customer's registered branch."
+      },
+      "keyConcept": "RBAC: role → permission. ABAC: user + resource + environment attributes → policy decision. DAC: the owner decides. MAC: labels and clearance levels, central and unchangeable.",
+      "examTip": "If the scenario contains contextual conditions such as \"time\", \"location\", \"network\", \"the resource's property must match the user's property\", the answer is ABAC.",
+      "simpleExplanation": "Think of the access rule as the instruction given to the doorman of a club. Saying \"anyone with a membership card may enter\" is the role-based approach: only who you are is checked. But the rule here says \"they must be a member, arrive before 22:00, come in through the main door and go to the branch in their own city\". So the person's property, the property of the place being entered and the conditions of the environment (time, network) are evaluated together. The approach that can combine this many conditions in a single rule is attribute-based access control. If you tried to do this with the role-based model, you would have to create a separate role for every branch and every hour."
+    },
     "references": [
       "NIST SP 800-162, Guide to Attribute Based Access Control (ABAC) Definition and Considerations",
       "NIST SP 800-53 Rev. 5, AC-3 Access Enforcement",
@@ -239,6 +327,28 @@
     "keyConcept": "PAM bileşenleri: parola kasası, kişisel kimlikle erişim (brokering), ihtiyaç anında geçici ayrıcalık, otomatik parola döndürme, oturum kaydı ve izleme.",
     "examTip": "\"Paylaşılan admin hesabı\" geçen sorularda doğru cevap hesabı silmek değil, PAM kasası üzerinden kişiye bağlı ve kayıtlı erişim sağlamaktır.",
     "simpleExplanation": "Üç kişinin aynı anahtarı paylaştığı bir kasa düşünün: kasa açıldığında kimin açtığını bilemezsiniz. Paylaşılan yönetici hesabı da böyledir; sistem kayıtlarında \"sysdba yaptı\" yazar ama hangi insanın yaptığı belli olmaz. Doğru çözüm anahtarı yok etmek değil (kasayı kimse açamaz), anahtarı bir güvenlik dolabına koyup her kişinin kendi kimliğiyle imza atarak geçici olarak almasını sağlamaktır. Dolap her kullanımdan sonra anahtarı değiştirir, kullanım kamerayla kaydedilir ve kişi işi bitince anahtarı geri verir. Böylece hem yönetim işi yapılabilir hem de \"kim, ne zaman, ne yaptı\" sorusu her zaman yanıtlanır.",
+    "en": {
+      "subtopic": "Privileged access management (PAM)",
+      "question": "In a bank's core banking database, three database administrators (DBAs) share a common privileged account named \"sysdba\" and pass its password around verbally within the team. The auditor has found that this practice eliminates accountability. From a Privileged Access Management (PAM) perspective, which is the most appropriate corrective recommendation?",
+      "options": {
+        "A": "Changing the password every month and sending the new password to the three DBAs by e-mail",
+        "B": "Deleting the sysdba account entirely and giving all DBAs standard user privileges",
+        "C": "Defining a permanent personal sysdba privilege for each DBA and leaving the password to them",
+        "D": "Having each DBA record the shared account's password in a paper logbook before each session and then use it",
+        "E": "Placing the shared account in a PAM vault so that its password is hidden; each DBA opens a temporary session on demand (just-in-time) with their own identity after MFA, the password is rotated automatically after each use and the session is recorded"
+      },
+      "explanation": "The shared privileged account problem has two dimensions: being unable to determine who did what (accountability) and the spread of the password. The PAM solution vaults the account and hides the password from the user; the DBA logs in to the vault with their own personal identity and opens the session through PAM, so that audit logs are tied to the real person. Session recording provides audit evidence, just-in-time temporary access removes standing privilege, and automatic password rotation makes a leaked password useless. The BDDK regulation also expects privileged access to be kept under tight control and audit logs to be attributable to the person who performed the action.",
+      "optionExplanations": {
+        "A": "Changing the password does not solve the sharing problem; the account is still shared and the logs still cannot be tied to a person. Sending passwords by e-mail also opens a new leakage channel.",
+        "B": "Privileged authority is unavoidable for administrative tasks; deleting the account makes database administration impossible. The aim is not to remove privilege but to bring it under control.",
+        "C": "A personal account improves traceability, but standing privilege violates the least privilege principle and three separate sysdba accounts widen the attack surface; there is also no session recording or rotation.",
+        "D": "A paper logbook can be manipulated, is not real-time and provides no technical audit trail; it also does not solve the problem of the password being known.",
+        "E": "Correct. Vault + MFA with a personal identity + temporary access + automatic rotation + session recording are the core components of PAM and provide accountability."
+      },
+      "keyConcept": "PAM components: password vault, access with a personal identity (brokering), just-in-time temporary privilege, automatic password rotation, session recording and monitoring.",
+      "examTip": "In questions mentioning a \"shared admin account\", the right answer is not to delete the account but to provide person-attributable, recorded access through a PAM vault.",
+      "simpleExplanation": "Imagine a safe whose single key is shared by three people: when the safe is opened, you cannot tell who opened it. A shared administrator account is the same; the system logs say \"sysdba did it\" but which human did it is unclear. The right solution is not to destroy the key (then nobody can open the safe), but to put the key in a security cabinet and have each person sign it out temporarily with their own identity. The cabinet changes the key after each use, the use is recorded on camera, and the person hands the key back when done. That way the administration work can still be done and the question \"who did what, and when?\" can always be answered."
+    },
     "references": [
       "NIST SP 800-53 Rev. 5, AC-2 Account Management ve AC-6 Least Privilege",
       "ISACA CISA Review Manual, Domain 5: Privileged Access",
@@ -289,6 +399,28 @@
     "keyConcept": "Joiner-mover-leaver (JML): işe giriş, görev değişimi ve ayrılışta yetkilerin zamanında verilmesi, güncellenmesi ve kaldırılması. Leaver'da hedef: ayrılış günü tüm erişimlerin kapatılması; İK kaydı ile IAM arasında otomatik bağlantı.",
     "examTip": "İK listesi ile aktif kullanıcı listesinin karşılaştırılması klasik bir denetim testidir. \"Ayrılış sonrası giriş\" görürseniz bulgu ayrılış sürecindedir, parola politikasında değil.",
     "simpleExplanation": "Bir çalışan şirketten ayrıldığında bina kartının o gün iptal edilmesi gerekir; aksi hâlde eski çalışan istediğinde içeri girebilir. Tabloda işten ayrılan dört kişiden üçünün sistem hesabı hâlâ açık ve ikisi ayrıldıktan sonra gerçekten giriş yapmış. Bu, \"ayrılan kişinin erişimini kapatma\" adımının çalışmadığını gösterir. Sorun parola kuralı veya ağ güvenliği değildir; hesap var olduğu sürece kişi girer. Kalıcı çözüm, insan kaynaklarının \"ayrıldı\" kaydını girdiği anda tüm hesapların kendiliğinden kapanmasını sağlamaktır, insanların birbirine haber vermesine güvenmek değil.",
+    "en": {
+      "subtopic": "Joiner-mover-leaver process",
+      "question": "At a bank, an IT auditor compared the list of employees who left in the last 6 months, taken from the human resources (HR) system, with the list of active users in the core banking system. The result is below. Which process weakness does this finding primarily point to, and what is the most effective root-cause fix?",
+      "options": {
+        "A": "A weakness in the leaver process; the termination record in the HR system should automatically deactivate all application accounts on the same day, via the identity management system.",
+        "B": "A weakness in the password policy; a mandatory 30-day password change should be introduced for all users.",
+        "C": "A weakness in the joiner process; manager approval should be obtained before new hires are granted permissions.",
+        "D": "A weakness in network security; 802.1X should be implemented so that only corporate devices can connect to the branch network.",
+        "E": "A weakness in the mover process; the old permissions of staff who change departments should be removed when they move to the new department."
+      },
+      "explanation": "In the table, three of the four departed employees still have active accounts; moreover, A. Yılmaz and D. Çelik logged in to the system after leaving. This shows that the access of departed employees was not closed, i.e. the leaver process is not working; the fact that logins occurred after departure moves the matter from the level of a finding to the level of an incident. The root-cause fix is to treat the HR termination record as a trigger and automatically deactivate all accounts through the identity and access management (IAM) system; relying on a manual notification chain is what produced this finding. Periodic access review is a detective, complementary control, but the root solution is automation.",
+      "optionExplanations": {
+        "A": "Correct. The problem is in the leaver process; an automatic HR → IAM trigger guarantees that accounts are closed on the same day.",
+        "B": "A mandatory password change does not close the departed person's account; that person could set the new password too. The root of the problem is that the account continues to exist.",
+        "C": "The scenario is about employees who left, not new hires; the joiner process does not feature in the finding.",
+        "D": "Network access control may be useful, but a departed person could still log in with a corporate device or over VPN; the application account remains open.",
+        "E": "The mover process concerns employees who change departments (privilege accumulation). The people in the table have left the organisation entirely."
+      },
+      "keyConcept": "Joiner-mover-leaver (JML): granting, updating and removing permissions in a timely manner on hiring, change of role and departure. Target for leavers: all access closed on the day of departure; an automatic link between the HR record and IAM.",
+      "examTip": "Comparing the HR list with the active user list is a classic audit test. If you see a \"login after departure\", the finding lies in the leaver process, not in the password policy.",
+      "simpleExplanation": "When an employee leaves a company, their building pass must be cancelled that same day; otherwise the former employee can walk in whenever they like. In the table, three of the four people who left still have open system accounts, and two of them actually logged in after leaving. This shows that the step \"close the leaver's access\" is not working. The problem is not the password rule or network security; as long as the account exists, the person can get in. The lasting fix is for all accounts to close by themselves the moment HR enters the \"left\" record, rather than relying on people to tell each other."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 5: Logical Access (User Access Provisioning and De-provisioning)",
       "ISO/IEC 27001:2022, Annex A 5.18 Access rights",
@@ -339,6 +471,28 @@
     "keyConcept": "Erişim yeniden sertifikasyonunda varsayılan \"onaylanmayan yetki kaldırılır\" olmalı; toptan onay ve sessiz onay, kontrolün işlemediğinin göstergesidir. Tasarım etkinliği ≠ işletim etkinliği.",
     "examTip": "\"Yanıt verilmezse onaylandı sayılır\" ifadesini görünce kontrolü tasarım aşamasında etkisiz kabul edin. Sıklık artırma veya hatırlatma ekleme seçenekleri çeldiricidir.",
     "simpleExplanation": "Erişim gözden geçirmesi, yöneticilerin dönem dönem \"ekibimdeki herkesin yetkileri hâlâ gerekli mi?\" diye bakmasıdır. Buradaki uygulamada yönetici yanıt vermezse her şey otomatik olarak onaylanmış sayılıyor; bu, sınav kâğıdını boş veren öğrenciye tam puan vermek gibidir. Nitekim yöneticilerin dörtte üçü hiç bakmamış, bakanlar da hepsini olduğu gibi onaylamış. Sonuç olarak iki yıl önce başka birime geçen birinin eski kredi onay yetkisi kimse tarafından fark edilmemiş. Bu kontrol daha sık yapılsa veya daha çok hatırlatma gönderilse de işe yaramaz; kuralın kendisi hatalıdır. Doğrusu, onaylanmayan yetkinin varsayılan olarak kaldırılmasıdır.",
+    "en": {
+      "subtopic": "Periodic access review and least privilege",
+      "question": "A bank performs access recertification every six months. The process works as follows: the information security team sends each department manager an Excel list containing all the permissions of the users in their team; if the manager does not respond within 10 days, the permissions are deemed \"approved\". In the last cycle, 31 of 42 managers did not respond, and all of those who did respond approved the list without any changes. In the audit sample, a specialist who moved from credit to treasury 2 years ago was found to still hold credit approval authority. Which is the most accurate auditor assessment of the design and operating effectiveness of this control?",
+      "options": {
+        "A": "The control is adequate in design; only the number of reminder e-mails to managers should be increased.",
+        "B": "The control is operationally effective because the certification cycles were completed on time and documented.",
+        "C": "The control is ineffective in design: treating non-response as \"approval\" (silent approval) means that no user's permissions are actually reviewed; the finding is confirmed by its failure to catch privilege accumulation on a change of role (mover). The default outcome should be \"remove if not approved\", the review should be presented meaningfully by role/function, and the results should be independently sampled.",
+        "D": "The control is unnecessary; when the least privilege principle is applied, there is no need for periodic review.",
+        "E": "The problem is only frequency; if certification is done every three months instead of six, the finding disappears."
+      },
+      "explanation": "The effectiveness of a control is assessed first in design and then in operation. Here the design is flawed: treating non-response as automatic approval turns the control into a formality that does not actually work (31 of 42 managers never looked; the remaining 11 gave \"blanket approval\", which is itself an indicator that no meaningful review took place). What the control should have caught was precisely a member of staff carrying old permissions after changing departments, and this went undetected for roughly four certification cycles; that is concrete evidence of the design weakness. The fix: make the default \"unapproved permissions are removed\", present the lists in business-role language the manager can understand and on a risk basis (privileged and financial approval permissions first), have mover events trigger a separate review, and have the second line validate the results by sampling.",
+      "optionExplanations": {
+        "A": "Increasing the number of reminders does not remove the silent-approval flaw; a manager who does not respond is still deemed to have \"approved\". The design flaw persists.",
+        "B": "Cycles appearing complete on the calendar is not operating effectiveness; operating effectiveness means the control is applied as designed and achieves its purpose. Credit approval authority remaining for roughly four cycles shows the purpose was not achieved.",
+        "C": "Correct. Silent approval = design flaw; failure to catch mover privilege accumulation is the evidence; the fix is to reverse the default and make the review meaningful.",
+        "D": "A misconception: least privilege is a principle, while periodic review is the detective control that verifies this principle is maintained over time. They do not substitute for each other; permissions naturally accumulate through changes of role.",
+        "E": "Increasing the frequency means running a non-working control more often. As long as silent approval persists, a quarterly review will not remove any permission either."
+      },
+      "keyConcept": "In access recertification the default must be \"unapproved permissions are removed\"; blanket approval and silent approval are indicators that the control is not operating. Design effectiveness ≠ operating effectiveness.",
+      "examTip": "When you see the phrase \"deemed approved if no response\", treat the control as ineffective at the design stage. Options that increase frequency or add reminders are distractors.",
+      "simpleExplanation": "An access review is managers periodically checking \"are the permissions of everyone on my team still necessary?\" In the practice here, if the manager does not respond, everything is automatically deemed approved; that is like giving full marks to a student who hands in a blank exam paper. Indeed, three quarters of the managers never looked, and those who did approved everything as it was. As a result, nobody noticed the old credit approval authority of someone who moved to another department two years ago. This control would not work even if it were run more often or more reminders were sent; the rule itself is wrong. The right way is for unapproved permissions to be removed by default."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 1: Control Design vs Operating Effectiveness; Domain 5: Access Rights Review",
       "ISO/IEC 27001:2022, Annex A 5.18 Access rights",
@@ -389,6 +543,28 @@
     "keyConcept": "SSO'da IdP tek güven noktasıdır: ihlali tüm bağlı uygulamaları etkiler. IdP yönetici işlemleri ayrıcalıklı kabul edilip merkezi, değiştirilemez ve uzun süreli iz kaydına alınmalıdır.",
     "examTip": "Birden fazla bulgu verilip \"en kritik\" sorulduğunda etki alanını (kaç sistem, kaç kullanıcı) ve tespit edilebilirliği karşılaştırın; merkezi altyapıyı etkileyen ve izlenemeyen bulgu genellikle öne çıkar.",
     "simpleExplanation": "Tek oturum açma, 40 ayrı kapı için tek bir ana anahtar kullanmak gibidir. Çok pratiktir ama ana anahtarın yapıldığı atölye (kimlik sağlayıcı) ele geçirilirse 40 kapı birden açılır. Bu atölyenin yönetici panelinde kim ne yaptıysa bunun uzun süre saklanan, dışarıdan değiştirilemeyen bir kaydı olmalıdır. Oysa buradaki kayıtlar sadece 7 gün tutuluyor ve merkezi izleme sistemine gitmiyor; bir saldırgan MFA'yı kapatsa veya sahte kullanıcı eklese bir hafta sonra izi kalmaz. Diğer bulgular da gerçek sorunlardır ama etkileri tek kullanıcı veya tek uygulama ile sınırlıdır; bu bulgu ise tüm sistemin güven temelini ilgilendirir.",
+    "en": {
+      "subtopic": "Single sign-on (SSO) and access audit logs",
+      "question": "A bank has moved 40 internal applications onto a SAML-based Single Sign-On (SSO) infrastructure. The Identity Provider (IdP) is connected to the corporate directory and requires MFA at login. The auditor made the observations below. Which observation points to the most critical risk specific to the SSO architecture and should be addressed first in the audit report?",
+      "options": {
+        "A": "G2, because geographic anomaly detection cannot be performed without the source IP.",
+        "B": "G3, because two applications remaining outside SSO degrades the user experience.",
+        "C": "G4, because a long session duration leads to the misuse of sessions left open at a terminal.",
+        "D": "G1, because the IdP is the single point of trust for all applications; a change made in the administration console (e.g. disabling MFA, adding a fake user, replacing the federation certificate) affects 40 applications at once, and the deletion of the audit logs after 7 days makes detecting and investigating such tampering impossible.",
+        "E": "G1, because three people having access to the IdP console violates the segregation of duties principle."
+      },
+      "explanation": "The fundamental trade-off of SSO is this: user experience and central control are gained, but the IdP becomes a single point of trust and therefore a single point of failure/compromise. In the IdP administration console the MFA policy can be relaxed, new users/permissions can be added, or the SAML signing certificate can be replaced to forge assertions; that means unauthorized access to all 40 applications. Retaining the audit logs of such privileged actions for a long period in a central, tamper-proof environment (SIEM) is mandatory both for the BDDK audit-logging requirements and for incident response. A local log overwritten every 7 days is far below the average time to detect a breach. The other observations are genuine findings, but their scope of impact is narrower.",
+      "optionExplanations": {
+        "A": "The missing source IP is a genuine finding that reduces monitoring quality; however, who logged in successfully and when is still recorded, and its impact is at the user level, which cannot be compared with the risk of altering the whole trust infrastructure.",
+        "B": "Two applications outside SSO is a user experience and policy consistency problem; local passwords can be managed. This is a coverage gap, not a critical risk specific to SSO.",
+        "C": "The absence of an idle timeout increases the risk of session hijacking; it is important but its impact is limited to a single user's session and can be reduced with compensating controls such as screen locking.",
+        "D": "Correct. The IdP is the single point of trust; the inability to monitor administrator actions and the loss of the logs after 7 days means that tampering affecting 40 applications would remain invisible.",
+        "E": "Having three administrators is not in itself an SoD violation; having more than one authorized person for administrative tasks is normal. The real problem is not how many people have access, but that what they do cannot be monitored."
+      },
+      "keyConcept": "In SSO the IdP is the single point of trust: compromising it affects all connected applications. IdP administrator actions must be treated as privileged and logged centrally, immutably and for a long retention period.",
+      "examTip": "When several findings are given and the question asks for the \"most critical\", compare the scope of impact (how many systems, how many users) and detectability; the finding that affects central infrastructure and cannot be monitored usually stands out.",
+      "simpleExplanation": "Single sign-on is like using one master key for 40 separate doors. It is very practical, but if the workshop where the master key is made (the identity provider) is taken over, all 40 doors open at once. Whatever anyone does in that workshop's admin panel must have a record that is kept for a long time and cannot be altered from outside. Yet the records here are kept for only 7 days and do not go to the central monitoring system; if an attacker turned off MFA or added a fake user, no trace would remain a week later. The other findings are real problems too, but their effects are limited to a single user or a single application; this finding concerns the trust foundation of the entire system."
+    },
     "references": [
       "NIST SP 800-63C, Federation and Assertions",
       "OASIS SAML 2.0 Technical Overview",
@@ -440,6 +616,28 @@
     "keyConcept": "Değişiklik yaşam döngüsü: kayıt (RFC) → etki/risk analizi → onay (CAB) → geliştirme ve test (UAT) → üretime geçiş → uygulama sonrası gözden geçirme.",
     "examTip": "Sıralama sorularında iki sabit nokta vardır: kayıt her zaman ilk, uygulama sonrası gözden geçirme her zaman son adımdır. Onay, analizden sonra ve testten önce gelir.",
     "simpleExplanation": "Evinizde büyük bir tadilat yaptırmayı düşünün. Önce ne istediğinizi yazarsınız (talep kaydı). Sonra ustayla \"bu duvar yıkılırsa ne olur, kaça çıkar?\" diye değerlendirirsiniz (etki analizi). Ardından aile olarak karar verip onay verirsiniz (onay). Onaydan sonra işi yaptırır ve teslim almadan önce kontrol edersiniz (test). En son taşınır ve bir süre sonra \"iyi oldu mu?\" diye bakarsınız (üretime geçiş ve gözden geçirme). Onaylanmamış bir iş için önce malzeme alıp sonra izin istemek nasıl mantıksızsa, test edip sonra onay almak da öyledir.",
+    "en": {
+      "subtopic": "Change request lifecycle",
+      "question": "The EFT fee calculation rule in a bank's core banking system is to be changed. The standard steps of the change management process are given below in a mixed order. Which is the correct sequence?",
+      "options": {
+        "A": "II - IV - I - V - III",
+        "B": "II - IV - V - I - III",
+        "C": "IV - II - V - I - III",
+        "D": "II - V - IV - I - III",
+        "E": "II - I - IV - V - III"
+      },
+      "explanation": "The change lifecycle begins with recording the request (II); without a record there is no object to evaluate. Next, the change's impact, risk and resource needs are analysed (IV); the approving authority decides on the basis of this analysis (V). The approved change is developed and verified in the test environment, and the business unit performs UAT (I); release to production is not authorized without test evidence. The final step is deployment to production and the post-implementation review (III). Some organisations also obtain a second \"release to production approval\" after development and testing; however, the initial approval before testing is needed to justify spending the resources.",
+      "optionExplanations": {
+        "A": "Puts testing before approval. Spending development and test resources on an unapproved change is contrary to process discipline; the change could be rejected.",
+        "B": "Correct. Record → impact analysis → approval → test/UAT → deployment to production and review.",
+        "C": "Puts the impact analysis before recording; the analysis of an unrecorded request is not traceable. The first step in change management is always recording the request.",
+        "D": "Gives approval before the impact analysis. The CAB cannot approve without seeing the impact and risk analysis; uninformed approval defeats the purpose of the control.",
+        "E": "Puts testing before both the impact analysis and approval; the process control is completely bypassed."
+      },
+      "keyConcept": "Change lifecycle: record (RFC) → impact/risk analysis → approval (CAB) → development and testing (UAT) → deployment to production → post-implementation review.",
+      "examTip": "Sequencing questions have two fixed points: recording is always the first step, the post-implementation review is always the last. Approval comes after analysis and before testing.",
+      "simpleExplanation": "Think of having a major renovation done at home. First you write down what you want (recording the request). Then you assess with the builder \"what happens if this wall comes down, what will it cost?\" (impact analysis). Then you decide as a family and give the go-ahead (approval). After approval you have the work done and check it before accepting it (testing). Finally you move in and, a while later, ask \"did it turn out well?\" (deployment and review). Just as it would make no sense to buy materials for an unapproved job and ask permission afterwards, so it makes no sense to test first and get approval afterwards."
+    },
     "references": [
       "ITIL 4, Change Enablement practice",
       "COBIT 2019, BAI06 Managed IT Changes",
@@ -490,6 +688,28 @@
     "keyConcept": "Geliştirme, test ve üretim ortamları ağ, kimlik ve veri düzeyinde ayrılmalı; geliştiricilerin üretime erişimi olmamalı; test verisi maskelenmeli veya sentetik olmalıdır.",
     "examTip": "\"Üretim verisi geliştirme ortamına kopyalandı\" ifadesi gördüğünüzde iki riski birden düşünün: gizlilik (maskeleme yok) ve bütünlük (üretime geri yazma yolu).",
     "simpleExplanation": "Geliştirme ortamı, aşçıların yeni tarifleri denediği bir deneme mutfağı gibidir: daha dağınıktır, daha çok kişi girer çıkar, kontroller gevşektir. Gerçek müşterilerin kimlik numaralarını ve bakiyelerini olduğu gibi bu mutfağa taşımak, müşteri bilgilerini korunmasız bir yere koymak demektir. Daha da kötüsü, deneme mutfağından gerçek restoranın kilerine açılan bir kapı bırakılmış (üretim bağlantı bilgileri); bir geliştirici yanlışlıkla veya kötü niyetle gerçek verileri değiştirebilir. Doğru uygulama, deneme için gerçekçi ama maskelenmiş sahte veri kullanmak ve iki ortam arasındaki tüm kapıları kapatmaktır.",
+    "en": {
+      "subtopic": "Environment separation (development/test/production)",
+      "question": "In a bank's mobile banking team, to speed up debugging, developers took a full copy of the production database into the development environment without masking, and also placed the production database connection credentials directly on the development servers. Which is the most accurate assessment of this situation?",
+      "options": {
+        "A": "Because production data has been copied to the development environment, tests become more realistic; this is an acceptable good practice.",
+        "B": "The only problem is licence cost; an additional database licence is needed in the development environment.",
+        "C": "Because the development environment has weaker controls, unmasked customer data creates a confidentiality breach risk; the presence of production connection credentials in the development environment may allow developers to modify production data directly, outside the change process. Environments should be separated logically and at the network level, and test data should be masked.",
+        "D": "Having separate development and production environments is sufficient; the data copy and connection credentials do not affect environment separation.",
+        "E": "The risk is purely about performance; development queries could slow down the production database."
+      },
+      "explanation": "Environment separation has two purposes: protecting the confidentiality and integrity of production data, and guaranteeing that every change reaches production only after being tested and approved. Development environments typically have broader user access, weaker monitoring and a looser patch level; moving unmasked customer data (identity numbers, balances, card details) there is a confidentiality risk under the KVKK (Turkish Personal Data Protection Law) and BDDK requirements. The presence of production connection credentials in the development environment is more serious still: a developer could modify production data outside the change process, through code or by mistake. Correct practice: environments separated at the network and identity level, no developer access to production, and the use of data masking or synthetic test data.",
+      "optionExplanations": {
+        "A": "The need for realistic test data is met with data masking or synthetic data; moving raw customer data to a weakly protected environment is not an acceptable practice.",
+        "B": "Licensing is a secondary matter; the real risk is the confidentiality of customer data and uncontrolled access to the production environment.",
+        "C": "Correct. The confidentiality risk (unmasked data) and the integrity/change control risk (production connection credentials) are both identified, and the fix is stated.",
+        "D": "Environment separation does not just mean different servers; carrying data and credentials between environments effectively eliminates the separation.",
+        "E": "There may be a performance impact, but it is not the main problem; confidentiality and the bypassing of change control come far ahead of a performance issue."
+      },
+      "keyConcept": "Development, test and production environments must be separated at the network, identity and data level; developers must have no access to production; test data must be masked or synthetic.",
+      "examTip": "When you see the phrase \"production data was copied to the development environment\", think of two risks at once: confidentiality (no masking) and integrity (a path to write back to production).",
+      "simpleExplanation": "The development environment is like a test kitchen where chefs try out new recipes: it is messier, more people come and go, and the controls are loose. Carrying real customers' identity numbers and balances into this kitchen as they are means putting customer information in an unprotected place. Worse still, a door has been left open from the test kitchen into the real restaurant's pantry (the production connection credentials); a developer could change real data by accident or on purpose. The right practice is to use realistic but masked fake data for testing and to close all the doors between the two environments."
+    },
     "references": [
       "ISO/IEC 27001:2022, Annex A 8.31 Separation of development, test and production environments",
       "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020)",
@@ -540,6 +760,28 @@
     "keyConcept": "Yetkisiz değişiklik: kayıt, test veya onay olmadan üretime alınan değişiklik. Kök neden genellikle geliştiricinin üretime yazma yetkisidir; geliştirme ve dağıtım görevleri ayrılmalıdır.",
     "examTip": "\"Çalıştı, sorun çözüldü\" ifadesi çeldiricidir. Denetçi her zaman kontrol ortamına bakar; başarılı sonuç yetkisiz değişikliği meşrulaştırmaz.",
     "simpleExplanation": "Bir hastanede doktorun onay almadan, kayıt tutmadan ve test yapmadan bir hastaya yeni ilaç vermesi, hasta iyileşse bile ciddi bir kural ihlalidir; çünkü aynı yol başka bir gün zarar da verebilir. Buradaki geliştirici de aynısını yapmıştır: kayıt yok, test yok, onay yok. Üstelik bunu yapabilmesi, üretim sistemine doğrudan yazma yetkisi olduğunu gösterir; bu yetki kötü niyetli bir kodu da aynı kolaylıkla sisteme sokabilir. Müfettiş sonuca değil, sürece bakar: bu olay yetkisiz değişikliktir ve kök çözüm geliştiricilerin üretime yazma yetkisinin alınmasıdır.",
+    "en": {
+      "subtopic": "A developer deploying directly to production",
+      "question": "At a bank, following customer complaints, a senior developer fixed a display bug in internet banking on their own development machine and, using the production server access they held, copied the code directly to production. No change record was opened and no testing was done. The fix worked and the customer complaints stopped. How should the IT auditor assess this event?",
+      "options": {
+        "A": "Because the outcome was positive, no finding is raised; the developer's initiative is commended.",
+        "B": "It is accepted as an emergency change; in emergency changes, recording and testing are not mandatory.",
+        "C": "Only the lack of testing is raised as a finding; the developer's production access is normal.",
+        "D": "If the developer subsequently obtains written agreement from the business unit, the change is deemed valid.",
+        "E": "It is reported as an unauthorized change. A positive outcome does not remove the process violation; the root cause is that the developer holds write access to production (a segregation of duties violation). Production deployment authority should be taken away from developers, an independent team or an approval-gated automated deployment pipeline should be used, and the change should be recorded retrospectively and reviewed."
+      },
+      "explanation": "The purpose of change management is not the success of a single change but that all changes are controlled, tested, approved and traceable. In this event none of the recording, testing and approval steps took place; it is therefore by definition an unauthorized change. More importantly, the developer being able to write to production means the development and deployment duties are combined in one person; this same authority would also allow that person to plant malicious code (e.g. code diverting rounding differences to their own account). The auditor evaluates the control environment; the argument \"it ended well this time\" does not remedy the control weakness. Even emergency changes require a record, minimal testing, verbal/fast approval and a subsequent CAB review.",
+      "optionExplanations": {
+        "A": "Audit focuses on process and controls, not outcomes; a successful unauthorized change is evidence that the control is not working, and the same path can be used maliciously.",
+        "B": "An emergency change does not remove recording and approval; it shortens the timeline. Moreover, a display bug does not meet the emergency change criteria (service outage, security incident).",
+        "C": "A developer's write access to production is not normal; under the segregation of duties principle, development and deployment must sit with different people. That access is exactly the root cause.",
+        "D": "Retrospective agreement does not make the change authorized after the fact; the testing and approval steps never happened and the code was not reviewed. It can only be a starting point for recording and reviewing the change.",
+        "E": "Correct. The identification of an unauthorized change plus a segregation of duties violation, together with the access/process fix, are given together."
+      },
+      "keyConcept": "Unauthorized change: a change put into production without a record, testing or approval. The root cause is usually the developer's write authority on production; development and deployment duties must be separated.",
+      "examTip": "The phrase \"it worked, the problem is solved\" is a distractor. The auditor always looks at the control environment; a successful outcome does not legitimise an unauthorized change.",
+      "simpleExplanation": "In a hospital, a doctor giving a patient a new drug without approval, without a record and without testing is a serious breach of the rules even if the patient gets better, because the same path could cause harm on another day. The developer here did the same: no record, no test, no approval. What is more, being able to do it shows they have direct write authority on the production system; that authority could just as easily put malicious code into the system. The auditor looks at the process, not the outcome: this event is an unauthorized change, and the root fix is to take away developers' write authority on production."
+    },
     "references": [
       "COBIT 2019, BAI06 Managed IT Changes",
       "ISACA CISA Review Manual, Domain 3: Unauthorized Changes and Segregation of Duties",
@@ -590,6 +832,28 @@
     "keyConcept": "Acil değişiklik: süre kısalır, kontroller kalkmaz. Kayıt, ECAB onayı, asgari test, geri alma planı ve geriye dönük CAB gözden geçirmesi zorunludur.",
     "examTip": "Acil değişiklik sorularında \"onay yok / kayıt yok\" seçenekleri ile \"normal süreci bekle\" seçenekleri her ikisi de yanlıştır; doğru cevap hızlandırılmış ama kayıtlı ve sonradan gözden geçirilen yoldur.",
     "simpleExplanation": "Evde gece yarısı su borusu patladığında tesisatçı çağırmak için haftalık aile toplantısını beklemezsiniz; ama yine de ne yapıldığını bir yere yazar, eşinizi arayıp haber verir ve sabah hasarı gözden geçirirsiniz. Acil değişiklik de böyledir: süreç hızlanır ama ortadan kalkmaz. Kayıt açılır, önceden belirlenmiş küçük bir onay grubu hızlı karar verir, mümkünse kısa bir deneme yapılır, bir şey ters giderse geri alma planı hazır bekler ve iş bittiğinde normal kurul olayı sonradan inceler. \"Hiç kayıt tutma\" da, \"pazartesiye kadar bekle\" de yanlış uçlardır.",
+    "en": {
+      "subtopic": "Emergency change management",
+      "question": "On a Saturday night, a bank's ATM switch application keeps crashing because of a memory leak and the ATMs are out of service. The on-call team has established that a patch from the software vendor resolves the problem. The normal change process requires a two-week CAB cycle. Which sequence of actions best fits the emergency change procedure?",
+      "options": {
+        "A": "The patch is applied without waiting for any approval; service takes priority and no change record is kept in emergencies.",
+        "B": "The patch is submitted to the regular CAB meeting on Monday; the ATMs stay out of service until then.",
+        "C": "An emergency change record is opened; the pre-defined emergency change approval authority (ECAB, e.g. the on-call IT manager and a business unit representative) gives fast approval; if possible, the patch is put through a short smoke test in the test environment; a rollback plan is kept ready; the patch is applied, and the change is reviewed retrospectively at the first CAB meeting.",
+        "D": "The patch is applied to only half of the ATMs; for the other half, the normal process is awaited.",
+        "E": "Instead of applying the patch, the application is restarted every 30 minutes; the problem is thus managed without making a change and no record is required."
+      },
+      "explanation": "An emergency change shortens the timeline of the normal process but does not remove the controls. The core elements: a change record linked to incident management, a small pre-authorized emergency approval authority (Emergency CAB), the minimum testing possible, a ready rollback plan and a subsequent full CAB review (retrospective review). This review is critical for policing abuse of the emergency path (normal changes being slipped past the process under an \"emergency\" label). An auditor treats a high ratio of emergency changes and missing retrospective approvals as findings.",
+      "optionExplanations": {
+        "A": "Not keeping a record turns an emergency change into an unauthorized change; what was done, who did it and whether it can be reversed cannot be traced.",
+        "B": "The very reason the emergency change procedure exists is to avoid exactly this wait; ATM service being down for two days is unacceptable in terms of business impact.",
+        "C": "Correct. Record + fast authorized approval + minimal testing + rollback plan + retrospective CAB review are all the components of an emergency change.",
+        "D": "Partial application neither fully solves the urgent problem nor provides process control; moreover, the same software running in two different versions creates a configuration inconsistency.",
+        "E": "This could be a workaround, but it does not address the root cause; the memory leak continues and the periodic restarts also produce service interruptions. Besides, this too is an intervention that must be recorded."
+      },
+      "keyConcept": "Emergency change: the timeline shortens, the controls remain. A record, ECAB approval, minimal testing, a rollback plan and a retrospective CAB review are mandatory.",
+      "examTip": "In emergency change questions, both the \"no approval / no record\" options and the \"wait for the normal process\" options are wrong; the right answer is the accelerated but recorded path that is reviewed afterwards.",
+      "simpleExplanation": "When a water pipe bursts at home in the middle of the night, you do not wait for the weekly family meeting to call a plumber; but you still write down what was done somewhere, call your partner to let them know, and look over the damage in the morning. An emergency change is the same: the process speeds up but does not disappear. A record is opened, a small pre-defined approval group decides quickly, a short trial is done if possible, a rollback plan stands ready in case something goes wrong, and when the job is done the normal board reviews the event afterwards. Both \"keep no record at all\" and \"wait until Monday\" are the wrong extremes."
+    },
     "references": [
       "ITIL 4, Change Enablement practice (emergency changes)",
       "COBIT 2019, BAI06.02 Manage emergency changes",
@@ -640,6 +904,28 @@
     "keyConcept": "Yetkisiz değişiklik tespiti: üretim kodu ↔ sürüm kontrolündeki onaylı sürüm (hash/bütünlük kontrolü) ↔ değişiklik kayıtları üçlü mutabakatı. Hash farkı + kayıt yokluğu = yetkisiz değişiklik.",
     "examTip": "Tabloda iki koşulu birlikte arayın: (1) üretim ile onaylı sürüm farklı mı, (2) farkı açıklayan onaylı kayıt var mı. Yalnızca ikisi birden sağlanan satır cevaptır.",
     "simpleExplanation": "Bir eczanede raftaki ilaçların seri numaralarını depo kayıtlarıyla karşılaştırdığınızı düşünün. Numara tutuyorsa sorun yok. Numara tutmuyor ama elinizde \"bu ilaç yeni geldi, kaydı işleniyor\" diye bir not varsa muhtemelen gecikmiş bir kayıttır. Numara tutmuyor ve hiçbir açıklayıcı belge yoksa, o ilaç rafa nereden geldi sorusu ciddi bir şüphedir. faiz.dll tam bu durumdadır: üretimdeki dosya onaylı sürümle uyuşmuyor ve ocaktan beri bu modül için hiçbir değişiklik kaydı yok. Hash farkı ile kayıt yokluğunun birlikte görülmesi, yetkisiz değişikliğin en güçlü işaretidir.",
+    "en": {
+      "subtopic": "Unauthorized change detection and version control",
+      "question": "An IT auditor compared the hash values of the executable files on the core banking application's production server with the build output of the last approved version tagged in the version control system. The auditor also reviewed the change records. The result is below. For which module is the suspicion of an unauthorized change strongest?",
+      "options": {
+        "A": "kredi.dll, because its change record has the oldest date.",
+        "B": "kart.dll, because it has an approved change record and is awaiting deployment.",
+        "C": "faiz.dll, because the file in production does not match the approved version and there is no change record for this module since January; the code in production came from an unknown source.",
+        "D": "rapor.dll, because its change date is the most recent and the post-implementation review may not have been done yet.",
+        "E": "havale.dll, because the transfer module is the most financially risky module."
+      },
+      "explanation": "The basic technique for detecting unauthorized changes is reconciling the code running in production with the output generated from the approved source in version control (hash comparison) and with the change records. For faiz.dll, the production hash differs from the approved version and there is no change record that would explain this difference; these two conditions being met together is the classic indicator of an unauthorized change. kart.dll also has a hash difference, but there an approved change record awaiting deployment exists; most likely the deployment was done but the record status was not updated (this is also a finding, but of a process/record inconsistency nature, and the suspicion of an unauthorized change is weaker). For the other three modules, the hashes match.",
+      "optionExplanations": {
+        "A": "The hash matches; an old-dated record is not a problem, the module simply has not changed for a long time.",
+        "B": "There is a hash difference, but an approved change record exists; the most likely explanation is that the deployment was done and the record was not closed. This is a record-discipline finding, but the suspicion is weaker than for faiz.dll.",
+        "C": "Correct. Hash mismatch + absence of an explaining change record = suspicion of an unauthorized change.",
+        "D": "The hash matches; the change was approved and deployed. The possibility that the review has not been done does not mean an unauthorized change.",
+        "E": "The financial importance of the module does not determine suspicion; the hash matches and the change is recorded."
+      },
+      "keyConcept": "Unauthorized change detection: three-way reconciliation of production code ↔ approved version in version control (hash/integrity check) ↔ change records. Hash difference + no record = unauthorized change.",
+      "examTip": "Look for two conditions together in the table: (1) do production and the approved version differ, (2) is there an approved record explaining the difference. Only the row where both hold is the answer.",
+      "simpleExplanation": "Imagine comparing the serial numbers of the medicines on a pharmacy shelf with the warehouse records. If the number matches, there is no problem. If the number does not match but you have a note saying \"this medicine has just arrived, its record is being processed\", it is probably a delayed record. If the number does not match and there is no explanatory document at all, the question of where that medicine on the shelf came from is a serious suspicion. faiz.dll is in exactly this situation: the file in production does not match the approved version and there has been no change record for this module since January. Seeing a hash difference together with the absence of a record is the strongest sign of an unauthorized change."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 3: Detecting Unauthorized Changes",
       "COBIT 2019, BAI10 Managed Configuration",
@@ -690,6 +976,28 @@
     "keyConcept": "Geri alma planı: dağıtım öncesi yedek, kod ve şema geri dönüş adımları, veri koruma stratejisi, karar kriterleri ve test edilmiş prosedür. Şema değişiklikleri geri almayı zorlaştırır.",
     "examTip": "\"Veri tabanı şeması değişiyor\" ifadesi varsa geri alma sorularında odak kod değil veridir: eski kod yeni şemayla çalışır mı, yeni veriler ne olacak?",
     "simpleExplanation": "Bir evi yenilerken sadece duvar rengini değiştirdiyseniz geri dönmek kolaydır: eski renge boyarsınız. Ama duvarları yıkıp odaları yeniden böldüyseniz \"eski hâline döneriz\" demek yetmez; eski eşyalar yeni odalara sığmayabilir. Veri tabanı şeması değiştiğinde de durum budur: eski program yeni tabloları tanımaz ve yeni düzende girilmiş veriler eski düzene geri taşınamayabilir. Bu yüzden geri alma planı, kodu eski sürüme almaktan fazlasını içermelidir: dağıtım öncesi yedek, şemayı geri döndüren betikler, aradaki verilerin ne olacağı, kimin ne zaman geri alma kararı vereceği ve bu adımların önceden denendiği.",
+    "en": {
+      "subtopic": "Rollback plan and deployment strategy",
+      "question": "A bank is about to release to production a major version of its mobile banking back end that also changes the database schema. The deployment plan contains no detail beyond the statement \"if problems arise, we will revert to the previous version\". Which deficiency in the rollback plan should the IT auditor, who is a CAB member, raise first?",
+      "options": {
+        "A": "A rollback plan is unnecessary; since the release was successful in the test environment, it can be assumed that no problems will arise in production.",
+        "B": "Rollback has been treated as nothing more than reverting the application code to the old version; yet if the schema change is not reversed, the old code will not work with the new schema and transaction data written to the new schema may be lost. The plan should include the schema rollback scripts, a consistent pre-deployment backup, how data will be preserved on rollback, the rollback decision criteria (go/no-go) and evidence that the rollback has been rehearsed in the test environment.",
+        "C": "A rollback plan is needed only for the first 24 hours after deployment; after that, reverting is not possible.",
+        "D": "The rollback plan is the responsibility of the development team alone, not the CAB; the CAB does not assess it.",
+        "E": "Instead of rollback, the deployment should be done with doubled server capacity; if capacity is sufficient, there is no need for rollback."
+      },
+      "explanation": "In deployments that include a schema change, rollback is far more complex than changing the code: data written according to the new schema may not fit the old schema, and the old code does not recognise the new tables/columns. An effective rollback plan should therefore include: a consistent pre-deployment backup and the restore time, schema rollback (down migration) scripts, how data generated during the transition period will be preserved (e.g. backward-compatible schema design, the expand-contract approach), who will decide on rollback and against which criteria, and evidence that the rollback steps have actually been rehearsed in the test environment. When assessing the risk of a change, the CAB treats reversibility as a fundamental criterion; an unrehearsed rollback plan is not a plan but an intention.",
+      "optionExplanations": {
+        "A": "A test environment is never fully equivalent to production in data volume, load and configuration; the rollback plan exists precisely for this uncertainty.",
+        "B": "Correct. The missing schema rollback, backup, data preservation, decision criteria and rehearsed procedure are identified together.",
+        "C": "The rollback window is determined by the nature of the change; there is no arbitrary limit such as 24 hours. Besides, the real deficiency is the content of the plan, not its duration.",
+        "D": "The CAB's job is precisely to assess risk, impact and reversibility; refusing to approve a change without a rollback plan is the CAB's responsibility.",
+        "E": "Increasing capacity may ease performance problems but does not fix logic errors or data corruption; it is no substitute for rollback."
+      },
+      "keyConcept": "Rollback plan: pre-deployment backup, code and schema rollback steps, data preservation strategy, decision criteria and a tested procedure. Schema changes make rollback harder.",
+      "examTip": "If the phrase \"the database schema is changing\" appears, the focus in rollback questions is the data, not the code: will the old code work with the new schema, what happens to the new data?",
+      "simpleExplanation": "If, while renovating a house, you only changed the wall colour, going back is easy: you paint it the old colour. But if you knocked down walls and re-divided the rooms, saying \"we'll put it back as it was\" is not enough; the old furniture may not fit the new rooms. That is the situation when a database schema changes: the old program does not recognise the new tables, and data entered under the new layout may not be movable back to the old one. That is why the rollback plan must include more than putting the code back to the old version: a pre-deployment backup, scripts that revert the schema, what happens to the data in between, who decides when to roll back, and evidence that these steps have been rehearsed beforehand."
+    },
     "references": [
       "ITIL 4, Deployment Management ve Change Enablement practices",
       "COBIT 2019, BAI07 Managed IT Change Acceptance and Transitioning",
@@ -740,6 +1048,28 @@
     "keyConcept": "Yama yönetimi denetimi: yayın-uygulama süresi politika SLA'sı ile karşılaştırılır; istisnalar yalnızca yetkili ve belgelenmiş risk kabulü + telafi edici kontrol ile geçerlidir; internete açık varlıklar önceliklidir.",
     "examTip": "Tabloda tarih farklarını tek tek hesaplayın; \"uygulanmadı\" yazan her satır otomatik bulgu değildir, süre ve belgelenmiş istisna durumuna bakın.",
     "simpleExplanation": "Yama politikası bir son kullanma tarihi gibidir: kritik yama 14 günde, yüksek önemli yama 30 günde uygulanmalıdır. Her satır için takvimle gün sayarsınız. WEB-02'de kritik yama 41 gündür uygulanmamış ve gerekçe olarak sadece \"zaten koruma var\" denmiş; bu, kaydı ve onayı olmayan kişisel bir yorumdur ve sunucu internete açıktır, en ciddi bulgu budur. APP-01 yamayı almış ama 46 günde, yani geç. APP-02'de yama yok ama yetkili kişi yazılı olarak riski kabul etmiş ve ek bir koruma koymuş; bu kabul edilebilir bir istisnadır, yine de müfettiş süresini ve etkinliğini sorgular. DB-01 ise yalnızca 5 gündür bekliyor, hâlâ süresi içinde.",
+    "en": {
+      "subtopic": "Patch management",
+      "question": "A bank's patch management policy requires critical security patches to be applied within 14 days and high-severity patches within 30 days. The auditor obtained the table below for the internet-facing internet banking servers (audit date: 2026-09-30). Which assessment is the most accurate and complete in terms of policy compliance and risk?",
+      "options": {
+        "A": "All unapplied patches (WEB-02, APP-02, DB-01) are policy violations of equal weight.",
+        "B": "WEB-02's critical patch not being applied for 41 days, justified by a rationale made without a recorded risk acceptance or a compensating control analysis showing that the load balancer prevents exploitation, is a policy violation and the highest risk on an internet-facing server. APP-01 was applied in 46 days, exceeding the 30-day deadline. APP-02 complies with the policy through a documented risk acceptance and compensating control, but the duration of the acceptance and the effectiveness of the WAF signature should be verified. DB-01 has been pending for only 5 days and is within the 14-day deadline.",
+        "C": "Only DB-01 is a finding, because a critical patch is still pending on a database server.",
+        "D": "APP-02 is the most serious finding because the patch was not applied and only the WAF was relied on instead; risk acceptance does not remove the obligation to apply the patch.",
+        "E": "There are no findings; the WEB-01 and APP-01 patches were applied, and there are reasonable justifications for the others."
+      },
+      "explanation": "Each row is compared with the deadline in the policy. WEB-01: 9 days ≤ 14, compliant. WEB-02: 41 days from 20 August to 30 September, critical patch not applied; the phrase \"behind the load balancer\" is not a formal risk acceptance, a load balancer does not block an application-layer vulnerability, and the same vulnerability was deemed to need patching on WEB-01; on an internet-facing server this is the highest-risk finding. APP-01: 46 days from 5 August to 20 September > 30, a deadline-overrun finding (applied, but late). APP-02: the policy exception has been documented in writing by the authorized party (the CISO) with a compensating control; this is an accepted route under the patch management policy, but the auditor should test the exception's expiry date and whether the WAF signature really closes the vulnerability. DB-01: released on 25 September, 5 days have passed, within the 14-day deadline; testing is the expected behaviour.",
+      "optionExplanations": {
+        "A": "Unapplied patches are not equal: DB-01 is still within the deadline, APP-02 is a documented exception, and WEB-02 is an unjustified deadline overrun. The auditor differentiates on a risk basis.",
+        "B": "Correct. The deadline calculation has been done for each server, a formal risk acceptance has been distinguished from an informal rationale, and the highest risk has been prioritised correctly.",
+        "C": "DB-01 is still at the testing stage 5 days after release; the 14-day policy deadline has not expired. The real violations are WEB-02 and APP-01.",
+        "D": "A risk acceptance documented by the authorized party and including a compensating control is a valid exception route within the policy framework. The auditor questions the exception, but it is not more serious than the unjustified and unrecorded WEB-02.",
+        "E": "APP-01 was applied in 46 days (the 30-day limit was exceeded), and WEB-02 has been without its critical patch for 41 days with no formal justification; findings do exist."
+      },
+      "keyConcept": "Patch management audit: the release-to-application time is compared with the policy SLA; exceptions are valid only with an authorized and documented risk acceptance + compensating control; internet-facing assets take priority.",
+      "examTip": "Calculate the date differences in the table one by one; not every row that says \"not applied\" is automatically a finding, look at the deadline and whether there is a documented exception.",
+      "simpleExplanation": "A patch policy is like an expiry date: a critical patch must be applied within 14 days, a high-severity patch within 30. For each row, you count the days on the calendar. On WEB-02 the critical patch has not been applied for 41 days and the only justification given is \"there's protection already\"; that is a personal opinion with no record or approval, and the server is exposed to the internet, so this is the most serious finding. APP-01 got its patch, but in 46 days, i.e. late. APP-02 has no patch, but the authorized person accepted the risk in writing and put an extra protection in place; that is an acceptable exception, though the auditor still questions its duration and effectiveness. DB-01 has been waiting only 5 days and is still within its deadline."
+    },
     "references": [
       "NIST SP 800-40 Rev. 4, Guide to Enterprise Patch Management Planning",
       "ISO/IEC 27001:2022, Annex A 8.8 Management of technical vulnerabilities",
@@ -790,6 +1120,28 @@
     "keyConcept": "Değişiklik yönetimi ile konfigürasyon yönetimi entegre olmalı: her onaylı değişiklik etkilediği tüm CI'ları (üretim ve DR) kapsar ve CMDB güncellenmeden kapatılmaz. Üretim-DR sürüklenmesi otomatik izlenir.",
     "examTip": "DR tatbikatında \"üretimle farklı sürüm/parametre\" bulgusu gördüğünüzde kök nedeni DR ekibinde değil, değişiklik sürecinin DR'ı kapsam dışı bırakmasında arayın.",
     "simpleExplanation": "Bir evin anahtarının kopyasını değiştirdiğinizi ama yedek anahtarı tutan komşuya yeni kopyayı vermediğinizi düşünün. Acil bir gün komşu kapıyı açamaz. Burada da üretim sunucusunda yapılan onaylı değişiklik, yedek (DR) sunucularına yansıtılmamış ve envanter listesi (CMDB) hâlâ eski bilgiyi gösteriyor. Sorun DR ekibinin tembelliği veya yazılımın eskiliği değil, değişiklik sürecinin \"bu değişiklik hangi sunucuları etkiliyor, hepsi güncellendi mi, liste düzeltildi mi?\" sorusunu sormadan kapanmasıdır. Çözüm, değişikliğin tüm etkilenen sistemler güncellenmeden kapatılamaması ve üretim ile DR arasındaki farkları otomatik yakalayan bir kontrol kurulmasıdır.",
+    "en": {
+      "subtopic": "Configuration management and the CMDB",
+      "question": "During a disaster recovery (DR) drill at a bank, two of the core banking application servers in the DR centre were found to be running a different Java version from production and to be missing a middleware parameter, and the drill failed. The investigation revealed that this parameter change had been put into production 4 months earlier through an approved change but had not been propagated to the DR servers, and that the configuration management database (CMDB) still showed the old Java version. Which option best describes the root cause of this situation and the most effective corrective control?",
+      "options": {
+        "A": "The root cause is inadequate planning of the DR drill; drills should be held twice a year instead of once.",
+        "B": "The root cause is that change management and configuration management are not integrated: the approved change was closed without covering all the configuration items it affected (production and DR servers), and the CMDB was not updated. The fix is to tie the closure of a change record to the updating of all related CIs and the CMDB, to establish a drift detection control that automatically scans and reports production-DR configuration differences, and to verify CMDB accuracy through periodic discovery scans.",
+        "C": "The root cause is the Java version mismatch; automatic updates should be enabled on all servers.",
+        "D": "The root cause is that the CMDB tool is outdated; new CMDB software should be purchased.",
+        "E": "The root cause is negligence by the DR team; disciplinary action should be taken against the staff concerned."
+      },
+      "explanation": "The root cause of the event is not a single server or person but the missing link between processes. Change management answers the question \"what changed and was it approved\", while configuration management answers \"which items are in which state\". A change put into production affected the DR environment, yet the CIs there were not updated and the CMDB did not reflect the real state; this created false confidence that DR was equivalent to production. The effective fix: make it mandatory to verify that all affected CIs (including DR) have been updated before a change record can be closed, establish a control that automatically detects configuration drift between production and DR (e.g. configuration scanning and comparison tools), and periodically verify the CMDB records through automated discovery. The DR drill is the control that detected this weakness; the failure of the drill actually shows that the control worked.",
+      "optionExplanations": {
+        "A": "Drill frequency can be increased, but the drill is not the source of the problem, it is the control that exposed it. The root cause is the gap in change-configuration integration.",
+        "B": "Correct. The disconnect between change and configuration management is the root cause; CI coverage, drift detection and CMDB verification are the corrective controls.",
+        "C": "The Java version is a symptom, not the cause. Automatic updates would create uncontrolled changes and run contrary to change management principles; the problem also appeared in the missing parameter.",
+        "D": "Changing the tool will reproduce the same problem unless the update process is tied to change closure; the CMDB being wrong is a process problem, not a tool problem.",
+        "E": "An approach focused on individual negligence hides a systemic process gap; audit root cause analysis is done at the process and control level."
+      },
+      "keyConcept": "Change management and configuration management must be integrated: every approved change covers all the CIs it affects (production and DR) and is not closed until the CMDB is updated. Production-DR drift is monitored automatically.",
+      "examTip": "When you see a \"different version/parameter from production\" finding in a DR drill, look for the root cause not in the DR team but in the change process leaving DR out of scope.",
+      "simpleExplanation": "Imagine you changed the lock on your house but did not give the new key to the neighbour who holds the spare. On an emergency day, the neighbour cannot open the door. Here too, an approved change made on the production server was not carried over to the backup (DR) servers, and the inventory list (CMDB) still shows the old information. The problem is not laziness in the DR team or old software, but that the change process was closed without asking \"which servers does this change affect, have they all been updated, has the list been corrected?\" The solution is for a change to be unclosable until all affected systems are updated, and for a control to be set up that automatically catches the differences between production and DR."
+    },
     "references": [
       "ITIL 4, Service Configuration Management practice",
       "COBIT 2019, BAI10 Managed Configuration",
@@ -840,6 +1192,28 @@
     "keyConcept": "Önleyici: olayı engeller (yetkilendirme, ikili kontrol, şifreleme). Tespit edici: olayı ortaya çıkarır (mutabakat, iz kaydı inceleme, IDS). Düzeltici: zararı giderir, normale döndürür (yedekten dönüş, kart bloke/yenileme, yama).",
     "examTip": "Kontrolü zaman çizelgesine yerleştirin: olaydan önce → önleyici, olay sırasında/sonrasında ortaya çıkarma → tespit edici, olaydan sonra giderme → düzeltici.",
     "simpleExplanation": "Kontrolleri zaman çizgisine yerleştirin. Olay olmadan önce onu engelleyen şeyler önleyicidir: kasayı açmak için iki ayrı kişinin anahtarı gerekiyorsa tek kişi içeri giremez. Olay olduktan sonra onu fark ettiren şeyler tespit edicidir: her gün kasadaki para ile kayıtlar karşılaştırılırsa eksik ortaya çıkar. Olay fark edildikten sonra zararı gideren şeyler düzelticidir: kopyalanmış kartları iptal edip yenisini basmak gibi. Yani K1 kilit, K2 sayım, K3 tamirdir.",
+    "en": {
+      "subtopic": "Preventive, detective and corrective controls",
+      "question": "The controls applied to a bank's ATM network are listed below. Which option correctly matches the control types (preventive, detective, corrective)?",
+      "options": {
+        "A": "K1 detective, K2 preventive, K3 corrective",
+        "B": "K1 preventive, K2 corrective, K3 detective",
+        "C": "K1 corrective, K2 detective, K3 preventive",
+        "D": "K1 preventive, K2 detective, K3 corrective",
+        "E": "K1 detective, K2 detective, K3 preventive"
+      },
+      "explanation": "The type of a control is determined by its timing relative to the event. The dual-key (dual custody) requirement prevents a single person from accessing the safe before the event occurs; this is a preventive control. The daily cash-to-system reconciliation reveals a discrepancy, if one has arisen, after the event; this is a detective control. Blocking and reissuing the cards after a detected skimming incident aims to limit the resulting damage and restore the situation to normal; this is a corrective control.",
+      "optionExplanations": {
+        "A": "The dual key does not detect anything, it blocks access (preventive). Reconciliation finds the discrepancy after it has arisen; it is detective, not preventive.",
+        "B": "Reconciliation does not remedy the loss, it reveals the discrepancy (detective). Blocking cards is not detecting the incident but limiting the damage of an already detected incident (corrective).",
+        "C": "The dual key is not a correction that kicks in after an event, but a control that prevents the event in advance. Card reissue does not prevent skimming, it remedies the damage afterwards.",
+        "D": "Correct. Blocks = preventive, reveals = detective, remedies the damage/restores normality = corrective.",
+        "E": "The dual key is preventive, not detective; card reissue is corrective, not preventive. Only K2 is classified correctly."
+      },
+      "keyConcept": "Preventive: blocks the event (authorization, dual control, encryption). Detective: reveals the event (reconciliation, log review, IDS). Corrective: remedies the damage, restores normality (restore from backup, card block/reissue, patching).",
+      "examTip": "Place the control on a timeline: before the event → preventive, revealing during/after the event → detective, remedying after the event → corrective.",
+      "simpleExplanation": "Place the controls on a timeline. Things that stop an event before it happens are preventive: if two different people's keys are needed to open the safe, one person cannot get in. Things that make you notice an event after it has happened are detective: if the cash in the safe is compared with the records every day, a shortfall comes to light. Things that fix the damage once the event has been noticed are corrective: like cancelling the copied cards and issuing new ones. So K1 is the lock, K2 is the count, K3 is the repair."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 1: Types of Controls",
       "COSO Internal Control - Integrated Framework (2013)",
@@ -890,6 +1264,28 @@
     "keyConcept": "Doğal risk = kontrolsüz risk; artık risk = kontroller sonrası kalan risk. Risk yanıtları: kabul, azaltma, transfer, kaçınma. Artık risk, risk iştahı ile karşılaştırılır.",
     "examTip": "Soru \"son karar\" diyorsa kontrollerin uygulanmasına (azaltma) değil, kalan riskle ne yapıldığına bakın. İştah içindeyse kabul edilmiştir.",
     "simpleExplanation": "Doğal risk, hiçbir önlem almadan sokağa çıkarken yağmurda ıslanma riskinizdir. Şemsiye ve yağmurluk aldıktan sonra hâlâ biraz ıslanma ihtimaliniz kalır; bu artık risktir. Bankada da kontroller yokken \"çok yüksek\" olan risk doğal risk, kontrollerden sonra kalan \"orta\" seviye artık risktir. Banka bu kalan riske bakıp \"bu kadarına katlanabilirim, daha fazla harcamayacağım\" demiştir; bu karar riski kabul etmektir. Kontrolleri koymak azaltmaydı, ama soru son kararı soruyor ve son karar kabuldür.",
+    "en": {
+      "subtopic": "Inherent and residual risk; risk responses",
+      "question": "A bank has assessed the account takeover risk in its mobile banking app. Assuming no controls at all, the risk was rated \"very high\". After the device fingerprinting, transaction limit and SMS OTP controls were implemented, the risk was measured as \"medium\". The bank considered this level to be within its risk appetite and decided not to make any further investment. In this scenario, which risk concepts do the \"very high\" and \"medium\" levels correspond to, respectively, and which risk response is the bank's final decision?",
+      "options": {
+        "A": "Inherent risk and residual risk; accepting the residual risk (accept)",
+        "B": "Residual risk and inherent risk; reducing the risk (mitigate)",
+        "C": "Inherent risk and control risk; transferring the risk (transfer)",
+        "D": "Detection risk and residual risk; avoiding the risk (avoid)",
+        "E": "Inherent risk and residual risk; reducing the risk (mitigate), because controls have been implemented"
+      },
+      "explanation": "Inherent risk is the level of risk that exists when there are no controls; in the scenario, \"very high\" is this level. Residual risk is the risk that remains after controls have been implemented; \"medium\" is this level. Implementing the controls is a mitigation action, but the question asks about the bank's final decision: regarding the remaining medium-level risk as within the risk appetite and taking no further measures is acceptance of the residual risk (risk acceptance). Risk responses fall into four main groups: accept, mitigate, transfer (insurance, outsourcing), avoid (discontinuing the activity).",
+      "optionExplanations": {
+        "A": "Correct. Uncontrolled level = inherent risk, controlled level = residual risk; regarding the remaining risk as within appetite and taking no further measures = acceptance.",
+        "B": "The concepts are given in reverse order; the uncontrolled level cannot be residual risk. Also, the final decision is acceptance, not mitigation.",
+        "C": "Control risk is a component of audit risk expressing the probability that controls fail to prevent an error; it is not a remaining risk level. Transfer requires insurance or contractual assignment; there is none in the scenario.",
+        "D": "Detection risk is the risk that the auditor fails to detect an error; it has nothing to do with inherent risk. Avoidance would mean giving up the mobile banking service.",
+        "E": "The concepts are correct, but the question asks about the final decision. Implementing controls is mitigation; however, \"not investing further and regarding the medium level as within appetite\" is acceptance of the residual risk."
+      },
+      "keyConcept": "Inherent risk = risk without controls; residual risk = risk remaining after controls. Risk responses: accept, mitigate, transfer, avoid. Residual risk is compared with the risk appetite.",
+      "examTip": "If the question says \"final decision\", look not at the implementation of the controls (mitigation) but at what was done with the remaining risk. If it is within appetite, it has been accepted.",
+      "simpleExplanation": "Inherent risk is your risk of getting wet in the rain when you go out without taking any precautions. After you take an umbrella and a raincoat, there is still some chance of getting wet; that is residual risk. At the bank too, the risk that was \"very high\" with no controls is the inherent risk, and the \"medium\" level remaining after the controls is the residual risk. The bank looked at this remaining risk and said \"I can live with this much, I won't spend any more\"; that decision is accepting the risk. Putting the controls in place was mitigation, but the question asks about the final decision, and the final decision is acceptance."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 1: Risk Analysis Concepts",
       "ISO/IEC 27005:2022, Information security risk management",
@@ -940,6 +1336,28 @@
     "keyConcept": "Uygulama kontrolleri: belirli uygulamadaki işlemlerin girdi-işleme-çıktı doğruluğu ve yetkisi. ITGC: erişim yönetimi, değişiklik yönetimi, BT operasyonları, fiziksel güvenlik; tüm uygulamaların güvendiği ortam.",
     "examTip": "\"Bu kontrol yalnızca bu uygulamanın işlemleriyle mi ilgili?\" → uygulama kontrolü. \"Tüm sistemleri kapsayan altyapı/süreç kontrolü mü?\" → ITGC.",
     "simpleExplanation": "Bir alışveriş merkezini düşünün. Binanın güvenlik görevlileri, kamera sistemi ve kapı kilitleri bütün mağazaların yararlandığı genel korumadır; bunlar BT genel kontrollerine benzer (değişiklik onayı, veri merkezi kapısı, yönetici hesaplarının yönetimi). Her mağazanın kendi kasasındaki \"fiş toplamı ile ödeme eşleşiyor mu\" kontrolü ise o mağazanın işine özgüdür; bunlar uygulama kontrolleridir. IBAN kontrol basamağı, büyük havalede ikinci imza ve gün sonu borç-alacak eşitliği, doğrudan bankacılık işlemlerinin kendisini kontrol eder. K2, K4 ve K6 ise işlemle değil, tüm sistemin güvenilir ortamıyla ilgilidir.",
+    "en": {
+      "subtopic": "IT general controls and application controls",
+      "question": "An IT auditor is reviewing the following controls relating to the core banking system. Which option contains only application controls?",
+      "options": {
+        "A": "K2, K4, K6",
+        "B": "K1, K2, K5",
+        "C": "K3, K4, K5",
+        "D": "K1, K4, K6",
+        "E": "K1, K3, K5"
+      },
+      "explanation": "Application controls are controls embedded in a specific business application that ensure transactions are complete, accurate, valid and authorized: input controls (the IBAN check digit, K1), processing controls (second approval depending on the amount, K3) and output/processing integrity controls (debit-credit balance, K5). IT General Controls (ITGC), on the other hand, are controls that govern the environment all applications rely on: change management (K2), physical access (K4), logical/privileged access (K6). In an audit, ITGCs are tested first, because if the ITGCs are weak, the application controls (e.g. that the approval limit has not been altered) cannot be relied upon.",
+      "optionExplanations": {
+        "A": "K2 (change management), K4 (physical access) and K6 (privileged access) are, on the contrary, three IT general controls.",
+        "B": "K1 and K5 are application controls, but K2 (CAB approval) is a general control belonging to change management.",
+        "C": "K3 and K5 are application controls, but K4 (data centre physical access) is a general control; it is not specific to any application.",
+        "D": "Only K1 is an application control; K4 and K6 are general controls.",
+        "E": "Correct. Input validation (K1), the transaction approval limit (K3) and the balance/integrity check (K5) are transaction controls embedded in the application."
+      },
+      "keyConcept": "Application controls: the input-processing-output accuracy and authorization of transactions in a specific application. ITGC: access management, change management, IT operations, physical security; the environment all applications rely on.",
+      "examTip": "\"Does this control relate only to this application's transactions?\" → application control. \"Is it an infrastructure/process control covering all systems?\" → ITGC.",
+      "simpleExplanation": "Think of a shopping centre. The building's security guards, camera system and door locks are general protection that all the shops benefit from; these resemble IT general controls (change approval, the data centre door, management of administrator accounts). The check at each shop's own till, \"does the receipt total match the payment?\", is specific to that shop's business; these are application controls. The IBAN check digit, the second signature on a large transfer and the end-of-day debit-credit balance directly control the banking transactions themselves. K2, K4 and K6, on the other hand, are about the trusted environment of the whole system, not the transaction."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 3: Application Controls; Domain 1: IT General Controls",
       "COBIT 2019, DSS06 Managed Business Process Controls",
@@ -990,6 +1408,28 @@
     "keyConcept": "Risk = tehdit olasılığı × zafiyet × etki. Tek bir bileşenin yüksekliği riski belirlemez; düşük olasılıklı çok yüksek etkili senaryolar nicel puanla düşük görünebilir ve ayrıca nitel değerlendirilmelidir.",
     "examTip": "Hesaplama sorularında tüm satırları hesaplayıp sıralayın; \"en yüksek etki = en yüksek risk\" tuzağına düşmeyin.",
     "simpleExplanation": "Risk puanı üç sayının çarpımıdır: ne sıklıkta olur, ne kadar kolay gerçekleşir, olursa kaç lira kaybederiz. Üçünü çarpmadan karar vermek yanıltır. Örneğin DR merkezinin tamamen kaybı 100 milyon liralık dev bir etkiye sahiptir ama yüz yılda bir beklendiği için puanı 5 milyon kalır. Fidye yazılımı ise hem ciddi hem de daha olası olduğundan 32 milyonla en yüksek puanı alır. ATM saldırısı da yılda bir beklenir ama etkisi ve zafiyeti düşük olduğu için 4 milyonla en alttadır. Sadece \"en büyük rakam\" olan satıra bakmak yerine her satırı hesaplamak gerekir.",
+    "en": {
+      "subtopic": "Risk components: threat, vulnerability, impact",
+      "question": "A bank's IT risk team has determined the threat likelihood (annual rate of occurrence), the exploitability of the vulnerability (1-5) and the impact (TL) for four scenarios as below. The risk score is calculated as likelihood × vulnerability × impact. Which scenario has the highest and which the lowest risk score?",
+      "options": {
+        "A": "Highest: S2 (32.000.000); lowest: S4 (5.000.000)",
+        "B": "Highest: S4 (100.000.000); lowest: S1 (6.000.000)",
+        "C": "Highest: S1 (6.000.000); lowest: S3 (4.000.000)",
+        "D": "Highest: S2 (32.000.000); lowest: S3 (4.000.000)",
+        "E": "Highest: S3 (4.000.000); lowest: S4 (5.000.000)"
+      },
+      "explanation": "The multiplication is done for each scenario. S1: 4,0 × 3 × 500.000 = 6.000.000. S2: 0,2 × 4 × 40.000.000 = 32.000.000. S3: 1,0 × 2 × 2.000.000 = 4.000.000. S4: 0,01 × 5 × 100.000.000 = 5.000.000. The highest score is S2 (ransomware), the lowest is S3 (ATM jackpotting). Note: although S4 has the highest impact, its score falls below S2 because of its very low likelihood; this shows that a risk assessment must not look at a single component alone.",
+      "optionExplanations": {
+        "A": "S2 is calculated correctly, but the lowest score is not S4 (5.000.000) but S3 (4.000.000).",
+        "B": "S4 has the highest impact, but multiplied by a likelihood of 0,01 the score becomes 5.000.000; this is the fallacy of looking only at impact. Nor is S1 the lowest.",
+        "C": "S1's score is 6.000.000, far below S2's 32.000.000; this is the fallacy of looking only at likelihood.",
+        "D": "Correct. S2 = 32.000.000 is the highest; S3 = 4.000.000 is the lowest.",
+        "E": "S3 has the lowest score, not the highest; the ranking has been inverted."
+      },
+      "keyConcept": "Risk = threat likelihood × vulnerability × impact. A high value in a single component does not determine the risk; low-likelihood, very-high-impact scenarios may look low on a quantitative score and should also be assessed qualitatively.",
+      "examTip": "In calculation questions, compute every row and rank them; do not fall into the \"highest impact = highest risk\" trap.",
+      "simpleExplanation": "The risk score is the product of three numbers: how often it happens, how easily it can be carried out, and how many lira we lose if it does. Deciding without multiplying all three is misleading. For example, the total loss of the DR centre has a huge impact of 100 million lira, but because it is expected once in a hundred years its score stays at 5 million. Ransomware, being both serious and more likely, gets the highest score at 32 million. The ATM attack is expected once a year, but because its impact and vulnerability are low it sits at the bottom with 4 million. Rather than looking only at the row with the \"biggest number\", you have to calculate every row."
+    },
     "references": [
       "NIST SP 800-30 Rev. 1, Guide for Conducting Risk Assessments",
       "ISO/IEC 27005:2022",
@@ -1040,6 +1480,28 @@
     "keyConcept": "Kontrol-risk eşleşmesi: kontrol, riskin gerçekleşme mekanizmasını (kim, nasıl, neden fark edilmiyor) doğrudan hedeflemelidir. İç suistimal risklerinde müşteri bildirimi, çıkar çatışması engeli ve iz kaydı analizi temel kontrollerdir.",
     "examTip": "\"Bu riske hangi kontrol\" sorularında her seçenek için \"bu kontrol senaryodaki kişiyi/mekanizmayı durdurur mu veya ortaya çıkarır mı?\" diye sorun; genel iyi uygulamalar çeldiricidir.",
     "simpleExplanation": "Bir riske kontrol seçerken \"bu önlem, anlatılan hileyi gerçekten durdurur veya ortaya çıkarır mı?\" diye sormak gerekir. Buradaki hilede personel müşterinin hesabından kendi hesabına para gönderiyor ve müşteri fark etmiyor. Müşteriye anında mesaj gitmesi, fark etmeme sorununu çözer. Personelin kendi veya yakınlarının hesabına müşteri işlemi yapmasının sistemde engellenmesi, hilenin yolunu kapatır. Kayıtların taranması kaçanları yakalar. Eğitim, yama, yedek veya cihaz kısıtı iyi şeylerdir ama bu hileyi yapan kişi zaten yetkili, eğitimli ve kurumsal cihaz kullanan bir çalışandır; o önlemler ona işlemez.",
+    "en": {
+      "subtopic": "Selecting a control appropriate to the risk",
+      "question": "A bank's internal audit report identifies the following risk: \"Branch staff make small-value transfers from a customer's account to their own account without the customer's knowledge, and the transactions go unnoticed on the monthly account statement.\" Which control reduces this risk most directly and effectively?",
+      "options": {
+        "A": "Making it mandatory for staff to receive information security awareness training once a year",
+        "B": "Reporting the patch level of branch servers monthly",
+        "C": "Taking a daily backup of the core banking database",
+        "D": "Sending the customer an instant SMS/mobile notification for transfers initiated by a customer representative on the customer's behalf, systemically preventing staff from performing customer transactions to their own and their relatives' accounts, and periodically scanning the audit logs for staff-customer account matches",
+        "E": "Allowing access to the branch network only from corporate devices"
+      },
+      "explanation": "In selecting a control, the control must directly target the mechanism of the identified risk. The risk consists of three elements: staff can transact on the customer's behalf, the recipient is their own account, and the customer does not notice. Option D targets all three: the instant notification addresses the customer's failure to notice (detective), preventing staff from transacting to their own/relatives' accounts closes the fraud path (preventive), and scanning the audit logs reveals the remaining cases (detective). The other options are general good practices but do not touch the mechanism of this risk; if the auditor cannot give a concrete answer to \"how does this control reduce this risk?\", the control is irrelevant.",
+      "optionExplanations": {
+        "A": "Awareness training may reduce accidental errors, but the member of staff committing deliberate fraud is the source of the risk; training does not stop them.",
+        "B": "Patch management is against technical vulnerabilities; it has nothing to do with an authorized user abusing their authority.",
+        "C": "Backup is a corrective control against data loss; it neither prevents nor detects an improper but valid transfer.",
+        "D": "Correct. Customer notification, the block on transacting to one's own account and audit log scanning directly target each element of the risk.",
+        "E": "A device restriction makes things harder for an external attacker, but the person committing the fraud is already internal staff transacting with a corporate device and with authority."
+      },
+      "keyConcept": "Control-risk matching: the control must directly target the mechanism by which the risk materialises (who, how, why it goes unnoticed). For internal fraud risks, customer notification, conflict-of-interest blocking and audit log analysis are the core controls.",
+      "examTip": "In \"which control for this risk\" questions, ask for each option \"does this control stop or expose the person/mechanism in the scenario?\"; general good practices are distractors.",
+      "simpleExplanation": "When choosing a control for a risk, you have to ask \"does this measure really stop or expose the trick described?\" In the trick here, a member of staff sends money from the customer's account to their own account and the customer does not notice. An instant message to the customer solves the not-noticing problem. Blocking staff in the system from performing customer transactions to their own or their relatives' accounts closes the path for the trick. Scanning the records catches the ones that slip through. Training, patches, backups or device restrictions are good things, but the person pulling this trick is already an authorized, trained employee using a corporate device; those measures do not work on them."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 1: Control Objectives and Risk Response",
       "ACFE, Fraud Examiners Manual - Internal Controls",
@@ -1090,6 +1552,28 @@
     "keyConcept": "COBIT 2019: BT yönetişim ve yönetim çerçevesi (belgelendirme yok). ISO/IEC 27001: BGYS gereklilikleri, belgelendirilebilir. BDDK 2020 yönetmeliği: bankalar için bağlayıcı; bilgi sistemleri yönetimi, elektronik bankacılık güvenliği, iz kayıtları, süreklilik.",
     "examTip": "\"Hangisi sertifikasyon standardı?\" → ISO/IEC 27001. \"Hangisi zorunlu?\" → BDDK yönetmeliği. \"Hangisi yönetişim hedefleri tanımlar?\" → COBIT.",
     "simpleExplanation": "Üç farklı belge türü düşünün. Trafik kanunu herkes için zorunludur ve uymazsanız ceza alırsınız; BDDK yönetmeliği bankalar için böyledir. Sürücü kursu sertifikası, belirli şartları yerine getirdiğinizi bağımsız bir sınavla belgelendirir; ISO/IEC 27001 böyle bir belgelendirme standardıdır. İyi bir sürücünün nasıl davranması gerektiğini anlatan kapsamlı bir rehber ise yol gösterir ama sertifika vermez; COBIT bu tür bir çerçevedir. Üçü birbirinin yerine geçmez: yönetmelik \"ne zorunlu\" der, 27001 \"güvenlik yönetimini nasıl kurup belgelendirirsin\" der, COBIT \"BT'yi nasıl yönetir ve yönetişime bağlarsın\" der.",
+    "en": {
+      "subtopic": "The purpose of COBIT, ISO/IEC 27001 and the BDDK regulation",
+      "question": "A bank's IT governance team uses three frameworks/regulations together: COBIT 2019, ISO/IEC 27001 and the BDDK Regulation on Banks' Information Systems and Electronic Banking Services (Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik) (2020). Which option correctly distinguishes the fundamental purpose and nature of these three?",
+      "options": {
+        "A": "COBIT is an information security certification standard; ISO/IEC 27001 is an IT governance framework; the BDDK regulation is a voluntary good practice guide.",
+        "B": "All three are interchangeable mandatory regulations serving the same purpose.",
+        "C": "COBIT regulates only software development processes, ISO/IEC 27001 only network security, and the BDDK regulation only ATM and card transactions.",
+        "D": "COBIT 2019 is an IT audit standard and sets the auditor's independence rules; ISO/IEC 27001 mandates a risk assessment formula; the BDDK regulation regulates only information systems audit.",
+        "E": "COBIT 2019 is a framework that defines objectives and processes for the governance and management of enterprise IT (it is not a certification standard); ISO/IEC 27001 is the international standard containing the requirements for establishing and certifying an information security management system (ISMS); the BDDK regulation is binding on banks and regulates minimum requirements such as information systems management, the security of electronic banking services, audit logs, segregation of duties and business continuity."
+      },
+      "explanation": "COBIT 2019 (ISACA) is a framework that defines governance/management objectives (e.g. APO12 risk, BAI06 change, DSS05 security) for the governance and management of enterprise information and technology; organisations are not certified against COBIT. ISO/IEC 27001 is a standard containing the requirements for establishing, operating and continually improving an ISMS, against which organisations can be certified through independent audit; the Annex A control list is for reference. The BDDK regulation is binding secondary legislation for banks in Turkey; it sets minimum requirements on matters such as information systems management, authentication and transaction security in electronic banking, the integrity and retention of audit logs, segregation of duties, privileged access, change management, penetration testing and business continuity. The three complement one another: the regulation says \"what\" is mandatory, 27001 says \"how to build the management system\", COBIT says \"how to do governance and processes\".",
+      "optionExplanations": {
+        "A": "The roles are mixed up: the certification standard is ISO/IEC 27001, the governance framework is COBIT. The BDDK regulation is not voluntary; it is binding on banks.",
+        "B": "The three differ in nature and purpose; only the BDDK regulation is legally mandatory, COBIT and ISO 27001 are voluntary frameworks/standards.",
+        "C": "None of the three has such a narrow scope; COBIT covers all IT governance, 27001 all information security management, and the BDDK regulation all information systems and electronic banking services.",
+        "D": "COBIT is a governance framework, not an audit standard; auditor independence is regulated in the ISACA ITAF/IIA standards. ISO 27001 does not mandate a specific formula, it requires a risk assessment process. The BDDK regulation is not limited to audit.",
+        "E": "Correct. The nature of each (framework / certifiable standard / binding regulation) and its purpose are correctly distinguished."
+      },
+      "keyConcept": "COBIT 2019: IT governance and management framework (no certification). ISO/IEC 27001: ISMS requirements, certifiable. BDDK 2020 regulation: binding on banks; information systems management, electronic banking security, audit logs, continuity.",
+      "examTip": "\"Which is a certification standard?\" → ISO/IEC 27001. \"Which is mandatory?\" → the BDDK regulation. \"Which defines governance objectives?\" → COBIT.",
+      "simpleExplanation": "Think of three different kinds of document. The traffic law is mandatory for everyone and you are fined if you break it; the BDDK regulation is like that for banks. A driving school certificate documents, through an independent test, that you have met certain requirements; ISO/IEC 27001 is a certification standard of that kind. A comprehensive guide describing how a good driver should behave gives direction but does not issue a certificate; COBIT is a framework of this kind. The three are not interchangeable: the regulation says \"what is mandatory\", 27001 says \"how you build and certify security management\", COBIT says \"how you manage IT and tie it to governance\"."
+    },
     "references": [
       "ISACA, COBIT 2019 Framework: Introduction and Methodology",
       "ISO/IEC 27001:2022, Information security management systems - Requirements",
@@ -1140,6 +1624,28 @@
     "keyConcept": "İşletim etkinliği testinde popülasyonun eksiksizliği kritiktir; \"tüm X'ler onaylı\" iddiası, X'lerin bağımsız bir kaynaktan listelenmesini gerektirir. Kanıt gücü: görüşme < doküman inceleme < gözlem < bağımsız kayıt inceleme ve yeniden gerçekleştirme.",
     "examTip": "\"Tüm\" içeren bir kontrol iddiasını test ederken örneklemi kontrolün kendi kayıtlarından değil, kontrolün dışındaki bir kaynaktan seçin; yoksa yetkisiz işlemleri asla göremezsiniz.",
     "simpleExplanation": "\"Sınıftaki herkes yoklamada imza attı mı?\" sorusunu yalnızca imza defterine bakarak yanıtlayamazsınız; defterde sadece imza atanlar vardır, atmayanlar görünmez. Bunun için sınıftaki öğrencilerin tam listesini başka bir kaynaktan (okul kayıtları) alıp her öğrencinin imzasını aramalısınız. Değişiklik onayı testi de aynıdır: değişiklik aracındaki kayıtlara bakarsanız sadece kayıt açılmış değişiklikleri görürsünüz, kayıt açılmadan yapılanlar listede hiç yoktur. Doğru yöntem, sunucuların kendi kayıtlarından \"gerçekten üretime ne gitti\" listesini alıp her birinin onaylı bir kayda bağlandığını doğrulamaktır. Sözlü teyit, prosedür okumak veya tek bir toplantıyı izlemek bu kadar güçlü kanıt vermez.",
+    "en": {
+      "subtopic": "Control testing and audit evidence",
+      "question": "An IT auditor wants to test the operating effectiveness of the control \"all changes put into production have been approved by the CAB\". Which of the following evidence-gathering approaches provides the strongest and most appropriate evidence for this control?",
+      "options": {
+        "A": "Interviewing the change manager and having them confirm verbally that all changes were approved",
+        "B": "Reading the change management procedure document and confirming that CAB approval is mandatory",
+        "C": "Selecting a random sample from the records in the change management tool and examining each one's CAB approval record",
+        "D": "Obtaining from the audit logs of the deployment tool and the servers (a source independent of the change management tool) the list of all deployments made to production during the period, selecting a sample from this list, and verifying that each deployment matches an approved CAB record in the change tool",
+        "E": "Attending the last CAB meeting as an observer and watching the approval process in operation"
+      },
+      "explanation": "When the control assertion is of the form \"ALL changes put into production are approved\", the test must be built on the completeness of the population. If the sample is selected from the change management tool, only changes for which a record was opened are seen; unauthorized changes made without a record are not in this population at all and the test cannot catch them. The population must therefore be the deployments that \"actually went to production\", taken from an independent source (deployment tool logs, server audit logs, file integrity monitoring), and each of these must be traced back to an approved record. In the hierarchy of evidence, examining system records from an independent source through reperformance/reconciliation is stronger than interviews, document review and one-off observation.",
+      "optionExplanations": {
+        "A": "Interview (inquiry) is the weakest type of evidence; on its own it cannot support a conclusion on control effectiveness, it only provides understanding.",
+        "B": "The procedure document shows the design of the control, not that it was operated. A design test and an operating test are different things.",
+        "C": "A typical misconception: when the population is taken from the control's own tool, the completeness assumption is not verified; unauthorized changes without a record never enter the sample. This test answers \"are recorded changes approved\", not \"are all changes recorded\".",
+        "D": "Correct. A complete population from an independent source + matching each deployment to an approved record is the strongest operating effectiveness test, one that also catches unauthorized changes.",
+        "E": "Observation provides evidence only for the moment observed (the process is expected to run correctly while the auditor is present); it does not cover the whole period and does not show deployments made outside the meeting."
+      },
+      "keyConcept": "In operating effectiveness testing, the completeness of the population is critical; the assertion \"all X are approved\" requires the X to be listed from an independent source. Strength of evidence: inquiry < document review < observation < independent record examination and reperformance.",
+      "examTip": "When testing a control assertion containing \"all\", select the sample not from the control's own records but from a source outside the control; otherwise you will never see the unauthorized transactions.",
+      "simpleExplanation": "You cannot answer the question \"did everyone in the class sign the attendance sheet?\" by looking only at the signature book; the book contains only those who signed, those who did not are invisible. For that you need the full list of students in the class from another source (the school records) and to look for each student's signature. The change approval test is the same: if you look at the records in the change tool, you see only the changes for which a record was opened; those made without a record are not on the list at all. The right method is to take the list of \"what actually went to production\" from the servers' own logs and verify that each one is tied to an approved record. Verbal confirmation, reading the procedure or watching a single meeting does not give evidence this strong."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 1: Audit Evidence, Sampling and Completeness",
       "ISACA, IT Audit Framework (ITAF), Standard 1205 Evidence",
@@ -1190,6 +1696,28 @@
     "keyConcept": "Üç hat: 1. hat riski sahiplenir ve kontrol işletir; 2. hat metodoloji, izleme, raporlama; 3. hat bağımsız güvence (operasyonel karar vermez). KRI: riskin artışını önceden gösteren (leading) ölçütler tercih edilir; geçmiş zarar ölçütleri lagging'dir. Dış kaynak sorumluluğu devretmez.",
     "examTip": "İç denetimin \"onay verdiği\" veya \"yönettiği\" bir süreç görürseniz bağımsızlık ihlali arayın. KRI sorularında \"geçen yıl olanı\" ölçen gösterge lagging, \"artmakta olan maruziyeti\" ölçen gösterge leading'dir.",
     "simpleExplanation": "Üç savunma hattını bir futbol maçı gibi düşünün: oyuncular (iş birimleri) oyunu oynar ve kuralları uygular, teknik ekip (risk birimi) oyunu izler ve yönlendirir, hakem (iç denetim) tarafsız karar verir. Hakem aynı zamanda bir takımın antrenörlüğünü yapsa kimse kararlarına güvenmez. Buradaki iç denetim, tedarikçi toplantılarını yönetip değişiklik onayı vererek tam da bunu yapmış ve tarafsızlığını kaybetmiştir. Göstergelerde ise geçen yılın kesinti süresi, olmuş bitmiş bir zararı ölçer (geriye bakan). Açık kalan kritik bulgular ve üretim erişimli tedarikçi hesaplarının artışı ise yaklaşan bir sorunu önceden haber verir (ileriye bakan); iyi bir risk göstergesi budur.",
+    "en": {
+      "subtopic": "Three lines of defence and key risk indicators",
+      "question": "At a bank, an outsourced supplier maintains the mobile banking application. The following allocation of duties and set of indicators is being assessed. Which is the most accurate finding in terms of the Three Lines Model and key risk indicators (KRIs)?",
+      "options": {
+        "A": "Internal audit running the supplier operations meetings and giving change approvals means the third line takes on a first-line duty and loses its independence, which is contrary to the fundamental principle of the model. Among the indicators, G2 is a backward-looking outcome measure (lagging), whereas G1 and G3 are forward-looking (leading) KRIs that can signal rising risk in advance.",
+        "B": "The allocation of duties fully conforms to the model; internal audit attending operational meetings improves audit quality. G2 is the best KRI because it is quantitative and precise.",
+        "C": "It is wrong for the product manager to operate controls; controls should be operated only by the IT risk unit. All three indicators are KRIs of equal value.",
+        "D": "Because responsibility passes to the supplier in outsourcing, the bank's three lines model does not cover the supplier's activities; KRI monitoring is the supplier's job.",
+        "E": "The IT risk unit reporting is interference by the second line in the first line; G3 is not a KRI but a performance indicator (KPI)."
+      },
+      "explanation": "In the Three Lines Model, the first line (business/operations units) owns the risk and operates the controls; the second line (risk management, compliance) sets the methodology, monitors, enforces and reports; the third line (internal audit) provides independent assurance and does not take part in operational decision/approval processes. Internal audit managing the supplier operation and giving change approvals means it carries out the very activity it is supposed to audit; this impairs independence and objectivity (self-review threat). As for the indicators, the value of KRIs lies in their ability to warn of rising risk before a loss materialises: the number of open critical findings (G1) and the increase in supplier accounts with production access (G3) are forward-looking warning signals; last year's outage duration (G2) is a backward-looking indicator measuring a loss that has already occurred, useful to monitor but providing no early warning. Outsourcing does not transfer responsibility; the BDDK regulations also take as a basis that the responsibility for risk management and audit in outsourced services remains with the bank.",
+      "optionExplanations": {
+        "A": "Correct. The third line taking on an operational role is a breach of independence; G1 and G3 are leading, G2 is a lagging indicator.",
+        "B": "Internal audit taking part in operational decision processes destroys independence; an auditor who does the work they will audit cannot be objective. G2 may be quantitative but it is backward-looking and gives no early warning.",
+        "C": "Operating controls day to day is precisely the first line's job; the product manager's role conforms to the model. The second line does not operate controls, it oversees them. The indicators are not equivalent.",
+        "D": "A typical misconception: an activity can be outsourced, responsibility cannot. The bank must manage and monitor supplier risk with its own three lines.",
+        "E": "Reporting is the second line's core duty, not interference. G3 is a KRI because it measures an increase in risk (growth of the privileged access surface); a KPI measures performance/efficiency."
+      },
+      "keyConcept": "Three lines: 1st line owns risk and operates controls; 2nd line methodology, monitoring, reporting; 3rd line independent assurance (makes no operational decisions). KRI: measures that show rising risk in advance (leading) are preferred; past loss measures are lagging. Outsourcing does not transfer responsibility.",
+      "examTip": "If you see a process that internal audit \"approves\" or \"manages\", look for a breach of independence. In KRI questions, an indicator measuring \"what happened last year\" is lagging, one measuring \"exposure that is growing\" is leading.",
+      "simpleExplanation": "Think of the three lines of defence as a football match: the players (business units) play the game and apply the rules, the coaching staff (the risk unit) watches and directs the game, and the referee (internal audit) makes impartial decisions. If the referee also coached one of the teams, nobody would trust their decisions. The internal audit here has done exactly that by running the supplier meetings and giving change approvals, and has lost its impartiality. As for the indicators, last year's outage duration measures a loss that is already over and done with (backward-looking). Critical findings left open and the growth in supplier accounts with production access warn of an approaching problem in advance (forward-looking); that is what a good risk indicator is."
+    },
     "references": [
       "IIA, The IIA's Three Lines Model (2020)",
       "ISACA CISA Review Manual, Domain 2: Risk Management, KRIs ve Outsourcing Governance",
@@ -1241,6 +1769,28 @@
     "keyConcept": "RTO: hizmetin geri gelmesi için azami süre. RPO: kabul edilebilir azami veri kaybı (zaman). RPO → yedek/çoğaltma sıklığı; RTO → kurtarma sahası ve failover tasarımı.",
     "examTip": "\"Ne kadar sürede geri geliriz?\" → RTO. \"Ne kadar veri kaybederiz?\" → RPO. RPO küçüldükçe yedekleme sıklığı artar, maliyet yükselir.",
     "simpleExplanation": "Elektrik kesilince iki soru sorarsınız: \"Ne zaman geri gelir?\" ve \"Buzdolabındaki yemeklerin ne kadarı bozulur?\". İlk soru hizmetin geri dönüş süresidir (RTO): burada 2 saat. İkinci soru kabul edebileceğiniz kayıptır (RPO): burada 15 dakikalık işlem verisi. Veri kaybını 15 dakikada tutmak istiyorsanız, verinin kopyasını en az 15 dakikada bir başka yere almanız gerekir; günde bir yedekle 24 saatlik veri kaybedersiniz. Bu yüzden RPO yedekleme veya kopyalama sıklığını, RTO ise yedek sistemin ne kadar hazır bekleyeceğini belirler.",
+    "en": {
+      "subtopic": "RPO and RTO concepts",
+      "question": "A bank's business impact analysis (BIA) has set the following targets for the mobile banking service: \"In a disaster, the service must be restored within 2 hours at the latest; the maximum acceptable data loss is 15 minutes of transaction data.\" Which concepts do these two targets correspond to, respectively, and how does the data loss target affect the backup/replication design?",
+      "options": {
+        "A": "2 hours = RPO, 15 minutes = RTO; backups should be taken every 2 hours.",
+        "B": "2 hours = RTO (Recovery Time Objective), 15 minutes = RPO (Recovery Point Objective); to keep data loss under 15 minutes, a backup at least every 15 minutes or equivalent continuous/near-real-time data replication is required.",
+        "C": "2 hours = MTD, 15 minutes = RTO; a daily full backup is sufficient.",
+        "D": "2 hours = RTO, 15 minutes = MTBF; backup frequency is independent of these targets.",
+        "E": "2 hours = RPO, 15 minutes = MTTR; a weekly full backup and daily incremental backups are sufficient."
+      },
+      "explanation": "RTO (Recovery Time Objective) is the maximum targeted time for restoring the service after an interruption; the phrase \"within 2 hours at the latest\" is the RTO. RPO (Recovery Point Objective) expresses the maximum acceptable data loss in terms of time; \"15 minutes of transaction data\" is the RPO. The RPO directly determines the backup or replication frequency: the time elapsed from the last backup to the disaster is the data lost, so the backup/replication interval cannot exceed the RPO. For a 15-minute RPO, periodic backups are not practical; database log shipping or synchronous/asynchronous replication is generally used. The RTO, in turn, determines the recovery infrastructure (hot/warm/cold site, automatic failover).",
+      "optionExplanations": {
+        "A": "The concepts are reversed; the time target is the RTO, the data loss target is the RPO. Also, a backup every 2 hours does not meet a 15-minute data loss target.",
+        "B": "Correct. RTO = time to return to service, RPO = acceptable data loss; the RPO sets the upper limit on backup/replication frequency.",
+        "C": "MTD (Maximum Tolerable Downtime) is the total interruption the business process can tolerate and encompasses the RTO; but the second value is data loss, not RTO. A daily backup does not meet a 15-minute RPO.",
+        "D": "MTBF (Mean Time Between Failures) is a reliability measure, not a recovery target. Backup frequency depends directly on the RPO.",
+        "E": "MTTR (Mean Time To Repair) is the average repair time, not a data loss target. With daily incremental backups, data loss could reach 24 hours."
+      },
+      "keyConcept": "RTO: maximum time for the service to come back. RPO: maximum acceptable data loss (time). RPO → backup/replication frequency; RTO → recovery site and failover design.",
+      "examTip": "\"How quickly do we come back?\" → RTO. \"How much data do we lose?\" → RPO. The smaller the RPO, the higher the backup frequency and the higher the cost.",
+      "simpleExplanation": "When the power goes out, you ask two questions: \"When will it come back?\" and \"How much of the food in the fridge will spoil?\" The first question is the time for the service to return (RTO): here, 2 hours. The second question is the loss you can accept (RPO): here, 15 minutes of transaction data. If you want to keep data loss to 15 minutes, you must copy the data somewhere else at least every 15 minutes; with one backup a day you would lose 24 hours of data. That is why the RPO determines the backup or copying frequency, while the RTO determines how ready the standby system must be."
+    },
     "references": [
       "ISO 22301:2019, Business continuity management systems",
       "NIST SP 800-34 Rev. 1, Contingency Planning Guide for Federal Information Systems",
@@ -1291,6 +1841,28 @@
     "keyConcept": "BIA → (MTD, RTO, RPO) → BCP (iş fonksiyonlarının sürekliliği, geniş kapsam) ⊃ DRP (BT altyapısının kurtarılması, teknik). BDDK: BS süreklilik planı iş sürekliliği planıyla uyumlu olmalı.",
     "examTip": "Sıra: BIA önce, planlar sonra. Kapsam: BCP geniş (iş), DRP dar (BT). Bu iki kuralı ters çeviren seçenekleri eleyin.",
     "simpleExplanation": "Bir sel baskınına hazırlanan bir dükkân sahibini düşünün. Önce \"hangi işlerim durursa en çok zarar görürüm, en fazla kaç saat kapalı kalabilirim?\" diye düşünür; bu iş etki analizidir ve diğer planlara yön verir. Sonra \"sel olursa dükkânı nasıl açık tutarım: komşu dükkânda mı satarım, elle fiş mi keserim, personel nereye gider?\" planını yapar; bu geniş iş sürekliliği planıdır. Bunun içinde \"kasa bilgisayarını ve kayıtları nasıl kurtarırım\" gibi teknik bir bölüm vardır; bu felaket kurtarma planıdır. Yani önce analiz, sonra geniş plan ve onun içinde teknik alt plan gelir.",
+    "en": {
+      "subtopic": "BCP, DRP and business impact analysis",
+      "question": "A bank's continuity documents are being reviewed. Which of the following statements correctly describes the relationship between the business continuity plan (BCP), the disaster recovery plan (DRP) and the business impact analysis (BIA)?",
+      "options": {
+        "A": "The BIA is the analysis that identifies critical business processes and how long they can withstand interruption (MTD, RTO, RPO) and is the input to the BCP and the DRP; the BCP is the broad plan covering the continuation of business functions during an interruption (e.g. branches processing manually, an alternative workplace); the DRP is the technical sub-component of the BCP focused on bringing the IT infrastructure up at the disaster recovery centre.",
+        "B": "The DRP is the broadest plan and encompasses the BCP and the BIA; the BIA is done after the DRP is complete to validate its results.",
+        "C": "The BCP and the DRP are two names for the same document; the BIA is merely the calculation of financial loss for insurance purposes.",
+        "D": "The BIA is the reporting of the loss incurred after a disaster; the BCP covers only IT systems, the DRP only personnel and building processes.",
+        "E": "The BCP is merely a compliance document submitted to the regulator; the DRP and the BIA are not used operationally."
+      },
+      "explanation": "The sequence is as follows: the BIA is done first; critical business processes, their dependencies and the impact of interruption over time are analysed, and the MTD/MTPD, RTO and RPO are set for each process. These targets are the design input for the BCP and the DRP. The BCP addresses holistically how the organisation will sustain its critical business functions during an interruption: personnel, alternative workspace, communications, manual processes, suppliers and IT. The DRP is the IT- and data-focused subset of the BCP: recovery of systems at the disaster recovery (DR) site, data restoration, failover procedures. The BDDK regulation also expects banks to prepare an information systems continuity plan and for it to be aligned with the bank's overall business continuity planning.",
+      "optionExplanations": {
+        "A": "Correct. The BIA provides the input; the BCP is the broad business-focused plan; the DRP is the IT-focused technical sub-component.",
+        "B": "The hierarchy is reversed: the BCP is broad, the DRP is its IT subset. The BIA is done at the start of planning, not the end; it is the BIA that sets the targets.",
+        "C": "The BCP and the DRP have different scopes (business functions vs IT recovery). Alongside financial impact, the BIA also determines operational, reputational and legal impacts and the time targets; it is not an insurance calculation.",
+        "D": "The BIA is a forward-looking analysis, not a post-incident loss report. The scopes are also reversed: IT systems are the subject of the DRP, personnel and building processes of the BCP.",
+        "E": "Continuity plans are operational documents; they are tested through regular drills and actually used during an interruption; they are not merely compliance documents."
+      },
+      "keyConcept": "BIA → (MTD, RTO, RPO) → BCP (continuity of business functions, broad scope) ⊃ DRP (recovery of IT infrastructure, technical). BDDK: the IS continuity plan must be aligned with the business continuity plan.",
+      "examTip": "Order: BIA first, plans afterwards. Scope: BCP broad (business), DRP narrow (IT). Eliminate options that invert these two rules.",
+      "simpleExplanation": "Think of a shop owner preparing for a flood. First they think \"which of my activities would hurt the most if they stopped, how many hours at most can I stay closed?\"; that is the business impact analysis, and it steers the other plans. Then they plan \"if there is a flood, how do I keep the shop open: do I sell from the neighbour's shop, do I write receipts by hand, where do the staff go?\"; that is the broad business continuity plan. Within it there is a technical section such as \"how do I recover the till computer and the records\"; that is the disaster recovery plan. So first the analysis, then the broad plan, and within it the technical sub-plan."
+    },
     "references": [
       "ISO 22301:2019, Business continuity management systems - Requirements",
       "NIST SP 800-34 Rev. 1, Contingency Planning Guide",
@@ -1342,6 +1914,28 @@
     "keyConcept": "Geri yükleme: Tam + tüm artımlılar (kronolojik) VEYA Tam + yalnızca son fark. Artımlı: az yer, hızlı yedek, uzun ve kırılgan geri yükleme zinciri. Fark: daha fazla yer, yalnızca 2 set ile geri yükleme.",
     "examTip": "Önce yedek türlerini ayırın: artımlı → \"bir önceki yedekten beri\", fark → \"son tam yedekten beri\". Sonra hangi yedeklerin fiilen alınmış olduğuna (tarih/saat) dikkat edin.",
     "simpleExplanation": "Tam yedek, bir kitabın tamamının fotokopisidir. Artımlı yedek ise yalnızca \"önceki fotokopiden sonra değişen sayfaları\" içerir. Çarşamba gecesi hâline ulaşmak için önce pazar günkü tam kopyayı alır, sonra pazartesi, salı ve çarşamba günlerinin değişen sayfalarını sırayla üzerine yerleştirirsiniz; aradan bir günü atlarsanız o günün değişiklikleri kaybolur. Sadece çarşamba yedeği işe yaramaz, çünkü o yalnızca salıdan sonra değişen sayfaları tutar. Perşembe fark yedeği ise henüz alınmamıştır, yani elde yoktur. Sonuç: tam yedek ve üç artımlı yedek, toplam dört set, kronolojik sırayla.",
+    "en": {
+      "subtopic": "Restore order for full, incremental and differential backups",
+      "question": "The weekly backup schedule for a bank's credit card transaction database is below. On Thursday at 10:00 the database became corrupted. To restore the database to the point of the last backup taken on Wednesday night, which backup sets must be used, and in which order?",
+      "options": {
+        "A": "Only the Wednesday incremental backup; the most recent backup contains all the current data.",
+        "B": "The Sunday full backup, followed by only the Wednesday incremental backup.",
+        "C": "The Sunday full backup, followed by the Monday, Tuesday and Wednesday incremental backups in order (4 sets in total).",
+        "D": "The Wednesday incremental backup, then Tuesday, Monday and finally the Sunday full backup.",
+        "E": "The Sunday full backup and the Thursday differential backup (2 sets in total)."
+      },
+      "explanation": "An incremental backup contains only the data changed since the previous backup; a single incremental backup is therefore meaningless on its own. To reach the Wednesday-night state, the whole chain is needed: first the Sunday full backup is loaded (the base), then the Monday incremental (Sun→Mon changes), the Tuesday incremental (Mon→Tue changes) and the Wednesday incremental (Tue→Wed changes) are applied in chronological order. If any incremental backup in the chain is corrupt, the data of the following days cannot be recovered either; this is the fundamental risk of the incremental strategy. Had a differential backup been used, only the full + the last differential would have sufficed (2 sets), but the Thursday differential backup has not yet been taken. Transactions made up to Thursday 10:00 are recovered with the transaction log backup if one exists; otherwise they are lost (RPO).",
+      "optionExplanations": {
+        "A": "A typical misconception: an incremental backup contains only the changes since the previous backup, not all the data. If loaded on its own, the database would be incomplete and inconsistent.",
+        "B": "The Monday and Tuesday changes are skipped; the Wednesday incremental contains only the changes since Tuesday night. This option is the error of applying differential logic to incrementals.",
+        "C": "Correct. Full backup + all incremental backups in chronological order; 4 sets are needed.",
+        "D": "The order is reversed. A restore always starts with the full backup; the incrementals are applied on top in chronological order. The reverse order would cause old data to overwrite new data.",
+        "E": "The Thursday differential backup has not yet been taken (the corruption was at 10:00, the backup was scheduled for 23:00). It would be correct if the differential backup existed, but it does not."
+      },
+      "keyConcept": "Restore: Full + all incrementals (chronological) OR Full + only the last differential. Incremental: little space, fast backup, long and fragile restore chain. Differential: more space, restore with only 2 sets.",
+      "examTip": "First distinguish the backup types: incremental → \"since the previous backup\", differential → \"since the last full backup\". Then pay attention to which backups have actually been taken (date/time).",
+      "simpleExplanation": "A full backup is a photocopy of the whole book. An incremental backup contains only \"the pages that changed since the previous photocopy\". To get to the Wednesday-night state, you first take Sunday's full copy, then lay the changed pages from Monday, Tuesday and Wednesday on top in order; if you skip a day in between, that day's changes are lost. The Wednesday backup alone is no use, because it holds only the pages that changed since Tuesday. The Thursday differential backup has not been taken yet, so it is not available. Result: the full backup and three incremental backups, four sets in total, in chronological order."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 4: Backup and Restoration Strategies",
       "NIST SP 800-34 Rev. 1, Contingency Planning Guide (Backup Methods)",
@@ -1392,6 +1986,28 @@
     "keyConcept": "Sıcak saha: dakikalar, sürekli çoğaltma, en pahalı. Ilık saha: saatler, yedekten yükleme. Soğuk saha: günler, yalnızca altyapı, en ucuz. Seçim: RTO/RPO'yu karşılayan en düşük maliyetli tür.",
     "examTip": "Soruda \"maliyet-etkin\" geçiyorsa her sistem için yukarı değil, hedefi tam karşılayan en düşük seviyeyi seçin. RTO dakikalar → sıcak, saatler → ılık, günler → soğuk.",
     "simpleExplanation": "Yedek bir ev tutmayı düşünün. Sıcak saha, mobilyalı, elektriği açık, buzdolabı dolu bir ev gibidir: anında taşınırsınız ama kirası çok yüksektir. Ilık saha, mobilyalı ama boş bir evdir: eşyalarınızı getirip birkaç saatte yerleşirsiniz. Soğuk saha ise boş bir arsa gibidir: günler içinde kurulum gerekir ama en ucuzudur. Çekirdek bankacılık 30 dakikada ve neredeyse sıfır veri kaybıyla dönmeli; bu yalnızca sıcak sahayla olur. Bordro sistemi 5 gün bekleyebilir; boş arsa yeter. Kredi portalı 12 saatte dönmeli; birkaç günlük kurulum çok uzun ama anında hazır ev de israf olur, ılık saha tam yerindedir.",
+    "en": {
+      "subtopic": "Choosing a hot, warm or cold recovery site",
+      "question": "A bank's BIA results have given the following targets for three systems. In which option is the most appropriate recovery site type, cost-effective yet meeting the target, correctly matched for each system?",
+      "options": {
+        "A": "S1 hot, S2 cold, S3 warm",
+        "B": "S1 warm, S2 cold, S3 hot",
+        "C": "S1 hot, S2 hot, S3 hot",
+        "D": "S1 hot, S2 warm, S3 cold",
+        "E": "S1 warm, S2 warm, S3 warm"
+      },
+      "explanation": "The site type should be the lowest-cost option that meets the RTO and RPO. S1: a 30-minute RTO and a near-zero RPO can be achieved only with continuous data replication and ready-running hardware, i.e. a hot site (or even an active-active setup). S2: for a 5-day RTO and a 24-hour RPO, installing the hardware afterwards and restoring from the daily backup is sufficient; a cold site is the most economical option. S3: a 12-hour RTO cannot be met by a cold site's days-long setup, but does not require a hot site; a warm site, which loads data from backup onto ready hardware, meets the target within hours, and the 4-hour RPO is achieved with frequent backups/log shipping.",
+      "optionExplanations": {
+        "A": "Correct. For each system the most economical site that meets the target has been chosen: S1 hot, S2 cold, S3 warm.",
+        "B": "For S1, a warm site cannot meet the 30-minute RTO and the near-zero RPO (restoring from backup takes hours). For S3, a hot site meets the target but is needlessly expensive.",
+        "C": "Putting everything on a hot site meets the targets, but the question asks for cost-effectiveness; a hot site for payroll with a 5-day RTO is wasteful.",
+        "D": "For S3, a cold site cannot meet the 12-hour RTO (hardware installation takes days). For S2, a warm site is not necessary.",
+        "E": "For S1, a warm site is insufficient; a near-zero RPO requires continuous replication. For S2, a warm site is an unnecessary cost."
+      },
+      "keyConcept": "Hot site: minutes, continuous replication, most expensive. Warm site: hours, restore from backup. Cold site: days, infrastructure only, cheapest. Selection: the lowest-cost type that meets the RTO/RPO.",
+      "examTip": "If the question says \"cost-effective\", for each system choose not upwards but the lowest level that fully meets the target. RTO in minutes → hot, hours → warm, days → cold.",
+      "simpleExplanation": "Think of renting a spare home. A hot site is like a furnished house with the electricity on and the fridge full: you move in instantly, but the rent is very high. A warm site is a furnished but empty house: you bring your things and settle in within a few hours. A cold site is like an empty plot of land: it needs days of setting up, but it is the cheapest. Core banking must come back in 30 minutes with almost zero data loss; only a hot site does that. The payroll system can wait 5 days; the empty plot is enough. The credit portal must come back in 12 hours; several days of setup is too long, but a house ready to move into instantly would be a waste, so a warm site is just right."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 4: Recovery Site Alternatives",
       "NIST SP 800-34 Rev. 1, Contingency Planning Guide (Alternate Sites)",
@@ -1442,6 +2058,28 @@
     "keyConcept": "3-2-1 kuralı: 3 kopya, 2 farklı ortam, 1 saha dışı. Fidye yazılımına karşı ek olarak: yedek altyapısı üretimden bağımsız kimlik doğrulama, en az bir kopya değiştirilemez (immutable/WORM) veya çevrimdışı (air-gap).",
     "examTip": "\"Yönetici hesabı ele geçirildi ve yedekler silindi\" senaryosunda parola, şifreleme veya sıklık seçenekleri çeldiricidir; cevap her zaman bağımsız ve değiştirilemez/çevrimdışı kopyadır.",
     "simpleExplanation": "Evinizin anahtarını ve yedek anahtarı aynı anahtarlığa takarsanız, anahtarlığı çalan hırsız ikisini de alır. Bu bankada da üretim sistemleri ve yedekler aynı yönetici hesabıyla erişilebilir durumdaydı; hesabı ele geçiren saldırgan hem verileri şifreledi hem yedekleri sildi. Çözüm, yedeklerin bir kopyasını farklı bir kilitle korunan, hatta hiç kimsenin silemeyeceği şekilde kilitlenmiş (değiştirilemez) veya ağdan tamamen kopuk (ör. kasada kaset) bir yerde tutmaktır; bir kopya da başka bir binada olmalıdır. Kısaca üç kopya, iki farklı ortam, biri uzakta ve silinemez. Daha karmaşık parola, şifreleme veya daha sık yedek bu sorunu çözmez; saldırgan yine siler.",
+    "en": {
+      "subtopic": "The 3-2-1 rule and immutable backups against ransomware",
+      "question": "A bank's file servers and backup server are in the same Active Directory domain; backups are written only to a NAS attached to the backup server, and the domain administrator account can delete the backups. In a ransomware attack, the domain administrator account was compromised, production data was encrypted and all backups were deleted. Which is the most appropriate backup architecture to prevent a recurrence of this incident?",
+      "options": {
+        "A": "Writing a second copy to the same NAS; this doubles the number of backups.",
+        "B": "Making the backup server's password more complex and changing it every 60 days.",
+        "C": "Moving backup copies to a separate environment protected by authentication independent of the production domain, keeping at least one copy immutable (WORM) or offline (air-gapped, e.g. tape), and keeping at least one copy at a different physical location (offsite); in other words, applying the principle of 3 copies, 2 different media, 1 copy offsite and immutable.",
+        "D": "Increasing the backup frequency from daily to hourly; this reduces data loss.",
+        "E": "Encrypting the backups; encrypted backups cannot be re-encrypted by ransomware."
+      },
+      "explanation": "The root cause of the incident is that the identity that compromised the production environment could also reach the backups with full authority (a single trust domain). Modern ransomware attacks specifically target backups. The 3-2-1 rule requires at least three copies, two different media types and one copy kept offsite; in the ransomware era, immutability is added to this (sometimes referred to as 3-2-1-1-0: one copy offline/immutable, zero restore errors). Immutable storage or WORM prevents deletion/modification before the retention period expires, even for an administrator account; an offline tape cannot be reached over the network. Authentication for the backup infrastructure that is separate from the production domain (a separate directory, MFA) cuts off the attacker's lateral movement. The offsite copy protects against physical disasters.",
+      "optionExplanations": {
+        "A": "A second copy on the same NAS can be deleted with the same administrator account; the attacker deletes both copies. What matters is not the number of copies but independence and immutability.",
+        "B": "In the scenario, the compromised account is the domain administrator; however complex the backup server's password, the administrator can reach it as long as it is in the same domain.",
+        "C": "Correct. An independent identity domain + an immutable/offline copy + an offsite copy protect against both ransomware and physical disaster.",
+        "D": "Frequency improves the RPO but does not prevent the backups from being deleted; hourly backups would have been deleted with the same account too.",
+        "E": "Encrypting a backup protects its confidentiality; it does not prevent its deletion. The attacker does not need to re-encrypt the file, they simply delete it."
+      },
+      "keyConcept": "The 3-2-1 rule: 3 copies, 2 different media, 1 offsite. Additionally against ransomware: backup infrastructure with authentication independent of production, at least one copy immutable (WORM) or offline (air-gap).",
+      "examTip": "In the scenario \"the administrator account was compromised and the backups were deleted\", the password, encryption or frequency options are distractors; the answer is always an independent and immutable/offline copy.",
+      "simpleExplanation": "If you put your house key and the spare key on the same keyring, a thief who steals the keyring gets both. At this bank too, the production systems and the backups could be reached with the same administrator account; the attacker who took over the account both encrypted the data and deleted the backups. The solution is to keep one copy of the backups in a place protected by a different lock, even locked so that nobody can delete it (immutable) or completely cut off from the network (e.g. a tape in a safe); one copy should also be in another building. In short: three copies, two different media, one far away and undeletable. A more complex password, encryption or more frequent backups do not solve this problem; the attacker still deletes them."
+    },
     "references": [
       "CISA (US), #StopRansomware Guide",
       "NIST SP 800-209, Security Guidelines for Storage Infrastructure",
@@ -1493,6 +2131,28 @@
     "keyConcept": "Yedek işinin başarılı olması ≠ geri yüklenebilirlik. Periyodik geri yükleme tatbikatı: ayrı ortama tam geri yükleme, veri bütünlüğü doğrulama, sürenin RTO ile karşılaştırılması, belgelenmesi.",
     "examTip": "\"Yedekleme raporları başarılı ama hiç geri yükleme testi yok\" ifadesi her zaman bulgudur; test edilmemiş yedek güvence sağlamaz.",
     "simpleExplanation": "Yangın söndürücünüzün üzerinde \"dolu\" etiketi olması, yangında gerçekten çalışacağı anlamına gelmez; bunu anlamanın tek yolu düzenli olarak denemektir. Yedekleme aracının her gece \"başarılı\" demesi de yalnızca yazma işinin bittiğini söyler; kaset bozulmuş olabilir, dosyalar eksik olabilir veya geri yükleme 4 saatlik hedeften çok daha uzun sürebilir. Üç yıl boyunca hiç geri yükleme denemesi yapılmamışsa, bu yedeklerin işe yarayacağına dair hiçbir kanıt yoktur. Müfettiş için test edilmemiş yedek, yok sayılan yedektir. Öneri, ayrı bir ortama düzenli olarak tam geri yükleme yapıp verinin doğruluğunu ve süreyi ölçmektir.",
+    "en": {
+      "subtopic": "Backup testing and restore drills",
+      "question": "An IT auditor has reviewed the bank's backup process. The backup tool produces a \"successful\" report every night, the backup tapes are kept in an offsite vault, and no restore test has been performed in the last three years. The RTO for the core banking database is 4 hours. Which is the auditor's most accurate assessment?",
+      "options": {
+        "A": "The backup tool's \"successful\" report is sufficient evidence; a restore test is needed only when the backup tool changes.",
+        "B": "Offsite storage provides sufficient assurance; a restore test is not recommended because of its cost.",
+        "C": "The backup control is operationally effective because no backup has failed in three years.",
+        "D": "A successful backup job report shows only that the write operation completed; it does not show that the backup is readable, consistent and restorable within the RTO. Without periodic restore drills (e.g. a full restore to a separate environment with data verification), it cannot be proven that the RTO can be met; this is a significant finding, and it should be recommended that drills be planned, documented and measured against the RTO.",
+        "E": "The only problem is the ageing of the tape media; if the tapes are transferred to disk, testing is unnecessary."
+      },
+      "explanation": "The purpose of the backup control is not to take backups but to be able to bring the data back within the targeted time when needed. A \"successful\" job report only says that the backup software completed the job without error; it does not reveal problems such as media degradation, a missing file lock, loss of the encryption key, application inconsistency or a restore time exceeding the RTO. A restore drill means performing a full restore to a separate environment, verifying the integrity of the data and measuring the time taken; it is the only evidence that the 4-hour RTO can really be met. The auditor knows that an untested backup must be treated like a \"non-existent backup\". The BDDK regulation also expects the information systems continuity plan to be tested regularly; verifying the restorability of backups is an integral part of that expectation.",
+      "optionExplanations": {
+        "A": "A successful write report does not prove restorability; restore testing should be done regularly regardless of tool changes.",
+        "B": "Offsite storage protects against physical disaster but says nothing about the readability of the backup or RTO compliance. The cost of testing is negligible next to the cost of unrecoverable data.",
+        "C": "The backup job not failing does not mean the restore will succeed. Operating effectiveness is measured by whether the control achieves its purpose (recoverability).",
+        "D": "Correct. The value of a backup is its restorability; the only way to prove that is a periodic, documented drill measured against the RTO.",
+        "E": "Whatever the media type (tape, disk, cloud), a restore test is required; disks can fail too, and configuration errors can occur."
+      },
+      "keyConcept": "A successful backup job ≠ restorability. Periodic restore drill: full restore to a separate environment, data integrity verification, comparison of the time taken with the RTO, documentation.",
+      "examTip": "The statement \"the backup reports are successful but there has never been a restore test\" is always a finding; an untested backup provides no assurance.",
+      "simpleExplanation": "A \"full\" label on your fire extinguisher does not mean it will actually work in a fire; the only way to know is to test it regularly. The backup tool saying \"successful\" every night likewise only says that the write job finished; the tape may be corrupted, files may be missing, or the restore may take far longer than the 4-hour target. If no restore attempt has been made in three years, there is no evidence at all that these backups will work. For the auditor, an untested backup is a backup that counts as non-existent. The recommendation is to perform a full restore to a separate environment regularly and measure the correctness of the data and the time taken."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 4: Backup and Recovery Testing",
       "ISO/IEC 27001:2022, Annex A 8.13 Information backup",
@@ -1544,6 +2204,28 @@
     "keyConcept": "MTD (MTPD) ≥ RTO + WRT. RTO: sistemin teknik kurtarılması; WRT: veri doğrulama, yeniden işleme ve iş birimince hizmetin açılması. İş için kesinti, kullanıcı hizmeti kullanabildiğinde biter.",
     "examTip": "MTD sorusunda RTO'yu tek başına MTD ile karşılaştırmayın; WRT verilmişse toplayın. \"Sistem açıldı\" ile \"hizmet verildi\" farklı anlardır.",
     "simpleExplanation": "Bir restoranın elektriği kesildiğinde jeneratörün 5 dakikada devreye girmesi yetmez; aşçıların ocakları yeniden yakması, soğuyan yemekleri kontrol etmesi ve sipariş almaya başlaması da zaman alır. Müşteri için kesinti, ışık yandığında değil yemek geldiğinde biter. İşte MTD, işin katlanabileceği toplam kesinti süresidir ve iki parçadan oluşur: sistemin teknik olarak açılması (RTO) ve açılan sistemin iş birimi tarafından kullanıma hazır edilmesi (WRT). Burada 5 saat artı 2 saat 7 saat eder, oysa iş en fazla 6 saat bekleyebilir. Plan kâğıt üzerinde tutarlı görünse de gerçekte hedefi kaçırır; ya sistem daha hızlı açılmalı ya da doğrulama kısalmalıdır.",
+    "en": {
+      "subtopic": "The relationship between MTD/MTPD, RTO and WRT",
+      "question": "In a bank's BIA, the Maximum Tolerable Downtime (MTD; MTPD in ISO 22301) for the EFT/transfer service has been set at 6 hours. In the DR plan, the RTO for bringing the system up at the DR centre is 5 hours; after the system is up, the Work Recovery Time (WRT) needed to verify the data coming from backup, reprocess the queued transactions and for the business unit to open the service for use has been measured at 2 hours. Which is the most accurate assessment of this situation?",
+      "options": {
+        "A": "Because the RTO (5 hours) is less than the MTD (6 hours), the plan is consistent; the WRT is a separate target and is not compared with the MTD.",
+        "B": "The MTD must be greater than or equal to the sum of the RTO and the WRT; here 5 + 2 = 7 hours > 6 hours, so the plan does not meet the target. The RTO should be reduced (e.g. a hotter DR setup) or the WRT shortened (e.g. automated data verification, faster processing of the transaction queue), or the MTD in the BIA should be reassessed with the business unit.",
+        "C": "The WRT is part of the RTO; the total time is therefore 5 hours and stays within the MTD.",
+        "D": "The MTD is IT's target only; the business unit's verification time does not enter the MTD calculation.",
+        "E": "The plan is consistent because no RPO is specified; without an RPO, an MTD overrun cannot be calculated."
+      },
+      "explanation": "The MTD/MTPD is the total time a business process can remain interrupted without suffering unacceptable damage, and it is set by the business unit. This time consists of two components: the RTO (the technical recovery of the IT system) and the WRT (after the system is up, verifying the data, re-entering lost transactions and the business unit opening the service for use). From the business perspective, the interruption ends when users can use the service again, not when the server comes up. Therefore RTO + WRT ≤ MTD must hold. In the scenario, 5 + 2 = 7 hours exceeds the 6-hour MTD; the EFT service stays interrupted for an unacceptable length of time. Remedy options: reduce the RTO with a hotter DR setup, shorten the WRT through automation, or realistically reassess the MTD with the business unit (but the MTD is not arbitrarily extended for technical convenience).",
+      "optionExplanations": {
+        "A": "Looking only at the RTO is a fallacy; for the business unit, the interruption ends when the WRT is over. The WRT is an integral part of the MTD calculation.",
+        "B": "Correct. The condition MTD ≥ RTO + WRT is not satisfied (7 > 6); the remedy options are listed correctly.",
+        "C": "The WRT is a separate phase that starts after the RTO (system ready → business ready). If it were included in the RTO, the RTO would already be 7 hours and the MTD would still be exceeded.",
+        "D": "The MTD is the business process's target, not IT's; on the contrary, the business unit becoming able to use the service is the end point of the MTD.",
+        "E": "The RPO measures data loss and has nothing to do with the time calculation. The MTD-RTO-WRT relationship is assessed without an RPO as well."
+      },
+      "keyConcept": "MTD (MTPD) ≥ RTO + WRT. RTO: technical recovery of the system; WRT: data verification, reprocessing and opening of the service by the business unit. For the business, the interruption ends when the user can use the service.",
+      "examTip": "In an MTD question, do not compare the RTO alone with the MTD; if a WRT is given, add them. \"The system is up\" and \"the service is delivered\" are different moments.",
+      "simpleExplanation": "When a restaurant's power goes out, the generator kicking in within 5 minutes is not enough; the cooks relighting the stoves, checking the food that has cooled and starting to take orders also takes time. For the customer, the interruption ends not when the lights come on but when the food arrives. So the MTD is the total interruption the business can bear, and it has two parts: the system coming up technically (RTO) and the business unit getting the system ready for use (WRT). Here 5 hours plus 2 hours makes 7 hours, yet the business can wait at most 6 hours. The plan may look consistent on paper, but in reality it misses the target; either the system must come up faster or the verification must be shortened."
+    },
     "references": [
       "ISO 22301:2019 (MTPD tanımı)",
       "ISACA CISA Review Manual, Domain 4: Recovery Time Objectives, MTD and WRT",
@@ -1594,6 +2276,28 @@
     "keyConcept": "DR tatbikatı gerçek felaket koşullarını taklit etmeli: birincil merkez erişilemez varsayılmalı, gizli bağımlılıklar (DR'dan birincile giden bağlantılar) tespit edilmeli. Asenkron çoğaltmada RPO = izlenen çoğaltma gecikmesi.",
     "examTip": "DR tatbikatı sorularında \"birincil merkez açıkken yapıldı\" ve \"DR'dan birincildeki bir servise bağlandı\" ifadelerini arayın; bunlar tatbikat sonucunu geçersiz kılan en güçlü bulgulardır.",
     "simpleExplanation": "Yangın tatbikatını binanın asıl çıkış kapısı açıkken yapıp \"herkes çıktı\" demek gibi düşünün. Gerçek yangında o kapı kapalı olacaktır. Bu tatbikatta ana merkez çalışır durumdaydı ve yedek merkezdeki uygulama, kart onaylama servisine hâlâ ana merkez üzerinden bağlanıyordu; gerçek felakette ana merkez olmayacağı için kart işlemleri duracaktır. Ayrıca kopyalama kuyruğu elle boşaltılarak sıfır veri kaybı sağlanmış; gerçek felakette böyle bir fırsat olmaz, o anki gecikme kadar veri kaybedilir. Yani tatbikat, gerçek koşullarda var olmayacak iki avantajla yapılmış ve bu yüzden \"başarılı\" sonucu gerçek bir felaket için hiçbir şey kanıtlamaz.",
+    "en": {
+      "subtopic": "Failover design and DR drill findings",
+      "question": "A bank transfers its core banking database from the primary data centre to a DR centre 300 km away using asynchronous replication, and targets an RPO of 5 minutes and an RTO of 1 hour. The following observations were made in the annual DR drill. Which observation is the strongest evidence that, although the drill was declared \"successful\", the targets would not be met in a real disaster?",
+      "options": {
+        "A": "T2, because 48 minutes is very close to the 1-hour RTO and leaves no safety margin.",
+        "B": "T4, because performing the DNS redirection manually is open to human error.",
+        "C": "T5, because only branch users were tested; mobile banking customers were not tested.",
+        "D": "T1 on its own is sufficient evidence; asynchronous replication can never meet a 5-minute RPO under any conditions.",
+        "E": "T3 together with T1: the application at DR still depends on a dependency in the primary centre (the card authorization service); in a real disaster the primary centre will be unreachable, so the application at DR will not work and the RTO cannot be met. T1, meanwhile, shows that the drill was conducted under conditions that will not exist in a real disaster (a running primary centre, manual queue draining); so it has not been proven either that the RPO would stay within 5 minutes."
+      },
+      "explanation": "The purpose of a DR drill is to prove that the plan works by imitating real disaster conditions as closely as possible. T3 is a critical hidden dependency: the application at DR depends on the card authorization service in the primary centre; it went unnoticed in the drill because the primary centre was up, but in a real disaster, when the primary centre is unreachable, card transactions will stop and the state \"the application is up\" will not mean that service is being delivered. T1, in turn, makes the drill conditions unrealistic: in asynchronous replication there is always a lag; in a real disaster there is no opportunity to drain the queue, and the loss equals the replication lag at that moment. A 5-minute RPO is met only if it is proven that the lag is continuously monitored and kept under 5 minutes; the manual draining concealed this. Together, these two observations show that the drill's \"successful\" result is not valid for the real scenario.",
+      "optionExplanations": {
+        "A": "48 minutes is within the RTO; the narrowness of the safety margin may be an improvement note but is not evidence that the target cannot be met.",
+        "B": "Manual DNS redirection is risky and should be automated; however, it was measured at 12 minutes, documented and stayed within the RTO. It does not show that the target cannot be met.",
+        "C": "The test scope needs to be widened, but this is not evidence that the DR environment will not work; it is merely a lack of evidence.",
+        "D": "Asynchronous replication can meet a 5-minute RPO if the lag is monitored and kept under 5 minutes; the phrase \"under any conditions\" is wrong. At 300 km, synchronous replication is generally not preferred because of latency; the asynchronous setup itself is not the problem, the lack of monitoring is.",
+        "E": "Correct. The hidden dependency (T3) renders DR non-functional in a real disaster; the unrealistic drill conditions (T1) invalidate the RPO evidence."
+      },
+      "keyConcept": "A DR drill must imitate real disaster conditions: the primary centre must be assumed unreachable, hidden dependencies (connections from DR to the primary) must be identified. In asynchronous replication, RPO = the monitored replication lag.",
+      "examTip": "In DR drill questions, look for the phrases \"conducted while the primary centre was up\" and \"connected from DR to a service in the primary\"; these are the strongest findings that invalidate the drill result.",
+      "simpleExplanation": "Think of running a fire drill with the building's main exit door open and declaring \"everyone got out\". In a real fire, that door will be shut. In this drill the main centre was running, and the application at the backup centre was still connecting to the card approval service via the main centre; in a real disaster there will be no main centre, so card transactions will stop. In addition, the replication queue was drained by hand to achieve zero data loss; in a real disaster there is no such opportunity, and as much data as the lag at that moment is lost. So the drill was conducted with two advantages that will not exist in real conditions, and that is why its \"successful\" result proves nothing for a real disaster."
+    },
     "references": [
       "ISACA CISA Review Manual, Domain 4: Disaster Recovery Testing and Dependencies",
       "NIST SP 800-34 Rev. 1, Contingency Planning Guide (Testing and Exercises)",

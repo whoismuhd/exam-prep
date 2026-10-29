@@ -32,6 +32,28 @@
     "correctAnswer": "C",
     "explanation": "OSI modelinde her katmanın ayırt edici işlevi ve adresleme birimi vardır: 2. katman (veri bağı) MAC adresleriyle çerçeve iletir ve anahtarların (switch) çalıştığı katmandır; 3. katman (ağ) IP adresleriyle yönlendirme (routing) yapar ve yönlendiricilerin (router) katmanıdır; 4. katman (taşıma) port numaralarıyla süreçleri ayırır ve TCP ile güvenilir teslim sağlar. Hedef IP adresine bakarak bir sonraki atlamayı seçmek tam olarak ağ katmanının görevidir; bu nedenle C doğrudur.",
     "simpleExplanation": "OSI modeli, ağ iletişimini bir mektubun yolculuğu gibi katmanlara ayıran bir şemadır. Her katmanın kendi 'adresi' vardır: 2. katman cihazın fabrika numarası gibi olan MAC adresine, 3. katman IP adresine, 4. katman ise port numarasına bakar. Bir paketi hedef IP adresine bakıp 'bir sonraki durağa' yönlendirmek, postacının zarfın üzerindeki şehir adresine bakıp doğru kamyona koymasına benzer; bu iş 3. katmanın, yani ağ katmanının işidir ve yönlendiriciler (router) burada çalışır. Bu yüzden C doğrudur. Diğer seçenekler adresi yanlış katmana eşlemiştir: port numarası 4. katmana, MAC adresi 2. katmana aittir; şifreleme ise kabloların bulunduğu 1. katmanda yapılmaz.",
+    "en": {
+      "subtopic": "OSI and TCP/IP layers",
+      "question": "The functions performed by the devices and protocols on a bank's branch network are to be classified according to the OSI reference model. Which of the following function–layer pairings is correct?",
+      "options": {
+        "A": "Separating application processes by port number – Network layer (layer 3)",
+        "B": "Forwarding frames to switch ports based on MAC address – Network layer (layer 3)",
+        "C": "Forwarding a packet to the next hop based on its destination IP address – Network layer (layer 3)",
+        "D": "End-to-end reliable delivery by retransmitting lost segments – Data link layer (layer 2)",
+        "E": "Encrypting session data with TLS – Physical layer (layer 1)"
+      },
+      "explanation": "In the OSI model each layer has a distinguishing function and its own addressing unit: layer 2 (data link) forwards frames using MAC addresses and is the layer where switches operate; layer 3 (network) performs routing using IP addresses and is the layer of routers; layer 4 (transport) separates processes by port number and provides reliable delivery with TCP. Choosing the next hop by looking at the destination IP address is precisely the job of the network layer; therefore C is correct.",
+      "optionExplanations": {
+        "A": "The port number is the addressing unit of the transport layer (layer 4, TCP/UDP); the network layer works with IP addresses. The addressing units of layers 3 and 4 have been mixed up.",
+        "B": "Forwarding frames based on MAC address is the job of switches and happens at the data link layer (layer 2), not the network layer.",
+        "C": "Correct. Path selection (routing) based on IP address is the core function of the network layer; routers operate at this layer.",
+        "D": "End-to-end reliability through retransmission and sequence numbers is the function of TCP, i.e. the transport layer (layer 4). The data link layer only checks frame integrity (CRC) over a single hop between neighbouring nodes.",
+        "E": "TLS is placed at the session/presentation layers in OSI (just below the application layer in the TCP/IP model); the physical layer deals with transmitting bits over cable or air and does not encrypt."
+      },
+      "keyConcept": "Layer 2 = MAC/frame/switch; layer 3 = IP/packet/router; layer 4 = port/segment/TCP-UDP.",
+      "examTip": "In layer questions, first ask \"which address is being used?\": MAC → 2, IP → 3, port → 4. If a device is named: switch → 2, router → 3, firewall (stateful) → 3-4.",
+      "simpleExplanation": "The OSI model is a diagram that splits network communication into layers, like the journey of a letter. Each layer has its own \"address\": layer 2 looks at the MAC address, which is like the device's factory serial number, layer 3 at the IP address, and layer 4 at the port number. Forwarding a packet to the \"next stop\" by looking at its destination IP address is like a postal worker looking at the city on the envelope and putting it on the right truck; this is the job of layer 3, the network layer, and routers work here. That is why C is correct. The other options map the address to the wrong layer: the port number belongs to layer 4, the MAC address to layer 2; and encryption is not done at layer 1, where the cables are."
+    },
     "optionExplanations": {
       "A": "Port numarası, taşıma katmanının (4. katman, TCP/UDP) adresleme birimidir; ağ katmanı IP adresiyle çalışır. Katman 3 ile 4'ün adresleme birimleri karıştırılmıştır.",
       "B": "MAC adresine göre çerçeve iletimi anahtarların işidir ve veri bağı katmanında (2. katman) gerçekleşir; ağ katmanı değil.",
@@ -82,6 +104,28 @@
     "correctAnswer": "E",
     "explanation": "IANA tarafından atanmış iyi bilinen (well-known) portlar: SSH 22, HTTPS 443, DNS 53 (sorgular genellikle UDP; bölge aktarımı ve UDP'ye sığmayan büyük yanıtlar TCP), RDP 3389. SMTP'nin varsayılan portu TCP 25'tir (istemci gönderimi için 587, SMTPS için 465). TCP 110 ise POP3 protokolüne aittir; dolayısıyla E seçeneğindeki eşleştirme hatalıdır. Denetimde yanlış port açıklaması, gereksiz açık portların gözden kaçmasına yol açabilir.",
     "simpleExplanation": "Bilgisayarlar birbirine bağlanırken 'port' denen numaralı kapılar kullanır ve her hizmetin alışılmış bir kapı numarası vardır, tıpkı bir apartmanda her dairenin kendi kapı numarası olması gibi. SSH 22, HTTPS 443, DNS 53 ve uzak masaüstü (RDP) 3389 numaralı kapıları kullanır; bu dört eşleştirme doğrudur. SMTP ise e-posta GÖNDERME protokolüdür ve kapısı 25'tir. 110 numaralı kapı, e-posta ALMA protokolü olan POP3'e aittir. Yani E seçeneği iki e-posta protokolünün numaralarını birbirine karıştırmıştır; soru 'hatalı olanı' sorduğu için doğru cevap E'dir.",
+    "en": {
+      "subtopic": "Common port numbers",
+      "question": "While reviewing the rule set of the bank's DMZ firewall, an IT auditor is verifying the \"service – port\" comments written next to each rule. Which of the following service–default port pairings is incorrect?",
+      "options": {
+        "A": "SSH – TCP 22",
+        "B": "HTTPS – TCP 443",
+        "C": "DNS – UDP/TCP 53",
+        "D": "RDP (Remote Desktop) – TCP 3389",
+        "E": "SMTP – TCP 110"
+      },
+      "explanation": "The well-known ports assigned by IANA: SSH 22, HTTPS 443, DNS 53 (queries usually over UDP; zone transfers and large responses that do not fit in UDP over TCP), RDP 3389. SMTP's default port is TCP 25 (587 for client submission, 465 for SMTPS). TCP 110 belongs to the POP3 protocol; so the pairing in option E is incorrect. In an audit, a wrong port comment can cause unnecessarily open ports to be overlooked.",
+      "optionExplanations": {
+        "A": "Correct pairing: SSH provides encrypted remote shell access over TCP 22.",
+        "B": "Correct pairing: HTTPS (HTTP over TLS) uses TCP 443; HTTP uses TCP 80.",
+        "C": "Correct pairing: DNS uses port 53; small queries travel over UDP, while zone transfers and responses that do not fit in UDP (over 512 bytes without EDNS) are carried over TCP.",
+        "D": "Correct pairing: Microsoft Remote Desktop Protocol uses TCP 3389; in audits, 3389 exposed to the internet is treated as a critical finding.",
+        "E": "Incorrect pairing. SMTP's port is TCP 25; TCP 110 belongs to POP3, the mail retrieval protocol. This is a typical confusion arising from the \"both are e-mail\" similarity."
+      },
+      "keyConcept": "E-mail ports: SMTP 25/587/465 (sending), POP3 110/995 (retrieval), IMAP 143/993 (retrieval).",
+      "examTip": "For port questions, memorise the e-mail trio (25, 110, 143) together with their secure counterparts (465/587, 995, 993); distractors mostly mix up this group.",
+      "simpleExplanation": "When computers connect to each other they use numbered doors called \"ports\", and every service has a customary door number, just as every flat in an apartment building has its own door number. SSH uses door 22, HTTPS 443, DNS 53 and Remote Desktop (RDP) 3389; these four pairings are correct. SMTP, however, is the protocol for SENDING e-mail and its door is 25. Door number 110 belongs to POP3, the protocol for RECEIVING e-mail. So option E has mixed up the numbers of the two e-mail protocols; since the question asks for the incorrect one, the correct answer is E."
+    },
     "optionExplanations": {
       "A": "Doğru eşleştirme: SSH, TCP 22 üzerinden şifreli uzak kabuk erişimi sağlar.",
       "B": "Doğru eşleştirme: HTTPS (HTTP over TLS) TCP 443 kullanır; HTTP ise TCP 80.",
@@ -133,6 +177,28 @@
     "correctAnswer": "B",
     "explanation": "TCP'de SYN bayrağı, veri taşımasa da bir sıra numarası tüketir. İstemci seq=1000 ile SYN gönderdiğinde sunucu 'bir sonraki beklediğim bayt' olan ack=1001'i döner ve kendi ISN'si ile seq=5000 gönderir (SYN-ACK). İstemci ise sunucunun SYN'ini onaylamak için ack=5001 yazar; kendi sıra numarası SYN'den sonra 1001 olmuştur. Böylece üçüncü segment seq=1001, ack=5001 olur. Bu segment veri taşımadığı için sonraki ilk veri baytı da 1001 numarasını alır.",
     "simpleExplanation": "İki bilgisayar TCP ile konuşmaya başlarken üç adımlı bir selamlaşma yapar: 'Merhaba' (SYN), 'Merhaba, seni duydum' (SYN-ACK) ve 'Ben de seni duydum' (ACK). Her taraf gönderdiği baytları numaralandırır; 'ack' alanı ise 'senden bir sonraki beklediğim numara bu' demektir. İstemci 1000 numarasıyla başladığında, SYN mesajı veri taşımasa da bir numara 'yer'; bu yüzden sunucu 'sıradaki beklediğim 1001' der. Sunucu da kendi 5000 numarasıyla başlar, istemci ona 'sıradaki beklediğim 5001' diye cevap verir ve kendi numarası artık 1001 olmuştur. Böylece SYN-ACK: seq=5000, ack=1001 ve ACK: seq=1001, ack=5001 olur; cevap B'dir.",
+    "en": {
+      "subtopic": "TCP three-way handshake and sequence numbers",
+      "question": "A mobile banking client is opening a TCP connection to a server. The client sends a SYN segment with initial sequence number (ISN) 1000; the server's initial sequence number is 5000. Which of the following gives the correct sequence (seq) and acknowledgement (ack) numbers in the remaining two segments of the three-way handshake?",
+      "options": {
+        "A": "SYN-ACK: seq=5000, ack=1000; ACK: seq=1000, ack=5000",
+        "B": "SYN-ACK: seq=5000, ack=1001; ACK: seq=1001, ack=5001",
+        "C": "SYN-ACK: seq=5000, ack=1001; ACK: seq=1002, ack=5001",
+        "D": "SYN-ACK: seq=5000, ack=5001; ACK: seq=1001, ack=1001",
+        "E": "SYN-ACK: seq=5000, ack=1000; ACK: seq=1001, ack=5001"
+      },
+      "explanation": "In TCP the SYN flag consumes one sequence number even though it carries no data. When the client sends a SYN with seq=1000, the server returns ack=1001, the \"next byte I expect\", and sends seq=5000 with its own ISN (SYN-ACK). The client, to acknowledge the server's SYN, writes ack=5001; its own sequence number has become 1001 after the SYN. Thus the third segment is seq=1001, ack=5001. Since this segment carries no data, the first data byte that follows is also numbered 1001.",
+      "optionExplanations": {
+        "A": "The fact that the SYN consumes a sequence number has been ignored; because the ack field is the \"next expected byte\" rather than the \"last byte received\", the values 1000 and 5000 are one too low.",
+        "B": "Correct. The SYN consumes one sequence number: the server sends ack=1001, the client sends ack=5001; the client's seq has advanced to 1001.",
+        "C": "The client's seq does not become 1002; a SYN consumes a single number, and receiving the SYN-ACK does not advance the client's own sequence number.",
+        "D": "The sequence and acknowledgement fields have been mixed up: the server does not acknowledge its own ISN, it acknowledges the client's SYN (ack=1001).",
+        "E": "The ack value in the SYN-ACK is wrong; to show it has received the client's SYN, the server expects 1001, not 1000."
+      },
+      "keyConcept": "The SYN and FIN flags each consume one sequence number; the ack field is always the number of the \"next expected byte\".",
+      "examTip": "In handshake questions apply the rule: add +1 to the other side's seq and write it as the ack; a pure ACK segment does not advance the seq.",
+      "simpleExplanation": "When two computers start talking over TCP they perform a three-step greeting: \"Hello\" (SYN), \"Hello, I heard you\" (SYN-ACK) and \"I heard you too\" (ACK). Each side numbers the bytes it sends; the \"ack\" field means \"this is the next number I expect from you\". When the client starts with number 1000, the SYN message \"uses up\" one number even though it carries no data; so the server says \"the next one I expect is 1001\". The server likewise starts with its own number 5000, the client replies \"the next one I expect is 5001\", and its own number is now 1001. So SYN-ACK: seq=5000, ack=1001 and ACK: seq=1001, ack=5001; the answer is B."
+    },
     "optionExplanations": {
       "A": "SYN'in sıra numarası tükettiği göz ardı edilmiştir; ack alanı 'alınan son bayt' değil 'beklenen sonraki bayt' olduğundan 1000 ve 5000 değerleri bir eksiktir.",
       "B": "Doğru. SYN bir sıra numarası tüketir: sunucu ack=1001, istemci ack=5001 gönderir; istemcinin seq'i 1001'e ilerlemiştir.",
@@ -183,6 +249,28 @@
     "correctAnswer": "A",
     "explanation": "/27 önekinde host biti sayısı 32 - 27 = 5'tir; blok büyüklüğü 2^5 = 32 adrestir. Son oktetteki alt ağ sınırları 0, 32, 64, 96, 128, ... şeklinde 32'nin katlarıdır. 77 sayısı 64 ile 95 arasında kaldığından ağ adresi 172.16.5.64, yayın adresi 172.16.5.64 + 31 = 172.16.5.95 olur. Kullanılabilir host aralığı 172.16.5.65 – 172.16.5.94'tür (30 host). Alt ağ maskesi 255.255.255.224'tür.",
     "simpleExplanation": "IP adresinin yanındaki /27, adresin ilk 27 bitinin 'mahalle' (ağ), kalan 5 bitinin ise 'kapı numarası' (cihaz) olduğunu söyler. 5 bit ile 2×2×2×2×2 = 32 farklı numara yazılabilir; yani her alt ağ 32 adreslik bir apartman bloğu gibidir. Bloklar son sayıda 0, 32, 64, 96, 128 diye 32'nin katlarından başlar. Adresimizin son sayısı 77; bu sayı 64 ile 95 arasına düşer. Dolayısıyla bloğun ilk adresi (ağ adresi) 172.16.5.64, son adresi (yayın adresi) 172.16.5.95 olur. Cevap A'dır.",
+    "en": {
+      "subtopic": "IP addressing and subnetting",
+      "question": "The IP configuration of an ATM in a branch is given as 172.16.5.77/27. What are the network address and the broadcast address of the subnet this ATM is on?",
+      "options": {
+        "A": "Network: 172.16.5.64 – Broadcast: 172.16.5.95",
+        "B": "Network: 172.16.5.0 – Broadcast: 172.16.5.255",
+        "C": "Network: 172.16.5.64 – Broadcast: 172.16.5.127",
+        "D": "Network: 172.16.5.72 – Broadcast: 172.16.5.95",
+        "E": "Network: 172.16.5.32 – Broadcast: 172.16.5.63"
+      },
+      "explanation": "With a /27 prefix the number of host bits is 32 - 27 = 5; the block size is 2^5 = 32 addresses. The subnet boundaries in the last octet are multiples of 32: 0, 32, 64, 96, 128, ... Since 77 falls between 64 and 95, the network address is 172.16.5.64 and the broadcast address is 172.16.5.64 + 31 = 172.16.5.95. The usable host range is 172.16.5.65 – 172.16.5.94 (30 hosts). The subnet mask is 255.255.255.224.",
+      "optionExplanations": {
+        "A": "Correct. Block 32; 77 ∈ [64, 95] → network .64, broadcast .95.",
+        "B": "These values apply to /24 (mask 255.255.255.0); it has not been taken into account that a /27 prefix also divides the last octet.",
+        "C": "The network address is right but the broadcast address has been computed for a /26 block (64 addresses: 64–127); a /27 block is 32 addresses.",
+        "D": "72 is not a /27 boundary (not a multiple of 32). The network address is the start of the block, not the host address rounded down arbitrarily.",
+        "E": "The 32–63 block is the previous /27 subnet; 77 is outside this range."
+      },
+      "keyConcept": "Block size = 2^(32 - prefix); network address = start of the block (round the host address down to a multiple of the block size); broadcast = network + block - 1.",
+      "examTip": "Use the \"value of the relevant bit\" table for the last octet: /25→128, /26→64, /27→32, /28→16, /29→8, /30→4. Round the host address down to a multiple of that number.",
+      "simpleExplanation": "The /27 next to the IP address says that the first 27 bits of the address are the \"neighbourhood\" (network) and the remaining 5 bits are the \"door number\" (device). With 5 bits you can write 2×2×2×2×2 = 32 different numbers; so each subnet is like an apartment block of 32 addresses. The blocks start at multiples of 32 in the last number: 0, 32, 64, 96, 128. The last number of our address is 77; it falls between 64 and 95. Therefore the first address of the block (network address) is 172.16.5.64 and the last address (broadcast address) is 172.16.5.95. The answer is A."
+    },
     "optionExplanations": {
       "A": "Doğru. Blok 32; 77 ∈ [64, 95] → ağ .64, yayın .95.",
       "B": "Bu değerler /24 (maske 255.255.255.0) için geçerlidir; /27 önekinin son okteti de böldüğü dikkate alınmamıştır.",
@@ -233,6 +321,28 @@
     "correctAnswer": "D",
     "explanation": "En az 100 host için 2^h - 2 ≥ 100 koşulunu sağlayan en küçük h = 7'dir (2^7 - 2 = 126); bu da 32 - 7 = /25 önekine karşılık gelir. /22 bloğunu /25'e bölmek 25 - 22 = 3 ek bit kullanır, yani 2^3 = 8 alt ağ elde edilir. 8 ≥ 6 olduğundan gereksinim karşılanır ve 2 alt ağ gelecekteki büyüme için yedek kalır. Alt ağlar: 10.20.0.0/25, 10.20.0.128/25, 10.20.1.0/25, ..., 10.20.3.128/25.",
     "simpleExplanation": "Elimizde /22'lik büyük bir adres bloğu var ve bunu, her birinde en az 100 cihaz olabilecek 6 eşit parçaya bölmek istiyoruz. Önce 'cihaz numarası için kaç bit gerekir?' diye soruyoruz: 7 bit ile 128 adres olur, bunun 2'si (ağ ve yayın adresi) kullanılamaz, 126 kalır; bu 100'den fazla, yeterli. 6 bit ise yalnızca 62 cihaz verirdi, az kalırdı. 32 - 7 = 25, yani her parça /25 olacak. /22'den /25'e geçerken aradaki 3 bit 'parça numarası' için kullanılır; 3 bitle 2×2×2 = 8 parça çıkar, istediğimiz 6'dan fazla, iki tanesi yedek kalır. Cevap D: /25, 8 alt ağ, 126 host.",
+    "en": {
+      "subtopic": "IP addressing and subnetting (subnet design)",
+      "question": "A regional office has been allocated the address block 10.20.0.0/22. The network team wants to divide this block into 6 separate VLANs of equal size, each able to hold at least 100 hosts. Which of the following gives the prefix length that minimises address waste, the number of subnets obtained with that prefix, and the number of usable hosts per subnet?",
+      "options": {
+        "A": "/24 – 4 subnets – 254 hosts",
+        "B": "/26 – 16 subnets – 62 hosts",
+        "C": "/25 – 4 subnets – 128 hosts",
+        "D": "/25 – 8 subnets – 126 hosts",
+        "E": "/23 – 2 subnets – 510 hosts"
+      },
+      "explanation": "For at least 100 hosts, the smallest h satisfying 2^h - 2 ≥ 100 is h = 7 (2^7 - 2 = 126); this corresponds to a 32 - 7 = /25 prefix. Dividing the /22 block into /25s uses 25 - 22 = 3 extra bits, i.e. 2^3 = 8 subnets are obtained. Since 8 ≥ 6 the requirement is met and 2 subnets remain spare for future growth. The subnets: 10.20.0.0/25, 10.20.0.128/25, 10.20.1.0/25, ..., 10.20.3.128/25.",
+      "optionExplanations": {
+        "A": "/24 meets the host requirement but only 4 subnets come out of a /22; that is insufficient for 6 VLANs, and 254 host addresses is also unnecessary waste.",
+        "B": "/26 yields 16 subnets, but 62 hosts per subnet does not meet the 100-host requirement.",
+        "C": "The prefix is chosen correctly but the arithmetic is wrong: since there are 3 bits between /22 and /25, the number of subnets is 8, not 4; and the host count is 126, not 128, once the network and broadcast addresses are subtracted.",
+        "D": "Correct. 2^7 - 2 = 126 ≥ 100; 2^(25-22) = 8 subnets ≥ 6 VLANs.",
+        "E": "/23 gives only 2 subnets; it is insufficient for 6 VLANs and 510 host addresses is a large waste."
+      },
+      "keyConcept": "Number of subnets = 2^(new prefix - old prefix); number of hosts = 2^(32 - new prefix) - 2. Choose the prefix that satisfies both requirements at once.",
+      "examTip": "First find the number of host bits from the host requirement (2^h - 2 ≥ required hosts), then check the number of subnets with the remaining bits; both conditions must hold.",
+      "simpleExplanation": "We have a large /22 address block and want to split it into 6 equal pieces, each able to hold at least 100 devices. First we ask \"how many bits are needed for the device number?\": 7 bits gives 128 addresses, 2 of which (network and broadcast address) cannot be used, leaving 126; that is more than 100, so it is enough. 6 bits would give only 62 devices, too few. 32 - 7 = 25, so each piece will be a /25. Going from /22 to /25, the 3 bits in between are used for the \"piece number\"; with 3 bits you get 2×2×2 = 8 pieces, more than the 6 we wanted, so two are left spare. Answer D: /25, 8 subnets, 126 hosts."
+    },
     "optionExplanations": {
       "A": "/24 host gereksinimini karşılar ancak /22'den yalnızca 4 alt ağ çıkar; 6 VLAN için yetersizdir ve ayrıca 254 host adresi gereksiz israftır.",
       "B": "/26 ile 16 alt ağ elde edilir ancak alt ağ başına 62 host, 100 host gereksinimini karşılamaz.",
@@ -283,6 +393,28 @@
     "correctAnswer": "C",
     "explanation": "Bilgisayarın önce bir IP adresine, alt ağ maskesine, varsayılan ağ geçidine ve DNS sunucu adresine ihtiyacı vardır; bunları DHCP (Discover-Offer-Request-Ack, UDP 67/68, yayın ile) sağlar. DNS sunucusu başka bir ağda olduğundan DNS sorgusunu taşıyan çerçevenin hedef MAC'i ağ geçidinin MAC'i olmalıdır; bu MAC, ARP ile öğrenilir. Ardından DNS sorgusu (UDP 53) ile sunucunun IP'si çözülür. Sonra TCP üçlü el sıkışması (443 portuna) kurulur; TLS el sıkışması TCP'nin üzerinde çalıştığı için TCP'den sonra gelir; en son şifreli HTTP GET gönderilir.",
     "simpleExplanation": "Yeni bir bilgisayarın bir web sayfasını açabilmesi için adımların belli bir sırası vardır; her adım bir sonrakinin ön koşuludur. Önce bilgisayarın bir adresi olmalı; bunu DHCP verir (yeni taşındığınız evin adresini öğrenmek gibi). Sonra dış dünyaya açılan kapı olan ağ geçidinin fiziksel adresini (MAC) ARP ile öğrenir; çünkü DNS sunucusu başka ağdadır ve mesaj önce bu kapıdan geçmelidir. Ardından DNS ile 'ebanka.ornek.com.tr' adının hangi IP'ye karşılık geldiğini sorar (telefon rehberinde isimden numara bulmak gibi). Sunucunun IP'si öğrenildikten sonra TCP ile bağlantı kurulur, bu bağlantının üzerinde TLS ile şifreli kanal açılır ve en son sayfa istenir (HTTP GET). Bu sıra C seçeneğindedir.",
+    "en": {
+      "subtopic": "DHCP, ARP, DNS and packet flow scenario",
+      "question": "A newly installed computer in a branch connects to the network; it does not yet have an IP address. The user types https://ebanka.ornek.com.tr into the browser. The DNS server and the web server are outside the branch network, in the data centre. Which of the following gives the correct chronological order of the protocol events that take place until the page loads?",
+      "options": {
+        "A": "DNS query → Obtain IP via DHCP → ARP for the default gateway → TCP handshake → TLS handshake → HTTP GET",
+        "B": "Obtain IP via DHCP → DNS query → ARP for the default gateway → TCP handshake → TLS handshake → HTTP GET",
+        "C": "Obtain IP via DHCP → ARP for the default gateway → DNS query → TCP handshake → TLS handshake → HTTP GET",
+        "D": "ARP for the default gateway → Obtain IP via DHCP → DNS query → TCP handshake → TLS handshake → HTTP GET",
+        "E": "Obtain IP via DHCP → ARP for the default gateway → DNS query → TLS handshake → TCP handshake → HTTP GET"
+      },
+      "explanation": "The computer first needs an IP address, a subnet mask, a default gateway and a DNS server address; DHCP (Discover-Offer-Request-Ack, UDP 67/68, via broadcast) provides these. Because the DNS server is on another network, the destination MAC of the frame carrying the DNS query must be the gateway's MAC; this MAC is learned via ARP. Then the server's IP is resolved with a DNS query (UDP 53). Next the TCP three-way handshake (to port 443) is established; the TLS handshake comes after TCP because it runs on top of TCP; finally the encrypted HTTP GET is sent.",
+      "optionExplanations": {
+        "A": "A host without an IP address cannot send a DNS query; DNS runs over UDP/IP and must come after DHCP.",
+        "B": "Since the DNS server is on another network, the frame carrying the DNS packet must be sent to the gateway's MAC address; this address is learned via ARP before the DNS query.",
+        "C": "Correct. DHCP (address information) → ARP (gateway MAC) → DNS (IP resolution) → TCP (connection) → TLS (encrypted channel) → HTTP.",
+        "D": "The host learns the gateway's IP address from DHCP; therefore it cannot send an ARP request for the gateway before DHCP. DHCP itself does not require ARP, because it works via broadcast.",
+        "E": "TLS runs over the reliable connection provided by TCP; the TLS handshake cannot begin until the TCP handshake has completed."
+      },
+      "keyConcept": "Connection flow: DHCP (address) → ARP (L2 neighbour/gateway MAC) → DNS (name → IP) → TCP → TLS → HTTP. Each step produces the prerequisite for the next.",
+      "examTip": "In ordering questions, work backwards asking \"what is needed to perform this step?\": DNS needs an IP + the gateway MAC, TLS needs a TCP connection.",
+      "simpleExplanation": "For a new computer to open a web page, the steps have a definite order; each step is a prerequisite for the next. First the computer must have an address; DHCP gives it (like learning the address of the house you have just moved into). Next it learns, via ARP, the physical address (MAC) of the gateway, the door to the outside world; because the DNS server is on another network and the message must first pass through that door. Then with DNS it asks which IP the name \"ebanka.ornek.com.tr\" corresponds to (like finding a number from a name in a phone book). Once the server's IP is known, a connection is made with TCP, an encrypted channel is opened on top of that connection with TLS, and finally the page is requested (HTTP GET). This order is in option C."
+    },
     "optionExplanations": {
       "A": "IP adresi olmayan bir host DNS sorgusu gönderemez; DNS, UDP/IP üzerinde çalışır ve DHCP'den sonra gelmelidir.",
       "B": "DNS sunucusu başka bir ağda olduğundan DNS paketini taşıyan çerçeve ağ geçidinin MAC adresine gönderilmelidir; bu adres ARP ile DNS sorgusundan önce öğrenilir.",
@@ -334,6 +466,28 @@
     "correctAnswer": "E",
     "explanation": "PAT, birden fazla iç adresi tek bir genel adrese çevirirken bağlantıları (iç IP, iç port) ↔ (genel IP, genel port) eşlemesiyle ayırır. İlk bağlantıya 198.51.100.7:51000 verilebilir; ikinci bağlantının kaynak portu aynı olduğu için çakışmayı önlemek adına yönlendirici onu kullanılmayan bir porta (ör. 51001) çevirir ve bunu NAT çeviri tablosuna yazar. Sunucudan 198.51.100.7:51001'e dönen paket, tablo sayesinde 192.168.10.11:51000'e geri çevrilir. Böylece tek bir genel IP ile binlerce eş zamanlı bağlantı taşınabilir; sınır, kullanılabilir port sayısıdır (yaklaşık 64.000).",
     "simpleExplanation": "Bir şubede onlarca bilgisayar var ama internete çıkan tek bir genel adres var; PAT bu paylaşımı sağlar. Bunu bir ofis santraline benzetin: dışarıya tek numara görünür, içeride herkesin kendi dahili numarası vardır ve santral dönen çağrıyı doğru masaya bağlar. Yönlendirici 'iç adres + port' ikilisini 'genel adres + port' ikilisine çevirip bir tabloya yazar. İki bilgisayar tesadüfen aynı kaynak portu (51000) kullanırsa ikisine aynı genel port verilemez; yönlendirici ikincisine boş bir port (ör. 51001) atar. Sunucudan 51001'e dönen cevap, tablo sayesinde doğru bilgisayara ve doğru porta geri gönderilir. Cevap E'dir.",
+    "en": {
+      "subtopic": "NAT/PAT and VLANs",
+      "question": "A branch router performs PAT (Port Address Translation, NAT overload), giving the clients in VLAN 10 internet access through a single public IP address (198.51.100.7). Two clients with addresses 192.168.10.10 and 192.168.10.11 want to connect to the server at 203.0.113.5:443 at the same time and, by coincidence, with the same source port (51000). Which of the following correctly describes the router's behaviour?",
+      "options": {
+        "A": "It rejects the second connection; the same source port cannot be used a second time on the same public IP.",
+        "B": "198.51.100.7:51000 is used for both connections; returning packets are separated by the internal hosts' MAC addresses.",
+        "C": "It allocates a second public IP address from the NAT pool for the second client; otherwise the translation cannot be done.",
+        "D": "It leaves the source port untouched and translates the destination port (443) to a different value for each connection.",
+        "E": "It translates the source port of the second connection to a different port (e.g. 51001); it maps returning packets back to the relevant internal host and port based on the destination port number."
+      },
+      "explanation": "When translating multiple internal addresses to a single public address, PAT distinguishes connections through the (internal IP, internal port) ↔ (public IP, public port) mapping. The first connection can be given 198.51.100.7:51000; since the second connection's source port is the same, the router translates it to an unused port (e.g. 51001) to avoid a clash and records this in the NAT translation table. A packet returning from the server to 198.51.100.7:51001 is translated back to 192.168.10.11:51000 thanks to the table. In this way thousands of simultaneous connections can be carried over a single public IP; the limit is the number of available ports (roughly 64,000).",
+      "optionExplanations": {
+        "A": "The very purpose of PAT is to resolve exactly this clash; the router does not reject the connection, it rewrites the port number.",
+        "B": "Packets returning from the external network do not carry the internal hosts' MAC addresses (MAC addresses are only meaningful on the local link); moreover, two connections cannot be distinguished by the same 5-tuple (IP/port pairs + protocol).",
+        "C": "This is the behaviour of dynamic NAT (address pool); PAT/overload works with a single public IP and does not need a second address.",
+        "D": "The destination port is the port the server is listening on (443); changing it would send the connection to the wrong service. PAT changes only the source IP and, where necessary, the source port.",
+        "E": "Correct. The clashing source port is reassigned; the NAT table directs return packets to the right internal host based on the destination port."
+      },
+      "keyConcept": "PAT = (internal IP, internal port) → (single public IP, unique public port). On a port clash the public port is reassigned; return traffic is matched via the NAT table.",
+      "examTip": "Distinguish the NAT types: static (1:1 fixed), dynamic (1:1 temporary from a pool), PAT/overload (N:1, separated by port). The phrase \"single public IP, many internal hosts\" always means PAT.",
+      "simpleExplanation": "A branch has dozens of computers but only a single public address for reaching the internet; PAT makes this sharing possible. Think of it as an office switchboard: a single number is visible from outside, inside everyone has their own extension, and the switchboard connects the returning call to the right desk. The router translates the \"internal address + port\" pair into a \"public address + port\" pair and writes it in a table. If two computers happen to use the same source port (51000), they cannot both be given the same public port; the router assigns the second one a free port (e.g. 51001). The reply coming back from the server to 51001 is sent back to the right computer and the right port thanks to the table. The answer is E."
+    },
     "optionExplanations": {
       "A": "PAT'in amacı tam da bu çakışmayı çözmektir; yönlendirici bağlantıyı reddetmez, port numarasını yeniden yazar.",
       "B": "Dış ağdan dönen paketler iç hostların MAC adresini taşımaz (MAC adresleri yalnızca yerel bağlantıda anlamlıdır); ayrıca iki bağlantı aynı 5'li (IP/port çiftleri + protokol) ile ayrıştırılamaz.",
@@ -384,6 +538,28 @@
     "correctAnswer": "B",
     "explanation": "IP yönlendirmede birden fazla girdi eşleşiyorsa en uzun önek eşleşmesi (longest prefix match) kuralı uygulanır: en çok bit eşleşen, yani en özgül rota kazanır. 10.20.31.7 adresi 10.0.0.0/8 (ilk 8 bit: 10) ve 10.20.0.0/16 (ilk 16 bit: 10.20) ile eşleşir; 0.0.0.0/0 her adresle eşleşir. 10.20.30.0/24 ise yalnızca 10.20.30.0 – 10.20.30.255 aralığını kapsar; üçüncü oktet 31 olduğundan bu girdi eşleşmez. Eşleşenler arasında en uzun önek /16'dır; paket R2'ye gönderilir.",
     "simpleExplanation": "Yönlendirme tablosu, bir postanenin 'şu adreslere şu kamyon gider' listesine benzer. 10.20.31.7 adresi hem '10 ile başlayan her şey' (/8) hem de '10.20 ile başlayan her şey' (/16) kurallarına uyar; varsayılan rota zaten her şeye uyar. 10.20.30.0/24 kuralı ise yalnızca 10.20.30 ile başlayan adresleri kapsar; bizim adresin üçüncü sayısı 31 olduğu için bu kurala uymaz. Birden fazla kural uyduğunda yönlendirici en ayrıntılı (en uzun) olanı seçer; üzerinde 'Türkiye' yazan kamyon yerine 'Ankara' yazan kamyonu seçmek gibi. Uyan kurallar arasında en uzun olan /16 olduğundan paket R2'ye gider; cevap B'dir.",
+    "en": {
+      "subtopic": "Routing table and longest prefix match",
+      "question": "The routing table of a data centre router is given below. When a packet with destination IP address 10.20.31.7 arrives, to which neighbour (next hop) does the router forward the packet?",
+      "options": {
+        "A": "R1",
+        "B": "R2",
+        "C": "R3",
+        "D": "R4",
+        "E": "The packet is split between R2 and R3 with equal-cost load sharing"
+      },
+      "explanation": "In IP routing, when more than one entry matches, the longest prefix match rule applies: the route with the most matching bits, i.e. the most specific one, wins. The address 10.20.31.7 matches 10.0.0.0/8 (first 8 bits: 10) and 10.20.0.0/16 (first 16 bits: 10.20); 0.0.0.0/0 matches every address. 10.20.30.0/24, however, covers only the range 10.20.30.0 – 10.20.30.255; since the third octet is 31, this entry does not match. Among the matching entries the longest prefix is /16; the packet is sent to R2.",
+      "optionExplanations": {
+        "A": "The /8 entry matches, but /16 is more specific (longer prefix); the router chooses the longest matching entry, not the first one seen in the table.",
+        "B": "Correct. 10.20.0.0/16 is the longest matching prefix; 10.20.30.0/24 does not match because the third octet is 31.",
+        "C": "10.20.30.0/24 covers only the 10.20.30.x addresses; 10.20.31.7 is outside this range. \"30 and 31 are close\" does not mean a match.",
+        "D": "The default route is used only when no other entry matches; here two specific entries match.",
+        "E": "Equal-cost load sharing (ECMP) applies only when there are multiple equal-cost paths for the same prefix; traffic is not split between different prefix lengths."
+      },
+      "keyConcept": "Longest prefix match: among the matching entries, the one with the greatest prefix length is chosen; the default route (/0) is the last resort.",
+      "examTip": "For each entry check \"is the destination address within this block's range?\" (compute the block boundaries from the prefix length); among the matches choose the longest prefix.",
+      "simpleExplanation": "A routing table is like a post office's list of \"these addresses go on this truck\". The address 10.20.31.7 fits both the rule \"everything starting with 10\" (/8) and the rule \"everything starting with 10.20\" (/16); the default route fits everything anyway. The 10.20.30.0/24 rule, however, covers only addresses starting with 10.20.30; since the third number of our address is 31, it does not fit this rule. When more than one rule fits, the router chooses the most detailed (longest) one; like choosing the truck labelled \"Ankara\" over the one labelled \"Turkey\". Among the rules that fit, the longest is /16, so the packet goes to R2; the answer is B."
+    },
     "optionExplanations": {
       "A": "/8 girdisi eşleşir ancak /16 daha özgüldür (daha uzun önek); yönlendirici tabloda ilk görülen değil en uzun eşleşen girdiyi seçer.",
       "B": "Doğru. 10.20.0.0/16 eşleşen en uzun önektir; 10.20.30.0/24 üçüncü oktet 31 olduğu için eşleşmez.",
@@ -434,6 +610,28 @@
     "correctAnswer": "D",
     "explanation": "Referans bütünlüğü (referential integrity), yabancı anahtar değerinin referans verilen tabloda var olan bir birincil anahtar değerine (veya NULL'a) karşılık gelmesini zorunlu kılar. D seçeneğinde 101 numaralı hesabın müşterisi 1'den 2'ye değiştirilmektedir; 2 numaralı müşteri Musteri tablosunda mevcut olduğundan kısıt sağlanır ve güncelleme başarılıdır. Diğer tüm seçenekler ya var olmayan bir müşteriye referans verir, ya referans verilen bir satırı siler/değiştirir, ya da birincil anahtarı tekrarlar.",
     "simpleExplanation": "Yabancı anahtar, bir tablodaki satırın başka bir tabloda gerçekten var olan bir kayda işaret etmesini zorunlu kılar; tıpkı bir banka hesabının mutlaka gerçek bir müşteriye ait olması gibi. Kural iki yönlü çalışır: var olmayan bir müşteriye hesap açılamaz ve hesabı olan bir müşteri silinemez ya da numarası değiştirilemez. A seçeneği 3 numaralı müşteriye hesap açmaya çalışıyor ama öyle bir müşteri yok. B, hesapları olan Ali'yi silmeye çalışıyor; E ise hesabı olan Ayşe'nin numarasını değiştiriyor; ikisi de yasak. C, zaten var olan 2 numarasıyla ikinci bir müşteri eklemeye çalışıyor; aynı kimlik numarasıyla iki kişi olamaz. D ise 101 numaralı hesabı 2 numaralı müşteriye, yani gerçekten var olan birine bağlıyor; bu yüzden sorunsuz çalışır.",
+    "en": {
+      "subtopic": "Primary and foreign key integrity",
+      "question": "The tables below are given. The column Hesap.musteri_id is a foreign key (FOREIGN KEY) referencing the column Musteri.musteri_id, and the constraint has the default behaviour (NO ACTION) for ON DELETE / ON UPDATE. Which of the following statements executes successfully without an integrity error?",
+      "options": {
+        "A": "INSERT INTO Hesap VALUES (103, 3, 100);",
+        "B": "DELETE FROM Musteri WHERE musteri_id = 1;",
+        "C": "INSERT INTO Musteri VALUES (2, 'Mehmet');",
+        "D": "UPDATE Hesap SET musteri_id = 2 WHERE hesap_id = 101;",
+        "E": "UPDATE Musteri SET musteri_id = 5 WHERE musteri_id = 2;"
+      },
+      "explanation": "Referential integrity requires that a foreign key value correspond to an existing primary key value in the referenced table (or be NULL). In option D the customer of account 101 is changed from 1 to 2; since customer 2 exists in the Musteri table, the constraint is satisfied and the update succeeds. All the other options either reference a non-existent customer, delete/modify a referenced row, or duplicate a primary key.",
+      "optionExplanations": {
+        "A": "There is no musteri_id = 3 in the Musteri table; a row referencing a non-existent key cannot be inserted (foreign key violation).",
+        "B": "Accounts 100 and 101 reference customer 1; under NO ACTION this row cannot be deleted. Deletion is only possible with ON DELETE CASCADE or by deleting the accounts first.",
+        "C": "musteri_id = 2 already exists; a primary key (PRIMARY KEY) must be unique, so this insert violates entity integrity.",
+        "D": "Correct. The new value 2 is a primary key that exists in the Musteri table; referential integrity is preserved.",
+        "E": "Account 102 references musteri_id = 2; under NO ACTION a referenced key value cannot be changed (with ON UPDATE CASCADE the accounts would have been updated too)."
+      },
+      "keyConcept": "A foreign key value must either be NULL or exist in the parent table; under NO ACTION/RESTRICT a referenced row cannot be deleted nor its key changed.",
+      "examTip": "Ask two questions for each statement: \"Does the new FK value exist in the parent table?\" and \"Is there a child row referencing the PK being touched?\" If even one answer is unfavourable, the statement fails.",
+      "simpleExplanation": "A foreign key forces a row in one table to point to a record that really exists in another table; just as a bank account must belong to a real customer. The rule works in both directions: an account cannot be opened for a customer who does not exist, and a customer who has accounts cannot be deleted or have their number changed. Option A tries to open an account for customer 3, but there is no such customer. B tries to delete Ali, who has accounts; E changes the number of Ayşe, who has an account; both are forbidden. C tries to add a second customer with number 2, which already exists; two people cannot have the same ID number. D, however, links account 101 to customer 2, someone who really exists; so it runs without a problem."
+    },
     "optionExplanations": {
       "A": "Musteri tablosunda musteri_id = 3 yoktur; var olmayan bir anahtara referans veren satır eklenemez (yabancı anahtar ihlali).",
       "B": "1 numaralı müşteriye 100 ve 101 numaralı hesaplar referans vermektedir; NO ACTION davranışında bu satır silinemez. Silme ancak ON DELETE CASCADE veya önce hesapların silinmesiyle mümkün olur.",
@@ -484,6 +682,28 @@
     "correctAnswer": "A",
     "explanation": "Atomiklik, bir işlemi (transaction) oluşturan tüm adımların ya tamamının kalıcı olmasını ya da hiçbirinin uygulanmamasını ('ya hep ya hiç') garanti eder. Autocommit modunda her UPDATE ayrı bir işlem olarak anında kalıcılaşır; dolayısıyla ilk UPDATE tek başına commit edilmiş, ikincisi hiç çalışmamıştır. Mantıksal olarak tek bir iş birimi olan transfer yarım kalmıştır: para 'kaybolmuştur'. Çözüm, iki ifadeyi BEGIN TRANSACTION ... COMMIT bloğuna almaktır; böylece çökme hâlinde VTYS ilk UPDATE'i geri alır (rollback).",
     "simpleExplanation": "Para transferi iki adımdan oluşur: bir hesaptan düş, diğerine ekle. Bu iki adım tek bir paket olarak düşünülmelidir: ya ikisi de olur ya hiçbiri olmaz. Buna atomiklik denir; 'atom gibi bölünmez' demektir. Senaryoda bağlantı autocommit modundaydı, yani her adım tek başına hemen kalıcı oldu: ilk adım yapıldı, sunucu çöktü, ikinci adım hiç yapılmadı ve para havada kaldı. Veri tabanı 'kaydedilen kaybolmadı' diye dayanıklılık görevini yerine getirmiş, araya başka bir işlem girmediği için yalıtım sorunu da yok. Bölünemez olması gereken işin yarım kalması atomikliğin ihlalidir; cevap A'dır.",
+    "en": {
+      "subtopic": "ACID properties",
+      "question": "A core banking application performs an inter-account transfer with the two statements below, and the database connection is in autocommit mode. Immediately after the first UPDATE ran, the application server crashed; when the system came back, it was found that 500 TL had been deducted from account 100 while nothing had been added to account 200. Which ACID property has been violated in this situation?",
+      "options": {
+        "A": "Atomicity",
+        "B": "Consistency",
+        "C": "Isolation",
+        "D": "Durability",
+        "E": "Concurrency"
+      },
+      "explanation": "Atomicity guarantees that all the steps making up a transaction are either made permanent in full or not applied at all (\"all or nothing\"). In autocommit mode each UPDATE is made permanent immediately as a separate transaction; so the first UPDATE was committed on its own and the second never ran. The transfer, which is logically a single unit of work, has been left half done: the money has \"disappeared\". The fix is to wrap the two statements in a BEGIN TRANSACTION ... COMMIT block; then, in the event of a crash, the DBMS rolls back the first UPDATE.",
+      "optionExplanations": {
+        "A": "Correct. Only one of the transfer's two steps has been made permanent; the \"all or nothing\" principle, i.e. atomicity, has been violated.",
+        "B": "Consistency means that a transaction takes the database from one valid state to another (constraints are preserved). Here the change in the total balance is a consequence of inconsistency, but the root cause is that the steps were divisible; no defined constraint (CHECK, FK) has been violated.",
+        "C": "Isolation ensures that concurrent transactions do not affect one another. There is no other transaction in the scenario; the problem is a single transaction being left half done.",
+        "D": "Durability means that committed data is preserved even after a crash. The first UPDATE was preserved, so durability was in fact upheld; the problem is that this step was committed on its own.",
+        "E": "Concurrency control is not one of the letters of ACID; it is the general name for the mechanisms (locking, MVCC) used to provide isolation."
+      },
+      "keyConcept": "Atomicity: all steps of a transaction are applied in full or not at all. Autocommit destroys atomicity for multi-step units of work.",
+      "examTip": "\"Left half done / one step done, the other not\" → Atomicity; \"committed but lost\" → Durability; \"another transaction interfered\" → Isolation; \"a constraint was broken\" → Consistency.",
+      "simpleExplanation": "A money transfer consists of two steps: deduct from one account, add to the other. These two steps must be thought of as a single package: either both happen or neither does. This is called atomicity; it means \"indivisible, like an atom\". In the scenario the connection was in autocommit mode, meaning each step became permanent on its own straight away: the first step was done, the server crashed, the second step was never done and the money was left hanging. The database did its durability job (\"what was saved was not lost\"), and since no other transaction got in the way there is no isolation problem either. Work that should have been indivisible being left half done is a violation of atomicity; the answer is A."
+    },
     "optionExplanations": {
       "A": "Doğru. Transferin iki adımından yalnızca biri kalıcı olmuştur; 'ya hep ya hiç' ilkesi, yani atomiklik ihlal edilmiştir.",
       "B": "Tutarlılık, işlemin veri tabanını bir geçerli durumdan diğerine taşımasını (kısıtların korunmasını) ifade eder. Burada toplam bakiyenin değişmesi bir tutarsızlık sonucudur, ancak kök neden adımların bölünebilir olmasıdır; tanımlanmış bir kısıt (CHECK, FK) ihlali söz konusu değildir.",
@@ -534,6 +754,28 @@
     "correctAnswer": "E",
     "explanation": "LEFT JOIN sol tablodaki (Musteri) her satırı korur. Ali'nin 2 hesabı vardır (2 satır: 500, 250), Ayşe'nin 1 hesabı (900), Mehmet ve Zeynep'in hesabı yoktur ancak LEFT JOIN onları bakiye = NULL ile yine döndürür (2 satır). Toplam 2 + 1 + 1 + 1 = 5 satır. INNER JOIN yalnızca eşleşen çiftleri döndürür: Ali-500, Ali-250, Ayşe-900 → 3 satır. 103 numaralı hesabın musteri_id değeri NULL'dur; NULL hiçbir değere eşit olmadığı için (NULL = 1 sonucu UNKNOWN) hiçbir müşteriyle eşleşmez ve sol tablo odaklı bu sorguda görünmez (RIGHT veya FULL JOIN olsaydı görünürdü).",
     "simpleExplanation": "LEFT JOIN, soldaki tablodaki (Musteri) herkesi listeye alır; karşısına uyan hesap varsa yazar, yoksa boş (NULL) bırakır. Ali'nin 2 hesabı var, 2 satır olur; Ayşe'nin 1 hesabı var, 1 satır. Mehmet ve Zeynep'in hesabı yok ama LEFT JOIN onları da boş bakiyeyle gösterir: 2 satır daha. Toplam 2 + 1 + 1 + 1 = 5. INNER JOIN ise yalnızca iki tarafta da eşleşme olanları gösterir: Ali-500, Ali-250, Ayşe-900, yani 3 satır. 103 numaralı hesabın müşterisi boş (NULL) olduğu için hiç kimseyle eşleşmez ve bu sorguda hiç görünmez. Cevap E'dir.",
+    "en": {
+      "subtopic": "SQL JOIN types",
+      "question": "How many rows does the LEFT JOIN query given over the tables below return? If INNER JOIN had been used instead of LEFT JOIN in the same query, how many rows would it have returned?",
+      "options": {
+        "A": "LEFT JOIN: 4 rows, INNER JOIN: 3 rows",
+        "B": "LEFT JOIN: 6 rows, INNER JOIN: 3 rows",
+        "C": "LEFT JOIN: 5 rows, INNER JOIN: 4 rows",
+        "D": "LEFT JOIN: 4 rows, INNER JOIN: 4 rows",
+        "E": "LEFT JOIN: 5 rows, INNER JOIN: 3 rows"
+      },
+      "explanation": "LEFT JOIN keeps every row of the left table (Musteri). Ali has 2 accounts (2 rows: 500, 250), Ayşe has 1 account (900), Mehmet and Zeynep have no account but LEFT JOIN still returns them with bakiye = NULL (2 rows). Total 2 + 1 + 1 + 1 = 5 rows. INNER JOIN returns only the matching pairs: Ali-500, Ali-250, Ayşe-900 → 3 rows. The musteri_id of account 103 is NULL; since NULL is not equal to any value (NULL = 1 evaluates to UNKNOWN), it matches no customer and does not appear in this left-table-oriented query (it would appear with a RIGHT or FULL JOIN).",
+      "optionExplanations": {
+        "A": "For LEFT JOIN to return 4 rows, each customer would need at most one match; Ali's two accounts produce two rows. This is the \"it returns as many rows as the left table\" fallacy.",
+        "B": "6 rows is the result of a FULL OUTER JOIN (5 + account 103 whose musteri_id is NULL). LEFT JOIN does not add the unmatched rows of the right table.",
+        "C": "The LEFT JOIN count is right but INNER JOIN does not return 4 rows; the NULL musteri_id of account 103 matches no customer.",
+        "D": "Both numbers are wrong; 4 rows is the result of taking Hesap as the left table and thinking in RIGHT JOIN terms.",
+        "E": "Correct. LEFT JOIN: Ali×2 + Ayşe×1 + Mehmet(NULL) + Zeynep(NULL) = 5; INNER JOIN: only the 3 matching pairs."
+      },
+      "keyConcept": "LEFT JOIN = INNER JOIN result + the unmatched rows of the left table (right-hand columns NULL). In a one-to-many relationship the row count can exceed the left table's row count. NULL = x is always UNKNOWN and never produces a match.",
+      "examTip": "In JOIN counting questions, write the number of matches for each row of the left table (if 0, count 1 for LEFT JOIN and 0 for INNER) and add them up.",
+      "simpleExplanation": "LEFT JOIN puts everyone from the left table (Musteri) on the list; if there is a matching account it writes it next to them, if not it leaves it blank (NULL). Ali has 2 accounts, so 2 rows; Ayşe has 1 account, 1 row. Mehmet and Zeynep have no account, but LEFT JOIN shows them too with a blank balance: 2 more rows. Total 2 + 1 + 1 + 1 = 5. INNER JOIN, on the other hand, shows only those with a match on both sides: Ali-500, Ali-250, Ayşe-900, i.e. 3 rows. Because the customer of account 103 is blank (NULL), it matches nobody and never appears in this query. The answer is E."
+    },
     "optionExplanations": {
       "A": "LEFT JOIN'in 4 satır dönmesi için her müşterinin en fazla bir eşleşmesi olması gerekirdi; Ali'nin iki hesabı iki satır üretir. 'Sol tablodaki satır sayısı kadar döner' yanılgısıdır.",
       "B": "6 satır, FULL OUTER JOIN sonucudur (5 + musteri_id NULL olan 103 numaralı hesap). LEFT JOIN sağ tablodaki eşleşmeyen satırları eklemez.",
@@ -584,6 +826,28 @@
     "correctAnswer": "B",
     "explanation": "Mantıksal değerlendirme sırası WHERE → GROUP BY → HAVING şeklindedir. WHERE tutar >= 500 koşulu yalnızca 6 numaralı satırı (Bornova, 400) eler; 500 TL'lik 4 numaralı satır '>=' nedeniyle kalır. Gruplama: Kadıköy → adet 2, toplam 2000; Çankaya → adet 3, toplam 3000 + 500 + 700 = 4200; Bornova grubu oluşmaz. HAVING SUM(tutar) > 2000 (kesin büyüklük) Kadıköy'ü (2000 > 2000 yanlış) eler, Çankaya'yı (4200) geçirir. Sonuç tek satırdır: (Çankaya, 3, 4200).",
     "simpleExplanation": "Bu sorguyu üç aşamalı bir süzgeç gibi düşünün. Önce WHERE tek tek satırlara bakar: tutarı 500'den küçük olan yalnızca Bornova'nın 400'lük işlemi var, o çıkar; 500'lük satır 'büyük veya eşit' dendiği için kalır. Sonra GROUP BY kalan satırları şubeye göre kümeler: Kadıköy 2 işlem, toplam 2000; Çankaya 3 işlem, toplam 3000 + 500 + 700 = 4200; Bornova'nın satırı kalmadığı için grubu da yok. En son HAVING gruplara bakar ve toplamı 2000'den KESİN olarak büyük olanları tutar: Kadıköy'ün toplamı tam 2000, 'daha büyük' değil, elenir; Çankaya 4200 ile kalır. Geriye yalnızca (Çankaya, 3, 4200) kalır; cevap B'dir.",
+    "en": {
+      "subtopic": "Order of GROUP BY, HAVING and WHERE",
+      "question": "What is the result set of the query given over the Islem table below?",
+      "options": {
+        "A": "(Kadıköy, 2, 2000) and (Çankaya, 3, 4200)",
+        "B": "Only (Çankaya, 3, 4200)",
+        "C": "(Çankaya, 3, 4200) and (Bornova, 1, 400)",
+        "D": "Only (Çankaya, 2, 3700)",
+        "E": "(Kadıköy, 2, 2000), (Çankaya, 3, 4200) and (Bornova, 1, 400)"
+      },
+      "explanation": "The logical evaluation order is WHERE → GROUP BY → HAVING. The condition WHERE tutar >= 500 eliminates only row 6 (Bornova, 400); row 4, worth 500 TL, stays because of the '>='. Grouping: Kadıköy → count 2, total 2000; Çankaya → count 3, total 3000 + 500 + 700 = 4200; no Bornova group is formed. HAVING SUM(tutar) > 2000 (strictly greater) eliminates Kadıköy (2000 > 2000 is false) and lets Çankaya (4200) through. The result is a single row: (Çankaya, 3, 4200).",
+      "optionExplanations": {
+        "A": "Kadıköy's total is exactly 2000; since the HAVING condition is '> 2000' (not >=), Kadıköy is eliminated.",
+        "B": "Correct. WHERE eliminates the 400 row; the groups are Kadıköy (2000) and Çankaya (4200); HAVING > 2000 lets only Çankaya through.",
+        "C": "The Bornova row (400) never enters the grouping because it fails the condition WHERE tutar >= 500; even if it had, it could not pass the condition 400 > 2000.",
+        "D": "Row 4, worth 500 TL, has wrongly been eliminated (the condition was read as '> 500'); with '>=' this row stays, and Çankaya has 3 transactions and a total of 4200.",
+        "E": "Both WHERE and HAVING have been ignored; this is the result of raw grouping with no filter applied."
+      },
+      "keyConcept": "WHERE filters rows before grouping, HAVING filters groups after grouping. Pay attention to the boundary value with comparison operators (>, >=).",
+      "examTip": "Solve SQL result questions step by step on paper: 1) cross out rows with WHERE, 2) group the remaining rows and write the totals, 3) eliminate groups with HAVING.",
+      "simpleExplanation": "Think of this query as a three-stage sieve. First WHERE looks at the rows one by one: the only one with an amount below 500 is Bornova's 400 transaction, so it goes; the 500 row stays because it says \"greater than or equal\". Then GROUP BY clusters the remaining rows by branch: Kadıköy 2 transactions, total 2000; Çankaya 3 transactions, total 3000 + 500 + 700 = 4200; Bornova has no rows left, so no group either. Finally HAVING looks at the groups and keeps those whose total is STRICTLY greater than 2000: Kadıköy's total is exactly 2000, not \"greater\", so it is eliminated; Çankaya stays with 4200. Only (Çankaya, 3, 4200) remains; the answer is B."
+    },
     "optionExplanations": {
       "A": "Kadıköy'ün toplamı tam 2000'dir; HAVING koşulu '> 2000' olduğundan (>= değil) Kadıköy elenir.",
       "B": "Doğru. WHERE ile 400'lük satır elenir; gruplar Kadıköy (2000) ve Çankaya (4200) olur; HAVING > 2000 yalnızca Çankaya'yı geçirir.",
@@ -634,6 +898,28 @@
     "correctAnswer": "C",
     "explanation": "1NF: tüm sütunlar atomik ve tekrarlayan grup yok → sağlanır. 2NF: anahtar olmayan her sütun birincil anahtarın tamamına bağımlı olmalı; kısmi bağımlılık (partial dependency) yalnızca bileşik anahtarlarda ortaya çıkar. Anahtar tek sütun (kredi_no) olduğundan kısmi bağımlılık mümkün değildir → 2NF sağlanır. 3NF: anahtar olmayan sütunlar başka bir anahtar olmayan sütuna geçişli (transitive) bağımlı olmamalı; ancak kredi_no → musteri_tc → musteri_ad ve kredi_no → sube_kodu → sube_ad geçişli bağımlılıklarıdır (K001 ve K003'te 'Ali Kaya', K002 ve K003'te 'Çankaya' tekrarı buna işarettir) → 3NF sağlanmaz. Çözüm: Musteri(musteri_tc, musteri_ad) ve Sube(sube_kodu, sube_ad) tablolarını ayırmak.",
     "simpleExplanation": "Normalizasyon, bir tabloda aynı bilginin tekrar tekrar yazılmasını önlemek için uyulan kurallar dizisidir. 1NF: her hücrede tek bir değer olmalı; soru bunun sağlandığını söylüyor. 2NF: anahtar birden fazla sütundan oluşuyorsa, diğer sütunlar anahtarın yalnızca bir parçasına bağlı olmamalı; burada anahtar tek sütun (kredi_no) olduğu için bu sorun hiç çıkamaz, 2NF kendiliğinden sağlanır. 3NF: anahtar olmayan bir sütun, başka bir anahtar olmayan sütuna bağlı olmamalı. Oysa müşteri adı müşteri TC'sine, şube adı da şube koduna bağlı; bu yüzden 'Ali Kaya' ve 'Çankaya' tabloda tekrar ediyor ve Ali'nin adı değişse birden fazla satır düzeltmek gerekir. Demek ki tablo 2NF'dedir ama 3NF'yi sağlamaz; cevap C.",
+    "en": {
+      "subtopic": "Normalisation (1NF, 2NF, 3NF)",
+      "question": "A bank's loan tracking table is as below. The primary key is only the kredi_no column. The following functional dependencies hold in the table: kredi_no → (musteri_tc, sube_kodu, tutar); musteri_tc → musteri_ad; sube_kodu → sube_ad. All columns contain atomic values. What is the highest normal form this table satisfies?",
+      "options": {
+        "A": "Only 1NF (does not satisfy 2NF)",
+        "B": "3NF",
+        "C": "2NF (does not satisfy 3NF)",
+        "D": "BCNF",
+        "E": "Does not even satisfy 1NF"
+      },
+      "explanation": "1NF: all columns are atomic and there are no repeating groups → satisfied. 2NF: every non-key column must depend on the whole primary key; a partial dependency can only arise with composite keys. Since the key is a single column (kredi_no), a partial dependency is impossible → 2NF is satisfied. 3NF: non-key columns must not be transitively dependent on another non-key column; but kredi_no → musteri_tc → musteri_ad and kredi_no → sube_kodu → sube_ad are transitive dependencies (the repetition of 'Ali Kaya' in K001 and K003 and of 'Çankaya' in K002 and K003 is a sign of this) → 3NF is not satisfied. The fix: split off the tables Musteri(musteri_tc, musteri_ad) and Sube(sube_kodu, sube_ad).",
+      "optionExplanations": {
+        "A": "2NF forbids partial dependency on a composite key; since the key is a single column, the table satisfies 2NF automatically. A transitive dependency is a 3NF violation, not a 2NF one; these two concepts are often confused.",
+        "B": "The left-hand sides of the dependencies musteri_tc → musteri_ad and sube_kodu → sube_ad are not keys; a non-key column depending on a non-key column breaks 3NF.",
+        "C": "Correct. 2NF is satisfied because of the single-column key; 3NF is not satisfied because of the transitive dependencies.",
+        "D": "BCNF is stricter than 3NF (every determinant must be a candidate key); if 3NF is not satisfied, BCNF cannot be either.",
+        "E": "The question states that all columns are atomic; there are no multi-valued or repeating groups, so 1NF is satisfied."
+      },
+      "keyConcept": "2NF forbids partial dependency (dependency on part of a composite key), 3NF forbids transitive dependency (non-key → non-key). A single-column key means 1NF automatically implies 2NF.",
+      "examTip": "In normal form questions, first look at whether the key is single or composite: with a single-column key the 2NF discussion is closed, so go straight to looking for transitive dependencies (3NF).",
+      "simpleExplanation": "Normalisation is a set of rules you follow to stop the same information being written over and over in a table. 1NF: each cell must hold a single value; the question says this is satisfied. 2NF: if the key consists of more than one column, the other columns must not depend on only part of the key; here the key is a single column (kredi_no), so this problem can never arise and 2NF is satisfied by itself. 3NF: a non-key column must not depend on another non-key column. But the customer name depends on the customer ID number, and the branch name depends on the branch code; that is why 'Ali Kaya' and 'Çankaya' repeat in the table, and if Ali's name changed, more than one row would have to be corrected. So the table is in 2NF but does not satisfy 3NF; the answer is C."
+    },
     "optionExplanations": {
       "A": "2NF, bileşik anahtara kısmi bağımlılığı yasaklar; anahtar tek sütun olduğundan tablo 2NF'yi otomatik olarak sağlar. Geçişli bağımlılık 2NF değil 3NF ihlalidir; bu iki kavram sık karıştırılır.",
       "B": "musteri_tc → musteri_ad ve sube_kodu → sube_ad bağımlılıklarının sol tarafı anahtar değildir; anahtar olmayan sütunun anahtar olmayan sütuna bağımlılığı 3NF'yi bozar.",
@@ -684,6 +970,28 @@
     "correctAnswer": "D",
     "explanation": "B-tree bileşik indeksi, anahtarları önce birinci sütuna (sube_kodu), aynı sube_kodu içinde ikinci sütuna (tarih) göre sıralı tutar; tıpkı soyad-ad sırasına göre dizilmiş bir telefon rehberi gibi. Bu nedenle indeks yalnızca en soldaki sütunla başlayan koşullar için aranabilir (en sol önek kuralı, leftmost prefix rule). Yalnızca tarih üzerinde filtre yapan D seçeneğinde, aranan tarih indeks içinde her şube bloğunda ayrı ayrı dağılmış olduğundan optimize edici indeksi aralık araması için kullanamaz; tabloyu (veya tüm indeksi) taramak zorunda kalır. Çözüm, tarih için ayrı bir indeks ya da (tarih, sube_kodu) sıralı ikinci bir bileşik indekstir. (Not: Bazı VTYS'ler, birinci sütunun çok az farklı değeri varsa 'index skip scan' adlı bir istisna uygulayabilir; genel kural ve sınav beklentisi en sol önek kuralıdır.)",
     "simpleExplanation": "Bileşik indeks, kayıtları önce şube koduna sonra tarihe göre dizilmiş bir fihrist gibi tutar; tıpkı telefon rehberinin önce soyada, sonra ada göre sıralı olması gibi. Rehberde soyadını bildiğiniz birini hızla bulursunuz; soyadı ve adı birlikte bilirseniz daha da hızlı. Ama yalnızca adı 'Ahmet' olanları aramak isterseniz rehber işe yaramaz, çünkü Ahmet'ler her soyadın altına dağılmıştır; rehberi baştan sona okumak gerekir. D seçeneği yalnızca tarihe göre arıyor, yani indeksin ilk sütunu olan şube kodunu hiç kullanmıyor; bu yüzden veri tabanı tüm tabloyu taramak zorunda kalır. Diğer seçeneklerin hepsi şube koduyla başladığı için indeksten yararlanır.",
+    "en": {
+      "subtopic": "Indexes (B-tree, composite index)",
+      "question": "A composite B-tree index has been created on the Islem table with the command CREATE INDEX ix_sube_tarih ON Islem (sube_kodu, tarih);. There is no other index on the table. Which of the following queries' WHERE conditions cannot make effective use of this index and leads to a full table scan?",
+      "options": {
+        "A": "WHERE sube_kodu = 'K01'",
+        "B": "WHERE sube_kodu = 'K01' AND tarih = DATE '2026-01-05'",
+        "C": "WHERE sube_kodu = 'K01' AND tarih > DATE '2026-01-01'",
+        "D": "WHERE tarih = DATE '2026-01-05'",
+        "E": "WHERE sube_kodu IN ('K01', 'K02')"
+      },
+      "explanation": "A composite B-tree index keeps its keys sorted first by the first column (sube_kodu) and, within the same sube_kodu, by the second column (tarih); just like a phone book sorted by surname then first name. For this reason the index can only be searched for conditions that begin with the leftmost column (the leftmost prefix rule). In option D, which filters only on tarih, the date being sought is scattered separately across every branch block within the index, so the optimiser cannot use the index for a range search; it is forced to scan the table (or the whole index). The fix is a separate index on tarih or a second composite index ordered (tarih, sube_kodu). (Note: some DBMSs may apply an exception called 'index skip scan' when the first column has very few distinct values; the general rule and the exam expectation is the leftmost prefix rule.)",
+      "optionExplanations": {
+        "A": "Equality on the first column: the leftmost prefix of the index is used, the 'K01' block is found directly.",
+        "B": "Equality on both columns: the whole index is used, this is the most selective match.",
+        "C": "Equality on the first column, a range on the second: since tarih is sorted within the 'K01' block, the range scan is performed efficiently.",
+        "D": "Correct. The condition does not include the leftmost column of the index (sube_kodu); because the tarih values are scattered across the branch blocks in the B-tree, the index cannot be used for the search.",
+        "E": "The IN list becomes two equality conditions on the first column; the optimiser performs an index lookup for each value."
+      },
+      "keyConcept": "A composite B-tree index is used only for conditions that begin with the leftmost column(s) (leftmost prefix rule); the column order determines whether the index is usable.",
+      "examTip": "In index questions, check that the condition includes the index's first column and that there is no function on the column (UPPER(ad)) or leading wildcard (LIKE '%x'); these disable the index.",
+      "simpleExplanation": "A composite index keeps the records like a directory sorted first by branch code and then by date; just as a phone book is sorted first by surname, then by first name. In the phone book you quickly find someone whose surname you know; if you know both surname and first name, even faster. But if you want to find everyone whose first name is 'Ahmet', the phone book is no use, because the Ahmets are scattered under every surname; you would have to read it from start to finish. Option D searches by date only, so it does not use the branch code, the first column of the index, at all; that is why the database is forced to scan the whole table. All the other options start with the branch code, so they benefit from the index."
+    },
     "optionExplanations": {
       "A": "Birinci sütun üzerinde eşitlik: indeksin en sol öneki kullanılır, 'K01' bloğu doğrudan bulunur.",
       "B": "Her iki sütunda eşitlik: indeksin tamamı kullanılır, en seçici eşleşmedir.",
@@ -734,6 +1042,28 @@
     "correctAnswer": "C",
     "explanation": "T1 aynı satırı iki kez okur ve arada T2 bu satırı güncelleyip commit ettiği için farklı değerler görür; bu, tekrarlanamayan okuma anomalisidir. T2 commit ettiği için okunan veri 'kirli' değildir (kirli okuma, commit edilmemiş veriyi okumaktır). Hayalet okuma ise aynı koşulla çalıştırılan sorgunun ikinci kez farklı satır KÜMESİ (eklenen/silinen satırlar) döndürmesidir; burada tek bir satırın değeri değişmiştir. ANSI SQL'e göre READ UNCOMMITTED ve READ COMMITTED bu anomaliye izin verir; REPEATABLE READ, işlem boyunca okunan satırları kilitleyerek (veya sürüm tutarak) tekrarlanamayan okumayı engelleyen en düşük düzeydir. SERIALIZABLE de engeller ancak 'en düşük' değildir.",
     "simpleExplanation": "T1 aynı hesabın bakiyesini iki kez okuyor; arada T2 bakiyeyi değiştirip kaydediyor (commit). Böylece T1 ilk okumada 1000, ikinci okumada 300 görüyor. Aynı soruyu iki kez sorup farklı cevap almaya 'tekrarlanamayan okuma' denir. 'Kirli okuma' değil, çünkü T2 değişikliği kaydetmiş, yarım bırakmamış. 'Hayalet okuma' da değil, çünkü yeni satır eklenmedi ya da silinmedi, var olan satırın değeri değişti. Yalıtım düzeyleri basamak gibidir: READ COMMITTED yalnızca kaydedilmiş veriyi okumayı garanti eder ama bu sorunu engellemez; bir üst basamak olan REPEATABLE READ, işlem bitene kadar okunan satırın değişmemesini sağlar. Sorunu engelleyen en düşük düzey bu olduğundan cevap C'dir.",
+    "en": {
+      "subtopic": "Isolation levels and concurrency anomalies",
+      "question": "A loan assessment transaction (T1) reads a customer's account balance twice within the same transaction. The timeline is given below. T1 seeing a different value on the second read is which concurrency anomaly, and what is the lowest ANSI SQL isolation level that prevents this anomaly?",
+      "options": {
+        "A": "Dirty read – READ COMMITTED",
+        "B": "Non-repeatable read – READ COMMITTED",
+        "C": "Non-repeatable read – REPEATABLE READ",
+        "D": "Phantom read – REPEATABLE READ",
+        "E": "Phantom read – SERIALIZABLE"
+      },
+      "explanation": "T1 reads the same row twice and sees different values because, in between, T2 updated this row and committed; this is the non-repeatable read anomaly. Because T2 committed, the data read is not 'dirty' (a dirty read is reading uncommitted data). A phantom read is when a query run with the same condition returns a different SET of rows the second time (inserted/deleted rows); here the value of a single row has changed. According to ANSI SQL, READ UNCOMMITTED and READ COMMITTED allow this anomaly; REPEATABLE READ, by locking the rows read (or keeping versions) for the duration of the transaction, is the lowest level that prevents non-repeatable reads. SERIALIZABLE also prevents it but is not the 'lowest'.",
+      "optionExplanations": {
+        "A": "A dirty read is reading UNCOMMITTED data; T2 committed at t3, so the read at t4 is not dirty. Also, READ COMMITTED prevents dirty reads but does not prevent non-repeatable reads.",
+        "B": "The anomaly is named correctly, but READ COMMITTED only guarantees reading committed data; it does not guarantee that two reads within the same transaction give the same result. The scenario happens precisely under READ COMMITTED.",
+        "C": "Correct. Between two reads of the same row, another transaction's committed update was seen (non-repeatable read); REPEATABLE READ is the lowest level that prevents this.",
+        "D": "A phantom read is a range query seeing newly inserted/deleted rows on its second execution; here the value of an existing row changed, not the number of rows. By the ANSI definition, REPEATABLE READ does not prevent phantom reads.",
+        "E": "The anomaly is not a phantom read; moreover, SERIALIZABLE prevents this anomaly but is not the 'lowest' level, REPEATABLE READ is sufficient."
+      },
+      "keyConcept": "Anomaly hierarchy: dirty read (at RU) < non-repeatable read (at RC) < phantom read (at RR) < none (SERIALIZABLE). Each level closes off the anomaly of the level below.",
+      "examTip": "First ask \"did the same row change, or the set of rows?\": the value of the same row → non-repeatable read; the number of rows → phantom. Then \"was the data committed?\" → if not, dirty read.",
+      "simpleExplanation": "T1 reads the same account's balance twice; in between, T2 changes the balance and saves it (commit). So T1 sees 1000 on the first read and 300 on the second. Asking the same question twice and getting different answers is called a \"non-repeatable read\". It is not a \"dirty read\", because T2 saved its change rather than leaving it half done. It is not a \"phantom read\" either, because no new row was added or deleted; the value of an existing row changed. Isolation levels are like steps on a staircase: READ COMMITTED only guarantees reading saved data but does not prevent this problem; one step up, REPEATABLE READ, ensures that a row once read does not change until the transaction ends. Since this is the lowest level that prevents the problem, the answer is C."
+    },
     "optionExplanations": {
       "A": "Kirli okuma, commit EDİLMEMİŞ veriyi okumaktır; T2 t3'te commit etmiştir, dolayısıyla t4'teki okuma kirli değildir. Ayrıca READ COMMITTED kirli okumayı engeller ama tekrarlanamayan okumayı engellemez.",
       "B": "Anomali doğru adlandırılmış ancak READ COMMITTED yalnızca commit edilmiş veriyi okumayı garanti eder; aynı işlem içinde iki okumanın aynı sonucu vermesini garanti etmez. Senaryo tam da READ COMMITTED altında gerçekleşir.",
@@ -784,6 +1114,28 @@
     "correctAnswer": "A",
     "explanation": "t1'de T1 100 numaralı satırı, t2'de T2 200 numaralı satırı özel kilitle tutar. t3'te T1 200 numaralı satırı güncellemek ister ancak kilit T2'dedir → bekler. t4'te T2 100 numaralı satırı ister ancak kilit T1'dedir → bekler. İki işlem birbirinin bıraktığı kilidi beklediği için döngüsel bekleme, yani ölü kilit oluşur; VTYS'nin ölü kilit algılayıcısı (bekleme grafiğinde döngü) işlemlerden birini geri alır. Kök neden, kaynakların farklı sırada edinilmesidir. Tüm transferlerin ilgili hesapları sabit bir küresel sırada (ör. hesap_no küçükten büyüğe) kilitlemesi döngüsel beklemeyi imkânsız kılar; her iki işlem de önce 100'ü isteyecek, biri bekleyip diğeri bitince devam edecektir. Bu, Coffman koşullarından 'döngüsel bekleme'yi ortadan kaldırır.",
     "simpleExplanation": "İki kişi iki kapıdan geçmek istiyor: birincisi A kapısını tutmuş B'yi bekliyor, ikincisi B kapısını tutmuş A'yı bekliyor; ikisi de sonsuza kadar bekler. Buna ölü kilit denir. Senaryoda T1 100 numaralı hesabı kilitleyip 200'ü istiyor, T2 ise 200'ü kilitleyip 100'ü istiyor; tam bu durum. Veri tabanı bunu fark eder ve işlemlerden birini geri alıp düğümü çözer, ama asıl çözüm bunun hiç oluşmamasıdır. Herkes kapılardan her zaman aynı sırada geçerse (ör. önce küçük numaralı hesap) karşılıklı bekleme oluşamaz: iki işlem de önce 100'ü ister, biri bekler, diğeri bitirir, sonra sıra ona gelir. Diğer çözüm önerileri ya işe yaramaz ya da transferi yarım bırakma riski doğurur. Cevap A'dır.",
+    "en": {
+      "subtopic": "Locking, deadlock and transfer atomicity",
+      "question": "In a bank's EFT module two transfer transactions are running concurrently, and the DBMS uses row-level locking. Each UPDATE takes an exclusive lock on the row it updates, held until the end of the transaction (COMMIT). In the timeline below, what happens after t3, and which design measure solves this problem at its root cause?",
+      "options": {
+        "A": "A deadlock occurs; the DBMS picks one of the transactions as the victim and rolls it back. The permanent fix is to always lock the account rows in the same order in all transfers (e.g. the smaller hesap_no first).",
+        "B": "A deadlock occurs; the fix is to lower the isolation level to READ UNCOMMITTED, so that lock waiting disappears.",
+        "C": "A deadlock occurs; the fix is to run each UPDATE in its own separate transaction (separate BEGIN/COMMIT), so that locks are released immediately.",
+        "D": "No deadlock occurs; at t4 T2 waits for T1 to finish, T1 updates row 200 at t3 without reading it and COMMITs.",
+        "E": "A deadlock occurs; the fix is to remove the foreign key constraints on the Hesap table to narrow the lock scope."
+      },
+      "explanation": "At t1 T1 holds row 100 and at t2 T2 holds row 200 with exclusive locks. At t3 T1 wants to update row 200 but the lock is held by T2 → it waits. At t4 T2 wants row 100 but the lock is held by T1 → it waits. Since the two transactions are each waiting for the lock the other will release, a circular wait, i.e. a deadlock, occurs; the DBMS's deadlock detector (a cycle in the wait-for graph) rolls back one of the transactions. The root cause is acquiring resources in different orders. Having all transfers lock the accounts involved in a fixed global order (e.g. hesap_no ascending) makes a circular wait impossible; both transactions will ask for 100 first, one will wait and continue once the other finishes. This removes 'circular wait' from the Coffman conditions.",
+      "optionExplanations": {
+        "A": "Correct. Mutual waiting is a deadlock; always locking resources in the same order structurally prevents circular waiting.",
+        "B": "READ UNCOMMITTED only removes READ locks; the exclusive write locks taken by UPDATEs are kept at every isolation level. The deadlock still occurs, and a dirty read risk is added on top.",
+        "C": "Separate transactions prevent the deadlock but destroy the transfer's atomicity: if an error occurs after the first UPDATE is committed, money is lost. It swaps one problem for another, more serious one.",
+        "D": "At t3 T1's write to row 200 is blocked by T2's exclusive lock on that row; T1 cannot proceed. Since both T1 and T2 are waiting, the deadlock is inevitable.",
+        "E": "Foreign key constraints play no role in this scenario; the two transactions are locking rows of the same table in crossed order. Removing constraints weakens data integrity and does not resolve the deadlock."
+      },
+      "keyConcept": "Deadlock = circular wait. Prevention: lock resources (rows) in the same global order in every transaction. Detection: a cycle in the wait-for graph → roll back the victim transaction and retry.",
+      "examTip": "In the timeline, draw arrows for who holds which row and who is waiting for whom; if the chain of arrows loops back on itself, it is a deadlock. Among the fix options, immediately eliminate those that break atomicity (separate transactions, autocommit).",
+      "simpleExplanation": "Two people want to pass through two doors: the first is holding door A and waiting for B, the second is holding door B and waiting for A; both wait forever. This is called a deadlock. In the scenario T1 has locked account 100 and wants 200, while T2 has locked 200 and wants 100; exactly this situation. The database notices this and rolls back one of the transactions to untangle the knot, but the real fix is for it never to arise. If everyone always goes through the doors in the same order (e.g. the lower-numbered account first), mutual waiting cannot occur: both transactions ask for 100 first, one waits, the other finishes, then it is the first one's turn. The other suggested fixes either do not work or create the risk of leaving the transfer half done. The answer is A."
+    },
     "optionExplanations": {
       "A": "Doğru. Karşılıklı bekleme bir ölü kilittir; kaynakların her zaman aynı sırada kilitlenmesi döngüsel beklemeyi yapısal olarak engeller.",
       "B": "READ UNCOMMITTED yalnızca OKUMA kilitlerini kaldırır; UPDATE'lerin aldığı özel yazma kilitleri her yalıtım düzeyinde korunur. Ölü kilit yine oluşur, üstelik kirli okuma riski eklenir.",
@@ -834,6 +1186,28 @@
     "correctAnswer": "C",
     "explanation": "Dış döngü i = 0, 1, ..., n-1 olmak üzere n kez çalışır. İç döngüde j, 1'den başlayıp her adımda ikiye katlanır (1, 2, 4, 8, ...); j ≥ n olduğunda durur. Bu nedenle iç döngü yaklaşık log₂(n) kez döner (ör. n = 1024 için 10 kez). Toplam iş = n × log₂ n → O(n log n). Örneğin n = 8 için iç döngü j = 1, 2, 4 ile 3 kez döner, toplam 8 × 3 = 24 artış olur.",
     "simpleExplanation": "İki iç içe döngü var; toplam iş, dıştaki döngünün kaç kez döndüğü ile içtekinin kaç kez döndüğünün çarpımıdır. Dış döngü i'yi birer birer artırır, n kez döner. İç döngüde j birer artmaz, her adımda ikiye katlanır: 1, 2, 4, 8, 16... Bu şekilde n'e ulaşmak çok az adım alır; örneğin n = 1024 için yalnızca 10 adım. 'Kaç kez ikiye katlayarak n'e ulaşırım?' sorusunun cevabı log n'dir. Toplam: n × log n, yani O(n log n). Cevap C'dir.",
+    "en": {
+      "subtopic": "Big-O complexity analysis",
+      "question": "What is the time complexity (Big-O) of the following Java 17 code fragment with respect to the input size n?",
+      "options": {
+        "A": "O(n)",
+        "B": "O(log n)",
+        "C": "O(n log n)",
+        "D": "O(n²)",
+        "E": "O(n² log n)"
+      },
+      "explanation": "The outer loop runs n times, for i = 0, 1, ..., n-1. In the inner loop j starts at 1 and doubles on every step (1, 2, 4, 8, ...); it stops when j ≥ n. Therefore the inner loop iterates roughly log₂(n) times (e.g. 10 times for n = 1024). Total work = n × log₂ n → O(n log n). For example, for n = 8 the inner loop iterates 3 times with j = 1, 2, 4, for a total of 8 × 3 = 24 increments.",
+      "optionExplanations": {
+        "A": "It has been assumed that the inner loop iterates a constant number of times; in fact the number of iterations grows with n (logarithmically).",
+        "B": "This is only the complexity of the inner loop; the fact that the outer loop repeats n times has been ignored.",
+        "C": "Correct. The outer loop n times, the inner loop (since j doubles) log₂ n times: n × log n.",
+        "D": "It has been assumed that the inner loop increments with j++; with j = j * 2 the growth is exponential, not linear, so the number of iterations is log n, not n.",
+        "E": "An extra factor of n has been added while the logarithm has been kept; the code has only two nested loops."
+      },
+      "keyConcept": "If the counter is multiplied/divided by a constant factor on every step, that loop is O(log n); for nested loops the complexities are multiplied.",
+      "examTip": "Analyse each loop separately: 'i++ / i--' → n, 'i *= 2 / i /= 2' → log n, 'i += k (constant k)' → n/k = O(n); independent loops are added, nested loops are multiplied.",
+      "simpleExplanation": "There are two nested loops; the total work is the number of times the outer loop runs multiplied by the number of times the inner one runs. The outer loop increases i one at a time and runs n times. In the inner loop j does not go up by one, it doubles each step: 1, 2, 4, 8, 16... Reaching n this way takes very few steps; for example only 10 steps for n = 1024. The answer to \"how many times do I double to reach n?\" is log n. Total: n × log n, i.e. O(n log n). The answer is C."
+    },
     "optionExplanations": {
       "A": "İç döngünün sabit sayıda döndüğü varsayılmıştır; oysa dönüş sayısı n ile birlikte (logaritmik olarak) büyür.",
       "B": "Yalnızca iç döngünün karmaşıklığıdır; dış döngünün n kez tekrarladığı göz ardı edilmiştir.",
@@ -883,6 +1257,28 @@
     "correctAnswer": "B",
     "explanation": "Yığın LIFO (son giren ilk çıkar) ilkesiyle çalışır. Adım adım: push(5) → [5]; push(8) → [5, 8]; pop() → 8 döner, [5]; push(3) → [5, 3]; push(9) → [5, 3, 9]; pop() → 9 döner, [5, 3]; pop() → 3 döner, [5]; push(1) → [5, 1]. Dolayısıyla pop'lar 8, 9, 3 sırasıyla döner ve son içerik alttan üste [5, 1]'dir; tepe (top) eleman 1'dir.",
     "simpleExplanation": "Yığın, üst üste konan tabaklar gibidir: en son konan tabak en üsttedir ve ilk o alınır. push üste tabak koyar, pop üstteki tabağı alır. Adım adım: 5 koy [5], 8 koy [5, 8], al → 8 çıkar [5], 3 koy [5, 3], 9 koy [5, 3, 9], al → 9 çıkar [5, 3], al → 3 çıkar [5], 1 koy [5, 1]. Alınan tabaklar sırasıyla 8, 9, 3; sonunda altta 5, üstte 1 kalır. Cevap B'dir.",
+    "en": {
+      "subtopic": "Stack operation tracing",
+      "question": "The following operations are performed in order on a stack that is initially empty: push(5), push(8), pop(), push(3), push(9), pop(), pop(), push(1). Which of the following gives the order of the values returned by the pop() calls and the contents of the stack (bottom to top) when the operations are finished?",
+      "options": {
+        "A": "pop order: 5, 8, 3 – Final contents: [9, 1]",
+        "B": "pop order: 8, 9, 3 – Final contents: [5, 1]",
+        "C": "pop order: 8, 3, 9 – Final contents: [5, 1]",
+        "D": "pop order: 8, 9, 3 – Final contents: [1, 5]",
+        "E": "pop order: 8, 9, 5 – Final contents: [3, 1]"
+      },
+      "explanation": "A stack works on the LIFO (last in, first out) principle. Step by step: push(5) → [5]; push(8) → [5, 8]; pop() → returns 8, [5]; push(3) → [5, 3]; push(9) → [5, 3, 9]; pop() → returns 9, [5, 3]; pop() → returns 3, [5]; push(1) → [5, 1]. So the pops return 8, 9, 3 in that order and the final contents, bottom to top, are [5, 1]; the top element is 1.",
+      "optionExplanations": {
+        "A": "This is queue (FIFO) behaviour: first in, first out. In a stack the most recently added element comes out.",
+        "B": "Correct. LIFO trace: 8, 9, 3 come out; [5, 1] remains.",
+        "C": "The second and third pops are written in reverse order; since the top is 9 after push(9), 9 comes out first, then 3.",
+        "D": "The pop order is right but the final contents are written backwards: 5 stays at the bottom, 1 is on top because it was added last.",
+        "E": "For 5 to come out on the third pop, 3 would have to not have come out; since 3 is above 5, it comes out first."
+      },
+      "keyConcept": "Stack LIFO: pop always returns the most recently pushed (top) element. Queue FIFO: dequeue returns the element added earliest.",
+      "examTip": "In tracing questions, write out the whole stack in square brackets after every operation; on a pop, delete the rightmost (top) element and note it to one side.",
+      "simpleExplanation": "A stack is like plates stacked on top of each other: the plate put down last is on top and is the first to be taken. push puts a plate on top, pop takes the top plate. Step by step: put 5 [5], put 8 [5, 8], take → 8 comes off [5], put 3 [5, 3], put 9 [5, 3, 9], take → 9 comes off [5, 3], take → 3 comes off [5], put 1 [5, 1]. The plates taken were 8, 9, 3 in that order; at the end 5 is at the bottom and 1 on top. The answer is B."
+    },
     "optionExplanations": {
       "A": "Bu, kuyruk (queue, FIFO) davranışıdır: ilk giren ilk çıkar. Yığında son eklenen eleman çıkar.",
       "B": "Doğru. LIFO izlemesi: 8, 9, 3 çıkar; geride [5, 1] kalır.",
@@ -932,6 +1328,28 @@
     "correctAnswer": "D",
     "explanation": "Python'da // tam sayı bölmesidir (aşağı yuvarlar). Çağrı zinciri: g(10) = 10 + g(5); g(5) = 5 + g(2); g(2) = 2 + g(1); g(1) = 1 + g(0); g(0) = 0 (taban durumu). Geriye doğru toplama: g(1) = 1, g(2) = 3, g(5) = 8, g(10) = 18. Toplam 10 + 5 + 2 + 1 = 18; çağrı derinliği log₂ n ile orantılıdır (5 çağrı).",
     "simpleExplanation": "Fonksiyon kendini çağırıyor: her seferinde n'i toplama ekliyor ve n'in yarısıyla (küsuratı atarak) devam ediyor, n sıfır olunca duruyor. Sayıları yazalım: 10, sonra 10'un yarısı 5, sonra 5'in yarısı 2 (2,5'in küsuratı atılır), sonra 2'nin yarısı 1, sonra 1'in yarısı 0 ve orada durup 0 ekler. Toplam 10 + 5 + 2 + 1 + 0 = 18. En sık yapılan hata 1'i unutmaktır: fonksiyon n sıfır olunca duruyor, 1 olunca değil, bu yüzden 1 de toplanır. Cevap D'dir.",
+    "en": {
+      "subtopic": "Recursion output",
+      "question": "What value does the following Python 3 program print to the screen?",
+      "options": {
+        "A": "15",
+        "B": "17",
+        "C": "55",
+        "D": "18",
+        "E": "19"
+      },
+      "explanation": "In Python, // is integer division (it rounds down). The call chain: g(10) = 10 + g(5); g(5) = 5 + g(2); g(2) = 2 + g(1); g(1) = 1 + g(0); g(0) = 0 (base case). Adding up on the way back: g(1) = 1, g(2) = 3, g(5) = 8, g(10) = 18. The total is 10 + 5 + 2 + 1 = 18; the call depth is proportional to log₂ n (5 calls).",
+      "optionExplanations": {
+        "A": "Stopped at 10 + 5 = 15; the contributions of g(2) and g(1) (2 + 1) have not been added.",
+        "B": "The contribution of 1 from the g(1) call has been forgotten (10 + 5 + 2 = 17); since the base case is n == 0, n = 1 is added too.",
+        "C": "55 is the sum of all the numbers from 1 to 10; this rests on the mistaken belief that the function is called with g(n - 1). In fact n is halved on every step with n // 2.",
+        "D": "Correct. 10 + 5 + 2 + 1 + 0 = 18.",
+        "E": "An extra 1 has been added as if g(0) returned 1; the base case returns 0."
+      },
+      "keyConcept": "In recursive output questions, expand the calls down to the base case, then add the return values from the bottom up. // is integer division.",
+      "examTip": "Write the call tree: g(10) → g(5) → g(2) → g(1) → g(0). Note the contribution next to each line; double-check the base case value (0 or 1?).",
+      "simpleExplanation": "The function calls itself: each time it adds n to the sum and continues with half of n (dropping the fraction), stopping when n becomes zero. Let us write the numbers: 10, then half of 10 is 5, then half of 5 is 2 (the fraction of 2.5 is dropped), then half of 2 is 1, then half of 1 is 0, and there it stops and adds 0. Total 10 + 5 + 2 + 1 + 0 = 18. The most common mistake is forgetting the 1: the function stops when n becomes zero, not when it becomes 1, so the 1 is added too. The answer is D."
+    },
     "optionExplanations": {
       "A": "10 + 5 = 15 ile durulmuştur; g(2) ve g(1)'in katkıları (2 + 1) eklenmemiştir.",
       "B": "g(1) çağrısının 1 katkısı unutulmuştur (10 + 5 + 2 = 17); taban durumu n == 0 olduğu için n = 1 de toplanır.",
@@ -981,6 +1399,28 @@
     "correctAnswer": "A",
     "explanation": "1. adım: low = 0, high = 8 → mid = 4, A[4] = 34 < 47 → low = 5. 2. adım: low = 5, high = 8 → mid = (5 + 8) // 2 = 6, A[6] = 59 > 47 → high = 5. 3. adım: low = 5, high = 5 → mid = 5, A[5] = 47 = hedef → bulundu. Karşılaştırılan elemanlar 34, 59, 47'dir; 9 elemanlı dizide en fazla ⌊log₂ 9⌋ + 1 = 4 karşılaştırma gerekir. İkili aramanın ön koşulu dizinin sıralı olması ve rastgele erişim (O(1) indeksleme) sağlamasıdır; bağlı listede verimli çalışmaz.",
     "simpleExplanation": "İkili arama, sıralı bir sözlükte kelime ararken ortadan açıp 'aradığım bundan önce mi sonra mı?' diye bakarak yarıyı atmaya benzer. Dizide 9 eleman var (0'dan 8'e). İlk adımda ortadaki 4. indekse bakılır: 34; aradığımız 47 daha büyük, sol yarı atılır ve aralık 5–8 olur. Yeni orta (5 + 8) / 2 = 6,5, küsurat atılır, 6; oradaki 59 aradığımızdan büyük, sağ taraf atılır, aralık 5–5 olur. Son adımda 5. indekse bakılır: 47, bulundu. Karşılaştırılan sayılar sırasıyla 34, 59, 47; cevap A'dır.",
+    "en": {
+      "subtopic": "Binary search",
+      "question": "The value 47 is being searched for by binary search in the sorted array A = [3, 8, 15, 21, 34, 47, 59, 73, 88]. The algorithm starts with low = 0, high = 8 and at each step examines the index mid = (low + high) // 2; if A[mid] < target then low = mid + 1, if A[mid] > target then high = mid - 1. Which array elements are compared with the target, in order?",
+      "options": {
+        "A": "34, 59, 47",
+        "B": "34, 47",
+        "C": "47",
+        "D": "34, 73, 47",
+        "E": "3, 8, 15, 21, 34, 47"
+      },
+      "explanation": "Step 1: low = 0, high = 8 → mid = 4, A[4] = 34 < 47 → low = 5. Step 2: low = 5, high = 8 → mid = (5 + 8) // 2 = 6, A[6] = 59 > 47 → high = 5. Step 3: low = 5, high = 5 → mid = 5, A[5] = 47 = target → found. The elements compared are 34, 59, 47; in a 9-element array at most ⌊log₂ 9⌋ + 1 = 4 comparisons are needed. The preconditions for binary search are that the array is sorted and provides random access (O(1) indexing); it does not work efficiently on a linked list.",
+      "optionExplanations": {
+        "A": "Correct. The mid indices are 4 → 6 → 5; the values 34 → 59 → 47.",
+        "B": "In the second step mid = (5 + 8) // 2 = 6, not 5; integer division rounds 6.5 down to 6 and A[6] = 59 is examined.",
+        "C": "The middle of the array (index 4) is 34, not 47; the target is not found directly in the first step.",
+        "D": "In the second step high is still 8, so mid is 6, not 7; 73 (index 7) is never examined.",
+        "E": "This is the trace of a linear search; binary search halves the search range at every step."
+      },
+      "keyConcept": "Binary search works on a sorted, random-access array; the range is halved at each step, worst case O(log n). Watch out for integer division when computing mid.",
+      "examTip": "At each step write the quadruple (low, high, mid, A[mid]) as a table; do not forget that mid ± 1 is used when updating low and high.",
+      "simpleExplanation": "Binary search is like looking up a word in a sorted dictionary by opening it in the middle and asking \"is what I want before or after this?\" to throw away half. The array has 9 elements (0 to 8). In the first step we look at the middle, index 4: 34; our 47 is bigger, so the left half is discarded and the range becomes 5–8. The new middle is (5 + 8) / 2 = 6.5, the fraction is dropped, 6; the 59 there is bigger than what we want, the right side is discarded, the range becomes 5–5. In the last step we look at index 5: 47, found. The numbers compared, in order, are 34, 59, 47; the answer is A."
+    },
     "optionExplanations": {
       "A": "Doğru. mid indeksleri 4 → 6 → 5; değerler 34 → 59 → 47.",
       "B": "İkinci adımda mid = (5 + 8) // 2 = 6'dır, 5 değil; tam sayı bölmesi 6.5'i 6'ya yuvarlar ve A[6] = 59 incelenir.",
@@ -1031,6 +1471,28 @@
     "correctAnswer": "E",
     "explanation": "Eşit anahtarlı elemanların giriş sırasını koruma özelliğine kararlılık (stability) denir. Gereksinimler: kararlı + en kötü durum O(n log n) + O(n) ek bellek kabul edilebilir. Merge sort her durumda (en iyi, ortalama, en kötü) O(n log n) çalışır, birleştirme adımında soldaki elemanı önce aldığı için kararlıdır ve O(n) yardımcı dizi kullanır; tüm koşulları sağlar. Quicksort ve Heapsort kararlı değildir (Quicksort'un en kötü durumu ayrıca O(n²)'dir); Insertion sort kararlı ama O(n²); Selection sort hem kararsız hem O(n²)'dir.",
     "simpleExplanation": "Üç şart var: aynı tutardaki işlemler orijinal sıralarını korusun (buna 'kararlı sıralama' denir), en kötü durumda bile hızlı olsun (n log n) ve fazladan bellek kullanılabilsin. Kararlı sıralamayı, insanları boya göre dizerken aynı boydakilerin yerini değiştirmemek gibi düşünün. Quicksort ve Heapsort hızlıdır ama eşit elemanların yerini karıştırabilir; Quicksort'un ayrıca kötü günü çok yavaştır. Insertion ve Selection sort büyük verilerde çok yavaştır (n²). Merge sort ise veriyi ikiye böl, her yarıyı sırala, sonra sıraya uyarak birleştir mantığıyla çalışır; eşitlerde her zaman soldakini önce alır (kararlı), her durumda n log n sürer ve bunun için fazladan bir dizi kullanır. Üç şartı da sağlayan tek seçenek Merge sort, yani E'dir.",
+    "en": {
+      "subtopic": "Properties of sorting algorithms",
+      "question": "In a bank's end-of-day report, transactions will be sorted by amount, but the chronological (input) order of transactions with the same amount must be preserved; also, because the data volume is large, an O(n log n) time guarantee is required even in the worst case. Additional O(n) memory usage is acceptable. Which sorting algorithm meets all of these requirements?",
+      "options": {
+        "A": "Quicksort",
+        "B": "Heapsort",
+        "C": "Insertion sort",
+        "D": "Selection sort",
+        "E": "Merge sort"
+      },
+      "explanation": "The property of preserving the input order of elements with equal keys is called stability. The requirements: stable + worst case O(n log n) + O(n) extra memory acceptable. Merge sort runs in O(n log n) in every case (best, average, worst), is stable because the merge step takes the left-hand element first, and uses an O(n) auxiliary array; it meets all the conditions. Quicksort and Heapsort are not stable (Quicksort's worst case is also O(n²)); Insertion sort is stable but O(n²); Selection sort is both unstable and O(n²).",
+      "optionExplanations": {
+        "A": "Quicksort in its standard form is not stable (partitioning disturbs the order of equal elements) and its worst case is O(n²); it fails both requirements.",
+        "B": "Heapsort is O(n log n) in the worst case and works in place, but the heap structure does not preserve the relative order of equal elements; it is unstable.",
+        "C": "Insertion sort is stable and fast on small/nearly sorted data, but its worst and average case is O(n²); it does not meet the large-data requirement.",
+        "D": "Selection sort is O(n²) and is unstable because of swaps made between distant positions; it meets none of the requirements.",
+        "E": "Correct. Merge sort is stable, O(n log n) in every case and uses O(n) extra memory; it matches the requirements exactly."
+      },
+      "keyConcept": "Stable: Merge, Insertion, Bubble, Counting/Radix. Unstable: Quick, Heap, Selection. Guaranteed O(n log n): Merge, Heap. In place (O(1) extra memory): Heap, Insertion, Selection, Quick (log n stack).",
+      "examTip": "If the question says \"the order of equal elements must be preserved\" it means stability; if it says \"even in the worst case\", eliminate Quicksort; if it says \"no extra memory\", eliminate Merge sort.",
+      "simpleExplanation": "There are three conditions: transactions with the same amount must keep their original order (this is called a \"stable sort\"), it must be fast even in the worst case (n log n), and extra memory may be used. Think of a stable sort as lining people up by height without swapping the positions of those who are the same height. Quicksort and Heapsort are fast but can shuffle equal elements; Quicksort also has a very slow bad day. Insertion and Selection sort are very slow on large data (n²). Merge sort works by splitting the data in two, sorting each half, then merging them in order; with equals it always takes the left one first (stable), it takes n log n in every case, and it uses an extra array to do so. The only option that meets all three conditions is Merge sort, i.e. E."
+    },
     "optionExplanations": {
       "A": "Quicksort standart hâliyle kararlı değildir (bölümleme eşit elemanların sırasını bozar) ve en kötü durumu O(n²)'dir; iki gereksinimi de karşılamaz.",
       "B": "Heapsort en kötü durumda O(n log n) ve yerinde (in-place) çalışır ancak yığın yapısı eşit elemanların göreli sırasını korumaz, kararsızdır.",
@@ -1081,6 +1543,28 @@
     "correctAnswer": "B",
     "explanation": "Ekleme sırasıyla: 10 mod 7 = 3 → slot 3 boş, yerleşir. 22 mod 7 = 1 → slot 1. 31 mod 7 = 3 → slot 3 dolu (10) → çakışma, bir sonraki slot 4 boş → slot 4. 4 mod 7 = 4 → slot 4 dolu (31) → çakışma → slot 5 boş → slot 5. 15 mod 7 = 1 → slot 1 dolu (22) → çakışma → slot 2 boş → slot 2. 28 mod 7 = 0 → slot 0. Son tablo: [28, 22, 15, 10, 31, 4, boş]. Dolayısıyla 15 → slot 2, 4 → slot 5; toplam üç çakışma yaşanmıştır. Ekleme sırası önemlidir: 4, 31'den önce eklenseydi slot 4'e yerleşir ve 31 slot 5'e giderdi.",
     "simpleExplanation": "Hash tablosu, her anahtarı bir formülle bir kutuya koyar: burada kutu numarası, sayının 7'ye bölümünden kalandır. Kutu doluysa bir sonraki boş kutuya geçilir (doğrusal yoklama). Sırayla yerleştirelim: 10 → kalan 3, kutu 3. 22 → kalan 1, kutu 1. 31 → kalan 3, kutu 3 dolu, kutu 4'e. 4 → kalan 4, ama kutu 4'ü biraz önce 31 kaptı; bir sonrakine, kutu 5'e. 15 → kalan 1, kutu 1 dolu (22), kutu 2'ye. 28 → kalan 0, kutu 0. Yani 15 kutu 2'ye, 4 kutu 5'e yerleşir; cevap B'dir. Püf noktası, daha önce kayan anahtarların (31 gibi) başka kutuları doldurduğunu unutmamaktır.",
+    "en": {
+      "subtopic": "Hash table and collision resolution (linear probing)",
+      "question": "A hash table with 7 slots (0–6) uses the function h(k) = k mod 7 and linear probing for collision resolution (move to the next slot, wrap around to the start on reaching the end). The keys 10, 22, 31, 4, 15, 28 are inserted in that order into the empty table. In which slots do the keys 15 and 4 end up?",
+      "options": {
+        "A": "15 → slot 1, 4 → slot 4",
+        "B": "15 → slot 2, 4 → slot 5",
+        "C": "15 → slot 2, 4 → slot 6",
+        "D": "15 → slot 6, 4 → slot 5",
+        "E": "15 → slot 2, 4 → slot 4"
+      },
+      "explanation": "In insertion order: 10 mod 7 = 3 → slot 3 is empty, placed. 22 mod 7 = 1 → slot 1. 31 mod 7 = 3 → slot 3 is occupied (10) → collision, the next slot 4 is empty → slot 4. 4 mod 7 = 4 → slot 4 is occupied (31) → collision → slot 5 is empty → slot 5. 15 mod 7 = 1 → slot 1 is occupied (22) → collision → slot 2 is empty → slot 2. 28 mod 7 = 0 → slot 0. Final table: [28, 22, 15, 10, 31, 4, empty]. So 15 → slot 2, 4 → slot 5; three collisions occurred in total. The insertion order matters: had 4 been inserted before 31, it would have gone into slot 4 and 31 into slot 5.",
+      "optionExplanations": {
+        "A": "The collisions have been ignored and the raw hash values written down; but slot 1 (22) and slot 4 (31) were already filled.",
+        "B": "Correct. For 15, slot 1 is occupied → 2; for 4, slot 4 is occupied (by 31) → 5.",
+        "C": "Slot 5 is empty for key 4; probing stops at the first empty slot, it does not go on to 6.",
+        "D": "For key 15 the probe goes forward (1 → 2), not backward (1 → 0 → 6); also, with slot 2 empty it does not go any further.",
+        "E": "The placement of 15 is right, but when 4 is inserted slot 4 is already occupied by 31 (it had moved there because of the 31 mod 7 = 3 collision); 4 goes to the next empty slot, 5."
+      },
+      "keyConcept": "In linear probing a colliding key is placed in the first empty slot starting from its hash slot (wrapping around at the end of the table). Keys that have previously been displaced affect later placements (primary clustering).",
+      "examTip": "Draw the table from 0 to 6 and place the keys one by one in the given order; do not forget that earlier collisions have filled other slots, this is the most common mistake.",
+      "simpleExplanation": "A hash table puts each key into a box using a formula: here the box number is the remainder when the number is divided by 7. If the box is full, you move on to the next empty box (linear probing). Let us place them in order: 10 → remainder 3, box 3. 22 → remainder 1, box 1. 31 → remainder 3, box 3 is full, into box 4. 4 → remainder 4, but 31 just grabbed box 4; on to the next one, box 5. 15 → remainder 1, box 1 is full (22), into box 2. 28 → remainder 0, box 0. So 15 goes in box 2 and 4 in box 5; the answer is B. The trick is not to forget that keys that slid along earlier (like 31) have filled other boxes."
+    },
     "optionExplanations": {
       "A": "Çakışmalar yok sayılıp doğrudan hash değerleri yazılmıştır; oysa slot 1 (22) ve slot 4 (31) daha önce dolmuştur.",
       "B": "Doğru. 15 için slot 1 dolu → 2; 4 için slot 4 (31 tarafından) dolu → 5.",
@@ -1131,6 +1615,28 @@
     "correctAnswer": "A",
     "explanation": "extract-min üç adımdan oluşur: (1) kök (2) döndürülür; (2) dizinin son elemanı (8) köke taşınır ve boyut 5'e düşer → [8, 5, 7, 9, 6]; (3) yığın özelliğini onarmak için kökten aşağı eleme (sift-down / heapify) yapılır. İndeks 0'daki 8'in çocukları 5 (indeks 1) ve 7 (indeks 2); en küçük çocuk 5 < 8 → takas → [5, 8, 7, 9, 6]. Şimdi 8 indeks 1'de; çocukları 9 (indeks 3) ve 6 (indeks 4); en küçük 6 < 8 → takas → [5, 6, 7, 9, 8]. 8 artık indeks 4'te ve çocuğu yok; işlem O(log n) sürede biter. Sonuç [5, 6, 7, 9, 8] geçerli bir min-heap'tir (her ebeveyn çocuklarından küçük).",
     "simpleExplanation": "Min-heap, her ebeveynin çocuklarından küçük olduğu bir ağaçtır; en küçük sayı her zaman tepededir. En küçüğü çıkarmak üç adımdır: tepedeki 2'yi al; dizinin son elemanı 8'i boşalan tepeye koy → [8, 5, 7, 9, 6]; sonra 8'i yerine otursun diye aşağı it. 8'in çocukları 5 ve 7; küçüğü 5 ile yer değiştir → [5, 8, 7, 9, 6]. Şimdi 8'in çocukları 9 ve 6; küçüğü 6 ile yer değiştir → [5, 6, 7, 9, 8]. 8'in artık çocuğu kalmadı, duruyoruz. Sonuç [5, 6, 7, 9, 8]; cevap A'dır. Dikkat: heap sıralı bir liste değildir, bu yüzden 9 ile 8'in yeri değişmez.",
+    "en": {
+      "subtopic": "Binary heap operations",
+      "question": "A min-heap is given in array representation as A = [2, 5, 7, 9, 6, 8] (the children of the node at index i are at 2i+1 and 2i+2, the root is at index 0). What are the contents of the array after one extract-min (remove the minimum) operation is performed on this heap?",
+      "options": {
+        "A": "[5, 6, 7, 9, 8]",
+        "B": "[5, 6, 7, 8, 9]",
+        "C": "[5, 8, 7, 9, 6]",
+        "D": "[5, 7, 6, 9, 8]",
+        "E": "[8, 5, 7, 9, 6]"
+      },
+      "explanation": "extract-min consists of three steps: (1) the root (2) is returned; (2) the last element of the array (8) is moved to the root and the size drops to 5 → [8, 5, 7, 9, 6]; (3) a sift-down (heapify) is performed from the root to restore the heap property. The children of the 8 at index 0 are 5 (index 1) and 7 (index 2); the smallest child 5 < 8 → swap → [5, 8, 7, 9, 6]. Now 8 is at index 1; its children are 9 (index 3) and 6 (index 4); the smallest is 6 < 8 → swap → [5, 6, 7, 9, 8]. 8 is now at index 4 and has no children; the operation finishes in O(log n) time. The result [5, 6, 7, 9, 8] is a valid min-heap (every parent is smaller than its children).",
+      "optionExplanations": {
+        "A": "Correct. The last element is moved to the root, and two sift-down steps give [5, 6, 7, 9, 8].",
+        "B": "A heap is not a sorted array; the sift-down only swaps along the root-to-child path, it does not swap 9 and 8 (the two are siblings/on different branches).",
+        "C": "The sift-down has been left half done: after the first swap, the 8 at index 1 must be compared with its children 9 and 6; since 6 < 8 a second swap is needed. In this array the parent-child relation 8 > 6 breaks the heap property.",
+        "D": "It has been treated as if the swap were with 7 rather than with the smaller of the root's children (5 out of 5 and 7); moreover, moving 7 to index 1 changes the structure of the tree.",
+        "E": "Only the move of the last element to the root has been done, no sift-down has been applied at all; with 8 at the root, its children 5 and 7 violate the heap property."
+      },
+      "keyConcept": "extract-min: take the root → put the last element at the root → sift down by swapping with the smallest child → O(log n). A heap is partially ordered, not a fully sorted array.",
+      "examTip": "In the array representation, draw the tree by writing the child indices (2i+1, 2i+2); when sifting down always swap with the SMALLER of the two children and stop when there are no children left.",
+      "simpleExplanation": "A min-heap is a tree in which every parent is smaller than its children; the smallest number is always at the top. Removing the minimum takes three steps: take the 2 at the top; put the array's last element, 8, into the vacated top → [8, 5, 7, 9, 6]; then push the 8 downwards so it settles into place. The children of 8 are 5 and 7; swap with the smaller one, 5 → [5, 8, 7, 9, 6]. Now the children of 8 are 9 and 6; swap with the smaller one, 6 → [5, 6, 7, 9, 8]. 8 has no children left, so we stop. The result is [5, 6, 7, 9, 8]; the answer is A. Note: a heap is not a sorted list, which is why 9 and 8 do not change places."
+    },
     "optionExplanations": {
       "A": "Doğru. Son eleman köke taşınır, iki kez aşağı eleme ile [5, 6, 7, 9, 8] elde edilir.",
       "B": "Yığın sıralı bir dizi değildir; aşağı eleme yalnızca kök-çocuk yolu boyunca takas yapar, 9 ile 8'in yerini değiştirmez (ikisi kardeş/farklı dallardadır).",
@@ -1180,6 +1686,28 @@
     "correctAnswer": "D",
     "explanation": "DFS, bir komşuya gidince geri dönmeden önce o dalı sonuna kadar izler. A ziyaret edilir; A'nın ilk komşusu B'ye gidilir. B'nin komşuları A (ziyaret edildi), D → D ziyaret edilir; D'nin tek komşusu B ziyaret edilmiş → geri B'ye. B'nin sıradaki komşusu E → E ziyaret edilir; E'nin komşuları B (ziyaret edildi), F → F ziyaret edilir; F'nin komşuları C (ziyaret edilmedi) → C ziyaret edilir; C'nin komşuları A ve F ziyaret edilmiş → geri dönülür. Tüm düğümler bitti. Sıra: A, B, D, E, F, C. Buna karşılık aynı graf ve kuraldaki BFS sırası A, B, C, D, E, F olur; iki algoritma C'nin ziyaret zamanında ayrışır.",
     "simpleExplanation": "Derinlik öncelikli arama (DFS), bir labirentte hep ilk gördüğünüz koridora dalıp çıkmaza gelince geri dönmek gibidir. A'dan başlıyoruz, alfabetik ilk komşu B'ye gidiyoruz. B'nin ilk görülmemiş komşusu D; D'ye gidiyoruz, D çıkmaz (tek komşusu B zaten gezildi), B'ye dönüyoruz. B'nin sıradaki komşusu E; E'ye, oradan görülmemiş komşusu F'ye, F'den de görülmemiş komşusu C'ye gidiyoruz. Artık her yer gezildi. Sıra: A, B, D, E, F, C; cevap D'dir. C'ye A'dan değil F üzerinden ulaşıldı, çünkü DFS A'nın ikinci komşusuna dönmeden önce B dalını sonuna kadar izler.",
+    "en": {
+      "subtopic": "Graph traversal (DFS/BFS)",
+      "question": "A recursive depth-first search (DFS) is performed starting from node A in the undirected graph below. The neighbours of each node are visited in alphabetical order. Which of the following is the order in which the nodes are first visited?",
+      "options": {
+        "A": "A, B, C, D, E, F",
+        "B": "A, B, D, E, C, F",
+        "C": "A, C, F, E, B, D",
+        "D": "A, B, D, E, F, C",
+        "E": "A, B, E, F, C, D"
+      },
+      "explanation": "DFS, once it moves to a neighbour, follows that branch to its end before backtracking. A is visited; we go to A's first neighbour B. B's neighbours are A (visited), D → D is visited; D's only neighbour B has been visited → back to B. B's next neighbour E → E is visited; E's neighbours are B (visited), F → F is visited; F's neighbours include C (not visited) → C is visited; C's neighbours A and F have been visited → backtrack. All nodes are done. Order: A, B, D, E, F, C. By contrast, the BFS order on the same graph with the same rule would be A, B, C, D, E, F; the two algorithms diverge in when C is visited.",
+      "optionExplanations": {
+        "A": "This is the BFS (breadth-first) order: it does not go deeper until all of A's neighbours (B, C) are done. In DFS, after B we go to B's neighbour D, not to C.",
+        "B": "DFS does not go back to B after E and then to A's second neighbour C; while E has the unvisited neighbour F it descends to F first, and C is reached via F.",
+        "C": "When neighbours are visited in alphabetical order, from A we go to B first, not C; this order is the result of a reverse-alphabetical rule.",
+        "D": "Correct. A → B → D (dead end, back) → E → F → C; at each step we descend to the first unvisited neighbour alphabetically.",
+        "E": "B's first unvisited neighbour alphabetically is D, not E; D cannot be skipped."
+      },
+      "keyConcept": "DFS follows a branch to its end (stack/recursion), BFS proceeds level by level (queue). The neighbour visiting order determines the result; the question always gives it.",
+      "examTip": "When tracing DFS keep a \"path stack\": add the node as you go forward, and when it has no neighbours left pop it and move to the previous node's NEXT unvisited neighbour. Do not forget to backtrack at dead-end nodes (like D).",
+      "simpleExplanation": "Depth-first search (DFS) is like always diving into the first corridor you see in a maze and turning back when you hit a dead end. We start at A and go to B, the first neighbour alphabetically. B's first unvisited neighbour is D; we go to D, D is a dead end (its only neighbour B has already been visited), we go back to B. B's next neighbour is E; we go to E, from there to its unvisited neighbour F, and from F to its unvisited neighbour C. Now everywhere has been visited. Order: A, B, D, E, F, C; the answer is D. C was reached via F, not from A, because DFS follows the B branch to its end before returning to A's second neighbour."
+    },
     "optionExplanations": {
       "A": "Bu, BFS (genişlik öncelikli) sırasıdır: A'nın tüm komşuları (B, C) bitmeden derine inilmez. DFS'te B'den sonra C'ye değil, B'nin komşusu D'ye gidilir.",
       "B": "DFS, E'den sonra B'ye geri dönüp A'nın ikinci komşusu C'ye gitmez; E'nin ziyaret edilmemiş komşusu F varken önce F'ye iner, C'ye F üzerinden ulaşılır.",

@@ -15,11 +15,13 @@
   }
 
   Data.load = async function () {
-    const [topicsFile, questionsFile, notes, plan] = await Promise.all([
+    const [topicsFile, questionsFile, notes, plan, notesEn, planEn] = await Promise.all([
       fetchJSON('data/topics.json'),
       fetchJSON('data/questions.json'),
       fetchJSON('data/notes.json').catch(() => ({})),
-      fetchJSON('data/plan.json').catch(() => [])
+      fetchJSON('data/plan.json').catch(() => []),
+      fetchJSON('data/notes_en.json').catch(() => ({})),
+      fetchJSON('data/plan_en.json').catch(() => [])
     ]);
     Data.topics = topicsFile.topics.slice().sort((a, b) => a.order - b.order);
     Data.exam = topicsFile.exam;
@@ -34,6 +36,8 @@
     });
     Data.notes = notes || {};
     Data.plan = Array.isArray(plan) ? plan : [];
+    Data.notesEn = notesEn || {};
+    Data.planEn = Array.isArray(planEn) ? planEn : [];
     Data.ready = true;
     return Data;
   };
@@ -44,6 +48,23 @@
   Data.difficultyLabel = d => (en()
     ? { temel: 'Basic', orta: 'Intermediate', ileri: 'Advanced' }
     : { temel: 'Temel', orta: 'Orta', ileri: 'İleri' })[d] || d;
+  /** Soru nesnesinin geçerli dildeki görünümü (en çevirisi varsa ve dil İngilizce ise birleştirilmiş kopya). */
+  Data.localized = q => {
+    if (!en() || !q.en) return q;
+    const e = q.en;
+    return Object.assign({}, q, {
+      subtopic: e.subtopic || q.subtopic,
+      question: e.question || q.question,
+      options: q.options.map(o => ({ id: o.id, text: (e.options && e.options[o.id]) || o.text })),
+      explanation: e.explanation || q.explanation,
+      optionExplanations: Object.assign({}, q.optionExplanations, e.optionExplanations || {}),
+      keyConcept: e.keyConcept || q.keyConcept,
+      examTip: e.examTip || q.examTip,
+      simpleExplanation: e.simpleExplanation || q.simpleExplanation
+    });
+  };
+  Data.notesFor = id => (en() && Data.notesEn[id]) ? Data.notesEn[id] : Data.notes[id];
+  Data.planList = () => (en() && Data.planEn.length) ? Data.planEn : Data.plan;
   Data.priorityLabel = p => (en()
     ? { 'yüksek': 'High priority', 'orta': 'Medium priority', 'tamamlayıcı': 'Supporting' }
     : { 'yüksek': 'Yüksek öncelik', 'orta': 'Orta öncelik', 'tamamlayıcı': 'Tamamlayıcı' })[p] || p;

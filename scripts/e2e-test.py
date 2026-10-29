@@ -184,6 +184,23 @@ with sync_playwright() as p:
     page.fill("#customN", "99"); page.click("#customForm button[type=submit]"); page.wait_for_selector("#qform")
     check("/ 8" in page.locator(".progress-line").inner_text(), "konu sayfasında özel sayı mevcut soruya sınırlanıyor")
 
+    print("10c. Yenilemede oturum ve deneme sürdürme")
+    page.goto(BASE + "#/konu/VTYS"); page.wait_for_selector("[data-n]"); page.click("[data-n='5']"); page.wait_for_selector("#qform")
+    qn = page.locator("input[type=radio]").first.get_attribute("name"); qq = by_id[qn.replace("q_", "")]
+    page.check(f"input[name='{qn}'][value='{qq['correctAnswer']}']"); page.click("#checkBtn"); page.wait_for_selector(".feedback"); page.click("#nextBtn"); page.wait_for_selector("#qform")
+    page.reload(); page.wait_for_selector("#qform")
+    check("2 / 5" in page.locator(".progress-line").inner_text(), "alıştırma yenilemeden sonra 2. sorudan devam ediyor")
+    check("1" in page.locator(".progress-line").inner_text().split("·")[-1], "doğru sayısı korunuyor")
+    page.click("#quitBtn"); page.click("#modalOk"); page.wait_for_selector("text=Oturum tamamlandı")
+    page.goto(BASE + "#/deneme"); page.wait_for_selector("#startExam"); page.select_option("#timerSel", "45"); page.click("#startExam"); page.wait_for_selector(".qnav")
+    page.click("input[type=radio][value='B']"); page.click(".qnav button[data-i='5']"); page.wait_for_selector("#examForm")
+    page.reload(); page.wait_for_selector(".qnav")
+    check(page.locator(".qnav button.current").inner_text() == "6", "deneme yenilemeden sonra aynı soruda")
+    check(page.locator(".qnav button[data-i='0']").get_attribute("class").find("answered") >= 0, "deneme cevabı korunuyor")
+    check(page.locator("#examTimer").inner_text() < "45:00", "deneme süresi gerçek zamandan devam ediyor")
+    page.click("#leaveBtn"); page.click("#modalOk"); page.wait_for_selector(".stat")
+    check(page.evaluate("JSON.parse(localStorage.getItem('bmSinavHazirlik.v1')).activeExam") is None, "çıkınca deneme kaydı temizleniyor")
+
     print("11. Konsol hataları")
     check(len(console_errors) == 0, "konsol hatası yok" + ("" if not console_errors else ": " + "; ".join(console_errors[:3])))
 

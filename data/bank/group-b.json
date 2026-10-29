@@ -32,6 +32,28 @@
     "correctAnswer": "D",
     "explanation": "Python 3'te / operatörü her zaman kayan noktalı (float) sonuç verir: 7 / 2 = 3.5. // operatörü tabana yuvarlayan (floor) bölmedir ve iki tamsayı için tamsayı döndürür: 7 // 2 = 3. % kalan operatörüdür: 7 % 2 = 1. Negatif sayılarda // sıfıra doğru değil, negatif sonsuza doğru yuvarlar: -7 // 2 = -3.5'in tabanı = -4. Dolayısıyla çıktı '3.5 3 1 -4' olur.",
     "simpleExplanation": "Python 3'te tek çizgili bölme (/) her zaman virgüllü sonuç verir: 7 bölü 2 = 3.5. Çift çizgili bölme (//) ise sonucu aşağıya doğru yuvarlar, yani 7 // 2 = 3 olur ve % işareti kalanı verir (1). Asıl tuzak eksi sayılarda: -3.5'in 'aşağısı' sayı doğrusunda -4'tür, -3 değil. Bunu bir asansör gibi düşünün: aşağı yuvarlama her zaman bir alt kata iner; eksi tarafta alt kat daha büyük eksi sayıdır. Bu yüzden çıktı 3.5 3 1 -4 olur.",
+    "en": {
+      "subtopic": "Python 3 arithmetic operators and integer division",
+      "question": "What is the output of the following Python 3 program?",
+      "options": {
+        "A": "3.5 3 1 -3",
+        "B": "3 3 1 -3",
+        "C": "3.5 3.0 1 -4",
+        "D": "3.5 3 1 -4",
+        "E": "3.5 4 1 -4"
+      },
+      "explanation": "In Python 3 the / operator always produces a floating-point (float) result: 7 / 2 = 3.5. The // operator is floor division and returns an integer for two integer operands: 7 // 2 = 3. % is the remainder operator: 7 % 2 = 1. For negative numbers, // rounds towards negative infinity, not towards zero: -7 // 2 = floor of -3.5 = -4. The output is therefore '3.5 3 1 -4'.",
+      "optionExplanations": {
+        "A": "Writing -3 for -7 // 2 is the truncation-towards-zero behaviour of C and Java wrongly carried over to Python; Python rounds down (floor) and gives -4.",
+        "B": "7 / 2 giving 3 is Python 2 behaviour. In Python 3, / always returns a float (3.5). Also, -7 // 2 = -4.",
+        "C": "7 // 2 returns an integer (3) for two integer operands, not 3.0. The result is a float only when one of the operands is a float.",
+        "D": "Correct. / → 3.5, // → 3, % → 1, and with floor rounding on the negative value -7 // 2 → -4.",
+        "E": "For 7 // 2 to be 4 it would have to round up; // rounds down, so it is 3."
+      },
+      "keyConcept": "In Python 3, / performs true division (float) and // performs floor division; for negative numbers // rounds towards negative infinity.",
+      "examTip": "When you see negative integer division, check the language: Python uses floor (-7//2 = -4), Java/C use truncation (-7/2 = -3).",
+      "simpleExplanation": "In Python 3 the single-slash division (/) always gives a decimal result: 7 divided by 2 = 3.5. The double-slash division (//) rounds the result downwards, so 7 // 2 = 3, and the % sign gives the remainder (1). The real trap is with negative numbers: 'below' -3.5 on the number line is -4, not -3. Think of it like a lift: rounding down always goes to the floor below; on the negative side, the floor below is a bigger negative number. That is why the output is 3.5 3 1 -4."
+    },
     "optionExplanations": {
       "A": "-7 // 2 için -3 yazılması, C ve Java'daki sıfıra doğru kesme (truncation) davranışının Python'a yanlış aktarılmasıdır; Python tabana (floor) yuvarlar ve -4 verir.",
       "B": "7 / 2'nin 3 vermesi Python 2 davranışıdır. Python 3'te / daima float döndürür (3.5). Ayrıca -7 // 2 = -4'tür.",
@@ -81,6 +103,28 @@
     "correctAnswer": "B",
     "explanation": "Java her zaman değer ile geçiş (pass-by-value) yapar; nesneler için geçirilen değer referansın kopyasıdır. x ilkel (primitive) tip olduğundan metot içindeki x = x + 1 yalnızca kopyayı değiştirir, main'deki x 5 kalır. sb.append(\"B\") ve dizi[0] = 99 paylaşılan nesnelerin içeriğini değiştirdiği için çağırana yansır. Ancak dizi = new int[]{7,7} ve sb = new StringBuilder(\"C\") yalnızca yerel referans kopyasını yeni nesneye yönlendirir; main'deki referanslar eski nesnelere bakmaya devam eder. Çıktı: 5 AB 99 2.",
     "simpleExplanation": "Java'da bir metoda değişken verdiğinizde aslında bir fotokopi veriyorsunuz. Sayı (int) için fotokopi sayının kendisidir; metot kopyayı 6 yapsa da elinizdeki 5 değişmez. Nesneler için ise fotokopi, nesnenin adresinin kopyasıdır: iki kişi aynı eve giden iki ayrı adres kağıdı taşır. Metot bu adrese gidip evin içini değiştirirse (sb'ye 'B' eklemek, dizinin ilk kutusuna 99 yazmak) siz de görürsünüz. Ama metot kendi kağıdına başka bir evin adresini yazarsa (sb = new ..., dizi = new ...) sizin kağıdınız eski evi göstermeye devam eder. Sonuç: 5 AB 99 2.",
+    "en": {
+      "subtopic": "Parameter passing in Java (pass by value and reference copies)",
+      "question": "What is the output of the following Java 17 program?",
+      "options": {
+        "A": "6 ABC 7 2",
+        "B": "5 AB 99 2",
+        "C": "5 C 7 2",
+        "D": "6 AB 99 2",
+        "E": "5 ABC 99 2"
+      },
+      "explanation": "Java always uses pass-by-value; for objects, the value passed is a copy of the reference. Since x is a primitive type, x = x + 1 inside the method changes only the copy, and x in main stays 5. sb.append(\"B\") and dizi[0] = 99 modify the contents of shared objects, so they are visible to the caller. However, dizi = new int[]{7,7} and sb = new StringBuilder(\"C\") only point the local reference copies at new objects; the references in main keep pointing at the old objects. Output: 5 AB 99 2.",
+      "optionExplanations": {
+        "A": "x being 6 is the misconception that primitives are passed by reference; furthermore, reassigning sb is not visible to the caller, so neither 'ABC' nor 7 can appear.",
+        "B": "Correct. The primitive copy is unchanged (5), changes to object contents are visible (AB, 99), reassigning the reference is not (the length stays 2).",
+        "C": "sb = new StringBuilder(\"C\") and dizi = new int[]{7,7} only change the local reference copies; sb in main still points to the object containing 'AB', and dizi still points to the array {99, 2}.",
+        "D": "AB and 99 are right, but x is a primitive; the increment inside the method does not affect x in main, which stays 5.",
+        "E": "99 is right, but for 'ABC' the reassignment of the sb reference would have to be visible to the caller, which is impossible in Java. Besides, the new StringBuilder contains 'C', not 'ABC'."
+      },
+      "keyConcept": "In Java, references are copied by value: modifying the contents of an object is visible to the caller, assigning the reference to a new object is not.",
+      "examTip": "If you see a line 'parameter = new ...' inside a method, immediately note that this line has no effect whatsoever on the caller.",
+      "simpleExplanation": "When you pass a variable to a method in Java, you are really handing over a photocopy. For a number (int) the photocopy is the number itself; even if the method turns the copy into 6, the 5 in your hand does not change. For objects, the photocopy is a copy of the object's address: two people carry two separate slips of paper leading to the same house. If the method goes to that address and changes the inside of the house (appending 'B' to sb, writing 99 into the first box of the array), you see it too. But if the method writes the address of a different house on its own slip (sb = new ..., dizi = new ...), your slip keeps pointing to the old house. Result: 5 AB 99 2."
+    },
     "optionExplanations": {
       "A": "x'in 6 olması ilkel tipin referansla geçtiği yanılgısıdır; ayrıca sb'ye yeniden atama çağırana yansımaz, bu yüzden 'ABC' veya 7 oluşamaz.",
       "B": "Doğru. İlkel kopya değişmez (5), nesne içeriği değişiklikleri yansır (AB, 99), referansın yeniden atanması yansımaz (uzunluk 2 kalır).",
@@ -130,6 +174,28 @@
     "correctAnswer": "A",
     "explanation": "Python'da varsayılan argüman ifadeleri fonksiyon tanımlandığı anda bir kez değerlendirilir ve fonksiyon nesnesinde saklanır. Bu nedenle liste=[] ile oluşturulan tek bir liste nesnesi, varsayılanı kullanan tüm çağrılar arasında paylaşılır. ekle(1) bu listeye 1 ekler ve aynı nesneyi döndürür (a). ekle(2) aynı nesneye 2 ekler; a ve b aynı nesneye işaret ettiği için ikisi de [1, 2] görünür. ekle(3, []) ise açıkça yeni bir boş liste verdiği için c = [3] olur.",
     "simpleExplanation": "Python'da fonksiyonun varsayılan değeri (liste=[]) fonksiyon her çağrıldığında değil, fonksiyon ilk tanımlandığında bir kez yaratılır. Yani o boş liste, lokantada masaya bir kez konan ortak ekmek sepeti gibidir: sepet verilmeden gelen her müşteri aynı sepeti kullanır. ekle(1) ve ekle(2) aynı sepete ekler, bu yüzden hem a hem b [1, 2] gösterir; çünkü ikisi de aynı sepettir. ekle(3, []) ise kendi boş sepetini getirdiği için [3] olur.",
+    "en": {
+      "subtopic": "The mutable default argument pitfall in Python",
+      "question": "In the following Python 3 program the ekle() function is called three times. What is the output of the print line?",
+      "options": {
+        "A": "[1, 2] [1, 2] [3]",
+        "B": "[1] [2] [3]",
+        "C": "[1] [1, 2] [3]",
+        "D": "[1, 2, 3] [1, 2, 3] [1, 2, 3]",
+        "E": "[1, 2] [1, 2] [1, 2, 3]"
+      },
+      "explanation": "In Python, default argument expressions are evaluated once, at the moment the function is defined, and stored on the function object. So the single list object created by liste=[] is shared by every call that relies on the default. ekle(1) appends 1 to this list and returns the same object (a). ekle(2) appends 2 to the same object; since a and b point to the same object, both appear as [1, 2]. ekle(3, []) explicitly supplies a new empty list, so c = [3].",
+      "optionExplanations": {
+        "A": "Correct. a and b are the same shared default list object ([1, 2]); c is the new list that was passed explicitly ([3]).",
+        "B": "This is the misconception that a fresh empty list is created on every call. The default expression is evaluated only once, at definition time.",
+        "C": "For a to stay [1], a would have to be a separate copy; but a and b are references to the same list object, so a also appears as [1, 2].",
+        "D": "The third call explicitly passes [] for the liste parameter, so it does not touch the shared default list; 3 is not appended to the default list.",
+        "E": "For c to be [1, 2, 3] the default list would have to be used; but ekle(3, []) passes a new empty list, so c = [3]."
+      },
+      "keyConcept": "In Python, default arguments are created once at definition time; mutable defaults are shared across calls. The safe pattern is liste=None with 'if liste is None: liste = []' in the body.",
+      "examTip": "If you see a [] or {} default on the def line, assume values will accumulate across calls; calls that explicitly pass a new collection are unaffected by that accumulation.",
+      "simpleExplanation": "In Python, a function's default value (liste=[]) is created once, when the function is first defined, not every time it is called. So that empty list is like the shared bread basket placed on a restaurant table once: every customer who arrives without bringing a basket uses the same one. ekle(1) and ekle(2) add to the same basket, so both a and b show [1, 2], because they are the same basket. ekle(3, []) brings its own empty basket, so it becomes [3]."
+    },
     "optionExplanations": {
       "A": "Doğru. a ve b aynı paylaşılan varsayılan liste nesnesidir ([1, 2]); c açıkça verilen yeni listedir ([3]).",
       "B": "Her çağrıda yeni bir boş liste oluşturulduğu yanılgısıdır. Varsayılan ifade yalnızca tanım anında bir kez değerlendirilir.",
@@ -179,6 +245,28 @@
     "correctAnswer": "C",
     "explanation": "Üç farklı bağlama (binding) kuralı bir aradadır. (1) h.ad(): metot geçersiz kılma (overriding) çalışma zamanında nesnenin gerçek tipine göre çözülür (dinamik bağlama); nesne VadeliHesap olduğundan 'VadeliHesap' döner. (2) h.tur: alanlar çok biçimli değildir; alan erişimi derleme zamanında referansın bildirilen tipine (Hesap) göre çözülür, alt sınıftaki tur yalnızca gizler (field hiding). Sonuç 'Genel'. (3) yaz(h): aşırı yükleme (overloading) derleme zamanında argümanın statik tipine göre seçilir; h'nin statik tipi Hesap olduğundan yaz(Hesap) çağrılır ve 'H' döner. Çıktı: VadeliHesap Genel H.",
     "simpleExplanation": "Bu soruda aynı nesneye üç farklı şekilde bakıyoruz. Metot çağrısı (h.ad()) nesnenin gerçekte ne olduğuna bakar: kutunun üstünde 'Hesap' yazsa da içindeki VadeliHesap'tır, bu yüzden 'VadeliHesap' döner. Alan (h.tur) ise kutunun etiketine bakar: etiket Hesap olduğu için Hesap'taki 'Genel' okunur. Hangi yaz() metodunun seçileceği de derleme anında etikete göre belirlenir, dolayısıyla 'H' seçilir. Kısaca: metotlar içeriğe, alanlar ve aşırı yükleme seçimi etikete bakar.",
+    "en": {
+      "subtopic": "Polymorphism, field hiding and overload resolution",
+      "question": "The following Java 17 program defines the classes Hesap and VadeliHesap. What is printed to the console when the main method runs?",
+      "options": {
+        "A": "VadeliHesap Vadeli V",
+        "B": "Hesap Genel H",
+        "C": "VadeliHesap Genel H",
+        "D": "VadeliHesap Vadeli H",
+        "E": "Hesap Vadeli V"
+      },
+      "explanation": "Three different binding rules are at work together. (1) h.ad(): method overriding is resolved at run time according to the object's actual type (dynamic binding); since the object is a VadeliHesap, 'VadeliHesap' is returned. (2) h.tur: fields are not polymorphic; field access is resolved at compile time according to the declared type of the reference (Hesap), and the tur in the subclass merely hides it (field hiding). The result is 'Genel'. (3) yaz(h): overloading is selected at compile time according to the static type of the argument; since the static type of h is Hesap, yaz(Hesap) is called and returns 'H'. Output: VadeliHesap Genel H.",
+      "optionExplanations": {
+        "A": "This is the misconception that field access and overload resolution are also dynamic. In Java only instance method calls are resolved by run-time type; the tur field and the choice of yaz() are made by the static type (Hesap).",
+        "B": "ad() is overridden and, through dynamic binding, the VadeliHesap version runs; returning 'Hesap' is impossible.",
+        "C": "Correct. Overriding is dynamic (VadeliHesap), field hiding is static (Genel), overloading is static (H).",
+        "D": "ad() and yaz() are evaluated correctly, but fields cannot be overridden; since the static type of h is Hesap, h.tur is 'Genel'.",
+        "E": "ad(), the field and overload resolution have all been applied backwards: ad() is dynamically VadeliHesap, while tur and yaz() are resolved through the static type Hesap."
+      },
+      "keyConcept": "In Java, instance methods are bound dynamically (run-time type); fields and the choice of overloaded method are bound statically (compile-time type).",
+      "examTip": "When you see the pattern 'Super ref = new Sub()', ask three separate questions: is it a method (Sub), a field (Super), or an overload choice (Super)?",
+      "simpleExplanation": "In this question we look at the same object in three different ways. A method call (h.ad()) looks at what the object really is: even though the box is labelled 'Hesap', what is inside is a VadeliHesap, so 'VadeliHesap' is returned. A field (h.tur) looks at the label on the box: because the label is Hesap, the 'Genel' in Hesap is read. Which yaz() method is chosen is also decided at compile time by the label, so 'H' is picked. In short: methods look at the contents, fields and overload selection look at the label."
+    },
     "optionExplanations": {
       "A": "Alan erişimi ve aşırı yükleme çözümünün de dinamik olduğu yanılgısıdır. Java'da yalnızca örnek metot çağrıları çalışma zamanı tipine göre çözülür; tur alanı ve yaz() seçimi statik tipe (Hesap) göre yapılır.",
       "B": "ad() geçersiz kılınmıştır ve dinamik bağlama ile VadeliHesap sürümü çalışır; 'Hesap' dönmesi mümkün değildir.",
@@ -228,6 +316,28 @@
     "correctAnswer": "E",
     "explanation": "Dizinin uzunluğu 5, geçerli indeksler 0-4'tür. Döngü koşulu i <= dizi.length olduğundan i = 5 değeri için de döngü gövdesi çalışır ve dizi[5] erişimi yapılır. Java dizi sınırlarını çalışma zamanında denetler ve geçersiz indeks için ArrayIndexOutOfBoundsException (Index 5 out of bounds for length 5) fırlatır. İstisna yakalanmadığından program println satırına ulaşmadan sonlanır; hiçbir toplam yazdırılmaz. Bu klasik bir 'bir fazla' (off-by-one) hatasıdır; doğru koşul i < dizi.length olmalıdır.",
     "simpleExplanation": "Dizide 5 eleman var ama Java'da sayma 0'dan başlar, yani kutuların numaraları 0, 1, 2, 3, 4'tür. Döngü 'i <= 5' dediği için i = 5 olduğunda da çalışır ve olmayan 5 numaralı kutuya uzanır. Java buna izin vermez: 'bu kutu yok' diyerek programı bir hatayla (ArrayIndexOutOfBoundsException) durdurur. Hata, toplam yazdırılmadan önce oluştuğu için ekranda hiçbir sayı görünmez. Beş basamaklı bir merdivende altıncı basamağa adım atmak gibi düşünün: düşersiniz, yukarı çıkamazsınız.",
+    "en": {
+      "subtopic": "Off-by-one errors and array indexing",
+      "question": "What happens when the following Java 17 program is run?",
+      "options": {
+        "A": "150 is printed.",
+        "B": "150 is printed; 0 is added for dizi[5].",
+        "C": "A compile error occurs; the compiler rejects the condition i <= dizi.length.",
+        "D": "160 is printed.",
+        "E": "Nothing is printed; an ArrayIndexOutOfBoundsException is thrown at run time."
+      },
+      "explanation": "The array has length 5, so the valid indices are 0-4. Because the loop condition is i <= dizi.length, the loop body also runs for i = 5 and accesses dizi[5]. Java checks array bounds at run time and throws an ArrayIndexOutOfBoundsException (Index 5 out of bounds for length 5) for the invalid index. Since the exception is not caught, the program terminates before reaching the println line; no total is printed. This is a classic off-by-one error; the correct condition should be i < dizi.length.",
+      "optionExplanations": {
+        "A": "150 would have been printed only if the condition were i < dizi.length. Because of <=, an out-of-bounds access happens on the sixth iteration.",
+        "B": "In Java, an out-of-bounds array access does not silently return 0; a run-time exception is thrown. This behaviour is being confused with unchecked C arrays.",
+        "C": "i <= dizi.length is a syntactically and type-wise valid expression; the compiler does not logically check loop bounds. The error appears at run time, not at compile time.",
+        "D": "A value like 160 relies on the assumption that dizi[5] returns 10; in Java an out-of-bounds index does not return a value, it raises an exception.",
+        "E": "Correct. At i = 5 the access dizi[5] throws an ArrayIndexOutOfBoundsException; println never runs."
+      },
+      "keyConcept": "In zero-based arrays the valid index range is 0 ... length-1; the loop condition should be i < length. Java performs bounds checking at run time.",
+      "examTip": "If <= and .length appear together in a loop condition, first check whether an out-of-bounds access occurs.",
+      "simpleExplanation": "The array has 5 elements, but counting in Java starts at 0, so the boxes are numbered 0, 1, 2, 3, 4. Because the loop says 'i <= 5', it also runs when i = 5 and reaches for box number 5, which does not exist. Java does not allow this: it says 'that box does not exist' and stops the program with an error (ArrayIndexOutOfBoundsException). Since the error occurs before the total is printed, no number appears on the screen. Think of stepping onto the sixth step of a five-step staircase: you fall, you do not go up."
+    },
     "optionExplanations": {
       "A": "150 ancak koşul i < dizi.length olsaydı yazdırılırdı. <= nedeniyle altıncı iterasyonda sınır dışı erişim gerçekleşir.",
       "B": "Java'da sınır dışı dizi erişimi sessizce 0 döndürmez; çalışma zamanı istisnası fırlatılır. Bu davranış denetimsiz C dizileriyle karıştırılmaktadır.",
@@ -277,6 +387,28 @@
     "correctAnswer": "D",
     "explanation": "Odeme, alt sınıfların paylaştığı durum (ucret alanı), yapıcı mantığı ve somut bir metot (logla) içerir; Java arayüzleri örnek alanı ve yapıcı barındıramaz, bu yüzden Odeme için soyut sınıf gerekir. isle() soyut bırakılarak her alt sınıfın gerçekleştirmesi zorunlu kılınır. Denetlenebilir ise birbirinden bağımsız sınıflara eklenecek bir yetenektir; Java'da sınıf kalıtımı tekli olduğu için (Hesap başka bir sınıftan türüyor olabilir) bu tür 'yapabilir' sözleşmeleri arayüzle ifade edilir ve bir sınıf istediği kadar arayüz uygulayabilir. Bu, Java kütüphanesindeki Comparable, Serializable gibi arayüzlerin kullanım kalıbıyla aynıdır.",
     "simpleExplanation": "Soyut sınıf (abstract class) bir aile ağacı gibidir: çocuklar ortak malı (ucret alanı), ortak doğum işlemini (yapıcı) ve hazır davranışları (logla) miras alır; ama bir çocuğun yalnızca tek bir ebeveyni olabilir. Arayüz (interface) ise bir sertifika gibidir: 'bu iş yapılabilir' sözü verir, mal vermez; ve bir sınıf istediği kadar sertifika alabilir. EFT, Havale ve KartOdeme ortak mal ve ortak yapıcı paylaştığı için Odeme bir soyut sınıf olmalıdır. Hesap, Kart ve Rapor ise birbiriyle akraba olmayan sınıflar; onlara 'denetlenebilir' yeteneğini vermek için sertifika yani arayüz kullanılır.",
+    "en": {
+      "subtopic": "Choosing between abstract classes and interfaces",
+      "question": "In a bank's payment module, the classes EFT, Havale and KartOdeme share a common 'ucret' field, common constructor logic and a common, already implemented logla() method, and differ only in how they implement the isle() method. In addition, the classes Hesap, Kart and Rapor, which have no inheritance relationship with one another, are required to have the izKaydiUret() capability (to be Denetlenebilir, i.e. auditable). Which of the following is the most appropriate design for Java 17?",
+      "options": {
+        "A": "Both should be defined as interfaces, because a class can implement more than one interface and this is always more flexible.",
+        "B": "Both should be defined as abstract classes, because abstract classes can contain both abstract and concrete methods.",
+        "C": "Odeme should be an interface and Denetlenebilir an abstract class, because shared fields belong in the interface and behavioural contracts in the abstract class.",
+        "D": "Odeme should be an abstract class and Denetlenebilir an interface; shared state and constructor logic are expressed in the abstract class, and a capability independent of the inheritance hierarchy in the interface.",
+        "E": "Odeme should be written as a concrete class with isle() left as an empty body, and Denetlenebilir should be an interface."
+      },
+      "explanation": "Odeme contains state shared by the subclasses (the ucret field), constructor logic and a concrete method (logla); Java interfaces cannot hold instance fields or constructors, so Odeme needs to be an abstract class. Leaving isle() abstract forces every subclass to implement it. Denetlenebilir, on the other hand, is a capability to be added to unrelated classes; because class inheritance in Java is single (Hesap may already extend some other class), 'can do' contracts of this kind are expressed with an interface, and a class can implement as many interfaces as it likes. This is the same usage pattern as the Comparable and Serializable interfaces in the Java library.",
+      "optionExplanations": {
+        "A": "Even in Java 17, interfaces cannot contain instance fields (ucret) or constructors; they hold only constants (static final) plus default, static and private methods. Shared state cannot be provided through an interface.",
+        "B": "Java uses single class inheritance. If Denetlenebilir were an abstract class, a Hesap or Rapor that already extends another class could not extend it; adding a capability to unrelated classes requires an interface.",
+        "C": "The roles are reversed: shared fields and a constructor can only live in an (abstract) class, while a behavioural contract added to independent classes is the job of an interface.",
+        "D": "Correct. Shared state + partial implementation → abstract class; capability independent of the hierarchy → interface.",
+        "E": "Making Odeme concrete allows an incomplete object with an unimplemented isle() to be created and does not force subclasses to override isle(); compiler enforcement is lost. An abstract class prevents this at compile time."
+      },
+      "keyConcept": "Abstract class: an 'is a' relationship, shared state and partial implementation. Interface: a 'can do' contract, multiple implementation, a capability independent of the hierarchy.",
+      "examTip": "If the scenario mentions 'shared field' or 'shared constructor', choose an abstract class; if it says 'unrelated classes should have the same capability', choose an interface.",
+      "simpleExplanation": "An abstract class is like a family tree: the children inherit shared property (the ucret field), the shared birth procedure (the constructor) and ready-made behaviours (logla); but a child can have only one parent. An interface is like a certificate: it promises 'this job can be done' but hands over no property; and a class can collect as many certificates as it likes. Because EFT, Havale and KartOdeme share property and a constructor, Odeme should be an abstract class. Hesap, Kart and Rapor are classes that are not related to one another; to give them the 'auditable' ability, a certificate, i.e. an interface, is used."
+    },
     "optionExplanations": {
       "A": "Arayüzler Java 17'de bile örnek alanı (ucret) ve yapıcı içeremez; yalnızca sabitler (static final) ile default, static ve private metotlar barındırır. Ortak durum (state) paylaşımı arayüzle sağlanamaz.",
       "B": "Java tekli sınıf kalıtımı kullanır. Denetlenebilir soyut sınıf olursa, zaten başka bir sınıftan türeyen Hesap veya Rapor onu genişletemez; ilişkisiz sınıflara yetenek eklemek için arayüz gerekir.",
@@ -326,6 +458,28 @@
     "correctAnswer": "B",
     "explanation": "sayac statik olduğundan sınıfa aittir ve tüm nesneler arasında tek bir kopyası vardır; no ise örnek alanıdır, her nesnenin kendi kopyası bulunur. Her yapıcı çağrısında ortak sayac bir artar ve o anki değeri nesnenin no alanına kopyalanır: a.no = 1, b.no = 2, c.no = 3. Üç nesne oluşturulduktan sonra sayac = 3'tür. b.sayac ifadesi derlenir (derleyici uyarı verebilir) ve statik alanı okur; Hesap.sayac ile aynı değeri, yani 3'ü verir. Çıktı: 1 3 3.",
     "simpleExplanation": "static kelimesi bir değişkeni sınıfa ait tek bir ortak tahta yapar; her nesnenin kendi kopyası yoktur. Buna karşılık 'no' her nesnenin cebindeki kendi numarasıdır. Her yeni Hesap yaratıldığında ortak tahtadaki sayı bir artar ve o anki değer nesnenin cebine yazılır: a 1, b 2, c 3 alır. Üç nesneden sonra tahtada 3 yazar; tahtaya a üzerinden, b üzerinden ya da sınıf adıyla bakmak hep aynı 3'ü gösterir. Bu yüzden çıktı '1 3 3' olur.",
+    "en": {
+      "subtopic": "Static and instance members",
+      "question": "In the following Java 17 program, three objects of the Hesap class are created. What is the output of the println line?",
+      "options": {
+        "A": "1 2 3",
+        "B": "1 3 3",
+        "C": "3 3 3",
+        "D": "1 1 3",
+        "E": "Compile error: a static field cannot be accessed through an object reference (b.sayac)."
+      },
+      "explanation": "Because sayac is static, it belongs to the class and there is a single copy shared by all objects; no, on the other hand, is an instance field, and each object has its own copy. On every constructor call the shared sayac is incremented by one and its current value is copied into the object's no field: a.no = 1, b.no = 2, c.no = 3. After three objects have been created, sayac = 3. The expression b.sayac compiles (the compiler may issue a warning) and reads the static field; it gives the same value as Hesap.sayac, namely 3. Output: 1 3 3.",
+      "optionExplanations": {
+        "A": "b.sayac being 2 is the misconception that sayac is kept separately in each object like an instance field. The static field is a single one and is 3 after three constructor calls.",
+        "B": "Correct. a.no is the value of sayac at construction time (1); b.sayac and Hesap.sayac are the current value of the same static field (3).",
+        "C": "a.no is an instance field and was set to 1 when a was created; creating later objects does not change a.no.",
+        "D": "For b.sayac to be 1, sayac would have to be private to b and incremented only once; the static field is shared and is 3.",
+        "E": "Accessing a static field through an object reference is valid in Java (it is considered poor style and the compiler or IDE may warn), not a compile error."
+      },
+      "keyConcept": "static members are a single copy belonging to the class and shared by all objects; instance members are separate in each object. Static access through an object reference compiles but is not recommended.",
+      "examTip": "In constructor questions with a static counter, keep two separate lists: the value each object copied at construction time and the final value of the static field.",
+      "simpleExplanation": "The word static turns a variable into a single shared whiteboard belonging to the class; each object does not get its own copy. By contrast, 'no' is each object's own number in its own pocket. Every time a new Hesap is created, the number on the shared whiteboard goes up by one and the current value is written into the object's pocket: a gets 1, b gets 2, c gets 3. After three objects the whiteboard reads 3; looking at the whiteboard via a, via b or via the class name always shows the same 3. That is why the output is '1 3 3'."
+    },
     "optionExplanations": {
       "A": "b.sayac'ın 2 olması, sayac'ın örnek alanı gibi her nesnede ayrı tutulduğu yanılgısıdır. Statik alan tektir ve üç yapıcı çağrısından sonra 3'tür.",
       "B": "Doğru. a.no yapıcı anındaki sayac değeri (1); b.sayac ve Hesap.sayac aynı statik alanın güncel değeri (3).",
@@ -375,6 +529,28 @@
     "correctAnswer": "E",
     "explanation": "Liskov Yerine Geçme İlkesi, bir alt sınıf nesnesinin üst sınıf beklenen her yerde programın doğruluğunu bozmadan kullanılabilmesini gerektirir. Hesap.paraCek() sözleşmesi 'yeterli bakiye varsa tutar düşülür' iken KilitliHesap bu sözleşmeyi her koşulda istisna fırlatarak daraltmış, yani üst sınıfın garantilerini bozmuştur. GunSonuIslemleri yalnızca Hesap tipine güvenerek yazılmıştır; alt sınıfın sürpriz davranışı istemciyi kırmaktadır. Bu, LSP ihlalinin klasik belirtisidir: istemcinin alt tipi 'instanceof' ile ayıklamak zorunda kalması. Çözüm, kilitlilik durumunu Hesap sözleşmesine dahil etmek (örn. cekilebilirMi() ön koşulu) ya da KilitliHesap'ı paraCek sözleşmesi olmayan ayrı bir soyutlamaya taşımaktır.",
     "simpleExplanation": "Liskov ilkesi basitçe şunu söyler: 'Bir yerde Hesap bekleniyorsa, Hesap'ın her alt türü oraya sorunsuz konabilmeli.' Gün sonu işlemi hesapların ücretini çekerken 'bunlar hesap, para çekebilirim' diye güvenir. KilitliHesap ise Hesap kılığına girmiş ama para çekme sözünü tutmayan bir türdür; sıra ona gelince patlar ve tüm toplu işlem durur. Bu, 'her araba gaz pedalına basınca gider' varsayımıyla üretilmiş bir otomatik parkur sistemine, gaz pedalı sökülmüş bir araba sokmaya benzer. Alt sınıf, üst sınıfın verdiği sözü bozduğu için ihlal edilen ilke Liskov Yerine Geçme İlkesi'dir.",
+    "en": {
+      "subtopic": "SOLID principles – the Liskov Substitution Principle",
+      "question": "A bank's core banking application contains the following Java 17 classes. The GunSonuIslemleri class iterates over a List<Hesap> and calls paraCek(ucret) for every account, and when locked accounts get into the list the batch operation stops with an exception. Which SOLID principle does this design primarily violate?",
+      "options": {
+        "A": "The Single Responsibility Principle, because the Hesap class both holds a balance and withdraws money.",
+        "B": "The Open/Closed Principle, because adding a new account type requires modifying the Hesap class.",
+        "C": "The Interface Segregation Principle, because GunSonuIslemleri depends on an interface that contains methods it does not use.",
+        "D": "The Dependency Inversion Principle, because GunSonuIslemleri depends on the concrete Hesap class.",
+        "E": "The Liskov Substitution Principle, because KilitliHesap narrows the contract of its superclass and so cannot be used safely where a Hesap is expected."
+      },
+      "explanation": "The Liskov Substitution Principle requires that an object of a subclass can be used anywhere the superclass is expected without breaking the correctness of the program. While the contract of Hesap.paraCek() is 'if the balance is sufficient, the amount is deducted', KilitliHesap narrows that contract by throwing an exception under every condition, i.e. it breaks the guarantees of the superclass. GunSonuIslemleri was written trusting only the Hesap type; the subclass's surprise behaviour breaks the client. This is the classic symptom of an LSP violation: the client being forced to filter out the subtype with 'instanceof'. The fix is either to make the locked state part of the Hesap contract (e.g. a cekilebilirMi() precondition) or to move KilitliHesap to a separate abstraction that has no paraCek contract.",
+      "optionExplanations": {
+        "A": "Holding a balance and withdrawing money are coherent parts of the same business concept (an account); an SRP violation requires mixing responsibilities with different reasons to change (e.g. persistence, reporting). The problem does not lie here.",
+        "B": "The code does not require Hesap to be modified to add a new type; extension was done through inheritance. This is not an OCP violation; the issue is that the extension breaks the contract.",
+        "C": "ISP is about clients being forced to depend on 'fat' interfaces containing many methods they do not need. Hesap exposes a single relevant method; the problem is not the width of the interface but the subclass's behaviour.",
+        "D": "GunSonuIslemleri depending on the concrete Hesap is debatable from a DIP standpoint, but it is not the source of the problem; even if Hesap were an interface, KilitliHesap's contract-breaking implementation would produce the same failure.",
+        "E": "Correct. The subclass removed the guarantees of the superclass (a successful withdrawal) and threw an unexpected exception, breaking substitutability."
+      },
+      "keyConcept": "LSP: a subtype may not strengthen the preconditions, weaken the postconditions or throw unexpected exceptions of its supertype. An override that throws 'UnsupportedOperationException' in a subclass is a typical sign of an LSP violation.",
+      "examTip": "If the body of an overridden method does nothing but throw an exception, or if client code filters out subclasses with instanceof, think LSP.",
+      "simpleExplanation": "The Liskov principle simply says: 'If a Hesap is expected somewhere, every subtype of Hesap must be able to go there without trouble.' While the end-of-day job collects fees from the accounts, it trusts that 'these are accounts, I can withdraw money'. KilitliHesap, however, is a type that is dressed up as a Hesap but does not keep the promise to withdraw money; when its turn comes it blows up and the whole batch stops. It is like pushing a car with its accelerator pedal removed into an automated test track built on the assumption that 'every car moves when you press the accelerator'. Because the subclass breaks the promise given by the superclass, the principle being violated is the Liskov Substitution Principle."
+    },
     "optionExplanations": {
       "A": "Bakiye tutma ve para çekme aynı iş kavramının (hesap) uyumlu parçalarıdır; SRP ihlali için farklı değişim nedenlerine sahip sorumlulukların (örn. kalıcılık, raporlama) karışması gerekir. Sorun burada değildir.",
       "B": "Kodda yeni tür eklemek için Hesap'ın değiştirilmesi gerekmemektedir; kalıtım yoluyla genişletme yapılmıştır. OCP ihlali değil, genişletmenin sözleşmeyi bozması söz konusudur.",
@@ -424,6 +600,28 @@
     "correctAnswer": "A",
     "explanation": "İş parçacığı, bir sürecin içindeki hafif yürütme birimidir. Aynı sürecin iş parçacıkları süreç kaynaklarını (adres alanı: kod, global veri, heap; açık dosyalar, sinyal işleyiciler) paylaşır. Buna karşılık her iş parçacığının kendi yürütme bağlamı vardır: kendi yığıtı (yerel değişkenler ve çağrı zinciri), kendi yazmaç kümesi ve kendi program sayacı. Bu paylaşım, iş parçacıkları arası iletişimi hızlı kılar ancak paylaşılan veri üzerinde yarış durumu (race condition) riski doğurur; bu nedenle eşzamanlama (synchronization) gerekir.",
     "simpleExplanation": "Bir süreç (process) bir ofis gibidir; iş parçacıkları (thread) o ofiste çalışan kişilerdir. Çalışanlar ofisin ortak eşyalarını paylaşır: aynı program kodu, ortak veriler, ortak depo (heap) ve açık dosyalar. Ama her çalışanın kendi masası ve not defteri vardır: kendi yığıtı (yerel değişkenleri), kendi yazmaçları ve 'şu an hangi satırdayım' bilgisi olan program sayacı. Herkesin kendi defteri olmasa iki kişi aynı anda farklı işler yapamazdı. Paylaşılan eşyalar ise hızlı iletişim sağlar ama 'aynı anda aynı eşyaya dokunma' sorununu doğurur.",
+    "en": {
+      "subtopic": "Process and thread concepts",
+      "question": "Which of the following correctly states which resources are shared by multiple threads running within the same process, and which are private to each thread?",
+      "options": {
+        "A": "The code section, data section, heap and open file descriptors are shared; the stack, registers and program counter are private to each thread.",
+        "B": "Each thread has its own virtual address space; only open file descriptors are shared.",
+        "C": "The stack is shared among all threads, while the heap is private to each thread.",
+        "D": "Threads share no memory; communication between them happens only through IPC mechanisms such as pipes and message queues.",
+        "E": "The program counter (PC) is shared; therefore all threads in the same process execute the same instruction at any given moment."
+      },
+      "explanation": "A thread is a lightweight unit of execution inside a process. The threads of the same process share the process resources (the address space: code, global data, heap; open files, signal handlers). By contrast, each thread has its own execution context: its own stack (local variables and call chain), its own register set and its own program counter. This sharing makes inter-thread communication fast but creates the risk of race conditions on shared data; hence synchronization is required.",
+      "optionExplanations": {
+        "A": "Correct. Shared: code, data, heap, open files. Private: stack, registers, PC.",
+        "B": "A separate virtual address space is a property of processes. Threads share the same address space; that is precisely why they are 'lightweight'.",
+        "C": "This is reversed: the stack is private to each thread (so that local variables and return addresses do not get mixed up), and the heap is shared.",
+        "D": "This is the definition of inter-process communication (IPC). Threads communicate directly through shared memory; no IPC is needed.",
+        "E": "Each thread has its own program counter; otherwise they could not execute independent code paths."
+      },
+      "keyConcept": "Process = the unit of resource ownership (address space, files). Thread = the unit of scheduling/execution (stack, registers, PC).",
+      "examTip": "For 'is it shared?' questions remember the rule: everything at process level is shared, the execution context (stack/PC/registers) is private.",
+      "simpleExplanation": "A process is like an office; threads are the people working in that office. The workers share the office's common equipment: the same program code, shared data, a shared storeroom (the heap) and open files. But each worker has their own desk and notebook: their own stack (local variables), their own registers and a program counter recording 'which line am I on right now'. If everyone did not have their own notebook, two people could not do different jobs at the same time. The shared equipment makes communication fast but creates the problem of 'touching the same thing at the same time'."
+    },
     "optionExplanations": {
       "A": "Doğru. Paylaşılan: kod, veri, heap, açık dosyalar. Özel: stack, yazmaçlar, PC.",
       "B": "Ayrı sanal adres alanı süreçlerin özelliğidir. İş parçacıkları aynı adres alanını paylaşır; zaten 'hafif' olmalarının nedeni budur.",
@@ -473,6 +671,28 @@
     "correctAnswer": "C",
     "explanation": "Önalımsız SJF'de bir süreç başladıktan sonra bitene kadar kesilmez; CPU boşaldığında hazır kuyruğundaki en kısa çalışma süreli süreç seçilir. t=0'da yalnızca P1 vardır, 0-8 arasında çalışır. t=8'de P2 (4), P3 (2), P4 (1) hazırdır; en kısa P4 seçilir: 8-9. Sonra P3: 9-11. Sonra P2: 11-15. Bekleme süreleri (başlama - varış): P1 = 0-0 = 0, P4 = 8-3 = 5, P3 = 9-2 = 7, P2 = 11-1 = 10. Toplam 22, ortalama 22/4 = 5,5.",
     "simpleExplanation": "Önalımsız SJF'de kural şudur: işlemci boşaldığında bekleyenler arasından en kısa iş seçilir, ama başlamış bir iş asla kesilmez. Başta yalnızca P1 vardır, 8 birim çalışır. O bitince P2 (4), P3 (2) ve P4 (1) sırada bekler; en kısa olan P4, sonra P3, en son P2 çalışır. Bekleme süresi, bir sürecin geldiği an ile başladığı an arasındaki farktır: P1 0, P4 5, P3 7, P2 10 bekler. Toplam 22, dört süreç olduğu için ortalama 5,5. Kasada tek sırada beklerken kasiyerin 'şimdi kimin işi en kısa' diye bakması gibi düşünün; ama kasiyer işlem yaparken kimse araya giremez.",
+    "en": {
+      "subtopic": "CPU scheduling – computing the SJF average waiting time",
+      "question": "The table below gives the arrival and burst times of four processes. When the non-preemptive Shortest Job First (SJF) algorithm is used, what is the average waiting time in time units? (Context-switch time is to be ignored.)",
+      "options": {
+        "A": "2.75",
+        "B": "4.25",
+        "C": "5.5",
+        "D": "6.75",
+        "E": "7.0"
+      },
+      "explanation": "In non-preemptive SJF, once a process starts it is not interrupted until it finishes; when the CPU becomes free, the process in the ready queue with the shortest burst time is chosen. At t=0 only P1 is present, so it runs from 0 to 8. At t=8, P2 (4), P3 (2) and P4 (1) are ready; the shortest, P4, is chosen: 8-9. Then P3: 9-11. Then P2: 11-15. Waiting times (start - arrival): P1 = 0-0 = 0, P4 = 8-3 = 5, P3 = 9-2 = 7, P2 = 11-1 = 10. Total 22, average 22/4 = 5.5.",
+      "optionExplanations": {
+        "A": "2.75 is the result of the preemptive version, Shortest Remaining Time First (SRTF): P1 is preempted by P2 at t=1, then P3 and P4 finish in turn, P2 completes its remainder and P1 is left until last (waiting 7, 3, 0, 1; average 11/4 = 2.75). The question asks for non-preemptive SJF.",
+        "B": "4.25 comes from adding the waiting times incorrectly (17/4); the fact that P2 waits 10 units may have been overlooked.",
+        "C": "Correct. Execution order P1→P4→P3→P2; waiting times 0, 5, 7, 10; average 22/4 = 5.5.",
+        "D": "6.75 (27/4) is close to the mistake of computing waiting time from arrival to completion (turnaround time); waiting time does not include burst time.",
+        "E": "7.0 is the result of the First Come First Served (FCFS) algorithm: order P1→P2→P3→P4, waiting 0, 7, 10, 11; average 28/4 = 7."
+      },
+      "keyConcept": "Waiting time = start time - arrival time (in the non-preemptive case). In non-preemptive SJF the selection is made only when the CPU becomes free; the running process is not interrupted.",
+      "examTip": "Draw the Gantt chart first, write down each process's start time, then subtract the arrivals. Missing the word 'non-preemptive' leads you to the SRTF answer.",
+      "simpleExplanation": "In non-preemptive SJF the rule is this: when the processor becomes free, the shortest job among those waiting is chosen, but a job that has started is never interrupted. At the start only P1 is there and it runs for 8 units. When it finishes, P2 (4), P3 (2) and P4 (1) are waiting in line; the shortest, P4, runs first, then P3, and P2 last. Waiting time is the difference between the moment a process arrives and the moment it starts: P1 waits 0, P4 5, P3 7, P2 10. The total is 22, and with four processes the average is 5.5. Think of waiting in a single queue at a checkout where the cashier looks for 'whose job is shortest now'; but nobody can cut in while the cashier is serving someone."
+    },
     "optionExplanations": {
       "A": "2,75 önalımlı sürüm olan En Kısa Kalan Süre Önce (Shortest Remaining Time First, SRTF) algoritmasının sonucudur: P1 t=1'de P2 tarafından kesilir, sonra P3 ve P4 sırayla biter, P2 kalanını tamamlar ve P1 en sona kalır (bekleme 7, 3, 0, 1; ortalama 11/4 = 2,75). Soru önalımsız SJF istemektedir.",
       "B": "4,25 bekleme sürelerinin hatalı toplanmasıyla (17/4) elde edilir; P2'nin 10 birim beklediği gözden kaçırılmış olabilir.",
@@ -522,6 +742,28 @@
     "correctAnswer": "E",
     "explanation": "Kilitlenme için dört koşulun aynı anda sağlanması gerekir: karşılıklı dışlama, tut ve bekle, önalımsızlık ve döngüsel bekleme. Kaynaklara global bir numaralandırma verip her sürecin kaynakları yalnızca artan sırayla istemesini zorunlu kılmak (resource ordering), bekleme grafiğinde döngü oluşmasını imkânsız kılar: HAREKET'i tutan bir iş HESAP'ı bekleyemez, çünkü kurala göre HESAP'ı daha önce almış olmalıdır. Böylece döngüsel bekleme koşulu ortadan kalkar; diğer üç koşul değişmeden kalır ama tek bir koşul bozulduğu için kilitlenme oluşamaz. Bu yöntem veri tabanı uygulamalarında kilitlenmeyi önlemenin en yaygın pratik tekniğidir.",
     "simpleExplanation": "Kilitlenme (deadlock), iki kişinin dar bir koridorda birbirinin geçmesini beklemesi gibidir: biri HESAP'ı tutup HAREKET'i bekler, diğeri HAREKET'i tutup HESAP'ı bekler, ikisi de sonsuza kadar bekler. Bu 'sen beni bekle, ben seni bekleyeyim' çemberine döngüsel bekleme denir. Herkese 'önce HESAP'ı, sonra HAREKET'i al' kuralı koyarsanız, HAREKET'i elinde tutan biri HESAP'ı zaten almış olmak zorundadır; dolayısıyla kimse ters yönden gelip çember oluşturamaz. Bu kural tek yönlü trafik koymaya benzer: koridorda karşılaşma olmaz. Kaldırılan koşul döngüsel beklemedir; diğer üç koşul aynen durur.",
+    "en": {
+      "subtopic": "Deadlock conditions and prevention",
+      "question": "In a bank's end-of-day batch system, deadlocks occur from time to time because two jobs lock the HESAP and HAREKET tables in the database in different orders. The IT team has introduced a rule that forces all jobs to always lock resources in a predetermined fixed order (first HESAP, then HAREKET). Which of the four Coffman conditions required for deadlock does this measure eliminate?",
+      "options": {
+        "A": "Mutual exclusion",
+        "B": "Hold and wait",
+        "C": "No preemption",
+        "D": "Starvation",
+        "E": "Circular wait"
+      },
+      "explanation": "For a deadlock to occur, four conditions must hold simultaneously: mutual exclusion, hold and wait, no preemption and circular wait. Assigning a global numbering to resources and forcing every process to request resources only in increasing order (resource ordering) makes it impossible for a cycle to form in the wait-for graph: a job holding HAREKET cannot be waiting for HESAP, because by the rule it must have acquired HESAP earlier. The circular wait condition is thereby eliminated; the other three conditions remain unchanged, but because one condition is broken, deadlock cannot occur. This method is the most common practical technique for preventing deadlock in database applications.",
+      "optionExplanations": {
+        "A": "Mutual exclusion is inherent in table locks and has not been removed; two jobs still cannot lock the same table for writing at the same time.",
+        "B": "Hold and wait means waiting for one resource while holding another. Under the ordered-locking rule a job can still wait for HAREKET while holding HESAP; this condition still holds. To eliminate hold-and-wait, all resources would have to be requested at once at the start.",
+        "C": "No preemption means a lock cannot be forcibly taken away. The ordering rule does not forcibly take locks; this condition is unchanged. Preemption is achieved by some DBMSs detecting a deadlock and rolling back one transaction.",
+        "D": "Starvation (a process being postponed indefinitely) is a scheduling problem and is not one of Coffman's four deadlock conditions.",
+        "E": "Correct. A fixed resource ordering prevents a cycle from forming in the wait-for graph; the circular wait condition is broken."
+      },
+      "keyConcept": "Coffman conditions: mutual exclusion, hold and wait, no preemption, circular wait. Resource ordering (lock ordering) prevents circular wait.",
+      "examTip": "Memorize the measure→condition mapping: 'request everything up front' → hold and wait; 'forcibly take the lock/rollback' → no preemption; 'fixed order' → circular wait.",
+      "simpleExplanation": "A deadlock is like two people in a narrow corridor each waiting for the other to pass: one holds HESAP and waits for HAREKET, the other holds HAREKET and waits for HESAP, and both wait forever. This 'you wait for me, I wait for you' circle is called circular wait. If you give everyone the rule 'take HESAP first, then HAREKET', anyone holding HAREKET must already have taken HESAP; so nobody can come from the opposite direction and form a circle. This rule is like making the traffic one-way: there is no head-on meeting in the corridor. The condition removed is circular wait; the other three conditions stay exactly as they were."
+    },
     "optionExplanations": {
       "A": "Karşılıklı dışlama, tablo kilitlerinin doğasında vardır ve kaldırılmamıştır; iki iş aynı tabloyu aynı anda yazma amaçlı kilitleyememeye devam eder.",
       "B": "Tut ve bekle, bir kaynağı tutarken diğerini beklemektir. Sıralı kilitleme kuralında iş HESAP'ı tutarken HAREKET'i bekleyebilir; bu koşul hâlâ geçerlidir. Tut-ve-bekleyi kaldırmak için tüm kaynaklar başta tek seferde istenmelidir.",
@@ -571,6 +813,28 @@
     "correctAnswer": "D",
     "explanation": "LRU, hata anında en uzun süredir erişilmeyen sayfayı çıkarır. İzleme (çerçeve içerikleri en eski→en yeni): 1 → [1] H1; 2 → [1,2] H2; 3 → [1,2,3] H3; 1 → isabet, [2,3,1]; 4 → en eski 2 çıkar, [3,1,4] H4; 2 → en eski 3 çıkar, [1,4,2] H5; 1 → isabet, [4,2,1]; 3 → en eski 4 çıkar, [2,1,3] H6; 4 → en eski 2 çıkar, [1,3,4] H7; 2 → en eski 1 çıkar, [3,4,2] H8. Toplam 8 sayfa hatası. Karşılaştırma için aynı dizide FIFO 6, Optimal (OPT) 5 hata verir; bu örnek LRU'nun her zaman FIFO'dan iyi olmadığını gösterir.",
     "simpleExplanation": "Bellekte yalnızca 3 sayfa tutabilen bir rafınız var; istenen sayfa rafta yoksa buna sayfa hatası denir ve sayfa diskten getirilir. LRU kuralı, raf doluyken en uzun süredir dokunulmamış kitabı atmaktır. Diziyi izlerseniz: ilk üç sayfa (1, 2, 3) mecburen hatadır; sonra 1 raftadır (isabet), 4 gelir ve en eski olan 2'yi atar, 2 gelir 3'ü atar, 1 yine raftadır, 3 gelir 4'ü atar, 4 gelir 2'yi atar, 2 gelir 1'i atar. Yalnızca iki kez (iki 1 referansı) raftan bulduk; kalan 8 istek hatadır. Dikkat: bir sayfa raftan okunduğunda da 'yeni dokunulmuş' sayılır ve sıranın sonuna geçer.",
+    "en": {
+      "subtopic": "Virtual memory – tracing a page replacement algorithm (LRU)",
+      "question": "A process's page reference string and the number of physical memory frames allocated to the process are given below. Memory is initially empty. When the Least Recently Used (LRU) algorithm is applied, what is the total number of page faults?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8",
+        "E": "10"
+      },
+      "explanation": "LRU evicts, at the moment of a fault, the page that has gone unaccessed for the longest time. Trace (frame contents oldest→newest): 1 → [1] F1; 2 → [1,2] F2; 3 → [1,2,3] F3; 1 → hit, [2,3,1]; 4 → oldest 2 evicted, [3,1,4] F4; 2 → oldest 3 evicted, [1,4,2] F5; 1 → hit, [4,2,1]; 3 → oldest 4 evicted, [2,1,3] F6; 4 → oldest 2 evicted, [1,3,4] F7; 2 → oldest 1 evicted, [3,4,2] F8. Total 8 page faults. For comparison, on the same string FIFO gives 6 faults and Optimal (OPT) gives 5; this example shows that LRU is not always better than FIFO.",
+      "optionExplanations": {
+        "A": "5 is the fault count of the Optimal (OPT/MIN) algorithm, which knows the future; OPT is the theoretical lower bound and cannot be reached by LRU.",
+        "B": "6 is the fault count of the FIFO algorithm on this string (the first three loads + three replacements for 4, 1, 2). LRU does worse than FIFO on this string.",
+        "C": "7 is obtained if the trace assumes no fault on the last reference (2); but at the last step the frames hold [1,3,4] and 2 is not there.",
+        "D": "Correct. The first three references are compulsory faults, then each of the references 4, 2, 3, 4, 2 is a fault; only the 4th and 7th references (1) are hits.",
+        "E": "10 would mean every reference is a fault; but the references to 1 at steps 4 and 7 are in memory and are hits."
+      },
+      "keyConcept": "LRU selects, at the moment of a fault, the page not referenced for the longest time; hits also update the 'recency' order. OPT is the lower bound; LRU does not have to beat FIFO on every string.",
+      "examTip": "While tracing LRU, keep the frames ordered 'oldest → newest'; do not forget to move a hit page to the end of the list, this is where mistakes are most often made.",
+      "simpleExplanation": "You have a shelf that can hold only 3 pages in memory; if the requested page is not on the shelf, that is called a page fault and the page is fetched from disk. The LRU rule is to throw out the book that has gone untouched the longest when the shelf is full. If you follow the string: the first three pages (1, 2, 3) are unavoidably faults; then 1 is on the shelf (a hit), 4 arrives and throws out the oldest, 2, then 2 arrives and throws out 3, 1 is on the shelf again, 3 arrives and throws out 4, 4 arrives and throws out 2, 2 arrives and throws out 1. We found the page on the shelf only twice (the two references to 1); the remaining 8 requests are faults. Note: when a page is read from the shelf it also counts as 'freshly touched' and moves to the end of the order."
+    },
     "optionExplanations": {
       "A": "5, geleceği bilen Optimal (OPT/MIN) algoritmasının hata sayısıdır; OPT teorik alt sınırdır, LRU'ya ulaşılamaz.",
       "B": "6, FIFO algoritmasının bu dizideki hata sayısıdır (ilk üç yükleme + 4, 1, 2 için üç değiştirme). LRU bu dizide FIFO'dan daha kötü sonuç verir.",
@@ -620,6 +884,28 @@
     "correctAnswer": "B",
     "explanation": "Klasik (Dijkstra/Silberschatz) tanımda wait(S) değeri 1 azaltır ve sonuç negatifse çağıran bloke olur; signal(S) değeri 1 artırır ve bloke iş parçacığı varsa birini uyandırır. Başlangıç S = 2. T1 ve T2'nin wait çağrıları S'yi 1 ve 0'a düşürür, ikisi de geçer. T3, T4, T5 çağrılarında S sırasıyla -1, -2, -3 olur ve üçü bloke olur. İlk signal: S = -2, bir iş parçacığı (T3) uyanır. İkinci signal: S = -1, T4 uyanır. Sonuçta S = -1 ve yalnızca T5 bloke kalır; |S| bloke sayısına eşittir.",
     "simpleExplanation": "Semaforu, iki anahtarlı bir yazıcı odası kapısı gibi düşünün; başta 2 anahtar vardır. T1 ve T2 anahtarları alıp girer, sayı 0'a düşer. T3, T4 ve T5 geldiğinde anahtar yoktur; her biri kapıda bekler ve sayı -1, -2, -3 olur (eksi değer kaçının beklediğini gösterir). Sonra iki kez signal yapılır, yani iki anahtar geri bırakılır: her biri bekleyenlerden birini içeri alır, sayı -2 ve ardından -1 olur. Sonuçta S = -1 ve kapıda tek bir iş parçacığı (T5) bekler.",
+    "en": {
+      "subtopic": "Synchronization – counting semaphore behaviour",
+      "question": "On a branch server, a counting semaphore S with initial value 2 has been defined so that at most two threads can use the printer pool at the same time. Threads T1, T2, T3, T4 and T5 call wait(S) in turn, and then two signal(S) calls are made. According to the classic definition (a negative value indicates the number of blocked threads), what are the value of S and the number of blocked threads at this point?",
+      "options": {
+        "A": "S = 0, number of blocked threads 1",
+        "B": "S = -1, number of blocked threads 1",
+        "C": "S = -3, number of blocked threads 3",
+        "D": "S = 1, number of blocked threads 0",
+        "E": "S = -1, number of blocked threads 3"
+      },
+      "explanation": "In the classic (Dijkstra/Silberschatz) definition, wait(S) decrements the value by 1 and the caller blocks if the result is negative; signal(S) increments the value by 1 and wakes one thread if any are blocked. Initially S = 2. The wait calls of T1 and T2 take S down to 1 and 0, and both pass. On the calls of T3, T4 and T5, S becomes -1, -2 and -3 respectively, and all three block. First signal: S = -2, one thread (T3) wakes up. Second signal: S = -1, T4 wakes up. In the end S = -1 and only T5 remains blocked; |S| equals the number of blocked threads.",
+      "optionExplanations": {
+        "A": "For S to be 0, the total waits and signals would have to consume the initial value exactly (5 waits - 2 signals = net decrease of 3; 2 - 3 = -1). Besides, there are no blocked threads when S = 0.",
+        "B": "Correct. 2 - 5 + 2 = -1; the magnitude of the negative value gives the blocked count: 1 (T5).",
+        "C": "S = -3 is the intermediate state before the two signal calls are made; the signal calls both increment the value and wake blocked threads.",
+        "D": "S = 1 is found by assuming only one wait was made; after five waits and two signals there is a net decrease of three.",
+        "E": "S = -1 is right, but in the classic definition the magnitude of the negative value gives the blocked count; since the two signals woke two threads, 1 remains blocked, not 3."
+      },
+      "keyConcept": "For a counting semaphore S = initial - number of waits + number of signals; if S < 0 there are |S| blocked threads, if S ≥ 0 there are S free resources.",
+      "examTip": "In semaphore questions count the waits and signals one by one and remember the meaning of a negative value (blocked count); do not forget that a signal wakes one waiter.",
+      "simpleExplanation": "Think of the semaphore as the door of a printer room with two keys; there are 2 keys at the start. T1 and T2 take the keys and go in, and the count drops to 0. When T3, T4 and T5 arrive there are no keys; each waits at the door and the count becomes -1, -2, -3 (the negative value shows how many are waiting). Then signal is done twice, i.e. two keys are handed back: each one lets one of the waiters in, and the count becomes -2 and then -1. In the end S = -1 and a single thread (T5) is waiting at the door."
+    },
     "optionExplanations": {
       "A": "S = 0 olması için toplam wait ve signal sayılarının başlangıç değerini tam tüketmesi gerekirdi (5 wait - 2 signal = 3 net azalma; 2 - 3 = -1). Ayrıca S = 0 iken bloke iş parçacığı olmaz.",
       "B": "Doğru. 2 - 5 + 2 = -1; negatif değerin büyüklüğü bloke sayısını verir: 1 (T5).",
@@ -669,6 +955,28 @@
     "correctAnswer": "B",
     "explanation": "Sayısal (octal) izin gösteriminde her basamak sırasıyla sahip (owner), grup (group) ve diğerleri (others) için okuma r=4, yazma w=2, çalıştırma x=1 değerlerinin toplamıdır. 7 = 4+2+1 = rwx, 5 = 4+1 = r-x, 0 = --- anlamına gelir. Dolayısıyla 750, sahibe tam yetki, gruba okuma ve dizine girme (x), diğerlerine hiçbir yetki vermez: rwxr-x---. Baştaki 'd' dosya tipinin dizin olduğunu gösterir. Bankacılıkta raporların yalnızca ilgili ekibe (grup) açık olması 'en az ayrıcalık' ilkesine uygundur.",
     "simpleExplanation": "Linux'ta izinler üç gruba verilir: dosyanın sahibi, sahibin grubu ve diğer herkes. Her gruba bir rakam yazılır ve rakam okuma (4), yazma (2) ve çalıştırma (1) değerlerinin toplamıdır. 7 = 4+2+1 her şeyi yapabilir (rwx), 5 = 4+1 okuyup girebilir ama yazamaz (r-x), 0 hiçbir şey yapamaz (---). Böylece 750, 'sahip her şeyi yapar, grup bakar ama değiştiremez, yabancılar hiç dokunamaz' demektir: rwxr-x---. Baştaki d harfi bunun bir klasör (dizin) olduğunu söyler.",
+    "en": {
+      "subtopic": "Unix file permissions and chmod numeric notation",
+      "question": "On a Linux server the administrator has run the command 'chmod 750 raporlar' on the directory containing the end-of-day reports. After this command, how does the directory's permission field appear in the 'ls -l' output?",
+      "options": {
+        "A": "drwxr-xr-x",
+        "B": "drwxr-x---",
+        "C": "drw-r-x---",
+        "D": "drwx-w----",
+        "E": "dr-xrwx---"
+      },
+      "explanation": "In numeric (octal) permission notation each digit is, in turn for the owner, the group and others, the sum of the values read r=4, write w=2 and execute x=1. 7 = 4+2+1 = rwx, 5 = 4+1 = r-x, 0 = ---. So 750 gives the owner full rights, the group read and enter-directory (x) rights, and others no rights at all: rwxr-x---. The leading 'd' shows that the file type is a directory. In banking, having reports open only to the relevant team (the group) is in line with the principle of least privilege.",
+      "optionExplanations": {
+        "A": "rwxr-xr-x corresponds to 755; it also gives other users read and enter permission. In 750 the last digit is 0, so others have no permissions at all.",
+        "B": "Correct. 7→rwx (owner), 5→r-x (group), 0→--- (others).",
+        "C": "rw-r-x--- corresponds to 650; the owner's x permission is missing. Without x permission on a directory, the owner cannot enter the directory.",
+        "D": "rwx-w---- corresponds to 720; the group digit has been read as 2 (write only), whereas 5 = read + execute.",
+        "E": "r-xrwx--- corresponds to 570; the owner and group digits have been swapped. In numeric notation the first digit always belongs to the owner."
+      },
+      "keyConcept": "chmod numeric mode: each digit is the sum r(4)+w(2)+x(1); the order is owner-group-others. On directories, the x permission is the right to enter (traverse) the directory.",
+      "examTip": "Convert the octal digits quickly: 7=rwx, 6=rw-, 5=r-x, 4=r--, 0=---. Write the three digits left to right as owner/group/others.",
+      "simpleExplanation": "In Linux, permissions are given to three groups: the file's owner, the owner's group and everyone else. Each group gets a digit, and the digit is the sum of the values for read (4), write (2) and execute (1). 7 = 4+2+1 can do everything (rwx), 5 = 4+1 can read and enter but not write (r-x), 0 can do nothing (---). So 750 means 'the owner does everything, the group looks but cannot change, strangers cannot touch at all': rwxr-x---. The d at the front says this is a folder (directory)."
+    },
     "optionExplanations": {
       "A": "rwxr-xr-x, 755'in karşılığıdır; diğer kullanıcılara da okuma ve girme izni verir. 750'de son basamak 0 olduğu için diğerleri hiçbir izne sahip değildir.",
       "B": "Doğru. 7→rwx (sahip), 5→r-x (grup), 0→--- (diğerleri).",
@@ -719,6 +1027,28 @@
     "correctAnswer": "A",
     "explanation": "Çift modlu çalışmada donanım, mod bitiyle kullanıcı modu ve çekirdek modunu ayırır. G/Ç cihazlarına erişim, bellek yönetimi yazmaçlarını değiştirme veya kesmeleri kapatma gibi ayrıcalıklı komutlar yalnızca çekirdek modunda yürütülebilir. Kullanıcı programı dosya okumak istediğinde read() sistem çağrısını kullanır: kütüphane sarmalayıcısı (wrapper) bir tuzak/sistem çağrısı komutu (örn. x86-64'te syscall) yürütür, CPU çekirdek moduna geçer, çekirdekteki sistem çağrısı işleyicisi isteği yetki kontrolüyle yerine getirir ve geri dönüşte mod biti tekrar kullanıcı moduna ayarlanır. Sıradan aritmetik ve bellek erişimleri ise kullanıcı modunda doğrudan yürütülür; adres çevirisini donanım (MMU) yapar, çekirdeğe geçiş gerekmez.",
     "simpleExplanation": "İşlemci iki modda çalışır: kullanıcı modu (sıradan programlar) ve çekirdek modu (işletim sisteminin kendisi). Program hesap yapmak veya kendi hafızasında dolaşmak gibi zararsız işleri kendi başına yapabilir. Ama diske dokunmak gibi tehlikeli bir iş isterse bunu kendisi yapamaz; bir sistem çağrısı ile işletim sisteminden ister. Bu, bankadaki müşterinin kasaya kendisinin girmemesi, gişedeki görevliden para istemesi gibidir: görevli (çekirdek) kontrol eder, işi yapar, sonucu verir ve müşteri tekrar kendi tarafına döner. Dosya okuma işte böyle çalışır.",
+    "en": {
+      "subtopic": "Kernel mode, user mode and system calls",
+      "question": "In a modern operating system running in dual mode, which of the following statements about operations executed by a user program is correct?",
+      "options": {
+        "A": "Reading data from a file: the user program cannot access the disk driver directly; the read() system call triggers a switch to kernel mode via a trap instruction, and after the kernel completes the operation and returns the result, execution returns to user mode.",
+        "B": "Adding two integers: since arithmetic instructions are privileged instructions, a switch to kernel mode is required for every addition.",
+        "C": "Reading data from a file: the CPU stays in user mode during the system call; a switch to kernel mode happens only when a hardware interrupt arrives.",
+        "D": "Searching an array in a loop: because it involves memory access, the system switches to kernel mode on every memory access and checks the page table.",
+        "E": "System calls are the same thing as library functions such as printf, and since they run entirely in user mode they require no mode switch."
+      },
+      "explanation": "In dual-mode operation the hardware separates user mode and kernel mode with a mode bit. Privileged instructions such as accessing I/O devices, modifying memory-management registers or disabling interrupts can be executed only in kernel mode. When a user program wants to read a file it uses the read() system call: the library wrapper executes a trap/system call instruction (e.g. syscall on x86-64), the CPU switches to kernel mode, the system call handler in the kernel carries out the request with permission checks, and on return the mode bit is set back to user mode. Ordinary arithmetic and memory accesses, on the other hand, execute directly in user mode; address translation is done by the hardware (MMU), and no switch to the kernel is needed.",
+      "optionExplanations": {
+        "A": "Correct. A system call is the standard mechanism for switching from user mode to kernel mode through a controlled entry point (trap).",
+        "B": "Arithmetic instructions are not privileged; if every addition required a switch to the kernel, program performance would collapse and the purpose of dual mode would be defeated.",
+        "C": "A system call is used precisely to switch to kernel mode; if the CPU stayed in user mode it could not execute the disk driver's privileged I/O instructions. Interrupts are the other (asynchronous) way into the kernel, not the only one.",
+        "D": "Virtual-to-physical address translation is done transparently in user mode by the MMU and TLB in hardware; the kernel steps in only when a page fault occurs.",
+        "E": "printf is a library function and does its formatting in user mode; but to write the output it eventually calls the write() system call, and that call requires a mode switch. A library function and a system call are not the same thing."
+      },
+      "keyConcept": "Privileged operations (I/O, memory management, interrupt control) are done only in kernel mode; a user program reaches them in a controlled way through a system call (trap).",
+      "examTip": "To tell whether an operation needs a system call, ask: 'Does this operation touch hardware or the resources of other processes?' If yes, kernel mode is required.",
+      "simpleExplanation": "The processor runs in two modes: user mode (ordinary programs) and kernel mode (the operating system itself). A program can do harmless jobs on its own, such as doing arithmetic or wandering around its own memory. But if it wants a dangerous job such as touching the disk, it cannot do that itself; it asks the operating system via a system call. This is like a bank customer not walking into the vault themselves but asking the clerk at the counter for money: the clerk (the kernel) checks, does the job, hands over the result, and the customer returns to their own side. That is exactly how reading a file works."
+    },
     "optionExplanations": {
       "A": "Doğru. Sistem çağrısı, kontrollü bir giriş noktası (trap) üzerinden kullanıcı modundan çekirdek moduna geçişin standart mekanizmasıdır.",
       "B": "Aritmetik komutlar ayrıcalıklı değildir; eğer her toplama çekirdeğe geçiş gerektirseydi program performansı çöker ve çift modun amacı ortadan kalkardı.",
@@ -768,6 +1098,28 @@
     "correctAnswer": "C",
     "explanation": "fork(), çağıran sürecin adres alanının bir kopyasına sahip yeni bir çocuk süreç oluşturur; çocuğa 0, ebeveyne çocuğun PID'si döner. Çağrıdan sonra iki süreç bağımsız adres alanlarına sahiptir (kopyala-yazarken, copy-on-write ile verimli kopyalanır). Çocukta x += 10 yalnızca çocuğun kopyasını 15 yapar; ebeveynin x'i 5 kalır. Ebeveyn wait(NULL) ile çocuğun bitmesini beklediğinden önce çocuk 'cocuk 15', ardından ebeveyn 'ebeveyn 5' yazdırır. wait() olmasaydı sıra zamanlayıcıya bağlı olurdu, ancak değerler yine 15 ve 5 olurdu.",
     "simpleExplanation": "fork() çağrısı çalışan programın birebir kopyasını çıkarır; artık iki ayrı program (ebeveyn ve çocuk) vardır ve her birinin kendi hafızası, kendi x değişkeni bulunur. Bir belgenin fotokopisini alıp birine vermeniz gibi: o kişi kendi kopyasına yazarsa sizin kağıdınız değişmez. Çocuk kendi x'ini 10 artırıp 15 yazdırır; ebeveynin x'i 5 kalır. Ebeveyn wait() ile 'çocuk bitsin, sonra yazarım' dediği için önce 'cocuk 15', sonra 'ebeveyn 5' görünür.",
+    "en": {
+      "subtopic": "Process creation – fork() semantics",
+      "question": "The following C program is compiled and run on a Linux system (the fork() and wait() calls are assumed to succeed). Which of the following gives the lines that appear on standard output and their order?",
+      "options": {
+        "A": "cocuk 15 / ebeveyn 15",
+        "B": "cocuk 5 / ebeveyn 5",
+        "C": "cocuk 15 / ebeveyn 5",
+        "D": "ebeveyn 15 / cocuk 5",
+        "E": "Only 'ebeveyn 15' is printed; the child process produces no output."
+      },
+      "explanation": "fork() creates a new child process that has a copy of the calling process's address space; it returns 0 to the child and the child's PID to the parent. After the call the two processes have independent address spaces (copied efficiently with copy-on-write). In the child, x += 10 makes only the child's copy 15; the parent's x stays 5. Because the parent waits for the child to finish with wait(NULL), the child prints 'cocuk 15' first and then the parent prints 'ebeveyn 5'. Without wait() the order would depend on the scheduler, but the values would still be 15 and 5.",
+      "optionExplanations": {
+        "A": "For the parent to see 15 too, the child and parent would have to share memory; fork() creates a separate address space. Memory sharing is a property of threads.",
+        "B": "The child process executes the line x += 10 and makes its own copy 15; printing 'cocuk 5' is impossible.",
+        "C": "Correct. The child modifies its own copy (15), the parent's copy is unchanged (5); thanks to wait() the child's line is printed first.",
+        "D": "Both the values and the order are reversed: the parent does not change x (5) and, because of wait(), prints after the child.",
+        "E": "When fork() succeeds, the child process executes the p == 0 branch and produces output with printf; for the child to produce no output, fork() would have to fail (return -1)."
+      },
+      "keyConcept": "After fork(), parent and child have separate address spaces; a variable change in one is not reflected in the other. wait() blocks the parent until the child finishes and determines the output order.",
+      "examTip": "In fork() questions open two separate columns (parent / child) and trace every variable separately; if wait() is present the output order is certain, if not, watch out for 'order is undefined' options.",
+      "simpleExplanation": "The fork() call makes an exact copy of the running program; there are now two separate programs (parent and child), each with its own memory and its own x variable. It is like photocopying a document and handing it to someone: if that person writes on their copy, your sheet does not change. The child increases its own x by 10 and prints 15; the parent's x stays 5. Because the parent says with wait() 'let the child finish, then I will print', 'cocuk 15' appears first and 'ebeveyn 5' afterwards."
+    },
     "optionExplanations": {
       "A": "Ebeveynin de 15 görmesi için çocuk ve ebeveynin belleği paylaşması gerekirdi; fork() ayrı adres alanı oluşturur. Bellek paylaşımı iş parçacıklarının (thread) özelliğidir.",
       "B": "Çocuk süreç x += 10 satırını yürütür ve kendi kopyasını 15 yapar; 'cocuk 5' yazması mümkün değildir.",
@@ -818,6 +1170,28 @@
     "correctAnswer": "A",
     "explanation": "Önce +37 ikiliye çevrilir: 37 = 32 + 4 + 1 → 0010 0101 (0x25). İkiye tümleyen için bitler ters çevrilir (bire tümleyen): 1101 1010. Ardından 1 eklenir: 1101 1011. Onaltılık karşılığı 1101 = D, 1011 = B → 0xDB. Doğrulama: 0xDB = 219; 219 - 256 = -37. Alternatif kısa yol: 256 - 37 = 219 = 0xDB.",
     "simpleExplanation": "Bilgisayarlar eksi sayıları ikiye tümleyen denen bir yöntemle saklar. Yöntemin tarifi: sayının pozitif halini ikiliye çevir (37 = 0010 0101), tüm bitleri tersle (1101 1010), sonra 1 ekle (1101 1011). Onaltılıkta 1101 = D, 1011 = B olduğu için 0xDB çıkar. Kontrol için şöyle düşünün: 8 bitlik bir sayaç saat gibi 256'da başa döner; -37, 0'dan 37 geri gitmek yani 256 - 37 = 219'a gelmek demektir ve 219 da 0xDB'dir.",
+    "en": {
+      "subtopic": "Number representation – two's complement",
+      "question": "In 8-bit two's complement representation, what are the binary and hexadecimal equivalents of the number -37?",
+      "options": {
+        "A": "1101 1011 (0xDB)",
+        "B": "1010 0101 (0xA5)",
+        "C": "1101 1010 (0xDA)",
+        "D": "0010 0101 (0x25)",
+        "E": "1110 1011 (0xEB)"
+      },
+      "explanation": "First +37 is converted to binary: 37 = 32 + 4 + 1 → 0010 0101 (0x25). For two's complement the bits are inverted (one's complement): 1101 1010. Then 1 is added: 1101 1011. The hexadecimal equivalent is 1101 = D, 1011 = B → 0xDB. Check: 0xDB = 219; 219 - 256 = -37. Alternative shortcut: 256 - 37 = 219 = 0xDB.",
+      "optionExplanations": {
+        "A": "Correct. 0x25 → invert the bits 0xDA → add 1 0xDB; 219 - 256 = -37.",
+        "B": "1010 0101 is the sign-magnitude representation: the leftmost bit is 1 (negative), the remaining 7 bits are 37. In two's complement this value corresponds to -91.",
+        "C": "1101 1010 (0xDA) is the one's complement result; the add-1 step was forgotten. In two's complement 0xDA = -38.",
+        "D": "0010 0101 (0x25) is the representation of +37; since the sign bit is 0, it is positive.",
+        "E": "1110 1011 (0xEB) = 235; 235 - 256 = -21. This result comes from taking the complement of 21 (0001 0101) instead of +37, i.e. the 16 bit was used by mistake instead of the 32 bit in the binary of 37."
+      },
+      "keyConcept": "Two's complement: invert the bits of the positive number and add 1; or compute 2^n - |x|. In n bits the range is -2^(n-1) ... 2^(n-1)-1.",
+      "examTip": "Always convert the result back to verify it: convert the hex value to decimal and subtract 256 (for 8 bits); it must give the required negative number.",
+      "simpleExplanation": "Computers store negative numbers with a method called two's complement. The recipe is: convert the positive form of the number to binary (37 = 0010 0101), flip all the bits (1101 1010), then add 1 (1101 1011). In hexadecimal, 1101 = D and 1011 = B, so you get 0xDB. To check, think of it this way: an 8-bit counter wraps round at 256 like a clock; -37 means going back 37 from 0, i.e. landing on 256 - 37 = 219, and 219 is 0xDB."
+    },
     "optionExplanations": {
       "A": "Doğru. 0x25 → bitleri ters çevir 0xDA → 1 ekle 0xDB; 219 - 256 = -37.",
       "B": "1010 0101, işaret-büyüklük (sign-magnitude) gösterimidir: en soldaki bit 1 (negatif), kalan 7 bit 37. İkiye tümleyende bu değer -91'e karşılık gelir.",
@@ -867,6 +1241,28 @@
     "correctAnswer": "C",
     "explanation": "Satır sayısı = 16 KB / 64 B = 16384 / 64 = 256 = 2^8 → index 8 bit. Blok içi ofset = log2(64) = 6 bit. Tag = 32 - 8 - 6 = 18 bit. Adres 0x0001A3C8'in son 14 bitinden ofset ve index ayrılır: 0x1A3C8 = 0001 1010 0011 1100 1000 (ikili). Son 6 bit (ofset) = 00 1000 = 8; sonraki 8 bit (index) = 1000 1111 = 0x8F = 143; kalan bitler (tag) = 0x6. Alternatif hesap: 0x1A3C8 / 64 = 1679 (tam kısım), 1679 mod 256 = 143 = 0x8F; 1679 / 256 = 6 = tag.",
     "simpleExplanation": "Önbelleği, 256 çekmeceli bir dolap gibi düşünün; her çekmeceye bellekten 64 baytlık bir parça (blok) konur. 16 KB / 64 B = 256 çekmece olduğundan çekmece numarası için 8 bit gerekir, 64 bayt içindeki yer için de 6 bit. Adresin en sağındaki 6 bit 'blok içinde nerede', sonraki 8 bit 'hangi çekmece', geri kalan 32 - 6 - 8 = 18 bit ise 'bu çekmecedeki parça gerçekten benim mi' sorusunu yanıtlayan etikettir. 0x1A3C8 adresini 64'e bölünce 1679 çıkar; 1679'u 256'ya bölünce kalan 143 = 0x8F çekmece numarasıdır. Adresi bayt bayt okumak (0xA3 veya 0x3C sanmak) en sık yapılan hatadır.",
+    "en": {
+      "subtopic": "Cache – direct-mapped address breakdown",
+      "question": "A processor using 32-bit byte addressing has a 16 KB direct-mapped data cache with 64-byte blocks. For an access to address 0x0001A3C8, what are the cache line (index) number and the number of bits in the tag field?",
+      "options": {
+        "A": "Index 0x3C, tag 20 bits",
+        "B": "Index 0xA3, tag 16 bits",
+        "C": "Index 0x8F, tag 18 bits",
+        "D": "Index 0x8F, tag 20 bits",
+        "E": "Index 0x1A, tag 18 bits"
+      },
+      "explanation": "Number of lines = 16 KB / 64 B = 16384 / 64 = 256 = 2^8 → index 8 bits. Block offset = log2(64) = 6 bits. Tag = 32 - 8 - 6 = 18 bits. The offset and index are taken from the low 14 bits of address 0x0001A3C8: 0x1A3C8 = 0001 1010 0011 1100 1000 (binary). The low 6 bits (offset) = 00 1000 = 8; the next 8 bits (index) = 1000 1111 = 0x8F = 143; the remaining bits (tag) = 0x6. Alternative calculation: 0x1A3C8 / 64 = 1679 (integer part), 1679 mod 256 = 143 = 0x8F; 1679 / 256 = 6 = tag.",
+      "optionExplanations": {
+        "A": "Reading 0x3C as the index comes from taking part of the middle byte of the address; since the offset is 6 bits, the index is not byte-aligned. A 20-bit tag is also wrong (index 8 + offset 6 = 14, tag 18).",
+        "B": "0xA3 is the second byte of the address; it assumes the offset is 8 bits (one byte). Because the block is 64 B, the offset is 6 bits and the index comes out as 0x8F, not 0xA3. The tag of 16 is also a result of this wrong assumption.",
+        "C": "Correct. 256 lines → 8-bit index; 64 B block → 6-bit offset; tag = 32 - 14 = 18 bits; (0x1A3C8 >> 6) & 0xFF = 0x8F.",
+        "D": "The index is computed correctly but the tag is given as 20 bits; this corresponds to assuming a 4-bit offset (16 B block). For a 64 B block the offset is 6 and the tag is 18.",
+        "E": "0x1A is the upper byte of the address and is part of the tag field, not the index. The index field is the 8 bits immediately above the offset."
+      },
+      "keyConcept": "Direct-mapped cache: offset = log2(block size), index = log2(number of lines), tag = address bits - index - offset. Number of lines = capacity / block size.",
+      "examTip": "Convert the address to binary and cut the offset and index bits from the right; reading by byte boundaries (taking the middle byte as the index) is the most common mistake.",
+      "simpleExplanation": "Think of the cache as a cabinet with 256 drawers; each drawer holds a 64-byte piece (block) from memory. Since 16 KB / 64 B = 256 drawers, 8 bits are needed for the drawer number, and 6 bits for the position within the 64 bytes. The rightmost 6 bits of the address say 'where within the block', the next 8 bits say 'which drawer', and the remaining 32 - 6 - 8 = 18 bits are the tag answering 'is the piece in this drawer really mine'. Dividing the address 0x1A3C8 by 64 gives 1679; dividing 1679 by 256 leaves a remainder of 143 = 0x8F, which is the drawer number. Reading the address byte by byte (thinking it is 0xA3 or 0x3C) is the most common mistake."
+    },
     "optionExplanations": {
       "A": "0x3C adresin orta baytının bir kısmını index sanmaktan kaynaklanır; ofset 6 bit olduğu için index baytla hizalı değildir. Tag 20 bit de yanlıştır (index 8 + ofset 6 = 14, tag 18).",
       "B": "0xA3 adresin ikinci baytıdır; ofset bitlerinin 8 (bir bayt) olduğu varsayılmıştır. Blok 64 B olduğu için ofset 6 bittir ve index 0xA3 değil 0x8F çıkar. Tag 16 da bu yanlış varsayımın sonucudur.",
@@ -916,6 +1312,28 @@
     "correctAnswer": "D",
     "explanation": "İki okuma-yazma-sonrası (Read After Write, RAW) bağımlılığı vardır: add, lw'nin yazdığı $t0'ı; sub, add'in yazdığı $t1'i okur. lw sonucu ancak MEM aşamasının sonunda hazır olur; add ise EX aşamasının başında bu değere ihtiyaç duyar. lw'nin MEM aşaması ile add'in EX aşaması aynı çevrime denk geldiği için forwarding bile değeri zamanında ulaştıramaz; add bir çevrim duraklatılır (load-use hazard), ardından MEM/WB'den EX'e forwarding yapılır. add-sub arasındaki bağımlılıkta ise add'in sonucu EX sonunda hazırdır ve EX/MEM ara yazmacından doğrudan sub'ın EX girişine iletilir; duraklama gerekmez. Derleyici, lw ile add arasına bağımsız bir komut yerleştirerek (instruction scheduling) bu duraklamayı gizleyebilir.",
     "simpleExplanation": "Boru hattı, komutları fabrika bandı gibi aynı anda farklı aşamalarda işler. Sorun, bir komutun henüz hazır olmayan bir sonuca ihtiyaç duymasıdır. lw komutu belleğe gittiği için sonucu geç getirir; hemen arkasındaki add bu sonucu o kadar erken istiyor ki, iletme (forwarding) denen kestirme yol bile yetişemez; add bir çevrim beklemek zorundadır. Sonraki sub komutu ise add'in sonucunu ister; add hesaplamayı erken bitirdiği için sonuç kestirme yolla hemen iletilir, bekleme olmaz. Kısaca: 'yükle ve hemen kullan' bir çevrim bekletir, 'hesapla ve hemen kullan' bekletmez.",
+    "en": {
+      "subtopic": "Pipeline hazards",
+      "question": "In a classic 5-stage (IF-ID-EX-MEM-WB) RISC pipeline, forwarding hardware is present. Which of the following gives the correct hazard analysis for the instruction sequence below?",
+      "options": {
+        "A": "There is a control hazard; it is resolved with branch prediction.",
+        "B": "There is a structural hazard; because lw and add want to access memory in the same cycle, one of them is stalled.",
+        "C": "There is a data hazard (RAW); thanks to the forwarding hardware it executes without any stall.",
+        "D": "There is a data hazard (RAW); the load-use dependency between lw and add requires a 1-cycle stall despite forwarding, while the add-sub dependency is resolved by forwarding with no stall.",
+        "E": "There is a write-after-write (WAW) hazard; because add and sub write the same register, the order may be disturbed."
+      },
+      "explanation": "There are two Read After Write (RAW) dependencies: add reads $t0, which lw writes; sub reads $t1, which add writes. The result of lw is ready only at the end of the MEM stage, whereas add needs that value at the start of its EX stage. Because lw's MEM stage and add's EX stage fall in the same cycle, even forwarding cannot deliver the value in time; add is stalled for one cycle (load-use hazard), and then the value is forwarded from MEM/WB to EX. For the add-sub dependency, add's result is ready at the end of EX and is forwarded directly from the EX/MEM pipeline register to sub's EX input; no stall is needed. The compiler can hide this stall by placing an independent instruction between lw and add (instruction scheduling).",
+      "optionExplanations": {
+        "A": "A control hazard arises with branch or jump instructions; there is no branch in the sequence.",
+        "B": "A structural hazard is when the same hardware unit is wanted by two instructions in the same cycle. In the classic 5-stage pipeline the instruction and data memories are separate; and add does not access memory anyway.",
+        "C": "Forwarding resolves most RAW hazards, but in the load-use case the loaded data is ready at the end of MEM and so cannot reach the EX stage of the immediately following instruction; a 1-cycle stall is unavoidable.",
+        "D": "Correct. load-use → 1 stall + forwarding; ALU-ALU → forwarding with 0 stalls.",
+        "E": "add writes $t1 and sub writes $t3; there is no write to the same register. Moreover, a WAW hazard does not occur in an in-order 5-stage pipeline; this hazard is seen in out-of-order execution."
+      },
+      "keyConcept": "RAW data hazards are resolved by forwarding; the one exception is the load-use hazard, which needs a 1-cycle stall. The compiler can hide this stall by reordering instructions.",
+      "examTip": "When you see an instruction using lw's destination register immediately after the lw, say 'forwarding + 1 stall'; for a dependency between two ALU instructions, 'forwarding, 0 stalls'.",
+      "simpleExplanation": "A pipeline processes instructions at different stages at the same time, like a factory line. The problem is an instruction needing a result that is not ready yet. The lw instruction goes to memory, so it brings its result back late; the add right behind it wants that result so early that even the shortcut called forwarding cannot make it in time; add has to wait one cycle. The following sub instruction wants add's result; because add finishes its calculation early, the result is passed on immediately through the shortcut, and there is no wait. In short: 'load and use immediately' makes you wait one cycle, 'compute and use immediately' does not."
+    },
     "optionExplanations": {
       "A": "Kontrol tehlikesi dallanma veya atlama komutlarında oluşur; dizide dallanma yoktur.",
       "B": "Yapısal tehlike, aynı donanım biriminin aynı çevrimde iki komut tarafından istenmesidir. Klasik 5 aşamalı boru hattında komut ve veri bellekleri ayrıdır; add zaten belleğe erişmez.",
@@ -965,6 +1383,28 @@
     "correctAnswer": "B",
     "explanation": "Amdahl yasası: Hızlanma = 1 / [(1 - P) + P / S], burada P iyileştirilen kısmın oranı, S o kısmın hızlanma katıdır. P = 0,60, S = 4: yeni süre = 0,40 + 0,60/4 = 0,40 + 0,15 = 0,55 (eski sürenin oranı olarak). Hızlanma = 1 / 0,55 ≈ 1,82. Sıralı %40'lık kısım değişmediği için 4 çekirdek bile toplamı yalnızca 1,82 kat hızlandırır; çekirdek sayısı sonsuza giderse üst sınır 1 / 0,40 = 2,5 olur.",
     "simpleExplanation": "Amdahl yasası şunu söyler: bir işin hızlandıramadığınız kısmı toplam kazancı sınırlar. İşin %40'ı tek sıra beklemek gibi hızlanmayan kısım, %60'ı ise 4 kişiye dağıtılabilen kısımdır. 4 kişiyle %60'lık kısım 4 kat kısalır ve %15'e düşer; sıralı %40 aynen kalır. Yeni toplam süre eskisinin 0,40 + 0,15 = 0,55'idir; yani iş yaklaşık 1 / 0,55 = 1,82 kat hızlanır. Market kasasında 10 kasa açsanız da herkesin aynı tek kapıdan çıkması gerekiyorsa kuyruk ancak o kapının izin verdiği kadar hızlanır.",
+    "en": {
+      "subtopic": "Speedup calculation with Amdahl's law",
+      "question": "In a bank's end-of-day batch job, 60% of the running time is spent in computation steps that can be parallelized and 40% in sequential steps that cannot be parallelized (database locks, sequential log writing). When the parallel part is sped up 4 times using 4 cores, what is the approximate overall speedup?",
+      "options": {
+        "A": "4.0",
+        "B": "1.82",
+        "C": "2.5",
+        "D": "1.6",
+        "E": "3.4"
+      },
+      "explanation": "Amdahl's law: Speedup = 1 / [(1 - P) + P / S], where P is the fraction of the part being improved and S is the speedup factor of that part. P = 0.60, S = 4: new time = 0.40 + 0.60/4 = 0.40 + 0.15 = 0.55 (as a fraction of the old time). Speedup = 1 / 0.55 ≈ 1.82. Because the sequential 40% does not change, even 4 cores speed up the total by only 1.82 times; as the number of cores goes to infinity, the upper bound is 1 / 0.40 = 2.5.",
+      "optionExplanations": {
+        "A": "4.0 would be achieved only if the whole program (100%) were parallelizable; the sequential part has been ignored.",
+        "B": "Correct. 1 / (0.40 + 0.60/4) = 1 / 0.55 ≈ 1.82.",
+        "C": "2.5 = 1 / 0.40 is the theoretical upper bound; it is reached if the parallel part is reduced to zero time (infinite cores), not with 4 cores.",
+        "D": "1.6 = 1 + 0.6 comes from directly adding the fractions; the Amdahl formula takes the reciprocal of the time fractions.",
+        "E": "3.4 = 4 × 0.6 + 1 × 0.4 comes from taking a weighted average of the speedups; speedups are combined by summing the times, not by a weighted average."
+      },
+      "keyConcept": "Amdahl: Speedup = 1 / [(1-P) + P/S]. Upper bound 1/(1-P); the part that cannot be improved limits the total gain.",
+      "examTip": "First compute the new time as a fraction (sequential + parallel/S), then take the reciprocal. If the upper bound is asked for, count the parallel part as zero.",
+      "simpleExplanation": "Amdahl's law says this: the part of a job that you cannot speed up limits the total gain. 40% of the job is the part that does not speed up, like waiting in a single queue, and 60% is the part that can be split among 4 people. With 4 people the 60% part becomes 4 times shorter and drops to 15%; the sequential 40% stays as it is. The new total time is 0.40 + 0.15 = 0.55 of the old one; so the job gets about 1 / 0.55 = 1.82 times faster. Even if you open 10 checkouts in a supermarket, if everyone has to leave through the same single door, the queue only speeds up as much as that door allows."
+    },
     "optionExplanations": {
       "A": "4,0 yalnızca programın tamamı (%100) paralelleştirilebilir olsaydı elde edilirdi; sıralı kısım göz ardı edilmiştir.",
       "B": "Doğru. 1 / (0,40 + 0,60/4) = 1 / 0,55 ≈ 1,82.",
@@ -1014,6 +1454,28 @@
     "correctAnswer": "E",
     "explanation": "Ortalama CPI, her sınıfın CPI'ının oranıyla ağırlıklandırılmış toplamıdır: 0,50 × 1 + 0,30 × 3 + 0,20 × 2 = 0,5 + 0,9 + 0,4 = 1,8. Toplam çevrim = komut sayısı × CPI = 10^9 × 1,8 = 1,8 × 10^9 çevrim. Yürütme süresi = çevrim / frekans = 1,8 × 10^9 / (2 × 10^9 Hz) = 0,9 saniye. Temel CPU performans denklemi: Süre = Komut sayısı × CPI × Çevrim süresi.",
     "simpleExplanation": "CPI, bir komutun ortalama kaç saat vuruşu (çevrim) sürdüğünü söyler. Komutların yarısı 1, %30'u 3 ve %20'si 2 çevrim sürüyorsa ortalamayı ağırlıklı alırız: 0,5×1 + 0,3×3 + 0,2×2 = 1,8 çevrim. 1 milyar komut × 1,8 = 1,8 milyar çevrim gerekir. İşlemci saniyede 2 milyar çevrim attığı için süre 1,8 / 2 = 0,9 saniyedir. Bu, 'her ürün ortalama 1,8 saniye alıyor, saniyede 2 ürün geçiriyoruz' diye bant hızını hesaplamak gibidir.",
+    "en": {
+      "subtopic": "CPI and execution time calculation",
+      "question": "The instruction mix of a program running on a processor with a 2 GHz clock frequency, and the cycle counts of the instruction classes, are given in the table below. The program executes 10^9 instructions in total. What are the average CPI (cycles per instruction) and the total execution time?",
+      "options": {
+        "A": "CPI = 2.0; time = 1.0 s",
+        "B": "CPI = 1.8; time = 0.45 s",
+        "C": "CPI = 1.8; time = 1.8 s",
+        "D": "CPI = 6.0; time = 3.0 s",
+        "E": "CPI = 1.8; time = 0.9 s"
+      },
+      "explanation": "The average CPI is the sum of each class's CPI weighted by its fraction: 0.50 × 1 + 0.30 × 3 + 0.20 × 2 = 0.5 + 0.9 + 0.4 = 1.8. Total cycles = instruction count × CPI = 10^9 × 1.8 = 1.8 × 10^9 cycles. Execution time = cycles / frequency = 1.8 × 10^9 / (2 × 10^9 Hz) = 0.9 seconds. The basic CPU performance equation: Time = Instruction count × CPI × Cycle time.",
+      "optionExplanations": {
+        "A": "A CPI of 2.0 is the simple (unweighted) average of the three classes' CPIs ((1+3+2)/3); the fractions must be taken into account.",
+        "B": "The CPI is right, but the time was found by dividing 1.8 × 10^9 cycles by 4 GHz; the frequency is 2 GHz.",
+        "C": "The CPI is right, but dividing the cycle count by the frequency was forgotten; 1.8 × 10^9 cycles is not 1.8 seconds but 0.9 seconds at 2 GHz.",
+        "D": "A CPI of 6.0 is the sum of the CPIs (1+3+2); no weighted average was taken.",
+        "E": "Correct. CPI = 1.8; time = 10^9 × 1.8 / 2×10^9 = 0.9 s."
+      },
+      "keyConcept": "Time = Instruction count × CPI × Cycle time (= Instruction count × CPI / Frequency). The average CPI is weighted by the class fractions.",
+      "examTip": "Convert the percentages to decimals, multiply by the CPIs and add up; then watch the exponents of 10^9 and GHz cancelling.",
+      "simpleExplanation": "CPI tells you how many clock ticks (cycles) an instruction takes on average. If half the instructions take 1, 30% take 3 and 20% take 2 cycles, we take a weighted average: 0.5×1 + 0.3×3 + 0.2×2 = 1.8 cycles. 1 billion instructions × 1.8 = 1.8 billion cycles are needed. Since the processor ticks 2 billion times per second, the time is 1.8 / 2 = 0.9 seconds. This is like working out the speed of a conveyor belt by saying 'each item takes 1.8 seconds on average, and we push through 2 items per second'."
+    },
     "optionExplanations": {
       "A": "CPI 2,0 üç sınıfın CPI'larının basit (ağırlıksız) ortalamasıdır ((1+3+2)/3); oranlar hesaba katılmalıdır.",
       "B": "CPI doğru ancak süre 1,8 × 10^9 çevrimin 4 GHz'e bölünmesiyle bulunmuştur; frekans 2 GHz'dir.",
@@ -1063,6 +1525,28 @@
     "correctAnswer": "A",
     "explanation": "RISC felsefesi, az sayıda, basit ve sabit uzunluklu komutlarla boru hattı (pipelining) işlemeyi kolaylaştırmayı hedefler. Belleğe erişim yalnızca load ve store komutlarıyla yapılır (load/store mimarisi); aritmetik komutlar yalnızca yazmaçlar üzerinde çalışır. Bu nedenle RISC işlemcilerde geniş bir genel amaçlı yazmaç dosyası (örn. 32 yazmaç) bulunur ve komutların çoğu tek çevrimde kodlanıp çözülür (hardwired control). ARM, RISC-V ve MIPS tipik örneklerdir; x86 ise CISC örneğidir (ancak modern x86 işlemciler içeride CISC komutlarını RISC benzeri mikro-işlemlere çevirir).",
     "simpleExplanation": "RISC işlemci tasarımında felsefe 'az ama basit komut'tur. Komutlar hep aynı uzunluktadır, böylece işlemci hangi komutun nerede bittiğini düşünmeden hızla okur; belleğe sadece 'yükle' ve 'sakla' komutları dokunur, hesaplar yalnızca yazmaçlar (register) arasında yapılır. Bunu Lego'ya benzetin: az sayıda standart parça ile her şeyi hızlı kurarsınız. CISC ise çok çeşitli, değişken boyutlu ve bazen tek başına çok iş yapan karmaşık parçalar kullanır. Sabit uzunluk ve yükle/sakla erişimi RISC'in imzasıdır.",
+    "en": {
+      "subtopic": "Comparison of RISC and CISC architectures",
+      "question": "Which of the following is a characteristic feature of the RISC (Reduced Instruction Set Computer) architecture?",
+      "options": {
+        "A": "A fixed-length instruction format and memory being accessed only through load/store instructions",
+        "B": "Many addressing modes and variable-length instructions",
+        "C": "Instructions being executed by a microcode interpreter rather than directly in hardware",
+        "D": "Arithmetic instructions being able to take their operands directly from memory and write the result to memory",
+        "E": "A small number of general-purpose registers and complex tasks being done with a single instruction"
+      },
+      "explanation": "The RISC philosophy aims to make pipelining easier with a small number of simple, fixed-length instructions. Memory is accessed only through load and store instructions (a load/store architecture); arithmetic instructions operate only on registers. For this reason RISC processors have a large general-purpose register file (e.g. 32 registers) and most instructions are encoded and decoded in a single cycle (hardwired control). ARM, RISC-V and MIPS are typical examples; x86 is an example of CISC (although modern x86 processors internally translate CISC instructions into RISC-like micro-operations).",
+      "optionExplanations": {
+        "A": "Correct. Fixed length gives easy decoding and pipelining; a load/store architecture gives simple, uniform memory access.",
+        "B": "Many addressing modes and variable-length instructions (1-15 bytes in x86) are a CISC feature; they complicate decoding.",
+        "C": "A microcoded control unit is common in CISC for translating complex instructions into small steps; RISC prefers hardwired control.",
+        "D": "Memory-to-memory or memory-to-register arithmetic operands are a CISC feature (e.g. x86 'add [mem], eax'); in RISC, arithmetic is done only between registers.",
+        "E": "Few registers and 'lots of work with one instruction' is the CISC approach; RISC uses a large register file and simple instructions."
+      },
+      "keyConcept": "RISC: simple/fixed-length instructions, load/store architecture, many registers, hardwired control, pipeline-friendly. CISC: complex/variable instructions, many addressing modes, microcode.",
+      "examTip": "If an option mentions 'arithmetic with memory operands', 'variable length' or 'microcode', say CISC; if it mentions 'load/store', 'fixed length' or 'many registers', say RISC.",
+      "simpleExplanation": "In RISC processor design the philosophy is 'few but simple instructions'. The instructions are always the same length, so the processor reads them quickly without having to work out where each instruction ends; only 'load' and 'store' instructions touch memory, and calculations are done only between registers. Think of it like Lego: you build anything quickly out of a small number of standard pieces. CISC, by contrast, uses a wide variety of pieces of varying sizes, some of which do a lot of work on their own. Fixed length and load/store access are the signature of RISC."
+    },
     "optionExplanations": {
       "A": "Doğru. Sabit uzunluk kolay kod çözme ve boru hattı; load/store mimarisi ise basit, tek tip bellek erişimi sağlar.",
       "B": "Çok sayıda adresleme modu ve değişken uzunluklu komutlar (x86'da 1-15 bayt) CISC özelliğidir; kod çözmeyi karmaşıklaştırır.",
@@ -1112,6 +1596,28 @@
     "correctAnswer": "C",
     "explanation": "AMAT = L1 isabet süresi + L1 ıskalama oranı × L1 ıskalama cezası. L1 ıskalama cezası ise L2'ye erişimin kendisidir: L2 isabet süresi + L2 yerel ıskalama oranı × bellek erişim süresi = 10 + 0,20 × 100 = 30 çevrim. Dolayısıyla AMAT = 1 + 0,05 × 30 = 1 + 1,5 = 2,5 çevrim. Yerel ıskalama oranı, L2'ye ulaşan erişimler içindeki ıskalama oranıdır; küresel (global) L2 ıskalama oranı 0,05 × 0,20 = %1 olur.",
     "simpleExplanation": "Veri ararken önce en yakın çekmeceye (L1) bakılır; %95 ihtimalle oradadır ve 1 çevrim sürer. Bulunamazsa (%5) ikinci dolaba (L2) gidilir: bu 10 çevrim alır, ve oraya gidenlerin %20'si orada da bulunamayıp 100 çevrimlik ana belleğe iner. L2'ye gitmenin ortalama maliyeti 10 + 0,2×100 = 30 çevrimdir. Toplam ortalama: 1 + 0,05×30 = 2,5 çevrim. Mantık içten dışa doğrudur: önce uzaktaki katın ortalamasını hesaplayın, sonra onu yakın katın 'kaçırma cezası' olarak kullanın.",
+    "en": {
+      "subtopic": "Memory hierarchy – average memory access time (AMAT)",
+      "question": "In a processor with a two-level cache, the L1 hit time is 1 cycle and the L1 miss rate is 5%; the L2 hit time is 10 cycles and the local miss rate of L2 is 20%; the main memory access time is 100 cycles. What is the Average Memory Access Time (AMAT) in cycles?",
+      "options": {
+        "A": "1.5",
+        "B": "2.0",
+        "C": "2.5",
+        "D": "6.0",
+        "E": "3.5"
+      },
+      "explanation": "AMAT = L1 hit time + L1 miss rate × L1 miss penalty. The L1 miss penalty is itself the access to L2: L2 hit time + L2 local miss rate × memory access time = 10 + 0.20 × 100 = 30 cycles. Therefore AMAT = 1 + 0.05 × 30 = 1 + 1.5 = 2.5 cycles. The local miss rate is the miss rate among the accesses that reach L2; the global L2 miss rate is 0.05 × 0.20 = 1%.",
+      "optionExplanations": {
+        "A": "1.5 = 1 + 0.05 × 10; the cost of L2 missing and going to memory (0.20 × 100) has been ignored.",
+        "B": "2.0 = 1 + 0.05 × 20; only 0.20 × 100 was taken as the L2 miss penalty and the L2 hit time (10) was forgotten.",
+        "C": "Correct. L1 miss penalty = 10 + 0.2 × 100 = 30; AMAT = 1 + 0.05 × 30 = 2.5.",
+        "D": "6.0 = 1 + 0.05 × 100; it was assumed that every L1 miss goes straight to memory as if L2 did not exist.",
+        "E": "3.5 = 1 + 0.05 × 10 + 0.20 × 10; the L2 miss rate was applied as if it were a global rate, without multiplying by the L1 miss rate."
+      },
+      "keyConcept": "AMAT = hit time + miss rate × miss penalty; in a multi-level hierarchy the penalty is the AMAT of the lower level. The local miss rate is relative to the accesses that reach that level.",
+      "examTip": "Compute from the inside out: first L2's average time (10 + 0.2×100), then use it as L1's miss penalty.",
+      "simpleExplanation": "When looking for data, the nearest drawer (L1) is checked first; with 95% probability it is there and it takes 1 cycle. If it is not found (5%), you go to the second cabinet (L2): this takes 10 cycles, and 20% of those who go there do not find it there either and go down to the 100-cycle main memory. The average cost of going to L2 is 10 + 0.2×100 = 30 cycles. The overall average: 1 + 0.05×30 = 2.5 cycles. The logic runs from the inside out: first work out the average for the far level, then use it as the 'miss penalty' of the near level."
+    },
     "optionExplanations": {
       "A": "1,5 = 1 + 0,05 × 10; L2'nin ıskalayıp belleğe gitme maliyeti (0,20 × 100) ihmal edilmiştir.",
       "B": "2,0 = 1 + 0,05 × 20; L2 ıskalama cezası yalnızca 0,20 × 100 alınıp L2 isabet süresi (10) unutulmuştur.",
@@ -1161,6 +1667,28 @@
     "correctAnswer": "B",
     "explanation": "Kesme, cihazın işlemciye asenkron olarak sinyal göndermesidir. İşlemci her komut çevriminin sonunda kesme hattını kontrol eder; bekleyen kesme varsa mevcut komutu bitirir, geri dönebilmek için program sayacı (PC) ve durum yazmacını (PSW/flags) kaydeder, kesme numarasını kullanarak kesme vektör tablosundan hizmet yordamının adresini okur, çekirdek moduna geçer ve ISR'yi yürütür. ISR bitince kaydedilen bağlam geri yüklenir ve kesilen program kaldığı yerden devam eder. Yoklamada ise işlemci cihazın durum yazmacını döngüyle okur; nadiren olay üreten cihazlarda (kart okuyucu gibi) bu yöntem işlemci zamanını boşa harcar, bu nedenle kesme tercih edilir.",
     "simpleExplanation": "Kesme (interrupt) kapı zili gibidir: kart takılınca cihaz işlemciye 'bak bana' sinyali gönderir, işlemci o anki işini bir kenara not eder (program sayacı ve durum yazmacı), bu cihaz için önceden hazırlanmış küçük programın (kesme hizmet yordamı) adresini bir tablodan bulur, onu yetkili modda çalıştırır ve sonra kaldığı yere döner. Yoklama (polling) ise işlemcinin sürekli kapıya gidip 'biri geldi mi?' diye bakmasıdır; nadiren olan olaylar için zaman kaybıdır. Doğru seçenek, kesme işlendiğinde atılan adımları sırayla doğru anlatan seçenektir.",
+    "en": {
+      "subtopic": "Interrupt and polling mechanisms",
+      "question": "An ATM's card reader uses the interrupt mechanism to notify the processor when a card is inserted. Which of the following statements about the interrupt and polling mechanisms is correct?",
+      "options": {
+        "A": "In the polling method the device itself notifies the processor that it is ready; in the interrupt method the processor continuously queries the device's status register.",
+        "B": "When an interrupt arrives, the processor completes the instruction it is executing, saves the program counter and status register, takes the address of the relevant interrupt service routine (ISR) from the interrupt vector table, and runs it in kernel mode.",
+        "C": "Because interrupts are asynchronous events, they can only be handled while the processor is idle; a busy processor loses the interrupt.",
+        "D": "The interrupt vector table is kept in user address space; this way applications can register their own interrupt handlers directly.",
+        "E": "Polling always imposes less processor load than interrupts; for this reason modern operating systems prefer polling for devices such as keyboards and network cards."
+      },
+      "explanation": "An interrupt is a device sending a signal to the processor asynchronously. The processor checks the interrupt line at the end of every instruction cycle; if an interrupt is pending it finishes the current instruction, saves the program counter (PC) and the status register (PSW/flags) so that it can return, uses the interrupt number to read the address of the service routine from the interrupt vector table, switches to kernel mode and executes the ISR. When the ISR finishes, the saved context is restored and the interrupted program continues where it left off. In polling, by contrast, the processor reads the device's status register in a loop; for devices that rarely generate events (such as a card reader) this method wastes processor time, which is why interrupts are preferred.",
+      "optionExplanations": {
+        "A": "The definitions are reversed: in polling the processor queries, in interrupts the device notifies.",
+        "B": "Correct. The interrupt handling steps: complete the instruction → save the context → ISR address from the vector table → ISR in kernel mode → restore the context.",
+        "C": "Interrupts exist precisely to get the processor's attention while it is busy; the hardware holds the interrupt (pending) and handles it at an instruction boundary. An interrupt is only deferred if it is masked, it is not lost.",
+        "D": "The interrupt vector table is kept in kernel-protected memory; letting user applications modify it directly is unacceptable for security and stability. Applications can only subscribe to events indirectly through the operating system (e.g. signal handlers).",
+        "E": "Polling is only partly used for devices with very high event rates (e.g. NAPI-like hybrid approaches on a network card under load) to prevent interrupt storms; for devices that rarely generate events, such as a keyboard, interrupts are far more efficient."
+      },
+      "keyConcept": "Interrupt: the device alerts the processor asynchronously, the context is saved and the ISR runs in kernel mode via the vector table. Polling: the processor queries the device in a loop, inefficient for rare events.",
+      "examTip": "Memorize the interrupt steps in order: 'complete-save-vector-ISR-restore'. Statements such as 'handled while idle' or 'vector table in user space' are always wrong.",
+      "simpleExplanation": "An interrupt is like a doorbell: when a card is inserted, the device sends the processor a 'look at me' signal; the processor jots down what it was doing (the program counter and status register), finds the address of the small program prepared in advance for this device (the interrupt service routine) in a table, runs it in privileged mode and then goes back to where it left off. Polling, on the other hand, is the processor constantly walking to the door and checking 'has anyone arrived?'; for events that rarely happen it is a waste of time. The correct option is the one that describes, in the right order, the steps taken when an interrupt is handled."
+    },
     "optionExplanations": {
       "A": "Tanımlar ters verilmiştir: yoklamada işlemci sorgular, kesmede cihaz bildirir.",
       "B": "Doğru. Kesme işleme adımları: komutu tamamla → bağlamı kaydet → vektör tablosundan ISR adresi → çekirdek modunda ISR → bağlamı geri yükle.",
@@ -1210,6 +1738,28 @@
     "correctAnswer": "C",
     "explanation": "HTTP semantiğinde (RFC 9110) bir metot, aynı isteğin bir veya birden çok kez yapılmasının sunucu durumunda aynı etkiyi yaratması durumunda idempotenttir. GET ve HEAD güvenli (safe) ve idempotenttir; PUT aynı temsili yerine koyduğu için, DELETE ise kaynak bir kez silindikten sonra tekrar silmenin durumu değiştirmemesi nedeniyle idempotenttir. POST ise yeni kaynak oluşturma veya işlem başlatma gibi yan etkili işlemler için tanımlıdır ve idempotentliği garanti edilmez; aynı POST /transferler isteği iki kez gönderilirse iki transfer oluşabilir. Bu nedenle ödeme API'lerinde istemci tarafından üretilen bir Idempotency-Key başlığı kullanılır.",
     "simpleExplanation": "İdempotent, 'bir kez de yapsan on kez de yapsan sonuç aynı' demektir. Işığı açma düğmesi gibi: 'açık yap' komutunu kaç kez verseniz ışık sadece açık olur (PUT, DELETE, GET böyledir). POST ise 'bir tane daha ekle' komutudur: her tekrar yeni bir kayıt, yani yeni bir para transferi oluşturabilir. Bu yüzden ağ hatasında isteği otomatik tekrarlayan bir uygulama POST ile iki kez para gönderebilir. Çözüm, isteğe bir 'bu işlem zaten yapıldı mı' anahtarı eklemektir.",
+    "en": {
+      "subtopic": "HTTP methods and idempotence",
+      "question": "A mobile banking application automatically resends a request (retry) when a network error occurs. Which of the following HTTP methods is NOT idempotent and may therefore cause a side effect when resent (for example, a money transfer being carried out twice)?",
+      "options": {
+        "A": "GET",
+        "B": "PUT",
+        "C": "POST",
+        "D": "DELETE",
+        "E": "HEAD"
+      },
+      "explanation": "In HTTP semantics (RFC 9110) a method is idempotent if making the same request once or several times has the same effect on the server state. GET and HEAD are safe and idempotent; PUT is idempotent because it puts the same representation in place, and DELETE because deleting again after the resource has been deleted once does not change the state. POST, however, is defined for operations with side effects such as creating a new resource or starting a transaction, and its idempotence is not guaranteed; if the same POST /transferler request is sent twice, two transfers may be created. This is why payment APIs use a client-generated Idempotency-Key header.",
+      "optionExplanations": {
+        "A": "GET is safe and idempotent; it only reads, and resending it does not change the server state.",
+        "B": "PUT replaces the whole resource with the given representation; repeating the same request brings the resource to the same state, so it is idempotent.",
+        "C": "Correct. POST's idempotence is by definition not guaranteed; a repeated POST may create separate transactions.",
+        "D": "DELETE is idempotent: the first call deletes the resource, later calls may return 404 but the server state does not change (a different status code does not break idempotence).",
+        "E": "HEAD is a safe and idempotent method that is the same as GET but returns a response without a body."
+      },
+      "keyConcept": "Idempotent methods: GET, HEAD, PUT, DELETE, OPTIONS. POST and PATCH give no idempotence guarantee. Safe methods: GET, HEAD, OPTIONS.",
+      "examTip": "Idempotence is not the response code being the same, it is the server state staying the same. Remember the Idempotency-Key check for POST in financial APIs.",
+      "simpleExplanation": "Idempotent means 'whether you do it once or ten times, the result is the same'. Like a light switch: however many times you give the command 'make it on', the light is simply on (PUT, DELETE and GET are like this). POST, however, is the command 'add one more': every repeat can create a new record, i.e. a new money transfer. That is why an application that automatically repeats a request on a network error can send money twice with POST. The fix is to add a 'has this operation already been done' key to the request."
+    },
     "optionExplanations": {
       "A": "GET güvenli ve idempotenttir; yalnızca okuma yapar, tekrar gönderilmesi sunucu durumunu değiştirmez.",
       "B": "PUT, kaynağın tamamını verilen temsille değiştirir; aynı isteği tekrarlamak kaynağı aynı duruma getirir, dolayısıyla idempotenttir.",
@@ -1259,6 +1809,28 @@
     "correctAnswer": "D",
     "explanation": "401 Unauthorized, adının aksine kimlik doğrulama (authentication) eksikliğini veya geçersizliğini ifade eder: sunucu istemcinin kim olduğunu bilmiyordur ve WWW-Authenticate başlığıyla kimlik bilgisi ister. 403 Forbidden ise kimliği doğrulanmış ancak istenen kaynağa yetkisi (authorization) olmayan istemci için kullanılır; kimlik bilgilerinin yeniden gönderilmesi sonucu değiştirmez. Senaryoda kullanıcı doğrulanmış, yetkisi yetersizdir → 403. Bazı sistemler kaynağın varlığını gizlemek için 404 döndürmeyi tercih eder; bu güvenlik amaçlı bir seçimdir ancak semantik olarak en uygun kod 403'tür.",
     "simpleExplanation": "401 ve 403 sık karıştırılır. 401 'seni tanımıyorum, kimliğini göster' demektir; 403 ise 'seni tanıyorum ama buraya girme yetkin yok' demektir. Senaryoda personel geçerli bir giriş yapmış, yani kimliği bellidir; sadece denetim raporlarına yetkisi yoktur. Bina kartı olan ama yönetim katına kartı çalışmayan bir çalışan gibi: kart geçerli, kapı kapalı. Bu yüzden doğru yanıt 403 Forbidden'dır.",
+    "en": {
+      "subtopic": "HTTP status codes – authentication and authorization",
+      "question": "A branch employee has logged in to the internet branch administration panel with valid credentials and received a valid session token. They then send a request to the GET /admin/raporlar endpoint, which is open only to the internal audit role. Which of the following is the most appropriate HTTP status code for a server following REST design principles to return?",
+      "options": {
+        "A": "400 Bad Request",
+        "B": "401 Unauthorized",
+        "C": "404 Not Found",
+        "D": "403 Forbidden",
+        "E": "500 Internal Server Error"
+      },
+      "explanation": "401 Unauthorized, contrary to its name, expresses missing or invalid authentication: the server does not know who the client is and asks for credentials with the WWW-Authenticate header. 403 Forbidden is used for a client who is authenticated but lacks authorization for the requested resource; resending the credentials does not change the outcome. In the scenario the user is authenticated and their authorization is insufficient → 403. Some systems prefer to return 404 to hide the existence of the resource; that is a security-motivated choice, but semantically the most appropriate code is 403.",
+      "optionExplanations": {
+        "A": "400 indicates that the request is syntactically or structurally malformed; the request is well-formed, the problem is authorization.",
+        "B": "401 says authentication is missing/invalid. The user has a valid session token; the problem is not identity but authorization. This is the point where 401 and 403 are most often confused.",
+        "C": "404 expresses that the resource does not exist; the resource exists. Returning 404 to hide its existence can be a security policy but is not the 'most appropriate' semantic response.",
+        "D": "Correct. Authenticated, not authorized → 403 Forbidden.",
+        "E": "500 indicates an unexpected error on the server side; a denial of authorization is an expected, controlled outcome, not a server error."
+      },
+      "keyConcept": "401 = who are you? (authentication); 403 = I know who you are but you lack permission (authorization). In 403, resending credentials does not help.",
+      "examTip": "If the scenario says 'logged in/valid token', eliminate 401; if it says 'token expired/missing', choose 401.",
+      "simpleExplanation": "401 and 403 are often confused. 401 means 'I do not recognize you, show your ID'; 403 means 'I know you, but you are not allowed in here'. In the scenario the employee has logged in validly, so their identity is known; they simply have no permission for the audit reports. Like an employee with a building pass whose card does not work on the management floor: the card is valid, the door is closed. That is why the correct answer is 403 Forbidden."
+    },
     "optionExplanations": {
       "A": "400, isteğin sözdizimsel veya biçimsel olarak hatalı olduğunu belirtir; istek biçimsel olarak geçerlidir, sorun yetkidir.",
       "B": "401 kimlik doğrulamanın eksik/geçersiz olduğunu söyler. Kullanıcı geçerli bir oturum belirtecine sahiptir; sorun kimlik değil yetkidir. Bu, 401 ve 403'ün en sık karıştırıldığı noktadır.",
@@ -1308,6 +1880,28 @@
     "correctAnswer": "A",
     "explanation": "typeof null, JavaScript'in tarihsel bir hatası nedeniyle 'object' döndürür (düzeltmek geriye uyumluluğu bozacağı için standartta korunmuştur). 0.1 + 0.2, IEEE 754 çift duyarlıklı kayan nokta gösteriminde 0.30000000000000004 olduğundan 0.3 ile eşit değildir → false. + operatörü işlenenlerden biri string ise birleştirme yapar: \"5\" + 3 → \"53\". - operatörü yalnızca sayısal tanımlı olduğundan string sayıya çevrilir: \"5\" - 3 → 2. [] == false gevşek eşitlikte: boş dizi ToPrimitive ile \"\" olur, \"\" sayıya çevrilince 0, false sayıya çevrilince 0; 0 == 0 → true. Çıktı: object false 53 2 true.",
     "simpleExplanation": "JavaScript bazı tuhaflıklarıyla ünlüdür. typeof null tarihi bir hata nedeniyle 'object' der. 0.1 + 0.2 bilgisayarın ondalık sayıları tam tutamaması yüzünden 0.30000000000000004 çıkar, bu yüzden 0.3'e eşit değildir. Artı işareti yanında metin görünce yapıştırma yapar: '5' + 3 = '53'; eksi işareti ise sadece sayılarla çalıştığı için metni sayıya çevirir: '5' - 3 = 2. Çift eşittir (==) karşılaştırmadan önce tipleri dönüştürür; boş dizi de false da sonunda 0 olur ve eşit sayılır.",
+    "en": {
+      "subtopic": "JavaScript type conversions and operator behaviour",
+      "question": "What is printed to the console when the following JavaScript (ES2020+) code is run?",
+      "options": {
+        "A": "object false 53 2 true",
+        "B": "null false 8 2 false",
+        "C": "object true 53 2 true",
+        "D": "object false 8 2 false",
+        "E": "null false 53 2 true"
+      },
+      "explanation": "typeof null returns 'object' because of a historical bug in JavaScript (it was kept in the standard because fixing it would break backward compatibility). 0.1 + 0.2 is 0.30000000000000004 in IEEE 754 double-precision floating-point representation, so it is not equal to 0.3 → false. The + operator performs concatenation if one of the operands is a string: \"5\" + 3 → \"53\". The - operator is defined only numerically, so the string is converted to a number: \"5\" - 3 → 2. [] == false under loose equality: the empty array becomes \"\" via ToPrimitive, \"\" converted to a number is 0, false converted to a number is 0; 0 == 0 → true. Output: object false 53 2 true.",
+      "optionExplanations": {
+        "A": "Correct. typeof null → 'object'; floating-point inequality → false; string concatenation → '53'; numeric subtraction → 2; loose equality conversion → true.",
+        "B": "typeof null returns 'object', not 'null'; \"5\" + 3 concatenates (\"53\") rather than adding; and [] == false is true.",
+        "C": "0.1 + 0.2 === 0.3 is false because of binary floating-point error; the result is 0.30000000000000004.",
+        "D": "\"5\" + 3 is string concatenation, so it gives \"53\", not 8. [] == false is true under loose equality ([] → \"\" → 0).",
+        "E": "The other four values are right, but typeof null returns 'object'; the value 'null' is not among the types typeof returns."
+      },
+      "keyConcept": "typeof null === 'object' (historical bug); binary floating point 0.1+0.2 ≠ 0.3; + concatenates if a string is present, - is always numeric; == loose equality performs type conversion, === does not.",
+      "examTip": "In JS output questions, when you see + and ==, stop and write out the type conversion; do not expect equality in floating-point comparisons (compare with Number.EPSILON).",
+      "simpleExplanation": "JavaScript is famous for some of its quirks. typeof null says 'object' because of a historical bug. 0.1 + 0.2 comes out as 0.30000000000000004 because the computer cannot hold decimal numbers exactly, so it is not equal to 0.3. The plus sign glues things together when it sees text next to it: '5' + 3 = '53'; the minus sign only works with numbers, so it turns the text into a number: '5' - 3 = 2. Double equals (==) converts the types before comparing; both the empty array and false end up as 0 and are considered equal."
+    },
     "optionExplanations": {
       "A": "Doğru. typeof null → 'object'; kayan nokta eşitsizliği → false; string birleştirme → '53'; sayısal çıkarma → 2; gevşek eşitlik dönüşümü → true.",
       "B": "typeof null 'null' değil 'object' döndürür; \"5\" + 3 ise birleştirme yapar (\"53\"), toplama değil; [] == false ise true'dur.",
@@ -1358,6 +1952,28 @@
     "correctAnswer": "E",
     "explanation": "JWS tipi JWT üç parçadan oluşur: header.payload.signature; header ve payload yalnızca Base64URL ile kodlanır, şifrelenmez. İmza (HMAC veya RSA/ECDSA) payload'ın değiştirilmediğini garanti eder, gizliliğini değil; gizlilik için JWE (şifreli JWT) gerekir. Belirtecin saklanma yeri saldırı yüzeyini belirler: localStorage sayfadaki tüm JavaScript'e açıktır, XSS açığı varsa belirteç çalınır. HttpOnly bayraklı çerez ise document.cookie ile okunamaz, Secure bayrağı yalnızca HTTPS üzerinden gönderilmesini sağlar. Çerez her istekte otomatik gönderildiği için CSRF riski ayrıca ele alınmalı; SameSite=Strict/Lax özniteliği ve/veya anti-CSRF belirteci kullanılmalıdır.",
     "simpleExplanation": "İmzalı JWT, mühürlü ama şeffaf bir zarf gibidir: içindeki yazıyı herkes okuyabilir, mühür yalnızca yazının değiştirilmediğini garanti eder. Bu nedenle şifre gibi gizli bilgiler JWT'nin içine konmaz. Belirteci nerede sakladığınız da önemlidir: localStorage sayfadaki her JavaScript'in açabildiği bir çekmecedir; siteye zararlı bir betik sızarsa (XSS) belirteci çalar. HttpOnly bayraklı çerez ise JavaScript'in açamadığı kilitli bir çekmecedir, Secure bayrağı da bunu yalnızca güvenli (HTTPS) bağlantıda taşır. Çerezin kendi riski olan CSRF ise ayrı önlemlerle (SameSite) kapatılır.",
+    "en": {
+      "subtopic": "Session management – cookie flags and JWT",
+      "question": "In an internet banking application, the use of a signed (HS256) but unencrypted JWT for session management, and where this token should be stored, is under discussion. Which of the following statements is correct?",
+      "options": {
+        "A": "Because the JWT is signed, the data in the payload (for example the user role) is encrypted; the client cannot read this data.",
+        "B": "If server-side sessions are used, the server becomes stateless; JWT, on the other hand, requires a session table to be kept on the server.",
+        "C": "A token stored in an HttpOnly cookie cannot be read by JavaScript; it therefore provides full protection against CSRF attacks.",
+        "D": "JavaScript on the page cannot access a JWT stored in localStorage; it is therefore safe against XSS attacks.",
+        "E": "A standard signed JWT's payload is Base64URL-encoded and readable by anyone; the signature protects only integrity. Storing the token in a cookie with the HttpOnly and Secure flags makes it harder to steal via XSS."
+      },
+      "explanation": "A JWS-type JWT consists of three parts: header.payload.signature; the header and payload are only Base64URL-encoded, not encrypted. The signature (HMAC or RSA/ECDSA) guarantees that the payload has not been altered, not its confidentiality; for confidentiality JWE (encrypted JWT) is needed. Where the token is stored determines the attack surface: localStorage is open to all JavaScript on the page, so if there is an XSS vulnerability the token is stolen. A cookie with the HttpOnly flag cannot be read via document.cookie, and the Secure flag ensures it is sent only over HTTPS. Because a cookie is sent automatically with every request, the CSRF risk must be handled separately; the SameSite=Strict/Lax attribute and/or an anti-CSRF token should be used.",
+      "optionExplanations": {
+        "A": "The signature provides integrity, not confidentiality. The payload can be read by anyone by decoding the Base64URL; sensitive data should not be put in a JWT payload.",
+        "B": "This is reversed: with server-side sessions the server keeps a session store (stateful); because a JWT carries the user information inside itself, the server can run stateless (unless a revocation list is kept).",
+        "C": "HttpOnly prevents the token from being read by JavaScript (making theft harder against XSS), but because the browser sends the cookie automatically with every request it does not prevent CSRF; CSRF requires the SameSite flag and/or an anti-CSRF token.",
+        "D": "localStorage is open to all JavaScript on the same origin; code injected via XSS can read the token with localStorage.getItem. This is the best-known weakness of localStorage.",
+        "E": "Correct. Signature = integrity; the payload is readable; an HttpOnly + Secure cookie improves storage security against XSS."
+      },
+      "keyConcept": "JWS: signed but unencrypted, the payload is readable. HttpOnly → cannot be read via XSS; Secure → HTTPS only; SameSite → CSRF mitigation. localStorage is exposed to XSS.",
+      "examTip": "Separate 'signed' from 'encrypted'. Map the cookie flags to the attacks: HttpOnly↔XSS reading, Secure↔network eavesdropping, SameSite↔CSRF.",
+      "simpleExplanation": "A signed JWT is like a sealed but transparent envelope: anyone can read the writing inside, and the seal only guarantees the writing has not been altered. That is why secret information such as passwords is not put inside a JWT. Where you keep the token matters too: localStorage is a drawer that every piece of JavaScript on the page can open; if a malicious script sneaks onto the site (XSS) it steals the token. A cookie with the HttpOnly flag is a locked drawer that JavaScript cannot open, and the Secure flag carries it only over a secure (HTTPS) connection. The cookie's own risk, CSRF, is closed off with separate measures (SameSite)."
+    },
     "optionExplanations": {
       "A": "İmza bütünlük sağlar, gizlilik sağlamaz. Payload Base64URL ile çözülerek herkes tarafından okunabilir; hassas veri JWT payload'ına konulmamalıdır.",
       "B": "Tersine çevrilmiştir: sunucu tarafı oturumda sunucu oturum deposu tutar (durumlu); JWT kendi içinde kullanıcı bilgisini taşıdığı için sunucu durumsuz çalışabilir (iptal listesi tutulmazsa).",
@@ -1408,6 +2024,28 @@
     "correctAnswer": "B",
     "explanation": "Kaynak (origin) şema + ana makine adı + port üçlüsüdür; app.banka.com.tr ve api.banka.com.tr farklı ana makine adları olduğundan farklı kaynaklardır. Aynı kaynak politikası tarayıcı tarafından uygulanır. PUT metodu ve application/json içerik türü 'basit istek' koşullarını aşar; bu nedenle tarayıcı gerçek isteği göndermeden önce OPTIONS ile ön kontrol yapar ve Origin, Access-Control-Request-Method, Access-Control-Request-Headers başlıklarını gönderir. Sunucu Access-Control-Allow-Origin: https://app.banka.com.tr, Access-Control-Allow-Methods: PUT ve gerekirse Access-Control-Allow-Headers: Content-Type ile yanıtlarsa tarayıcı asıl PUT isteğini gönderir. Basit isteklerde (GET, HEAD, belirli içerik türleriyle POST) ön kontrol yapılmaz; istek sunucuya gider, ancak yanıt uygun CORS başlığı taşımıyorsa tarayıcı yanıtı JavaScript'e vermez.",
     "simpleExplanation": "Tarayıcı, bir siteden yüklenen sayfanın başka bir adrese istek atmasına şüpheyle yaklaşır. app.banka.com.tr ile api.banka.com.tr farklı alan adları olduğu için 'başka adres' sayılır. JSON gövdeli PUT gibi sıradan olmayan bir istekte tarayıcı önce kapıyı çalar: OPTIONS ile 'buradan PUT atabilir miyim?' diye sorar (ön kontrol). Sunucu Access-Control-Allow-Origin ve Allow-Methods başlıklarıyla 'evet' derse gerçek istek gönderilir. Bu, bir binaya girmeden önce resepsiyondan izin almaya benzer; kontrolü yapan sunucu değil tarayıcıdır.",
+    "en": {
+      "subtopic": "Same-origin policy and CORS",
+      "question": "A single-page application (SPA) loaded from https://app.banka.com.tr sends a PUT request with a Content-Type: application/json body to https://api.banka.com.tr/hesaplar/42. Which of the following statements about this situation is correct?",
+      "options": {
+        "A": "The same-origin policy is enforced by the server; the API server itself rejects the request coming from a different origin.",
+        "B": "The browser first sends a preflight request with the OPTIONS method; if the server grants permission with the Access-Control-Allow-Origin and Access-Control-Allow-Methods headers, the actual PUT request is made.",
+        "C": "Because app and api are subdomains of the same root domain (banka.com.tr), they count as the same origin; CORS is not needed.",
+        "D": "CORS completely prevents the request from reaching the server; if the preflight fails no request goes to the server, and the same rule applies to simple requests.",
+        "E": "If the server sends Access-Control-Allow-Origin: * together with Access-Control-Allow-Credentials: true, cookie-bearing requests are accepted from all origins."
+      },
+      "explanation": "An origin is the triple scheme + host name + port; because app.banka.com.tr and api.banka.com.tr are different host names, they are different origins. The same-origin policy is enforced by the browser. The PUT method and the application/json content type exceed the conditions for a 'simple request'; the browser therefore performs a preflight with OPTIONS before sending the real request, sending the Origin, Access-Control-Request-Method and Access-Control-Request-Headers headers. If the server replies with Access-Control-Allow-Origin: https://app.banka.com.tr, Access-Control-Allow-Methods: PUT and, if needed, Access-Control-Allow-Headers: Content-Type, the browser sends the actual PUT request. For simple requests (GET, HEAD, POST with certain content types) no preflight is done; the request goes to the server, but if the response does not carry the appropriate CORS header the browser does not hand the response to JavaScript.",
+      "optionExplanations": {
+        "A": "The same-origin policy and CORS are enforced on the browser side; the server only produces the permission headers. Non-browser clients such as curl are not affected by CORS at all; for this reason CORS is not a server-side security control.",
+        "B": "Correct. Non-simple request → OPTIONS preflight → permission headers → actual request.",
+        "C": "In the origin comparison the host name must match exactly; subdomains are different origins. (For cookie scope the Domain attribute can cover subdomains, but that affects cookie sending, not CORS.)",
+        "D": "Simple requests have no preflight; the request reaches the server and is processed, and the browser merely withholds the response from the script. This is why CORS is no substitute for protection against CSRF.",
+        "E": "Browsers reject the wildcard (*) origin for requests with credentials; when Access-Control-Allow-Credentials: true is used, Allow-Origin must be an explicit origin name."
+      },
+      "keyConcept": "Origin = scheme + host + port. CORS is enforced in the browser; non-simple requests require an OPTIONS preflight; '*' cannot be used for requests with credentials.",
+      "examTip": "First ask 'same origin?' (compare the triple), then 'simple request?' (GET/HEAD/POST + an allowed content type); if not, there is a preflight.",
+      "simpleExplanation": "The browser is suspicious of a page loaded from one site making requests to another address. Because app.banka.com.tr and api.banka.com.tr are different domain names, it counts as 'another address'. For an out-of-the-ordinary request such as a PUT with a JSON body, the browser knocks on the door first: it asks with OPTIONS 'may I send a PUT from here?' (the preflight). If the server says 'yes' with the Access-Control-Allow-Origin and Allow-Methods headers, the real request is sent. This is like getting permission from reception before entering a building; it is the browser doing the checking, not the server."
+    },
     "optionExplanations": {
       "A": "Aynı kaynak politikası ve CORS tarayıcı tarafında uygulanır; sunucu yalnızca izin başlıklarını üretir. curl gibi tarayıcı dışı istemciler CORS'tan hiç etkilenmez; bu nedenle CORS bir sunucu güvenlik denetimi değildir.",
       "B": "Doğru. Basit olmayan istek → OPTIONS ön kontrol → izin başlıkları → asıl istek.",
@@ -1458,6 +2096,28 @@
     "correctAnswer": "D",
     "explanation": "REST'te URI'ler kaynakları (isimleri) temsil eder, eylem HTTP metoduyla ifade edilir. Hesabın hareketleri, hesap kaynağının alt koleksiyonudur: /hesaplar/123/hareketler; listeleme güvenli ve idempotent bir okuma olduğundan GET kullanılır. Yeni transfer oluşturma, /transferler koleksiyonuna yeni bir öğe eklemektir; sunucu yeni kaynağın kimliğini belirleyeceği için POST uygundur ve başarılı yanıt 201 Created ile Location başlığı taşır. URI'de fiil (getX, olustur, listele) kullanmak ve GET ile durum değiştirmek (transfer yapmak) REST ilkelerine aykırıdır; GET yan etkisiz olmalıdır çünkü ön yükleyiciler, önbellekler ve tarayıcı geçmişi GET'i güvenle tekrarlayabilir.",
     "simpleExplanation": "REST'te adres (URI) bir şeyin adını söyler, ne yapılacağını ise HTTP metodu söyler. 'Hesap 123'ün hareketleri' bir şeydir: /hesaplar/123/hareketler; onu okumak için GET kullanılır. 'Yeni transfer' ise transferler koleksiyonuna eklenecek yeni bir kayıttır; ekleme için POST kullanılır. Adrese fiil koymak (getX, olustur) ya da GET ile para göndermek yanlıştır; çünkü GET 'yalnızca bak, bir şey değiştirme' sözü verir ve tarayıcılar ya da önbellekler onu rahatça tekrar çağırabilir. Kütüphane kataloğunda rafın adını yazıp 'oku' ya da 'ekle' demek gibi düşünün.",
+    "en": {
+      "subtopic": "REST principles and resource-oriented API design",
+      "question": "A bank is designing two endpoints: one that lists the transactions of account number 123 and one that creates a new money transfer. Which of the following designs best fits REST principles (resource-oriented URIs, semantic use of HTTP methods, safe methods being free of side effects)?",
+      "options": {
+        "A": "GET /getHesapHareketleri?id=123 and GET /yeniTransfer?kaynak=123&hedef=456&tutar=100",
+        "B": "POST /hesaplar/123/hareketler/listele and POST /transferler/olustur",
+        "C": "GET /hesaplar/123 and PUT /transferler",
+        "D": "GET /hesaplar/123/hareketler and POST /transferler",
+        "E": "DELETE /hesaplar/123/hareketler?action=list and GET /transferler/yeni"
+      },
+      "explanation": "In REST, URIs represent resources (nouns), and the action is expressed by the HTTP method. The account's transactions are a sub-collection of the account resource: /hesaplar/123/hareketler; because listing is a safe, idempotent read, GET is used. Creating a new transfer is adding a new item to the /transferler collection; because the server will determine the identity of the new resource, POST is appropriate, and the successful response is 201 Created with a Location header. Using verbs in the URI (getX, olustur, listele) and changing state with GET (making a transfer) violate REST principles; GET must be free of side effects, because prefetchers, caches and browser history can safely repeat a GET.",
+      "optionExplanations": {
+        "A": "Using a verb in the URI (getHesapHareketleri) is RPC style; more importantly, making a money transfer with GET uses a safe method with side effects. Browser prefetching or a cache refresh could produce unwanted transfers.",
+        "B": "Using POST for listing forces a cacheable, idempotent read into a method with side effects; the verbs 'listele' and 'olustur' in the URIs also duplicate the method's job.",
+        "C": "GET /hesaplar/123 returns the account itself, not its transactions. PUT /transferler means replacing the whole collection; PUT is used when the client knows the URI of the resource (PUT /transferler/{id}), and creating a new record is POST.",
+        "D": "Correct. A noun-based hierarchical URI, GET for reading, POST for adding to the collection.",
+        "E": "DELETE is semantically wrong for listing, and changing the meaning of the method with a query parameter such as ?action=list is contrary to REST; creating a transfer with GET also uses a safe method with side effects."
+      },
+      "keyConcept": "REST: URI = noun (resource/collection), method = action. GET for reading (no side effects), POST for adding to a collection (201 + Location), PUT for full replacement at a known URI, DELETE for deleting.",
+      "examTip": "If you see a verb in the URI or a GET that 'does' something, eliminate the option. For creation: POST if the server generates the identifier, PUT if the client knows the URI.",
+      "simpleExplanation": "In REST the address (URI) names a thing, and the HTTP method says what to do with it. 'The transactions of account 123' is a thing: /hesaplar/123/hareketler; to read it you use GET. 'A new transfer' is a new record to be added to the transfers collection; for adding you use POST. Putting a verb in the address (getX, olustur) or sending money with GET is wrong, because GET promises 'only look, do not change anything', and browsers or caches can happily call it again. Think of writing the name of a shelf in a library catalogue and then saying 'read' or 'add'."
+    },
     "optionExplanations": {
       "A": "URI'de fiil kullanımı (getHesapHareketleri) RPC tarzıdır; daha önemlisi GET ile para transferi yapmak güvenli metodu yan etkili kullanmaktır. Tarayıcı ön yüklemesi veya önbellek yenilemesi istenmeyen transferler üretebilir.",
       "B": "Listeleme için POST kullanmak, önbelleklenebilir ve idempotent bir okumayı yan etkili metoda zorlar; URI'lerdeki 'listele' ve 'olustur' fiilleri de metodun işini tekrar eder.",
@@ -1508,6 +2168,28 @@
     "correctAnswer": "C",
     "explanation": "Cache-Control: max-age=600, yanıtın 600 saniye boyunca 'taze' (fresh) sayılacağını belirtir; bu süre içinde tarayıcı sunucuya sormadan önbellekten yanıt verir. t=900'de kopya bayatlamıştır (stale) ancak silinmez; tarayıcı doğrulama (revalidation) yapar. Elinde ETag olduğu için If-None-Match: \"v7\" başlığıyla koşullu GET gönderir. Sunucu mevcut ETag'i karşılaştırır; eşleşiyorsa gövde göndermeden 304 Not Modified döner (yeni Cache-Control başlıklarıyla tazelik süresini yeniler). Tarayıcı önbellekteki gövdeyi kullanır. Böylece bant genişliği tasarrufu sağlanır ve veri güncelliği korunur. Kaynak değişmiş olsaydı sunucu 200 OK ile yeni gövdeyi ve yeni ETag'i gönderirdi.",
     "simpleExplanation": "max-age=600, 'bu yanıtı 10 dakika boyunca sormadan kullanabilirsin' demektir. 900. saniyede süre geçmiştir; tarayıcı kopyayı çöpe atmaz ama artık 'taze' saymaz. Elinde ETag adlı bir sürüm etiketi ('v7') olduğu için sunucuya 'elimde v7 var, değişti mi?' diye sorar (If-None-Match). Sunucu 'değişmedi' anlamında gövdesiz, küçük bir 304 yanıtı döner ve tarayıcı eski kopyayı kullanmaya devam eder, tazelik süresini de yeniler. Bu, gazete bayisine 'yeni baskı çıktı mı?' diye sorup 'hayır, elindeki güncel' cevabını almaya benzer; gazeteyi yeniden satın almazsınız.",
+    "en": {
+      "subtopic": "Web caching headers and conditional requests",
+      "question": "A bank's exchange rate API responds to the request GET /api/kurlar with the following headers: Cache-Control: max-age=600 and ETag: \"v7\". The browser cached this response at time t=0. When the same resource is requested again at t=900 seconds, what happens between the browser and the server if the resource has not changed on the server?",
+      "options": {
+        "A": "The browser, knowing that the ETag has not changed, uses the cached copy without contacting the server at all.",
+        "B": "The browser sends a new request with the Cache-Control: no-store header and the server cancels caching.",
+        "C": "The browser sends a conditional request with the If-None-Match: \"v7\" header; the server returns a bodiless 304 Not Modified response, and the browser refreshes and uses the cached copy.",
+        "D": "Because max-age has been exceeded, the browser deletes the cached copy and the server in every case resends the full body with 200 OK.",
+        "E": "ETag is used only when there is no Last-Modified header; in this case the browser first tries sending If-Modified-Since and receives a 404 if that fails."
+      },
+      "explanation": "Cache-Control: max-age=600 states that the response is to be considered 'fresh' for 600 seconds; within that period the browser answers from the cache without asking the server. At t=900 the copy has become stale, but it is not deleted; the browser performs revalidation. Because it holds an ETag, it sends a conditional GET with the If-None-Match: \"v7\" header. The server compares the current ETag; if it matches, it returns 304 Not Modified without sending a body (renewing the freshness lifetime with new Cache-Control headers). The browser uses the body in its cache. Bandwidth is thus saved while data currency is preserved. Had the resource changed, the server would have sent 200 OK with the new body and a new ETag.",
+      "optionExplanations": {
+        "A": "The browser cannot know whether the ETag has changed without asking the server; the ETag is used for conditional validation, not for a local decision. Because the freshness lifetime (600 s) has passed, contacting the server is mandatory.",
+        "B": "no-store as a request directive means 'do not store the response' and is not sent by the browser during automatic revalidation; it has nothing to do with the scenario.",
+        "C": "Correct. Stale copy + ETag → If-None-Match → 304 → the body is not downloaded again.",
+        "D": "The stale copy is not deleted; it is kept for validation. The server returns 200 and the full body only if the resource has changed; if not, 304 saves the body.",
+        "E": "ETag is the stronger validator and takes precedence over Last-Modified; if both are present, If-None-Match has priority. A failed validation does not produce 404."
+      },
+      "keyConcept": "max-age → freshness lifetime; once it passes the copy becomes stale and is validated. ETag/If-None-Match (or Last-Modified/If-Modified-Since) → bodiless refresh with 304 Not Modified.",
+      "examTip": "Compare the time with max-age: if within it, 'does not go to the server'; if outside it, 'conditional request + 304 or 200'. The phrase 'the cache is deleted' is usually wrong.",
+      "simpleExplanation": "max-age=600 means 'you may use this response for 10 minutes without asking'. At second 900 the time is up; the browser does not throw the copy away but no longer counts it as 'fresh'. Because it holds a version label called an ETag ('v7'), it asks the server 'I have v7, has it changed?' (If-None-Match). The server returns a small, bodiless 304 response meaning 'it has not changed', and the browser keeps using the old copy and renews its freshness period. This is like asking the newsagent 'is there a new edition?' and getting the answer 'no, the one you have is current'; you do not buy the paper again."
+    },
     "optionExplanations": {
       "A": "Tarayıcı ETag'in değişip değişmediğini sunucuya sormadan bilemez; ETag yerel karar için değil, koşullu doğrulama için kullanılır. Tazelik süresi (600 s) geçtiği için sunucuya başvurmak zorunludur.",
       "B": "no-store bir istek yönergesi olarak 'yanıtı saklama' anlamı taşır ve otomatik doğrulamada tarayıcı tarafından gönderilmez; senaryoyla ilgisi yoktur.",
@@ -1558,6 +2240,28 @@
     "correctAnswer": "A",
     "explanation": "TLS el sıkışması üç temel iş yapar: (1) Kimlik doğrulama: sunucu, bir sertifika otoritesi (CA) tarafından imzalanmış X.509 sertifikasını gönderir; istemci imza zincirini, geçerlilik süresini ve alan adını doğrular ve böylece ortadaki adam (MITM) saldırısına karşı korunur. (2) Anahtar anlaşması: TLS 1.3'te yalnızca geçici (ephemeral) Diffie-Hellman (ECDHE/DHE) kullanılır; her oturum için yeni paylaşılan sır üretilir, sunucunun uzun ömürlü özel anahtarı yalnızca imzalamada kullanılır, bu da ileri gizlilik (forward secrecy) sağlar. (3) Hibrit şifreleme: asimetrik işlemler yalnızca anahtar anlaşmasında kullanılır; yüksek hacimli uygulama verisi hızlı simetrik AEAD şifreleriyle (AES-GCM, ChaCha20-Poly1305) şifrelenir ve bütünlüğü korunur.",
     "simpleExplanation": "TLS el sıkışması üç şeyi birden halleder. Önce sunucu bir kimlik kartı (sertifika) gösterir; bu kart güvenilir bir otorite tarafından imzalanmıştır, böylece sahte bir sunucuyla konuşmadığınızdan emin olursunuz. Sonra iki taraf, Diffie-Hellman denen bir yöntemle, araya giren kimsenin öğrenemeyeceği geçici bir ortak şifre üretir; her bağlantıda yeni şifre üretildiği için sunucunun anahtarı ileride çalınsa bile eski kayıtlar açılamaz (ileri gizlilik). En sonunda asıl veriler bu ortak şifreyle hızlı simetrik şifreleme (AES-GCM) kullanılarak korunur. Yani: kimlik kartı, ortak gizli anahtar, hızlı kilit.",
+    "en": {
+      "subtopic": "HTTPS and the role of the TLS handshake",
+      "question": "A mobile banking application connects to https://api.banka.com.tr with TLS 1.3. Which of the following statements about the security properties provided by the TLS handshake is correct?",
+      "options": {
+        "A": "The server identity is verified with an X.509 certificate signed by a trusted certificate authority; a new symmetric key is derived for every session through ephemeral ECDHE key exchange (forward secrecy); application data is encrypted with this symmetric key (for example AES-GCM).",
+        "B": "All application data is encrypted with the server's RSA public key; symmetric encryption is not used in TLS.",
+        "C": "In TLS 1.3 the server identity is not verified; the protocol provides only confidentiality (encryption), and authentication is left to the HTTP layer.",
+        "D": "Certificate verification is the job of HTTP, not TLS; for this reason certificate information is carried in HTTP headers.",
+        "E": "If RSA key transport was used in TLS 1.2, previously recorded traffic cannot be decrypted even if the server's private key is later compromised."
+      },
+      "explanation": "The TLS handshake does three fundamental jobs: (1) Authentication: the server sends an X.509 certificate signed by a certificate authority (CA); the client verifies the signature chain, the validity period and the domain name, and is thereby protected against a man-in-the-middle (MITM) attack. (2) Key agreement: TLS 1.3 uses only ephemeral Diffie-Hellman (ECDHE/DHE); a new shared secret is generated for every session, and the server's long-lived private key is used only for signing, which provides forward secrecy. (3) Hybrid encryption: asymmetric operations are used only in the key agreement; the high-volume application data is encrypted and integrity-protected with fast symmetric AEAD ciphers (AES-GCM, ChaCha20-Poly1305).",
+      "optionExplanations": {
+        "A": "Correct. Certificate → identity; ECDHE → session key and forward secrecy; symmetric AEAD → data confidentiality and integrity.",
+        "B": "Asymmetric encryption is slow and unsuitable for large data; TLS is a hybrid model. Moreover, TLS 1.3 has completely removed RSA key encryption (key transport).",
+        "C": "One of the fundamental purposes of TLS is server authentication; without certificate verification, encryption is meaningless against a MITM attack. Authentication is not left to HTTP.",
+        "D": "The certificate exchange and verification are part of the TLS handshake and are completed before HTTP begins; HTTP headers do not carry certificates.",
+        "E": "It is the exact opposite: in RSA key transport the session key is encrypted with the server's public key and sent, so if the private key is compromised, all recorded past traffic can be decrypted. Forward secrecy requires (EC)DHE; this is why TLS 1.3 has banned RSA key transport."
+      },
+      "keyConcept": "TLS = authentication (certificate/CA) + key agreement (ECDHE, forward secrecy) + symmetric AEAD encryption. Asymmetric only in the handshake, symmetric for the data transfer.",
+      "examTip": "Immediately eliminate statements such as 'all data is encrypted with RSA' or 'TLS does not authenticate'. Forward secrecy = ephemeral DH; RSA key transport does not provide forward secrecy.",
+      "simpleExplanation": "The TLS handshake takes care of three things at once. First the server shows an ID card (the certificate); this card is signed by a trusted authority, so you can be sure you are not talking to a fake server. Then the two sides, using a method called Diffie-Hellman, produce a temporary shared secret that no one listening in can learn; because a new secret is produced for every connection, even if the server's key is stolen in the future the old recordings cannot be opened (forward secrecy). Finally the actual data is protected with this shared secret using fast symmetric encryption (AES-GCM). In other words: ID card, shared secret key, fast lock."
+    },
     "optionExplanations": {
       "A": "Doğru. Sertifika → kimlik; ECDHE → oturum anahtarı ve ileri gizlilik; simetrik AEAD → veri gizliliği ve bütünlüğü.",
       "B": "Asimetrik şifreleme yavaş ve büyük veri için uygunsuzdur; TLS hibrit modeldir. Ayrıca TLS 1.3, RSA ile anahtar şifrelemeyi (key transport) tamamen kaldırmıştır.",

@@ -26,6 +26,7 @@
   function toggleTheme() {
     const s = Store.load();
     s.settings.theme = effectiveTheme() === 'dark' ? 'light' : 'dark';
+    s.settings.themeChosen = true;
     Store.save(); applyTheme();
   }
 
@@ -168,6 +169,8 @@
     setCurrentNav('topics');
     const tp = Data.topicById[id];
     if (!tp) { location.hash = '#/konular'; return; }
+    $app().innerHTML = `<p><a href="#/konu/${id}">← ${esc(Data.topicName(id))}</a></p><div id="session"></div>`;
+    if (Quiz.resumeIfAny(document.getElementById('session'), '#/konu/' + id)) return;
     const x = Progress.topicStats(id);
     const avail = x.total;
     const choices = [5, 10, 15].filter(n => n <= avail);
@@ -216,6 +219,8 @@
 
   function viewMix() {
     setCurrentNav('mix');
+    $app().innerHTML = `<p><a href="#/karisik">← ${t('mix.title')}</a></p><div id="session"></div>`;
+    if (Quiz.resumeIfAny(document.getElementById('session'), '#/karisik')) return;
     const max = Data.questions.length;
     const choices = [10, 20, 40].filter(n => n <= max);
     $app().innerHTML = `
@@ -239,13 +244,16 @@
 
   function viewPlacement() {
     setCurrentNav('home');
-    const qs = Progress.buildPlacement();
     $app().innerHTML = `<h1>${t('home.placementTitle')}</h1><div id="session"></div>`;
+    if (Quiz.resumeIfAny(document.getElementById('session'), '#/seviye')) return;
+    const qs = Progress.buildPlacement();
     Quiz.startSession(document.getElementById('session'), { questions: qs, mode: 'placement', title: t('home.placementTitle') });
   }
 
   function viewReview() {
     setCurrentNav('review');
+    $app().innerHTML = `<h1>${t('review.title')}</h1><div id="session"></div>`;
+    if (Quiz.resumeIfAny(document.getElementById('session'), '#/yanlislar')) return;
     const queue = Progress.revisionQueue();
     const weakTopics = Progress.allTopicStats().filter(x => x.status === 'weak');
     $app().innerHTML = `
@@ -260,7 +268,8 @@
         ${weakTopics.length ? `<h3 style="margin-top:1rem">${t('review.repeatConcepts')}</h3><ul class="tight-list">${weakTopics.map(w => `<li><a href="#/notlar/${w.topicId}">${esc(Data.topicName(w.topicId))}</a> · %${w.accuracy}</li>`).join('')}</ul>` : ''}
       </div>
       <div class="card">
-        ${queue.map(q => {
+        ${queue.map(q0 => {
+          const q = Data.localized(q0);
           const r = Progress.getRecord(q.id);
           return `<div class="row">
             <span class="l"><span class="badge badge-primary">${esc(Data.topicShort(q.topic))}</span> ${esc(q.question).slice(0, 140)}${q.question.length > 140 ? '…' : ''}</span>
@@ -329,7 +338,7 @@
       return;
     }
     const tp = Data.topicById[id]; if (!tp) { location.hash = '#/notlar'; return; }
-    const n = Data.notes[id];
+    const n = Data.notesFor(id);
     const table = c => `<h4>${esc(c.title)}</h4><div class="table-wrap"><table>${(c.rows || []).map((r, i) => `<tr>${r.map(cell => i === 0 ? `<th>${esc(cell)}</th>` : `<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</table></div>`;
     $app().innerHTML = `
       <p><a href="#/notlar">← ${t('notes.title')}</a></p>
@@ -350,8 +359,9 @@
   function viewPlan() {
     setCurrentNav('plan');
     const today = new Date().toISOString().slice(0, 10);
+    const plan = Data.planList();
     $app().innerHTML = `<h1>${t('plan.title')}</h1><p class="muted small">${t('plan.intro')}</p>
-      ${Data.plan.length === 0 ? `<p class="muted">${t('plan.none')}</p>` : `<div class="card">${Data.plan.map(d => `
+      ${plan.length === 0 ? `<p class="muted">${t('plan.none')}</p>` : `<div class="card">${plan.map(d => `
         <div class="day ${d.date === today ? 'today' : (d.date < today ? 'past' : '')}">
           <div class="dh"><strong>${esc(d.date)} ${esc(d.day || '')}</strong> ${d.date === today ? `<span class="badge badge-primary">${t('plan.today')}</span>` : ''} ${d.mock ? `<span class="badge badge-warn">${t('plan.mock')}</span>` : ''} <span class="muted small">${t('plan.minutes', { n: d.minutes })}</span></div>
           <div>${esc(d.title)} · ${(d.topics || []).map(x => `<a href="#/konu/${x}">${esc(Data.topicShort(x))}</a>`).join(', ')}</div>
@@ -390,7 +400,7 @@
         <button class="btn btn-danger" id="resetBtn">${t('settings.reset')}</button>
       </div>`;
     document.getElementById('langSel').addEventListener('change', e => { s.settings.language = e.target.value; Store.save(); I18n.setLang(e.target.value); renderChrome(); viewSettings(t('settings.saved')); });
-    document.getElementById('themeSel').addEventListener('change', e => { s.settings.theme = e.target.value; Store.save(); applyTheme(); });
+    document.getElementById('themeSel').addEventListener('change', e => { s.settings.theme = e.target.value; s.settings.themeChosen = true; Store.save(); applyTheme(); });
     document.getElementById('timerInp').addEventListener('change', e => { const v = Math.max(0, Math.min(180, parseInt(e.target.value, 10) || 0)); s.settings.examTimerMinutes = v; Store.save(); });
     document.getElementById('exportBtn').addEventListener('click', () => {
       const txt = Store.exportJSON();
@@ -427,8 +437,8 @@
   /* ---------- Yönlendirme ---------- */
   function route() {
     if (!Data.ready) return;
-    if (Exam.isActive()) Exam.abandon();
     const hash = location.hash || '#/';
+    if (Exam.isActive() && hash !== '#/deneme') Exam.abandon();
     const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean);
     const main = parts[0] || '';
     document.getElementById('mobileNav').hidden = true;
@@ -474,7 +484,6 @@
       const a = e.target.closest('a[href^="#/"]');
       if (a && a.getAttribute('href') === location.hash) { e.preventDefault(); route(); }
     });
-    window.addEventListener('beforeunload', e => { if (Exam.isActive()) { e.preventDefault(); e.returnValue = ''; } });
     route();
   }
 

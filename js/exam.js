@@ -6,8 +6,24 @@
 
   let active = null; // {questions, answers:{}, flags:Set, idx, startedAt, timerMinutes, deadline, intervalId}
 
+  function persist() {
+    if (!active) return;
+    const st = Store.load();
+    st.activeExam = { questionIds: active.questions.map(q => q.id), answers: active.answers, flags: Array.from(active.flags),
+      idx: active.idx, startedAt: active.startedAt, timerMinutes: active.timerMinutes, deadline: active.deadline };
+    Store.save();
+  }
+  function clearPersist() { const st = Store.load(); st.activeExam = null; Store.save(); }
+
   function startScreen(container) {
     const s = Store.load();
+    // Yarım kalmış deneme varsa sürdür
+    if (!active && s.activeExam && Array.isArray(s.activeExam.questionIds)) {
+      const qs = s.activeExam.questionIds.map(id => Data.questionById[id]).filter(Boolean);
+      if (qs.length >= 1) { resume(container, s.activeExam, qs); return; }
+      s.activeExam = null; Store.save();
+    }
+    if (active) { active.container = container; renderQuestion(); return; }
     const total = Data.questions.length;
     const notEnough = total < 40;
     const current = s.settings.examTimerMinutes;
@@ -35,6 +51,17 @@
     });
   }
 
+  function resume(container, saved, qs) {
+    active = {
+      questions: qs, answers: saved.answers || {}, flags: new Set(saved.flags || []), idx: Math.min(saved.idx || 0, qs.length - 1),
+      startedAt: saved.startedAt || Date.now(), timerMinutes: saved.timerMinutes || 0,
+      deadline: saved.deadline || null, intervalId: null, container
+    };
+    if (active.deadline && active.deadline - Date.now() <= 0) { submit(true); UI.notice(t('exam.timeUp')); return; }
+    armTimer();
+    renderQuestion();
+  }
+
   function begin(container, timerMinutes) {
     const qs = Progress.buildMockExam(40);
     active = {
@@ -42,6 +69,12 @@
       startedAt: Date.now(), timerMinutes,
       deadline: timerMinutes ? Date.now() + timerMinutes * 60000 : null, intervalId: null, container
     };
+    persist();
+    armTimer();
+    renderQuestion();
+  }
+
+  function armTimer() {
     if (active.deadline) {
       active.intervalId = setInterval(() => {
         const el = document.getElementById('examTimer');
@@ -50,7 +83,6 @@
         if (left <= 0) { clearInterval(active.intervalId); submit(true); UI.notice(t('exam.timeUp')); }
       }, 1000);
     }
-    renderQuestion();
   }
 
   function fmt(ms) {
@@ -101,15 +133,16 @@
     c.querySelector('#examForm').addEventListener('change', e => {
       if (e.target.name === 'q_' + q.id) {
         active.answers[q.id] = e.target.value;
+        persist();
         c.querySelectorAll('.option').forEach(l => l.classList.toggle('selected', l.querySelector('input').checked));
         c.querySelector('.exam-top span').textContent = t('exam.answered', { a: Object.keys(active.answers).length, total: active.questions.length });
         const b = c.querySelector('.qnav button[data-i="' + active.idx + '"]'); if (b) b.classList.add('answered');
       }
     });
-    c.querySelectorAll('.qnav button').forEach(b => b.addEventListener('click', () => { active.idx = parseInt(b.dataset.i, 10); renderQuestion(); }));
-    c.querySelector('#prevBtn').addEventListener('click', () => { active.idx--; renderQuestion(); window.scrollTo({ top: 0 }); });
-    c.querySelector('#nextBtn').addEventListener('click', () => { active.idx++; renderQuestion(); window.scrollTo({ top: 0 }); });
-    c.querySelector('#flagBtn').addEventListener('click', () => { if (active.flags.has(q.id)) active.flags.delete(q.id); else active.flags.add(q.id); renderQuestion(); });
+    c.querySelectorAll('.qnav button').forEach(b => b.addEventListener('click', () => { active.idx = parseInt(b.dataset.i, 10); persist(); renderQuestion(); }));
+    c.querySelector('#prevBtn').addEventListener('click', () => { active.idx--; persist(); renderQuestion(); window.scrollTo({ top: 0 }); });
+    c.querySelector('#nextBtn').addEventListener('click', () => { active.idx++; persist(); renderQuestion(); window.scrollTo({ top: 0 }); });
+    c.querySelector('#flagBtn').addEventListener('click', () => { if (active.flags.has(q.id)) active.flags.delete(q.id); else active.flags.add(q.id); persist(); renderQuestion(); });
     c.querySelector('#submitBtn').addEventListener('click', async () => {
       const blank = active.questions.length - Object.keys(active.answers).length;
       const msg = blank > 0 ? t('exam.confirmSubmit', { blank }) : t('exam.confirmSubmitFull');
@@ -123,11 +156,13 @@
   function abandon() {
     if (active && active.intervalId) clearInterval(active.intervalId);
     active = null;
+    clearPersist();
   }
 
   function submit(auto) {
     if (!active) return;
     if (active.intervalId) clearInterval(active.intervalId);
+    clearPersist();
     const results = {}; let correct = 0, wrong = 0, blank = 0;
     const byTopic = {}, byDifficulty = { temel: { c: 0, n: 0 }, orta: { c: 0, n: 0 }, ileri: { c: 0, n: 0 } };
     for (const q of active.questions) {

@@ -15,6 +15,7 @@
 
   /** Seçenekler (radio). showResult=true ise kilitli ve işaretli görünüm. */
   function renderOptions(q, opts) {
+    q = Data.localized(q);
     opts = opts || {};
     const selected = opts.selected || null;
     const showResult = !!opts.showResult;
@@ -45,6 +46,7 @@
 
   /** Soru kartı: başlık, metin, kod ve seçenekler */
   function renderQuestion(q, opts) {
+    q = Data.localized(q);
     opts = opts || {};
     const head = `
       <div class="question-head">
@@ -63,6 +65,7 @@
 
   /** Basit anlatım bloğu (düğmeyle açılır). Alan yoksa temel kavram + ipucu gösterilir. */
   function renderSimple(q) {
+    q = Data.localized(q);
     const text = q.simpleExplanation || (q.keyConcept + (q.examTip ? '\n\n' + q.examTip : ''));
     return `
       <div class="section simple-wrap">
@@ -84,6 +87,7 @@
 
   /** Ayrıntılı geri bildirim bloğu */
   function renderFeedback(q, choice) {
+    q = Data.localized(q);
     const correct = choice === q.correctAnswer;
     const others = q.options.filter(o => o.id !== q.correctAnswer && o.id !== choice);
     const refs = (q.references || []).length
@@ -124,9 +128,17 @@
    */
   function startSession(container, opts) {
     const qs = opts.questions.slice();
-    let idx = 0, correct = 0;
-    const results = []; // {id, choice, ok}
+    let idx = opts.resume ? opts.resume.idx : 0;
+    let correct = opts.resume ? opts.resume.results.filter(r => r.ok).length : 0;
+    const results = opts.resume ? opts.resume.results.slice() : []; // {id, choice, ok}
     let answered = false;
+    const persist = () => {
+      const st = Store.load();
+      st.activeSession = { mode: opts.mode, title: opts.title || '', topicId: opts.topicId || null, hash: location.hash || '#/',
+        questionIds: qs.map(q => q.id), idx, results };
+      Store.save();
+    };
+    const clearPersist = () => { const st = Store.load(); st.activeSession = null; Store.save(); };
 
     function render() {
       const q = qs[idx];
@@ -163,6 +175,7 @@
         if (ok) correct++;
         results.push({ id: q.id, choice, ok });
         Progress.recordAnswer(q.id, choice, ok);
+        persist();
         form.querySelector('fieldset').outerHTML = renderOptions(q, { selected: choice, showResult: true });
         const fb = container.querySelector('#feedbackArea');
         fb.innerHTML = renderFeedback(q, choice) +
@@ -170,7 +183,7 @@
         bindSimple(fb);
         const nextBtn = fb.querySelector('#nextBtn');
         nextBtn.focus();
-        nextBtn.addEventListener('click', () => { idx++; if (idx < qs.length) { render(); window.scrollTo({ top: 0 }); } else finish(); });
+        nextBtn.addEventListener('click', () => { idx++; if (idx < qs.length) { persist(); render(); window.scrollTo({ top: 0 }); } else finish(); });
       });
       container.querySelector('#quitBtn').addEventListener('click', async () => {
         if (results.length === 0 || await UI.confirm(t('q.confirmEnd'))) finish();
@@ -180,6 +193,7 @@
     }
 
     function finish() {
+      clearPersist();
       const total = results.length;
       if (total > 0) Progress.recordSession(opts.mode, opts.topicId || null, total, correct);
       if (opts.mode === 'placement') { const s = Store.load(); s.placementDone = true; Store.save(); }
@@ -191,7 +205,7 @@
           <h2>${t('q.sessionDone')}</h2>
           <p>${t('q.summary', { total, correct, wrong: total - correct, pct: total ? Math.round(100 * correct / total) : 0 })}</p>
           ${Object.keys(byTopic).length > 1 ? `<h3>${t('common.byTopic')}</h3>${Object.keys(byTopic).map(tp => `<div class="row"><span class="l">${esc(Data.topicName(tp))}</span><span class="r">${byTopic[tp].c}/${byTopic[tp].n}</span></div>`).join('')}` : ''}
-          ${wrong.length ? `<h3>${t('q.wrongList')}</h3><p class="small muted">${t('q.addedToQueue')}</p>${wrong.map(w => `<div class="row"><span class="l">${esc(Data.questionById[w.id].question).slice(0, 110)}…</span><span class="r"><span class="badge">${esc(Data.topicShort(Data.questionById[w.id].topic))}</span></span></div>`).join('')}` : `<p><span class="badge badge-ok">${t('q.allCorrect')}</span></p>`}
+          ${wrong.length ? `<h3>${t('q.wrongList')}</h3><p class="small muted">${t('q.addedToQueue')}</p>${wrong.map(w => `<div class="row"><span class="l">${esc(Data.localized(Data.questionById[w.id]).question).slice(0, 110)}…</span><span class="r"><span class="badge">${esc(Data.topicShort(Data.questionById[w.id].topic))}</span></span></div>`).join('')}` : `<p><span class="badge badge-ok">${t('q.allCorrect')}</span></p>`}
           <div class="btn-row">
             ${opts.topicId ? `<a class="btn" href="#/konu/${esc(opts.topicId)}">${t('q.continueTopic')}</a>` : ''}
             <a class="btn btn-secondary" href="#/yanlislar">${t('nav.review')}</a>
@@ -206,8 +220,21 @@
       container.innerHTML = `<div class="card"><p>${t('q.noQuestions')}</p><a class="btn" href="#/konular">${t('nav.topics')}</a></div>`;
       return;
     }
+    if (idx >= qs.length) { finish(); return; }
+    persist();
     render();
   }
 
-  window.Quiz = { esc, renderQuestion, renderOptions, renderFeedback, startSession, optionText, bindSimple };
+  /** Kayıtlı oturum varsa ve bu adrese aitse sürdür; true döner. */
+  function resumeIfAny(container, hash) {
+    const st = Store.load();
+    const a = st.activeSession;
+    if (!a || a.hash !== hash) return false;
+    const qs = (a.questionIds || []).map(id => Data.questionById[id]).filter(Boolean);
+    if (qs.length === 0) { st.activeSession = null; Store.save(); return false; }
+    startSession(container, { questions: qs, mode: a.mode, title: a.title, topicId: a.topicId, resume: { idx: a.idx, results: a.results || [] } });
+    return true;
+  }
+
+  window.Quiz = { esc, renderQuestion, renderOptions, renderFeedback, startSession, resumeIfAny, optionText, bindSimple };
 })();

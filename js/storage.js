@@ -11,8 +11,10 @@
       questions: {},   // id -> {attempts, correct, wrong, streak, lastResult, lastAt, lastChoice}
       sessions: [],    // {t, mode, topic, total, correct}
       exams: [],       // {t, total, correct, wrong, blank, byTopic, byDifficulty, questionIds, answers, durationSec, timerMinutes}
-      settings: { examTimerMinutes: 60, theme: 'light' },
-      placementDone: false
+      settings: { examTimerMinutes: 60, theme: 'light', themeChosen: false },
+      placementDone: false,
+      activeSession: null, // devam eden alıştırma oturumu
+      activeExam: null     // devam eden deneme
     };
   }
 
@@ -44,6 +46,8 @@
       if (!isValidState(parsed)) throw new Error('bozuk veri');
       state = Object.assign(emptyState(), parsed);
       state.settings = Object.assign(emptyState().settings, parsed.settings || {});
+      // Eski kayıtlarda tema 'auto' ise ve kullanıcı seçmemişse açık temaya geç
+      if (state.settings.theme === 'auto' && !state.settings.themeChosen) state.settings.theme = 'light';
       return state;
     } catch (e) {
       console.warn('Kayıtlı ilerleme okunamadı, sıfırlanıyor:', e);
@@ -106,7 +110,9 @@
       sessions: obj.sessions.filter(s => s && typeof s === 'object').slice(-100),
       exams: obj.exams.filter(s => s && typeof s === 'object').slice(-30),
       settings: Object.assign(emptyState().settings, obj.settings || {}),
-      placementDone: !!obj.placementDone
+      placementDone: !!obj.placementDone,
+      activeSession: obj.activeSession && typeof obj.activeSession === 'object' ? obj.activeSession : null,
+      activeExam: obj.activeExam && typeof obj.activeExam === 'object' ? obj.activeExam : null
     });
     save();
     return null;

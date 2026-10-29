@@ -75,6 +75,19 @@ for (const f of files) {
       warnings.push(`${where}: explanation kısa (<80 karakter)`);
     if (!Array.isArray(q.references)) errors.push(`${where}: references dizi olmalı`);
     if (!q.simpleExplanation || String(q.simpleExplanation).trim().length < 60) (process.env.STRICT ? errors : warnings).push(`${where}: simpleExplanation eksik veya kısa`);
+    // İngilizce çeviri (en) tamlığı
+    const enSink = process.env.STRICT_EN ? errors : warnings;
+    if (!q.en || typeof q.en !== 'object') enSink.push(`${where}: en çevirisi yok`);
+    else {
+      for (const k of ['subtopic', 'question', 'explanation', 'keyConcept', 'examTip', 'simpleExplanation'])
+        if (!q.en[k] || !String(q.en[k]).trim()) enSink.push(`${where}: en.${k} eksik`);
+      for (const grp of ['options', 'optionExplanations']) {
+        if (!q.en[grp] || typeof q.en[grp] !== 'object') { enSink.push(`${where}: en.${grp} eksik`); continue; }
+        for (const o of OPTION_IDS) if (!q.en[grp][o] || !String(q.en[grp][o]).trim()) enSink.push(`${where}: en.${grp}.${o} eksik`);
+      }
+      const unknown = Object.keys(q.en).filter(k => !['subtopic', 'question', 'options', 'explanation', 'optionExplanations', 'keyConcept', 'examTip', 'simpleExplanation'].includes(k));
+      if (unknown.length) enSink.push(`${where}: en içinde beklenmeyen alan: ${unknown.join(',')}`);
+    }
     if (q.sourceType !== 'original_practice') errors.push(`${where}: sourceType "original_practice" olmalı`);
     if (!['pending', 'reviewed'].includes(q.reviewStatus)) errors.push(`${where}: reviewStatus pending|reviewed olmalı`);
     if (q.code !== undefined && q.code !== null && typeof q.code !== 'string') errors.push(`${where}: code string veya null olmalı`);

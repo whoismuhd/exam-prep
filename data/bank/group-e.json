@@ -8,15 +8,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Para transferi ekranı, gün sonu yoğunluğunda bile kullanıcı isteğine en geç 2 saniye içinde yanıt vermelidir."},
-      {"id": "B", "text": "Kullanıcı, IBAN girerek başka bir bankadaki hesaba EFT gönderebilmelidir."},
-      {"id": "C", "text": "Kullanıcı, kredi kartı borcunu vadesiz hesabından ödeyebilmelidir."},
-      {"id": "D", "text": "Kullanıcı, son 90 güne ait hesap hareketlerini PDF olarak indirebilmelidir."},
-      {"id": "E", "text": "Sistem, her gün 23:59'da gün sonu bakiye raporunu oluşturup arşivlemelidir."}
+      {
+        "id": "A",
+        "text": "Para transferi ekranı, gün sonu yoğunluğunda bile kullanıcı isteğine en geç 2 saniye içinde yanıt vermelidir."
+      },
+      {
+        "id": "B",
+        "text": "Kullanıcı, IBAN girerek başka bir bankadaki hesaba EFT gönderebilmelidir."
+      },
+      {
+        "id": "C",
+        "text": "Kullanıcı, kredi kartı borcunu vadesiz hesabından ödeyebilmelidir."
+      },
+      {
+        "id": "D",
+        "text": "Kullanıcı, son 90 güne ait hesap hareketlerini PDF olarak indirebilmelidir."
+      },
+      {
+        "id": "E",
+        "text": "Sistem, her gün 23:59'da gün sonu bakiye raporunu oluşturup arşivlemelidir."
+      }
     ],
     "correctAnswer": "A",
     "explanation": "İşlevsel gereksinimler (functional requirements) sistemin NE yapacağını, yani hangi girdiye hangi davranış veya çıktıyla karşılık vereceğini tanımlar. İşlevsel olmayan gereksinimler (non-functional requirements) ise sistemin bu işlevleri NASIL yerine getireceğine ilişkin kalite kısıtlarıdır: performans, güvenilirlik, kullanılabilirlik, güvenlik, ölçeklenebilirlik, bakım yapılabilirlik gibi. '2 saniye içinde yanıt' bir yanıt süresi (performans) kısıtıdır; belirli bir işlevi değil, işlevlerin kalitesini tanımlar. Diğer dört madde sistemin yapacağı somut işleri (EFT gönderme, borç ödeme, rapor üretme, PDF indirme) anlattığı için işlevseldir.",
     "simpleExplanation": "Gereksinimler iki çeşittir. 'İşlevsel' olanlar sistemin NE yapacağını söyler: EFT gönder, borç öde, rapor indir, gün sonu raporu üret. 'İşlevsel olmayan' olanlar ise bunları NE KADAR İYİ yapacağını söyler: ne kadar hızlı, ne kadar güvenli, ne kadar kesintisiz. Bir arabayı düşünün: 'arabanın ileri gitmesi' işlevdir, '100 km/s hıza 8 saniyede çıkması' kalitedir. 'En geç 2 saniyede yanıt vermeli' ifadesi yeni bir özellik tanımlamıyor, var olan bir işlevin hızını şart koşuyor; bu yüzden işlevsel olmayan gereksinimdir ve cevap A'dır.",
+    "en": {
+      "subtopic": "Requirements engineering: functional and non-functional requirements",
+      "question": "Which of the following items, taken from the requirements list written for a bank's mobile banking application, is a non-functional requirement?",
+      "options": {
+        "A": "The money transfer screen must respond to a user request within at most 2 seconds, even during end-of-day peak load.",
+        "B": "The user must be able to send an EFT to an account at another bank by entering an IBAN.",
+        "C": "The user must be able to pay their credit card debt from their current account.",
+        "D": "The user must be able to download the account transactions of the last 90 days as a PDF.",
+        "E": "The system must generate and archive the end-of-day balance report every day at 23:59."
+      },
+      "explanation": "Functional requirements define WHAT the system will do, i.e. which behaviour or output it will produce in response to which input. Non-functional requirements, by contrast, are quality constraints on HOW the system performs those functions: performance, reliability, usability, security, scalability, maintainability and so on. 'Respond within 2 seconds' is a response-time (performance) constraint; it does not define a specific function but the quality of the functions. The other four items describe concrete things the system will do (sending an EFT, paying a debt, producing a report, downloading a PDF) and are therefore functional.",
+      "optionExplanations": {
+        "A": "Correct. A response-time constraint is a performance requirement; it specifies not what the system does but at what quality level it does it. It corresponds to the 'performance efficiency' characteristic in the ISO/IEC 25010 quality model.",
+        "B": "Sending an EFT is a concrete function the user can perform; it defines what the system will do, so it is functional.",
+        "C": "Paying credit card debt from an account is a business function; the input (payment request) and the output (debt settled) are clear. It is a functional requirement.",
+        "D": "Downloading account transactions as a PDF is a feature offered to the user; even though a format is specified, this is a description of behaviour, not a quality constraint. Common misconception: assuming a requirement is non-functional on seeing a technical detail such as 'PDF'.",
+        "E": "Producing the end-of-day report at a specific time is a scheduled system function (a batch job). The time is a trigger, not a quality constraint; hence it is a functional requirement."
+      },
+      "keyConcept": "Functional requirement = what the system will do (behaviour). Non-functional requirement = how well it will do it (quality constraints such as performance, security, usability, reliability).",
+      "examTip": "If an item contains measurable quality phrases such as 'within N seconds', '99.9% available', 'N concurrent users' or 'must be stored encrypted', it is a non-functional requirement; the pattern 'the user must be able to ...' points to a functional requirement.",
+      "simpleExplanation": "There are two kinds of requirements. 'Functional' ones say WHAT the system will do: send an EFT, pay a debt, download a report, produce the end-of-day report. 'Non-functional' ones say HOW WELL it will do those things: how fast, how secure, how uninterrupted. Think of a car: 'the car moves forward' is a function, 'it reaches 100 km/h in 8 seconds' is a quality. 'Must respond within at most 2 seconds' does not define a new feature, it imposes a speed on an existing function; so it is a non-functional requirement and the answer is A."
+    },
     "optionExplanations": {
       "A": "Doğru. Yanıt süresi kısıtı bir performans gereksinimidir; sistemin ne yaptığını değil, hangi kalite düzeyinde yaptığını belirler. ISO/IEC 25010 kalite modelinde 'performans verimliliği' karakteristiğine karşılık gelir.",
       "B": "EFT gönderme, kullanıcının gerçekleştirebileceği somut bir işlevdir; sistemin ne yapacağını tanımlar, dolayısıyla işlevseldir.",
@@ -26,7 +63,10 @@
     },
     "keyConcept": "İşlevsel gereksinim = sistemin ne yapacağı (davranış). İşlevsel olmayan gereksinim = ne kadar iyi yapacağı (performans, güvenlik, kullanılabilirlik, güvenilirlik gibi kalite kısıtları).",
     "examTip": "Maddede 'saniye içinde', '%99,9 erişilebilir', 'aynı anda N kullanıcı', 'şifreli saklanmalı' gibi ölçülebilir kalite ifadeleri varsa işlevsel olmayan gereksinimdir; 'kullanıcı ... yapabilmelidir' kalıbı işlevsel gereksinime işaret eder.",
-    "references": ["Sommerville, Software Engineering (10. baskı), Bölüm 4: Requirements Engineering", "ISO/IEC 25010 Systems and software Quality Requirements and Evaluation (SQuaRE), Product quality model (2011; gözden geçirilmiş baskı 2023)"],
+    "references": [
+      "Sommerville, Software Engineering (10. baskı), Bölüm 4: Requirements Engineering",
+      "ISO/IEC 25010 Systems and software Quality Requirements and Evaluation (SQuaRE), Product quality model (2011; gözden geçirilmiş baskı 2023)"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -39,15 +79,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Sprint Planlama (Sprint Planning)"},
-      {"id": "B", "text": "Günlük Scrum (Daily Scrum)"},
-      {"id": "C", "text": "Sprint Gözden Geçirme (Sprint Review)"},
-      {"id": "D", "text": "Sprint Retrospektifi (Sprint Retrospective)"},
-      {"id": "E", "text": "Ürün İş Listesi İyileştirme (Product Backlog Refinement)"}
+      {
+        "id": "A",
+        "text": "Sprint Planlama (Sprint Planning)"
+      },
+      {
+        "id": "B",
+        "text": "Günlük Scrum (Daily Scrum)"
+      },
+      {
+        "id": "C",
+        "text": "Sprint Gözden Geçirme (Sprint Review)"
+      },
+      {
+        "id": "D",
+        "text": "Sprint Retrospektifi (Sprint Retrospective)"
+      },
+      {
+        "id": "E",
+        "text": "Ürün İş Listesi İyileştirme (Product Backlog Refinement)"
+      }
     ],
     "correctAnswer": "D",
     "explanation": "Scrum'da Sprint'in sonunda iki ayrı etkinlik yer alır. Sprint Gözden Geçirme'de (Sprint Review) takım ve paydaşlar ürün artışını (increment) inceler ve Ürün İş Listesi'ni günceller; odak ÜRÜN'dür. Sprint Retrospektifi'nde ise yalnızca Scrum Takımı toplanır ve odak SÜREÇ'tir: bireyler, etkileşimler, süreçler, araçlar ve Bitti Tanımı (Definition of Done) açısından neyin iyi gittiği, hangi sorunların yaşandığı ve bunların nasıl çözüleceği ele alınır. Senaryoda kod gözden geçirme gecikmeleri ve test ortamı kesintileri gibi çalışma biçimi sorunlarının tartışılması ve iyileştirme maddeleri çıkarılması Retrospektif'in tanımıyla birebir örtüşür. Retrospektif, Sprint'in son etkinliğidir ve bir aylık sprint için en fazla üç saatle sınırlandırılır.",
     "simpleExplanation": "Scrum'da işler 'sprint' adı verilen kısa dönemlere bölünür ve her sprintin sonunda iki ayrı toplantı yapılır. Birincisi Sprint Review: ortaya çıkan ürün müşteriye ve paydaşlara gösterilir, konu ÜRÜN'dür. İkincisi Sprint Retrospective: yalnızca takım kendi arasında toplanır ve 'biz nasıl çalıştık, neyi daha iyi yapabiliriz?' diye konuşur, konu TAKIMIN ÇALIŞMA BİÇİMİ'dir. Bir futbol takımının maç sonunda skoru değil, antrenmanı ve iletişimi değerlendirmesi gibi düşünün. Senaryoda kod incelemelerinin gecikmesi ve test ortamı sorunları konuşuluyor, ürün değil; bu tam olarak Retrospektif'tir. Cevap D.",
+    "en": {
+      "subtopic": "Agile methods: Scrum roles, events and artifacts",
+      "question": "A bank's digital channels development team uses Scrum. After the Sprint has ended, only the Scrum Team, including the Product Owner, meets; it addresses not the delivered product but its own way of working: it discusses why code reviews were delayed and how test environment outages affected the flow, and identifies concrete improvement items for the next sprint. According to the Scrum Guide (2020), which event is this meeting?",
+      "options": {
+        "A": "Sprint Planning",
+        "B": "Daily Scrum",
+        "C": "Sprint Review",
+        "D": "Sprint Retrospective",
+        "E": "Product Backlog Refinement"
+      },
+      "explanation": "In Scrum, two separate events take place at the end of the Sprint. In the Sprint Review, the team and the stakeholders inspect the increment and update the Product Backlog; the focus is the PRODUCT. In the Sprint Retrospective, only the Scrum Team meets and the focus is the PROCESS: what went well, which problems were encountered and how they will be solved, in terms of individuals, interactions, processes, tools and the Definition of Done. In the scenario, discussing ways-of-working problems such as code review delays and test environment outages and producing improvement items matches the definition of the Retrospective exactly. The Retrospective is the last event of the Sprint and is timeboxed to a maximum of three hours for a one-month sprint.",
+      "optionExplanations": {
+        "A": "Sprint Planning takes place at the START of the sprint; the sprint goal is set and the backlog items to be done are selected. The scenario describes a post-sprint evaluation.",
+        "B": "The Daily Scrum is the event in which the Developers, every day and within no more than 15 minutes, inspect progress toward the sprint goal and plan the day; it is not a process improvement meeting.",
+        "C": "The focus of the Sprint Review is the product increment, and stakeholders attend as well. The phrase 'addresses not the delivered product but its way of working' in the scenario rules this option out directly. Common misconception: confusing the Review with the Retrospective.",
+        "D": "Correct. Only the Scrum Team, a focus on process and collaboration, concrete improvement items as the output: this is the definition of the Sprint Retrospective.",
+        "E": "Refinement is the activity of breaking down and clarifying backlog items; in the Scrum Guide 2020 it appears not as a formal event but as an ongoing activity within the sprint, and it has nothing to do with process improvement."
+      },
+      "keyConcept": "Sprint Review = evaluate the product (with stakeholders). Sprint Retrospective = evaluate the process and the team's way of working (Scrum Team only).",
+      "examTip": "If the question mentions 'product/increment/stakeholders', choose Review; if it mentions 'process/collaboration/tools/how do we work better', choose Retrospective.",
+      "simpleExplanation": "In Scrum, work is divided into short periods called 'sprints', and two separate meetings are held at the end of each sprint. The first is the Sprint Review: the product that has emerged is shown to the customer and stakeholders; the subject is the PRODUCT. The second is the Sprint Retrospective: only the team meets among themselves and asks 'how did we work, what could we do better?'; the subject is HOW THE TEAM WORKS. Think of a football team evaluating not the score but its training and communication after a match. In the scenario, the delay in code reviews and the test environment problems are being discussed, not the product; that is exactly the Retrospective. Answer D."
+    },
     "optionExplanations": {
       "A": "Sprint Planlama sprintin BAŞINDA yapılır; sprint hedefi belirlenir ve hangi iş listesi maddelerinin yapılacağı seçilir. Senaryo sprint sonrası bir değerlendirmeyi anlatıyor.",
       "B": "Günlük Scrum, Geliştiricilerin her gün 15 dakikayı aşmayan, sprint hedefine yönelik ilerlemeyi gözden geçirip günün planını yaptığı etkinliktir; süreç iyileştirme toplantısı değildir.",
@@ -57,7 +134,10 @@
     },
     "keyConcept": "Sprint Review = ürünü değerlendir (paydaşlarla). Sprint Retrospective = süreci ve ekibin çalışma biçimini değerlendir (yalnızca Scrum Takımı).",
     "examTip": "Soruda 'ürün/artış/paydaş' geçiyorsa Review, 'süreç/iş birliği/araçlar/nasıl daha iyi çalışırız' geçiyorsa Retrospective'i seçin.",
-    "references": ["Schwaber & Sutherland, The Scrum Guide (Kasım 2020)", "Sommerville, Software Engineering (10. baskı), Bölüm 3: Agile Software Development"],
+    "references": [
+      "Schwaber & Sutherland, The Scrum Guide (Kasım 2020)",
+      "Sommerville, Software Engineering (10. baskı), Bölüm 3: Agile Software Development"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -70,15 +150,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Her iki proje için de Scrum; çünkü çevik yöntemler her koşulda daha hızlı ve daha ucuzdur."},
-      {"id": "B", "text": "Her iki proje için de şelale (waterfall); çünkü bankalar düzenlemeye tabidir ve çevik yöntemler denetlenemez."},
-      {"id": "C", "text": "Proje 1 için şelale/V-modeli gibi plan odaklı (plan-driven) bir model; Proje 2 için Scrum gibi kısa yinelemeli artımlı teslimat yapan çevik bir model."},
-      {"id": "D", "text": "Proje 1 için Scrum; Proje 2 için şelale; çünkü büyük sistemler çevik, küçük uygulamalar sıralı yöntemle geliştirilir."},
-      {"id": "E", "text": "Proje 1 için kodla-düzelt (code-and-fix); Proje 2 için V-modeli; çünkü mevzuata bağlı sistemlerde dokümantasyon zaman kaybıdır."}
+      {
+        "id": "A",
+        "text": "Her iki proje için de Scrum; çünkü çevik yöntemler her koşulda daha hızlı ve daha ucuzdur."
+      },
+      {
+        "id": "B",
+        "text": "Her iki proje için de şelale (waterfall); çünkü bankalar düzenlemeye tabidir ve çevik yöntemler denetlenemez."
+      },
+      {
+        "id": "C",
+        "text": "Proje 1 için şelale/V-modeli gibi plan odaklı (plan-driven) bir model; Proje 2 için Scrum gibi kısa yinelemeli artımlı teslimat yapan çevik bir model."
+      },
+      {
+        "id": "D",
+        "text": "Proje 1 için Scrum; Proje 2 için şelale; çünkü büyük sistemler çevik, küçük uygulamalar sıralı yöntemle geliştirilir."
+      },
+      {
+        "id": "E",
+        "text": "Proje 1 için kodla-düzelt (code-and-fix); Proje 2 için V-modeli; çünkü mevzuata bağlı sistemlerde dokümantasyon zaman kaybıdır."
+      }
     ],
     "correctAnswer": "C",
     "explanation": "Süreç modeli seçiminin temel ölçütleri gereksinimlerin kararlılığı, değişim beklentisi, sözleşmesel/düzenleyici dokümantasyon ve onay zorunlulukları ile kısmi teslimatın kabul edilebilirliğidir. Proje 1'de gereksinimler büyük ölçüde sabit, aşama sonu resmî onaylar ve tam kabul testi zorunlu ve yarım sürüm kabul edilemez; bu koşullar sıralı aşamalar ve aşama kapıları (stage gates) olan plan odaklı modellerin (şelale veya her geliştirme aşamasını bir test aşamasıyla eşleyen V-modeli) güçlü yanlarıyla örtüşür. Proje 2'de gereksinimler oynak ve iş birimi iki haftada bir çalışan artış görmek istiyor; bu, kısa sprintlerle artımlı teslim eden, değişimi kucaklayan çevik yaklaşımın tam tasarım alanıdır. Doğru yaklaşım 'her projeye tek model' değil, projenin özelliklerine göre model seçmektir.",
     "simpleExplanation": "Yazılım geliştirmede iki temel yaklaşım var. Şelale gibi plan odaklı modellerde her şey baştan planlanır, aşamalar sırayla tamamlanır ve her aşamanın sonunda resmî onay alınır; bir bina inşa etmek gibi, temel bitmeden duvar yapılmaz. Çevik (Scrum gibi) modellerde ise iş küçük parçalara bölünür, iki haftada bir çalışan bir parça teslim edilir ve gelen geri bildirime göre yön değiştirilir. Proje 1'de gereksinimler mevzuatla sabit, resmî onaylar zorunlu ve yarım ürün kabul edilemez; bu koşullar plan odaklı modele uyar. Proje 2'de gereksinimler sık değişiyor ve iş birimi iki haftada bir yeni özellik görmek istiyor; bu da çevik modelin tam tarifidir. Her projeye uygun model ayrı seçilir; cevap C'dir.",
+    "en": {
+      "subtopic": "Software process models: choosing between waterfall, iterative and agile approaches",
+      "question": "A bank's IT management is going to choose a process model for two projects.\n\nProject 1: Renewal of the core banking accounting engine. The requirements are largely fixed by regulation and accounting standards; the contract mandates a detailed design document, formal sign-offs at the end of each phase and a full-scope acceptance test before go-live. Putting a half-finished release into production is unacceptable.\n\nProject 2: A customer-facing campaign/rewards mobile application. The requirements change frequently based on market feedback; the business unit wants to see new working features every two weeks and set its direction accordingly.\n\nWhich of the following pairings is the most defensible in terms of process model selection?",
+      "options": {
+        "A": "Scrum for both projects; because agile methods are faster and cheaper under all conditions.",
+        "B": "Waterfall for both projects; because banks are regulated and agile methods cannot be audited.",
+        "C": "A plan-driven model such as waterfall/V-model for Project 1; an agile model such as Scrum, with short iterations and incremental delivery, for Project 2.",
+        "D": "Scrum for Project 1; waterfall for Project 2; because large systems are developed with agile methods and small applications with sequential ones.",
+        "E": "Code-and-fix for Project 1; V-model for Project 2; because in regulation-bound systems documentation is a waste of time."
+      },
+      "explanation": "The basic criteria for choosing a process model are the stability of the requirements, the expected amount of change, contractual/regulatory documentation and sign-off obligations, and whether partial delivery is acceptable. In Project 1 the requirements are largely fixed, formal end-of-phase sign-offs and a full acceptance test are mandatory, and a half-finished release is unacceptable; these conditions match the strengths of plan-driven models with sequential phases and stage gates (waterfall, or the V-model, which pairs each development phase with a test phase). In Project 2 the requirements are volatile and the business unit wants to see a working increment every two weeks; this is exactly the design space of the agile approach, which delivers incrementally in short sprints and embraces change. The right approach is not 'one model for every project' but choosing the model according to the characteristics of the project.",
+      "optionExplanations": {
+        "A": "Agile methods are not faster or cheaper under all conditions. In a project with fixed, contractually bound requirements and mandatory phase sign-offs, a scope that changes sprint by sprint conflicts with the contract and the acceptance process. This is the 'agile is always better' fallacy.",
+        "B": "Being regulated does not rule out agile; agile processes can also be audited through audit trails, the Definition of Done and automated tests. Moreover, in Project 2 with its frequently changing requirements, waterfall increases the risk of late and faulty delivery.",
+        "C": "Correct. Stable requirements + mandatory phase sign-off + unacceptability of partial delivery point to a plan-driven model; volatile requirements + the need for frequent feedback point to an agile model.",
+        "D": "The pairing is reversed and the justification is wrong: model selection is determined not by the size of the system but by requirement stability and the need for feedback. Project 2 wants working features every two weeks; waterfall cannot provide that.",
+        "E": "Code-and-fix is an undisciplined approach and the riskiest choice for a regulation-bound core system. Treating documentation as a 'waste of time' directly contradicts a project in which phase sign-off and acceptance testing are contractually mandatory."
+      },
+      "keyConcept": "If requirements are stable, documentation and phase sign-off are mandatory and partial delivery is unacceptable: plan-driven (waterfall/V-model); if requirements are volatile and frequent feedback is needed: agile (Scrum etc.). The model is chosen per project.",
+      "examTip": "Mark the keywords in the question text: 'fixed/regulation/contract/formal sign-off' leads to plan-driven, 'frequently changing/feedback/every two weeks' leads to agile. 'Same model for both' options are usually distractors.",
+      "simpleExplanation": "There are two basic approaches in software development. In plan-driven models such as waterfall, everything is planned up front, the phases are completed in order and formal approval is obtained at the end of each phase; like building a house, you don't put up the walls before the foundation is finished. In agile models (such as Scrum), the work is divided into small pieces, a working piece is delivered every two weeks and the direction is changed according to the feedback received. In Project 1 the requirements are fixed by regulation, formal approvals are mandatory and a half-finished product is unacceptable; these conditions fit the plan-driven model. In Project 2 the requirements change frequently and the business unit wants to see new features every two weeks; that is the very description of the agile model. The right model is chosen separately for each project; the answer is C."
+    },
     "optionExplanations": {
       "A": "Çevik yöntemler her koşulda daha hızlı ya da daha ucuz değildir. Sabit, sözleşmeyle bağlanmış gereksinimler ve zorunlu aşama onayları olan bir projede sprint bazlı değişen kapsam sözleşme ve kabul süreciyle çatışır. 'Çevik her zaman iyidir' yanılgısıdır.",
       "B": "Düzenlemeye tabi olmak çevik yöntemi dışlamaz; çevik süreçler de iz kayıtları, Bitti Tanımı ve otomatik testlerle denetlenebilir. Ayrıca sık değişen gereksinimleri olan Proje 2'de şelale, geç ve hatalı teslimat riskini artırır.",
@@ -88,7 +205,11 @@
     },
     "keyConcept": "Gereksinimler kararlı, dokümantasyon ve aşama onayı zorunlu, kısmi teslim kabul edilemez ise plan odaklı (şelale/V-modeli); gereksinimler oynak ve sık geri bildirim gerekiyorsa çevik (Scrum vb.). Model projeye göre seçilir.",
     "examTip": "Soru metnindeki anahtar kelimeleri işaretleyin: 'sabit/mevzuat/sözleşme/resmî onay' plan odaklıya, 'sık değişen/geri bildirim/iki haftada bir' çevikliğe götürür. 'Her ikisi için aynı model' seçenekleri genellikle çeldiricidir.",
-    "references": ["Sommerville, Software Engineering (10. baskı), Bölüm 2: Software Processes ve Bölüm 3: Agile Software Development", "Pressman & Maxim, Software Engineering: A Practitioner's Approach (8. baskı), Bölüm 4-5: Process Models / Agile Development", "Boehm & Turner, Balancing Agility and Discipline: A Guide for the Perplexed (2003)"],
+    "references": [
+      "Sommerville, Software Engineering (10. baskı), Bölüm 2: Software Processes ve Bölüm 3: Agile Software Development",
+      "Pressman & Maxim, Software Engineering: A Practitioner's Approach (8. baskı), Bölüm 4-5: Process Models / Agile Development",
+      "Boehm & Turner, Balancing Agility and Discipline: A Guide for the Perplexed (2003)"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -101,15 +222,52 @@
     "code": "int islemUcreti(int tutar, boolean vip, int deneme) {\n    int ucret = 0;\n    if (tutar > 10000) {\n        ucret = 50;\n    } else if (tutar > 1000) {\n        ucret = 10;\n    }\n    if (vip) {\n        ucret = 0;\n    }\n    while (deneme > 0) {\n        deneme--;\n    }\n    return ucret;\n}",
     "codeLanguage": "java",
     "options": [
-      {"id": "A", "text": "4"},
-      {"id": "B", "text": "5"},
-      {"id": "C", "text": "6"},
-      {"id": "D", "text": "3"},
-      {"id": "E", "text": "7"}
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "5"
+      },
+      {
+        "id": "C",
+        "text": "6"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      },
+      {
+        "id": "E",
+        "text": "7"
+      }
     ],
     "correctAnswer": "B",
     "explanation": "Çevrimsel karmaşıklık, kontrol akış grafiği üzerinden V(G) = E - N + 2 (kenar - düğüm + 2) ya da pratikte V(G) = karar noktası sayısı + 1 formülüyle hesaplanır. Koddaki karar (predicate) noktaları: (1) if (tutar > 10000), (2) else if (tutar > 1000), (3) if (vip), (4) while (deneme > 0). Hiçbir koşulda && veya || gibi bileşik mantıksal operatör yoktur, dolayısıyla ek karar noktası sayılmaz. V(G) = 4 + 1 = 5. Bu değer aynı zamanda temel yol testinde (basis path testing) sınanması gereken doğrusal bağımsız yol sayısıdır ve dal kapsamı için gereken test sayısının ÜST sınırını verir (bu metotta dal kapsamı 3 testle de sağlanabilir; temel yol testi ise 5 yol ister). 'else' tek başına karar noktası değildir; yalnızca içindeki 'if' sayılır.",
     "simpleExplanation": "Çevrimsel karmaşıklık, kodun içinde kaç farklı yol olduğunu ölçer; yol ne kadar çoksa test etmek o kadar zordur. Hesaplamanın kolay yolu: koddaki karar noktalarını (yolun ikiye ayrıldığı yerleri) say ve 1 ekle. Karar noktaları if, else if, while, for gibi yerlerdir; tek başına 'else' sayılmaz, çünkü o yeni bir soru değil, önceki sorunun 'hayır' cevabıdır. Koda bakalım: if (tutar > 10000) bir, else if (tutar > 1000) iki, if (vip) üç, while (deneme > 0) dört. Koşullarda '&&' veya '||' gibi ek koşul yok. 4 + 1 = 5; cevap B'dir.",
+    "en": {
+      "subtopic": "Software metrics: cyclomatic complexity",
+      "question": "What is the McCabe cyclomatic complexity, V(G), of the following Java 17 method?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "3",
+        "E": "7"
+      },
+      "explanation": "Cyclomatic complexity is computed over the control flow graph as V(G) = E - N + 2 (edges - nodes + 2) or, in practice, as V(G) = number of decision points + 1. The decision (predicate) points in the code are: (1) if (tutar > 10000), (2) else if (tutar > 1000), (3) if (vip), (4) while (deneme > 0). No condition contains a compound logical operator such as && or ||, so no additional decision point is counted. V(G) = 4 + 1 = 5. This value is also the number of linearly independent paths that must be exercised in basis path testing, and it gives the UPPER bound on the number of tests needed for branch coverage (in this method branch coverage can be achieved with 3 tests; basis path testing, however, requires 5 paths). 'else' on its own is not a decision point; only the 'if' inside it is counted.",
+      "optionExplanations": {
+        "A": "4 is the number of decision points; the '+1' in the formula has been forgotten. Alternatively, the 'else if' may have been skipped and the while counted. Either way it is an undercount.",
+        "B": "Correct. Four decision points (if, else if, if, while) + 1 = 5.",
+        "C": "The result 6 comes from the mistake of counting the 'else' branch as a separate decision point, or from counting the 'return' statement as a decision. 'else' is not a new condition but the false branch of an existing one.",
+        "D": "3 results if only two decision points are counted (e.g. the whole if-else if block as one decision, if (vip) as the second, and the while forgotten). Loops are decision points too.",
+        "E": "7 is obtained by overcounting, such as counting the two conditions in the if-else if twice each. Each conditional expression is counted only once."
+      },
+      "keyConcept": "V(G) = number of decision points + 1 = E - N + 2. Decision points: if, else if, while, for, case, ?: and (in the extended count) each && / ||. 'else' on its own is not counted.",
+      "examTip": "Scan the code line by line and mark every conditional expression, check whether there are compound logical operators, and add 1 at the end. Forgetting loops is the most common mistake.",
+      "simpleExplanation": "Cyclomatic complexity measures how many different paths there are through the code; the more paths, the harder it is to test. The easy way to compute it: count the decision points in the code (the places where the path splits in two) and add 1. Decision points are things like if, else if, while, for; a bare 'else' is not counted, because it is not a new question but the 'no' answer to the previous one. Let's look at the code: if (tutar > 10000) is one, else if (tutar > 1000) two, if (vip) three, while (deneme > 0) four. There are no extra conditions such as '&&' or '||' in the conditions. 4 + 1 = 5; the answer is B."
+    },
     "optionExplanations": {
       "A": "4, karar noktası sayısıdır; formüldeki '+1' unutulmuştur. Alternatif olarak 'else if' sayılmayıp while sayılmış da olabilir. Her iki durumda da eksik sayımdır.",
       "B": "Doğru. Dört karar noktası (if, else if, if, while) + 1 = 5.",
@@ -119,7 +277,11 @@
     },
     "keyConcept": "V(G) = karar noktası sayısı + 1 = E - N + 2. Karar noktaları: if, else if, while, for, case, ?: ve (genişletilmiş sayımda) her && / ||. 'else' tek başına sayılmaz.",
     "examTip": "Kodu satır satır tarayıp her koşul ifadesini işaretleyin, bileşik mantıksal operatör var mı kontrol edin, sonuna 1 ekleyin. Döngüleri unutmak en yaygın hatadır.",
-    "references": ["McCabe, A Complexity Measure, IEEE Transactions on Software Engineering, 1976", "Pressman & Maxim, Software Engineering: A Practitioner's Approach (8. baskı), Bölüm 23: Software Testing Strategies / Basis Path Testing", "NIST Special Publication 500-235, Structured Testing: A Testing Methodology Using the Cyclomatic Complexity Metric"],
+    "references": [
+      "McCabe, A Complexity Measure, IEEE Transactions on Software Engineering, 1976",
+      "Pressman & Maxim, Software Engineering: A Practitioner's Approach (8. baskı), Bölüm 23: Software Testing Strategies / Basis Path Testing",
+      "NIST Special Publication 500-235, Structured Testing: A Testing Methodology Using the Cyclomatic Complexity Metric"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -132,15 +294,52 @@
     "code": "int krediPuani(int gelir, boolean kefil) {\n    int puan = 0;\n    if (gelir > 5000) {\n        puan += 10;\n    }\n    if (kefil) {\n        puan += 5;\n    }\n    return puan;\n}",
     "codeLanguage": "java",
     "options": [
-      {"id": "A", "text": "Deyim kapsamı %50, dal kapsamı %50"},
-      {"id": "B", "text": "Deyim kapsamı %100, dal kapsamı %100"},
-      {"id": "C", "text": "Deyim kapsamı %100, dal kapsamı %75"},
-      {"id": "D", "text": "Deyim kapsamı %75, dal kapsamı %50"},
-      {"id": "E", "text": "Deyim kapsamı %100, dal kapsamı %50"}
+      {
+        "id": "A",
+        "text": "Deyim kapsamı %50, dal kapsamı %50"
+      },
+      {
+        "id": "B",
+        "text": "Deyim kapsamı %100, dal kapsamı %100"
+      },
+      {
+        "id": "C",
+        "text": "Deyim kapsamı %100, dal kapsamı %75"
+      },
+      {
+        "id": "D",
+        "text": "Deyim kapsamı %75, dal kapsamı %50"
+      },
+      {
+        "id": "E",
+        "text": "Deyim kapsamı %100, dal kapsamı %50"
+      }
     ],
     "correctAnswer": "E",
     "explanation": "krediPuani(6000, true) çağrısında gelir > 5000 doğru olur ve puan += 10 çalışır; kefil doğru olur ve puan += 5 çalışır; return çalışır. Böylece metottaki her çalıştırılabilir deyim (puan = 0, iki if, iki atama, return) en az bir kez yürütülmüştür: deyim kapsamı %100. Dal kapsamı için her karar noktasının hem doğru hem yanlış sonucu sayılır: iki if ifadesi × 2 sonuç = 4 dal. Test yalnızca iki 'doğru' dalını yürütmüş, iki 'yanlış' dalını (gelir <= 5000 ve kefil == false) hiç çalıştırmamıştır: 2/4 = %50. Bu örnek, %100 deyim kapsamının %100 dal kapsamını garanti etmediğini gösterir; else bloğu olmayan if'lerde yanlış dalı deyim kapsamına yansımaz. Dal kapsamını %100'e çıkarmak için krediPuani(1000, false) gibi tek bir ek test yeterlidir.",
     "simpleExplanation": "İki tür ölçüm var. 'Deyim kapsamı' şunu sorar: kodun her satırı en az bir kez çalıştı mı? 'Dal kapsamı' ise daha sıkıdır: her if'in hem 'evet' hem 'hayır' yolu denendi mi? Testimiz krediPuani(6000, true): gelir 5000'den büyük, puan += 10 çalışır; kefil var, puan += 5 çalışır; return çalışır. Böylece bütün satırlar çalıştı, deyim kapsamı %100. Ama iki if'in yalnızca 'evet' yolları denendi; 'gelir düşükse' ve 'kefil yoksa' yolları hiç test edilmedi. 4 daldan 2'si denendiğinden dal kapsamı %50. Bir evin her odasına girmiş olmanız, her kapıyı iki yönde de kullandığınız anlamına gelmez. Cevap E'dir.",
+    "en": {
+      "subtopic": "Test coverage: statement coverage and branch coverage",
+      "question": "The test suite for the following Java 17 method contains only a single test: krediPuani(6000, true). Which of the following correctly gives the statement coverage and branch/decision coverage percentages achieved by this test suite?",
+      "options": {
+        "A": "Statement coverage 50%, branch coverage 50%",
+        "B": "Statement coverage 100%, branch coverage 100%",
+        "C": "Statement coverage 100%, branch coverage 75%",
+        "D": "Statement coverage 75%, branch coverage 50%",
+        "E": "Statement coverage 100%, branch coverage 50%"
+      },
+      "explanation": "In the call krediPuani(6000, true), gelir > 5000 is true and puan += 10 executes; kefil is true and puan += 5 executes; return executes. Thus every executable statement in the method (puan = 0, the two ifs, the two assignments, return) has been executed at least once: statement coverage 100%. For branch coverage, both the true and the false outcome of every decision point are counted: two if statements × 2 outcomes = 4 branches. The test has executed only the two 'true' branches and has never executed the two 'false' branches (gelir <= 5000 and kefil == false): 2/4 = 50%. This example shows that 100% statement coverage does not guarantee 100% branch coverage; in ifs without an else block, the false branch is not reflected in statement coverage. A single additional test such as krediPuani(1000, false) is enough to raise branch coverage to 100%.",
+      "optionExplanations": {
+        "A": "Statement coverage is not 50%; even the single test executes all statements, because both conditions evaluate to true and all lines run.",
+        "B": "Statement coverage 100% is right, but branch coverage is not 100%; the false branch of both ifs has never been tested. Common misconception: 'all the lines ran, so everything has been tested.'",
+        "C": "Statement coverage is right, branch coverage is wrong: 2 of the 4 branches were executed, not 3. 75% would result only if three branches were covered; with a single test only one branch of each if can be covered.",
+        "D": "Statement coverage is not 75%; no statement was skipped. What was not executed is not a statement but the 'if condition false' branches.",
+        "E": "Correct. All statements executed (100%); 2 of 4 branches executed (50%)."
+      },
+      "keyConcept": "Branch coverage is stronger than statement coverage: 100% branch coverage implies 100% statement coverage, but not the other way round. In ifs without an else, the false branch is invisible to statement coverage.",
+      "examTip": "Count two branches (true/false) for each if, apply the given tests to the conditions and mark how many branches were executed. For statement coverage, look only at which lines ran.",
+      "simpleExplanation": "There are two kinds of measurement. 'Statement coverage' asks: did every line of the code run at least once? 'Branch coverage' is stricter: were both the 'yes' and the 'no' path of every if tried? Our test is krediPuani(6000, true): the income (gelir) is above 5000, puan += 10 runs; there is a guarantor (kefil), puan += 5 runs; return runs. So all the lines ran, statement coverage 100%. But only the 'yes' paths of the two ifs were tried; the 'if the income is low' and 'if there is no guarantor' paths were never tested. Since 2 of 4 branches were tried, branch coverage is 50%. Having entered every room in a house does not mean you have used every door in both directions. The answer is E."
+    },
     "optionExplanations": {
       "A": "Deyim kapsamı %50 değildir; tek test bile tüm deyimleri yürütmektedir çünkü her iki koşul doğru sonuçlanır ve tüm satırlar çalışır.",
       "B": "Deyim kapsamı %100 doğrudur ancak dal kapsamı %100 değildir; her iki if'in yanlış dalı hiç test edilmemiştir. Sık yapılan yanılgı: 'tüm satırlar çalıştı, öyleyse her şey test edildi.'",
@@ -150,7 +349,11 @@
     },
     "keyConcept": "Dal kapsamı deyim kapsamından daha güçlüdür: %100 dal kapsamı %100 deyim kapsamını içerir, tersi geçerli değildir. else'siz if'lerde yanlış dal deyim kapsamına görünmez.",
     "examTip": "Her if için iki dal (doğru/yanlış) sayın, verilen testleri koşullara uygulayın, kaç dalın yürüdüğünü işaretleyin. Deyim kapsamı için yalnızca hangi satırların çalıştığına bakın.",
-    "references": ["ISTQB Foundation Level Syllabus v4.0 (2023), Bölüm 4.3: White-box Test Techniques", "Sommerville, Software Engineering (10. baskı), Bölüm 8: Software Testing", "Ammann & Offutt, Introduction to Software Testing (2. baskı), Bölüm 7: Graph Coverage"],
+    "references": [
+      "ISTQB Foundation Level Syllabus v4.0 (2023), Bölüm 4.3: White-box Test Techniques",
+      "Sommerville, Software Engineering (10. baskı), Bölüm 8: Software Testing",
+      "Ammann & Offutt, Introduction to Software Testing (2. baskı), Bölüm 7: Graph Coverage"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -163,15 +366,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Birim testi (unit test): her modülün iç mantığı beyaz kutu (white-box) yöntemle tek tek doğrulanır."},
-      {"id": "B", "text": "Sistem testi (system test): bütün sistem, kullanıcı gereksinimlerine karşı uçtan uca doğrulanır."},
-      {"id": "C", "text": "Kabul testi (acceptance test): iş birimi gerçek iş senaryolarıyla ürünü onaylar."},
-      {"id": "D", "text": "Entegrasyon testi (integration test): bileşenler/sistemler arasındaki arayüz, veri eşlemesi ve etkileşim doğrulanır."},
-      {"id": "E", "text": "Regresyon testi (regression test): mevcut işlevlerin yapılan değişiklikten etkilenmediği doğrulanır."}
+      {
+        "id": "A",
+        "text": "Birim testi (unit test): her modülün iç mantığı beyaz kutu (white-box) yöntemle tek tek doğrulanır."
+      },
+      {
+        "id": "B",
+        "text": "Sistem testi (system test): bütün sistem, kullanıcı gereksinimlerine karşı uçtan uca doğrulanır."
+      },
+      {
+        "id": "C",
+        "text": "Kabul testi (acceptance test): iş birimi gerçek iş senaryolarıyla ürünü onaylar."
+      },
+      {
+        "id": "D",
+        "text": "Entegrasyon testi (integration test): bileşenler/sistemler arasındaki arayüz, veri eşlemesi ve etkileşim doğrulanır."
+      },
+      {
+        "id": "E",
+        "text": "Regresyon testi (regression test): mevcut işlevlerin yapılan değişiklikten etkilenmediği doğrulanır."
+      }
     ],
     "correctAnswer": "D",
     "explanation": "Test seviyeleri aşağıdan yukarıya birim, entegrasyon, sistem ve kabul olarak sıralanır. Birim testleri bitmiş, bileşenler ayrı ayrı doğru çalıştığı gösterilmiştir. Senaryonun odağı tek bir bileşenin iç mantığı değil, iki sistemin ARASINDAKİ arayüzdür: mesaj alanlarının eşlenmesi, zaman aşımı davranışı, hata kodlarının karşı tarafta doğru yorumlanması. Bu, entegrasyon testinin (burada sistemler arası entegrasyon) tam tanımıdır. Entegrasyon testi genellikle arayüz sözleşmesine (mesaj formatı spesifikasyonu) dayalı kara kutu teknikleriyle yürütülür; arayüz kodu biliniyorsa gri kutu yaklaşımı da kullanılabilir. İş biriminin dahil olmaması ve 'tüm sistemin uçtan uca' değil 'iki sistem arası mesajlaşmanın' hedeflenmesi, sistem ve kabul testini dışlar.",
     "simpleExplanation": "Yazılım testi kademeli yapılır. Birim testi tek bir parçayı tek başına test eder (tek bir tuğlayı kontrol etmek). Entegrasyon testi parçaların BİRLİKTE çalışmasını test eder (tuğlalar arasındaki harcı kontrol etmek). Sistem testi binanın tamamına bakar; kabul testinde ise ev sahibi gelip 'evet, istediğim bu' der. Senaryoda iki sistemin parçaları ayrı ayrı test edilmiş, şimdi aralarındaki mesajlaşmanın (alanların doğru eşlenmesi, hata kodları, zaman aşımı) doğrulanması isteniyor ve iş birimi henüz işin içinde değil. İki sistem arasındaki bağlantıyı test etmek entegrasyon testidir; cevap D. Regresyon testi ise bir seviye değil, 'eski şeyler bozulmadı mı?' sorusunu soran bir test türüdür.",
+    "en": {
+      "subtopic": "Test levels and black-box / white-box approaches",
+      "question": "A bank has developed a new ISO 8583 message interface between the card management system and the core banking system. The development teams of both systems have successfully completed the unit tests of their own modules. In the next phase, the test team will run the two systems together to verify that the message fields sent are mapped correctly on the other side and that timeouts and error codes are handled correctly; the business unit is not yet involved at this stage. Which of the following is the most appropriate test level and focus for this phase?",
+      "options": {
+        "A": "Unit test: the internal logic of each module is verified one by one with a white-box approach.",
+        "B": "System test: the whole system is verified end to end against the user requirements.",
+        "C": "Acceptance test: the business unit approves the product with real business scenarios.",
+        "D": "Integration test: the interface, data mapping and interaction between components/systems are verified.",
+        "E": "Regression test: it is verified that existing functions are not affected by the change made."
+      },
+      "explanation": "Test levels, from bottom to top, are unit, integration, system and acceptance. The unit tests are finished and the components have been shown to work correctly in isolation. The focus of the scenario is not the internal logic of a single component but the interface BETWEEN two systems: the mapping of message fields, timeout behaviour, correct interpretation of error codes on the other side. This is the very definition of integration testing (here, integration between systems). Integration testing is usually performed with black-box techniques based on the interface contract (the message format specification); a grey-box approach can also be used if the interface code is known. The fact that the business unit is not involved and that the target is 'the messaging between two systems' rather than 'the whole system end to end' rules out system and acceptance testing.",
+      "optionExplanations": {
+        "A": "Unit tests have already been completed in the scenario, and they focus on the internal logic of a single module; they do not verify the message mapping between two systems.",
+        "B": "System testing exercises the entire integrated system end to end against the requirements. The scenario targets only the verification of a specific interface and is not yet at a stage where the whole system has been assembled.",
+        "C": "Acceptance testing is performed by the business unit/end users and its purpose is to confirm that the product meets the business need. In the scenario the business unit is not yet involved; what is at stake is technical interface verification.",
+        "D": "Correct. Verifying the interface, data flow and interaction between components/systems is integration testing.",
+        "E": "Regression testing is not a level but a type of test that checks that old functions have not broken after a change, and it can be applied at every level. The scenario describes the first verification of a newly developed interface, not the preservation of existing functionality."
+      },
+      "keyConcept": "Unit: single component (mostly white-box). Integration: interface between components/systems. System: whole system, against the requirements. Acceptance: business unit/user approval. Regression is a type, not a level.",
+      "examTip": "If the question mentions 'interface', 'message mapping' or 'two systems working together', it is integration; if 'the business unit approves', acceptance; if 'the whole system end to end', system testing.",
+      "simpleExplanation": "Software testing is done in stages. A unit test tests a single part on its own (checking a single brick). An integration test tests whether the parts work TOGETHER (checking the mortar between the bricks). A system test looks at the whole building; and in the acceptance test the homeowner comes and says 'yes, this is what I wanted'. In the scenario the parts of the two systems have been tested separately, and now the messaging between them (correct mapping of the fields, error codes, timeouts) needs to be verified, and the business unit is not yet involved. Testing the connection between two systems is integration testing; answer D. Regression testing, on the other hand, is not a level but a type of test that asks 'did the old things break?'"
+    },
     "optionExplanations": {
       "A": "Birim testleri senaryoda zaten tamamlanmıştır ve tek bir modülün iç mantığına odaklanır; iki sistem arasındaki mesaj eşlemesini doğrulamaz.",
       "B": "Sistem testi, bütünleşmiş sistemin tamamını gereksinimlere karşı uçtan uca sınar. Senaryo yalnızca belirli bir arayüzün doğrulanmasını hedefliyor ve henüz tüm sistemin birleştirildiği bir aşamada değil.",
@@ -181,7 +421,11 @@
     },
     "keyConcept": "Birim: tek bileşen (çoğunlukla beyaz kutu). Entegrasyon: bileşenler/sistemler arası arayüz. Sistem: bütün sistem, gereksinimlere karşı. Kabul: iş birimi/kullanıcı onayı. Regresyon bir seviye değil, türdür.",
     "examTip": "Soruda 'arayüz', 'mesaj eşlemesi', 'iki sistemin birlikte çalışması' geçiyorsa entegrasyon; 'iş birimi onaylar' geçiyorsa kabul; 'uçtan uca tüm sistem' geçiyorsa sistem testidir.",
-    "references": ["ISTQB Foundation Level Syllabus v4.0 (2023), Bölüm 2.2: Test Levels and Test Types", "Sommerville, Software Engineering (10. baskı), Bölüm 8: Software Testing", "ISO 8583 Financial transaction card originated messages (arayüz standardı)"],
+    "references": [
+      "ISTQB Foundation Level Syllabus v4.0 (2023), Bölüm 2.2: Test Levels and Test Types",
+      "Sommerville, Software Engineering (10. baskı), Bölüm 8: Software Testing",
+      "ISO 8583 Financial transaction card originated messages (arayüz standardı)"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -194,15 +438,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Yazılım Bileşen Analizi (Software Composition Analysis, SCA): bağımlılıkların envanterini (SBOM) çıkarıp bilinen zafiyet veri tabanlarıyla karşılaştıran ve zafiyetli sürümde derlemeyi durduran bir adım eklemek."},
-      {"id": "B", "text": "Birim testi sayısını ve kod kapsamı hedefini %90'ın üzerine çıkarmak."},
-      {"id": "C", "text": "SAST aracının kural setini genişletmek ve taramayı günde iki kez çalıştırmak."},
-      {"id": "D", "text": "Üretim önüne web uygulama güvenlik duvarı (WAF) koymak ve hattı değiştirmemek."},
-      {"id": "E", "text": "Depoya gizli bilgi (parola, API anahtarı) sızmasını tarayan bir gizli bilgi taraması (secret scanning) adımı eklemek."}
+      {
+        "id": "A",
+        "text": "Yazılım Bileşen Analizi (Software Composition Analysis, SCA): bağımlılıkların envanterini (SBOM) çıkarıp bilinen zafiyet veri tabanlarıyla karşılaştıran ve zafiyetli sürümde derlemeyi durduran bir adım eklemek."
+      },
+      {
+        "id": "B",
+        "text": "Birim testi sayısını ve kod kapsamı hedefini %90'ın üzerine çıkarmak."
+      },
+      {
+        "id": "C",
+        "text": "SAST aracının kural setini genişletmek ve taramayı günde iki kez çalıştırmak."
+      },
+      {
+        "id": "D",
+        "text": "Üretim önüne web uygulama güvenlik duvarı (WAF) koymak ve hattı değiştirmemek."
+      },
+      {
+        "id": "E",
+        "text": "Depoya gizli bilgi (parola, API anahtarı) sızmasını tarayan bir gizli bilgi taraması (secret scanning) adımı eklemek."
+      }
     ],
     "correctAnswer": "A",
     "explanation": "SAST, kuruluşun kendi kaynak kodunu kalıp ve veri akışı bazında inceler; üçüncü taraf kütüphanelerin sürümlerini bilinen zafiyet (CVE) veri tabanlarıyla karşılaştırmaz. DAST, çalışan uygulamayı dışarıdan sınar; belirli bir kütüphane sürümünün zafiyetli olduğunu çoğu zaman tespit edemez. Senaryodaki kök neden 'bilinen zafiyetli bir bağımlılığın kullanılması'dır (OWASP Top 10 2021 A06: Vulnerable and Outdated Components; 2025 sürümünde bu başlık yazılım tedarik zinciri zafiyetlerini de kapsayacak biçimde genişletilmiştir). Bunu doğrudan hedefleyen kontrol Yazılım Bileşen Analizi'dir (SCA): hat, derleme sırasında tüm doğrudan ve geçişli bağımlılıkları listeler (Yazılım Malzeme Listesi, SBOM), bunları NVD gibi zafiyet veri tabanlarıyla eşler ve belirlenen eşiğin üzerinde zafiyet taşıyan sürüm varsa derlemeyi başarısız kılar (quality gate). Zafiyet aylar önce duyurulduğu için SCA bu olayı üretime çıkmadan yakalardı. DevSecOps'un 'sola kaydırma' (shift-left) ilkesi gereği bu kontrolün üretimde değil, hattın erken aşamasında yer alması gerekir.",
     "simpleExplanation": "Banka kendi yazdığı kodu iyi kontrol etmiş: SAST kendi kodunu okuyup hata arar, DAST çalışan uygulamayı dışarıdan dener. Ama sorun bankanın kodunda değil, kullandığı hazır bir kütüphanenin eski sürümündeydi. Bunu, kendi yaptığınız yemeği dikkatle kontrol edip marketten hazır aldığınız malzemenin son kullanma tarihine hiç bakmamak gibi düşünün. Yazılım Bileşen Analizi (SCA) tam olarak bu 'etiket kontrolü'nü yapar: uygulamanın kullandığı tüm hazır parçaların listesini çıkarır (SBOM), bu listeyi bilinen zafiyet listeleriyle karşılaştırır ve tehlikeli sürüm varsa derlemeyi durdurur. Zafiyet aylar önce ilan edildiği için SCA bunu yakalardı. Diğer seçenekler ya başka sorunlara yöneliktir ya da yalnızca üretimde yara bandı görevi görür. Cevap A.",
+    "en": {
+      "subtopic": "Secure SDLC / DevSecOps and security controls in the CI/CD pipeline",
+      "question": "A bank's internet banking team runs static code analysis (SAST) on every build and dynamic application security testing (DAST) in the test environment in its CI/CD pipeline; code review is also mandatory. Nevertheless, an attack occurred in production through a publicly known vulnerability (CVE) in an old version of an open-source logging library used by the application. The investigation showed that there was no defect in the bank's own code, that the vulnerability lay entirely in the third-party dependency, and that this version had been announced as 'vulnerable' months earlier. Which of the following is the MOST appropriate control to add to the pipeline to close this gap?",
+      "options": {
+        "A": "Software Composition Analysis (SCA): adding a step that produces an inventory of the dependencies (SBOM), compares it against known vulnerability databases and fails the build on a vulnerable version.",
+        "B": "Increasing the number of unit tests and raising the code coverage target above 90%.",
+        "C": "Expanding the SAST tool's rule set and running the scan twice a day.",
+        "D": "Placing a web application firewall (WAF) in front of production and leaving the pipeline unchanged.",
+        "E": "Adding a secret scanning step that scans for secrets (passwords, API keys) leaking into the repository."
+      },
+      "explanation": "SAST examines the organisation's own source code on the basis of patterns and data flow; it does not compare the versions of third-party libraries against known vulnerability (CVE) databases. DAST tests the running application from the outside; most of the time it cannot detect that a particular library version is vulnerable. The root cause in the scenario is 'use of a dependency with a known vulnerability' (OWASP Top 10 2021 A06: Vulnerable and Outdated Components; in the 2025 edition this category has been broadened to also cover software supply chain vulnerabilities). The control that targets this directly is Software Composition Analysis (SCA): during the build, the pipeline lists all direct and transitive dependencies (Software Bill of Materials, SBOM), matches them against vulnerability databases such as the NVD, and fails the build (quality gate) if there is a version carrying a vulnerability above the defined threshold. Since the vulnerability had been announced months earlier, SCA would have caught this incident before it reached production. Under the DevSecOps 'shift-left' principle, this control must sit at an early stage of the pipeline, not in production.",
+      "optionExplanations": {
+        "A": "Correct. SCA and SBOM are the only option that targets known vulnerabilities in third-party components, and they work as a gate that stops the build.",
+        "B": "Unit tests measure functional correctness; they do not reveal a security vulnerability in a library. However high the coverage percentage goes, it will not tell you that the dependency version is vulnerable.",
+        "C": "SAST is for your own code; even with a wider rule set it does not compare library versions against the CVE database. Running it more often does not make the tool see a problem it cannot see by design.",
+        "D": "A WAF is a compensating control that can block some exploit patterns in production; it does not remove the root cause (a vulnerable component entering the pipeline) and it contradicts the shift-left principle. The question asks for the control 'to be added to the pipeline'.",
+        "E": "Secret scanning catches credentials leaking into the source code; it is a valuable control but has nothing to do with the problem in the scenario (a vulnerable dependency)."
+      },
+      "keyConcept": "SAST = static analysis of your own code; DAST = external testing of the running application; SCA = scanning third-party dependencies against known vulnerabilities (SBOM). Each one closes a different class of risk.",
+      "examTip": "When you see 'no defect in our own code, the problem is in the library' in a scenario, go straight to SCA/SBOM. Options such as 'a WAF in front of production' are compensating controls that do not fix the root cause.",
+      "simpleExplanation": "The bank checked its own code well: SAST reads your own code and looks for defects, DAST tries the running application from the outside. But the problem was not in the bank's code; it was in an old version of a ready-made library it used. Think of it as carefully checking the meal you cooked yourself but never looking at the expiry date of the ready-made ingredient you bought from the shop. Software Composition Analysis (SCA) does exactly this 'label check': it lists all the ready-made parts the application uses (SBOM), compares that list against known vulnerability lists and stops the build if there is a dangerous version. Since the vulnerability was announced months earlier, SCA would have caught it. The other options either address other problems or only act as a plaster in production. Answer A."
+    },
     "optionExplanations": {
       "A": "Doğru. SCA ve SBOM, üçüncü taraf bileşenlerdeki bilinen zafiyetleri hedefleyen tek seçenektir ve derlemeyi durdurma kapısı olarak çalışır.",
       "B": "Birim testleri işlevsel doğruluğu ölçer; kütüphanenin güvenlik zafiyetini ortaya çıkarmaz. Kapsam yüzdesi ne kadar yükselse de bağımlılık sürümünün zafiyetli olduğunu söylemez.",
@@ -212,7 +493,12 @@
     },
     "keyConcept": "SAST = kendi kodun statik analizi; DAST = çalışan uygulamanın dış testi; SCA = üçüncü taraf bağımlılıkların bilinen zafiyetlere karşı taranması (SBOM). Her biri farklı bir risk sınıfını kapatır.",
     "examTip": "Senaryoda 'kendi kodda hata yok, sorun kütüphanede' ifadesini görünce doğrudan SCA/SBOM'u arayın. 'Üretim önüne WAF' gibi seçenekler kök nedeni çözmeyen telafi edici kontrollerdir.",
-    "references": ["OWASP Top 10 (2021), A06: Vulnerable and Outdated Components (2025 sürümü: Software Supply Chain Failures)", "NIST SP 800-218, Secure Software Development Framework (SSDF) v1.1", "OWASP DevSecOps Guideline", "NIST SP 800-161 Rev. 1, Cybersecurity Supply Chain Risk Management Practices"],
+    "references": [
+      "OWASP Top 10 (2021), A06: Vulnerable and Outdated Components (2025 sürümü: Software Supply Chain Failures)",
+      "NIST SP 800-218, Secure Software Development Framework (SSDF) v1.1",
+      "OWASP DevSecOps Guideline",
+      "NIST SP 800-161 Rev. 1, Cybersecurity Supply Chain Risk Management Practices"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -225,15 +511,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Teknik borç yalnızca tecrübesiz ekiplerin özensiz kodlarında oluşur; bilinçli alınan bir kısa yol teknik borç sayılmaz."},
-      {"id": "B", "text": "Kod üretime alındığı anda borç kapanmıştır; altı ay sonraki gecikme teknik borçla ilgisi olmayan bağımsız bir sorundur."},
-      {"id": "C", "text": "Bu, Fowler'ın sınıflandırmasıyla bilinçli-ihtiyatlı (deliberate-prudent) teknik borçtur; bir günlük işin iki haftaya uzaması borcun 'faizi'dir ve borç ne kadar geç ödenirse değişiklik ve hata düzeltme maliyeti o kadar artar."},
-      {"id": "D", "text": "Teknik borç, kullanılan programlama dilinin veya çerçevenin eski sürümde kalması demektir; test eksikliği ve koda gömülü değerler borç kapsamına girmez."},
-      {"id": "E", "text": "Üretimde çıkan bir hatanın düzeltme maliyeti, gereksinim veya tasarım aşamasında yakalanan hatayla aynıdır; bu nedenle borcun ne zaman ödendiği maliyeti etkilemez."}
+      {
+        "id": "A",
+        "text": "Teknik borç yalnızca tecrübesiz ekiplerin özensiz kodlarında oluşur; bilinçli alınan bir kısa yol teknik borç sayılmaz."
+      },
+      {
+        "id": "B",
+        "text": "Kod üretime alındığı anda borç kapanmıştır; altı ay sonraki gecikme teknik borçla ilgisi olmayan bağımsız bir sorundur."
+      },
+      {
+        "id": "C",
+        "text": "Bu, Fowler'ın sınıflandırmasıyla bilinçli-ihtiyatlı (deliberate-prudent) teknik borçtur; bir günlük işin iki haftaya uzaması borcun 'faizi'dir ve borç ne kadar geç ödenirse değişiklik ve hata düzeltme maliyeti o kadar artar."
+      },
+      {
+        "id": "D",
+        "text": "Teknik borç, kullanılan programlama dilinin veya çerçevenin eski sürümde kalması demektir; test eksikliği ve koda gömülü değerler borç kapsamına girmez."
+      },
+      {
+        "id": "E",
+        "text": "Üretimde çıkan bir hatanın düzeltme maliyeti, gereksinim veya tasarım aşamasında yakalanan hatayla aynıdır; bu nedenle borcun ne zaman ödendiği maliyeti etkilemez."
+      }
     ],
     "correctAnswer": "C",
     "explanation": "Teknik borç (technical debt), kısa vadeli kazanç için alınan ve ileride ek maliyet (faiz) doğuran tasarım/kod kısa yollarını tanımlayan Ward Cunningham'ın metaforudur. Martin Fowler bunu iki eksende sınıflandırır: bilinçli (deliberate) / bilinçsiz (inadvertent) ve ihtiyatlı (prudent) / pervasız (reckless). Senaryoda ekip kısa yolu bilerek, sonuçlarını değerlendirerek ve kayıt altına alarak seçmiştir: bilinçli-ihtiyatlı borç. Bu tür borç kabul edilebilir bir mühendislik kararıdır ancak yalnızca geri ödendiğinde; ödenmeyen borcun faizi birikir. Bir günlük işin iki haftaya uzaması tam olarak bu faizdir. Ayrıca yazılım mühendisliğinde hata düzeltme maliyetinin aşama ilerledikçe arttığı (gereksinim aşamasında ucuz, üretimde çok pahalı) bilinen bir bulgudur; Boehm ve Basili üretimde düzeltmenin gereksinim aşamasına göre genellikle 100 kata kadar daha pahalı olabileceğini raporlar. Hard-coded değer ve test eksikliği klasik kod/test borcu örnekleridir.",
     "simpleExplanation": "Teknik borç, zaman kazanmak için alınan kısa yolların ileride 'faiz'le geri dönmesidir; tıpkı bugün borç alıp sonra faiziyle ödemek gibi. Ekip faiz oranını ayar dosyasından okumak yerine koda sabit yazmış ve test yazmamış; bunu bilerek, sonuçlarını değerlendirip kayıt altına alarak yapmış. Fowler'ın sınıflamasında bu 'bilinçli ve ihtiyatlı' borçtur; kötü bir karar değil, ama ödenmesi gerekir. Borç ödenmediği için altı ay sonra bir günlük iş iki hafta sürmüş ve hata çıkmış: işte faiz bu. Ayrıca bir hatayı düzeltmenin maliyeti ne kadar geç yakalanırsa o kadar artar; üretimde yakalanan hata en pahalısıdır. Bunların tümünü doğru anlatan seçenek C'dir.",
+    "en": {
+      "subtopic": "Technical debt and the growth of defect-fixing cost by phase",
+      "question": "To meet a campaign deadline, a bank's lending team hard-coded the interest rate directly in the code instead of writing the module that would read it from the configuration file, wrote no automated tests, and put the code into production in that state. The team made the decision consciously, assessed its consequences, recorded the situation in the backlog as 'technical debt' and planned to remedy it two sprints later. However, priorities changed and the fix was not made. Six months later, a rate change that was expected to take one day took two weeks because the code had been copied to other places and there were no tests, and a defect occurred in production. Which of the following statements evaluates this situation most accurately?",
+      "options": {
+        "A": "Technical debt arises only in the careless code of inexperienced teams; a shortcut taken consciously does not count as technical debt.",
+        "B": "The debt was repaid the moment the code went into production; the delay six months later is an independent problem unrelated to technical debt.",
+        "C": "This is deliberate-prudent technical debt in Fowler's classification; the one-day job stretching to two weeks is the 'interest' on the debt, and the later the debt is repaid, the higher the cost of change and defect fixing becomes.",
+        "D": "Technical debt means the programming language or framework in use being left on an old version; lack of tests and hard-coded values do not fall within the scope of debt.",
+        "E": "The cost of fixing a defect found in production is the same as that of a defect caught in the requirements or design phase; therefore when the debt is repaid does not affect the cost."
+      },
+      "explanation": "Technical debt is Ward Cunningham's metaphor describing design/code shortcuts taken for short-term gain that generate additional cost (interest) later. Martin Fowler classifies it along two axes: deliberate / inadvertent and prudent / reckless. In the scenario the team chose the shortcut knowingly, assessing its consequences and recording it: deliberate-prudent debt. This kind of debt is an acceptable engineering decision, but only if it is repaid; the interest on unpaid debt accumulates. A one-day job stretching to two weeks is exactly that interest. In addition, it is a well-known finding in software engineering that the cost of fixing a defect rises as the phase advances (cheap in the requirements phase, very expensive in production); Boehm and Basili report that fixing in production can typically be up to 100 times more expensive than in the requirements phase. Hard-coded values and lack of tests are classic examples of code/test debt.",
+      "optionExplanations": {
+        "A": "Fowler's quadrant says the exact opposite: debt can also be deliberate and prudent. A shortcut taken consciously does not stop being debt; it merely becomes manageable.",
+        "B": "Going into production does not repay the debt; the debt is repaid when the shortcut is fixed (when the configuration module and the tests are written). The delay six months later is a direct consequence of the unpaid debt.",
+        "C": "Correct. Deliberate-prudent debt, the interest metaphor and the growth of cost over time explain the scenario completely.",
+        "D": "Staying on an old version is only one kind of technical debt. Hard-coded values, copy-paste code and lack of tests are code and test debt too; this is the fallacy of narrowing the definition.",
+        "E": "The cost of fixing a defect rises by phase; a defect caught in production is the most expensive. That is why repaying the debt early lowers the cost; the option contradicts the known empirical finding."
+      },
+      "keyConcept": "Technical debt = a shortcut taken for short-term gain that comes back as 'interest'. Fowler: deliberate/inadvertent × prudent/reckless. The cost of fixing defects grows exponentially as the SDLC phase advances.",
+      "examTip": "The phrases 'knowingly, assessing the consequences, recording it' point to deliberate-prudent debt. Options saying the cost is 'independent of the phase' or 'the same' are eliminated immediately.",
+      "simpleExplanation": "Technical debt is when shortcuts taken to save time come back later with 'interest'; just like borrowing money today and paying it back with interest later. The team wrote the interest rate as a constant in the code instead of reading it from a settings file, and wrote no tests; they did this knowingly, assessing the consequences and recording it. In Fowler's classification this is 'deliberate and prudent' debt; not a bad decision, but it has to be repaid. Because the debt was not repaid, six months later a one-day job took two weeks and a defect appeared: that is the interest. Also, the later a defect is caught, the more it costs to fix; a defect caught in production is the most expensive. The option that states all of this correctly is C."
+    },
     "optionExplanations": {
       "A": "Fowler'ın çeyrek dairesi (quadrant) tam tersini söyler: borç bilinçli ve ihtiyatlı da olabilir. Bilinçli alınan kısa yol borç olmaktan çıkmaz; yalnızca yönetilebilir hâle gelir.",
       "B": "Üretime alma borcu kapatmaz; borç, kısa yol düzeltildiğinde (yapılandırma modülü ve testler yazıldığında) kapanır. Altı ay sonraki gecikme doğrudan ödenmemiş borcun sonucudur.",
@@ -243,7 +566,12 @@
     },
     "keyConcept": "Teknik borç = kısa vadeli kazanç için alınan ve 'faiz' olarak geri dönen kısa yol. Fowler: bilinçli/bilinçsiz × ihtiyatlı/pervasız. Hata düzeltme maliyeti SDLC aşaması ilerledikçe katlanarak artar.",
     "examTip": "'Bilerek, sonuçlarını değerlendirerek, kayıt altına alarak' ifadeleri bilinçli-ihtiyatlı borca işaret eder. Maliyetle ilgili 'aşamadan bağımsız' veya 'aynıdır' diyen seçenekler hemen elenir.",
-    "references": ["Fowler, Technical Debt Quadrant (martinfowler.com, 2009)", "Cunningham, The WyCash Portfolio Management System, OOPSLA 1992 (teknik borç metaforu)", "Boehm & Basili, Software Defect Reduction Top 10 List, IEEE Computer, 2001", "Pressman & Maxim, Software Engineering: A Practitioner's Approach (8. baskı), Bölüm 1-2"],
+    "references": [
+      "Fowler, Technical Debt Quadrant (martinfowler.com, 2009)",
+      "Cunningham, The WyCash Portfolio Management System, OOPSLA 1992 (teknik borç metaforu)",
+      "Boehm & Basili, Software Defect Reduction Top 10 List, IEEE Computer, 2001",
+      "Pressman & Maxim, Software Engineering: A Practitioner's Approach (8. baskı), Bölüm 1-2"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -256,15 +584,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Hacim (Volume)"},
-      {"id": "B", "text": "Çeşitlilik (Variety)"},
-      {"id": "C", "text": "Hız (Velocity)"},
-      {"id": "D", "text": "Doğruluk (Veracity)"},
-      {"id": "E", "text": "Değer (Value)"}
+      {
+        "id": "A",
+        "text": "Hacim (Volume)"
+      },
+      {
+        "id": "B",
+        "text": "Çeşitlilik (Variety)"
+      },
+      {
+        "id": "C",
+        "text": "Hız (Velocity)"
+      },
+      {
+        "id": "D",
+        "text": "Doğruluk (Veracity)"
+      },
+      {
+        "id": "E",
+        "text": "Değer (Value)"
+      }
     ],
     "correctAnswer": "B",
     "explanation": "Büyük verinin klasik 3V tanımı (Laney, 2001) Hacim (Volume: verinin büyüklüğü), Hız (Velocity: verinin üretilme ve işlenme hızı) ve Çeşitlilik (Variety: veri türlerinin ve biçimlerinin farklılığı) boyutlarından oluşur. Senaryoda vurgulanan sorun verinin miktarı ya da akış hızı değil, ses, görüntü/PDF, serbest metin ve ilişkisel tablo gibi farklı yapıdaki kaynakların bir arada işlenmesidir. Bu, Çeşitlilik boyutudur; geleneksel ilişkisel veri tabanlarının yapısal olmayan veriyi doğal olarak saklayıp sorgulayamaması bu boyutun yarattığı temel zorluktur. Doğruluk (Veracity) ve Değer (Value) sonradan eklenen boyutlardır ve klasik 3V'nin parçası değildir.",
     "simpleExplanation": "Büyük verinin klasik tanımında üç 'V' vardır: Hacim (Volume) verinin ne kadar çok olduğunu, Hız (Velocity) ne kadar hızlı aktığını, Çeşitlilik (Variety) ise ne kadar farklı türde olduğunu anlatır. Senaryoda ses kayıtları, taranmış PDF'ler, sosyal medya metinleri ve düzenli tablolar bir arada; yani sorun miktar veya hız değil, verinin birbirinden çok farklı biçimlerde olmasıdır. Bunu bir kütüphanede kitap, kaset, fotoğraf ve el yazması notları aynı rafta düzenlemeye çalışmak gibi düşünün. Bu 'Çeşitlilik' boyutudur; cevap B. Doğruluk (Veracity) ve Değer (Value) sonradan eklenen V'lerdir, klasik üçlüde yer almaz.",
+    "en": {
+      "subtopic": "Big data: the 3V concept",
+      "question": "To improve customer experience, a bank plans to process call centre voice recordings, scanned PDF contracts, social media complaint texts and the structured transaction data in relational tables together on the same analytics platform. This challenge, arising from the coexistence of structured, semi-structured and unstructured data, corresponds to which dimension of the classic '3V' definition of big data?",
+      "options": {
+        "A": "Volume",
+        "B": "Variety",
+        "C": "Velocity",
+        "D": "Veracity",
+        "E": "Value"
+      },
+      "explanation": "The classic 3V definition of big data (Laney, 2001) consists of the dimensions Volume (the size of the data), Velocity (the speed at which data is generated and processed) and Variety (the diversity of data types and formats). The problem emphasised in the scenario is not the amount of data or its flow rate, but the processing together of sources of different structure such as audio, images/PDF, free text and relational tables. This is the Variety dimension; the fundamental difficulty this dimension creates is that traditional relational databases cannot natively store and query unstructured data. Veracity and Value are dimensions added later and are not part of the classic 3V.",
+      "optionExplanations": {
+        "A": "Volume is about the size of the data (terabytes, petabytes). The scenario emphasises not the amount but the diversity of data types.",
+        "B": "Correct. The coexistence of structured, semi-structured and unstructured data is the definition of the Variety dimension.",
+        "C": "Velocity is about the speed at which data is generated/flows and must be processed (e.g. real-time fraud detection for thousands of card transactions per second). The scenario does not mention flow rate.",
+        "D": "Veracity is a later-added dimension concerning the reliability and quality of data; it is not in the classic 3V, and the problem in the scenario is the diversity of data types.",
+        "E": "Value is a later-added dimension expressing the business benefit obtained from data; it defines a purpose, not a technical challenge, and is not part of the classic 3V."
+      },
+      "keyConcept": "3V: Volume, Velocity, Variety. Data in different formats = Variety. Veracity and Value are later extensions.",
+      "examTip": "If the scenario is about 'how much', it is Volume; 'how fast', Velocity; 'what kinds', Variety. If the question says 'classic 3V', eliminate the Veracity/Value options straight away.",
+      "simpleExplanation": "The classic definition of big data has three 'V's: Volume describes how much data there is, Velocity how fast it flows, and Variety how many different kinds it comes in. In the scenario, voice recordings, scanned PDFs, social media texts and neat tables are all together; so the problem is not amount or speed but the data being in very different formats. Think of it as trying to organise books, cassettes, photographs and handwritten notes on the same shelf in a library. This is the 'Variety' dimension; answer B. Veracity and Value are V's that were added later and are not in the classic trio."
+    },
     "optionExplanations": {
       "A": "Hacim, verinin büyüklüğüyle (terabayt, petabayt) ilgilidir. Senaryoda miktar değil, veri türlerinin farklılığı vurgulanmıştır.",
       "B": "Doğru. Yapısal, yarı yapısal ve yapısal olmayan verilerin bir arada olması Çeşitlilik boyutunun tanımıdır.",
@@ -274,7 +639,10 @@
     },
     "keyConcept": "3V: Volume (hacim), Velocity (hız), Variety (çeşitlilik). Farklı biçimlerde veri = Variety. Veracity ve Value sonradan eklenen genişletmelerdir.",
     "examTip": "Senaryoda 'ne kadar' varsa Volume, 'ne kadar hızlı' varsa Velocity, 'hangi türlerde' varsa Variety. Soru 'klasik 3V' diyorsa Veracity/Value seçeneklerini doğrudan eleyin.",
-    "references": ["Laney, 3D Data Management: Controlling Data Volume, Velocity and Variety, META Group/Gartner, 2001", "NIST SP 1500-1r2, NIST Big Data Interoperability Framework: Volume 1, Definitions"],
+    "references": [
+      "Laney, 3D Data Management: Controlling Data Volume, Velocity and Variety, META Group/Gartner, 2001",
+      "NIST SP 1500-1r2, NIST Big Data Interoperability Framework: Volume 1, Definitions"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -287,15 +655,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Müşteri şikâyet e-postalarının içeriğindeki duygu tonuna göre öncelik atanması."},
-      {"id": "B", "text": "Kredi tahsis komitesinde istisnai başvuruların değerlendirilip karara bağlanması."},
-      {"id": "C", "text": "Şubelerden gelen el yazısı başvuru formlarının okunup alanların yorumlanması."},
-      {"id": "D", "text": "Her kampanya için özgün pazarlama metni ve görsel taslaklar üretilmesi."},
-      {"id": "E", "text": "Her sabah muhabir bankadan gelen Excel ekstresindeki satırların, sabit ekran düzenine sahip eski muhasebe uygulamasına belirli kurallarla girilmesi ve mutabakat raporunun hazırlanması."}
+      {
+        "id": "A",
+        "text": "Müşteri şikâyet e-postalarının içeriğindeki duygu tonuna göre öncelik atanması."
+      },
+      {
+        "id": "B",
+        "text": "Kredi tahsis komitesinde istisnai başvuruların değerlendirilip karara bağlanması."
+      },
+      {
+        "id": "C",
+        "text": "Şubelerden gelen el yazısı başvuru formlarının okunup alanların yorumlanması."
+      },
+      {
+        "id": "D",
+        "text": "Her kampanya için özgün pazarlama metni ve görsel taslaklar üretilmesi."
+      },
+      {
+        "id": "E",
+        "text": "Her sabah muhabir bankadan gelen Excel ekstresindeki satırların, sabit ekran düzenine sahip eski muhasebe uygulamasına belirli kurallarla girilmesi ve mutabakat raporunun hazırlanması."
+      }
     ],
     "correctAnswer": "E",
     "explanation": "Klasik RPA, bir insanın kullanıcı arayüzünde yaptığı tıklama, kopyalama, veri girme gibi adımları yazılım robotuyla taklit eder. Başarılı olduğu süreçlerin ortak özellikleri: kural tabanlı ve açıkça tanımlanabilir karar mantığı, yüksek tekrar sayısı, yapısal (dijital, okunabilir) girdi, kararlı ve değişmeyen ekranlar/uygulamalar ve insan yargısına ihtiyaç duymama. Muhabir banka ekstresinin Excel'den eski uygulamaya kurallarla aktarılması ve mutabakat raporunun hazırlanması bu özelliklerin hepsini taşır; API'si olmayan eski (legacy) uygulamalara erişim RPA'nın tipik değer önerisidir. Diğer seçenekler duygu analizi, yargı, el yazısı tanıma veya içerik üretimi gerektirir; bunlar klasik RPA'nın değil, makine öğrenmesi, doğal dil işleme, OCR veya üretken yapay zekânın alanıdır (RPA bunlarla birleştiğinde 'akıllı süreç otomasyonu' adını alır).",
     "simpleExplanation": "RPA, bir insanın bilgisayarda yaptığı tıklama, kopyala-yapıştır ve veri girme gibi tekrarlı işleri taklit eden bir 'yazılım robotu'dur. Düşünmez, yorumlamaz, karar vermez; yalnızca net kurallara göre aynı adımları yorulmadan tekrar eder. Bu yüzden en iyi çalıştığı işler her gün aynı olan, kuralları açık, girdisi düzenli (Excel gibi) ve ekranları değişmeyen işlerdir. E seçeneği tam bu tariftir: her sabah Excel'deki satırları eski muhasebe ekranına belirli kurallarla girmek ve mutabakat raporu çıkarmak. Diğer seçenekler duygu anlama, istisnai karar verme, el yazısı okuma veya özgün içerik üretme istiyor; bunlar robotun değil, yapay zekânın ya da insanın işidir. Cevap E.",
+    "en": {
+      "subtopic": "Robotic process automation (RPA): suitable use cases",
+      "question": "A bank's operations unit is selecting a pilot process for robotic process automation (RPA). Which of the following processes is the MOST suitable candidate for classic (rule-based) RPA?",
+      "options": {
+        "A": "Assigning priority to customer complaint e-mails based on the emotional tone of their content.",
+        "B": "Evaluating and deciding on exceptional applications in the credit allocation committee.",
+        "C": "Reading the handwritten application forms coming from branches and interpreting the fields.",
+        "D": "Producing original marketing copy and visual drafts for each campaign.",
+        "E": "Every morning, entering the rows of the Excel statement received from the correspondent bank into the legacy accounting application with its fixed screen layout according to specific rules, and preparing the reconciliation report."
+      },
+      "explanation": "Classic RPA uses a software robot to mimic the steps a human performs in the user interface, such as clicking, copying and entering data. The common characteristics of the processes in which it succeeds are: rule-based and explicitly definable decision logic, a high number of repetitions, structured (digital, machine-readable) input, stable and unchanging screens/applications, and no need for human judgement. Transferring the correspondent bank statement from Excel into the legacy application according to rules and preparing the reconciliation report has all of these characteristics; access to legacy applications without an API is RPA's typical value proposition. The other options require sentiment analysis, judgement, handwriting recognition or content generation; these are the domain not of classic RPA but of machine learning, natural language processing, OCR or generative AI (when RPA is combined with these it is called 'intelligent process automation').",
+      "optionExplanations": {
+        "A": "Analysing emotional tone requires natural language processing and classification on free text; it cannot be solved with deterministic rules. It is the domain of machine learning, not of classic RPA.",
+        "B": "Evaluating exceptional applications is, by definition, a process outside the rules that requires human judgement; it is the area least suited to automation.",
+        "C": "Handwritten forms are unstructured input; reading them requires OCR/ICR and machine learning. Classic RPA expects structured digital input.",
+        "D": "Producing original text and images is the domain of generative AI; RPA repeats existing steps, it does not create new content.",
+        "E": "Correct. Repetitive, rule-based, structured input, stable legacy screen: the ideal profile for classic RPA."
+      },
+      "keyConcept": "RPA is for processes that are rule-based + repetitive + structured input + stable interface and require no human judgement. Jobs requiring judgement, free text, handwriting or content generation belong to ML/NLP/OCR/GenAI.",
+      "examTip": "When you see the words 'interpreting', 'evaluating', 'emotion', 'handwriting' or 'producing' in the options, eliminate RPA; phrases such as 'every day', 'from Excel into a legacy screen' and 'according to rules' point to RPA.",
+      "simpleExplanation": "RPA is a 'software robot' that mimics the repetitive things a human does on a computer, such as clicking, copy-pasting and entering data. It does not think, interpret or decide; it only repeats the same steps tirelessly according to clear rules. That is why the jobs it works best on are those that are the same every day, have clear rules, tidy input (such as Excel) and unchanging screens. Option E is exactly that description: every morning, entering the rows in Excel into the old accounting screen according to specific rules and producing a reconciliation report. The other options call for understanding emotion, making exceptional decisions, reading handwriting or producing original content; those are the job of AI or of a human, not of the robot. Answer E."
+    },
     "optionExplanations": {
       "A": "Duygu tonu analizi, serbest metin üzerinde doğal dil işleme ve sınıflandırma gerektirir; deterministik kurallarla çözülmez. Klasik RPA'nın değil, makine öğrenmesinin alanıdır.",
       "B": "İstisnai başvuruların değerlendirilmesi tanımı gereği kural dışı ve insan yargısı gerektiren bir süreçtir; otomasyonun en az uygun olduğu alandır.",
@@ -305,7 +710,11 @@
     },
     "keyConcept": "RPA, kural tabanlı + tekrarlı + yapısal girdi + kararlı arayüz olan, insan yargısı gerektirmeyen süreçler içindir. Yargı, serbest metin, el yazısı veya içerik üretimi gerektiren işler ML/NLP/OCR/GenAI alanıdır.",
     "examTip": "Seçeneklerde 'yorumlama', 'değerlendirme', 'duygu', 'el yazısı', 'üretme' kelimelerini görünce RPA'yı eleyin; 'her gün', 'Excel'den eski ekrana', 'kurallarla' ifadeleri RPA'ya işaret eder.",
-    "references": ["IEEE Std 2755-2017, Guide for Terms and Concepts in Intelligent Process Automation", "Lacity & Willcocks, Robotic Process Automation at Telefónica O2, MIS Quarterly Executive, 2016", "ISACA, Robotic Process Automation Audit Program (2019)"],
+    "references": [
+      "IEEE Std 2755-2017, Guide for Terms and Concepts in Intelligent Process Automation",
+      "Lacity & Willcocks, Robotic Process Automation at Telefónica O2, MIS Quarterly Executive, 2016",
+      "ISACA, Robotic Process Automation Audit Program (2019)"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -318,15 +727,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Aşırı uyum (overfitting); çözüm modelin daha fazla genel internet verisiyle yeniden eğitilmesidir."},
-      {"id": "B", "text": "Veri sızıntısı (data leakage); çözüm asistanın internet erişiminin kapatılmasıdır."},
-      {"id": "C", "text": "Model kayması (model drift); çözüm modelin aylık olarak yeniden eğitilmesidir, bu sorun kendiliğinden kalkar."},
-      {"id": "D", "text": "Halüsinasyon (hallucination); çözüm yanıtların bankanın onaylı mevzuat deposundan geri getirme ile temellendirilmesi (Retrieval-Augmented Generation, RAG), her yanıtta kaynağa doğrulanabilir atıf verilmesi ve kritik kararlarda insan doğrulamasının zorunlu kılınmasıdır."},
-      {"id": "E", "text": "İstem enjeksiyonu (prompt injection); çözüm kullanıcı girdilerinin filtrelenmesidir."}
+      {
+        "id": "A",
+        "text": "Aşırı uyum (overfitting); çözüm modelin daha fazla genel internet verisiyle yeniden eğitilmesidir."
+      },
+      {
+        "id": "B",
+        "text": "Veri sızıntısı (data leakage); çözüm asistanın internet erişiminin kapatılmasıdır."
+      },
+      {
+        "id": "C",
+        "text": "Model kayması (model drift); çözüm modelin aylık olarak yeniden eğitilmesidir, bu sorun kendiliğinden kalkar."
+      },
+      {
+        "id": "D",
+        "text": "Halüsinasyon (hallucination); çözüm yanıtların bankanın onaylı mevzuat deposundan geri getirme ile temellendirilmesi (Retrieval-Augmented Generation, RAG), her yanıtta kaynağa doğrulanabilir atıf verilmesi ve kritik kararlarda insan doğrulamasının zorunlu kılınmasıdır."
+      },
+      {
+        "id": "E",
+        "text": "İstem enjeksiyonu (prompt injection); çözüm kullanıcı girdilerinin filtrelenmesidir."
+      }
     ],
     "correctAnswer": "D",
     "explanation": "Büyük dil modelleri, eğitim verisinden öğrendikleri istatistiksel örüntülere göre bir sonraki en olası kelimeyi üretir; bir bilgi tabanına bakıp doğrulama yapmazlar. Bu nedenle var olmayan madde numaraları, uydurma alıntılar veya yanlış rakamlar gibi akıcı ve inandırıcı ama gerçek olmayan içerik üretebilirler; buna halüsinasyon (hallucination) denir. Model çıktısının kendinden emin tonu doğruluğun göstergesi değildir: LLM'ler doğruluk garantisi veremez, yalnızca olasılıksal metin üretir. Temel önlem, modeli yanıt üretirken onaylı ve güncel bir kaynak kümesine (bankanın mevzuat deposu) bağlamaktır: geri getirme destekli üretim (RAG) ilgili belgeleri bulup modele bağlam olarak verir, yanıt bu bağlama dayandırılır ve kaynağa atıf yapılır; böylece kullanıcı ve denetçi iddiayı doğrulayabilir. Mevzuat gibi yüksek etkili alanlarda insan doğrulaması (human-in-the-loop) tamamlayıcı kontroldür. RAG halüsinasyonu azaltır ancak sıfırlamaz; bu yüzden atıf ve insan kontrolü birlikte önerilir.",
     "simpleExplanation": "Büyük dil modelleri bir veri tabanına bakıp doğrulama yapmaz; eğitimde gördükleri örüntülere göre 'en olası sonraki kelimeyi' üretir. Bu yüzden çok akıcı ve kendinden emin ama tamamen uydurma bilgi verebilirler; var olmayan bir yönetmelik maddesi yazmak gibi. Buna 'halüsinasyon' denir. Çözüm, modelin yalnızca hafızasından konuşmasına izin vermemek, önce bankanın onaylı mevzuat arşivinden ilgili belgeyi bulup modele 'bu belgeye dayanarak cevap ver' demektir (RAG); sınavda kitabı açık tutmak gibi. Her cevapta kaynak gösterilmesi ve kritik kararlarda bir insanın kontrol etmesi de şarttır, çünkü bu yöntem hatayı azaltır ama sıfırlamaz. Cevap D.",
+    "en": {
+      "subtopic": "Generative AI and large language models: hallucination and grounding",
+      "question": "A bank has deployed an internal assistant based on a large language model (LLM) to answer employees' regulatory questions. An internal auditor has found that the assistant, saying 'according to the relevant article of the BDDK regulation', quoted a specific article number and a definite provision, but that no such article or provision exists in the regulation. The assistant gave the answer in an extremely confident tone. What is this situation called, and what is the MOST appropriate fundamental measure the auditor should recommend?",
+      "options": {
+        "A": "Overfitting; the solution is to retrain the model with more general internet data.",
+        "B": "Data leakage; the solution is to cut off the assistant's internet access.",
+        "C": "Model drift; the solution is to retrain the model monthly, and the problem goes away on its own.",
+        "D": "Hallucination; the solution is to ground the answers by retrieval from the bank's approved regulatory repository (Retrieval-Augmented Generation, RAG), to give a verifiable citation to the source in every answer, and to make human verification mandatory for critical decisions.",
+        "E": "Prompt injection; the solution is to filter user inputs."
+      },
+      "explanation": "Large language models generate the next most likely word according to the statistical patterns they learned from the training data; they do not look up a knowledge base and verify. They can therefore produce fluent and convincing but untrue content, such as non-existent article numbers, fabricated quotations or wrong figures; this is called hallucination. The confident tone of the model's output is no indicator of correctness: LLMs cannot guarantee accuracy, they only produce probabilistic text. The fundamental measure is to tie the model, while it generates an answer, to an approved and up-to-date set of sources (the bank's regulatory repository): retrieval-augmented generation (RAG) finds the relevant documents and gives them to the model as context, the answer is based on that context and the source is cited; this way the user and the auditor can verify the claim. In high-impact areas such as regulation, human verification (human-in-the-loop) is a complementary control. RAG reduces hallucination but does not eliminate it; that is why citation and human review are recommended together.",
+      "optionExplanations": {
+        "A": "Overfitting is the model memorising the training data and failing to generalise to new data; it does not explain inventing a non-existent article. More general internet data does not solve hallucination; tying the model to an approved source does.",
+        "B": "Data leakage is the unauthorised exposure of confidential data; here no data has leaked, content has been fabricated. Cutting off internet access does not change the model's probabilistic generative nature.",
+        "C": "Model drift is the degradation of performance over time because the data distribution changes. Retraining does not remove hallucination by itself; the model still produces probabilistic text. This is the 'retraining fixes everything' fallacy.",
+        "D": "Correct. The situation is hallucination; grounding with RAG, verifiable citation and human oversight together are the most appropriate fundamental measure.",
+        "E": "Prompt injection is the hijacking of the model's instructions through malicious input; there is no attacker in the scenario, the model fabricated on its own. Input filtering does not solve this problem."
+      },
+      "keyConcept": "LLM = probabilistic text generator; it does not guarantee correctness. Fluent but fabricated content = hallucination. Measure: grounding in approved sources (RAG), citation, human verification.",
+      "examTip": "When you see the pattern 'confident but wrong/non-existent information', choose hallucination; drift/overfitting/leakage/injection are the names of different problems. Among the measures, 'retraining' on its own is a distractor.",
+      "simpleExplanation": "Large language models do not look things up in a database and verify them; they produce 'the most likely next word' according to the patterns they saw in training. That is why they can give very fluent and confident but entirely made-up information, such as writing a regulation article that does not exist. This is called 'hallucination'. The solution is not to let the model speak from memory alone, but first to find the relevant document in the bank's approved regulatory archive and tell the model 'answer based on this document' (RAG); like keeping the book open during an exam. Showing the source in every answer and having a human check critical decisions are also essential, because this method reduces the errors but does not eliminate them. Answer D."
+    },
     "optionExplanations": {
       "A": "Aşırı uyum, modelin eğitim verisini ezberleyip yeni veriye genelleyememesidir; var olmayan madde uydurmayı açıklamaz. Daha fazla genel internet verisi halüsinasyonu çözmez, onaylı kaynağa bağlamak çözer.",
       "B": "Veri sızıntısı, gizli verinin yetkisiz ortaya çıkmasıdır; burada sızan bir veri yok, uydurulan bir içerik var. İnternet erişimini kapatmak modelin olasılıksal üretim doğasını değiştirmez.",
@@ -336,7 +782,12 @@
     },
     "keyConcept": "LLM = olasılıksal metin üretici; doğruluk garantisi vermez. Akıcı ama uydurma içerik = halüsinasyon. Önlem: onaylı kaynaklara temellendirme (RAG), atıf, insan doğrulaması.",
     "examTip": "'Kendinden emin ama yanlış/var olmayan bilgi' kalıbını görünce halüsinasyonu seçin; drift/overfitting/leakage/injection farklı sorunların adıdır. Önlemlerde 'yeniden eğitim' tek başına çeldiricidir.",
-    "references": ["OWASP Top 10 for Large Language Model Applications (2025), LLM09: Misinformation", "Lewis vd., Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks, NeurIPS 2020", "NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)", "NIST AI 600-1, AI RMF: Generative Artificial Intelligence Profile (2024)"],
+    "references": [
+      "OWASP Top 10 for Large Language Model Applications (2025), LLM09: Misinformation",
+      "Lewis vd., Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks, NeurIPS 2020",
+      "NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "NIST AI 600-1, AI RMF: Generative Artificial Intelligence Profile (2024)"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -349,15 +800,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Uygun değildir: tek bir güvenilir otorite varken dağıtık konsensüsün getirdiği gecikme ve maliyet gereksizdir, değişmezlik (immutability) özelliği KVKK'daki düzeltme/silme yükümlülüğüyle çelişir ve klasik ilişkisel veri tabanı istenen işlem hacmini daha verimli karşılar."},
-      {"id": "B", "text": "Uygundur: blok zinciri her zaman klasik veri tabanından daha güvenlidir ve veriler özetlenmiş (hash) olduğu için KVKK yükümlülükleri uygulanmaz."},
-      {"id": "C", "text": "Uygundur: değişmezlik özelliği sayesinde hatalı kayıtlar istenildiğinde kolayca geriye dönük düzeltilebilir."},
-      {"id": "D", "text": "Uygun değildir: blok zinciri yalnızca kripto para birimleri için kullanılabilir, finansal kayıt tutmaya elverişli değildir."},
-      {"id": "E", "text": "Uygundur: İş İspatı (Proof-of-Work) konsensüsü bankanın işlem hızını klasik veri tabanının çok üzerine çıkarır."}
+      {
+        "id": "A",
+        "text": "Uygun değildir: tek bir güvenilir otorite varken dağıtık konsensüsün getirdiği gecikme ve maliyet gereksizdir, değişmezlik (immutability) özelliği KVKK'daki düzeltme/silme yükümlülüğüyle çelişir ve klasik ilişkisel veri tabanı istenen işlem hacmini daha verimli karşılar."
+      },
+      {
+        "id": "B",
+        "text": "Uygundur: blok zinciri her zaman klasik veri tabanından daha güvenlidir ve veriler özetlenmiş (hash) olduğu için KVKK yükümlülükleri uygulanmaz."
+      },
+      {
+        "id": "C",
+        "text": "Uygundur: değişmezlik özelliği sayesinde hatalı kayıtlar istenildiğinde kolayca geriye dönük düzeltilebilir."
+      },
+      {
+        "id": "D",
+        "text": "Uygun değildir: blok zinciri yalnızca kripto para birimleri için kullanılabilir, finansal kayıt tutmaya elverişli değildir."
+      },
+      {
+        "id": "E",
+        "text": "Uygundur: İş İspatı (Proof-of-Work) konsensüsü bankanın işlem hızını klasik veri tabanının çok üzerine çıkarır."
+      }
     ],
     "correctAnswer": "A",
     "explanation": "Blok zincirinin temel özellikleri şunlardır: birbirine güvenmeyen birden fazla tarafın ortak bir kayıt üzerinde merkezi otorite olmadan anlaşmasını sağlayan konsensüs mekanizması, kayıtların kriptografik özet zinciriyle bağlanması sayesinde geriye dönük değiştirilmesinin pratik olarak imkânsız olması (değişmezlik) ve kopyaların katılımcılar arasında dağıtılması. Bu özellikler bir bedelle gelir: konsensüs ve çoğaltma, merkezi veri tabanına göre gecikmeyi artırır ve işlem hacmini düşürür. NIST IR 8202'nin karar akışı da bunu söyler: tek bir yazar varsa, tüm taraflar o yazara güveniyorsa ve yüksek işlem hacmi gerekiyorsa blok zinciri uygun değildir; klasik veri tabanı daha doğru çözümdür. Ayrıca değişmezlik, 6698 sayılı KVKK'nın kişisel verilerin düzeltilmesi ve silinmesine ilişkin yükümlülükleriyle yapısal olarak çelişir; kişisel verinin zincire doğrudan yazılması uyum riski yaratır. Dolayısıyla senaryodaki dört koşulun her biri blok zincirine karşı işaret etmektedir.",
     "simpleExplanation": "Blok zinciri, birbirine güvenmeyen birçok tarafın ortak bir defteri kimse tek başına değiştiremesin diye paylaşmasını sağlar; kayıtlar bir kez yazılınca silinemez. Bu özelliklerin bedeli vardır: herkesin onayını beklemek yavaş ve pahalıdır. Senaryoda defteri yalnızca banka yazıyor ve herkes bankaya zaten güveniyor; yani 'birbirine güvenmeyen çok taraf' sorunu yok. Saniyede 20.000 işlem gerekiyor; blok zinciri bu hıza kolay ulaşamaz. Üstelik KVKK gereği kişisel verinin silinmesi gerekebilir, ama blok zincirinde silmek mümkün değildir. Dört koşul da blok zincirine karşı; sıradan bir veri tabanı daha doğru seçimdir. Tek kişinin tuttuğu bir not defteri için her sayfaya noter imzası toplamaya benzer. Cevap A.",
+    "en": {
+      "subtopic": "Blockchain / distributed ledger: characteristics and cases where it is unsuitable",
+      "question": "A bank's IT strategy unit proposes keeping the bank's own internal general ledger on a blockchain. The assessment note contains the following conditions: only the bank writes to and reads the ledger; all stakeholders already trust the bank; 20,000 transactions per second are required at the busiest intraday hour; under KVKK (Turkish Personal Data Protection Law), customers' personal data may need to be corrected or deleted on request. As the IT auditor, which of the following is the MOST accurate assessment of this proposal?",
+      "options": {
+        "A": "Not suitable: with a single trusted authority, the latency and cost introduced by distributed consensus are unnecessary, the immutability property conflicts with the correction/deletion obligations in KVKK, and a classic relational database meets the required transaction volume more efficiently.",
+        "B": "Suitable: blockchain is always more secure than a classic database, and since the data is hashed, KVKK obligations do not apply.",
+        "C": "Suitable: thanks to the immutability property, erroneous records can easily be corrected retroactively whenever desired.",
+        "D": "Not suitable: blockchain can only be used for cryptocurrencies and is not fit for financial record keeping.",
+        "E": "Suitable: Proof-of-Work consensus raises the bank's transaction speed far above that of a classic database."
+      },
+      "explanation": "The fundamental characteristics of blockchain are: a consensus mechanism that allows multiple mutually distrusting parties to agree on a shared record without a central authority; the practical impossibility of retroactively altering records, because they are linked by a chain of cryptographic hashes (immutability); and the distribution of copies among the participants. These characteristics come at a price: consensus and replication increase latency and reduce transaction throughput compared with a central database. The decision flow in NIST IR 8202 says the same: if there is a single writer, if all parties trust that writer and if high transaction volume is required, blockchain is not suitable; a classic database is the more correct solution. Furthermore, immutability structurally conflicts with the obligations of Law No. 6698 (KVKK) regarding the correction and deletion of personal data; writing personal data directly to the chain creates a compliance risk. Each of the four conditions in the scenario therefore points against blockchain.",
+      "optionExplanations": {
+        "A": "Correct. A single trusted authority, the need for high transaction volume and the deletion/correction obligation conflict with the design purpose of blockchain; a classic database is the appropriate choice.",
+        "B": "This is the 'always more secure' fallacy; security depends on design, and blockchain does not solve access control or application layer vulnerabilities. Hashing does not stop data from being personal data; if personal data has been written to the chain, KVKK applies.",
+        "C": "Self-contradictory: immutability means records CANNOT be altered retroactively. An erroneous record can only be handled by appending a new correcting record; the old record cannot be deleted.",
+        "D": "The conclusion is right but the reasoning is wrong. Blockchain can be used in non-cryptocurrency areas such as supply chain, syndicated lending and trade finance; the problem is not that it is a 'financial record' but the conditions in the scenario.",
+        "E": "Proof-of-Work is a consensus method with high energy and time costs and low transaction throughput; it pulls transaction speed far below that of a classic database, not above it."
+      },
+      "keyConcept": "Blockchain makes sense when there are many mutually distrusting writers + no central authority is wanted + immutability is needed. With a single trusted writer, high TPS and a deletion/correction obligation, use a classic database.",
+      "examTip": "In blockchain questions ask four questions: Are there multiple writers? Do they trust each other? Is high transaction volume required? Might data need to be deleted? If the third and fourth come out 'yes', blockchain is not suitable.",
+      "simpleExplanation": "A blockchain lets many parties who do not trust each other share a common ledger so that nobody can change it on their own; once records are written they cannot be deleted. These properties have a price: waiting for everyone's approval is slow and expensive. In the scenario only the bank writes the ledger and everyone already trusts the bank; so there is no 'many mutually distrusting parties' problem. 20,000 transactions per second are needed; a blockchain cannot easily reach that speed. On top of that, under KVKK personal data may have to be deleted, but deleting is not possible on a blockchain. All four conditions are against blockchain; an ordinary database is the better choice. It is like collecting a notary's signature on every page of a notebook kept by a single person. Answer A."
+    },
     "optionExplanations": {
       "A": "Doğru. Tek güvenilir otorite, yüksek işlem hacmi ihtiyacı ve silme/düzeltme yükümlülüğü blok zincirinin tasarım amacıyla çelişir; klasik veri tabanı uygun seçimdir.",
       "B": "'Her zaman daha güvenli' yanılgısıdır; güvenlik tasarıma bağlıdır ve blok zinciri erişim kontrolü ya da uygulama katmanı zafiyetlerini çözmez. Özet (hash) almak veriyi kişisel veri olmaktan çıkarmaz; kişisel veri zincire yazılmışsa KVKK uygulanır.",
@@ -367,7 +855,11 @@
     },
     "keyConcept": "Blok zinciri: birbirine güvenmeyen çok sayıda yazar + merkezi otorite istenmemesi + değişmezlik ihtiyacı varsa anlamlıdır. Tek güvenilir yazar, yüksek TPS ve silme/düzeltme zorunluluğu varsa klasik veri tabanı kullanılır.",
     "examTip": "Blok zinciri sorularında dört soruyu sorun: Birden çok yazar var mı? Birbirlerine güveniyorlar mı? Yüksek işlem hacmi gerekiyor mu? Veri silinmesi gerekebilir mi? Üçüncü ve dördüncüye 'evet' çıkıyorsa blok zinciri uygun değildir.",
-    "references": ["NIST IR 8202, Blockchain Technology Overview (2018), Bölüm 9: Blockchain Limitations and Misconceptions", "6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK), kişisel verilerin silinmesi, yok edilmesi veya anonim hâle getirilmesi hükümleri", "Nakamoto, Bitcoin: A Peer-to-Peer Electronic Cash System (2008)"],
+    "references": [
+      "NIST IR 8202, Blockchain Technology Overview (2018), Bölüm 9: Blockchain Limitations and Misconceptions",
+      "6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK), kişisel verilerin silinmesi, yok edilmesi veya anonim hâle getirilmesi hükümleri",
+      "Nakamoto, Bitcoin: A Peer-to-Peer Electronic Cash System (2008)"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -380,15 +872,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Yalnızca performans sorunu vardır; daha güçlü donanım (GPU) ile model hızlandırılmalıdır."},
-      {"id": "B", "text": "Halüsinasyon riski vardır; puanlama modeli üretken bir dil modeliyle değiştirilmelidir."},
-      {"id": "C", "text": "Açıklanabilirlik (explainability) eksikliği ve yanlılık (bias) riski vardır; model risk yönetimi çerçevesinde açıklanabilir yapay zekâ (XAI, ör. SHAP/LIME gibi özellik katkısı yöntemleri) uygulanmalı, korunan/vekil değişkenler üzerinde adillik testleri yapılmalı, model bağımsız doğrulamadan geçirilmeli ve ret kararlarında insan gözetimi (human-in-the-loop) sağlanmalıdır."},
-      {"id": "D", "text": "Risk yoktur; model matematiksel bir fonksiyon olduğu için tanım gereği tarafsızdır ve kararlarının gerekçelendirilmesi gerekmez."},
-      {"id": "E", "text": "Yalnızca veri gizliliği riski vardır; model ağırlıkları şifrelenmeli ve müşteriye gerekçe verilmemelidir."}
+      {
+        "id": "A",
+        "text": "Yalnızca performans sorunu vardır; daha güçlü donanım (GPU) ile model hızlandırılmalıdır."
+      },
+      {
+        "id": "B",
+        "text": "Halüsinasyon riski vardır; puanlama modeli üretken bir dil modeliyle değiştirilmelidir."
+      },
+      {
+        "id": "C",
+        "text": "Açıklanabilirlik (explainability) eksikliği ve yanlılık (bias) riski vardır; model risk yönetimi çerçevesinde açıklanabilir yapay zekâ (XAI, ör. SHAP/LIME gibi özellik katkısı yöntemleri) uygulanmalı, korunan/vekil değişkenler üzerinde adillik testleri yapılmalı, model bağımsız doğrulamadan geçirilmeli ve ret kararlarında insan gözetimi (human-in-the-loop) sağlanmalıdır."
+      },
+      {
+        "id": "D",
+        "text": "Risk yoktur; model matematiksel bir fonksiyon olduğu için tanım gereği tarafsızdır ve kararlarının gerekçelendirilmesi gerekmez."
+      },
+      {
+        "id": "E",
+        "text": "Yalnızca veri gizliliği riski vardır; model ağırlıkları şifrelenmeli ve müşteriye gerekçe verilmemelidir."
+      }
     ],
     "correctAnswer": "C",
     "explanation": "Senaryoda iki ayrı yapay zekâ riski görülmektedir. Birincisi açıklanabilirlik eksikliği: derin öğrenme modelleri milyonlarca parametreli 'kara kutu' yapılar olduğundan, bir kararın hangi girdiler nedeniyle verildiği doğrudan okunamaz; müşteriye gerekçe sunulamaması hem müşteri hakları hem de denetlenebilirlik açısından sorundur. İkincisi yanlılık: ikamet ilçesi gibi bir değişken, doğrudan kullanılmasa bile eğitim verisindeki tarihsel örüntüler yoluyla model tarafından öğrenilebilir ve benzer profildeki kişilerin farklı muamele görmesine yol açabilir (vekil değişken etkisi). Her ikisi de model riski yönetiminin konusudur: modelin geliştirme, doğrulama ve kullanım aşamalarında bağımsız doğrulama, performans ve adillik izlemesi yapılmalıdır. SHAP ve LIME gibi yöntemler tek bir kararda hangi özelliklerin ne yönde katkı yaptığını açıklar; adillik testleri grup bazlı ret oranı farklarını ölçer; insan gözetimi otomatik kararın tek başına bağlayıcı olmasını engeller. NIST AI RMF güvenilir yapay zekânın özellikleri arasında açıklanabilirliği ve zararlı yanlılığın yönetilmesini sayar.",
     "simpleExplanation": "Senaryoda iki ayrı sorun var. Birincisi, model bir kredi başvurusunu reddetmiş ama kimse nedenini söyleyemiyor; derin öğrenme modelleri milyonlarca ayar içeren 'kara kutular'dır ve kararlarının gerekçesi kendiliğinden görünmez. Buna açıklanabilirlik eksikliği denir. İkincisi, belirli bir ilçede oturanlar benzer gelir ve geçmişe sahip olsalar da daha çok reddediliyor; model, geçmiş verideki haksız örüntüleri öğrenip tekrarlıyor olabilir. Buna yanlılık denir. Çözüm paketi: kararın hangi girdilerden kaynaklandığını gösteren açıklama araçları (SHAP, LIME gibi), gruplar arası adaleti ölçen testler, modelin bağımsız kişilerce doğrulanması ve ret kararlarında bir insanın son sözü söylemesi. Cevap C. 'Matematik tarafsızdır' düşüncesi yanıltıcıdır; model neyi öğrenirse onu yapar.",
+    "en": {
+      "subtopic": "AI risks in banking: explainability, bias and model risk",
+      "question": "A bank automatically evaluates retail credit applications with a deep learning-based scoring model. A customer's application was rejected, the customer asked for the reason for the rejection, but the credit team reported that it could not produce a meaningful justification for the model's decision. In the same period, internal audit found that the rejection rate of applicants residing in a particular district was markedly higher than in other districts, even though income and credit history were similar. Which of the following gives the risks indicated by these findings and the set of controls that should be recommended?",
+      "options": {
+        "A": "There is only a performance problem; the model should be accelerated with more powerful hardware (GPU).",
+        "B": "There is a hallucination risk; the scoring model should be replaced with a generative language model.",
+        "C": "There is a lack of explainability and a risk of bias; within the model risk management framework, explainable AI (XAI, e.g. feature attribution methods such as SHAP/LIME) should be applied, fairness tests should be run on protected/proxy variables, the model should undergo independent validation, and human oversight (human-in-the-loop) should be provided for rejection decisions.",
+        "D": "There is no risk; since the model is a mathematical function it is by definition impartial, and its decisions need not be justified.",
+        "E": "There is only a data privacy risk; the model weights should be encrypted and no justification should be given to the customer."
+      },
+      "explanation": "Two separate AI risks appear in the scenario. The first is a lack of explainability: since deep learning models are 'black box' structures with millions of parameters, which inputs led to a decision cannot be read off directly; being unable to give the customer a reason is a problem both for customer rights and for auditability. The second is bias: a variable such as district of residence, even if not used directly, can be learned by the model through historical patterns in the training data and lead to people with similar profiles being treated differently (the proxy variable effect). Both are the subject of model risk management: independent validation and performance and fairness monitoring must be carried out in the development, validation and use phases of the model. Methods such as SHAP and LIME explain which features contributed to a single decision and in which direction; fairness tests measure differences in rejection rates between groups; human oversight prevents the automated decision from being binding on its own. The NIST AI RMF lists explainability and the management of harmful bias among the characteristics of trustworthy AI.",
+      "optionExplanations": {
+        "A": "The problem is not speed but the inability to justify the decision and the differential treatment of groups. Hardware does not affect these risks.",
+        "B": "Hallucination is generative language models producing fabricated content; it does not arise in a classification/scoring model. Replacing the model with an LLM does not increase explainability; on the contrary, it adds new risks.",
+        "C": "Correct. The explainability + bias risks are correctly named, and XAI, fairness testing, independent validation and human oversight are recommended together.",
+        "D": "This is the 'the algorithm is impartial' fallacy: the model learns the historical bias in the training data and can reproduce it. Being able to give a reason for high-impact decisions such as credit decisions is a governance requirement.",
+        "E": "Data privacy may matter, but the findings in the scenario are not about privacy. The recommendation 'no justification should be given' institutionalises the explainability problem instead of solving it."
+      },
+      "keyConcept": "Black-box model → explainability risk (addressed with XAI). Different outcome for a similar profile → bias risk (measured with fairness tests). Both require model risk management and human oversight.",
+      "examTip": "'Cannot produce a reason' = explainability; 'similar profile, different outcome, specific group' = bias. The 'impartial because it is mathematical' and 'only hardware/speed' options are classic distractors.",
+      "simpleExplanation": "There are two separate problems in the scenario. First, the model rejected a credit application but nobody can say why; deep learning models are 'black boxes' containing millions of settings, and the reasons for their decisions are not visible by themselves. This is called a lack of explainability. Second, people living in a particular district are rejected more often even though they have similar income and history; the model may have learned and be repeating unfair patterns in past data. This is called bias. The solution package: explanation tools that show which inputs a decision came from (such as SHAP, LIME), tests that measure fairness between groups, validation of the model by independent people, and a human having the final say in rejection decisions. Answer C. The idea that 'mathematics is impartial' is misleading; the model does whatever it has learned."
+    },
     "optionExplanations": {
       "A": "Sorun hız değil, kararın gerekçelendirilememesi ve grup bazlı farklı muameledir. Donanım bu riskleri etkilemez.",
       "B": "Halüsinasyon, üretken dil modellerinin uydurma içerik üretmesidir; bir sınıflandırma/puanlama modelinde söz konusu değildir. Modeli LLM ile değiştirmek açıklanabilirliği artırmaz, aksine yeni riskler ekler.",
@@ -398,7 +927,12 @@
     },
     "keyConcept": "Kara kutu model → açıklanabilirlik riski (XAI ile ele alınır). Benzer profile farklı sonuç → yanlılık riski (adillik testleriyle ölçülür). İkisi de model risk yönetimi ve insan gözetimi gerektirir.",
     "examTip": "'Gerekçe üretemiyor' = açıklanabilirlik; 'benzer profil, farklı sonuç, belirli grup' = yanlılık. 'Matematiksel olduğu için tarafsız' ve 'sadece donanım/hız' seçenekleri klasik çeldiricidir.",
-    "references": ["NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0), Bölüm 3: AI Risks and Trustworthiness", "Lundberg & Lee, A Unified Approach to Interpreting Model Predictions (SHAP), NeurIPS 2017", "Ribeiro, Singh & Guestrin, Why Should I Trust You? Explaining the Predictions of Any Classifier (LIME), KDD 2016", "Federal Reserve SR 11-7, Supervisory Guidance on Model Risk Management (2011)"],
+    "references": [
+      "NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0), Bölüm 3: AI Risks and Trustworthiness",
+      "Lundberg & Lee, A Unified Approach to Interpreting Model Predictions (SHAP), NeurIPS 2017",
+      "Ribeiro, Singh & Guestrin, Why Should I Trust You? Explaining the Predictions of Any Classifier (LIME), KDD 2016",
+      "Federal Reserve SR 11-7, Supervisory Guidance on Model Risk Management (2011)"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -411,15 +945,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Müşteri, internet bankacılığı kullanıcı adı ve parolasını fintek uygulamasına girer; fintek bu bilgilerle bankanın müşteri arayüzüne girip ekran kazıma (screen scraping) yöntemiyle verileri toplar."},
-      {"id": "B", "text": "Müşterinin açık ve bilgilendirilmiş rızası alınır; fintek, bankanın bu amaçla tanımladığı standart uygulama programlama arayüzü (API) üzerinden, müşterinin bankacılık parolasını hiç görmeden, kapsamı ve süresi sınırlı bir yetkilendirme belirteci (ör. OAuth 2.0 erişim belirteci) ile yalnızca izin verilen hesap verisine erişir; banka finteki doğrular ve tüm erişimleri iz kaydına alır."},
-      {"id": "C", "text": "Banka, talep eden her finteke tüm müşterilerinin hesap verisini toplu dosya olarak periyodik gönderir; müşterinin ayrıca rızası aranmaz çünkü veri zaten bankadadır."},
-      {"id": "D", "text": "Fintek, bankanın çekirdek veri tabanına doğrudan VPN bağlantısı ile bağlanır ve ihtiyaç duyduğu tabloları SQL ile sorgular."},
-      {"id": "E", "text": "Açık bankacılıkta müşteri verisinin üçüncü taraflarla paylaşılması tamamen yasak olduğu için bu entegrasyon hiçbir biçimde yapılamaz."}
+      {
+        "id": "A",
+        "text": "Müşteri, internet bankacılığı kullanıcı adı ve parolasını fintek uygulamasına girer; fintek bu bilgilerle bankanın müşteri arayüzüne girip ekran kazıma (screen scraping) yöntemiyle verileri toplar."
+      },
+      {
+        "id": "B",
+        "text": "Müşterinin açık ve bilgilendirilmiş rızası alınır; fintek, bankanın bu amaçla tanımladığı standart uygulama programlama arayüzü (API) üzerinden, müşterinin bankacılık parolasını hiç görmeden, kapsamı ve süresi sınırlı bir yetkilendirme belirteci (ör. OAuth 2.0 erişim belirteci) ile yalnızca izin verilen hesap verisine erişir; banka finteki doğrular ve tüm erişimleri iz kaydına alır."
+      },
+      {
+        "id": "C",
+        "text": "Banka, talep eden her finteke tüm müşterilerinin hesap verisini toplu dosya olarak periyodik gönderir; müşterinin ayrıca rızası aranmaz çünkü veri zaten bankadadır."
+      },
+      {
+        "id": "D",
+        "text": "Fintek, bankanın çekirdek veri tabanına doğrudan VPN bağlantısı ile bağlanır ve ihtiyaç duyduğu tabloları SQL ile sorgular."
+      },
+      {
+        "id": "E",
+        "text": "Açık bankacılıkta müşteri verisinin üçüncü taraflarla paylaşılması tamamen yasak olduğu için bu entegrasyon hiçbir biçimde yapılamaz."
+      }
     ],
     "correctAnswer": "B",
     "explanation": "Açık bankacılığın özü, müşterinin kendi finansal verisi üzerinde kontrol sahibi olması ve bu veriyi rızasıyla, güvenli ve standart API'ler aracılığıyla yetkili üçüncü taraflara açabilmesidir. BDDK'nın Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmeliği (2020), müşterilerin bankacılık işlemlerini üçüncü taraflar aracılığıyla uzaktan gerçekleştirebilmesini sağlayan 'açık bankacılık servisleri'ni tanımlar ve bunun güvenli, kimliği doğrulanmış kanallar üzerinden yapılmasını öngörür; Türkiye'de ödeme hizmeti sağlayıcılarının hesap bilgisi ve ödeme emri başlatma hizmetleri de TCMB'nin ödeme hizmetleri düzenlemesi kapsamındadır. Doğru mimari şu ilkelere dayanır: (1) müşteri rızası açık, bilgilendirilmiş ve kapsamı belirli olmalıdır; (2) müşterinin bankacılık kimlik bilgileri üçüncü tarafla paylaşılmamalı, bunun yerine OAuth 2.0 gibi yetkilendirme protokolleriyle kapsamı (yalnızca hesap bilgisi) ve süresi sınırlı belirteçler verilmelidir; (3) üçüncü taraf banka tarafından kimlik doğrulamasından geçmeli (ör. karşılıklı TLS, istemci sertifikası); (4) tüm erişimler iz kaydına alınmalı ve müşteri rızasını geri çekebilmelidir. Ekran kazıma, toplu veri aktarımı ve doğrudan veri tabanı erişimi bu ilkelerin hepsini çiğner.",
     "simpleExplanation": "Açık bankacılık, müşterinin kendi banka verisini güvendiği bir üçüncü uygulamaya (fintek) güvenli biçimde açabilmesi demektir. Bunu, evinizin anahtarını temizlikçiye vermek yerine yalnızca belirli saatlerde yalnızca salona giren, dilediğinizde iptal edebileceğiniz bir kart vermek gibi düşünün. Doğru yol şöyle: müşteri açıkça rıza verir; fintek bankanın bu iş için hazırladığı resmî kapıdan (API) girer; müşterinin şifresini hiç görmez, yerine kapsamı ve süresi sınırlı bir 'izin belgesi' (OAuth belirteci) kullanır; banka finteki tanır ve her erişimi kaydeder. Şifreyi vermek (A), rızasız toplu veri yollamak (C) veya veri tabanına doğrudan bağlanmak (D) bu güvenlik ilkelerinin tümünü çiğner; 'tamamen yasak' (E) ise kavramın tersidir. Cevap B.",
+    "en": {
+      "subtopic": "Open banking and API security: consent and authorisation",
+      "question": "A financial technology (fintech) company operating in Türkiye wants to show its users' account balances and transactions at a bank within its own mobile application. In terms of open banking principles and the concept of 'open banking services' in the BDDK's information systems regulation, which of the following is the MOST correct approach the bank should apply for this integration?",
+      "options": {
+        "A": "The customer enters their internet banking username and password into the fintech application; the fintech logs into the bank's customer interface with these credentials and collects the data by screen scraping.",
+        "B": "The customer's explicit and informed consent is obtained; the fintech accesses only the permitted account data through the standard application programming interface (API) the bank has defined for this purpose, without ever seeing the customer's banking password, using an authorisation token of limited scope and duration (e.g. an OAuth 2.0 access token); the bank authenticates the fintech and logs all accesses.",
+        "C": "The bank periodically sends the account data of all its customers to every requesting fintech as a bulk file; the customer's consent is not separately required because the data is already at the bank.",
+        "D": "The fintech connects directly to the bank's core database over a VPN connection and queries the tables it needs with SQL.",
+        "E": "Since sharing customer data with third parties is completely prohibited in open banking, this integration cannot be done in any form."
+      },
+      "explanation": "The essence of open banking is that the customer has control over their own financial data and can open that data, with their consent, to authorised third parties through secure and standard APIs. The BDDK Regulation on Banks' Information Systems and Electronic Banking Services (Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik, 2020) defines 'open banking services', which allow customers to perform banking transactions remotely through third parties, and requires that this be done over secure, authenticated channels; in Türkiye, the account information and payment initiation services of payment service providers also fall under the TCMB's payment services regulation. The correct architecture rests on the following principles: (1) customer consent must be explicit, informed and of defined scope; (2) the customer's banking credentials must not be shared with the third party; instead, tokens of limited scope (account information only) and duration must be issued through authorisation protocols such as OAuth 2.0; (3) the third party must be authenticated by the bank (e.g. mutual TLS, client certificate); (4) all accesses must be logged and the customer must be able to withdraw consent. Screen scraping, bulk data transfer and direct database access violate all of these principles.",
+      "optionExplanations": {
+        "A": "Sharing the password with a third party violates the most basic security principle: the fintech can transact with all of the customer's privileges, the scope cannot be limited, access cannot be revoked and the phishing risk increases. Open banking regulations aim precisely at replacing screen scraping with APIs.",
+        "B": "Correct. Consent, standard API, passwordless/scope-limited token, third-party authentication and logging: the secure implementation model of open banking.",
+        "C": "Bulk data sharing without consent violates the explicit consent and purpose limitation principles of KVKK (Turkish Personal Data Protection Law) and the obligation to protect banking secrecy; it is also contrary to the data minimisation principle.",
+        "D": "A third party's direct access to the core database destroys network segmentation and the principle of least privilege; the scope of access cannot be limited, and logging and consent management cannot be done. A VPN is no substitute for authorisation control.",
+        "E": "Open banking does not prohibit sharing; on the contrary, it REGULATES sharing with the customer's consent, in a secure and standard form. The 'complete prohibition' statement is the opposite of the concept."
+      },
+      "keyConcept": "Open banking = customer consent + standard API + scope/duration-limited authorisation without sharing the password (OAuth 2.0) + authentication of the third party + logging. Screen scraping and direct database access are unacceptable.",
+      "examTip": "Options containing 'gives their password', 'consent not required', 'direct database' or 'completely prohibited' are eliminated at once. The correct option usually contains the trio consent + API + token.",
+      "simpleExplanation": "Open banking means a customer can securely open their own bank data to a third-party application (a fintech) they trust. Think of it as, instead of giving your house key to the cleaner, giving them a card that only opens the living room, only at certain hours, and that you can cancel whenever you like. The right way is this: the customer gives explicit consent; the fintech enters through the official door (API) the bank has prepared for this job; it never sees the customer's password and instead uses a 'permission slip' (OAuth token) of limited scope and duration; the bank recognises the fintech and records every access. Giving the password (A), sending bulk data without consent (C) or connecting directly to the database (D) violate all of these security principles; 'completely prohibited' (E) is the opposite of the concept. Answer B."
+    },
     "optionExplanations": {
       "A": "Parolanın üçüncü tarafla paylaşılması en temel güvenlik ilkesini ihlal eder: fintek müşterinin tüm yetkileriyle işlem yapabilir, kapsam sınırlanamaz, erişim geri alınamaz ve kimlik avı riski artar. Açık bankacılık düzenlemeleri tam da ekran kazımayı API'lerle ikame etmeyi hedefler.",
       "B": "Doğru. Rıza, standart API, parolasız/kapsamı sınırlı belirteç, üçüncü taraf doğrulaması ve iz kaydı: açık bankacılığın güvenli uygulama modeli.",
@@ -429,7 +1000,12 @@
     },
     "keyConcept": "Açık bankacılık = müşteri rızası + standart API + parola paylaşmadan kapsamı/süresi sınırlı yetkilendirme (OAuth 2.0) + üçüncü tarafın kimlik doğrulaması + iz kaydı. Ekran kazıma ve doğrudan veri tabanı erişimi kabul edilemez.",
     "examTip": "Seçeneklerde 'parolasını verir', 'rıza aranmaz', 'doğrudan veri tabanı', 'tamamen yasak' ifadeleri hemen elenir. Doğru seçenek genellikle rıza + API + belirteç üçlüsünü içerir.",
-    "references": ["BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (Resmî Gazete, 15 Mart 2020), açık bankacılık servisleri tanımı ve elektronik bankacılık güvenlik hükümleri", "TCMB, Ödeme Hizmetleri ve Elektronik Para İhracı ile Ödeme Hizmeti Sağlayıcıları Hakkında Yönetmelik (2021)", "RFC 6749, The OAuth 2.0 Authorization Framework", "OWASP API Security Top 10 (2023)"],
+    "references": [
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (Resmî Gazete, 15 Mart 2020), açık bankacılık servisleri tanımı ve elektronik bankacılık güvenlik hükümleri",
+      "TCMB, Ödeme Hizmetleri ve Elektronik Para İhracı ile Ödeme Hizmeti Sağlayıcıları Hakkında Yönetmelik (2021)",
+      "RFC 6749, The OAuth 2.0 Authorization Framework",
+      "OWASP API Security Top 10 (2023)"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -442,15 +1018,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Shor algoritması AES-256'yı pratik olarak kırar; bu nedenle simetrik şifreleme tamamen terk edilmelidir."},
-      {"id": "B", "text": "Kuantum bilgisayarlar RSA'yı etkilemez; tehdit yalnızca eliptik eğri (ECC) tabanlı algoritmalara yöneliktir."},
-      {"id": "C", "text": "RSA-2048 günümüzde kuantum bilgisayarla fiilen kırılmış durumdadır; bankanın tüm sertifikaları derhal iptal edilmelidir."},
-      {"id": "D", "text": "RSA anahtar uzunluğunu 4096 bite çıkarmak kuantum tehdidini kalıcı olarak ortadan kaldırır."},
-      {"id": "E", "text": "Yeterince büyük, hata toleranslı bir kuantum bilgisayar Shor algoritmasıyla RSA ve ECC'nin dayandığı çarpanlara ayırma ve ayrık logaritma problemlerini polinom zamanda çözebilir; Grover algoritması ise simetrik anahtarların etkin gücünü yaklaşık yarıya indirir, bu yüzden AES-256 yeterli kalır. Uzun süre gizli kalması gereken veriler için 'şimdi topla, sonra çöz' riski nedeniyle NIST'in standartlaştırdığı post-kuantum algoritmalara (ör. ML-KEM, ML-DSA) geçiş planlanmalıdır."}
+      {
+        "id": "A",
+        "text": "Shor algoritması AES-256'yı pratik olarak kırar; bu nedenle simetrik şifreleme tamamen terk edilmelidir."
+      },
+      {
+        "id": "B",
+        "text": "Kuantum bilgisayarlar RSA'yı etkilemez; tehdit yalnızca eliptik eğri (ECC) tabanlı algoritmalara yöneliktir."
+      },
+      {
+        "id": "C",
+        "text": "RSA-2048 günümüzde kuantum bilgisayarla fiilen kırılmış durumdadır; bankanın tüm sertifikaları derhal iptal edilmelidir."
+      },
+      {
+        "id": "D",
+        "text": "RSA anahtar uzunluğunu 4096 bite çıkarmak kuantum tehdidini kalıcı olarak ortadan kaldırır."
+      },
+      {
+        "id": "E",
+        "text": "Yeterince büyük, hata toleranslı bir kuantum bilgisayar Shor algoritmasıyla RSA ve ECC'nin dayandığı çarpanlara ayırma ve ayrık logaritma problemlerini polinom zamanda çözebilir; Grover algoritması ise simetrik anahtarların etkin gücünü yaklaşık yarıya indirir, bu yüzden AES-256 yeterli kalır. Uzun süre gizli kalması gereken veriler için 'şimdi topla, sonra çöz' riski nedeniyle NIST'in standartlaştırdığı post-kuantum algoritmalara (ör. ML-KEM, ML-DSA) geçiş planlanmalıdır."
+      }
     ],
     "correctAnswer": "E",
     "explanation": "RSA'nın güvenliği büyük sayıları çarpanlarına ayırmanın, ECC'nin güvenliği ise eliptik eğri ayrık logaritma probleminin klasik bilgisayarlarda zor olmasına dayanır. Shor algoritması (1994) bu iki problemi kuantum bilgisayarda polinom zamanda çözer; dolayısıyla yeterli sayıda hata toleranslı kübite sahip bir makine inşa edildiğinde RSA ve ECC anahtar uzunluğundan bağımsız olarak kırılabilir hâle gelir. Böyle bir makine henüz yoktur ancak ne zaman geleceği belirsizdir. Grover algoritması (1996) ise yapılandırılmamış aramayı karekök hızlandırır: 2^n yerine yaklaşık 2^(n/2) deneme. Bu, AES-128'in etkin güvenliğini 64 bite düşürür, AES-256'yı ise 128 bit etkin güvenlikte bırakır; bu yüzden simetrik şifreleme için önerilen çözüm anahtar boyutunu büyütmektir, terk etmek değil. Saldırganın bugün şifreli trafiği kaydedip ileride kuantum bilgisayarla çözmesi ('harvest now, decrypt later') riski, uzun ömürlü gizlilik gereken veriler için geçişi şimdiden planlamayı gerektirir. NIST, 2024'te FIPS 203 (ML-KEM, eski adıyla CRYSTALS-Kyber), FIPS 204 (ML-DSA, eski adıyla CRYSTALS-Dilithium) ve FIPS 205 (SLH-DSA, SPHINCS+) ile ilk post-kuantum standartlarını yayımlamıştır (NIST IR 8547 taslağı, RSA ve ECC'nin 2030'dan itibaren kullanımdan kaldırılıp 2035'te yasaklanmasını önermektedir); geçişte klasik + post-kuantum algoritmaları birlikte kullanan hibrit yaklaşımlar ve kripto-çeviklik (crypto-agility) önerilir.",
     "simpleExplanation": "Şifrelemenin iki ailesi var. RSA ve ECC gibi 'asimetrik' yöntemler, çok büyük sayıları çarpanlarına ayırmanın bugünkü bilgisayarlar için neredeyse imkânsız olmasına dayanır. Shor algoritması, yeterince güçlü bir kuantum bilgisayarda bu işi kısa sürede yapabilir; bu yüzden RSA'yı 4096 bite büyütmek de kurtarmaz, kilidi kalınlaştırırsınız ama anahtar yine bulunur. AES gibi 'simetrik' yöntemlere karşı ise yalnızca Grover algoritması işe yarar ve o da gücü yarıya indirir: AES-256, 128 bitlik güvenliğe iner ki bu hâlâ fazlasıyla yeterlidir. Bugün böyle bir kuantum bilgisayar yok, ama saldırganlar şifreli veriyi şimdi kaydedip ileride çözebilir; bu yüzden uzun süre gizli kalacak veriler için NIST'in yeni 'kuantum sonrası' algoritmalarına geçiş şimdiden planlanmalıdır. Tüm bunları doğru söyleyen seçenek E'dir.",
+    "en": {
+      "subtopic": "The impact of quantum computing on cryptography and the post-quantum transition",
+      "question": "A bank's information security committee is assessing the impact of quantum computing on the cryptographic infrastructure the bank uses. Which of the following statements is conceptually CORRECT?",
+      "options": {
+        "A": "Shor's algorithm breaks AES-256 in practice; therefore symmetric encryption should be abandoned entirely.",
+        "B": "Quantum computers do not affect RSA; the threat is directed only at elliptic curve (ECC) based algorithms.",
+        "C": "RSA-2048 has actually been broken by a quantum computer today; all of the bank's certificates should be revoked immediately.",
+        "D": "Increasing the RSA key length to 4096 bits permanently eliminates the quantum threat.",
+        "E": "A sufficiently large, fault-tolerant quantum computer can use Shor's algorithm to solve, in polynomial time, the factoring and discrete logarithm problems on which RSA and ECC rest; Grover's algorithm, on the other hand, roughly halves the effective strength of symmetric keys, so AES-256 remains sufficient. For data that must stay confidential for a long time, because of the 'harvest now, decrypt later' risk, a transition to the post-quantum algorithms standardised by NIST (e.g. ML-KEM, ML-DSA) should be planned."
+      },
+      "explanation": "The security of RSA rests on the difficulty of factoring large numbers on classical computers, and that of ECC on the elliptic curve discrete logarithm problem. Shor's algorithm (1994) solves both problems in polynomial time on a quantum computer; therefore, once a machine with enough fault-tolerant qubits is built, RSA and ECC become breakable regardless of key length. No such machine exists yet, but when it will arrive is uncertain. Grover's algorithm (1996), on the other hand, gives a square-root speed-up for unstructured search: roughly 2^(n/2) attempts instead of 2^n. This reduces the effective security of AES-128 to 64 bits and leaves AES-256 at 128 bits of effective security; that is why the recommended solution for symmetric encryption is to increase the key size, not to abandon it. The risk of an attacker recording encrypted traffic today and decrypting it later with a quantum computer ('harvest now, decrypt later') requires planning the transition now for data that needs long-lived confidentiality. In 2024 NIST published the first post-quantum standards with FIPS 203 (ML-KEM, formerly CRYSTALS-Kyber), FIPS 204 (ML-DSA, formerly CRYSTALS-Dilithium) and FIPS 205 (SLH-DSA, SPHINCS+) (the draft NIST IR 8547 proposes deprecating RSA and ECC from 2030 and disallowing them in 2035); for the transition, hybrid approaches that use classical + post-quantum algorithms together, and crypto-agility, are recommended.",
+      "optionExplanations": {
+        "A": "Shor targets asymmetric (RSA/ECC) algorithms; it has no effect on symmetric ciphers such as AES. Against AES only Grover applies, and it only halves the effective key strength; AES-256 remains secure.",
+        "B": "On the contrary, Shor solves both factoring (RSA) and the discrete logarithm (Diffie-Hellman, ECC); both algorithm families are under quantum threat.",
+        "C": "As of today there is no fault-tolerant quantum computer of a scale that could break RSA-2048; the threat is a future possibility. 'Immediate revocation' is a panic response; the correct response is a planned transition.",
+        "D": "Because Shor is polynomial-time, enlarging the key adds only a small extra cost and does not permanently remove the threat. Enlarging the key works for symmetric ciphers (Grover's square-root speed-up), not for asymmetric ones.",
+        "E": "Correct. The Shor/Grover distinction, the sufficiency of AES-256, the 'harvest now, decrypt later' risk and the planned transition to the NIST PQC standards are conceptually correct and complete."
+      },
+      "keyConcept": "Shor → RSA/ECC (asymmetric) are broken, enlarging the key is no remedy. Grover → the effective strength of a symmetric key is halved, AES-256 is sufficient. Solution: a planned, hybrid transition to post-quantum algorithms (NIST FIPS 203/204/205).",
+      "examTip": "In quantum questions apply the mapping 'Shor = asymmetric, Grover = symmetric'. Extreme statements such as 'broken today', 'immediately', 'abandon entirely' and 'just enlarge the key' options are distractors.",
+      "simpleExplanation": "There are two families of encryption. 'Asymmetric' methods such as RSA and ECC rely on the fact that factoring very large numbers is almost impossible for today's computers. Shor's algorithm can do this job in a short time on a sufficiently powerful quantum computer; that is why enlarging RSA to 4096 bits does not save you either: you thicken the lock, but the key is still found. Against 'symmetric' methods such as AES, only Grover's algorithm works, and it only halves the strength: AES-256 drops to 128-bit security, which is still more than enough. No such quantum computer exists today, but attackers can record encrypted data now and decrypt it later; that is why, for data that must stay secret for a long time, the transition to NIST's new 'post-quantum' algorithms should be planned now. The option that states all of this correctly is E."
+    },
     "optionExplanations": {
       "A": "Shor asimetrik (RSA/ECC) algoritmaları hedefler; AES gibi simetrik şifrelere etkisi yoktur. AES'e karşı yalnızca Grover geçerlidir ve o da yalnızca etkin anahtar gücünü yarıya indirir; AES-256 güvenli kalır.",
       "B": "Tam tersine, Shor hem çarpanlara ayırmayı (RSA) hem ayrık logaritmayı (Diffie-Hellman, ECC) çözer; her iki algoritma ailesi de kuantum tehdidi altındadır.",
@@ -460,7 +1073,12 @@
     },
     "keyConcept": "Shor → RSA/ECC (asimetrik) kırılır, anahtar büyütme çare değil. Grover → simetrik anahtarın etkin gücü yarıya iner, AES-256 yeterli. Çözüm: post-kuantum algoritmalara (NIST FIPS 203/204/205) planlı, hibrit geçiş.",
     "examTip": "Kuantum sorularında 'Shor = asimetrik, Grover = simetrik' eşlemesini uygulayın. 'Bugün kırıldı', 'derhal', 'tamamen terk' gibi uç ifadeler ve 'anahtarı büyüt yeter' seçenekleri çeldiricidir.",
-    "references": ["Shor, Algorithms for Quantum Computation: Discrete Logarithms and Factoring, IEEE FOCS 1994", "Grover, A Fast Quantum Mechanical Algorithm for Database Search, STOC 1996", "NIST FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), FIPS 205 (SLH-DSA), Ağustos 2024", "NIST IR 8105, Report on Post-Quantum Cryptography (2016)"],
+    "references": [
+      "Shor, Algorithms for Quantum Computation: Discrete Logarithms and Factoring, IEEE FOCS 1994",
+      "Grover, A Fast Quantum Mechanical Algorithm for Database Search, STOC 1996",
+      "NIST FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), FIPS 205 (SLH-DSA), Ağustos 2024",
+      "NIST IR 8105, Report on Post-Quantum Cryptography (2016)"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   },
@@ -473,15 +1091,52 @@
     "code": null,
     "codeLanguage": null,
     "options": [
-      {"id": "A", "text": "Cihazlar bankanın iç ağında bulunduğu için güvenilir kabul edilebilir; sıfır güven yalnızca internetten gelen trafik için gereklidir."},
-      {"id": "B", "text": "Uç bilişim tüm ham verinin merkeze taşınmasını gerektirdiği için şube-merkez bant genişliği ihtiyacını artırır; bu nedenle yalnızca merkezi işleme tercih edilmelidir."},
-      {"id": "C", "text": "IoT cihazlarının fabrika varsayılan parolaları ve bellenimleri (firmware) değiştirilemez; bu nedenle alınabilecek tek önlem fiziksel güvenliktir."},
-      {"id": "D", "text": "Uç işleme gecikmeyi ve merkeze taşınan veri hacmini azaltır; ancak binlerce dağıtık cihaz ve ağ geçidi saldırı yüzeyini büyüttüğü için sıfır güven gereği her cihaza ve ağ geçidine doğrulanabilir kimlik verilmeli, erişim ağ konumuna değil kimlik ve cihaz durumuna göre her seferinde doğrulanmalı, IoT trafiği çekirdek bankacılık ağından ayrı segmentte tutulmalı, varsayılan kimlik bilgileri değiştirilmeli ve bellenim güncellemeleri merkezi olarak yönetilmelidir."},
-      {"id": "E", "text": "Sıfır güven, izlemeyi kolaylaştırmak için tüm cihazların ve sunucuların tek bir düz ağda (flat network) toplanmasını önerir."}
+      {
+        "id": "A",
+        "text": "Cihazlar bankanın iç ağında bulunduğu için güvenilir kabul edilebilir; sıfır güven yalnızca internetten gelen trafik için gereklidir."
+      },
+      {
+        "id": "B",
+        "text": "Uç bilişim tüm ham verinin merkeze taşınmasını gerektirdiği için şube-merkez bant genişliği ihtiyacını artırır; bu nedenle yalnızca merkezi işleme tercih edilmelidir."
+      },
+      {
+        "id": "C",
+        "text": "IoT cihazlarının fabrika varsayılan parolaları ve bellenimleri (firmware) değiştirilemez; bu nedenle alınabilecek tek önlem fiziksel güvenliktir."
+      },
+      {
+        "id": "D",
+        "text": "Uç işleme gecikmeyi ve merkeze taşınan veri hacmini azaltır; ancak binlerce dağıtık cihaz ve ağ geçidi saldırı yüzeyini büyüttüğü için sıfır güven gereği her cihaza ve ağ geçidine doğrulanabilir kimlik verilmeli, erişim ağ konumuna değil kimlik ve cihaz durumuna göre her seferinde doğrulanmalı, IoT trafiği çekirdek bankacılık ağından ayrı segmentte tutulmalı, varsayılan kimlik bilgileri değiştirilmeli ve bellenim güncellemeleri merkezi olarak yönetilmelidir."
+      },
+      {
+        "id": "E",
+        "text": "Sıfır güven, izlemeyi kolaylaştırmak için tüm cihazların ve sunucuların tek bir düz ağda (flat network) toplanmasını önerir."
+      }
     ],
     "correctAnswer": "D",
     "explanation": "Uç bilişim, veriyi üretildiği yere yakın işleyerek gecikmeyi düşürür ve merkeze yalnızca özet/olay verisi gönderildiği için bant genişliği ihtiyacını azaltır; kamera görüntüsü gibi yüksek hacimli veri için tipik kullanım budur. Bunun bedeli, işleme gücünün ve verinin binlerce fiziksel olarak daha az korunan noktaya dağılmasıdır: her şubedeki cihaz ve ağ geçidi potansiyel bir giriş noktasıdır. IoT cihazları çoğu zaman zayıf varsayılan kimlik bilgileri, seyrek güncellenen bellenim ve kısıtlı güvenlik yetenekleriyle gelir (Mirai botnet'i tam olarak varsayılan parolalı kameraları ele geçirmiştir). NIST SP 800-207'nin tanımladığı sıfır güven mimarisi, ağ konumunun (iç ağda olmanın) güven için yeterli olmadığı varsayımına dayanır: her özne ve cihaz kimliklendirilir, her erişim isteği kimlik, cihaz sağlığı ve bağlama göre ayrı ayrı yetkilendirilir, erişim en az ayrıcalıkla verilir ve tüm trafik izlenir. Bu ilkelerin IoT'ye uygulanması, cihaz kimliği (sertifika), mikro-segmentasyon ile IoT ağının çekirdek bankacılık sistemlerinden ayrılması, varsayılan kimlik bilgilerinin değiştirilmesi ve bellenim yaşam döngüsü yönetimi anlamına gelir. Böylece ele geçirilen bir kameradan çekirdek sisteme yanal hareket (lateral movement) engellenir.",
     "simpleExplanation": "Uç bilişim, kamera görüntüsü gibi büyük veriyi merkeze göndermek yerine şubedeki küçük bir cihazda işleyip yalnızca 'olay var' özetini merkeze yollar; bu, gecikmeyi ve hat kullanımını azaltır. Ama bedeli vardır: artık 1.500 şubede binlerce cihaz var ve her biri bir saldırganın girebileceği bir kapıdır. Sıfır güven yaklaşımı der ki: 'iç ağda olmak güven sebebi değildir; herkes ve her cihaz her seferinde kimliğini kanıtlasın.' Bir ofis binasında kapıdan girmiş olmanın her odaya girme hakkı vermemesi, her odada ayrıca kart okutulması gibi. Bunun IoT'ye uygulanması şudur: her cihaza kimlik ver, erişimi konuma değil kimliğe göre doğrula, kamera ağını bankacılık ağından ayır, fabrika parolalarını değiştir ve yazılım güncellemelerini merkezden yönet. Bunları eksiksiz söyleyen seçenek D'dir.",
+    "en": {
+      "subtopic": "Edge computing, Internet of Things security and zero trust architecture",
+      "question": "A bank plans to install Internet of Things (IoT) cameras and environmental sensors in its 1,500 branches, to process the video analytics on edge gateways in the branch instead of sending it to the centre, and to transmit only event summaries to the centre. The following views were put forward in the security architecture discussion. Which one is CORRECT in terms of edge computing, IoT security and zero trust principles?",
+      "options": {
+        "A": "Since the devices are on the bank's internal network, they can be considered trusted; zero trust is needed only for traffic coming from the internet.",
+        "B": "Since edge computing requires all raw data to be moved to the centre, it increases the branch-to-centre bandwidth requirement; therefore only central processing should be preferred.",
+        "C": "The factory default passwords and firmware of IoT devices cannot be changed; therefore the only measure that can be taken is physical security.",
+        "D": "Edge processing reduces latency and the volume of data moved to the centre; however, since thousands of distributed devices and gateways enlarge the attack surface, under zero trust every device and gateway must be given a verifiable identity, access must be verified every time based on identity and device posture rather than network location, IoT traffic must be kept in a segment separate from the core banking network, default credentials must be changed and firmware updates must be managed centrally.",
+        "E": "Zero trust recommends gathering all devices and servers in a single flat network to make monitoring easier."
+      },
+      "explanation": "Edge computing lowers latency by processing data close to where it is generated, and because only summary/event data is sent to the centre it reduces the bandwidth requirement; this is the typical use for high-volume data such as camera footage. The price is that processing power and data are spread across thousands of physically less protected points: every device and gateway in every branch is a potential entry point. IoT devices often come with weak default credentials, rarely updated firmware and limited security capabilities (the Mirai botnet took over precisely cameras with default passwords). The zero trust architecture defined in NIST SP 800-207 rests on the assumption that network location (being on the internal network) is not sufficient for trust: every subject and device is identified, every access request is authorised separately according to identity, device health and context, access is granted with least privilege and all traffic is monitored. Applying these principles to IoT means device identity (certificates), separating the IoT network from the core banking systems through micro-segmentation, changing default credentials and firmware lifecycle management. In this way lateral movement from a compromised camera to the core system is prevented.",
+      "optionExplanations": {
+        "A": "This is exactly what zero trust rejects at its core: being on the internal network is no reason for trust ('never trust, always verify'). A compromised IoT device is the most typical pivot point for lateral movement from the internal network.",
+        "B": "An inverted definition: edge computing processes raw data in place and sends only the result to the centre; it REDUCES the bandwidth requirement. For latency-sensitive analytics, central processing is at a disadvantage.",
+        "C": "Changing default passwords and updating firmware are among the most basic requirements of IoT security (NIST IR 8259A lists them among the device capabilities). A device that cannot be changed should already be eliminated at the procurement stage; physical security is not the only measure.",
+        "D": "Correct. The benefit of edge computing (latency, bandwidth) and its cost (attack surface) are correctly balanced; device identity, location-independent verification, segmentation, credential and firmware management are the fundamental controls of zero trust and IoT security.",
+        "E": "A flat network is the exact opposite of zero trust; it facilitates lateral movement. Zero trust recommends micro-segmentation and per-resource access control."
+      },
+      "keyConcept": "Edge computing: low latency, little bandwidth, but a distributed attack surface. Zero trust: network location grants no trust; identity + device posture + least privilege + segmentation + continuous verification. IoT: changing default passwords, firmware management, a separate segment.",
+      "examTip": "The phrases 'trusted because it is on the internal network', 'flat network' and 'the only measure is physical' contradict zero trust and IoT principles. An option saying edge computing increases bandwidth inverts the definition.",
+      "simpleExplanation": "Edge computing processes large data such as camera footage on a small device in the branch instead of sending it to the centre, and sends only an 'event detected' summary to the centre; this reduces latency and line usage. But it has a price: there are now thousands of devices in 1,500 branches, and each one is a door an attacker could get in through. The zero trust approach says: 'being on the internal network is no reason for trust; everyone and every device must prove its identity every time.' Like having come in through the front door of an office building not giving you the right to enter every room, with a card having to be swiped at each room as well. Applying this to IoT means: give every device an identity, verify access by identity rather than location, separate the camera network from the banking network, change the factory passwords and manage software updates from the centre. The option that states all of this is D."
+    },
     "optionExplanations": {
       "A": "Sıfır güvenin temel reddi tam da budur: iç ağda olmak güven sebebi değildir ('never trust, always verify'). Ele geçirilen bir IoT cihazı iç ağdan yanal hareket için en tipik atlama noktasıdır.",
       "B": "Tersine çevrilmiş tanım: uç bilişim ham veriyi yerinde işleyip yalnızca sonucu merkeze gönderir; bant genişliği ihtiyacını AZALTIR. Gecikmeye duyarlı analitik için merkezi işleme dezavantajlıdır.",
@@ -491,7 +1146,12 @@
     },
     "keyConcept": "Uç bilişim: düşük gecikme, az bant genişliği, ama dağıtık saldırı yüzeyi. Sıfır güven: ağ konumu güven vermez; kimlik + cihaz durumu + en az ayrıcalık + segmentasyon + sürekli doğrulama. IoT: varsayılan parola değişimi, bellenim yönetimi, ayrı segment.",
     "examTip": "'İç ağda olduğu için güvenilir', 'düz ağ', 'tek önlem fiziksel' ifadeleri sıfır güven ve IoT ilkelerine aykırıdır. Uç bilişimin bant genişliğini artırdığını söyleyen seçenek tanımı ters çevirir.",
-    "references": ["NIST SP 800-207, Zero Trust Architecture (2020)", "NIST IR 8259 / 8259A, Foundational Cybersecurity Activities for IoT Device Manufacturers / IoT Device Cybersecurity Capability Core Baseline", "Shi vd., Edge Computing: Vision and Challenges, IEEE Internet of Things Journal, 2016", "ENISA, Baseline Security Recommendations for IoT (2017)"],
+    "references": [
+      "NIST SP 800-207, Zero Trust Architecture (2020)",
+      "NIST IR 8259 / 8259A, Foundational Cybersecurity Activities for IoT Device Manufacturers / IoT Device Cybersecurity Capability Core Baseline",
+      "Shi vd., Edge Computing: Vision and Challenges, IEEE Internet of Things Journal, 2016",
+      "ENISA, Baseline Security Recommendations for IoT (2017)"
+    ],
     "sourceType": "original_practice",
     "reviewStatus": "reviewed"
   }

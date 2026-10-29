@@ -1,0 +1,339 @@
+[
+  {
+    "date": "2026-10-29",
+    "day": "Thursday",
+    "title": "Kick-off: Placement test and Networking I",
+    "topics": [
+      "NET"
+    ],
+    "tasks": [
+      "Take the placement test (20 questions) and review the dashboard recommendations (30 min)",
+      "Read the NET notes: OSI/TCP-IP layers, encapsulation, device-to-layer mapping (35 min)",
+      "NET: rewrite the TCP vs UDP and Hub/Switch/Router comparison tables in your own words (15 min)",
+      "NET: memorise the well-known port numbers (20/21, 22, 23, 25, 53, 80, 110, 143, 443, 3389) and test yourself (15 min)",
+      "NET: answer 12 questions (basic + intermediate), read the explanation of every wrong answer (35 min)",
+      "Fix the exam rule in your head: wrong answers do not lose marks, no question is left blank (5 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-10-30",
+    "day": "Friday",
+    "title": "Networking II (subnet calculation) and Internet/Information Security",
+    "topics": [
+      "NET",
+      "IBG"
+    ],
+    "tasks": [
+      "NET notes: read the CIDR, subnet formulas, private IP blocks and DNS/DHCP/ARP/NAT sections (25 min)",
+      "NET: do 6 subnet calculations with pen and paper (network-broadcast-host range for /26, /27, /28, /29), no calculator (25 min)",
+      "NET: answer 8 questions (mostly subnetting + routing) (20 min)",
+      "Read the IBG notes: CIA, AAA, MFA factors, firewall types, IDS/IPS, TLS/PKI, malware (35 min)",
+      "IBG: answer 10 questions and check the misconceptions list (30 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-10-31",
+    "day": "Saturday",
+    "title": "Cybersecurity and Cryptography",
+    "topics": [
+      "SIB",
+      "KRP"
+    ],
+    "tasks": [
+      "Read the SIB notes: OWASP Top 10, SQLi/XSS/CSRF, DDoS, MitM, penetration test types, incident response steps (35 min)",
+      "SIB: answer 10 questions (mostly scenario questions) (30 min)",
+      "Read the KRP notes: symmetric/asymmetric, AES/RSA/ECC key sizes, hash/HMAC/signature, hybrid encryption (30 min)",
+      "KRP: cover the 'encryption vs signing key direction' table and redraw it on a blank sheet (10 min)",
+      "KRP: answer 10 questions (30 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-11-01",
+    "day": "Sunday",
+    "title": "Mock Exam 1 (40 questions) and review",
+    "topics": [
+      "NET",
+      "IBG",
+      "SIB",
+      "KRP"
+    ],
+    "tasks": [
+      "Mock 1: answer 40 questions in 60 minutes, time yourself, leave no question blank (60 min)",
+      "Mock review: for every wrong answer and every question you got right without being sure, read the explanation and the option explanations (40 min)",
+      "Re-answer the NET/IBG/SIB/KRP questions from the wrong-answer queue (20 min)",
+      "Review the per-topic mock result on the dashboard, note the topics below 60% (15 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": true
+  },
+  {
+    "date": "2026-11-02",
+    "day": "Monday",
+    "title": "Database Management Systems",
+    "topics": [
+      "VTYS"
+    ],
+    "tasks": [
+      "Read the VTYS notes: keys, constraints, SQL sublanguages, SELECT evaluation order, JOIN types (40 min)",
+      "VTYS: read the normalisation (1NF-BCNF) and ACID/isolation levels section, memorise the isolation table (25 min)",
+      "VTYS: write 4 SQL queries on paper (GROUP BY + HAVING, LEFT JOIN + COALESCE, subquery, UPDATE + transaction) (20 min)",
+      "VTYS: answer 15 questions (including SQL evaluation questions) (40 min)",
+      "Wrong-answer queue: 5 questions (10 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-11-03",
+    "day": "Tuesday",
+    "title": "Data Structures and Algorithms",
+    "topics": [
+      "VYA"
+    ],
+    "tasks": [
+      "Read the VYA notes: Big-O, array/linked list/stack/queue, BST, heap, hash table (40 min)",
+      "VYA: cover the sorting algorithms table (best/average/worst/memory/stability) and rewrite it (15 min)",
+      "VYA: work out the complexity of 5 code snippets by hand, write out the merge sort and quick sort steps for 1 small array (20 min)",
+      "VYA: read the BFS/DFS/Dijkstra section, derive the BFS and DFS order on a 5-node graph (15 min)",
+      "VYA: answer 15 questions (including complexity + tree traversal questions) (40 min)",
+      "Wrong-answer queue: 5 questions (5 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-11-04",
+    "day": "Wednesday",
+    "title": "Programming/OOP and Operating Systems",
+    "topics": [
+      "PRG",
+      "IS"
+    ],
+    "tasks": [
+      "Read the PRG notes: pass by value/reference, static/final, overloading vs overriding, abstract class vs interface, SOLID (35 min)",
+      "PRG: answer 10 questions (mostly code output questions; write the output on paper before looking at the answer) (30 min)",
+      "Read the IS notes: process/thread, scheduling algorithms, deadlock conditions, paging, Unix permissions (35 min)",
+      "IS: compute the FCFS/SJF/SRTF average waiting time for 3 processes and do 3 chmod/umask conversions (10 min)",
+      "IS: answer 10 questions (25 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-11-05",
+    "day": "Thursday",
+    "title": "Mock Exam 2 and Computer Architecture",
+    "topics": [
+      "MIM",
+      "VTYS",
+      "VYA",
+      "PRG",
+      "IS"
+    ],
+    "tasks": [
+      "Mock 2: 40 questions, 60 minutes, leave nothing blank (60 min)",
+      "Mock review: read the explanations of the wrong answers, note the recurring error type (concept or carelessness) (40 min)",
+      "Read the MIM notes: number systems, two's complement, RISC/CISC, memory hierarchy; do 5 binary/hexadecimal conversions (25 min)",
+      "MIM: answer 5 questions (10 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": true
+  },
+  {
+    "date": "2026-11-06",
+    "day": "Friday",
+    "title": "Web Technologies and Cloud Computing",
+    "topics": [
+      "WEB",
+      "BLT"
+    ],
+    "tasks": [
+      "Read the WEB notes: HTTP methods and status codes, GET/POST, cookie flags, REST/SOAP, JWT, CORS, security headers (35 min)",
+      "WEB: write out the 401/403/404 and 2xx/3xx/5xx codes from memory on paper, answer 10 questions (35 min)",
+      "Read the BLT notes: the 5 NIST characteristics, IaaS/PaaS/SaaS, deployment models, shared responsibility, VM vs container, bank cloud risks (30 min)",
+      "BLT: answer 8 questions (20 min)",
+      "Wrong-answer queue: 8 questions (15 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-11-07",
+    "day": "Saturday",
+    "title": "Software Engineering/SDLC and Change Management",
+    "topics": [
+      "SDLC",
+      "DGY"
+    ],
+    "tasks": [
+      "Read the SDLC notes: waterfall/V/spiral/agile, Scrum roles and events, test levels, black/white box, verification vs validation, CI/CD, environment separation (35 min)",
+      "SDLC: answer 10 questions (25 min)",
+      "Read the DGY notes: ITIL change types, RFC lifecycle, CAB, impact analysis, rollback plan, deployment with segregation of duties, emergency change, unauthorised change detection (35 min)",
+      "DGY: read the worked scenario and answer the question 'which control was missing' yourself, then answer 10 questions (30 min)",
+      "Wrong-answer queue: 5 questions (10 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-11-08",
+    "day": "Sunday",
+    "title": "Mock Exam 3 and introduction to Access Management",
+    "topics": [
+      "ERY",
+      "WEB",
+      "BLT",
+      "SDLC",
+      "DGY"
+    ],
+    "tasks": [
+      "Mock 3: 40 questions, 60 minutes, leave nothing blank (60 min)",
+      "Mock review: read the wrong answers, compare the per-topic accuracy rates of Mocks 1-2-3, check whether any topic is slipping (40 min)",
+      "Read the first half of the ERY notes: authentication/authorisation chain, least privilege, segregation of duties, access control models (DAC/MAC/RBAC/ABAC) (25 min)",
+      "ERY: answer 5 questions (10 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": true
+  },
+  {
+    "date": "2026-11-09",
+    "day": "Monday",
+    "title": "Access Management and IT Risk and Controls",
+    "topics": [
+      "ERY",
+      "RISK"
+    ],
+    "tasks": [
+      "Read the second half of the ERY notes: account lifecycle, PAM, access review, audit logs, BDDK/ISO 27001/COBIT links (25 min)",
+      "ERY: answer 10 questions (scenarios: leaver, SoD conflict, shared admin account) (25 min)",
+      "Read the RISK notes: risk concepts, treatment options, control types, ITGC vs application controls, three lines of defence, audit evidence (40 min)",
+      "RISK: work through 2 quantitative examples with SLE/ARO/ALE (no calculator) and write out the control types table from memory (15 min)",
+      "RISK: answer 12 questions (mostly of the 'which control mitigates this risk' type) (30 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-11-10",
+    "day": "Tuesday",
+    "title": "Backup/Business Continuity and Emerging Technologies",
+    "topics": [
+      "YIS",
+      "GT"
+    ],
+    "tasks": [
+      "Read the YIS notes: full/incremental/differential, 3-2-1, RPO/RTO/MTD, BIA, BCP vs DRP, disaster recovery site types, test types (35 min)",
+      "YIS: write out the 'incremental vs differential restore set' and 'RPO vs RTO' tables from memory, answer 10 questions (30 min)",
+      "Read the GT notes: ML types, blockchain (public/permissioned), the big data V's, quantum impact, open banking, FAST/digital identity (30 min)",
+      "GT: answer 8 questions (20 min)",
+      "Wrong-answer queue: 10 questions (20 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-11-11",
+    "day": "Wednesday",
+    "title": "Mock Exam 4 and review of the audit topic cluster",
+    "topics": [
+      "ERY",
+      "DGY",
+      "RISK",
+      "YIS"
+    ],
+    "tasks": [
+      "Mock 4: 40 questions, 60 minutes, leave nothing blank (60 min)",
+      "Mock review: read the wrong answers; write down the 3 topics you got wrong most often across the 4 mocks (40 min)",
+      "Audit cluster review (ERY/DGY/RISK/YIS): read the comparison tables and misconceptions lists of the four topics back to back, go over the banking scenario examples again (35 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": true
+  },
+  {
+    "date": "2026-11-12",
+    "day": "Thursday",
+    "title": "General review I: wrong-answer queue and high-priority topics",
+    "topics": [
+      "NET",
+      "VTYS",
+      "VYA",
+      "PRG",
+      "IS",
+      "SIB"
+    ],
+    "tasks": [
+      "Work through the entire wrong-answer queue; list separately the questions not answered correctly twice in a row (45 min)",
+      "Copy the formulas and comparison tables of the 6 high-priority topics (NET, VTYS, VYA, PRG, IS, SIB) by hand onto a one-page summary sheet (45 min)",
+      "Answer 15 mixed questions from the topics marked 'review recommended' on the dashboard (35 min)",
+      "No new topics: just note today's wrong answers, stop when you get tired (10 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  },
+  {
+    "date": "2026-11-13",
+    "day": "Friday",
+    "title": "Mock Exam 5 (final rehearsal) and review",
+    "topics": [
+      "NET",
+      "VTYS",
+      "VYA",
+      "PRG",
+      "SIB",
+      "RISK"
+    ],
+    "tasks": [
+      "Mock 5: 40 questions, 60 minutes; take it close to the real exam time (morning) with your phone off (60 min)",
+      "Mock review: read the explanations of the wrong answers, evaluate your time management (average 1.5 min per question) (40 min)",
+      "Answer the remaining questions in the wrong-answer queue (25 min)",
+      "Quickly scan the misconceptions lists of the medium and complementary topics (IBG, KRP, WEB, SDLC, DGY, YIS, MIM, BLT, GT) (10 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": true
+  },
+  {
+    "date": "2026-11-14",
+    "day": "Saturday",
+    "title": "General review II: light revision and exam preparation",
+    "topics": [
+      "ERY",
+      "RISK",
+      "DGY",
+      "YIS",
+      "NET",
+      "VTYS"
+    ],
+    "tasks": [
+      "Read the one-page summary sheet you wrote yourself and the audit cluster (ERY/RISK/DGY/YIS) summaries; do not try to learn anything new (40 min)",
+      "Answer the questions remaining in the wrong-answer queue one last time; for those still wrong, read only the correct answer and its one-sentence justification (35 min)",
+      "Mental rehearsal: at most 60 min for the 40 technical questions, flag hard questions and move on, fill in all blanks at the end (no calculator, wrong answers do not lose marks) (15 min)",
+      "Exam logistics: exam venue and admission document, ID, pencil/eraser; wake-up time and travel plan for Sunday 09:30; go to bed early (15 min)",
+      "Finish studying 1 hour early; a light walk or rest in the evening, reduce screen time (30 min)",
+      "Reminder: practise separately, outside this site, for General Aptitude (70% threshold) and English (50% threshold); schedule at least one GA/English set today (15 min)"
+    ],
+    "minutes": 150,
+    "mock": false
+  }
+]
