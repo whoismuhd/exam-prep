@@ -30,11 +30,11 @@
     langBtn.setAttribute('aria-label', t('app.langLabel'));
     langBtn.setAttribute('title', t('app.langLabel'));
     const navItems = [
-      ['#/', 'home', 'nav.home'], ['#/konular', 'topics', 'nav.topics'], ['#/deneme', 'exam', 'nav.examShort'],
+      ['#/', 'home', 'nav.home'], ['#/konular', 'topics', 'nav.topics'], ['#/karisik', 'mix', 'nav.mix'], ['#/deneme', 'exam', 'nav.examShort'],
       ['#/yanlislar', 'review', 'nav.reviewShort'], ['#/ilerleme', 'progress', 'nav.progress'], ['#/notlar', 'notes', 'nav.notesShort'], ['#/plan', 'plan', 'nav.planShort']
     ];
     document.querySelector('.nav').innerHTML = navItems.map(n => `<a href="${n[0]}" data-nav="${n[1]}">${t(n[2])}</a>`).join('');
-    const mobile = [['#/', 'nav.home'], ['#/konular', 'nav.topics'], ['#/deneme', 'nav.exam'], ['#/yanlislar', 'nav.review'], ['#/ilerleme', 'nav.progress'], ['#/notlar', 'nav.notes'], ['#/plan', 'nav.plan'], ['#/ayarlar', 'nav.settings']];
+    const mobile = [['#/', 'nav.home'], ['#/konular', 'nav.topics'], ['#/karisik', 'mix.title'], ['#/deneme', 'nav.exam'], ['#/yanlislar', 'nav.review'], ['#/ilerleme', 'nav.progress'], ['#/notlar', 'nav.notes'], ['#/plan', 'nav.plan'], ['#/ayarlar', 'nav.settings']];
     document.getElementById('mobileNav').innerHTML = mobile.map(n => `<a href="${n[0]}">${t(n[1])}</a>`).join('');
     document.getElementById('storageWarning').textContent = t('app.storageWarn');
     document.getElementById('disclaimer').textContent = t('app.disclaimer');
@@ -90,6 +90,7 @@
 
       <div class="actions">
         <a class="action-card" href="#/konular"><div class="t">${t('home.actTopics')}</div><div class="d">${t('home.actTopicsD')}</div></a>
+        <a class="action-card" href="#/karisik"><div class="t">${t('mix.title')}</div><div class="d">${t('mix.desc')}</div></a>
         <a class="action-card" href="#/deneme"><div class="t">${t('home.actExam')}</div><div class="d">${t('home.actExamD')}</div></a>
         <a class="action-card" href="#/yanlislar"><div class="t">${t('home.actReview')}</div><div class="d">${t('home.actReviewD', { n: st.revisionCount })}</div></a>
         <a class="action-card" href="#/ilerleme"><div class="t">${t('home.actProgress')}</div><div class="d">${t('home.actProgressD')}</div></a>
@@ -162,17 +163,60 @@
         <div class="choice-row">
           ${choices.map(n => `<button class="btn btn-secondary" data-n="${n}">${n}</button>`).join('')}
           <button class="btn btn-secondary" data-n="all">${t('topic.allN', { n: avail })}</button>
-        </div>`}
+        </div>
+        ${customCount(avail)}`}
         <p class="tight"><a href="#/notlar/${id}">${t('topic.notesLink')}</a></p>
       </div>
       <div id="session"></div>`;
-    $app().querySelectorAll('[data-n]').forEach(b => b.addEventListener('click', () => {
-      const n = b.dataset.n === 'all' ? 'all' : parseInt(b.dataset.n, 10);
+    const startTopic = n => {
       const qs = Progress.pickForTopic(id, n);
       $app().innerHTML = `<p><a href="#/konu/${id}">← ${esc(Data.topicName(id))}</a></p><div id="session"></div>`;
       Quiz.startSession(document.getElementById('session'), { questions: qs, mode: 'practice', title: Data.topicName(id), topicId: id });
       window.scrollTo({ top: 0 });
-    }));
+    };
+    $app().querySelectorAll('[data-n]').forEach(b => b.addEventListener('click', () => startTopic(b.dataset.n === 'all' ? 'all' : parseInt(b.dataset.n, 10))));
+    bindCustom(avail, startTopic);
+  }
+
+  /** Özel soru sayısı girişi (1..max) */
+  function customCount(max) {
+    return `<form class="custom-count" id="customForm" novalidate>
+        <label for="customN">${t('topic.custom')}</label>
+        <input type="number" id="customN" min="1" max="${max}" value="${Math.min(20, max)}" inputmode="numeric">
+        <span class="small muted">${t('mix.max', { n: max })}</span>
+        <button type="submit" class="btn btn-sm">${t('topic.customStart')}</button>
+      </form>`;
+  }
+  function bindCustom(max, start) {
+    const f = document.getElementById('customForm'); if (!f) return;
+    f.addEventListener('submit', e => {
+      e.preventDefault();
+      const v = Math.max(1, Math.min(max, parseInt(document.getElementById('customN').value, 10) || 1));
+      start(v);
+    });
+  }
+
+  function viewMix() {
+    setCurrentNav('mix');
+    const max = Data.questions.length;
+    const choices = [10, 20, 40].filter(n => n <= max);
+    $app().innerHTML = `
+      <div class="card">
+        <h1>${t('mix.title')}</h1>
+        <p class="muted">${t('mix.desc')}</p>
+        <h3>${t('topic.howMany')}</h3>
+        <div class="choice-row">${choices.map(n => `<button class="btn btn-secondary" data-n="${n}">${n}</button>`).join('')}</div>
+        ${customCount(max)}
+      </div>
+      <div id="session"></div>`;
+    const start = n => {
+      const qs = Progress.pickRandom(n);
+      $app().innerHTML = `<p><a href="#/karisik">← ${t('mix.title')}</a></p><div id="session"></div>`;
+      Quiz.startSession(document.getElementById('session'), { questions: qs, mode: 'practice', title: t('mix.title') });
+      window.scrollTo({ top: 0 });
+    };
+    $app().querySelectorAll('[data-n]').forEach(b => b.addEventListener('click', () => start(parseInt(b.dataset.n, 10))));
+    bindCustom(max, start);
   }
 
   function viewPlacement() {
@@ -375,6 +419,7 @@
       case '': viewHome(); break;
       case 'konular': viewTopics(); break;
       case 'konu': viewTopic(parts[1]); break;
+      case 'karisik': viewMix(); break;
       case 'seviye': viewPlacement(); break;
       case 'deneme': setCurrentNav('exam'); $app().innerHTML = '<div id="exam"></div>'; Exam.startScreen(document.getElementById('exam')); break;
       case 'yanlislar': viewReview(); break;

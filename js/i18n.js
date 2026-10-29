@@ -19,7 +19,7 @@
 
       'nav.home': 'Ana Sayfa', 'nav.topics': 'Konu Çalış', 'nav.exam': 'Deneme Sınavı', 'nav.review': 'Yanlışlarımı Tekrar Et',
       'nav.progress': 'İlerlemem', 'nav.notes': 'Konu Notları', 'nav.plan': 'Çalışma Planı', 'nav.settings': 'Ayarlar',
-      'nav.examShort': 'Deneme', 'nav.reviewShort': 'Yanlışlarım', 'nav.notesShort': 'Notlar', 'nav.planShort': 'Plan',
+      'nav.mix': 'Karışık', 'nav.examShort': 'Deneme', 'nav.reviewShort': 'Yanlışlarım', 'nav.notesShort': 'Notlar', 'nav.planShort': 'Plan',
 
       'common.byTopic': 'Konu bazında', 'common.yes': 'Evet', 'common.no': 'Hayır', 'common.ok': 'Tamam',
       'common.accuracy': 'Doğruluk', 'common.attempts': 'deneme',
@@ -44,7 +44,8 @@
 
       'topics.title': 'Konu Çalış',
       'topics.available': '{n} soru', 'topics.done': '{n} çözüldü', 'topics.revision': '{n} tekrar', 'topics.start': 'Çalış',
-      'topic.howMany': 'Kaç soru?', 'topic.allN': 'Tümü ({n})', 'topic.noQuestions': 'Bu konuda henüz soru yok.', 'topic.notesLink': 'Konu notları',
+      'topic.howMany': 'Kaç soru?', 'topic.allN': 'Tümü ({n})', 'topic.custom': 'Özel sayı', 'topic.customStart': 'Başla',
+      'mix.title': 'Karışık Çalışma', 'mix.desc': 'Tüm konulardan rastgele sorular', 'mix.max': 'En fazla {n}', 'topic.noQuestions': 'Bu konuda henüz soru yok.', 'topic.notesLink': 'Konu notları',
 
       'q.options': 'Seçenekler', 'q.codeLabel': 'Kod veya tablo', 'q.counter': 'Soru {n} / {total}', 'q.questionN': 'Soru {n}',
       'q.correctSoFar': 'Doğru', 'q.check': 'Cevabı Kontrol Et', 'q.endSession': 'Bitir', 'q.next': 'Sonraki Soru →',
@@ -126,7 +127,7 @@
 
       'nav.home': 'Home', 'nav.topics': 'Study by Topic', 'nav.exam': 'Mock Exam', 'nav.review': 'Review My Mistakes',
       'nav.progress': 'My Progress', 'nav.notes': 'Topic Notes', 'nav.plan': 'Study Plan', 'nav.settings': 'Settings',
-      'nav.examShort': 'Mock', 'nav.reviewShort': 'Mistakes', 'nav.notesShort': 'Notes', 'nav.planShort': 'Plan',
+      'nav.mix': 'Mixed', 'nav.examShort': 'Mock', 'nav.reviewShort': 'Mistakes', 'nav.notesShort': 'Notes', 'nav.planShort': 'Plan',
 
       'common.byTopic': 'By topic', 'common.yes': 'Yes', 'common.no': 'No', 'common.ok': 'OK',
       'common.accuracy': 'Accuracy', 'common.attempts': 'attempts',
@@ -151,7 +152,8 @@
 
       'topics.title': 'Study by Topic',
       'topics.available': '{n} questions', 'topics.done': '{n} answered', 'topics.revision': '{n} to review', 'topics.start': 'Study',
-      'topic.howMany': 'How many questions?', 'topic.allN': 'All ({n})', 'topic.noQuestions': 'No questions in this topic yet.', 'topic.notesLink': 'Topic notes',
+      'topic.howMany': 'How many questions?', 'topic.allN': 'All ({n})', 'topic.custom': 'Custom number', 'topic.customStart': 'Start',
+      'mix.title': 'Mixed Practice', 'mix.desc': 'Random questions from all topics', 'mix.max': 'Up to {n}', 'topic.noQuestions': 'No questions in this topic yet.', 'topic.notesLink': 'Topic notes',
 
       'q.options': 'Options', 'q.codeLabel': 'Code or table', 'q.counter': 'Question {n} / {total}', 'q.questionN': 'Question {n}',
       'q.correctSoFar': 'Correct', 'q.check': 'Check Answer', 'q.endSession': 'End', 'q.next': 'Next Question →',

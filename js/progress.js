@@ -144,6 +144,15 @@
     return (n === 'all' || n >= ordered.length) ? shuffle(ordered) : shuffle(ordered.slice(0, n));
   }
 
+  /** Tüm bankadan rastgele n soru: önce görülmemişler, sonra en eski görülenler; sonuç karışık. */
+  function pickRandom(n) {
+    const s = Store.load();
+    const unseen = shuffle(Data.questions.filter(q => !s.questions[q.id] || s.questions[q.id].attempts === 0));
+    const seen = shuffle(Data.questions.filter(q => s.questions[q.id] && s.questions[q.id].attempts > 0))
+      .sort((a, b) => (s.questions[a.id].lastAt || '').localeCompare(s.questions[b.id].lastAt || ''));
+    return shuffle(unseen.concat(seen).slice(0, Math.max(1, Math.min(n, Data.questions.length))));
+  }
+
   /** 40 soruluk deneme: her konudan 2 (34) + mockExtraTopics'ten 1'er (6). Eksik kalan konular en büyük havuzlardan tamamlanır. */
   function buildMockExam(size) {
     size = size || 40;
@@ -198,6 +207,6 @@
   window.Progress = {
     recordAnswer, recordSession, recordExam, getRecord, revisionQueue,
     overallStats, topicStats, allTopicStats, recommendations, recentSessions, examHistory,
-    pickForTopic, buildMockExam, buildPlacement, shuffle
+    pickForTopic, pickRandom, buildMockExam, buildPlacement, shuffle
   };
 })();

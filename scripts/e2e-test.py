@@ -43,7 +43,7 @@ with sync_playwright() as p:
     print("1. Ana sayfa")
     page.goto(BASE + "#/"); page.wait_for_selector(".stat")
     check("Sınav Hazırlık" in page.title(), "başlık Türkçe")
-    check(page.locator(".action-card").count() == 4, "4 ana eylem")
+    check(page.locator(".action-card").count() == 5, "5 ana eylem")
     check(str(len(bank)) in page.locator(".stat").first.inner_text(), "toplam soru sayısı gerçek bankayla uyuşuyor")
     check(page.locator("#loveNote").inner_text().strip() != "", "footer notu görünüyor")
 
@@ -175,6 +175,14 @@ with sync_playwright() as p:
     check(page.locator("h3").count() >= 2, "NET notları yükleniyor")
     page.goto(BASE + "#/plan"); page.wait_for_selector(".day")
     check(page.locator(".day").count() == 17, "17 günlük plan")
+
+    print("10b. Karışık çalışma ve özel sayı")
+    page.goto(BASE + "#/karisik"); page.wait_for_selector("#customForm")
+    page.fill("#customN", "7"); page.click("#customForm button[type=submit]"); page.wait_for_selector("#qform")
+    check("/ 7" in page.locator(".progress-line").inner_text(), "özel sayı 7 soruluk oturum")
+    page.goto(BASE + "#/konu/NET"); page.wait_for_selector("#customForm")
+    page.fill("#customN", "99"); page.click("#customForm button[type=submit]"); page.wait_for_selector("#qform")
+    check("/ 8" in page.locator(".progress-line").inner_text(), "konu sayfasında özel sayı mevcut soruya sınırlanıyor")
 
     print("11. Konsol hataları")
     check(len(console_errors) == 0, "konsol hatası yok" + ("" if not console_errors else ": " + "; ".join(console_errors[:3])))
