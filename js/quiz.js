@@ -91,7 +91,8 @@
     if (correct) {
       return `
         <div class="feedback ok" role="status">
-          <h3>${t('fb.correctTitle')}</h3>
+          <div class="hearts" aria-hidden="true">${'<span>❤️</span>'.repeat(7)}</div>
+          <h3>${t('fb.correctTitle')} ❤️</h3>
           <p>${esc(q.explanation)}</p>
           <div class="section concept"><strong>${t('fb.keyConcept')}:</strong> ${esc(q.keyConcept)}</div>
           ${q.examTip ? `<div class="section"><strong>${t('fb.examTip')}:</strong> ${esc(q.examTip)}</div>` : ''}
