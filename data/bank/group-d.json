@@ -1,0 +1,1606 @@
+[
+  {
+    "id": "ERY-001",
+    "topic": "ERY",
+    "subtopic": "Kimlik tanımlama, kimlik doğrulama ve yetkilendirme",
+    "difficulty": "temel",
+    "question": "Bir şube kullanıcısı çekirdek bankacılık sistemine (core banking system) girmek için kullanıcı adını yazar, ardından parolasını ve telefonuna gelen tek kullanımlık kodu girer; sistem kullanıcının yalnızca kendi şubesinin müşteri hesaplarını görüntüleyebileceğine karar verir. Bu akışta sırasıyla hangi üç kavram gerçekleşmiştir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Yetkilendirme (authorization), kimlik doğrulama (authentication), kimlik tanımlama (identification)"
+      },
+      {
+        "id": "B",
+        "text": "Kimlik doğrulama, yetkilendirme, hesap verebilirlik (accountability)"
+      },
+      {
+        "id": "C",
+        "text": "Kimlik tanımlama, kimlik doğrulama, yetkilendirme"
+      },
+      {
+        "id": "D",
+        "text": "Kimlik tanımlama, yetkilendirme, kimlik doğrulama"
+      },
+      {
+        "id": "E",
+        "text": "Kimlik doğrulama, kimlik tanımlama, erişim denetimi (access control)"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Kullanıcı adı yazmak, sisteme \"ben kimim\" iddiasını sunmaktır; bu kimlik tanımlamadır (identification). Parola ve tek kullanımlık kod, bu iddianın doğruluğunun kanıtlanmasıdır; bu kimlik doğrulamadır (authentication). Doğrulanmış kullanıcının hangi kaynaklara (yalnızca kendi şubesinin hesapları) erişebileceğine karar verilmesi ise yetkilendirmedir (authorization). Sıra her zaman tanımla → doğrula → yetkilendir biçimindedir; kim olduğu kanıtlanmamış bir kullanıcıya yetki atanamaz.",
+    "optionExplanations": {
+      "A": "Sıra ters verilmiştir. Yetkilendirme, kimlik doğrulanmadan yapılamaz; ilk adım kullanıcı adının sunulması yani kimlik tanımlamadır.",
+      "B": "Kullanıcı adı yazma adımı (kimlik tanımlama) atlanmıştır. Hesap verebilirlik ise iz kayıtları ile sağlanan ayrı bir ilkedir; senaryoda karar verilen adım yetkilendirmedir.",
+      "C": "Doğru. Kullanıcı adı = kimlik tanımlama, parola + OTP = kimlik doğrulama, şube hesaplarına erişim kararı = yetkilendirme.",
+      "D": "Kimlik doğrulama ve yetkilendirmenin yeri değiştirilmiştir. Kim olduğu kanıtlanmamış bir kullanıcıya erişim hakkı atanması mantıksızdır.",
+      "E": "Kimlik tanımlama doğrulamadan önce gelir. Ayrıca erişim denetimi üç kavramı kapsayan genel şemsiye terimdir, üçüncü adımın özel adı yetkilendirmedir."
+    },
+    "keyConcept": "Kimlik tanımlama = iddia (kullanıcı adı), kimlik doğrulama = kanıt (parola, OTP, biyometri), yetkilendirme = izin verilen işlemler. Sıra: tanımla → doğrula → yetkilendir.",
+    "examTip": "Senaryoda \"kim olduğunu söyler\" kimlik tanımlama, \"kanıtlar\" kimlik doğrulama, \"neye erişebileceği belirlenir\" yetkilendirmedir. Sırayı değiştiren seçenekleri hemen eleyin.",
+    "simpleExplanation": "Bir binaya girmeyi düşünün. Kapıdaki görevliye adınızı söylemeniz kimlik tanımlamadır: \"Ben buyum\" dersiniz. Görevlinin kimlik kartınıza bakıp gerçekten siz olduğunuzu anlaması kimlik doğrulamadır. İçeri girdikten sonra hangi katlara ve odalara girebileceğinizin belirlenmesi ise yetkilendirmedir. Sistemde de sıra aynıdır: kullanıcı adı yazarsınız, parola ve telefon kodu ile kanıtlarsınız, sistem de size neyi görebileceğinizi söyler. Kim olduğu kanıtlanmamış birine oda anahtarı verilmediği gibi, doğrulama yapılmadan yetki de verilmez.",
+    "references": [
+      "NIST SP 800-63-3, Digital Identity Guidelines",
+      "ISACA CISA Review Manual, Domain 5: Protection of Information Assets"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "ERY-002",
+    "topic": "ERY",
+    "subtopic": "Çok faktörlü kimlik doğrulama (MFA) faktör türleri",
+    "difficulty": "temel",
+    "question": "Bir bankanın mobil bankacılık uygulaması, müşteriden giriş sırasında altı haneli bir müşteri şifresi ve ardından güvenlik sorusu olarak \"annenizin kızlık soyadı\" bilgisini istemektedir. BT müfettişi bu tasarımı çok faktörlü kimlik doğrulama (multi-factor authentication, MFA) açısından değerlendirdiğinde doğru tespit hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "İki ayrı bilgi istendiği hâlde ikisi de \"bildiğin bir şey\" faktörüne ait olduğu için bu gerçek bir MFA değildir; farklı bir faktör (ör. cihaz veya biyometri) eklenmelidir."
+      },
+      {
+        "id": "B",
+        "text": "Şifre ve güvenlik sorusu birbirinden bağımsız iki sır olduğu için tasarım geçerli bir iki faktörlü doğrulamadır."
+      },
+      {
+        "id": "C",
+        "text": "Güvenlik sorusu \"olduğun bir şey\" faktörüne girdiği için tasarım iki farklı faktör içerir."
+      },
+      {
+        "id": "D",
+        "text": "Müşteri şifresi \"sahip olduğun bir şey\" sayıldığı için tasarım yeterlidir; ek faktör gerekmez."
+      },
+      {
+        "id": "E",
+        "text": "MFA yalnızca kurum içi personel için gereklidir; müşteri girişinde tek faktör yeterli kabul edilir."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "MFA, farklı kategorilerden en az iki faktörün birlikte kullanılmasını gerektirir: bildiğin bir şey (parola, PIN, güvenlik sorusu), sahip olduğun bir şey (telefon, token, akıllı kart), olduğun bir şey (parmak izi, yüz). Şifre ve güvenlik sorusu ikisi de bilgi tabanlı olduğundan aynı kategoriye düşer; bir saldırgan sosyal mühendislikle ikisini de öğrenebilir. Dolayısıyla bu tasarım iki adımlı ama tek faktörlüdür. BDDK'nın elektronik bankacılık düzenlemesi de müşteri girişlerinde birbirinden bağımsız en az iki bileşenden oluşan kimlik doğrulama öngörür.",
+    "optionExplanations": {
+      "A": "Doğru. İki sır da aynı faktör kategorisindedir (bilgi); gerçek MFA için farklı kategoriden bir bileşen gerekir.",
+      "B": "Tipik yanılgı: \"iki adım = iki faktör\" değildir. Faktörlerin sayısı değil, kategorilerinin farklılığı önemlidir.",
+      "C": "Güvenlik sorusu biyometrik değil, bilgi tabanlı bir faktördür; \"olduğun bir şey\" parmak izi, yüz veya ses gibi fiziksel özelliklerdir.",
+      "D": "Şifre ezberlenen bir bilgidir, sahip olunan fiziksel bir nesne değildir. Sahip olunan faktöre örnek telefon, donanım token veya akıllı karttır.",
+      "E": "Elektronik bankacılıkta müşteri kimlik doğrulaması düzenleyici gerekliliktir; tek faktör kabul edilmez. Ayrıca MFA personelle sınırlı bir kavram değildir."
+    },
+    "keyConcept": "MFA = farklı kategorilerden en az iki faktör: bildiğin, sahip olduğun, olduğun bir şey. Aynı kategoriden iki bileşen MFA sayılmaz.",
+    "examTip": "Seçeneklerdeki her bileşeni kategorisine yerleştirin; iki bileşen aynı kutuya düşüyorsa MFA değildir.",
+    "simpleExplanation": "Çok faktörlü doğrulama, kapıya iki ayrı türden kilit takmak gibidir: biri ezberlediğiniz bir şey (parola), diğeri yanınızda taşıdığınız bir şey (telefon) veya vücudunuza ait bir şey (parmak izi). Buradaki tasarımda ise hem şifre hem güvenlik sorusu \"ezberlediğiniz\" türündedir; yani aynı türden iki kilit vardır. Sizi tanıyan veya sosyal medyanızı inceleyen biri ikisini de öğrenebilir. İki adım olması, iki faktör olması anlamına gelmez. Gerçek koruma için farklı türden bir ikinci kilit eklenmelidir.",
+    "references": [
+      "NIST SP 800-63B, Authentication and Lifecycle Management",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "ERY-003",
+    "topic": "ERY",
+    "subtopic": "Görevler ayrılığı (segregation of duties)",
+    "difficulty": "orta",
+    "question": "Bir BT müfettişi, çekirdek bankacılık sistemindeki kullanıcı yetki matrisini incelerken aşağıdaki tabloyu elde etmiştir. Hangi kullanıcıda görevler ayrılığı (segregation of duties, SoD) ihlali vardır?",
+    "code": "Kullanıcı   Rol(ler)\n--------   ---------------------------------------------\nU1         Kredi Tahsis Analisti\nU2         Hesap Açma, Kredi Onay\nU3         Kasa (Veznedar)\nU4         Kredi Onay, Kredi Raporlama (salt okunur)\nU5         Hesap Açma, Müşteri Bilgi Güncelleme",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "U1, çünkü kredi tahsis analisti tek başına kredi değerlendirmesi yapmaktadır."
+      },
+      {
+        "id": "B",
+        "text": "U4, çünkü kredi onaylayan kişinin kredi raporlarını görmesi uygun değildir."
+      },
+      {
+        "id": "C",
+        "text": "U5, çünkü hesap açan kişi müşteri bilgilerini de güncelleyebilmektedir."
+      },
+      {
+        "id": "D",
+        "text": "U2, çünkü aynı kişi hem müşteri hesabı açıp hem de o hesaba kredi onaylayabilir; bu, hayali müşteri yaratıp kredi kullandırma riskini tek kişide toplar."
+      },
+      {
+        "id": "E",
+        "text": "U3, çünkü veznedar nakit işlemlerini kaydeden ve gerçekleştiren tek kişidir."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Görevler ayrılığının amacı, bir hata ya da suistimalin tek bir kişi tarafından hem gerçekleştirilip hem gizlenebilmesini engellemektir. Bunun için işlemi başlatma, onaylama, kaydetme ve varlığı koruma gibi uyumsuz görevler farklı kişilere dağıtılır. U2 hem hesap açabilmekte (başlatma) hem de kredi onaylayabilmektedir (onaylama); bu kişi sahte bir müşteri adına hesap açıp kendi onayladığı krediyi bu hesaba aktarabilir. Diğer kullanıcıların rolleri arasında böyle bir uyumsuz çift yoktur: salt okunur raporlama, onay yetkisiyle çatışmaz; hesap açma ile bilgi güncelleme aynı iş akışının parçasıdır.",
+    "optionExplanations": {
+      "A": "Tek bir rol tek başına SoD ihlali oluşturmaz; analist değerlendirir, onay başkasındadır. İhlal için uyumsuz görevlerin aynı kişide birleşmesi gerekir.",
+      "B": "Salt okunur raporlama bir izleme/görüntüleme yetkisidir; onay yetkisiyle çatışmaz. Hatta onaylayanın kendi portföyünü görmesi beklenen bir durumdur.",
+      "C": "Hesap açma ve müşteri bilgisi güncelleme aynı operasyonel işin parçasıdır; ikisi de başlatma niteliğindedir, aralarında onay-başlatma gibi bir çatışma yoktur.",
+      "D": "Doğru. Başlatma (hesap açma) ile onaylama (kredi onayı) aynı kişide birleşmiştir; klasik hayali müşteri/kredi suistimali senaryosu.",
+      "E": "Veznedarlık tek bir roldür; nakit işlemi yapmak onun görevidir. Senaryoda U3'e kayıt mutabakatı gibi ikinci bir uyumsuz görev verilmemiştir."
+    },
+    "keyConcept": "SoD: başlatma, onaylama, kaydetme ve varlık koruma görevleri aynı kişide toplanmamalı. Çatışma, roller arasında aranır; tek rol ihlal değildir.",
+    "examTip": "Yetki matrisi sorularında her kullanıcı için \"bu kişi tek başına bir işlemi hem yapıp hem onaylayabilir mi?\" diye sorun. Salt okunur yetkiler çatışma yaratmaz.",
+    "simpleExplanation": "Görevler ayrılığı, bir işi tek kişinin baştan sona yapıp kendi hatasını veya hilesini gizleyemeyeceği şekilde bölmektir. Bir mağazada kasadaki parayı sayan kişinin aynı zamanda kayıtları da tutmaması gibi düşünün. Tabloda U2 hem yeni müşteri hesabı açabiliyor hem de kredi onaylayabiliyor; bu kişi uydurma bir müşteri yaratıp ona kredi verip parayı alabilir. Diğer kullanıcıların yetkileri böyle tehlikeli bir ikili oluşturmuyor. Önemli olan tek bir yetkinin \"çok\" olması değil, birbiriyle çelişen iki yetkinin aynı kişide toplanmasıdır.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 2: Governance and Management of IT (Segregation of Duties)",
+      "COBIT 2019, DSS06 Managed Business Process Controls",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "ERY-004",
+    "topic": "ERY",
+    "subtopic": "Erişim kontrol modelleri (RBAC, ABAC, DAC, MAC)",
+    "difficulty": "orta",
+    "question": "Bir banka, mobil bankacılık arka ucunda şu kuralı uygulamak istemektedir: \"Bir müşteri temsilcisi, yalnızca mesai saatleri içinde, banka ağından bağlanıyorsa ve müşterinin kayıtlı şubesi kendi şubesiyle aynıysa müşteri bilgilerini görüntüleyebilir.\" Bu kuralın tüm koşullarını en doğal biçimde ifade edebilen erişim kontrol modeli hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "İsteğe bağlı erişim kontrolü (Discretionary Access Control, DAC), çünkü veri sahibi şube müdürü erişimi kendisi verir."
+      },
+      {
+        "id": "B",
+        "text": "Öznitelik tabanlı erişim kontrolü (Attribute-Based Access Control, ABAC), çünkü karar kullanıcı, kaynak ve ortam özniteliklerini (saat, ağ, şube eşleşmesi) birlikte değerlendiren politikalarla verilir."
+      },
+      {
+        "id": "C",
+        "text": "Rol tabanlı erişim kontrolü (Role-Based Access Control, RBAC), çünkü \"müşteri temsilcisi\" bir roldür ve roller her koşulu kapsar."
+      },
+      {
+        "id": "D",
+        "text": "Zorunlu erişim kontrolü (Mandatory Access Control, MAC), çünkü kural merkezi olarak belirlenmiş ve kullanıcı tarafından değiştirilemez."
+      },
+      {
+        "id": "E",
+        "text": "Kural tabanlı güvenlik duvarı erişim listesi (ACL), çünkü koşullar ağ düzeyinde kontrol edilir."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Kuralda dört farklı türde bilgi birlikte değerlendiriliyor: kullanıcı özniteliği (rol ve şube), kaynak özniteliği (müşterinin kayıtlı şubesi), ortam öznitelikleri (saat, bağlanılan ağ) ve bunlar arasındaki ilişki (şubelerin eşitliği). ABAC tam olarak bu tür özniteliklerin bir politika motorunda (ör. XACML) birleştirilmesiyle çalışır. RBAC yalnızca rol-izin eşlemesi yapar; saat veya ağ gibi bağlam koşullarını ve \"kullanıcının şubesi = müşterinin şubesi\" gibi dinamik karşılaştırmaları doğal olarak ifade edemez, her şube için ayrı rol açılması gerekirdi (rol patlaması).",
+    "optionExplanations": {
+      "A": "DAC'ta erişim kararı kaynağın sahibine bırakılır (dosya sahibinin izin vermesi gibi). Senaryoda karar merkezi bir politikayla ve bağlam koşullarıyla veriliyor; sahibin takdiri yok.",
+      "B": "Doğru. Saat, ağ konumu, kullanıcı şubesi ve kaynak şubesi gibi öznitelikleri tek politikada birleştiren model ABAC'tır.",
+      "C": "Tipik yanılgı: RBAC rol-izin eşlemesidir; mesai saati veya ağ gibi ortam koşullarını ifade edemez. Şube eşleşmesi için her şubeye ayrı rol gerekir, bu da rol patlamasına yol açar.",
+      "D": "MAC, güvenlik etiketleri (gizli, çok gizli) ve yetki seviyeleri ile çalışır; askeri/sınıflandırma odaklıdır. Merkezi olması MAC yapmaz; saat ve şube karşılaştırması etiket modeline uymaz.",
+      "E": "Güvenlik duvarı ACL'i yalnızca IP/port düzeyinde çalışır; müşterinin kayıtlı şubesi gibi uygulama verisini değerlendiremez."
+    },
+    "keyConcept": "RBAC: rol → izin. ABAC: kullanıcı + kaynak + ortam öznitelikleri → politika kararı. DAC: sahip karar verir. MAC: etiket ve yetki seviyesi, merkezi ve değiştirilemez.",
+    "examTip": "Senaryoda \"saat\", \"konum\", \"ağ\", \"kaynağın özelliği ile kullanıcının özelliği eşleşsin\" gibi bağlam koşulları varsa cevap ABAC'tır.",
+    "simpleExplanation": "Erişim kuralını bir kulüp kapısındaki görevliye verilen talimat gibi düşünün. \"Üye kartı olan girsin\" demek rol tabanlı yaklaşımdır: sadece kim olduğuna bakılır. Oysa buradaki kural \"üye olsun, saat 22:00'den önce gelsin, ana kapıdan girsin ve kendi şehrinin şubesine gitsin\" diyor. Yani kişinin özelliği, girilen yerin özelliği ve ortamın koşulları (saat, ağ) birlikte değerlendiriliyor. Bu kadar çok koşulu tek kuralda birleştirebilen yaklaşım öznitelik tabanlı erişim kontrolüdür. Rol tabanlı modelle bunu yapmaya kalkarsanız her şube ve her saat için ayrı rol açmak zorunda kalırsınız.",
+    "references": [
+      "NIST SP 800-162, Guide to Attribute Based Access Control (ABAC) Definition and Considerations",
+      "NIST SP 800-53 Rev. 5, AC-3 Access Enforcement",
+      "ISACA CISA Review Manual, Domain 5"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "ERY-005",
+    "topic": "ERY",
+    "subtopic": "Ayrıcalıklı erişim yönetimi (PAM)",
+    "difficulty": "orta",
+    "question": "Bir bankanın çekirdek bankacılık veri tabanında üç veri tabanı yöneticisi (DBA), \"sysdba\" adlı ortak bir ayrıcalıklı hesabı paylaşmakta ve parolasını ekip içinde sözlü olarak iletmektedir. Müfettiş, bu uygulamanın hesap verebilirliği (accountability) ortadan kaldırdığını tespit etmiştir. Ayrıcalıklı erişim yönetimi (Privileged Access Management, PAM) açısından en uygun düzeltici öneri hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Parolanın her ay değiştirilmesi ve yeni parolanın e-posta ile üç DBA'ya gönderilmesi"
+      },
+      {
+        "id": "B",
+        "text": "sysdba hesabının tamamen silinip tüm DBA'lara standart kullanıcı yetkisi verilmesi"
+      },
+      {
+        "id": "C",
+        "text": "Her DBA'ya kalıcı olarak kişisel bir sysdba yetkisi tanımlanıp parolanın kendisine bırakılması"
+      },
+      {
+        "id": "D",
+        "text": "Her DBA'nın her oturumda ortak hesabın parolasını yazılı bir deftere kaydettikten sonra kullanması"
+      },
+      {
+        "id": "E",
+        "text": "Ortak hesabın bir PAM kasasına (vault) alınarak parolasının gizlenmesi; her DBA'nın kendi kimliğiyle MFA sonrası ihtiyaç anında geçici oturum açması (just-in-time), parolanın her kullanım sonrası otomatik döndürülmesi ve oturumun kayıt altına alınması"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Paylaşılan ayrıcalıklı hesap sorunu iki boyutludur: kimin ne yaptığının belirlenememesi (hesap verebilirlik) ve parolanın yayılması. PAM çözümü, hesabı kasaya alıp parolayı kullanıcıdan gizler; DBA kendi kişisel kimliğiyle kasaya giriş yapıp oturumu PAM üzerinden açar, böylece iz kayıtları gerçek kişiye bağlanır. Oturum kaydı (session recording) denetim kanıtı sağlar, ihtiyaç anında geçici erişim (just-in-time) kalıcı ayrıcalığı kaldırır ve otomatik parola döndürme (rotation) sızan parolanın işe yaramamasını sağlar. BDDK düzenlemesi de ayrıcalıklı erişimlerin sıkı kontrol altında tutulmasını ve iz kayıtlarının işlemi yapan kişiye bağlanabilir olmasını bekler.",
+    "optionExplanations": {
+      "A": "Parola değişimi paylaşım sorununu çözmez; hesap hâlâ ortaktır, iz kayıtları hâlâ kişiye bağlanamaz. E-posta ile parola iletmek ayrıca yeni bir sızıntı kanalı açar.",
+      "B": "Yönetimsel görevler için ayrıcalıklı yetki kaçınılmazdır; hesabı silmek veri tabanı yönetimini imkânsız kılar. Amaç ayrıcalığı kaldırmak değil kontrol altına almaktır.",
+      "C": "Kişisel hesap izlenebilirliği artırır ancak kalıcı (standing) ayrıcalık en az ayrıcalık ilkesine aykırıdır ve üç ayrı sysdba hesabı saldırı yüzeyini genişletir; oturum kaydı ve döndürme de yoktur.",
+      "D": "Kâğıt defter manipüle edilebilir, gerçek zamanlı değildir ve teknik iz kaydı sağlamaz; parolanın bilinmesi sorununu da çözmez.",
+      "E": "Doğru. Kasa + kişisel kimlikle MFA + geçici erişim + otomatik döndürme + oturum kaydı, PAM'in temel bileşenleridir ve hesap verebilirliği sağlar."
+    },
+    "keyConcept": "PAM bileşenleri: parola kasası, kişisel kimlikle erişim (brokering), ihtiyaç anında geçici ayrıcalık, otomatik parola döndürme, oturum kaydı ve izleme.",
+    "examTip": "\"Paylaşılan admin hesabı\" geçen sorularda doğru cevap hesabı silmek değil, PAM kasası üzerinden kişiye bağlı ve kayıtlı erişim sağlamaktır.",
+    "simpleExplanation": "Üç kişinin aynı anahtarı paylaştığı bir kasa düşünün: kasa açıldığında kimin açtığını bilemezsiniz. Paylaşılan yönetici hesabı da böyledir; sistem kayıtlarında \"sysdba yaptı\" yazar ama hangi insanın yaptığı belli olmaz. Doğru çözüm anahtarı yok etmek değil (kasayı kimse açamaz), anahtarı bir güvenlik dolabına koyup her kişinin kendi kimliğiyle imza atarak geçici olarak almasını sağlamaktır. Dolap her kullanımdan sonra anahtarı değiştirir, kullanım kamerayla kaydedilir ve kişi işi bitince anahtarı geri verir. Böylece hem yönetim işi yapılabilir hem de \"kim, ne zaman, ne yaptı\" sorusu her zaman yanıtlanır.",
+    "references": [
+      "NIST SP 800-53 Rev. 5, AC-2 Account Management ve AC-6 Least Privilege",
+      "ISACA CISA Review Manual, Domain 5: Privileged Access",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "ERY-006",
+    "topic": "ERY",
+    "subtopic": "Katılım-değişim-ayrılış (joiner-mover-leaver) süreci",
+    "difficulty": "orta",
+    "question": "Bir bankada BT müfettişi, insan kaynakları (İK) sisteminden alınan son 6 aya ait işten ayrılanlar listesi ile çekirdek bankacılık sistemindeki aktif kullanıcı listesini karşılaştırmıştır. Sonuç aşağıdadır. Bu bulgu öncelikle hangi sürecin zayıflığına işaret eder ve en etkili kök neden düzeltmesi nedir?",
+    "code": "İK: İşten ayrılan      Ayrılış tarihi   Core banking hesabı   Son giriş\n------------------    --------------   -------------------   -----------\nA. Yılmaz (şube)      2026-03-15       AKTİF                 2026-04-02\nB. Kaya (operasyon)   2026-05-30       AKTİF                 giriş yok\nC. Demir (BT)         2026-06-10       PASİF                 2026-06-09\nD. Çelik (kredi)      2026-07-01       AKTİF                 2026-07-20",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ayrılış (leaver) sürecinin zayıflığı; İK sistemindeki işten çıkış kaydının, kimlik yönetimi sistemi aracılığıyla tüm uygulama hesaplarını otomatik ve aynı gün pasifleştirmesi sağlanmalıdır."
+      },
+      {
+        "id": "B",
+        "text": "Parola politikasının zayıflığı; tüm kullanıcılar için 30 günlük parola değişim zorunluluğu getirilmelidir."
+      },
+      {
+        "id": "C",
+        "text": "Katılım (joiner) sürecinin zayıflığı; yeni işe girenlere yetki verilmeden önce yönetici onayı alınmalıdır."
+      },
+      {
+        "id": "D",
+        "text": "Ağ güvenliğinin zayıflığı; şube ağına yalnızca kurumsal cihazların bağlanabilmesi için 802.1X uygulanmalıdır."
+      },
+      {
+        "id": "E",
+        "text": "Değişim (mover) sürecinin zayıflığı; birim değiştiren personelin eski yetkileri yeni birime geçtiğinde kaldırılmalıdır."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Tabloda dört ayrılan personelden üçünün hesabı hâlâ aktiftir; üstelik A. Yılmaz ve D. Çelik işten ayrılmalarından sonra sisteme giriş yapmıştır. Bu, işten ayrılan kişilerin erişiminin kapatılmadığını yani ayrılış (leaver) sürecinin çalışmadığını gösterir; ayrılış sonrası giriş yapılmış olması durumu bulgu düzeyinden olay düzeyine taşır. Kök neden düzeltmesi, İK'daki işten çıkış kaydını tetikleyici kabul edip kimlik ve erişim yönetimi (IAM) sistemi üzerinden tüm hesapları otomatik pasifleştirmektir; manuel bildirim zincirine güvenmek bu bulguyu üretmiştir. Periyodik erişim gözden geçirmesi tespit edici bir tamamlayıcı kontroldür ama kök çözüm otomasyondur.",
+    "optionExplanations": {
+      "A": "Doğru. Sorun ayrılış sürecindedir; İK → IAM otomatik tetikleme hesapların aynı gün kapatılmasını garanti eder.",
+      "B": "Parola değişim zorunluluğu, ayrılan kişinin hesabını kapatmaz; kişi yeni parolayı da belirleyebilir. Sorunun kökü hesabın var olmaya devam etmesidir.",
+      "C": "Senaryo işe girenlerle değil, işten ayrılanlarla ilgilidir; katılım süreci bulguda yer almaz.",
+      "D": "Ağ erişim kontrolü faydalı olabilir ancak ayrılan kişi kurumsal bir cihazla veya VPN'le hâlâ giriş yapabilir; uygulama hesabı açık olmaya devam eder.",
+      "E": "Mover süreci birim değiştiren çalışanlarla ilgilidir (yetki birikimi). Tablodaki kişiler kurumdan tamamen ayrılmıştır."
+    },
+    "keyConcept": "Joiner-mover-leaver (JML): işe giriş, görev değişimi ve ayrılışta yetkilerin zamanında verilmesi, güncellenmesi ve kaldırılması. Leaver'da hedef: ayrılış günü tüm erişimlerin kapatılması; İK kaydı ile IAM arasında otomatik bağlantı.",
+    "examTip": "İK listesi ile aktif kullanıcı listesinin karşılaştırılması klasik bir denetim testidir. \"Ayrılış sonrası giriş\" görürseniz bulgu ayrılış sürecindedir, parola politikasında değil.",
+    "simpleExplanation": "Bir çalışan şirketten ayrıldığında bina kartının o gün iptal edilmesi gerekir; aksi hâlde eski çalışan istediğinde içeri girebilir. Tabloda işten ayrılan dört kişiden üçünün sistem hesabı hâlâ açık ve ikisi ayrıldıktan sonra gerçekten giriş yapmış. Bu, \"ayrılan kişinin erişimini kapatma\" adımının çalışmadığını gösterir. Sorun parola kuralı veya ağ güvenliği değildir; hesap var olduğu sürece kişi girer. Kalıcı çözüm, insan kaynaklarının \"ayrıldı\" kaydını girdiği anda tüm hesapların kendiliğinden kapanmasını sağlamaktır, insanların birbirine haber vermesine güvenmek değil.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 5: Logical Access (User Access Provisioning and De-provisioning)",
+      "ISO/IEC 27001:2022, Annex A 5.18 Access rights",
+      "COBIT 2019, DSS05.04 Manage user identity and logical access"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "ERY-007",
+    "topic": "ERY",
+    "subtopic": "Periyodik erişim gözden geçirmesi ve en az ayrıcalık",
+    "difficulty": "ileri",
+    "question": "Bir banka, altı ayda bir erişim yeniden sertifikasyonu (access recertification) yapmaktadır. Süreç şöyle işler: Bilgi güvenliği ekibi her birim yöneticisine, ekibindeki kullanıcıların tüm yetkilerini içeren bir Excel listesi gönderir; yönetici 10 gün içinde yanıt vermezse yetkiler \"onaylandı\" sayılır. Son dönemde 42 yöneticiden 31'i yanıt vermemiş, yanıt verenlerin tümü listeyi değişiklik yapmadan onaylamıştır. Denetim örnekleminde, 2 yıl önce krediden hazineye geçen bir uzmanın hâlâ kredi onay yetkisi taşıdığı görülmüştür. Bu kontrolün tasarım ve işletim etkinliğine ilişkin en doğru müfettiş değerlendirmesi hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Kontrol tasarım açısından yeterlidir; yalnızca yöneticilere hatırlatma e-postası sayısı artırılmalıdır."
+      },
+      {
+        "id": "B",
+        "text": "Kontrol işletim açısından etkindir çünkü sertifikasyon dönemleri zamanında tamamlanmış ve kayıt altına alınmıştır."
+      },
+      {
+        "id": "C",
+        "text": "Kontrol tasarım açısından etkisizdir: yanıtsızlığın \"onay\" sayılması (sessiz onay) hiçbir kullanıcının yetkisinin fiilen gözden geçirilmemesine yol açar; bulgu, görev değişiminde (mover) yetki birikimini yakalayamamasıyla doğrulanmıştır. Varsayılan sonuç \"onaylanmadıysa kaldır\" olmalı, inceleme rol/işlev bazında anlamlı biçimde sunulmalı ve sonuçlar bağımsızca örneklenmelidir."
+      },
+      {
+        "id": "D",
+        "text": "Kontrol gereksizdir; en az ayrıcalık ilkesi uygulandığında periyodik gözden geçirmeye gerek kalmaz."
+      },
+      {
+        "id": "E",
+        "text": "Sorun yalnızca sıklıktadır; sertifikasyon altı ay yerine üç ayda bir yapılırsa bulgu ortadan kalkar."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Bir kontrolün etkinliği önce tasarımda sonra işletimde değerlendirilir. Burada tasarım kusurludur: yanıt verilmemesinin otomatik onay sayılması, kontrolü fiilen çalışmayan bir formaliteye dönüştürür (31/42 yönetici hiç bakmamıştır, kalan 11'i de \"toptan onay\" vermiştir; bu da anlamlı inceleme yapılmadığının göstergesidir). Kontrolün yakalaması gereken tam da birim değiştiren personelin eski yetkilerini taşıması durumuydu ve yaklaşık dört sertifikasyon dönemi boyunca yakalanamamıştır; bu, tasarım zafiyetinin somut kanıtıdır. Düzeltme: varsayılanın \"onaylanmayan yetki kaldırılır\" olması, listelerin yöneticinin anlayabileceği iş rolü dilinde ve risk bazlı (ayrıcalıklı ve finansal onay yetkileri öncelikli) sunulması, mover olaylarının ayrıca tetiklemesi ve sonuçların ikinci hat tarafından örneklenerek doğrulanması.",
+    "optionExplanations": {
+      "A": "Hatırlatma sayısını artırmak sessiz onay kusurunu gidermez; yanıt vermeyen yönetici yine \"onaylamış\" sayılır. Tasarım kusuru devam eder.",
+      "B": "Dönemlerin takvimde tamamlanmış görünmesi işletim etkinliği değildir; işletim etkinliği, kontrolün tasarlandığı gibi uygulanıp amacına ulaşmasıdır. Kredi onay yetkisinin yaklaşık dört dönem boyunca kalması amaca ulaşılmadığını gösterir.",
+      "C": "Doğru. Sessiz onay = tasarım kusuru; mover yetki birikiminin yakalanmaması kanıt; düzeltme varsayılanı tersine çevirmek ve incelemeyi anlamlı kılmaktır.",
+      "D": "Yanılgı: en az ayrıcalık bir ilkedir, periyodik gözden geçirme ise bu ilkenin zaman içinde korunduğunu doğrulayan tespit edici kontroldür. Birbirinin yerine geçmez; yetkiler görev değişimleriyle doğal olarak birikir.",
+      "E": "Sıklığı artırmak, çalışmayan bir kontrolü daha sık çalıştırmaktır. Sessiz onay sürdüğü sürece üç ayda bir yapılan inceleme de hiçbir yetkiyi kaldırmaz."
+    },
+    "keyConcept": "Erişim yeniden sertifikasyonunda varsayılan \"onaylanmayan yetki kaldırılır\" olmalı; toptan onay ve sessiz onay, kontrolün işlemediğinin göstergesidir. Tasarım etkinliği ≠ işletim etkinliği.",
+    "examTip": "\"Yanıt verilmezse onaylandı sayılır\" ifadesini görünce kontrolü tasarım aşamasında etkisiz kabul edin. Sıklık artırma veya hatırlatma ekleme seçenekleri çeldiricidir.",
+    "simpleExplanation": "Erişim gözden geçirmesi, yöneticilerin dönem dönem \"ekibimdeki herkesin yetkileri hâlâ gerekli mi?\" diye bakmasıdır. Buradaki uygulamada yönetici yanıt vermezse her şey otomatik olarak onaylanmış sayılıyor; bu, sınav kâğıdını boş veren öğrenciye tam puan vermek gibidir. Nitekim yöneticilerin dörtte üçü hiç bakmamış, bakanlar da hepsini olduğu gibi onaylamış. Sonuç olarak iki yıl önce başka birime geçen birinin eski kredi onay yetkisi kimse tarafından fark edilmemiş. Bu kontrol daha sık yapılsa veya daha çok hatırlatma gönderilse de işe yaramaz; kuralın kendisi hatalıdır. Doğrusu, onaylanmayan yetkinin varsayılan olarak kaldırılmasıdır.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 1: Control Design vs Operating Effectiveness; Domain 5: Access Rights Review",
+      "ISO/IEC 27001:2022, Annex A 5.18 Access rights",
+      "NIST SP 800-53 Rev. 5, AC-2(3) Disable Accounts ve AC-6(7) Review of User Privileges"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "ERY-008",
+    "topic": "ERY",
+    "subtopic": "Tek oturum açma (SSO) ve erişim iz kayıtları",
+    "difficulty": "ileri",
+    "question": "Bir banka, 40 iç uygulamasını SAML tabanlı tek oturum açma (Single Sign-On, SSO) altyapısına taşımıştır. Kimlik sağlayıcısı (Identity Provider, IdP) kurumsal dizine bağlıdır ve girişte MFA ister. Müfettiş aşağıdaki gözlemleri yapmıştır. Hangi gözlem, SSO mimarisinin kendine özgü en kritik riskine işaret eder ve denetim raporunda öncelikle ele alınmalıdır?",
+    "code": "G1. IdP yönetici konsoluna 3 kişi erişebilmekte; bu konsolun iz kayıtları\n    yalnızca IdP sunucusunda yerel olarak tutulmakta, merkezi SIEM'e\n    gönderilmemekte ve yerel kayıtlar 7 günde üzerine yazılmakta.\nG2. Kullanıcı giriş iz kayıtlarında başarısız denemeler tutulmakta ancak\n    başarılı girişlerde kaynak IP adresi alanı boş kalmakta.\nG3. Uygulamalardan ikisi SSO yerine hâlâ yerel kullanıcı adı/parola ile\n    çalışmakta.\nG4. SSO oturum süresi 8 saat olarak ayarlanmış; hareketsizlik zaman\n    aşımı (idle timeout) tanımlı değil.",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "G2, çünkü kaynak IP olmadan coğrafi anomali tespiti yapılamaz."
+      },
+      {
+        "id": "B",
+        "text": "G3, çünkü iki uygulamanın SSO dışında kalması kullanıcı deneyimini bozar."
+      },
+      {
+        "id": "C",
+        "text": "G4, çünkü uzun oturum süresi terminal başında bırakılan oturumların kötüye kullanılmasına yol açar."
+      },
+      {
+        "id": "D",
+        "text": "G1, çünkü IdP tüm uygulamalar için tek güven noktasıdır (single point of trust); yönetici konsolunda yapılan bir değişiklik (ör. MFA'nın kapatılması, sahte kullanıcı eklenmesi, federasyon sertifikasının değiştirilmesi) 40 uygulamayı aynı anda etkiler ve iz kayıtlarının 7 günde silinmesi bu tür bir müdahalenin tespit ve soruşturulmasını imkânsız kılar."
+      },
+      {
+        "id": "E",
+        "text": "G1, çünkü IdP konsoluna üç kişinin erişmesi görevler ayrılığı ilkesini ihlal eder."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "SSO'nun temel ödünleşimi şudur: kullanıcı deneyimi ve merkezi kontrol kazanılır ancak IdP tek bir güven noktası ve dolayısıyla tek bir arıza/ihlal noktası hâline gelir. IdP yönetici konsolunda MFA politikası gevşetilebilir, yeni kullanıcı/yetki eklenebilir veya SAML imzalama sertifikası değiştirilerek sahte onaylar (assertion) üretilebilir; bu da 40 uygulamanın tümüne yetkisiz erişim demektir. Bu tür ayrıcalıklı işlemlerin iz kayıtlarının merkezi ve değiştirilemez bir ortamda (SIEM) uzun süre saklanması, hem BDDK iz kaydı gereklilikleri hem de olay müdahalesi için zorunludur. 7 günde üzerine yazılan yerel kayıt, ihlalin ortalama tespit süresinin çok altındadır. Diğer gözlemler gerçek bulgulardır ancak etki alanları daha dardır.",
+    "optionExplanations": {
+      "A": "Kaynak IP eksikliği izleme kalitesini düşüren gerçek bir bulgudur; ancak başarılı girişlerin kim ve ne zaman olduğu hâlâ kayıtlıdır ve etkisi kullanıcı düzeyindedir, tüm güven altyapısını değiştirme riskiyle karşılaştırılamaz.",
+      "B": "SSO dışı iki uygulama kullanıcı deneyimi ve politika tutarlılığı sorunudur; yerel parolalar yönetilebilir. Bu, SSO'ya özgü kritik bir risk değil, kapsam eksikliğidir.",
+      "C": "Hareketsizlik zaman aşımının olmaması oturum ele geçirme riskini artırır; önemli ancak tek bir kullanıcının oturumuyla sınırlı bir etkidir ve ekran kilidi gibi telafi edici kontrollerle azaltılabilir.",
+      "D": "Doğru. IdP tek güven noktasıdır; yönetici işlemlerinin izlenemezliği ve kayıtların 7 günde kaybolması, 40 uygulamayı etkileyen bir müdahalenin görünmez kalması demektir.",
+      "E": "Üç yöneticinin bulunması başlı başına SoD ihlali değildir; yönetim görevleri için birden fazla yetkili olması normaldir. Asıl sorun erişimin kaç kişide olduğu değil, yaptıklarının izlenememesidir."
+    },
+    "keyConcept": "SSO'da IdP tek güven noktasıdır: ihlali tüm bağlı uygulamaları etkiler. IdP yönetici işlemleri ayrıcalıklı kabul edilip merkezi, değiştirilemez ve uzun süreli iz kaydına alınmalıdır.",
+    "examTip": "Birden fazla bulgu verilip \"en kritik\" sorulduğunda etki alanını (kaç sistem, kaç kullanıcı) ve tespit edilebilirliği karşılaştırın; merkezi altyapıyı etkileyen ve izlenemeyen bulgu genellikle öne çıkar.",
+    "simpleExplanation": "Tek oturum açma, 40 ayrı kapı için tek bir ana anahtar kullanmak gibidir. Çok pratiktir ama ana anahtarın yapıldığı atölye (kimlik sağlayıcı) ele geçirilirse 40 kapı birden açılır. Bu atölyenin yönetici panelinde kim ne yaptıysa bunun uzun süre saklanan, dışarıdan değiştirilemeyen bir kaydı olmalıdır. Oysa buradaki kayıtlar sadece 7 gün tutuluyor ve merkezi izleme sistemine gitmiyor; bir saldırgan MFA'yı kapatsa veya sahte kullanıcı eklese bir hafta sonra izi kalmaz. Diğer bulgular da gerçek sorunlardır ama etkileri tek kullanıcı veya tek uygulama ile sınırlıdır; bu bulgu ise tüm sistemin güven temelini ilgilendirir.",
+    "references": [
+      "NIST SP 800-63C, Federation and Assertions",
+      "OASIS SAML 2.0 Technical Overview",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020) - iz kayıtları",
+      "ISACA CISA Review Manual, Domain 5: Single Sign-On"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "DGY-001",
+    "topic": "DGY",
+    "subtopic": "Değişiklik talebi yaşam döngüsü",
+    "difficulty": "temel",
+    "question": "Bir bankanın çekirdek bankacılık sisteminde EFT ücret hesaplama kuralı değiştirilecektir. Değişiklik yönetimi (change management) sürecinin standart adımları aşağıda karışık sırada verilmiştir. Doğru sıralama hangisidir?",
+    "code": "I.   Değişikliğin test ortamında doğrulanması ve iş biriminin kullanıcı kabul testi (UAT)\nII.  Değişiklik talebinin (RFC) kaydedilmesi ve gerekçelendirilmesi\nIII. Üretim ortamına geçiş (deployment) ve sonrasında gözden geçirme (post-implementation review)\nIV.  Etki ve risk analizinin yapılması\nV.   Yetkili makam (ör. Değişiklik Danışma Kurulu, CAB) tarafından onaylanması",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "II - IV - I - V - III"
+      },
+      {
+        "id": "B",
+        "text": "II - IV - V - I - III"
+      },
+      {
+        "id": "C",
+        "text": "IV - II - V - I - III"
+      },
+      {
+        "id": "D",
+        "text": "II - V - IV - I - III"
+      },
+      {
+        "id": "E",
+        "text": "II - I - IV - V - III"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Değişiklik yaşam döngüsü, talebin kaydıyla (II) başlar; kayıt olmadan değerlendirilecek bir nesne yoktur. Ardından değişikliğin etkisi, riski ve kaynak ihtiyacı analiz edilir (IV); onay makamı bu analize dayanarak karar verir (V). Onaylanan değişiklik geliştirilip test ortamında doğrulanır ve iş birimi UAT yapar (I); test kanıtı olmadan üretime çıkış yetkilendirilmez. Son adım üretime geçiş ve uygulama sonrası gözden geçirmedir (III). Bazı kuruluşlar geliştirme ve test sonrasında ikinci bir \"üretime geçiş onayı\" da alır; ancak testten önce ilk onay, kaynak harcanmasının gerekçelendirilmesi için gereklidir.",
+    "optionExplanations": {
+      "A": "Testi onaydan önce koyar. Onaylanmamış bir değişiklik için geliştirme ve test kaynağı harcanması süreç disiplinine aykırıdır; değişiklik reddedilebilir.",
+      "B": "Doğru. Kayıt → etki analizi → onay → test/UAT → üretime geçiş ve gözden geçirme.",
+      "C": "Etki analizini kayıttan önce yapar; kaydı olmayan bir talebin analizi izlenebilir değildir. Değişiklik yönetiminde ilk adım her zaman talebin kayıt altına alınmasıdır.",
+      "D": "Onayı etki analizinden önce verir. CAB, etki ve risk analizini görmeden onay veremez; bilgisiz onay kontrolün anlamını ortadan kaldırır.",
+      "E": "Testi hem etki analizinden hem onaydan önce yapar; süreç kontrolü tamamen baypas edilmiş olur."
+    },
+    "keyConcept": "Değişiklik yaşam döngüsü: kayıt (RFC) → etki/risk analizi → onay (CAB) → geliştirme ve test (UAT) → üretime geçiş → uygulama sonrası gözden geçirme.",
+    "examTip": "Sıralama sorularında iki sabit nokta vardır: kayıt her zaman ilk, uygulama sonrası gözden geçirme her zaman son adımdır. Onay, analizden sonra ve testten önce gelir.",
+    "simpleExplanation": "Evinizde büyük bir tadilat yaptırmayı düşünün. Önce ne istediğinizi yazarsınız (talep kaydı). Sonra ustayla \"bu duvar yıkılırsa ne olur, kaça çıkar?\" diye değerlendirirsiniz (etki analizi). Ardından aile olarak karar verip onay verirsiniz (onay). Onaydan sonra işi yaptırır ve teslim almadan önce kontrol edersiniz (test). En son taşınır ve bir süre sonra \"iyi oldu mu?\" diye bakarsınız (üretime geçiş ve gözden geçirme). Onaylanmamış bir iş için önce malzeme alıp sonra izin istemek nasıl mantıksızsa, test edip sonra onay almak da öyledir.",
+    "references": [
+      "ITIL 4, Change Enablement practice",
+      "COBIT 2019, BAI06 Managed IT Changes",
+      "ISACA CISA Review Manual, Domain 3: Change Management"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "DGY-002",
+    "topic": "DGY",
+    "subtopic": "Ortam ayrımı (geliştirme/test/üretim)",
+    "difficulty": "temel",
+    "question": "Bir bankanın mobil bankacılık ekibinde geliştiriciler, hata ayıklamayı hızlandırmak için üretim (production) veri tabanının tam bir kopyasını maskeleme yapmadan geliştirme (development) ortamına almış ve geliştirme sunucularına doğrudan üretim veri tabanı bağlantı bilgilerini de yerleştirmiştir. Bu durumla ilgili en doğru değerlendirme hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Üretim verisi geliştirme ortamına kopyalandığı için testlerin gerçekçiliği artar; bu kabul edilebilir bir iyi uygulamadır."
+      },
+      {
+        "id": "B",
+        "text": "Tek sorun lisans maliyetidir; geliştirme ortamında ek veri tabanı lisansı gerekir."
+      },
+      {
+        "id": "C",
+        "text": "Geliştirme ortamında daha zayıf kontroller bulunduğundan maskelenmemiş müşteri verisi gizlilik ihlali riski yaratır; üretim bağlantı bilgilerinin geliştirme ortamında bulunması ise geliştiricilerin değişiklik süreci dışında üretim verisini doğrudan değiştirmesine yol açabilir. Ortamlar mantıksal ve ağ düzeyinde ayrılmalı, test verisi maskelenmelidir."
+      },
+      {
+        "id": "D",
+        "text": "Geliştirme ve üretim ortamlarının ayrı olması yeterlidir; veri kopyası ve bağlantı bilgileri ortam ayrımını etkilemez."
+      },
+      {
+        "id": "E",
+        "text": "Risk yalnızca performansla ilgilidir; geliştirme sorguları üretim veri tabanını yavaşlatabilir."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Ortam ayrımının iki amacı vardır: üretim verisinin gizliliğini ve bütünlüğünü korumak ve her değişikliğin test edilip onaylanarak üretime ulaşmasını garanti etmek. Geliştirme ortamları genellikle daha geniş kullanıcı erişimi, daha zayıf izleme ve daha gevşek yama düzeyine sahiptir; buraya maskelenmemiş müşteri verisi (kimlik numarası, bakiye, kart bilgisi) taşımak KVKK ve BDDK gereklilikleri açısından gizlilik riskidir. Üretim bağlantı bilgilerinin geliştirme ortamında bulunması ise daha ciddidir: geliştirici kod üzerinden veya hata ile üretim verisini değişiklik süreci dışında değiştirebilir. Doğru uygulama: ağ ve kimlik düzeyinde ayrılmış ortamlar, geliştiricilerin üretime erişiminin olmaması, veri maskeleme veya sentetik test verisi kullanımı.",
+    "optionExplanations": {
+      "A": "Gerçekçi test verisi ihtiyacı maskeleme (data masking) veya sentetik veri ile karşılanır; ham müşteri verisini zayıf korunan ortama taşımak kabul edilebilir bir uygulama değildir.",
+      "B": "Lisans ikincil bir konudur; asıl risk müşteri verisinin gizliliği ve üretim ortamına kontrolsüz erişimdir.",
+      "C": "Doğru. Gizlilik riski (maskelenmemiş veri) ve bütünlük/değişiklik kontrolü riski (üretim bağlantı bilgileri) birlikte tanımlanmış, düzeltme belirtilmiştir.",
+      "D": "Ortam ayrımı yalnızca farklı sunucular demek değildir; veri ve kimlik bilgilerinin ortamlar arasında taşınması ayrımı fiilen ortadan kaldırır.",
+      "E": "Performans etkisi olabilir ancak esas sorun değildir; gizlilik ve değişiklik kontrolünün baypas edilmesi performans sorununun çok önündedir."
+    },
+    "keyConcept": "Geliştirme, test ve üretim ortamları ağ, kimlik ve veri düzeyinde ayrılmalı; geliştiricilerin üretime erişimi olmamalı; test verisi maskelenmeli veya sentetik olmalıdır.",
+    "examTip": "\"Üretim verisi geliştirme ortamına kopyalandı\" ifadesi gördüğünüzde iki riski birden düşünün: gizlilik (maskeleme yok) ve bütünlük (üretime geri yazma yolu).",
+    "simpleExplanation": "Geliştirme ortamı, aşçıların yeni tarifleri denediği bir deneme mutfağı gibidir: daha dağınıktır, daha çok kişi girer çıkar, kontroller gevşektir. Gerçek müşterilerin kimlik numaralarını ve bakiyelerini olduğu gibi bu mutfağa taşımak, müşteri bilgilerini korunmasız bir yere koymak demektir. Daha da kötüsü, deneme mutfağından gerçek restoranın kilerine açılan bir kapı bırakılmış (üretim bağlantı bilgileri); bir geliştirici yanlışlıkla veya kötü niyetle gerçek verileri değiştirebilir. Doğru uygulama, deneme için gerçekçi ama maskelenmiş sahte veri kullanmak ve iki ortam arasındaki tüm kapıları kapatmaktır.",
+    "references": [
+      "ISO/IEC 27001:2022, Annex A 8.31 Separation of development, test and production environments",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020)",
+      "ISACA CISA Review Manual, Domain 3"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "DGY-003",
+    "topic": "DGY",
+    "subtopic": "Geliştiricinin doğrudan üretime dağıtım yapması",
+    "difficulty": "orta",
+    "question": "Bir bankada kıdemli bir geliştirici, müşterilerden gelen şikâyet üzerine internet bankacılığındaki bir görüntüleme hatasını kendi geliştirme makinesinde düzeltip, sahip olduğu üretim sunucusu erişimiyle kodu doğrudan üretime kopyalamıştır. Değişiklik için kayıt açılmamış, test yapılmamıştır. Düzeltme çalışmış ve müşteri şikâyetleri kesilmiştir. BT müfettişi bu olayı nasıl değerlendirmelidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Sonuç olumlu olduğu için bulgu yazılmaz; geliştiricinin inisiyatifi takdir edilir."
+      },
+      {
+        "id": "B",
+        "text": "Acil değişiklik (emergency change) olarak kabul edilir; acil değişikliklerde kayıt ve test zorunlu değildir."
+      },
+      {
+        "id": "C",
+        "text": "Yalnızca test eksikliği bulgu yazılır; geliştiricinin üretim erişimi normaldir."
+      },
+      {
+        "id": "D",
+        "text": "Geliştirici, iş birimiyle sonradan yazılı mutabakat sağlarsa değişiklik geçerli sayılır."
+      },
+      {
+        "id": "E",
+        "text": "Yetkisiz değişiklik (unauthorized change) olarak raporlanır. Sonucun olumlu olması süreç ihlalini ortadan kaldırmaz; kök neden, geliştiricinin üretime yazma erişimine sahip olmasıdır (görevler ayrılığı ihlali). Üretime dağıtım yetkisi geliştiricilerden alınmalı, bağımsız bir ekip veya onaya bağlı otomatik dağıtım hattı kullanılmalı ve değişiklik sonradan kayıt altına alınıp gözden geçirilmelidir."
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Değişiklik yönetiminin amacı tek bir değişikliğin başarısı değil, tüm değişikliklerin kontrollü, test edilmiş, onaylı ve izlenebilir olmasıdır. Bu olayda kayıt, test ve onay adımlarının hiçbiri yoktur; bu yüzden tanım gereği yetkisiz değişikliktir. Daha önemlisi, geliştiricinin üretime yazabilmesi geliştirme ile dağıtım görevlerinin aynı kişide birleşmesidir; bu yetki aynı kişinin kötü niyetli kod (ör. kendi hesabına yuvarlama farkı aktaran kod) yerleştirmesine de imkân tanır. Denetçi kontrol ortamını değerlendirir; \"bu kez iyi bitti\" argümanı kontrol zafiyetini gidermez. Acil değişiklikler bile kayıt, asgari test, sözlü/hızlı onay ve sonradan CAB gözden geçirmesi gerektirir.",
+    "optionExplanations": {
+      "A": "Denetim sonuç değil süreç ve kontrol odaklıdır; başarılı bir yetkisiz değişiklik, kontrolün çalışmadığının kanıtıdır ve aynı yol kötü niyetli kullanılabilir.",
+      "B": "Acil değişiklik, kaydı ve onayı kaldırmaz; süreyi kısaltır. Ayrıca bir görüntüleme hatası acil değişiklik kriterlerini (hizmet kesintisi, güvenlik olayı) karşılamaz.",
+      "C": "Geliştiricinin üretime yazma erişimi normal değildir; görevler ayrılığı ilkesine göre geliştirme ve dağıtım farklı kişilerde olmalıdır. Kök neden tam da bu erişimdir.",
+      "D": "Sonradan mutabakat, değişikliği geriye dönük yetkili kılmaz; test ve onay adımları yaşanmamıştır, kod incelenmemiştir. Yalnızca kayıt altına alınıp gözden geçirilmesi için bir başlangıç olabilir.",
+      "E": "Doğru. Yetkisiz değişiklik + görevler ayrılığı ihlali tespiti ve erişim/süreç düzeltmesi birlikte verilmiştir."
+    },
+    "keyConcept": "Yetkisiz değişiklik: kayıt, test veya onay olmadan üretime alınan değişiklik. Kök neden genellikle geliştiricinin üretime yazma yetkisidir; geliştirme ve dağıtım görevleri ayrılmalıdır.",
+    "examTip": "\"Çalıştı, sorun çözüldü\" ifadesi çeldiricidir. Denetçi her zaman kontrol ortamına bakar; başarılı sonuç yetkisiz değişikliği meşrulaştırmaz.",
+    "simpleExplanation": "Bir hastanede doktorun onay almadan, kayıt tutmadan ve test yapmadan bir hastaya yeni ilaç vermesi, hasta iyileşse bile ciddi bir kural ihlalidir; çünkü aynı yol başka bir gün zarar da verebilir. Buradaki geliştirici de aynısını yapmıştır: kayıt yok, test yok, onay yok. Üstelik bunu yapabilmesi, üretim sistemine doğrudan yazma yetkisi olduğunu gösterir; bu yetki kötü niyetli bir kodu da aynı kolaylıkla sisteme sokabilir. Müfettiş sonuca değil, sürece bakar: bu olay yetkisiz değişikliktir ve kök çözüm geliştiricilerin üretime yazma yetkisinin alınmasıdır.",
+    "references": [
+      "COBIT 2019, BAI06 Managed IT Changes",
+      "ISACA CISA Review Manual, Domain 3: Unauthorized Changes and Segregation of Duties",
+      "ITIL 4, Change Enablement practice"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "DGY-004",
+    "topic": "DGY",
+    "subtopic": "Acil değişiklik yönetimi",
+    "difficulty": "orta",
+    "question": "Cumartesi gecesi bir bankanın ATM yönlendirme (switch) uygulaması bellek sızıntısı nedeniyle çökmekte ve ATM'ler hizmet verememektedir. Nöbetçi ekip, yazılım sağlayıcısından gelen bir yamanın sorunu çözdüğünü tespit etmiştir. Normal değişiklik süreci iki haftalık CAB döngüsü gerektirmektedir. Acil değişiklik (emergency change) prosedürüne en uygun eylem dizisi hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Yama hiçbir onay beklenmeden uygulanır; hizmet önceliklidir ve acil durumlarda değişiklik kaydı tutulmaz."
+      },
+      {
+        "id": "B",
+        "text": "Yama, pazartesi günü toplanacak olağan CAB'a sunulur; o zamana kadar ATM'ler kapalı kalır."
+      },
+      {
+        "id": "C",
+        "text": "Acil değişiklik kaydı açılır; önceden tanımlanmış acil değişiklik onay makamı (ECAB, ör. nöbetçi BT yöneticisi ve iş birimi temsilcisi) hızlı onay verir; yama mümkünse test ortamında kısa bir duman testinden (smoke test) geçirilir; geri alma planı hazır tutulur; yama uygulanır ve değişiklik ilk CAB toplantısında geriye dönük olarak gözden geçirilir."
+      },
+      {
+        "id": "D",
+        "text": "Yama yalnızca ATM'lerin yarısına uygulanır; diğer yarısı için normal süreç beklenir."
+      },
+      {
+        "id": "E",
+        "text": "Yamayı uygulamak yerine uygulama her 30 dakikada bir yeniden başlatılır; böylece değişiklik yapılmadan sorun yönetilir ve hiçbir kayıt gerekmez."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Acil değişiklik, normal sürecin süresini kısaltır ancak kontrolleri kaldırmaz. Temel unsurlar: olay yönetimiyle ilişkilendirilmiş bir değişiklik kaydı, önceden yetkilendirilmiş küçük bir acil onay makamı (Emergency CAB), mümkün olan asgari test, hazır geri alma planı ve sonradan tam CAB gözden geçirmesi (retrospective review). Bu gözden geçirme, acil yolun kötüye kullanılmasını (normal değişikliklerin \"acil\" etiketiyle süreçten kaçırılması) denetlemek için kritiktir. Denetçi, acil değişiklik oranının yüksekliğini ve geriye dönük onayların yapılmamasını bulgu olarak değerlendirir.",
+    "optionExplanations": {
+      "A": "Kayıt tutulmaması acil değişikliği yetkisiz değişikliğe dönüştürür; ne olduğu, kimin yaptığı ve geri alınabilirliği izlenemez.",
+      "B": "Acil değişiklik prosedürünün var olma nedeni tam da bu beklemeyi önlemektir; ATM hizmetinin iki gün kapalı kalması iş etkisi açısından kabul edilemez.",
+      "C": "Doğru. Kayıt + hızlı yetkili onay + asgari test + geri alma planı + geriye dönük CAB incelemesi, acil değişikliğin tüm bileşenleridir.",
+      "D": "Kısmi uygulama ne acil sorunu tam çözer ne de süreç kontrolü sağlar; ayrıca aynı yazılımın iki farklı sürümde çalışması konfigürasyon tutarsızlığı yaratır.",
+      "E": "Geçici bir çözüm (workaround) olabilir ancak kök nedeni gidermez; bellek sızıntısı devam eder ve periyodik yeniden başlatma da hizmet kesintisi üretir. Ayrıca bu da kayıt altına alınması gereken bir müdahaledir."
+    },
+    "keyConcept": "Acil değişiklik: süre kısalır, kontroller kalkmaz. Kayıt, ECAB onayı, asgari test, geri alma planı ve geriye dönük CAB gözden geçirmesi zorunludur.",
+    "examTip": "Acil değişiklik sorularında \"onay yok / kayıt yok\" seçenekleri ile \"normal süreci bekle\" seçenekleri her ikisi de yanlıştır; doğru cevap hızlandırılmış ama kayıtlı ve sonradan gözden geçirilen yoldur.",
+    "simpleExplanation": "Evde gece yarısı su borusu patladığında tesisatçı çağırmak için haftalık aile toplantısını beklemezsiniz; ama yine de ne yapıldığını bir yere yazar, eşinizi arayıp haber verir ve sabah hasarı gözden geçirirsiniz. Acil değişiklik de böyledir: süreç hızlanır ama ortadan kalkmaz. Kayıt açılır, önceden belirlenmiş küçük bir onay grubu hızlı karar verir, mümkünse kısa bir deneme yapılır, bir şey ters giderse geri alma planı hazır bekler ve iş bittiğinde normal kurul olayı sonradan inceler. \"Hiç kayıt tutma\" da, \"pazartesiye kadar bekle\" de yanlış uçlardır.",
+    "references": [
+      "ITIL 4, Change Enablement practice (emergency changes)",
+      "COBIT 2019, BAI06.02 Manage emergency changes",
+      "ISACA CISA Review Manual, Domain 3"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "DGY-005",
+    "topic": "DGY",
+    "subtopic": "Yetkisiz değişiklik tespiti ve sürüm kontrolü",
+    "difficulty": "orta",
+    "question": "Bir BT müfettişi, çekirdek bankacılık uygulamasının üretim sunucusundaki çalıştırılabilir dosyaların özet (hash) değerlerini, sürüm kontrol sisteminde (version control) etiketlenmiş son onaylı sürümün derleme çıktısı ile karşılaştırmıştır. Ayrıca değişiklik kayıtlarını incelemiştir. Sonuç aşağıdadır. Hangi modül için yetkisiz değişiklik şüphesi en güçlüdür?",
+    "code": "Modül          Üretim hash    Onaylı sürüm hash   Son onaylı değişiklik kaydı\n-------------  -------------  ------------------  ---------------------------\nkredi.dll      a1f3...9c      a1f3...9c           CHG-2210 (2026-05-02)\nhavale.dll     7e22...b4      7e22...b4           CHG-2241 (2026-06-14)\nfaiz.dll       c9d0...11      5b7a...e8           kayıt yok (son: CHG-1980, 2026-01-09)\nrapor.dll      d4e5...77      d4e5...77           CHG-2250 (2026-07-01)\nkart.dll       08aa...f0      3c3c...02           CHG-2263 (2026-07-18, durumu: \"onaylandı, dağıtım bekliyor\")",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "kredi.dll, çünkü değişiklik kaydı en eski tarihlidir."
+      },
+      {
+        "id": "B",
+        "text": "kart.dll, çünkü onaylı bir değişiklik kaydı vardır ve dağıtımı beklemektedir."
+      },
+      {
+        "id": "C",
+        "text": "faiz.dll, çünkü üretimdeki dosya onaylı sürümle eşleşmemekte ve ocak ayından bu yana bu modül için hiçbir değişiklik kaydı bulunmamaktadır; üretimdeki kod bilinmeyen bir kaynaktan gelmiştir."
+      },
+      {
+        "id": "D",
+        "text": "rapor.dll, çünkü değişiklik tarihi en yenidir ve henüz uygulama sonrası gözden geçirme yapılmamış olabilir."
+      },
+      {
+        "id": "E",
+        "text": "havale.dll, çünkü havale modülü finansal açıdan en riskli modüldür."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Yetkisiz değişiklik tespitinin temel tekniği, üretimde çalışan kodun sürüm kontrolündeki onaylı kaynaktan üretilen çıktıyla (hash karşılaştırması) ve değişiklik kayıtlarıyla mutabakatıdır. faiz.dll'de üretim hash'i onaylı sürümden farklıdır ve bu farkı açıklayacak bir değişiklik kaydı yoktur; bu iki koşulun birlikte sağlanması yetkisiz değişikliğin klasik göstergesidir. kart.dll'de de hash farkı vardır ancak orada onaylı ve dağıtım bekleyen bir değişiklik kaydı bulunmaktadır; büyük olasılıkla dağıtım yapılmış ancak kayıt durumu güncellenmemiştir (bu da bir bulgudur ama süreç/kayıt tutarsızlığı niteliğindedir, yetkisiz değişiklik şüphesi daha zayıftır). Diğer üç modülde hash'ler eşleşmektedir.",
+    "optionExplanations": {
+      "A": "Hash eşleşiyor; eski tarihli kayıt bir sorun değildir, modül uzun süredir değişmemiştir.",
+      "B": "Hash farkı vardır ancak onaylı bir değişiklik kaydı mevcuttur; en olası açıklama dağıtımın yapılıp kaydın kapatılmamasıdır. Bu bir kayıt disiplini bulgusudur ama şüphe faiz.dll'den zayıftır.",
+      "C": "Doğru. Hash uyumsuzluğu + açıklayan değişiklik kaydının yokluğu = yetkisiz değişiklik şüphesi.",
+      "D": "Hash eşleşiyor; değişiklik onaylı ve dağıtılmıştır. Gözden geçirmenin yapılmamış olması ihtimali yetkisiz değişiklik demek değildir.",
+      "E": "Modülün finansal önemi şüpheyi belirlemez; hash eşleşiyor ve değişiklik kayıtlıdır."
+    },
+    "keyConcept": "Yetkisiz değişiklik tespiti: üretim kodu ↔ sürüm kontrolündeki onaylı sürüm (hash/bütünlük kontrolü) ↔ değişiklik kayıtları üçlü mutabakatı. Hash farkı + kayıt yokluğu = yetkisiz değişiklik.",
+    "examTip": "Tabloda iki koşulu birlikte arayın: (1) üretim ile onaylı sürüm farklı mı, (2) farkı açıklayan onaylı kayıt var mı. Yalnızca ikisi birden sağlanan satır cevaptır.",
+    "simpleExplanation": "Bir eczanede raftaki ilaçların seri numaralarını depo kayıtlarıyla karşılaştırdığınızı düşünün. Numara tutuyorsa sorun yok. Numara tutmuyor ama elinizde \"bu ilaç yeni geldi, kaydı işleniyor\" diye bir not varsa muhtemelen gecikmiş bir kayıttır. Numara tutmuyor ve hiçbir açıklayıcı belge yoksa, o ilaç rafa nereden geldi sorusu ciddi bir şüphedir. faiz.dll tam bu durumdadır: üretimdeki dosya onaylı sürümle uyuşmuyor ve ocaktan beri bu modül için hiçbir değişiklik kaydı yok. Hash farkı ile kayıt yokluğunun birlikte görülmesi, yetkisiz değişikliğin en güçlü işaretidir.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 3: Detecting Unauthorized Changes",
+      "COBIT 2019, BAI10 Managed Configuration",
+      "NIST SP 800-53 Rev. 5, CM-3 Configuration Change Control ve SI-7 Software Integrity"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "DGY-006",
+    "topic": "DGY",
+    "subtopic": "Geri alma planı ve dağıtım stratejisi",
+    "difficulty": "orta",
+    "question": "Bir banka, mobil bankacılık arka ucunda veri tabanı şemasını da değiştiren büyük bir sürümü üretime alacaktır. Dağıtım planında \"sorun çıkarsa önceki sürüme dönülecek\" ifadesi dışında ayrıntı yoktur. CAB üyesi olan BT müfettişi, geri alma (rollback) planına ilişkin hangi eksikliği öncelikle gündeme getirmelidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Geri alma planı gereksizdir; sürüm test ortamında başarılı olduğu için üretimde de sorun çıkmayacağı varsayılabilir."
+      },
+      {
+        "id": "B",
+        "text": "Geri alma yalnızca uygulama kodunu eski sürüme döndürmekten ibaret kabul edilmiştir; oysa şema değişikliği geri alınmazsa eski kod yeni şemayla çalışmaz ve yeni şemaya yazılmış işlem verisi kaybolabilir. Plan, şema geri dönüş betiklerini, dağıtım öncesi tutarlı yedeği, verinin geri dönüşte nasıl korunacağını, geri alma karar kriterlerini (go/no-go) ve geri almanın test ortamında denendiğini içermelidir."
+      },
+      {
+        "id": "C",
+        "text": "Geri alma planı yalnızca dağıtımdan sonraki ilk 24 saat için gereklidir; sonrasında geri dönüş mümkün değildir."
+      },
+      {
+        "id": "D",
+        "text": "Geri alma planı CAB'ın değil yalnızca geliştirme ekibinin sorumluluğundadır; CAB bunu değerlendirmez."
+      },
+      {
+        "id": "E",
+        "text": "Geri alma yerine dağıtım iki katına çıkarılmış sunucu kapasitesiyle yapılmalıdır; kapasite yeterliyse geri almaya ihtiyaç kalmaz."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Şema değişikliği içeren dağıtımlarda geri alma, kodu değiştirmekten çok daha karmaşıktır: yeni şemaya göre yazılmış veriler eski şemaya sığmayabilir, eski kod yeni tablo/sütunları tanımaz. Bu nedenle etkili bir geri alma planı şunları içermelidir: dağıtım öncesi tutarlı yedek ve geri yükleme süresi, şema geri dönüş (down migration) betikleri, geçiş süresinde üretilen verinin nasıl korunacağı (ör. geriye uyumlu şema tasarımı, expand-contract yaklaşımı), kimin hangi ölçütlere göre geri alma kararı vereceği ve geri alma adımlarının test ortamında fiilen denenmiş olması. CAB, değişikliğin riskini değerlendirirken geri alınabilirliği temel ölçüt olarak ele alır; denenmemiş bir geri alma planı plan değil niyettir.",
+    "optionExplanations": {
+      "A": "Test ortamı üretimle veri hacmi, yük ve konfigürasyon açısından asla tam eşdeğer değildir; geri alma planı tam da bu belirsizlik için vardır.",
+      "B": "Doğru. Şema geri dönüşü, yedek, veri koruma, karar kriterleri ve denenmiş prosedür eksiklikleri birlikte tanımlanmıştır.",
+      "C": "Geri alma penceresi değişikliğin niteliğine göre belirlenir; 24 saat gibi keyfi bir sınır yoktur. Ayrıca asıl eksiklik sürenin değil planın içeriğidir.",
+      "D": "CAB'ın görevi tam olarak risk, etki ve geri alınabilirliği değerlendirmektir; geri alma planı olmayan bir değişikliğe onay vermemek CAB'ın sorumluluğudur.",
+      "E": "Kapasite artışı performans sorunlarını hafifletebilir ama mantıksal hataları veya veri bozulmasını gidermez; geri almanın yerini tutmaz."
+    },
+    "keyConcept": "Geri alma planı: dağıtım öncesi yedek, kod ve şema geri dönüş adımları, veri koruma stratejisi, karar kriterleri ve test edilmiş prosedür. Şema değişiklikleri geri almayı zorlaştırır.",
+    "examTip": "\"Veri tabanı şeması değişiyor\" ifadesi varsa geri alma sorularında odak kod değil veridir: eski kod yeni şemayla çalışır mı, yeni veriler ne olacak?",
+    "simpleExplanation": "Bir evi yenilerken sadece duvar rengini değiştirdiyseniz geri dönmek kolaydır: eski renge boyarsınız. Ama duvarları yıkıp odaları yeniden böldüyseniz \"eski hâline döneriz\" demek yetmez; eski eşyalar yeni odalara sığmayabilir. Veri tabanı şeması değiştiğinde de durum budur: eski program yeni tabloları tanımaz ve yeni düzende girilmiş veriler eski düzene geri taşınamayabilir. Bu yüzden geri alma planı, kodu eski sürüme almaktan fazlasını içermelidir: dağıtım öncesi yedek, şemayı geri döndüren betikler, aradaki verilerin ne olacağı, kimin ne zaman geri alma kararı vereceği ve bu adımların önceden denendiği.",
+    "references": [
+      "ITIL 4, Deployment Management ve Change Enablement practices",
+      "COBIT 2019, BAI07 Managed IT Change Acceptance and Transitioning",
+      "ISACA CISA Review Manual, Domain 3: Release Management"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "DGY-007",
+    "topic": "DGY",
+    "subtopic": "Yama yönetimi",
+    "difficulty": "ileri",
+    "question": "Bir bankanın yama yönetimi (patch management) politikası, kritik güvenlik yamalarının 14 gün, yüksek önemdeki yamaların 30 gün içinde uygulanmasını öngörür. Müfettiş, internete açık internet bankacılığı sunucuları için aşağıdaki tabloyu elde etmiştir (denetim tarihi: 2026-09-30). Hangi tespit, politika uyumu ve risk açısından en doğru ve eksiksizdir?",
+    "code": "Sunucu   Yama        Önem      Yayın tarihi   Uygulama tarihi   Not\n-------  ----------  --------  -------------  ----------------  ---------------------------------\nWEB-01   CVE-A       Kritik    2026-08-20     2026-08-29        -\nWEB-02   CVE-A       Kritik    2026-08-20     uygulanmadı       \"Yük dengeleyici arkasında, risk düşük\"\nAPP-01   CVE-B       Yüksek    2026-08-05     2026-09-20        -\nAPP-02   CVE-B       Yüksek    2026-08-05     uygulanmadı       Yazılı risk kabulü var (CISO, 2026-09-01,\n                                                                 telafi edici kontrol: WAF imzası)\nDB-01    CVE-C       Kritik    2026-09-25     uygulanmadı       Test devam ediyor",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tüm uygulanmamış yamalar (WEB-02, APP-02, DB-01) aynı ağırlıkta politika ihlalidir."
+      },
+      {
+        "id": "B",
+        "text": "WEB-02 kritik yamanın 41 gün uygulanmaması, yük dengeleyicinin istismarı engellediğine ilişkin kayıtlı bir risk kabulü veya telafi edici kontrol analizi olmadan yapılmış bir gerekçeyle politika ihlalidir ve internete açık sunucuda en yüksek risktir. APP-01, 46 günde uygulanarak 30 günlük süreyi aşmıştır. APP-02 belgelenmiş risk kabulü ve telafi edici kontrol ile politikaya uygundur ancak kabulün süresi ve WAF imzasının etkinliği doğrulanmalıdır. DB-01 henüz 5 gündür beklemekte, 14 günlük süre içindedir."
+      },
+      {
+        "id": "C",
+        "text": "Yalnızca DB-01 bulgudur çünkü kritik bir yama veri tabanı sunucusunda hâlâ beklemektedir."
+      },
+      {
+        "id": "D",
+        "text": "APP-02 en ciddi bulgudur çünkü yama uygulanmamış ve bunun yerine yalnızca WAF'a güvenilmiştir; risk kabulü yamayı uygulama zorunluluğunu kaldırmaz."
+      },
+      {
+        "id": "E",
+        "text": "Hiçbir bulgu yoktur; WEB-01 ve APP-01 yamaları uygulanmış, diğerleri için makul gerekçeler bulunmaktadır."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Her satır politikadaki süre ile karşılaştırılır. WEB-01: 9 gün ≤ 14, uygun. WEB-02: 20 Ağustos'tan 30 Eylül'e 41 gün, kritik yama uygulanmamış; \"yük dengeleyici arkasında\" ifadesi resmî bir risk kabulü değildir, yük dengeleyici uygulama katmanı zafiyetini engellemez ve aynı zafiyet WEB-01'de yamalanmak zorunda görülmüştür; internete açık sunucuda bu en yüksek riskli bulgudur. APP-01: 5 Ağustos'tan 20 Eylül'e 46 gün > 30, süre aşımı bulgusudur (uygulanmış olsa da geç). APP-02: politika istisnası yetkili makam (CISO) tarafından yazılı olarak ve telafi edici kontrolle belgelenmiştir; bu, yama yönetimi politikasında kabul edilen bir yoldur, ancak denetçi istisnanın son kullanma tarihini ve WAF imzasının zafiyeti gerçekten kapattığını test etmelidir. DB-01: 25 Eylül'de yayınlanmış, 5 gün geçmiş, 14 günlük süre içindedir; test yapılması beklenen davranıştır.",
+    "optionExplanations": {
+      "A": "Uygulanmamış yamalar eşit değildir: DB-01 hâlâ süre içindedir, APP-02 belgelenmiş istisnadır, WEB-02 ise gerekçesiz süre aşımıdır. Denetçi risk bazlı ayrım yapar.",
+      "B": "Doğru. Her sunucu için süre hesabı yapılmış, resmî risk kabulü ile gayriresmî gerekçe ayrılmış, en yüksek risk doğru önceliklendirilmiştir.",
+      "C": "DB-01 yayından 5 gün sonra hâlâ test aşamasındadır; 14 günlük politika süresi dolmamıştır. Asıl ihlaller WEB-02 ve APP-01'dir.",
+      "D": "Yetkili makamca belgelenmiş, telafi edici kontrol içeren risk kabulü, politika çerçevesinde geçerli bir istisna yoludur. Denetçi istisnayı sorgular ama bu, gerekçesiz ve kayıtsız WEB-02'den daha ciddi değildir.",
+      "E": "APP-01 46 günde uygulanmıştır (30 gün sınırı aşılmış), WEB-02 ise 41 gündür kritik yamasızdır ve gerekçesi resmî değildir; bulgular mevcuttur."
+    },
+    "keyConcept": "Yama yönetimi denetimi: yayın-uygulama süresi politika SLA'sı ile karşılaştırılır; istisnalar yalnızca yetkili ve belgelenmiş risk kabulü + telafi edici kontrol ile geçerlidir; internete açık varlıklar önceliklidir.",
+    "examTip": "Tabloda tarih farklarını tek tek hesaplayın; \"uygulanmadı\" yazan her satır otomatik bulgu değildir, süre ve belgelenmiş istisna durumuna bakın.",
+    "simpleExplanation": "Yama politikası bir son kullanma tarihi gibidir: kritik yama 14 günde, yüksek önemli yama 30 günde uygulanmalıdır. Her satır için takvimle gün sayarsınız. WEB-02'de kritik yama 41 gündür uygulanmamış ve gerekçe olarak sadece \"zaten koruma var\" denmiş; bu, kaydı ve onayı olmayan kişisel bir yorumdur ve sunucu internete açıktır, en ciddi bulgu budur. APP-01 yamayı almış ama 46 günde, yani geç. APP-02'de yama yok ama yetkili kişi yazılı olarak riski kabul etmiş ve ek bir koruma koymuş; bu kabul edilebilir bir istisnadır, yine de müfettiş süresini ve etkinliğini sorgular. DB-01 ise yalnızca 5 gündür bekliyor, hâlâ süresi içinde.",
+    "references": [
+      "NIST SP 800-40 Rev. 4, Guide to Enterprise Patch Management Planning",
+      "ISO/IEC 27001:2022, Annex A 8.8 Management of technical vulnerabilities",
+      "ISACA CISA Review Manual, Domain 4: Patch Management"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "DGY-008",
+    "topic": "DGY",
+    "subtopic": "Konfigürasyon yönetimi ve CMDB",
+    "difficulty": "ileri",
+    "question": "Bir bankada felaket kurtarma (DR) tatbikatı sırasında, DR merkezindeki çekirdek bankacılık uygulama sunucularından ikisinin üretimden farklı bir Java sürümüyle çalıştığı ve bir ara katman parametresinin eksik olduğu görülmüş, tatbikat başarısız olmuştur. İnceleme, bu parametre değişikliğinin 4 ay önce üretime onaylı bir değişiklikle alındığını ancak DR sunucularına yansıtılmadığını ve konfigürasyon yönetim veri tabanının (CMDB) hâlâ eski Java sürümünü gösterdiğini ortaya koymuştur. Bu durumun kök nedenini ve en etkili düzeltici kontrolü en iyi tanımlayan seçenek hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Kök neden DR tatbikatının yetersiz planlanmasıdır; tatbikatlar yılda bir yerine iki kez yapılmalıdır."
+      },
+      {
+        "id": "B",
+        "text": "Kök neden, değişiklik yönetimi ile konfigürasyon yönetiminin entegre olmamasıdır: onaylı değişiklik, etkilediği tüm konfigürasyon öğelerini (üretim ve DR sunucuları) kapsamadan kapatılmış ve CMDB güncellenmemiştir. Düzeltme, değişiklik kaydının kapatılmasını ilgili tüm CI'ların ve CMDB'nin güncellenmesine bağlamak, üretim-DR konfigürasyon farklarını otomatik tarayıp raporlayan sürüklenme (drift) tespit kontrolü kurmak ve CMDB doğruluğunu periyodik keşif taramasıyla doğrulamaktır."
+      },
+      {
+        "id": "C",
+        "text": "Kök neden Java sürüm uyumsuzluğudur; tüm sunucularda otomatik güncelleme açılmalıdır."
+      },
+      {
+        "id": "D",
+        "text": "Kök neden CMDB aracının eski olmasıdır; yeni bir CMDB yazılımı satın alınmalıdır."
+      },
+      {
+        "id": "E",
+        "text": "Kök neden DR ekibinin ihmalidir; ilgili personele disiplin işlemi uygulanmalıdır."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Olayın kök nedeni tek bir sunucu veya kişi değil, süreçler arasındaki bağın eksikliğidir. Değişiklik yönetimi \"ne değişti ve onaylandı mı\" sorusunu, konfigürasyon yönetimi ise \"hangi öğeler hangi durumda\" sorusunu yanıtlar. Üretime alınan bir değişiklik, DR ortamını etkilediği hâlde oradaki CI'lar güncellenmemiş ve CMDB gerçek durumu yansıtmamıştır; bu da DR'ın üretimle eşdeğer olduğuna dair yanlış bir güven yaratmıştır. Etkili düzeltme: değişiklik kaydını kapatmak için tüm etkilenen CI'ların (DR dâhil) güncellendiğinin doğrulanmasını zorunlu kılmak, üretim ile DR arasında konfigürasyon sürüklenmesini otomatik tespit eden bir kontrol (ör. konfigürasyon tarama ve karşılaştırma araçları) kurmak ve CMDB kayıtlarını otomatik keşifle periyodik olarak doğrulamak. DR tatbikatı bu zafiyeti tespit eden kontroldür; tatbikat başarısızlığı aslında kontrolün çalıştığını gösterir.",
+    "optionExplanations": {
+      "A": "Tatbikat sıklığı artırılabilir ama tatbikat sorunun kaynağı değil, onu ortaya çıkaran kontroldür. Kök neden değişiklik-konfigürasyon entegrasyonundaki boşluktur.",
+      "B": "Doğru. Değişiklik ve konfigürasyon yönetimi arasındaki kopukluk kök neden; CI kapsamı, drift tespiti ve CMDB doğrulama düzeltici kontroller.",
+      "C": "Java sürümü semptomdur, neden değildir. Otomatik güncelleme ise kontrolsüz değişiklik yaratır ve değişiklik yönetimi ilkelerine aykırıdır; sorun eksik parametrede de görülmüştür.",
+      "D": "Araç değişikliği, güncelleme sürecini değişiklik kapanışına bağlamadıkça aynı sorunu üretir; CMDB'nin yanlış olması aracın değil sürecin sorunudur.",
+      "E": "Bireysel ihmal odaklı yaklaşım sistemik bir süreç boşluğunu gizler; denetim kök neden analizi süreç ve kontrol düzeyinde yapılır."
+    },
+    "keyConcept": "Değişiklik yönetimi ile konfigürasyon yönetimi entegre olmalı: her onaylı değişiklik etkilediği tüm CI'ları (üretim ve DR) kapsar ve CMDB güncellenmeden kapatılmaz. Üretim-DR sürüklenmesi otomatik izlenir.",
+    "examTip": "DR tatbikatında \"üretimle farklı sürüm/parametre\" bulgusu gördüğünüzde kök nedeni DR ekibinde değil, değişiklik sürecinin DR'ı kapsam dışı bırakmasında arayın.",
+    "simpleExplanation": "Bir evin anahtarının kopyasını değiştirdiğinizi ama yedek anahtarı tutan komşuya yeni kopyayı vermediğinizi düşünün. Acil bir gün komşu kapıyı açamaz. Burada da üretim sunucusunda yapılan onaylı değişiklik, yedek (DR) sunucularına yansıtılmamış ve envanter listesi (CMDB) hâlâ eski bilgiyi gösteriyor. Sorun DR ekibinin tembelliği veya yazılımın eskiliği değil, değişiklik sürecinin \"bu değişiklik hangi sunucuları etkiliyor, hepsi güncellendi mi, liste düzeltildi mi?\" sorusunu sormadan kapanmasıdır. Çözüm, değişikliğin tüm etkilenen sistemler güncellenmeden kapatılamaması ve üretim ile DR arasındaki farkları otomatik yakalayan bir kontrol kurulmasıdır.",
+    "references": [
+      "ITIL 4, Service Configuration Management practice",
+      "COBIT 2019, BAI10 Managed Configuration",
+      "ISACA CISA Review Manual, Domain 3 ve Domain 4: Configuration Management, DR Testing"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "RISK-001",
+    "topic": "RISK",
+    "subtopic": "Önleyici, tespit edici ve düzeltici kontroller",
+    "difficulty": "temel",
+    "question": "Bir bankanın ATM ağı için uygulanan kontroller aşağıda listelenmiştir. Kontrol türlerinin (önleyici/preventive, tespit edici/detective, düzeltici/corrective) doğru eşleştirildiği seçenek hangisidir?",
+    "code": "K1. ATM kasasının açılması için iki ayrı personelin anahtarının aynı anda kullanılması zorunluluğu\nK2. ATM nakit sayımı ile sistem kayıtlarının günlük mutabakatı\nK3. Kart kopyalama (skimming) cihazı tespit edildikten sonra etkilenen kartların bloke edilip yeniden basılması",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "K1 tespit edici, K2 önleyici, K3 düzeltici"
+      },
+      {
+        "id": "B",
+        "text": "K1 önleyici, K2 düzeltici, K3 tespit edici"
+      },
+      {
+        "id": "C",
+        "text": "K1 düzeltici, K2 tespit edici, K3 önleyici"
+      },
+      {
+        "id": "D",
+        "text": "K1 önleyici, K2 tespit edici, K3 düzeltici"
+      },
+      {
+        "id": "E",
+        "text": "K1 tespit edici, K2 tespit edici, K3 önleyici"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Kontrol türü, kontrolün olaya göre zamanlamasıyla belirlenir. İkili anahtar (dual custody) zorunluluğu, tek kişinin kasaya erişmesini olay gerçekleşmeden engeller; bu önleyici kontroldür. Günlük nakit-sistem mutabakatı, bir fark oluşmuşsa onu olaydan sonra ortaya çıkarır; bu tespit edici kontroldür. Tespit edilen skimming olayından sonra kartların bloke edilip yenilenmesi, oluşan zararı sınırlamaya ve durumu normale döndürmeye yöneliktir; bu düzeltici kontroldür.",
+    "optionExplanations": {
+      "A": "İkili anahtar hiçbir şeyi tespit etmez, erişimi engeller (önleyici). Mutabakat ise fark oluştuktan sonra onu bulur; önleyici değil tespit edicidir.",
+      "B": "Mutabakat zararı gidermez, farkı ortaya çıkarır (tespit edici). Kart bloke etme ise olayı tespit etmek değil, tespit edilmiş olayın zararını sınırlamaktır (düzeltici).",
+      "C": "İkili anahtar bir olaydan sonra devreye giren düzeltme değil, olayı önceden engelleyen kontroldür. Kart yenileme ise skimming'i önlemez, sonrasında zararı giderir.",
+      "D": "Doğru. Engelleyen = önleyici, ortaya çıkaran = tespit edici, zararı gideren/normale döndüren = düzeltici.",
+      "E": "İkili anahtar tespit edici değil önleyicidir; kart yenileme ise önleyici değil düzelticidir. Yalnızca K2 doğru sınıflanmıştır."
+    },
+    "keyConcept": "Önleyici: olayı engeller (yetkilendirme, ikili kontrol, şifreleme). Tespit edici: olayı ortaya çıkarır (mutabakat, iz kaydı inceleme, IDS). Düzeltici: zararı giderir, normale döndürür (yedekten dönüş, kart bloke/yenileme, yama).",
+    "examTip": "Kontrolü zaman çizelgesine yerleştirin: olaydan önce → önleyici, olay sırasında/sonrasında ortaya çıkarma → tespit edici, olaydan sonra giderme → düzeltici.",
+    "simpleExplanation": "Kontrolleri zaman çizgisine yerleştirin. Olay olmadan önce onu engelleyen şeyler önleyicidir: kasayı açmak için iki ayrı kişinin anahtarı gerekiyorsa tek kişi içeri giremez. Olay olduktan sonra onu fark ettiren şeyler tespit edicidir: her gün kasadaki para ile kayıtlar karşılaştırılırsa eksik ortaya çıkar. Olay fark edildikten sonra zararı gideren şeyler düzelticidir: kopyalanmış kartları iptal edip yenisini basmak gibi. Yani K1 kilit, K2 sayım, K3 tamirdir.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 1: Types of Controls",
+      "COSO Internal Control - Integrated Framework (2013)",
+      "NIST SP 800-53 Rev. 5"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "RISK-002",
+    "topic": "RISK",
+    "subtopic": "Doğal risk ve artık risk; risk yanıtları",
+    "difficulty": "temel",
+    "question": "Bir banka, mobil bankacılık uygulamasındaki hesap ele geçirme (account takeover) riskini değerlendirmiştir. Hiçbir kontrol olmadığı varsayımıyla risk \"çok yüksek\" bulunmuştur. Cihaz parmak izi, işlem limiti ve SMS OTP kontrolleri uygulandıktan sonra risk \"orta\" olarak ölçülmüştür. Banka bu seviyeyi risk iştahı içinde görerek ek yatırım yapmamaya karar vermiştir. Bu senaryoda \"çok yüksek\" ve \"orta\" seviyeleri sırasıyla hangi risk kavramına karşılık gelir ve bankanın son kararı hangi risk yanıtıdır?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Doğal risk (inherent risk) ve artık risk (residual risk); artık riski kabul etme (accept)"
+      },
+      {
+        "id": "B",
+        "text": "Artık risk ve doğal risk; riski azaltma (mitigate)"
+      },
+      {
+        "id": "C",
+        "text": "Doğal risk ve kontrol riski; riski transfer etme (transfer)"
+      },
+      {
+        "id": "D",
+        "text": "Tespit riski ve artık risk; riskten kaçınma (avoid)"
+      },
+      {
+        "id": "E",
+        "text": "Doğal risk ve artık risk; riski azaltma (mitigate), çünkü kontroller uygulanmıştır"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Doğal (inherent) risk, hiçbir kontrol yokken var olan risk düzeyidir; senaryoda \"çok yüksek\" bu düzeydir. Artık (residual) risk, kontroller uygulandıktan sonra geriye kalan risktir; \"orta\" bu düzeydir. Kontrollerin uygulanması bir azaltma (mitigation) eylemidir ancak soru bankanın son kararını sorar: kalan orta düzey riski risk iştahı içinde görüp ek önlem almamak, artık riskin kabul edilmesidir (risk acceptance). Risk yanıtları dört ana gruptur: kabul etme, azaltma, transfer (sigorta, dış kaynak), kaçınma (faaliyeti sonlandırma).",
+    "optionExplanations": {
+      "A": "Doğru. Kontrolsüz seviye = doğal risk, kontrollü seviye = artık risk; kalan riski iştah içinde görüp ek önlem almamak = kabul.",
+      "B": "Kavramlar ters sırada verilmiştir; kontrolsüz seviye artık risk olamaz. Ayrıca son karar azaltma değil kabuldür.",
+      "C": "Kontrol riski (control risk), kontrollerin bir hatayı önleyememe olasılığını ifade eden bir denetim riski bileşenidir, kalan risk seviyesi değildir. Transfer için sigorta veya sözleşmeyle devretme gerekir; senaryoda yoktur.",
+      "D": "Tespit riski, denetçinin bir hatayı tespit edememe riskidir; doğal riskle ilgisi yoktur. Kaçınma, mobil bankacılık hizmetinden vazgeçmek olurdu.",
+      "E": "Kavramlar doğru ancak soru son kararı sorar. Kontrol uygulama azaltmadır; ancak \"ek yatırım yapmayıp orta seviyeyi iştah içinde görmek\" artık riskin kabulüdür."
+    },
+    "keyConcept": "Doğal risk = kontrolsüz risk; artık risk = kontroller sonrası kalan risk. Risk yanıtları: kabul, azaltma, transfer, kaçınma. Artık risk, risk iştahı ile karşılaştırılır.",
+    "examTip": "Soru \"son karar\" diyorsa kontrollerin uygulanmasına (azaltma) değil, kalan riskle ne yapıldığına bakın. İştah içindeyse kabul edilmiştir.",
+    "simpleExplanation": "Doğal risk, hiçbir önlem almadan sokağa çıkarken yağmurda ıslanma riskinizdir. Şemsiye ve yağmurluk aldıktan sonra hâlâ biraz ıslanma ihtimaliniz kalır; bu artık risktir. Bankada da kontroller yokken \"çok yüksek\" olan risk doğal risk, kontrollerden sonra kalan \"orta\" seviye artık risktir. Banka bu kalan riske bakıp \"bu kadarına katlanabilirim, daha fazla harcamayacağım\" demiştir; bu karar riski kabul etmektir. Kontrolleri koymak azaltmaydı, ama soru son kararı soruyor ve son karar kabuldür.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 1: Risk Analysis Concepts",
+      "ISO/IEC 27005:2022, Information security risk management",
+      "COBIT 2019, APO12 Managed Risk"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "RISK-003",
+    "topic": "RISK",
+    "subtopic": "BT genel kontrolleri ve uygulama kontrolleri",
+    "difficulty": "orta",
+    "question": "Bir BT müfettişi, çekirdek bankacılık sistemine ilişkin aşağıdaki kontrolleri incelemektedir. Hangi seçenek yalnızca uygulama kontrollerini (application controls) içermektedir?",
+    "code": "K1. Havale ekranında IBAN alanının kontrol basamağı (check digit) ile doğrulanması\nK2. Üretim ortamına geçişlerin CAB onayı gerektirmesi\nK3. 50.000 TL üzeri havalelerin ikinci bir yetkilinin onayına düşmesi\nK4. Veri merkezine giriş için kartlı geçiş ve biyometrik doğrulama\nK5. Gün sonu işlemlerinde toplam borç ve alacak tutarlarının eşitliğinin kontrol edilmesi\nK6. Veri tabanı yöneticisi hesaplarının PAM üzerinden kullanılması",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "K2, K4, K6"
+      },
+      {
+        "id": "B",
+        "text": "K1, K2, K5"
+      },
+      {
+        "id": "C",
+        "text": "K3, K4, K5"
+      },
+      {
+        "id": "D",
+        "text": "K1, K4, K6"
+      },
+      {
+        "id": "E",
+        "text": "K1, K3, K5"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Uygulama kontrolleri, belirli bir iş uygulamasına gömülü olup işlemlerin eksiksiz, doğru, geçerli ve yetkili olmasını sağlayan kontrollerdir: girdi kontrolleri (IBAN kontrol basamağı, K1), işleme kontrolleri (tutara bağlı ikinci onay, K3) ve çıktı/işleme bütünlüğü kontrolleri (borç-alacak dengesi, K5). BT genel kontrolleri (IT General Controls, ITGC) ise tüm uygulamaların güvendiği ortamı yöneten kontrollerdir: değişiklik yönetimi (K2), fiziksel erişim (K4), mantıksal/ayrıcalıklı erişim (K6). Denetimde ITGC'ler önce test edilir; çünkü ITGC zayıfsa uygulama kontrollerine (ör. onay limitinin değiştirilmemiş olduğuna) güvenilemez.",
+    "optionExplanations": {
+      "A": "K2 (değişiklik yönetimi), K4 (fiziksel erişim) ve K6 (ayrıcalıklı erişim) tam tersine üç BT genel kontrolüdür.",
+      "B": "K1 ve K5 uygulama kontrolüdür ancak K2 (CAB onayı) değişiklik yönetimine ait bir genel kontroldür.",
+      "C": "K3 ve K5 uygulama kontrolüdür ancak K4 (veri merkezi fiziksel erişimi) genel kontroldür; herhangi bir uygulamaya özgü değildir.",
+      "D": "Yalnızca K1 uygulama kontrolüdür; K4 ve K6 genel kontroldür.",
+      "E": "Doğru. Girdi doğrulama (K1), işlem onay limiti (K3) ve bakiye/bütünlük kontrolü (K5) uygulamaya gömülü işlem kontrolleridir."
+    },
+    "keyConcept": "Uygulama kontrolleri: belirli uygulamadaki işlemlerin girdi-işleme-çıktı doğruluğu ve yetkisi. ITGC: erişim yönetimi, değişiklik yönetimi, BT operasyonları, fiziksel güvenlik; tüm uygulamaların güvendiği ortam.",
+    "examTip": "\"Bu kontrol yalnızca bu uygulamanın işlemleriyle mi ilgili?\" → uygulama kontrolü. \"Tüm sistemleri kapsayan altyapı/süreç kontrolü mü?\" → ITGC.",
+    "simpleExplanation": "Bir alışveriş merkezini düşünün. Binanın güvenlik görevlileri, kamera sistemi ve kapı kilitleri bütün mağazaların yararlandığı genel korumadır; bunlar BT genel kontrollerine benzer (değişiklik onayı, veri merkezi kapısı, yönetici hesaplarının yönetimi). Her mağazanın kendi kasasındaki \"fiş toplamı ile ödeme eşleşiyor mu\" kontrolü ise o mağazanın işine özgüdür; bunlar uygulama kontrolleridir. IBAN kontrol basamağı, büyük havalede ikinci imza ve gün sonu borç-alacak eşitliği, doğrudan bankacılık işlemlerinin kendisini kontrol eder. K2, K4 ve K6 ise işlemle değil, tüm sistemin güvenilir ortamıyla ilgilidir.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 3: Application Controls; Domain 1: IT General Controls",
+      "COBIT 2019, DSS06 Managed Business Process Controls",
+      "ISACA, IT Audit Framework (ITAF)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "RISK-004",
+    "topic": "RISK",
+    "subtopic": "Risk bileşenleri: tehdit, zafiyet, etki",
+    "difficulty": "orta",
+    "question": "Bir bankanın BT risk ekibi, dört senaryo için tehdit olasılığı (yıllık gerçekleşme sıklığı), zafiyetin istismar edilebilirliği (1-5) ve etki (TL) değerlerini aşağıdaki gibi belirlemiştir. Risk puanı = olasılık × zafiyet × etki olarak hesaplanmaktadır. Hangi senaryo en yüksek, hangi senaryo en düşük risk puanına sahiptir?",
+    "code": "Senaryo                                      Olasılık   Zafiyet   Etki (TL)\n------------------------------------------   --------   -------   -----------\nS1. Şube kullanıcısı oltalama ile ele geçme   4,0        3         500.000\nS2. Çekirdek bankacılık DB fidye yazılımı     0,2        4         40.000.000\nS3. ATM jackpotting saldırısı                 1,0        2         2.000.000\nS4. DR merkezi tam kaybı (doğal afet)         0,01       5         100.000.000",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "En yüksek: S2 (32.000.000); en düşük: S4 (5.000.000)"
+      },
+      {
+        "id": "B",
+        "text": "En yüksek: S4 (100.000.000); en düşük: S1 (6.000.000)"
+      },
+      {
+        "id": "C",
+        "text": "En yüksek: S1 (6.000.000); en düşük: S3 (4.000.000)"
+      },
+      {
+        "id": "D",
+        "text": "En yüksek: S2 (32.000.000); en düşük: S3 (4.000.000)"
+      },
+      {
+        "id": "E",
+        "text": "En yüksek: S3 (4.000.000); en düşük: S4 (5.000.000)"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Her senaryo için çarpım yapılır. S1: 4,0 × 3 × 500.000 = 6.000.000. S2: 0,2 × 4 × 40.000.000 = 32.000.000. S3: 1,0 × 2 × 2.000.000 = 4.000.000. S4: 0,01 × 5 × 100.000.000 = 5.000.000. En yüksek puan S2 (fidye yazılımı), en düşük puan S3 (ATM jackpotting). Dikkat: S4'ün etkisi en yüksek olmasına rağmen çok düşük olasılık nedeniyle puanı S2'nin altındadır; bu, risk değerlendirmesinde tek bir bileşene bakılmaması gerektiğini gösterir.",
+    "optionExplanations": {
+      "A": "S2 doğru hesaplanmış ancak en düşük puan S4 (5.000.000) değil S3'tür (4.000.000).",
+      "B": "S4'ün etkisi en yüksektir ama olasılık 0,01 ile çarpıldığında puan 5.000.000 olur; yalnızca etkiye bakma yanılgısıdır. S1 de en düşük değildir.",
+      "C": "S1'in puanı 6.000.000'dur ve S2'nin 32.000.000'unun çok altındadır; yalnızca olasılığa bakma yanılgısıdır.",
+      "D": "Doğru. S2 = 32.000.000 en yüksek; S3 = 4.000.000 en düşük.",
+      "E": "S3 en düşük puana sahiptir, en yüksek değil; sıralama tersine çevrilmiştir."
+    },
+    "keyConcept": "Risk = tehdit olasılığı × zafiyet × etki. Tek bir bileşenin yüksekliği riski belirlemez; düşük olasılıklı çok yüksek etkili senaryolar nicel puanla düşük görünebilir ve ayrıca nitel değerlendirilmelidir.",
+    "examTip": "Hesaplama sorularında tüm satırları hesaplayıp sıralayın; \"en yüksek etki = en yüksek risk\" tuzağına düşmeyin.",
+    "simpleExplanation": "Risk puanı üç sayının çarpımıdır: ne sıklıkta olur, ne kadar kolay gerçekleşir, olursa kaç lira kaybederiz. Üçünü çarpmadan karar vermek yanıltır. Örneğin DR merkezinin tamamen kaybı 100 milyon liralık dev bir etkiye sahiptir ama yüz yılda bir beklendiği için puanı 5 milyon kalır. Fidye yazılımı ise hem ciddi hem de daha olası olduğundan 32 milyonla en yüksek puanı alır. ATM saldırısı da yılda bir beklenir ama etkisi ve zafiyeti düşük olduğu için 4 milyonla en alttadır. Sadece \"en büyük rakam\" olan satıra bakmak yerine her satırı hesaplamak gerekir.",
+    "references": [
+      "NIST SP 800-30 Rev. 1, Guide for Conducting Risk Assessments",
+      "ISO/IEC 27005:2022",
+      "ISACA CISA Review Manual, Domain 1: Risk Assessment"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "RISK-005",
+    "topic": "RISK",
+    "subtopic": "Riske uygun kontrol seçimi",
+    "difficulty": "orta",
+    "question": "Bir bankanın iç denetim raporunda şu risk tanımlanmıştır: \"Şube personeli, müşterinin bilgisi dışında müşteri hesabından kendi hesabına küçük tutarlı havaleler yapmakta ve işlemler aylık hesap özetinde fark edilmeden kalmaktadır.\" Bu riski doğrudan ve en etkili biçimde azaltan kontrol hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Personelin yılda bir bilgi güvenliği farkındalık eğitimi almasının zorunlu kılınması"
+      },
+      {
+        "id": "B",
+        "text": "Şube sunucularının yama seviyesinin aylık olarak raporlanması"
+      },
+      {
+        "id": "C",
+        "text": "Çekirdek bankacılık veri tabanının günlük yedeğinin alınması"
+      },
+      {
+        "id": "D",
+        "text": "Müşteri temsilcisinin müşteri adına başlattığı havalelerde müşteriye anlık SMS/mobil bildirim gönderilmesi, personelin kendi ve yakınlarının hesaplarına müşteri işlemi yapmasının sistemsel olarak engellenmesi ve personel-müşteri hesap eşleşmelerinin iz kayıtlarından periyodik taranması"
+      },
+      {
+        "id": "E",
+        "text": "Şube ağına erişimin yalnızca kurumsal cihazlardan yapılmasına izin verilmesi"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Kontrol seçiminde kontrolün tanımlanan riskin mekanizmasını doğrudan hedeflemesi gerekir. Risk üç unsurdan oluşur: personel müşteri adına işlem yapabiliyor, alıcı kendi hesabı, ve müşteri fark etmiyor. Seçenek D her üçünü hedefler: anlık bildirim müşterinin fark etmeme sorununu giderir (tespit edici), personelin kendi/yakın hesaplarına işlem yapmasının engellenmesi suistimal yolunu kapatır (önleyici), iz kayıtlarının taranması kalan vakaları ortaya çıkarır (tespit edici). Diğer seçenekler genel iyi uygulamalardır ancak bu riskin mekanizmasına değmez; denetçi \"bu kontrol bu riski nasıl azaltır?\" sorusuna somut yanıt veremiyorsa kontrol ilgisizdir.",
+    "optionExplanations": {
+      "A": "Farkındalık eğitimi kazara hataları azaltabilir ancak kasıtlı suistimali yapan personel riskin kaynağıdır; eğitimle engellenmez.",
+      "B": "Yama yönetimi teknik zafiyetlere karşıdır; yetkili bir kullanıcının yetkisini kötüye kullanmasıyla ilgisi yoktur.",
+      "C": "Yedekleme veri kaybına karşı düzeltici bir kontroldür; usulsüz ama geçerli bir havaleyi ne önler ne tespit eder.",
+      "D": "Doğru. Müşteri bildirimi, kendi hesabına işlem engeli ve iz kaydı taraması riskin her bir unsurunu doğrudan hedefler.",
+      "E": "Cihaz kısıtı dış saldırganı zorlaştırır ancak suistimali yapan kişi zaten kurumsal cihazla, yetkili olarak işlem yapan iç personeldir."
+    },
+    "keyConcept": "Kontrol-risk eşleşmesi: kontrol, riskin gerçekleşme mekanizmasını (kim, nasıl, neden fark edilmiyor) doğrudan hedeflemelidir. İç suistimal risklerinde müşteri bildirimi, çıkar çatışması engeli ve iz kaydı analizi temel kontrollerdir.",
+    "examTip": "\"Bu riske hangi kontrol\" sorularında her seçenek için \"bu kontrol senaryodaki kişiyi/mekanizmayı durdurur mu veya ortaya çıkarır mı?\" diye sorun; genel iyi uygulamalar çeldiricidir.",
+    "simpleExplanation": "Bir riske kontrol seçerken \"bu önlem, anlatılan hileyi gerçekten durdurur veya ortaya çıkarır mı?\" diye sormak gerekir. Buradaki hilede personel müşterinin hesabından kendi hesabına para gönderiyor ve müşteri fark etmiyor. Müşteriye anında mesaj gitmesi, fark etmeme sorununu çözer. Personelin kendi veya yakınlarının hesabına müşteri işlemi yapmasının sistemde engellenmesi, hilenin yolunu kapatır. Kayıtların taranması kaçanları yakalar. Eğitim, yama, yedek veya cihaz kısıtı iyi şeylerdir ama bu hileyi yapan kişi zaten yetkili, eğitimli ve kurumsal cihaz kullanan bir çalışandır; o önlemler ona işlemez.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 1: Control Objectives and Risk Response",
+      "ACFE, Fraud Examiners Manual - Internal Controls",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020) - iz kayıtları"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "RISK-006",
+    "topic": "RISK",
+    "subtopic": "COBIT, ISO/IEC 27001 ve BDDK düzenlemesinin amacı",
+    "difficulty": "orta",
+    "question": "Bir bankanın BT yönetişim ekibi üç çerçeve/düzenlemeyi birlikte kullanmaktadır: COBIT 2019, ISO/IEC 27001 ve BDDK'nın Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmeliği (2020). Bu üçünün temel amaç ve niteliğini doğru ayırt eden seçenek hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "COBIT bir bilgi güvenliği sertifikasyon standardıdır; ISO/IEC 27001 BT yönetişim çerçevesidir; BDDK yönetmeliği gönüllü bir iyi uygulama rehberidir."
+      },
+      {
+        "id": "B",
+        "text": "Üçü de aynı amaca hizmet eden, birbirinin yerine kullanılabilir zorunlu düzenlemelerdir."
+      },
+      {
+        "id": "C",
+        "text": "COBIT yalnızca yazılım geliştirme süreçlerini, ISO/IEC 27001 yalnızca ağ güvenliğini, BDDK yönetmeliği yalnızca ATM ve kart işlemlerini düzenler."
+      },
+      {
+        "id": "D",
+        "text": "COBIT 2019 bir BT denetim standardıdır ve denetçinin bağımsızlık kurallarını belirler; ISO/IEC 27001 risk değerlendirme formülünü zorunlu kılar; BDDK yönetmeliği yalnızca bilgi sistemleri denetimini düzenler."
+      },
+      {
+        "id": "E",
+        "text": "COBIT 2019, kurumsal BT'nin yönetişimi ve yönetimi için hedefler ve süreçler tanımlayan bir çerçevedir (sertifikasyon standardı değildir); ISO/IEC 27001, bir bilgi güvenliği yönetim sisteminin (BGYS/ISMS) kurulması ve belgelendirilmesi için gereklilikler içeren uluslararası standarttır; BDDK yönetmeliği ise bankalar için bağlayıcı olup bilgi sistemleri yönetimi, elektronik bankacılık hizmetleri güvenliği, iz kayıtları, görevler ayrılığı ve iş sürekliliği gibi asgari gereklilikleri düzenler."
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "COBIT 2019 (ISACA), kurumsal bilgi ve teknolojinin yönetişimi ve yönetimi için yönetişim/yönetim hedefleri (ör. APO12 risk, BAI06 değişiklik, DSS05 güvenlik) tanımlayan bir çerçevedir; kuruluşlar COBIT'e göre belgelendirilmez. ISO/IEC 27001, BGYS kurma, işletme ve sürekli iyileştirme gereklilikleri içeren, kuruluşların bağımsız denetimle belgelendirilebildiği bir standarttır; Ek A kontrol listesi referans niteliğindedir. BDDK yönetmeliği ise Türkiye'de bankalar için bağlayıcı ikincil mevzuattır; bilgi sistemleri yönetimi, elektronik bankacılıkta kimlik doğrulama ve işlem güvenliği, iz kayıtlarının bütünlüğü ve saklanması, görevler ayrılığı, ayrıcalıklı erişim, değişiklik yönetimi, sızma testleri ve iş sürekliliği gibi konularda asgari gereklilikler koyar. Üçü birbirini tamamlar: yönetmelik \"ne\" zorunlu, 27001 \"yönetim sistemi nasıl\", COBIT \"yönetişim ve süreçler nasıl\".",
+    "optionExplanations": {
+      "A": "Roller karıştırılmıştır: sertifikasyon standardı olan ISO/IEC 27001'dir, yönetişim çerçevesi COBIT'tir. BDDK yönetmeliği gönüllü değil, bankalar için bağlayıcıdır.",
+      "B": "Üçü farklı nitelikte ve amaçtadır; yalnızca BDDK yönetmeliği hukuken zorunludur, COBIT ve ISO 27001 gönüllü çerçeve/standartlardır.",
+      "C": "Üçünün kapsamı da bu kadar dar değildir; COBIT tüm BT yönetişimini, 27001 tüm bilgi güvenliği yönetimini, BDDK yönetmeliği tüm bilgi sistemleri ve elektronik bankacılık hizmetlerini kapsar.",
+      "D": "COBIT bir denetim standardı değil yönetişim çerçevesidir; denetçi bağımsızlığı ISACA ITAF/IIA standartlarında düzenlenir. ISO 27001 belirli bir formül zorunlu kılmaz, risk değerlendirme sürecini ister. BDDK yönetmeliği denetimle sınırlı değildir.",
+      "E": "Doğru. Her birinin niteliği (çerçeve / belgelendirilebilir standart / bağlayıcı düzenleme) ve amacı doğru ayırt edilmiştir."
+    },
+    "keyConcept": "COBIT 2019: BT yönetişim ve yönetim çerçevesi (belgelendirme yok). ISO/IEC 27001: BGYS gereklilikleri, belgelendirilebilir. BDDK 2020 yönetmeliği: bankalar için bağlayıcı; bilgi sistemleri yönetimi, elektronik bankacılık güvenliği, iz kayıtları, süreklilik.",
+    "examTip": "\"Hangisi sertifikasyon standardı?\" → ISO/IEC 27001. \"Hangisi zorunlu?\" → BDDK yönetmeliği. \"Hangisi yönetişim hedefleri tanımlar?\" → COBIT.",
+    "simpleExplanation": "Üç farklı belge türü düşünün. Trafik kanunu herkes için zorunludur ve uymazsanız ceza alırsınız; BDDK yönetmeliği bankalar için böyledir. Sürücü kursu sertifikası, belirli şartları yerine getirdiğinizi bağımsız bir sınavla belgelendirir; ISO/IEC 27001 böyle bir belgelendirme standardıdır. İyi bir sürücünün nasıl davranması gerektiğini anlatan kapsamlı bir rehber ise yol gösterir ama sertifika vermez; COBIT bu tür bir çerçevedir. Üçü birbirinin yerine geçmez: yönetmelik \"ne zorunlu\" der, 27001 \"güvenlik yönetimini nasıl kurup belgelendirirsin\" der, COBIT \"BT'yi nasıl yönetir ve yönetişime bağlarsın\" der.",
+    "references": [
+      "ISACA, COBIT 2019 Framework: Introduction and Methodology",
+      "ISO/IEC 27001:2022, Information security management systems - Requirements",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (Resmî Gazete, 15 Mart 2020)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "RISK-007",
+    "topic": "RISK",
+    "subtopic": "Kontrol testi ve denetim kanıtı",
+    "difficulty": "ileri",
+    "question": "Bir BT müfettişi, \"üretime alınan tüm değişiklikler CAB tarafından onaylanmıştır\" kontrolünün işletim etkinliğini test etmek istemektedir. Aşağıdaki kanıt toplama yaklaşımlarından hangisi bu kontrol için en güçlü ve en uygun kanıtı sağlar?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Değişiklik yöneticisiyle görüşme yapıp tüm değişikliklerin onaylandığını sözlü olarak teyit ettirmek"
+      },
+      {
+        "id": "B",
+        "text": "Değişiklik yönetimi prosedür dokümanını okuyup CAB onayının zorunlu olduğunu doğrulamak"
+      },
+      {
+        "id": "C",
+        "text": "Değişiklik yönetimi aracındaki kayıtlardan rastgele bir örneklem seçip her birinin CAB onay kaydını incelemek"
+      },
+      {
+        "id": "D",
+        "text": "Dağıtım aracının ve sunucuların iz kayıtlarından (değişiklik yönetimi aracından bağımsız kaynaktan) dönem içinde üretime yapılan tüm dağıtımların listesini alıp, bu listeden örneklem seçerek her dağıtımın değişiklik aracında onaylı bir CAB kaydıyla eşleştiğini doğrulamak"
+      },
+      {
+        "id": "E",
+        "text": "Son CAB toplantısına gözlemci olarak katılıp onay sürecinin işlediğini izlemek"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Kontrol iddiası \"üretime alınan TÜM değişiklikler onaylıdır\" biçiminde olduğunda test, popülasyonun eksiksizliği (completeness) üzerine kurulmalıdır. Örneklem değişiklik yönetimi aracından seçilirse, yalnızca kayıt açılan değişiklikler görülür; kayıt açılmadan yapılan yetkisiz değişiklikler bu popülasyonda hiç yoktur ve test onları yakalayamaz. Bu yüzden popülasyon, bağımsız bir kaynaktan (dağıtım aracı kayıtları, sunucu iz kayıtları, dosya bütünlük izleme) alınan \"fiilen üretime giden\" dağıtımlar olmalı ve bunların her biri geriye doğru onaylı bir kayda bağlanmalıdır. Kanıt hiyerarşisinde bağımsız kaynaktan alınan sistem kayıtlarının yeniden gerçekleştirme/mutabakatla incelenmesi; görüşme, doküman inceleme ve tek seferlik gözlemden daha güçlüdür.",
+    "optionExplanations": {
+      "A": "Görüşme (inquiry) en zayıf kanıt türüdür; tek başına kontrol etkinliği sonucunu destekleyemez, yalnızca anlayış kazandırır.",
+      "B": "Prosedür dokümanı kontrolün tasarımını gösterir, işletildiğini göstermez. Tasarım testi ile işletim testi farklıdır.",
+      "C": "Tipik yanılgı: popülasyon kontrolün kendi aracından alındığında eksiksizlik varsayımı doğrulanmaz; kayıt açılmayan yetkisiz değişiklikler örnekleme hiç girmez. Bu test \"kayıtlı değişiklikler onaylı mı\" sorusunu yanıtlar, \"tüm değişiklikler kayıtlı mı\" sorusunu değil.",
+      "D": "Doğru. Bağımsız kaynaktan eksiksiz popülasyon + her dağıtımın onaylı kayda eşleştirilmesi, yetkisiz değişiklikleri de yakalayan en güçlü işletim etkinliği testidir.",
+      "E": "Gözlem yalnızca gözlemlendiği an için kanıt sağlar (denetçi varken sürecin doğru işlemesi beklenir); dönemin tamamını kapsamaz ve toplantı dışı dağıtımları göstermez."
+    },
+    "keyConcept": "İşletim etkinliği testinde popülasyonun eksiksizliği kritiktir; \"tüm X'ler onaylı\" iddiası, X'lerin bağımsız bir kaynaktan listelenmesini gerektirir. Kanıt gücü: görüşme < doküman inceleme < gözlem < bağımsız kayıt inceleme ve yeniden gerçekleştirme.",
+    "examTip": "\"Tüm\" içeren bir kontrol iddiasını test ederken örneklemi kontrolün kendi kayıtlarından değil, kontrolün dışındaki bir kaynaktan seçin; yoksa yetkisiz işlemleri asla göremezsiniz.",
+    "simpleExplanation": "\"Sınıftaki herkes yoklamada imza attı mı?\" sorusunu yalnızca imza defterine bakarak yanıtlayamazsınız; defterde sadece imza atanlar vardır, atmayanlar görünmez. Bunun için sınıftaki öğrencilerin tam listesini başka bir kaynaktan (okul kayıtları) alıp her öğrencinin imzasını aramalısınız. Değişiklik onayı testi de aynıdır: değişiklik aracındaki kayıtlara bakarsanız sadece kayıt açılmış değişiklikleri görürsünüz, kayıt açılmadan yapılanlar listede hiç yoktur. Doğru yöntem, sunucuların kendi kayıtlarından \"gerçekten üretime ne gitti\" listesini alıp her birinin onaylı bir kayda bağlandığını doğrulamaktır. Sözlü teyit, prosedür okumak veya tek bir toplantıyı izlemek bu kadar güçlü kanıt vermez.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 1: Audit Evidence, Sampling and Completeness",
+      "ISACA, IT Audit Framework (ITAF), Standard 1205 Evidence",
+      "IIA, International Standards for the Professional Practice of Internal Auditing"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "RISK-008",
+    "topic": "RISK",
+    "subtopic": "Üç savunma hattı ve anahtar risk göstergeleri",
+    "difficulty": "ileri",
+    "question": "Bir bankada dış kaynaklı (outsourced) bir tedarikçi, mobil bankacılık uygulamasının bakımını yapmaktadır. Aşağıdaki görev dağılımı ve gösterge seti değerlendirilmektedir. Üç savunma hattı modeli (Three Lines Model) ve anahtar risk göstergeleri (Key Risk Indicator, KRI) açısından en doğru tespit hangisidir?",
+    "code": "Görev dağılımı:\n- Mobil bankacılık ürün yöneticisi: tedarikçi SLA'sını izler, kontrolleri günlük işletir\n- BT risk yönetimi birimi: tedarikçi risk değerlendirme metodolojisini belirler,\n  kontrol tasarımını gözden geçirir, raporlar\n- İç denetim: tedarikçi sözleşmesini ve kontrollerin işletimini bağımsız denetler;\n  ayrıca tedarikçiyle haftalık operasyon toplantılarını yönetir ve değişiklik onaylarını verir\n\nİzlenen göstergeler:\n- G1: Tedarikçiye açılan kritik güvenlik bulgularının 30 günü aşan kapanmamış sayısı\n- G2: Geçen yıl yaşanan mobil bankacılık kesintilerinin toplam süresi\n- G3: Tedarikçi personelinin üretim erişimi olan hesap sayısındaki aylık değişim",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "İç denetimin tedarikçi operasyon toplantılarını yönetmesi ve değişiklik onayı vermesi, üçüncü hattın birinci hat görevi üstlenerek bağımsızlığını yitirmesi anlamına gelir ve modelin temel ilkesine aykırıdır. Göstergelerden G2 geçmişe dönük bir sonuç ölçütüdür (lagging), G1 ve G3 ise artan riski önceden işaret edebilen ileriye dönük (leading) KRI niteliğindedir."
+      },
+      {
+        "id": "B",
+        "text": "Görev dağılımı modele tam uygundur; iç denetimin operasyonel toplantılara katılması denetim kalitesini artırır. G2 en iyi KRI'dır çünkü nicel ve kesindir."
+      },
+      {
+        "id": "C",
+        "text": "Ürün yöneticisinin kontrolleri işletmesi yanlıştır; kontroller yalnızca BT risk birimi tarafından işletilmelidir. Göstergelerin üçü de eşit değerde KRI'dır."
+      },
+      {
+        "id": "D",
+        "text": "Dış kaynak kullanımında sorumluluk tedarikçiye geçtiği için bankanın üç savunma hattı modeli tedarikçi faaliyetlerini kapsamaz; KRI izlemesi tedarikçinin görevidir."
+      },
+      {
+        "id": "E",
+        "text": "BT risk biriminin raporlama yapması ikinci hattın birinci hatta müdahalesidir; G3 bir KRI değil performans göstergesidir (KPI)."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Üç savunma hattı modelinde birinci hat (iş/operasyon birimleri) riski sahiplenir ve kontrolleri işletir; ikinci hat (risk yönetimi, uyum) metodoloji belirler, izler, zorlar ve raporlar; üçüncü hat (iç denetim) bağımsız güvence verir ve operasyonel karar/onay süreçlerine katılmaz. İç denetimin tedarikçi operasyonunu yönetmesi ve değişiklik onayı vermesi, kendi denetleyeceği faaliyeti yürütmesi demektir; bu, bağımsızlığı ve nesnelliği zedeler (self-review threat). Göstergeler açısından KRI'ların değeri, riskin artışını zarar gerçekleşmeden önce haber verebilmesindedir: açık kritik bulgu sayısı (G1) ve üretim erişimli tedarikçi hesaplarındaki artış (G3) ileriye dönük uyarı sinyalidir; geçmiş yılın kesinti süresi (G2) ise olmuş zararı ölçen geriye dönük göstergedir, izlenmesi faydalı ama erken uyarı sağlamaz. Dış kaynak kullanımı sorumluluğu devretmez; BDDK düzenlemeleri de dış hizmet alımında risk yönetimi ve denetim sorumluluğunun bankada kaldığını esas alır.",
+    "optionExplanations": {
+      "A": "Doğru. Üçüncü hattın operasyonel rol üstlenmesi bağımsızlık ihlalidir; G1 ve G3 leading, G2 lagging göstergedir.",
+      "B": "İç denetimin operasyonel karar süreçlerine katılması bağımsızlığı yok eder; denetleyeceği işi yapan denetçi nesnel olamaz. G2 nicel olsa da geriye dönüktür, erken uyarı sağlamaz.",
+      "C": "Kontrolleri günlük işletmek tam olarak birinci hattın görevidir; ürün yöneticisinin rolü modele uygundur. İkinci hat kontrol işletmez, gözetir. Göstergeler eşdeğer değildir.",
+      "D": "Tipik yanılgı: faaliyet dış kaynağa verilebilir, sorumluluk verilemez. Banka tedarikçi riskini kendi üç hattıyla yönetmek ve izlemek zorundadır.",
+      "E": "Raporlama ikinci hattın asli görevidir, müdahale değildir. G3 ise risk artışını (ayrıcalıklı erişim yüzeyinin büyümesi) ölçtüğü için KRI'dır; KPI performans/verimlilik ölçer."
+    },
+    "keyConcept": "Üç hat: 1. hat riski sahiplenir ve kontrol işletir; 2. hat metodoloji, izleme, raporlama; 3. hat bağımsız güvence (operasyonel karar vermez). KRI: riskin artışını önceden gösteren (leading) ölçütler tercih edilir; geçmiş zarar ölçütleri lagging'dir. Dış kaynak sorumluluğu devretmez.",
+    "examTip": "İç denetimin \"onay verdiği\" veya \"yönettiği\" bir süreç görürseniz bağımsızlık ihlali arayın. KRI sorularında \"geçen yıl olanı\" ölçen gösterge lagging, \"artmakta olan maruziyeti\" ölçen gösterge leading'dir.",
+    "simpleExplanation": "Üç savunma hattını bir futbol maçı gibi düşünün: oyuncular (iş birimleri) oyunu oynar ve kuralları uygular, teknik ekip (risk birimi) oyunu izler ve yönlendirir, hakem (iç denetim) tarafsız karar verir. Hakem aynı zamanda bir takımın antrenörlüğünü yapsa kimse kararlarına güvenmez. Buradaki iç denetim, tedarikçi toplantılarını yönetip değişiklik onayı vererek tam da bunu yapmış ve tarafsızlığını kaybetmiştir. Göstergelerde ise geçen yılın kesinti süresi, olmuş bitmiş bir zararı ölçer (geriye bakan). Açık kalan kritik bulgular ve üretim erişimli tedarikçi hesaplarının artışı ise yaklaşan bir sorunu önceden haber verir (ileriye bakan); iyi bir risk göstergesi budur.",
+    "references": [
+      "IIA, The IIA's Three Lines Model (2020)",
+      "ISACA CISA Review Manual, Domain 2: Risk Management, KRIs ve Outsourcing Governance",
+      "COBIT 2019, APO10 Managed Vendors ve APO12 Managed Risk",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020) ve Bankaların Destek Hizmeti Almalarına İlişkin Yönetmelik"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "YIS-001",
+    "topic": "YIS",
+    "subtopic": "RPO ve RTO kavramları",
+    "difficulty": "temel",
+    "question": "Bir bankanın iş etki analizinde (BIA) mobil bankacılık hizmeti için şu hedefler belirlenmiştir: \"Felaket hâlinde hizmet en geç 2 saat içinde yeniden sunulmalı; kabul edilebilir azami veri kaybı 15 dakikalık işlem verisidir.\" Bu iki hedef sırasıyla hangi kavramlara karşılık gelir ve veri kaybı hedefi yedekleme/çoğaltma tasarımını nasıl etkiler?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "2 saat = RPO, 15 dakika = RTO; yedeklemeler 2 saatte bir alınmalıdır."
+      },
+      {
+        "id": "B",
+        "text": "2 saat = RTO (Recovery Time Objective), 15 dakika = RPO (Recovery Point Objective); veri kaybını 15 dakikanın altında tutmak için en az 15 dakikada bir yedek veya buna eşdeğer sürekli/yakın-gerçek-zamanlı veri çoğaltma gerekir."
+      },
+      {
+        "id": "C",
+        "text": "2 saat = MTD, 15 dakika = RTO; günlük tam yedek yeterlidir."
+      },
+      {
+        "id": "D",
+        "text": "2 saat = RTO, 15 dakika = MTBF; yedekleme sıklığı bu hedeflerden bağımsızdır."
+      },
+      {
+        "id": "E",
+        "text": "2 saat = RPO, 15 dakika = MTTR; haftalık tam yedek ve günlük artımlı yedek yeterlidir."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "RTO (Recovery Time Objective), kesintiden sonra hizmetin yeniden sunulması için hedeflenen azami süredir; \"en geç 2 saat içinde\" ifadesi RTO'dur. RPO (Recovery Point Objective), kabul edilebilir azami veri kaybını zaman cinsinden ifade eder; \"15 dakikalık işlem verisi\" RPO'dur. RPO doğrudan yedekleme veya çoğaltma sıklığını belirler: son yedekten felakete kadar geçen süre kaybedilen veridir, dolayısıyla yedek/çoğaltma aralığı RPO'yu aşamaz. 15 dakikalık RPO için periyodik yedek pratik olmaz; genellikle veri tabanı log shipping veya senkron/asenkron çoğaltma kullanılır. RTO ise kurtarma altyapısını (sıcak/ılık/soğuk saha, otomatik failover) belirler.",
+    "optionExplanations": {
+      "A": "Kavramlar ters verilmiştir; süre hedefi RTO, veri kaybı hedefi RPO'dur. Ayrıca 2 saatte bir yedek, 15 dakikalık veri kaybı hedefini karşılamaz.",
+      "B": "Doğru. RTO = hizmete dönüş süresi, RPO = kabul edilebilir veri kaybı; RPO yedek/çoğaltma sıklığının üst sınırını belirler.",
+      "C": "MTD (Maximum Tolerable Downtime), iş sürecinin katlanabileceği toplam kesinti süresidir ve RTO'yu kapsar; ancak ikinci değer veri kaybıdır, RTO değil. Günlük yedek 15 dakikalık RPO'yu karşılamaz.",
+      "D": "MTBF (Mean Time Between Failures) bir güvenilirlik ölçütüdür, kurtarma hedefi değildir. Yedekleme sıklığı RPO'ya doğrudan bağlıdır.",
+      "E": "MTTR (Mean Time To Repair) ortalama onarım süresidir, veri kaybı hedefi değildir. Günlük artımlı yedekle veri kaybı 24 saate kadar çıkabilir."
+    },
+    "keyConcept": "RTO: hizmetin geri gelmesi için azami süre. RPO: kabul edilebilir azami veri kaybı (zaman). RPO → yedek/çoğaltma sıklığı; RTO → kurtarma sahası ve failover tasarımı.",
+    "examTip": "\"Ne kadar sürede geri geliriz?\" → RTO. \"Ne kadar veri kaybederiz?\" → RPO. RPO küçüldükçe yedekleme sıklığı artar, maliyet yükselir.",
+    "simpleExplanation": "Elektrik kesilince iki soru sorarsınız: \"Ne zaman geri gelir?\" ve \"Buzdolabındaki yemeklerin ne kadarı bozulur?\". İlk soru hizmetin geri dönüş süresidir (RTO): burada 2 saat. İkinci soru kabul edebileceğiniz kayıptır (RPO): burada 15 dakikalık işlem verisi. Veri kaybını 15 dakikada tutmak istiyorsanız, verinin kopyasını en az 15 dakikada bir başka yere almanız gerekir; günde bir yedekle 24 saatlik veri kaybedersiniz. Bu yüzden RPO yedekleme veya kopyalama sıklığını, RTO ise yedek sistemin ne kadar hazır bekleyeceğini belirler.",
+    "references": [
+      "ISO 22301:2019, Business continuity management systems",
+      "NIST SP 800-34 Rev. 1, Contingency Planning Guide for Federal Information Systems",
+      "ISACA CISA Review Manual, Domain 4: Business Continuity and Disaster Recovery"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "YIS-002",
+    "topic": "YIS",
+    "subtopic": "BCP, DRP ve iş etki analizi",
+    "difficulty": "temel",
+    "question": "Bir bankanın süreklilik dokümanları incelenmektedir. Aşağıdaki ifadelerden hangisi iş sürekliliği planı (Business Continuity Plan, BCP), felaket kurtarma planı (Disaster Recovery Plan, DRP) ve iş etki analizi (Business Impact Analysis, BIA) arasındaki ilişkiyi doğru tanımlar?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "BIA, kritik iş süreçlerini ve bunların kesintiye dayanma sürelerini (MTD, RTO, RPO) belirleyen analizdir ve BCP ile DRP'nin girdisidir; BCP, kesinti sırasında iş fonksiyonlarının (ör. şubelerin manuel işlem yapması, alternatif çalışma yeri) sürdürülmesini kapsayan geniş plandır; DRP ise BCP'nin BT altyapısının felaket kurtarma merkezinde ayağa kaldırılmasına odaklanan teknik alt bileşenidir."
+      },
+      {
+        "id": "B",
+        "text": "DRP en geniş plandır ve BCP ile BIA'yı kapsar; BIA, DRP tamamlandıktan sonra sonuçları doğrulamak için yapılır."
+      },
+      {
+        "id": "C",
+        "text": "BCP ve DRP aynı dokümanın iki adıdır; BIA ise yalnızca finansal zararın sigorta için hesaplanmasıdır."
+      },
+      {
+        "id": "D",
+        "text": "BIA, felaket sonrası gerçekleşen zararın raporlanmasıdır; BCP yalnızca BT sistemlerini, DRP yalnızca personel ve bina süreçlerini kapsar."
+      },
+      {
+        "id": "E",
+        "text": "BCP yalnızca düzenleyici kuruma sunulan bir uyum belgesidir; DRP ve BIA operasyonel olarak kullanılmaz."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Sıralama şöyledir: önce BIA yapılır; kritik iş süreçleri, bağımlılıkları ve kesintinin zaman içindeki etkisi analiz edilerek her süreç için MTD/MTPD, RTO ve RPO belirlenir. Bu hedefler BCP ve DRP'nin tasarım girdisidir. BCP, kuruluşun kesinti sırasında kritik iş fonksiyonlarını nasıl sürdüreceğini bütüncül olarak ele alır: personel, alternatif çalışma alanı, iletişim, manuel süreçler, tedarikçiler ve BT. DRP, BCP'nin BT ve veri odaklı alt kümesidir: sistemlerin felaket kurtarma merkezinde (DR site) kurtarılması, veri geri yükleme, failover prosedürleri. BDDK düzenlemesi de bankalardan bilgi sistemleri süreklilik planı hazırlamalarını ve bunun bankanın genel iş sürekliliği planlamasıyla uyumlu olmasını bekler.",
+    "optionExplanations": {
+      "A": "Doğru. BIA girdi sağlar; BCP iş odaklı geniş plandır; DRP BT odaklı teknik alt bileşendir.",
+      "B": "Hiyerarşi terstir: BCP geniştir, DRP onun BT alt kümesidir. BIA ise planlamanın başında yapılır, sonunda değil; hedefleri BIA belirler.",
+      "C": "BCP ve DRP farklı kapsamdadır (iş fonksiyonları vs BT kurtarma). BIA finansal etkinin yanında operasyonel, itibar ve yasal etkileri ile zaman hedeflerini de belirler; sigorta hesabı değildir.",
+      "D": "BIA ileriye dönük bir analizdir, olay sonrası zarar raporu değildir. Kapsamlar da ters verilmiştir: BT sistemleri DRP'nin, personel ve bina süreçleri BCP'nin konusudur.",
+      "E": "Süreklilik planları operasyonel dokümanlardır, düzenli tatbikatlarla test edilir ve kesintide fiilen kullanılır; yalnızca uyum belgesi değildir."
+    },
+    "keyConcept": "BIA → (MTD, RTO, RPO) → BCP (iş fonksiyonlarının sürekliliği, geniş kapsam) ⊃ DRP (BT altyapısının kurtarılması, teknik). BDDK: BS süreklilik planı iş sürekliliği planıyla uyumlu olmalı.",
+    "examTip": "Sıra: BIA önce, planlar sonra. Kapsam: BCP geniş (iş), DRP dar (BT). Bu iki kuralı ters çeviren seçenekleri eleyin.",
+    "simpleExplanation": "Bir sel baskınına hazırlanan bir dükkân sahibini düşünün. Önce \"hangi işlerim durursa en çok zarar görürüm, en fazla kaç saat kapalı kalabilirim?\" diye düşünür; bu iş etki analizidir ve diğer planlara yön verir. Sonra \"sel olursa dükkânı nasıl açık tutarım: komşu dükkânda mı satarım, elle fiş mi keserim, personel nereye gider?\" planını yapar; bu geniş iş sürekliliği planıdır. Bunun içinde \"kasa bilgisayarını ve kayıtları nasıl kurtarırım\" gibi teknik bir bölüm vardır; bu felaket kurtarma planıdır. Yani önce analiz, sonra geniş plan ve onun içinde teknik alt plan gelir.",
+    "references": [
+      "ISO 22301:2019, Business continuity management systems - Requirements",
+      "NIST SP 800-34 Rev. 1, Contingency Planning Guide",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020) - BS süreklilik planı",
+      "ISACA CISA Review Manual, Domain 4"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "YIS-003",
+    "topic": "YIS",
+    "subtopic": "Tam, artımlı ve fark yedekleme geri yükleme sırası",
+    "difficulty": "orta",
+    "question": "Bir bankanın kredi kartı işlem veri tabanı için haftalık yedekleme takvimi aşağıdadır. Perşembe günü saat 10:00'da veri tabanı bozulmuştur. Veri tabanını çarşamba gecesi alınan son yedek noktasına geri yüklemek için hangi yedek setleri, hangi sırayla kullanılmalıdır?",
+    "code": "Gün        Saat    Yedek türü\n--------   -----   --------------------------\nPazar      23:00   Tam (full)\nPazartesi  23:00   Artımlı (incremental)\nSalı       23:00   Artımlı (incremental)\nÇarşamba   23:00   Artımlı (incremental)\nPerşembe   23:00   Fark (differential)  [henüz alınmadı]\n\nNot: Artımlı yedek, bir önceki yedekten (türü ne olursa olsun) sonra değişen\nverileri; fark yedeği ise son TAM yedekten sonra değişen verileri içerir.",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "Yalnızca Çarşamba artımlı yedeği; en son yedek tüm güncel veriyi içerir."
+      },
+      {
+        "id": "B",
+        "text": "Pazar tam yedeği, ardından yalnızca Çarşamba artımlı yedeği."
+      },
+      {
+        "id": "C",
+        "text": "Pazar tam yedeği, ardından sırasıyla Pazartesi, Salı ve Çarşamba artımlı yedekleri (toplam 4 set)."
+      },
+      {
+        "id": "D",
+        "text": "Çarşamba artımlı yedeği, ardından Salı, Pazartesi ve en son Pazar tam yedeği."
+      },
+      {
+        "id": "E",
+        "text": "Pazar tam yedeği ve Perşembe fark yedeği (toplam 2 set)."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Artımlı yedek yalnızca bir önceki yedekten sonra değişen verileri içerir; dolayısıyla tek bir artımlı yedek tek başına anlamlı değildir. Çarşamba gecesi durumuna ulaşmak için zincirin tamamı gerekir: önce Pazar tam yedeği yüklenir (temel), sonra Pazartesi artımlısı (Paz→Pzt değişiklikleri), Salı artımlısı (Pzt→Sal değişiklikleri) ve Çarşamba artımlısı (Sal→Çar değişiklikleri) kronolojik sırayla uygulanır. Zincirdeki herhangi bir artımlı yedek bozuksa sonraki günlerin verisi de kurtarılamaz; bu, artımlı stratejinin temel riskidir. Fark yedeği kullanılsaydı yalnızca tam + son fark yeterli olurdu (2 set), ancak Perşembe fark yedeği henüz alınmamıştır. Perşembe 10:00'a kadar yapılan işlemler ise işlem günlükleri (transaction log) yedeği varsa onunla kurtarılır; yoksa kaybedilir (RPO).",
+    "optionExplanations": {
+      "A": "Tipik yanılgı: artımlı yedek yalnızca bir önceki yedekten sonraki değişiklikleri içerir, tüm veriyi değil. Tek başına yüklenirse veri tabanı eksik ve tutarsız olur.",
+      "B": "Pazartesi ve Salı değişiklikleri atlanır; Çarşamba artımlısı yalnızca Salı gecesinden sonraki değişiklikleri içerir. Bu seçenek fark yedeği mantığını artımlıya uygulama hatasıdır.",
+      "C": "Doğru. Tam yedek + tüm artımlı yedekler kronolojik sırayla; 4 set gerekir.",
+      "D": "Sıra terstir. Geri yükleme her zaman tam yedekle başlar; artımlılar üzerine kronolojik olarak uygulanır. Ters sıra eski verinin yeni verinin üzerine yazılmasına yol açar.",
+      "E": "Perşembe fark yedeği henüz alınmamıştır (bozulma 10:00'da, yedek 23:00'te planlı). Fark yedeği mevcut olsaydı doğru olurdu, ancak mevcut değildir."
+    },
+    "keyConcept": "Geri yükleme: Tam + tüm artımlılar (kronolojik) VEYA Tam + yalnızca son fark. Artımlı: az yer, hızlı yedek, uzun ve kırılgan geri yükleme zinciri. Fark: daha fazla yer, yalnızca 2 set ile geri yükleme.",
+    "examTip": "Önce yedek türlerini ayırın: artımlı → \"bir önceki yedekten beri\", fark → \"son tam yedekten beri\". Sonra hangi yedeklerin fiilen alınmış olduğuna (tarih/saat) dikkat edin.",
+    "simpleExplanation": "Tam yedek, bir kitabın tamamının fotokopisidir. Artımlı yedek ise yalnızca \"önceki fotokopiden sonra değişen sayfaları\" içerir. Çarşamba gecesi hâline ulaşmak için önce pazar günkü tam kopyayı alır, sonra pazartesi, salı ve çarşamba günlerinin değişen sayfalarını sırayla üzerine yerleştirirsiniz; aradan bir günü atlarsanız o günün değişiklikleri kaybolur. Sadece çarşamba yedeği işe yaramaz, çünkü o yalnızca salıdan sonra değişen sayfaları tutar. Perşembe fark yedeği ise henüz alınmamıştır, yani elde yoktur. Sonuç: tam yedek ve üç artımlı yedek, toplam dört set, kronolojik sırayla.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 4: Backup and Restoration Strategies",
+      "NIST SP 800-34 Rev. 1, Contingency Planning Guide (Backup Methods)",
+      "William Stallings & Lawrie Brown, Computer Security: Principles and Practice, Bölüm 'Operational Security'"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "YIS-004",
+    "topic": "YIS",
+    "subtopic": "Sıcak, ılık ve soğuk kurtarma sahası seçimi",
+    "difficulty": "orta",
+    "question": "Bir bankanın BIA sonuçları üç sistem için aşağıdaki hedefleri vermiştir. Her sistem için maliyet-etkin ancak hedefi karşılayan en uygun kurtarma sahası türü hangi seçenekte doğru eşleştirilmiştir?",
+    "code": "Sistem                           RTO        RPO\n------------------------------   --------   ----------\nS1. Çekirdek bankacılık / EFT    30 dakika  ~0 (sıfıra yakın)\nS2. İK bordro sistemi            5 gün      24 saat\nS3. Kredi başvuru portalı        12 saat    4 saat\n\nSaha türleri:\n- Sıcak saha (hot site): donanım kurulu, veri sürekli çoğaltılır, dakikalar içinde devreye girer\n- Ilık saha (warm site): donanım ve bağlantı hazır, veri yedekten yüklenir, saatler içinde devreye girer\n- Soğuk saha (cold site): yalnızca alan, güç ve iklimlendirme; donanım sonradan kurulur, günler sürer",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "S1 sıcak, S2 soğuk, S3 ılık"
+      },
+      {
+        "id": "B",
+        "text": "S1 ılık, S2 soğuk, S3 sıcak"
+      },
+      {
+        "id": "C",
+        "text": "S1 sıcak, S2 sıcak, S3 sıcak"
+      },
+      {
+        "id": "D",
+        "text": "S1 sıcak, S2 ılık, S3 soğuk"
+      },
+      {
+        "id": "E",
+        "text": "S1 ılık, S2 ılık, S3 ılık"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Saha türü, RTO ve RPO'yu karşılayan en düşük maliyetli seçenek olmalıdır. S1: 30 dakikalık RTO ve sıfıra yakın RPO yalnızca sürekli veri çoğaltması ve hazır çalışan donanımla, yani sıcak sahayla (hatta aktif-aktif yapı ile) sağlanır. S2: 5 günlük RTO ve 24 saatlik RPO için donanımın sonradan kurulup günlük yedekten dönülmesi yeterlidir; soğuk saha en ekonomik seçenektir. S3: 12 saatlik RTO soğuk sahanın günler süren kurulumuyla karşılanamaz ancak sıcak saha gerektirmez; hazır donanıma yedekten veri yükleyen ılık saha hedefi saatler içinde karşılar, 4 saatlik RPO ise sık yedek/log shipping ile sağlanır.",
+    "optionExplanations": {
+      "A": "Doğru. Her sistem için hedefi karşılayan en ekonomik saha seçilmiştir: S1 sıcak, S2 soğuk, S3 ılık.",
+      "B": "S1 için ılık saha 30 dakikalık RTO'yu ve sıfıra yakın RPO'yu karşılayamaz (yedekten yükleme saatler sürer). S3 için sıcak saha hedefi karşılar ama gereksiz maliyetlidir.",
+      "C": "Hepsini sıcak sahaya almak hedefleri karşılar ancak soru maliyet-etkinlik ister; 5 günlük RTO'su olan bordro için sıcak saha israftır.",
+      "D": "S3 için soğuk saha 12 saatlik RTO'yu karşılayamaz (donanım kurulumu günler alır). S2 için ılık saha gerekli değildir.",
+      "E": "S1 için ılık saha yetersizdir; sıfıra yakın RPO sürekli çoğaltma gerektirir. S2 için ılık saha gereksiz maliyettir."
+    },
+    "keyConcept": "Sıcak saha: dakikalar, sürekli çoğaltma, en pahalı. Ilık saha: saatler, yedekten yükleme. Soğuk saha: günler, yalnızca altyapı, en ucuz. Seçim: RTO/RPO'yu karşılayan en düşük maliyetli tür.",
+    "examTip": "Soruda \"maliyet-etkin\" geçiyorsa her sistem için yukarı değil, hedefi tam karşılayan en düşük seviyeyi seçin. RTO dakikalar → sıcak, saatler → ılık, günler → soğuk.",
+    "simpleExplanation": "Yedek bir ev tutmayı düşünün. Sıcak saha, mobilyalı, elektriği açık, buzdolabı dolu bir ev gibidir: anında taşınırsınız ama kirası çok yüksektir. Ilık saha, mobilyalı ama boş bir evdir: eşyalarınızı getirip birkaç saatte yerleşirsiniz. Soğuk saha ise boş bir arsa gibidir: günler içinde kurulum gerekir ama en ucuzudur. Çekirdek bankacılık 30 dakikada ve neredeyse sıfır veri kaybıyla dönmeli; bu yalnızca sıcak sahayla olur. Bordro sistemi 5 gün bekleyebilir; boş arsa yeter. Kredi portalı 12 saatte dönmeli; birkaç günlük kurulum çok uzun ama anında hazır ev de israf olur, ılık saha tam yerindedir.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 4: Recovery Site Alternatives",
+      "NIST SP 800-34 Rev. 1, Contingency Planning Guide (Alternate Sites)",
+      "ISO 22301:2019"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "YIS-005",
+    "topic": "YIS",
+    "subtopic": "Fidye yazılımına karşı 3-2-1 kuralı ve değiştirilemez yedek",
+    "difficulty": "orta",
+    "question": "Bir bankanın dosya sunucuları ve yedekleme sunucusu aynı Active Directory etki alanında bulunmakta; yedekler yalnızca yedekleme sunucusuna bağlı bir NAS'a yazılmakta ve etki alanı yöneticisi hesabı yedekleri silebilmektedir. Bir fidye yazılımı saldırısında etki alanı yöneticisi hesabı ele geçirilmiş, hem üretim verisi şifrelenmiş hem de tüm yedekler silinmiştir. Bu olayın tekrarını önleyecek en uygun yedekleme mimarisi hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Aynı NAS'a ikinci bir kopya daha yazılması; böylece yedek sayısı ikiye çıkar."
+      },
+      {
+        "id": "B",
+        "text": "Yedekleme sunucusunun parolasının daha karmaşık hâle getirilmesi ve 60 günde bir değiştirilmesi."
+      },
+      {
+        "id": "C",
+        "text": "Yedek kopyalarının üretim etki alanından bağımsız kimlik doğrulamasıyla korunan ayrı bir ortama alınması, en az bir kopyanın değiştirilemez (immutable/WORM) veya çevrimdışı (air-gapped, ör. kaset) olarak saklanması ve en az bir kopyanın farklı bir fiziksel konumda (offsite) tutulması; yani 3 kopya, 2 farklı ortam, 1 kopya saha dışı ve değiştirilemez ilkesinin uygulanması."
+      },
+      {
+        "id": "D",
+        "text": "Yedek sıklığının günlükten saatliğe çıkarılması; böylece veri kaybı azalır."
+      },
+      {
+        "id": "E",
+        "text": "Yedeklerin şifrelenmesi; şifreli yedekler fidye yazılımı tarafından tekrar şifrelenemez."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Olayın kök nedeni, üretim ortamını ele geçiren kimliğin yedeklere de tam yetkiyle ulaşabilmesidir (tek güven alanı). Modern fidye yazılımı saldırıları özellikle yedekleri hedefler. 3-2-1 kuralı en az üç kopya, iki farklı ortam türü ve bir kopyanın saha dışında tutulmasını öngörür; fidye yazılımı çağında buna değiştirilemezlik eklenir (bazen 3-2-1-1-0 olarak anılır: bir kopya çevrimdışı/değiştirilemez, sıfır geri yükleme hatası). Değiştirilemez (immutable) depolama veya WORM, saklama süresi dolmadan silme/değiştirmeyi yönetici hesabı için bile engeller; çevrimdışı kaset ise ağdan erişilemez. Yedek altyapısının üretim etki alanından ayrı kimlik doğrulaması (ayrı dizin, MFA) saldırganın yanal hareketini keser. Saha dışı kopya ise fiziksel felaketlere karşı korur.",
+    "optionExplanations": {
+      "A": "Aynı NAS'taki ikinci kopya aynı yönetici hesabıyla silinebilir; saldırgan iki kopyayı da siler. Kopya sayısı değil, bağımsızlık ve değiştirilemezlik önemlidir.",
+      "B": "Senaryoda ele geçirilen hesap etki alanı yöneticisidir; yedek sunucusu parolası ne kadar karmaşık olsa da aynı etki alanında olduğu sürece yönetici erişebilir.",
+      "C": "Doğru. Bağımsız kimlik alanı + değiştirilemez/çevrimdışı kopya + saha dışı kopya, hem fidye yazılımına hem fiziksel felakete karşı korur.",
+      "D": "Sıklık RPO'yu iyileştirir ancak yedeklerin silinmesini engellemez; saatlik yedekler de aynı hesapla silinirdi.",
+      "E": "Yedeğin şifrelenmesi gizliliği korur; silinmesini engellemez. Saldırgan dosyayı tekrar şifrelemek zorunda değildir, doğrudan siler."
+    },
+    "keyConcept": "3-2-1 kuralı: 3 kopya, 2 farklı ortam, 1 saha dışı. Fidye yazılımına karşı ek olarak: yedek altyapısı üretimden bağımsız kimlik doğrulama, en az bir kopya değiştirilemez (immutable/WORM) veya çevrimdışı (air-gap).",
+    "examTip": "\"Yönetici hesabı ele geçirildi ve yedekler silindi\" senaryosunda parola, şifreleme veya sıklık seçenekleri çeldiricidir; cevap her zaman bağımsız ve değiştirilemez/çevrimdışı kopyadır.",
+    "simpleExplanation": "Evinizin anahtarını ve yedek anahtarı aynı anahtarlığa takarsanız, anahtarlığı çalan hırsız ikisini de alır. Bu bankada da üretim sistemleri ve yedekler aynı yönetici hesabıyla erişilebilir durumdaydı; hesabı ele geçiren saldırgan hem verileri şifreledi hem yedekleri sildi. Çözüm, yedeklerin bir kopyasını farklı bir kilitle korunan, hatta hiç kimsenin silemeyeceği şekilde kilitlenmiş (değiştirilemez) veya ağdan tamamen kopuk (ör. kasada kaset) bir yerde tutmaktır; bir kopya da başka bir binada olmalıdır. Kısaca üç kopya, iki farklı ortam, biri uzakta ve silinemez. Daha karmaşık parola, şifreleme veya daha sık yedek bu sorunu çözmez; saldırgan yine siler.",
+    "references": [
+      "CISA (US), #StopRansomware Guide",
+      "NIST SP 800-209, Security Guidelines for Storage Infrastructure",
+      "ISACA CISA Review Manual, Domain 4: Backup Strategies",
+      "ISO/IEC 27001:2022, Annex A 8.13 Information backup"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "YIS-006",
+    "topic": "YIS",
+    "subtopic": "Yedekleme testi ve geri yükleme tatbikatı",
+    "difficulty": "orta",
+    "question": "Bir BT müfettişi, bankanın yedekleme sürecini incelemiştir. Yedekleme aracı her gece \"başarılı\" raporu üretmekte, yedek kasetleri saha dışı kasada saklanmakta ve son üç yılda hiçbir geri yükleme testi yapılmamıştır. Çekirdek bankacılık veri tabanı için RTO 4 saattir. Müfettişin en doğru değerlendirmesi hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Yedekleme aracının \"başarılı\" raporu yeterli kanıttır; geri yükleme testi yalnızca yedek aracı değiştiğinde gerekir."
+      },
+      {
+        "id": "B",
+        "text": "Saha dışı saklama yeterli güvence sağlar; geri yükleme testi maliyeti nedeniyle önerilmez."
+      },
+      {
+        "id": "C",
+        "text": "Yedekleme kontrolü işletim açısından etkindir çünkü üç yıldır hiçbir yedek başarısız olmamıştır."
+      },
+      {
+        "id": "D",
+        "text": "Yedek işi başarılı raporu yalnızca yazma işleminin tamamlandığını gösterir; yedeğin okunabilir, tutarlı ve RTO içinde geri yüklenebilir olduğunu göstermez. Periyodik geri yükleme tatbikatı (ör. ayrı ortama tam geri yükleme ve veri doğrulama) yapılmadan RTO'nun karşılanabileceği kanıtlanamaz; bu, önemli bir bulgudur ve tatbikatların planlı, belgelenmiş ve RTO ile ölçülen biçimde yapılması önerilmelidir."
+      },
+      {
+        "id": "E",
+        "text": "Sorun yalnızca kaset ortamının eskimesidir; kasetler diske aktarılırsa test gereksizdir."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Yedekleme kontrolünün amacı yedek almak değil, gerektiğinde veriyi hedeflenen sürede geri getirebilmektir. \"Başarılı\" iş raporu yalnızca yedekleme yazılımının işi hatasız tamamladığını söyler; medya bozulması, eksik dosya kilidi, şifreleme anahtarının kaybı, uygulama tutarsızlığı veya geri yükleme süresinin RTO'yu aşması gibi sorunları göstermez. Geri yükleme tatbikatı, ayrı bir ortama tam geri yükleme yapılıp verinin bütünlüğünün doğrulanması ve sürenin ölçülmesidir; 4 saatlik RTO'nun gerçekten karşılanabildiğinin tek kanıtı budur. Denetçi, test edilmemiş yedeğin \"var olmayan yedek\" gibi değerlendirilmesi gerektiğini bilir. BDDK düzenlemesi de bilgi sistemleri süreklilik planının düzenli olarak test edilmesini bekler; yedeklerin geri yüklenebilirliğinin doğrulanması bu beklentinin ayrılmaz parçasıdır.",
+    "optionExplanations": {
+      "A": "Başarılı yazma raporu geri yüklenebilirliği kanıtlamaz; geri yükleme testi araç değişiminden bağımsız olarak düzenli yapılmalıdır.",
+      "B": "Saha dışı saklama fiziksel felakete karşı korur ancak yedeğin okunabilirliği ve RTO uyumu hakkında bilgi vermez. Test maliyeti, kurtarılamayan verinin maliyetinin yanında ihmal edilebilir.",
+      "C": "Yedek işinin başarısız olmaması, geri yüklemenin başarılı olacağı anlamına gelmez. İşletim etkinliği kontrolün amacına (kurtarılabilirlik) ulaşmasıyla ölçülür.",
+      "D": "Doğru. Yedeğin değeri geri yüklenebilirliğidir; bunu kanıtlamanın tek yolu periyodik, belgelenmiş ve RTO'ya karşı ölçülen tatbikattır.",
+      "E": "Ortam türü ne olursa olsun (kaset, disk, bulut) geri yükleme testi gereklidir; diskler de bozulabilir, yapılandırma hataları da olabilir."
+    },
+    "keyConcept": "Yedek işinin başarılı olması ≠ geri yüklenebilirlik. Periyodik geri yükleme tatbikatı: ayrı ortama tam geri yükleme, veri bütünlüğü doğrulama, sürenin RTO ile karşılaştırılması, belgelenmesi.",
+    "examTip": "\"Yedekleme raporları başarılı ama hiç geri yükleme testi yok\" ifadesi her zaman bulgudur; test edilmemiş yedek güvence sağlamaz.",
+    "simpleExplanation": "Yangın söndürücünüzün üzerinde \"dolu\" etiketi olması, yangında gerçekten çalışacağı anlamına gelmez; bunu anlamanın tek yolu düzenli olarak denemektir. Yedekleme aracının her gece \"başarılı\" demesi de yalnızca yazma işinin bittiğini söyler; kaset bozulmuş olabilir, dosyalar eksik olabilir veya geri yükleme 4 saatlik hedeften çok daha uzun sürebilir. Üç yıl boyunca hiç geri yükleme denemesi yapılmamışsa, bu yedeklerin işe yarayacağına dair hiçbir kanıt yoktur. Müfettiş için test edilmemiş yedek, yok sayılan yedektir. Öneri, ayrı bir ortama düzenli olarak tam geri yükleme yapıp verinin doğruluğunu ve süreyi ölçmektir.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 4: Backup and Recovery Testing",
+      "ISO/IEC 27001:2022, Annex A 8.13 Information backup",
+      "NIST SP 800-34 Rev. 1, Contingency Planning Guide (Plan Testing, Training and Exercises)",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "YIS-007",
+    "topic": "YIS",
+    "subtopic": "MTD/MTPD, RTO ve WRT ilişkisi",
+    "difficulty": "ileri",
+    "question": "Bir bankanın BIA'sında EFT/havale hizmeti için azami kabul edilebilir kesinti süresi (Maximum Tolerable Downtime, MTD; ISO 22301'de MTPD) 6 saat olarak belirlenmiştir. DR planında ise sistemin DR merkezinde ayağa kaldırılması için RTO 5 saat öngörülmüş; sistem ayağa kalktıktan sonra yedekten gelen verinin doğrulanması, kuyrukta bekleyen işlemlerin yeniden işlenmesi ve iş biriminin hizmeti kullanıma açması için gereken iş kurtarma süresi (Work Recovery Time, WRT) 2 saat olarak ölçülmüştür. Bu durumun en doğru değerlendirmesi hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "RTO (5 saat) MTD'den (6 saat) küçük olduğu için plan tutarlıdır; WRT ayrı bir hedef olup MTD ile karşılaştırılmaz."
+      },
+      {
+        "id": "B",
+        "text": "MTD, RTO ile WRT'nin toplamından büyük veya eşit olmalıdır; burada 5 + 2 = 7 saat > 6 saat olduğu için plan hedefi karşılamaz. RTO düşürülmeli (ör. daha sıcak bir DR yapısı) veya WRT kısaltılmalı (ör. otomatik veri doğrulama, işlem kuyruğunun daha hızlı işlenmesi) ya da BIA'daki MTD iş birimiyle yeniden değerlendirilmelidir."
+      },
+      {
+        "id": "C",
+        "text": "WRT, RTO'nun bir parçasıdır; dolayısıyla toplam süre 5 saattir ve MTD içinde kalınır."
+      },
+      {
+        "id": "D",
+        "text": "MTD yalnızca BT'nin hedefidir; iş biriminin doğrulama süresi MTD hesabına girmez."
+      },
+      {
+        "id": "E",
+        "text": "Plan tutarlıdır çünkü RPO belirtilmemiştir; RPO olmadan MTD aşımı hesaplanamaz."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "MTD/MTPD, iş sürecinin kabul edilemez zarara uğramadan kesintide kalabileceği toplam süredir ve iş birimi tarafından belirlenir. Bu süre iki bileşenden oluşur: RTO (BT sisteminin teknik olarak kurtarılması) ve WRT (sistem ayağa kalktıktan sonra verinin doğrulanması, kayıp işlemlerin yeniden girilmesi ve hizmetin iş birimince kullanıma açılması). İş açısından kesinti, kullanıcılar hizmeti tekrar kullanabildiğinde biter; sunucu açıldığında değil. Dolayısıyla RTO + WRT ≤ MTD olmalıdır. Senaryoda 5 + 2 = 7 saat, 6 saatlik MTD'yi aşar; EFT hizmeti kabul edilemez bir süre kesik kalır. Çözüm seçenekleri: daha sıcak DR yapısıyla RTO'yu düşürmek, WRT'yi otomasyonla kısaltmak veya iş birimiyle MTD'yi gerçekçi biçimde yeniden değerlendirmek (ancak MTD teknik kolaylık için keyfî uzatılmaz).",
+    "optionExplanations": {
+      "A": "Yalnızca RTO'ya bakmak yanılgıdır; iş birimi için kesinti, WRT bitince sona erer. WRT MTD hesabının ayrılmaz parçasıdır.",
+      "B": "Doğru. MTD ≥ RTO + WRT koşulu sağlanmıyor (7 > 6); düzeltme seçenekleri doğru sıralanmıştır.",
+      "C": "WRT, RTO'dan sonra başlayan ayrı bir aşamadır (sistem hazır → iş hazır). RTO'ya dâhil edilirse RTO zaten 7 saat olurdu ve yine MTD aşılırdı.",
+      "D": "MTD iş sürecinin hedefidir, BT'nin değil; tam tersine iş biriminin hizmeti kullanabilir hâle gelmesi MTD'nin bitiş noktasıdır.",
+      "E": "RPO veri kaybını ölçer, süre hesabıyla ilgisizdir. MTD-RTO-WRT ilişkisi RPO olmadan da değerlendirilir."
+    },
+    "keyConcept": "MTD (MTPD) ≥ RTO + WRT. RTO: sistemin teknik kurtarılması; WRT: veri doğrulama, yeniden işleme ve iş birimince hizmetin açılması. İş için kesinti, kullanıcı hizmeti kullanabildiğinde biter.",
+    "examTip": "MTD sorusunda RTO'yu tek başına MTD ile karşılaştırmayın; WRT verilmişse toplayın. \"Sistem açıldı\" ile \"hizmet verildi\" farklı anlardır.",
+    "simpleExplanation": "Bir restoranın elektriği kesildiğinde jeneratörün 5 dakikada devreye girmesi yetmez; aşçıların ocakları yeniden yakması, soğuyan yemekleri kontrol etmesi ve sipariş almaya başlaması da zaman alır. Müşteri için kesinti, ışık yandığında değil yemek geldiğinde biter. İşte MTD, işin katlanabileceği toplam kesinti süresidir ve iki parçadan oluşur: sistemin teknik olarak açılması (RTO) ve açılan sistemin iş birimi tarafından kullanıma hazır edilmesi (WRT). Burada 5 saat artı 2 saat 7 saat eder, oysa iş en fazla 6 saat bekleyebilir. Plan kâğıt üzerinde tutarlı görünse de gerçekte hedefi kaçırır; ya sistem daha hızlı açılmalı ya da doğrulama kısalmalıdır.",
+    "references": [
+      "ISO 22301:2019 (MTPD tanımı)",
+      "ISACA CISA Review Manual, Domain 4: Recovery Time Objectives, MTD and WRT",
+      "NIST SP 800-34 Rev. 1, Contingency Planning Guide (Section 3.2 BIA)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "YIS-008",
+    "topic": "YIS",
+    "subtopic": "Failover tasarımı ve DR tatbikatı bulguları",
+    "difficulty": "ileri",
+    "question": "Bir banka, çekirdek bankacılık veri tabanını birincil veri merkezinden 300 km uzaktaki DR merkezine asenkron çoğaltma (asynchronous replication) ile aktarmakta ve RPO'yu 5 dakika, RTO'yu 1 saat olarak hedeflemektedir. Yıllık DR tatbikatında şu gözlemler yapılmıştır. Hangi gözlem, tatbikatın \"başarılı\" ilan edilmesine rağmen gerçek bir felakette hedeflerin karşılanamayacağına ilişkin en güçlü kanıttır?",
+    "code": "T1. Tatbikat, birincil merkez çalışır durumdayken planlı olarak yapıldı; failover\n    öncesi çoğaltma kuyruğu manuel olarak boşaltıldı (sıfır veri kaybı sağlandı).\nT2. Failover 48 dakikada tamamlandı ve DR'da uygulama açıldı.\nT3. DR'daki uygulama sunucuları, kart yetkilendirme (authorization) servisine\n    birincil merkezdeki IP adresi üzerinden bağlanmaya devam etti; tatbikatta\n    birincil merkez açık olduğundan bu bağlantı çalıştı.\nT4. Tatbikat raporunda DNS yönlendirmesinin elle yapıldığı not edildi (12 dakika).\nT5. Şube kullanıcılarının test girişleri DR ortamında başarılı oldu.",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "T2, çünkü 48 dakika 1 saatlik RTO'ya çok yakındır ve güvenlik payı bırakmaz."
+      },
+      {
+        "id": "B",
+        "text": "T4, çünkü DNS yönlendirmesinin elle yapılması insan hatasına açıktır."
+      },
+      {
+        "id": "C",
+        "text": "T5, çünkü yalnızca şube kullanıcıları test edilmiş, mobil bankacılık müşterileri test edilmemiştir."
+      },
+      {
+        "id": "D",
+        "text": "T1 tek başına yeterli kanıttır; asenkron çoğaltma zaten 5 dakikalık RPO'yu hiçbir koşulda karşılayamaz."
+      },
+      {
+        "id": "E",
+        "text": "T3 ile birlikte T1: DR'daki uygulama, birincil merkezdeki bir bağımlılığa (kart yetkilendirme servisi) hâlâ bağlıdır; gerçek felakette birincil merkez erişilemez olacağından DR'daki uygulama çalışmaz ve RTO karşılanamaz. T1 ise tatbikatın, gerçek felakette var olmayacak koşullar (çalışan birincil merkez, manuel kuyruk boşaltma) altında yapıldığını gösterir; dolayısıyla RPO'nun 5 dakika içinde kalacağı da kanıtlanmamıştır."
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "DR tatbikatının amacı, gerçek felaket koşullarını mümkün olduğunca taklit ederek planın çalıştığını kanıtlamaktır. T3 kritik bir gizli bağımlılıktır: DR'daki uygulama, birincil merkezdeki kart yetkilendirme servisine bağlıdır; tatbikatta birincil merkez açık olduğu için fark edilmemiştir, ancak gerçek bir felakette birincil merkez erişilemez olduğunda kart işlemleri duracak ve \"uygulama açıldı\" durumu hizmet verildiği anlamına gelmeyecektir. T1 ise tatbikat koşullarını gerçek dışı kılar: asenkron çoğaltmada her zaman bir gecikme (lag) vardır; gerçek felakette kuyruğu boşaltma fırsatı olmaz ve kayıp, o anki çoğaltma gecikmesine eşittir. 5 dakikalık RPO ancak gecikmenin sürekli izlenip 5 dakikanın altında tutulduğu kanıtlanırsa karşılanır; manuel boşaltma bunu gizlemiştir. Bu iki gözlem birlikte, tatbikatın \"başarılı\" sonucunun gerçek senaryo için geçerli olmadığını gösterir.",
+    "optionExplanations": {
+      "A": "48 dakika RTO içindedir; güvenlik payının darlığı bir iyileştirme notu olabilir ama hedefin karşılanamayacağının kanıtı değildir.",
+      "B": "Manuel DNS yönlendirmesi risklidir ve otomatikleştirilmelidir; ancak 12 dakika ölçülmüş, belgelenmiş ve RTO içinde kalmıştır. Hedefin karşılanamayacağını göstermez.",
+      "C": "Test kapsamının genişletilmesi gerekir ancak bu, DR ortamının çalışmayacağına ilişkin bir kanıt değildir; yalnızca kanıt eksikliğidir.",
+      "D": "Asenkron çoğaltma, gecikme izlenip 5 dakikanın altında tutulursa 5 dakikalık RPO'yu karşılayabilir; \"hiçbir koşulda\" ifadesi yanlıştır. 300 km'de senkron çoğaltma gecikme nedeniyle genellikle tercih edilmez; asenkron yapı kendisi sorun değil, izlenmemesi sorundur.",
+      "E": "Doğru. Gizli bağımlılık (T3) gerçek felakette DR'ı işlevsiz kılar; gerçek dışı tatbikat koşulları (T1) RPO kanıtını geçersizleştirir."
+    },
+    "keyConcept": "DR tatbikatı gerçek felaket koşullarını taklit etmeli: birincil merkez erişilemez varsayılmalı, gizli bağımlılıklar (DR'dan birincile giden bağlantılar) tespit edilmeli. Asenkron çoğaltmada RPO = izlenen çoğaltma gecikmesi.",
+    "examTip": "DR tatbikatı sorularında \"birincil merkez açıkken yapıldı\" ve \"DR'dan birincildeki bir servise bağlandı\" ifadelerini arayın; bunlar tatbikat sonucunu geçersiz kılan en güçlü bulgulardır.",
+    "simpleExplanation": "Yangın tatbikatını binanın asıl çıkış kapısı açıkken yapıp \"herkes çıktı\" demek gibi düşünün. Gerçek yangında o kapı kapalı olacaktır. Bu tatbikatta ana merkez çalışır durumdaydı ve yedek merkezdeki uygulama, kart onaylama servisine hâlâ ana merkez üzerinden bağlanıyordu; gerçek felakette ana merkez olmayacağı için kart işlemleri duracaktır. Ayrıca kopyalama kuyruğu elle boşaltılarak sıfır veri kaybı sağlanmış; gerçek felakette böyle bir fırsat olmaz, o anki gecikme kadar veri kaybedilir. Yani tatbikat, gerçek koşullarda var olmayacak iki avantajla yapılmış ve bu yüzden \"başarılı\" sonucu gerçek bir felaket için hiçbir şey kanıtlamaz.",
+    "references": [
+      "ISACA CISA Review Manual, Domain 4: Disaster Recovery Testing and Dependencies",
+      "NIST SP 800-34 Rev. 1, Contingency Planning Guide (Testing and Exercises)",
+      "ISO 22301:2019, Clause 8.5 Exercise programme",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020) - BS süreklilik planı testleri"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  }
+]

@@ -1,0 +1,1578 @@
+[
+  {
+    "id": "PRG-001",
+    "topic": "PRG",
+    "subtopic": "Python 3 aritmetik operatörler ve tamsayı bölme",
+    "difficulty": "temel",
+    "question": "Aşağıdaki Python 3 programının çıktısı nedir?",
+    "code": "a = 7\nb = 2\nprint(a / b, a // b, a % b, -a // b)",
+    "codeLanguage": "python",
+    "options": [
+      {
+        "id": "A",
+        "text": "3.5 3 1 -3"
+      },
+      {
+        "id": "B",
+        "text": "3 3 1 -3"
+      },
+      {
+        "id": "C",
+        "text": "3.5 3.0 1 -4"
+      },
+      {
+        "id": "D",
+        "text": "3.5 3 1 -4"
+      },
+      {
+        "id": "E",
+        "text": "3.5 4 1 -4"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Python 3'te / operatörü her zaman kayan noktalı (float) sonuç verir: 7 / 2 = 3.5. // operatörü tabana yuvarlayan (floor) bölmedir ve iki tamsayı için tamsayı döndürür: 7 // 2 = 3. % kalan operatörüdür: 7 % 2 = 1. Negatif sayılarda // sıfıra doğru değil, negatif sonsuza doğru yuvarlar: -7 // 2 = -3.5'in tabanı = -4. Dolayısıyla çıktı '3.5 3 1 -4' olur.",
+    "simpleExplanation": "Python 3'te tek çizgili bölme (/) her zaman virgüllü sonuç verir: 7 bölü 2 = 3.5. Çift çizgili bölme (//) ise sonucu aşağıya doğru yuvarlar, yani 7 // 2 = 3 olur ve % işareti kalanı verir (1). Asıl tuzak eksi sayılarda: -3.5'in 'aşağısı' sayı doğrusunda -4'tür, -3 değil. Bunu bir asansör gibi düşünün: aşağı yuvarlama her zaman bir alt kata iner; eksi tarafta alt kat daha büyük eksi sayıdır. Bu yüzden çıktı 3.5 3 1 -4 olur.",
+    "optionExplanations": {
+      "A": "-7 // 2 için -3 yazılması, C ve Java'daki sıfıra doğru kesme (truncation) davranışının Python'a yanlış aktarılmasıdır; Python tabana (floor) yuvarlar ve -4 verir.",
+      "B": "7 / 2'nin 3 vermesi Python 2 davranışıdır. Python 3'te / daima float döndürür (3.5). Ayrıca -7 // 2 = -4'tür.",
+      "C": "7 // 2 iki tamsayı için tamsayı (3) döndürür, 3.0 değil. Sonuç yalnızca işlenenlerden biri float olduğunda float olur.",
+      "D": "Doğru. / → 3.5, // → 3, % → 1 ve negatif değerde taban yuvarlama ile -7 // 2 → -4.",
+      "E": "7 // 2'nin 4 olması için yukarı yuvarlama gerekirdi; // tabana yuvarlar, dolayısıyla 3'tür."
+    },
+    "keyConcept": "Python 3'te / gerçek bölme (float), // taban bölme (floor division) yapar; negatif sayılarda // negatif sonsuza doğru yuvarlar.",
+    "examTip": "Negatif tamsayı bölmesi görünce dili kontrol edin: Python floor (-7//2 = -4), Java/C truncation (-7/2 = -3) kullanır.",
+    "references": [
+      "Python 3 Language Reference, Bölüm 6.7 (Binary arithmetic operations)",
+      "PEP 238 (Changing the Division Operator)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "PRG-002",
+    "topic": "PRG",
+    "subtopic": "Java'da parametre geçişi (değer ile geçiş ve referans kopyası)",
+    "difficulty": "orta",
+    "question": "Aşağıdaki Java 17 programının çıktısı nedir?",
+    "code": "public class Main {\n    static void degistir(int x, StringBuilder sb, int[] dizi) {\n        x = x + 1;\n        sb.append(\"B\");\n        dizi[0] = 99;\n        dizi = new int[]{7, 7};\n        sb = new StringBuilder(\"C\");\n    }\n    public static void main(String[] args) {\n        int x = 5;\n        StringBuilder sb = new StringBuilder(\"A\");\n        int[] dizi = {1, 2};\n        degistir(x, sb, dizi);\n        System.out.println(x + \" \" + sb + \" \" + dizi[0] + \" \" + dizi.length);\n    }\n}",
+    "codeLanguage": "java",
+    "options": [
+      {
+        "id": "A",
+        "text": "6 ABC 7 2"
+      },
+      {
+        "id": "B",
+        "text": "5 AB 99 2"
+      },
+      {
+        "id": "C",
+        "text": "5 C 7 2"
+      },
+      {
+        "id": "D",
+        "text": "6 AB 99 2"
+      },
+      {
+        "id": "E",
+        "text": "5 ABC 99 2"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Java her zaman değer ile geçiş (pass-by-value) yapar; nesneler için geçirilen değer referansın kopyasıdır. x ilkel (primitive) tip olduğundan metot içindeki x = x + 1 yalnızca kopyayı değiştirir, main'deki x 5 kalır. sb.append(\"B\") ve dizi[0] = 99 paylaşılan nesnelerin içeriğini değiştirdiği için çağırana yansır. Ancak dizi = new int[]{7,7} ve sb = new StringBuilder(\"C\") yalnızca yerel referans kopyasını yeni nesneye yönlendirir; main'deki referanslar eski nesnelere bakmaya devam eder. Çıktı: 5 AB 99 2.",
+    "simpleExplanation": "Java'da bir metoda değişken verdiğinizde aslında bir fotokopi veriyorsunuz. Sayı (int) için fotokopi sayının kendisidir; metot kopyayı 6 yapsa da elinizdeki 5 değişmez. Nesneler için ise fotokopi, nesnenin adresinin kopyasıdır: iki kişi aynı eve giden iki ayrı adres kağıdı taşır. Metot bu adrese gidip evin içini değiştirirse (sb'ye 'B' eklemek, dizinin ilk kutusuna 99 yazmak) siz de görürsünüz. Ama metot kendi kağıdına başka bir evin adresini yazarsa (sb = new ..., dizi = new ...) sizin kağıdınız eski evi göstermeye devam eder. Sonuç: 5 AB 99 2.",
+    "optionExplanations": {
+      "A": "x'in 6 olması ilkel tipin referansla geçtiği yanılgısıdır; ayrıca sb'ye yeniden atama çağırana yansımaz, bu yüzden 'ABC' veya 7 oluşamaz.",
+      "B": "Doğru. İlkel kopya değişmez (5), nesne içeriği değişiklikleri yansır (AB, 99), referansın yeniden atanması yansımaz (uzunluk 2 kalır).",
+      "C": "sb = new StringBuilder(\"C\") ve dizi = new int[]{7,7} yalnızca yerel referans kopyalarını değiştirir; main'deki sb hâlâ 'AB' içeren nesneye, dizi hâlâ {99, 2} dizisine işaret eder.",
+      "D": "AB ve 99 doğru ancak x ilkel tiptir; metot içindeki artış main'deki x'i etkilemez, 5 kalır.",
+      "E": "99 doğru ancak 'ABC' için sb referansının yeniden atanmasının çağırana yansıması gerekirdi; Java'da bu mümkün değildir. Ayrıca yeni StringBuilder 'C' içerir, 'ABC' değil."
+    },
+    "keyConcept": "Java'da referanslar değer ile kopyalanır: nesnenin içeriğini değiştirmek çağırana yansır, referansı yeni nesneye atamak yansımaz.",
+    "examTip": "Metot içinde 'parametre = new ...' satırı görürseniz bu satırın çağırana hiçbir etkisi olmadığını hemen not edin.",
+    "references": [
+      "Java Language Specification (JLS) 17, Bölüm 8.4.1 (Formal Parameters)",
+      "Horstmann, Core Java Volume I, Bölüm 4 (Objects and Classes)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "PRG-003",
+    "topic": "PRG",
+    "subtopic": "Python'da değiştirilebilir (mutable) varsayılan argüman hatası",
+    "difficulty": "orta",
+    "question": "Aşağıdaki Python 3 programında ekle() fonksiyonu üç kez çağrılmaktadır. print satırının çıktısı nedir?",
+    "code": "def ekle(eleman, liste=[]):\n    liste.append(eleman)\n    return liste\n\na = ekle(1)\nb = ekle(2)\nc = ekle(3, [])\nprint(a, b, c)",
+    "codeLanguage": "python",
+    "options": [
+      {
+        "id": "A",
+        "text": "[1, 2] [1, 2] [3]"
+      },
+      {
+        "id": "B",
+        "text": "[1] [2] [3]"
+      },
+      {
+        "id": "C",
+        "text": "[1] [1, 2] [3]"
+      },
+      {
+        "id": "D",
+        "text": "[1, 2, 3] [1, 2, 3] [1, 2, 3]"
+      },
+      {
+        "id": "E",
+        "text": "[1, 2] [1, 2] [1, 2, 3]"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Python'da varsayılan argüman ifadeleri fonksiyon tanımlandığı anda bir kez değerlendirilir ve fonksiyon nesnesinde saklanır. Bu nedenle liste=[] ile oluşturulan tek bir liste nesnesi, varsayılanı kullanan tüm çağrılar arasında paylaşılır. ekle(1) bu listeye 1 ekler ve aynı nesneyi döndürür (a). ekle(2) aynı nesneye 2 ekler; a ve b aynı nesneye işaret ettiği için ikisi de [1, 2] görünür. ekle(3, []) ise açıkça yeni bir boş liste verdiği için c = [3] olur.",
+    "simpleExplanation": "Python'da fonksiyonun varsayılan değeri (liste=[]) fonksiyon her çağrıldığında değil, fonksiyon ilk tanımlandığında bir kez yaratılır. Yani o boş liste, lokantada masaya bir kez konan ortak ekmek sepeti gibidir: sepet verilmeden gelen her müşteri aynı sepeti kullanır. ekle(1) ve ekle(2) aynı sepete ekler, bu yüzden hem a hem b [1, 2] gösterir; çünkü ikisi de aynı sepettir. ekle(3, []) ise kendi boş sepetini getirdiği için [3] olur.",
+    "optionExplanations": {
+      "A": "Doğru. a ve b aynı paylaşılan varsayılan liste nesnesidir ([1, 2]); c açıkça verilen yeni listedir ([3]).",
+      "B": "Her çağrıda yeni bir boş liste oluşturulduğu yanılgısıdır. Varsayılan ifade yalnızca tanım anında bir kez değerlendirilir.",
+      "C": "a'nın [1] kalması için a'nın ayrı bir kopya olması gerekirdi; oysa a ve b aynı liste nesnesinin referanslarıdır, dolayısıyla a da [1, 2] görünür.",
+      "D": "Üçüncü çağrı liste parametresine açıkça [] geçirdiği için paylaşılan varsayılan listeye dokunmaz; 3 varsayılan listeye eklenmez.",
+      "E": "c'nin [1, 2, 3] olması için varsayılan listenin kullanılması gerekirdi; ancak ekle(3, []) yeni bir boş liste geçirir, c = [3]."
+    },
+    "keyConcept": "Python'da varsayılan argümanlar tanım anında bir kez oluşturulur; mutable varsayılanlar çağrılar arasında paylaşılır. Güvenli kalıp: liste=None ve gövdede 'if liste is None: liste = []'.",
+    "examTip": "def satırında [] veya {} varsayılan görürseniz çağrılar arasında birikim olacağını varsayın; açıkça yeni koleksiyon geçirilen çağrılar bu birikimden etkilenmez.",
+    "references": [
+      "Python 3 Language Reference, Bölüm 8.7 (Function definitions)",
+      "Python Tutorial, Bölüm 4 'More Control Flow Tools' – Default Argument Values"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "PRG-004",
+    "topic": "PRG",
+    "subtopic": "Çok biçimlilik, alan gizleme ve aşırı yükleme çözümü",
+    "difficulty": "ileri",
+    "question": "Aşağıdaki Java 17 programında Hesap ve VadeliHesap sınıfları tanımlanmıştır. main metodu çalıştırıldığında konsola ne yazdırılır?",
+    "code": "class Hesap {\n    String tur = \"Genel\";\n    String ad() { return \"Hesap\"; }\n}\nclass VadeliHesap extends Hesap {\n    String tur = \"Vadeli\";\n    @Override String ad() { return \"VadeliHesap\"; }\n}\npublic class Main {\n    static String yaz(Hesap h) { return \"H\"; }\n    static String yaz(VadeliHesap v) { return \"V\"; }\n    public static void main(String[] args) {\n        Hesap h = new VadeliHesap();\n        System.out.println(h.ad() + \" \" + h.tur + \" \" + yaz(h));\n    }\n}",
+    "codeLanguage": "java",
+    "options": [
+      {
+        "id": "A",
+        "text": "VadeliHesap Vadeli V"
+      },
+      {
+        "id": "B",
+        "text": "Hesap Genel H"
+      },
+      {
+        "id": "C",
+        "text": "VadeliHesap Genel H"
+      },
+      {
+        "id": "D",
+        "text": "VadeliHesap Vadeli H"
+      },
+      {
+        "id": "E",
+        "text": "Hesap Vadeli V"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Üç farklı bağlama (binding) kuralı bir aradadır. (1) h.ad(): metot geçersiz kılma (overriding) çalışma zamanında nesnenin gerçek tipine göre çözülür (dinamik bağlama); nesne VadeliHesap olduğundan 'VadeliHesap' döner. (2) h.tur: alanlar çok biçimli değildir; alan erişimi derleme zamanında referansın bildirilen tipine (Hesap) göre çözülür, alt sınıftaki tur yalnızca gizler (field hiding). Sonuç 'Genel'. (3) yaz(h): aşırı yükleme (overloading) derleme zamanında argümanın statik tipine göre seçilir; h'nin statik tipi Hesap olduğundan yaz(Hesap) çağrılır ve 'H' döner. Çıktı: VadeliHesap Genel H.",
+    "simpleExplanation": "Bu soruda aynı nesneye üç farklı şekilde bakıyoruz. Metot çağrısı (h.ad()) nesnenin gerçekte ne olduğuna bakar: kutunun üstünde 'Hesap' yazsa da içindeki VadeliHesap'tır, bu yüzden 'VadeliHesap' döner. Alan (h.tur) ise kutunun etiketine bakar: etiket Hesap olduğu için Hesap'taki 'Genel' okunur. Hangi yaz() metodunun seçileceği de derleme anında etikete göre belirlenir, dolayısıyla 'H' seçilir. Kısaca: metotlar içeriğe, alanlar ve aşırı yükleme seçimi etikete bakar.",
+    "optionExplanations": {
+      "A": "Alan erişimi ve aşırı yükleme çözümünün de dinamik olduğu yanılgısıdır. Java'da yalnızca örnek metot çağrıları çalışma zamanı tipine göre çözülür; tur alanı ve yaz() seçimi statik tipe (Hesap) göre yapılır.",
+      "B": "ad() geçersiz kılınmıştır ve dinamik bağlama ile VadeliHesap sürümü çalışır; 'Hesap' dönmesi mümkün değildir.",
+      "C": "Doğru. Overriding dinamik (VadeliHesap), alan gizleme statik (Genel), overloading statik (H).",
+      "D": "ad() ve yaz() doğru değerlendirilmiş ancak alanlar geçersiz kılınamaz; h'nin statik tipi Hesap olduğu için h.tur 'Genel'dir.",
+      "E": "Hem ad() hem alan hem de aşırı yükleme çözümü ters uygulanmıştır: ad() dinamik olarak VadeliHesap'tır, tur ve yaz() ise statik tip Hesap üzerinden çözülür."
+    },
+    "keyConcept": "Java'da örnek metotlar dinamik (çalışma zamanı tipi), alanlar ve aşırı yüklenmiş metot seçimi statik (derleme zamanı tipi) bağlanır.",
+    "examTip": "'Ust referans = new Alt()' kalıbı görünce üç soruyu ayrı ayrı sorun: metot mu (Alt), alan mı (Ust), overload seçimi mi (Ust)?",
+    "references": [
+      "Java Language Specification (JLS) 17, Bölüm 15.12 (Method Invocation Expressions) ve 8.3 (Field Declarations)",
+      "Bloch, Effective Java 3. baskı, Madde 52 (Use overloading judiciously)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "PRG-005",
+    "topic": "PRG",
+    "subtopic": "Sınır hatası (off-by-one) ve dizi indeksleme",
+    "difficulty": "temel",
+    "question": "Aşağıdaki Java 17 programı çalıştırıldığında ne olur?",
+    "code": "public class Main {\n    public static void main(String[] args) {\n        int[] dizi = {10, 20, 30, 40, 50};\n        int toplam = 0;\n        for (int i = 0; i <= dizi.length; i++) {\n            toplam += dizi[i];\n        }\n        System.out.println(toplam);\n    }\n}",
+    "codeLanguage": "java",
+    "options": [
+      {
+        "id": "A",
+        "text": "150 yazdırılır."
+      },
+      {
+        "id": "B",
+        "text": "150 yazdırılır; dizi[5] için 0 eklenir."
+      },
+      {
+        "id": "C",
+        "text": "Derleme hatası oluşur; derleyici i <= dizi.length koşulunu kabul etmez."
+      },
+      {
+        "id": "D",
+        "text": "160 yazdırılır."
+      },
+      {
+        "id": "E",
+        "text": "Hiçbir şey yazdırılmaz; çalışma zamanında ArrayIndexOutOfBoundsException fırlatılır."
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Dizinin uzunluğu 5, geçerli indeksler 0-4'tür. Döngü koşulu i <= dizi.length olduğundan i = 5 değeri için de döngü gövdesi çalışır ve dizi[5] erişimi yapılır. Java dizi sınırlarını çalışma zamanında denetler ve geçersiz indeks için ArrayIndexOutOfBoundsException (Index 5 out of bounds for length 5) fırlatır. İstisna yakalanmadığından program println satırına ulaşmadan sonlanır; hiçbir toplam yazdırılmaz. Bu klasik bir 'bir fazla' (off-by-one) hatasıdır; doğru koşul i < dizi.length olmalıdır.",
+    "simpleExplanation": "Dizide 5 eleman var ama Java'da sayma 0'dan başlar, yani kutuların numaraları 0, 1, 2, 3, 4'tür. Döngü 'i <= 5' dediği için i = 5 olduğunda da çalışır ve olmayan 5 numaralı kutuya uzanır. Java buna izin vermez: 'bu kutu yok' diyerek programı bir hatayla (ArrayIndexOutOfBoundsException) durdurur. Hata, toplam yazdırılmadan önce oluştuğu için ekranda hiçbir sayı görünmez. Beş basamaklı bir merdivende altıncı basamağa adım atmak gibi düşünün: düşersiniz, yukarı çıkamazsınız.",
+    "optionExplanations": {
+      "A": "150 ancak koşul i < dizi.length olsaydı yazdırılırdı. <= nedeniyle altıncı iterasyonda sınır dışı erişim gerçekleşir.",
+      "B": "Java'da sınır dışı dizi erişimi sessizce 0 döndürmez; çalışma zamanı istisnası fırlatılır. Bu davranış denetimsiz C dizileriyle karıştırılmaktadır.",
+      "C": "i <= dizi.length sözdizimsel ve tip açısından geçerli bir ifadedir; derleyici döngü sınırlarını mantıksal olarak denetlemez. Hata derlemede değil çalışma zamanında ortaya çıkar.",
+      "D": "160 gibi bir değer, dizi[5]'in 10 döndürdüğü varsayımına dayanır; Java'da sınır dışı indeks bir değer döndürmez, istisna üretir.",
+      "E": "Doğru. i = 5'te dizi[5] erişimi ArrayIndexOutOfBoundsException fırlatır; println hiç çalışmaz."
+    },
+    "keyConcept": "Sıfır tabanlı dizilerde geçerli indeks aralığı 0 ... uzunluk-1'dir; döngü koşulu i < uzunluk olmalıdır. Java sınır denetimini çalışma zamanında yapar.",
+    "examTip": "Döngü koşulunda <= ve .length birlikte görünüyorsa önce sınır dışı erişim olup olmadığını kontrol edin.",
+    "references": [
+      "Java Language Specification (JLS) 17, Bölüm 10.4 (Array Access)",
+      "Horstmann, Core Java Volume I, Bölüm 3 (Arrays)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "PRG-006",
+    "topic": "PRG",
+    "subtopic": "Soyut sınıf ve arayüz seçimi",
+    "difficulty": "orta",
+    "question": "Bir bankanın ödeme modülünde EFT, Havale ve KartOdeme sınıfları ortak bir 'ucret' alanı, ortak bir yapıcı (constructor) mantığı ve ortak gerçekleştirilmiş bir logla() metodu paylaşmakta, yalnızca isle() metodunu farklı biçimde gerçekleştirmektedir. Ayrıca birbiriyle kalıtım ilişkisi olmayan Hesap, Kart ve Rapor sınıflarının da izKaydiUret() yeteneğine sahip olması (Denetlenebilir olması) istenmektedir. Java 17 için en uygun tasarım aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Her ikisi de arayüz (interface) olarak tanımlanmalıdır; çünkü bir sınıf birden fazla arayüz uygulayabilir ve bu her zaman daha esnektir."
+      },
+      {
+        "id": "B",
+        "text": "Her ikisi de soyut (abstract) sınıf olarak tanımlanmalıdır; çünkü soyut sınıflar hem soyut hem somut metot içerebilir."
+      },
+      {
+        "id": "C",
+        "text": "Odeme arayüz, Denetlenebilir soyut sınıf olarak tanımlanmalıdır; çünkü ortak alanlar arayüzde, davranış sözleşmeleri soyut sınıfta tutulur."
+      },
+      {
+        "id": "D",
+        "text": "Odeme soyut sınıf, Denetlenebilir arayüz olarak tanımlanmalıdır; ortak durum ve yapıcı mantığı soyut sınıfta, kalıtım hiyerarşisinden bağımsız yetenek arayüzde ifade edilir."
+      },
+      {
+        "id": "E",
+        "text": "Odeme somut (concrete) bir sınıf olarak yazılıp isle() boş gövdeyle bırakılmalı, Denetlenebilir ise arayüz olmalıdır."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Odeme, alt sınıfların paylaştığı durum (ucret alanı), yapıcı mantığı ve somut bir metot (logla) içerir; Java arayüzleri örnek alanı ve yapıcı barındıramaz, bu yüzden Odeme için soyut sınıf gerekir. isle() soyut bırakılarak her alt sınıfın gerçekleştirmesi zorunlu kılınır. Denetlenebilir ise birbirinden bağımsız sınıflara eklenecek bir yetenektir; Java'da sınıf kalıtımı tekli olduğu için (Hesap başka bir sınıftan türüyor olabilir) bu tür 'yapabilir' sözleşmeleri arayüzle ifade edilir ve bir sınıf istediği kadar arayüz uygulayabilir. Bu, Java kütüphanesindeki Comparable, Serializable gibi arayüzlerin kullanım kalıbıyla aynıdır.",
+    "simpleExplanation": "Soyut sınıf (abstract class) bir aile ağacı gibidir: çocuklar ortak malı (ucret alanı), ortak doğum işlemini (yapıcı) ve hazır davranışları (logla) miras alır; ama bir çocuğun yalnızca tek bir ebeveyni olabilir. Arayüz (interface) ise bir sertifika gibidir: 'bu iş yapılabilir' sözü verir, mal vermez; ve bir sınıf istediği kadar sertifika alabilir. EFT, Havale ve KartOdeme ortak mal ve ortak yapıcı paylaştığı için Odeme bir soyut sınıf olmalıdır. Hesap, Kart ve Rapor ise birbiriyle akraba olmayan sınıflar; onlara 'denetlenebilir' yeteneğini vermek için sertifika yani arayüz kullanılır.",
+    "optionExplanations": {
+      "A": "Arayüzler Java 17'de bile örnek alanı (ucret) ve yapıcı içeremez; yalnızca sabitler (static final) ile default, static ve private metotlar barındırır. Ortak durum (state) paylaşımı arayüzle sağlanamaz.",
+      "B": "Java tekli sınıf kalıtımı kullanır. Denetlenebilir soyut sınıf olursa, zaten başka bir sınıftan türeyen Hesap veya Rapor onu genişletemez; ilişkisiz sınıflara yetenek eklemek için arayüz gerekir.",
+      "C": "Roller ters verilmiştir: ortak alanlar ve yapıcı yalnızca (soyut) sınıfta tutulabilir; birbirinden bağımsız sınıflara eklenen davranış sözleşmesi ise arayüzün işidir.",
+      "D": "Doğru. Paylaşılan durum + kısmi gerçekleştirme → soyut sınıf; hiyerarşiden bağımsız yetenek → arayüz.",
+      "E": "Odeme'yi somut yapmak, isle() gerçekleştirilmemiş eksik bir nesnenin oluşturulmasına izin verir ve alt sınıfları isle()'yi geçersiz kılmaya zorlamaz; derleyici denetimi kaybedilir. Soyut sınıf bunu derleme zamanında engeller."
+    },
+    "keyConcept": "Soyut sınıf: 'bir ...dır' ilişkisi, paylaşılan durum ve kısmi gerçekleştirme. Arayüz: 'yapabilir' sözleşmesi, çoklu uygulama, hiyerarşiden bağımsız yetenek.",
+    "examTip": "Senaryoda 'ortak alan' veya 'ortak yapıcı' geçiyorsa soyut sınıf; 'birbiriyle ilgisiz sınıflar aynı yeteneğe sahip olsun' geçiyorsa arayüz seçin.",
+    "references": [
+      "Bloch, Effective Java 3. baskı, Madde 20 (Prefer interfaces to abstract classes)",
+      "Java Language Specification (JLS) 17, Bölüm 8.1.1.1 (abstract Classes) ve Bölüm 9 (Interfaces)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "PRG-007",
+    "topic": "PRG",
+    "subtopic": "Statik ve örnek (instance) üyeler",
+    "difficulty": "orta",
+    "question": "Aşağıdaki Java 17 programında Hesap sınıfının üç nesnesi oluşturulmaktadır. println satırının çıktısı nedir?",
+    "code": "class Hesap {\n    static int sayac = 0;\n    int no;\n    Hesap() { sayac++; no = sayac; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Hesap a = new Hesap();\n        Hesap b = new Hesap();\n        Hesap c = new Hesap();\n        System.out.println(a.no + \" \" + b.sayac + \" \" + Hesap.sayac);\n    }\n}",
+    "codeLanguage": "java",
+    "options": [
+      {
+        "id": "A",
+        "text": "1 2 3"
+      },
+      {
+        "id": "B",
+        "text": "1 3 3"
+      },
+      {
+        "id": "C",
+        "text": "3 3 3"
+      },
+      {
+        "id": "D",
+        "text": "1 1 3"
+      },
+      {
+        "id": "E",
+        "text": "Derleme hatası: statik alana nesne referansı (b.sayac) üzerinden erişilemez."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "sayac statik olduğundan sınıfa aittir ve tüm nesneler arasında tek bir kopyası vardır; no ise örnek alanıdır, her nesnenin kendi kopyası bulunur. Her yapıcı çağrısında ortak sayac bir artar ve o anki değeri nesnenin no alanına kopyalanır: a.no = 1, b.no = 2, c.no = 3. Üç nesne oluşturulduktan sonra sayac = 3'tür. b.sayac ifadesi derlenir (derleyici uyarı verebilir) ve statik alanı okur; Hesap.sayac ile aynı değeri, yani 3'ü verir. Çıktı: 1 3 3.",
+    "simpleExplanation": "static kelimesi bir değişkeni sınıfa ait tek bir ortak tahta yapar; her nesnenin kendi kopyası yoktur. Buna karşılık 'no' her nesnenin cebindeki kendi numarasıdır. Her yeni Hesap yaratıldığında ortak tahtadaki sayı bir artar ve o anki değer nesnenin cebine yazılır: a 1, b 2, c 3 alır. Üç nesneden sonra tahtada 3 yazar; tahtaya a üzerinden, b üzerinden ya da sınıf adıyla bakmak hep aynı 3'ü gösterir. Bu yüzden çıktı '1 3 3' olur.",
+    "optionExplanations": {
+      "A": "b.sayac'ın 2 olması, sayac'ın örnek alanı gibi her nesnede ayrı tutulduğu yanılgısıdır. Statik alan tektir ve üç yapıcı çağrısından sonra 3'tür.",
+      "B": "Doğru. a.no yapıcı anındaki sayac değeri (1); b.sayac ve Hesap.sayac aynı statik alanın güncel değeri (3).",
+      "C": "a.no bir örnek alanıdır ve a oluşturulduğu anda 1 olarak atanmıştır; sonraki nesnelerin oluşturulması a.no'yu değiştirmez.",
+      "D": "b.sayac'ın 1 olması için sayac'ın b'ye özel ve yalnızca bir kez artmış olması gerekirdi; statik alan ortaktır ve 3'tür.",
+      "E": "Statik alana nesne referansı üzerinden erişim Java'da geçerlidir (kötü stil sayılır, derleyici veya IDE uyarı verebilir), derleme hatası değildir."
+    },
+    "keyConcept": "static üyeler sınıfa ait tek kopyadır ve tüm nesneler tarafından paylaşılır; örnek üyeler her nesnede ayrıdır. Nesne referansı üzerinden statik erişim derlenir ama önerilmez.",
+    "examTip": "Statik sayaçlı yapıcı sorularında iki ayrı liste tutun: her nesnenin yapıcı anında kopyaladığı değer ve statik alanın son değeri.",
+    "references": [
+      "Java Language Specification (JLS) 17, Bölüm 8.3.1.1 (static Fields)",
+      "Horstmann, Core Java Volume I, Bölüm 4.4 (Static Fields and Methods)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "PRG-008",
+    "topic": "PRG",
+    "subtopic": "SOLID ilkeleri – Liskov yerine geçme ilkesi",
+    "difficulty": "ileri",
+    "question": "Bir bankanın çekirdek bankacılık uygulamasında aşağıdaki Java 17 sınıfları bulunmaktadır. GunSonuIslemleri sınıfı List<Hesap> üzerinde dönerek her hesap için paraCek(ucret) çağırmaktadır ve kilitli hesaplar listeye girdiğinde toplu işlem istisna ile durmaktadır. Bu tasarım öncelikle hangi SOLID ilkesini ihlal etmektedir?",
+    "code": "class Hesap {\n    protected double bakiye;\n    void paraCek(double tutar) {\n        if (tutar > bakiye) throw new IllegalArgumentException(\"Yetersiz bakiye\");\n        bakiye -= tutar;\n    }\n}\n\nclass KilitliHesap extends Hesap {\n    @Override\n    void paraCek(double tutar) {\n        throw new UnsupportedOperationException(\"Kilitli hesaptan para çekilemez\");\n    }\n}\n\nclass GunSonuIslemleri {\n    void ucretTahsilEt(java.util.List<Hesap> hesaplar, double ucret) {\n        for (Hesap h : hesaplar) {\n            h.paraCek(ucret);\n        }\n    }\n}",
+    "codeLanguage": "java",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tek Sorumluluk İlkesi (Single Responsibility Principle); çünkü Hesap sınıfı hem bakiye tutmakta hem de para çekmektedir."
+      },
+      {
+        "id": "B",
+        "text": "Açık/Kapalı İlkesi (Open/Closed Principle); çünkü yeni bir hesap türü eklemek için Hesap sınıfının değiştirilmesi gerekmektedir."
+      },
+      {
+        "id": "C",
+        "text": "Arayüz Ayrımı İlkesi (Interface Segregation Principle); çünkü GunSonuIslemleri, kullanmadığı metotları içeren bir arayüze bağımlıdır."
+      },
+      {
+        "id": "D",
+        "text": "Bağımlılığın Ters Çevrilmesi İlkesi (Dependency Inversion Principle); çünkü GunSonuIslemleri somut Hesap sınıfına bağımlıdır."
+      },
+      {
+        "id": "E",
+        "text": "Liskov Yerine Geçme İlkesi (Liskov Substitution Principle); çünkü KilitliHesap, üst sınıfının sözleşmesini daraltarak Hesap beklenen yerde güvenle kullanılamamaktadır."
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Liskov Yerine Geçme İlkesi, bir alt sınıf nesnesinin üst sınıf beklenen her yerde programın doğruluğunu bozmadan kullanılabilmesini gerektirir. Hesap.paraCek() sözleşmesi 'yeterli bakiye varsa tutar düşülür' iken KilitliHesap bu sözleşmeyi her koşulda istisna fırlatarak daraltmış, yani üst sınıfın garantilerini bozmuştur. GunSonuIslemleri yalnızca Hesap tipine güvenerek yazılmıştır; alt sınıfın sürpriz davranışı istemciyi kırmaktadır. Bu, LSP ihlalinin klasik belirtisidir: istemcinin alt tipi 'instanceof' ile ayıklamak zorunda kalması. Çözüm, kilitlilik durumunu Hesap sözleşmesine dahil etmek (örn. cekilebilirMi() ön koşulu) ya da KilitliHesap'ı paraCek sözleşmesi olmayan ayrı bir soyutlamaya taşımaktır.",
+    "simpleExplanation": "Liskov ilkesi basitçe şunu söyler: 'Bir yerde Hesap bekleniyorsa, Hesap'ın her alt türü oraya sorunsuz konabilmeli.' Gün sonu işlemi hesapların ücretini çekerken 'bunlar hesap, para çekebilirim' diye güvenir. KilitliHesap ise Hesap kılığına girmiş ama para çekme sözünü tutmayan bir türdür; sıra ona gelince patlar ve tüm toplu işlem durur. Bu, 'her araba gaz pedalına basınca gider' varsayımıyla üretilmiş bir otomatik parkur sistemine, gaz pedalı sökülmüş bir araba sokmaya benzer. Alt sınıf, üst sınıfın verdiği sözü bozduğu için ihlal edilen ilke Liskov Yerine Geçme İlkesi'dir.",
+    "optionExplanations": {
+      "A": "Bakiye tutma ve para çekme aynı iş kavramının (hesap) uyumlu parçalarıdır; SRP ihlali için farklı değişim nedenlerine sahip sorumlulukların (örn. kalıcılık, raporlama) karışması gerekir. Sorun burada değildir.",
+      "B": "Kodda yeni tür eklemek için Hesap'ın değiştirilmesi gerekmemektedir; kalıtım yoluyla genişletme yapılmıştır. OCP ihlali değil, genişletmenin sözleşmeyi bozması söz konusudur.",
+      "C": "ISP, istemcinin ihtiyaç duymadığı çok sayıda metot içeren 'şişman' arayüzlere zorla bağımlı kılınmasını konu alır. Hesap tek bir ilgili metot sunmaktadır; sorun arayüzün genişliği değil alt sınıfın davranışıdır.",
+      "D": "GunSonuIslemleri'nin somut Hesap'a bağımlı olması DIP açısından tartışılabilir ancak sorunun kaynağı değildir; Hesap bir arayüz olsaydı bile KilitliHesap'ın sözleşmeyi bozan gerçekleştirmesi aynı hatayı üretirdi.",
+      "E": "Doğru. Alt sınıf, üst sınıfın garantilerini (başarılı para çekme) kaldırıp beklenmeyen istisna fırlatarak yerine geçme özelliğini bozmuştur."
+    },
+    "keyConcept": "LSP: Alt tip, üst tipin ön koşullarını güçlendiremez, son koşullarını zayıflatamaz ve beklenmeyen istisnalar fırlatamaz. Alt sınıfta 'UnsupportedOperationException' fırlatan geçersiz kılma tipik LSP ihlali işaretidir.",
+    "examTip": "Geçersiz kılınan metodun gövdesi yalnızca istisna fırlatıyorsa veya istemci kod instanceof ile alt sınıfları ayıklıyorsa LSP'yi düşünün.",
+    "references": [
+      "Martin, Clean Architecture (2017), Bölüm 9 (LSP: The Liskov Substitution Principle)",
+      "Bloch, Effective Java 3. baskı, Madde 18 (Favor composition over inheritance)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IS-001",
+    "topic": "IS",
+    "subtopic": "Süreç ve iş parçacığı kavramları",
+    "difficulty": "temel",
+    "question": "Aynı süreç (process) içinde çalışan birden fazla iş parçacığının (thread) hangi kaynakları paylaştığı ve hangilerinin her iş parçacığına özel olduğu aşağıdakilerden hangisinde doğru verilmiştir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Kod bölümü, veri bölümü, yığın bellek (heap) ve açık dosya tanıtıcıları paylaşılır; yığıt (stack), yazmaçlar (register) ve program sayacı her iş parçacığına özeldir."
+      },
+      {
+        "id": "B",
+        "text": "Her iş parçacığı kendi sanal adres alanına sahiptir; yalnızca açık dosya tanıtıcıları paylaşılır."
+      },
+      {
+        "id": "C",
+        "text": "Yığıt (stack) tüm iş parçacıkları arasında paylaşılır; yığın bellek (heap) ise her iş parçacığına özeldir."
+      },
+      {
+        "id": "D",
+        "text": "İş parçacıkları hiçbir belleği paylaşmaz; aralarındaki iletişim yalnızca boru (pipe) ve mesaj kuyruğu gibi IPC mekanizmalarıyla yapılır."
+      },
+      {
+        "id": "E",
+        "text": "Program sayacı (PC) paylaşılır; bu nedenle aynı süreçteki tüm iş parçacıkları her an aynı komutu yürütür."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "İş parçacığı, bir sürecin içindeki hafif yürütme birimidir. Aynı sürecin iş parçacıkları süreç kaynaklarını (adres alanı: kod, global veri, heap; açık dosyalar, sinyal işleyiciler) paylaşır. Buna karşılık her iş parçacığının kendi yürütme bağlamı vardır: kendi yığıtı (yerel değişkenler ve çağrı zinciri), kendi yazmaç kümesi ve kendi program sayacı. Bu paylaşım, iş parçacıkları arası iletişimi hızlı kılar ancak paylaşılan veri üzerinde yarış durumu (race condition) riski doğurur; bu nedenle eşzamanlama (synchronization) gerekir.",
+    "simpleExplanation": "Bir süreç (process) bir ofis gibidir; iş parçacıkları (thread) o ofiste çalışan kişilerdir. Çalışanlar ofisin ortak eşyalarını paylaşır: aynı program kodu, ortak veriler, ortak depo (heap) ve açık dosyalar. Ama her çalışanın kendi masası ve not defteri vardır: kendi yığıtı (yerel değişkenleri), kendi yazmaçları ve 'şu an hangi satırdayım' bilgisi olan program sayacı. Herkesin kendi defteri olmasa iki kişi aynı anda farklı işler yapamazdı. Paylaşılan eşyalar ise hızlı iletişim sağlar ama 'aynı anda aynı eşyaya dokunma' sorununu doğurur.",
+    "optionExplanations": {
+      "A": "Doğru. Paylaşılan: kod, veri, heap, açık dosyalar. Özel: stack, yazmaçlar, PC.",
+      "B": "Ayrı sanal adres alanı süreçlerin özelliğidir. İş parçacıkları aynı adres alanını paylaşır; zaten 'hafif' olmalarının nedeni budur.",
+      "C": "Tersine çevrilmiştir: yığıt her iş parçacığına özeldir (yerel değişkenler ve dönüş adresleri karışmasın diye), heap paylaşılır.",
+      "D": "Bu, süreçler arası iletişim (IPC) tanımıdır. İş parçacıkları paylaşılan bellek üzerinden doğrudan iletişir; IPC'ye gerek yoktur.",
+      "E": "Her iş parçacığının kendi program sayacı vardır; aksi halde bağımsız kod yolları yürütemezlerdi."
+    },
+    "keyConcept": "Süreç = kaynak sahipliği birimi (adres alanı, dosyalar). İş parçacığı = zamanlama/yürütme birimi (stack, yazmaçlar, PC).",
+    "examTip": "'Paylaşılır mı?' sorusunda kuralı hatırlayın: süreç düzeyindeki her şey paylaşılır, yürütme bağlamı (stack/PC/register) özeldir.",
+    "references": [
+      "Silberschatz, Galvin, Gagne, Operating System Concepts 10. baskı, Bölüm 4 (Threads & Concurrency)",
+      "Tanenbaum & Bos, Modern Operating Systems 4. baskı, Bölüm 2.2 (Threads)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IS-002",
+    "topic": "IS",
+    "subtopic": "CPU zamanlama – SJF ortalama bekleme süresi hesabı",
+    "difficulty": "orta",
+    "question": "Aşağıdaki tabloda dört sürecin varış ve çalışma (burst) süreleri verilmiştir. Önalımsız (non-preemptive) En Kısa İş Önce (Shortest Job First, SJF) algoritması kullanıldığında ortalama bekleme süresi kaç birimdir? (Bağlam değiştirme süresi ihmal edilecektir.)",
+    "code": "Süreç   Varış   Çalışma\nP1      0       8\nP2      1       4\nP3      2       2\nP4      3       1",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "2,75"
+      },
+      {
+        "id": "B",
+        "text": "4,25"
+      },
+      {
+        "id": "C",
+        "text": "5,5"
+      },
+      {
+        "id": "D",
+        "text": "6,75"
+      },
+      {
+        "id": "E",
+        "text": "7,0"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Önalımsız SJF'de bir süreç başladıktan sonra bitene kadar kesilmez; CPU boşaldığında hazır kuyruğundaki en kısa çalışma süreli süreç seçilir. t=0'da yalnızca P1 vardır, 0-8 arasında çalışır. t=8'de P2 (4), P3 (2), P4 (1) hazırdır; en kısa P4 seçilir: 8-9. Sonra P3: 9-11. Sonra P2: 11-15. Bekleme süreleri (başlama - varış): P1 = 0-0 = 0, P4 = 8-3 = 5, P3 = 9-2 = 7, P2 = 11-1 = 10. Toplam 22, ortalama 22/4 = 5,5.",
+    "simpleExplanation": "Önalımsız SJF'de kural şudur: işlemci boşaldığında bekleyenler arasından en kısa iş seçilir, ama başlamış bir iş asla kesilmez. Başta yalnızca P1 vardır, 8 birim çalışır. O bitince P2 (4), P3 (2) ve P4 (1) sırada bekler; en kısa olan P4, sonra P3, en son P2 çalışır. Bekleme süresi, bir sürecin geldiği an ile başladığı an arasındaki farktır: P1 0, P4 5, P3 7, P2 10 bekler. Toplam 22, dört süreç olduğu için ortalama 5,5. Kasada tek sırada beklerken kasiyerin 'şimdi kimin işi en kısa' diye bakması gibi düşünün; ama kasiyer işlem yaparken kimse araya giremez.",
+    "optionExplanations": {
+      "A": "2,75 önalımlı sürüm olan En Kısa Kalan Süre Önce (Shortest Remaining Time First, SRTF) algoritmasının sonucudur: P1 t=1'de P2 tarafından kesilir, sonra P3 ve P4 sırayla biter, P2 kalanını tamamlar ve P1 en sona kalır (bekleme 7, 3, 0, 1; ortalama 11/4 = 2,75). Soru önalımsız SJF istemektedir.",
+      "B": "4,25 bekleme sürelerinin hatalı toplanmasıyla (17/4) elde edilir; P2'nin 10 birim beklediği gözden kaçırılmış olabilir.",
+      "C": "Doğru. Çalışma sırası P1→P4→P3→P2; bekleme süreleri 0, 5, 7, 10; ortalama 22/4 = 5,5.",
+      "D": "6,75 (27/4) bekleme süresini varış anından bitişe kadar (dönüş süresi) hesaplama hatasına yakındır; bekleme süresi çalışma süresini içermez.",
+      "E": "7,0 İlk Gelen İlk Hizmet (FCFS) algoritmasının sonucudur: sıra P1→P2→P3→P4, bekleme 0, 7, 10, 11; ortalama 28/4 = 7."
+    },
+    "keyConcept": "Bekleme süresi = başlama zamanı - varış zamanı (önalımsızda). Önalımsız SJF'de seçim yalnızca CPU boşaldığında yapılır; çalışan süreç kesilmez.",
+    "examTip": "Önce Gantt şemasını çizin, her sürecin başlama anını yazın, sonra varışları çıkarın. 'Önalımsız' kelimesini kaçırmak sizi SRTF cevabına götürür.",
+    "references": [
+      "Silberschatz, Galvin, Gagne, Operating System Concepts 10. baskı, Bölüm 5.3 (Scheduling Algorithms)",
+      "Stallings, Operating Systems: Internals and Design Principles 9. baskı, Bölüm 9 (Uniprocessor Scheduling)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IS-003",
+    "topic": "IS",
+    "subtopic": "Kilitlenme koşulları ve önleme",
+    "difficulty": "orta",
+    "question": "Bir bankanın gün sonu toplu işlem (batch) sisteminde iki iş, veri tabanındaki HESAP ve HAREKET tablolarını farklı sıralarda kilitlediği için zaman zaman kilitlenme (deadlock) oluşmaktadır. BT ekibi, tüm işlerin kaynakları her zaman önceden belirlenmiş sabit bir sıraya göre (önce HESAP, sonra HAREKET) kilitlemesini zorunlu kılan bir kural getirmiştir. Bu önlem, kilitlenme için gerekli dört Coffman koşulundan hangisini ortadan kaldırmaktadır?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Karşılıklı dışlama (mutual exclusion)"
+      },
+      {
+        "id": "B",
+        "text": "Tut ve bekle (hold and wait)"
+      },
+      {
+        "id": "C",
+        "text": "Önalımsızlık (no preemption)"
+      },
+      {
+        "id": "D",
+        "text": "Açlık (starvation)"
+      },
+      {
+        "id": "E",
+        "text": "Döngüsel bekleme (circular wait)"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Kilitlenme için dört koşulun aynı anda sağlanması gerekir: karşılıklı dışlama, tut ve bekle, önalımsızlık ve döngüsel bekleme. Kaynaklara global bir numaralandırma verip her sürecin kaynakları yalnızca artan sırayla istemesini zorunlu kılmak (resource ordering), bekleme grafiğinde döngü oluşmasını imkânsız kılar: HAREKET'i tutan bir iş HESAP'ı bekleyemez, çünkü kurala göre HESAP'ı daha önce almış olmalıdır. Böylece döngüsel bekleme koşulu ortadan kalkar; diğer üç koşul değişmeden kalır ama tek bir koşul bozulduğu için kilitlenme oluşamaz. Bu yöntem veri tabanı uygulamalarında kilitlenmeyi önlemenin en yaygın pratik tekniğidir.",
+    "simpleExplanation": "Kilitlenme (deadlock), iki kişinin dar bir koridorda birbirinin geçmesini beklemesi gibidir: biri HESAP'ı tutup HAREKET'i bekler, diğeri HAREKET'i tutup HESAP'ı bekler, ikisi de sonsuza kadar bekler. Bu 'sen beni bekle, ben seni bekleyeyim' çemberine döngüsel bekleme denir. Herkese 'önce HESAP'ı, sonra HAREKET'i al' kuralı koyarsanız, HAREKET'i elinde tutan biri HESAP'ı zaten almış olmak zorundadır; dolayısıyla kimse ters yönden gelip çember oluşturamaz. Bu kural tek yönlü trafik koymaya benzer: koridorda karşılaşma olmaz. Kaldırılan koşul döngüsel beklemedir; diğer üç koşul aynen durur.",
+    "optionExplanations": {
+      "A": "Karşılıklı dışlama, tablo kilitlerinin doğasında vardır ve kaldırılmamıştır; iki iş aynı tabloyu aynı anda yazma amaçlı kilitleyememeye devam eder.",
+      "B": "Tut ve bekle, bir kaynağı tutarken diğerini beklemektir. Sıralı kilitleme kuralında iş HESAP'ı tutarken HAREKET'i bekleyebilir; bu koşul hâlâ geçerlidir. Tut-ve-bekleyi kaldırmak için tüm kaynaklar başta tek seferde istenmelidir.",
+      "C": "Önalımsızlık, kilidin zorla geri alınamamasıdır. Sıralama kuralı kilitleri zorla almaz; bu koşul değişmemiştir. Önalım, bazı VTYS'lerin kilitlenme algılayıp bir işlemi geri almasıyla (rollback) sağlanır.",
+      "D": "Açlık (bir sürecin sürekli ertelenmesi) bir zamanlama sorunudur ve Coffman'ın dört kilitlenme koşulundan biri değildir.",
+      "E": "Doğru. Sabit kaynak sıralaması bekleme grafiğinde döngü oluşmasını engeller; döngüsel bekleme koşulu bozulur."
+    },
+    "keyConcept": "Coffman koşulları: karşılıklı dışlama, tut ve bekle, önalımsızlık, döngüsel bekleme. Kaynak sıralaması (lock ordering) döngüsel beklemeyi önler.",
+    "examTip": "Önlem→koşul eşlemesini ezberleyin: 'hepsini başta iste' → tut ve bekle; 'kilidi zorla al/rollback' → önalımsızlık; 'sabit sıra' → döngüsel bekleme.",
+    "references": [
+      "Silberschatz, Galvin, Gagne, Operating System Concepts 10. baskı, Bölüm 8.2 ve 8.5 (Deadlock Characterization, Deadlock Prevention)",
+      "Coffman, Elphick, Shoshani, 'System Deadlocks', ACM Computing Surveys, 1971"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IS-004",
+    "topic": "IS",
+    "subtopic": "Sanal bellek – sayfa değiştirme algoritması izleme (LRU)",
+    "difficulty": "ileri",
+    "question": "Bir sürecin sayfa referans dizisi ve fiziksel bellekte sürece ayrılan çerçeve (frame) sayısı aşağıda verilmiştir. Bellek başlangıçta boştur. En Az Yakın Zamanda Kullanılan (Least Recently Used, LRU) algoritması uygulandığında toplam sayfa hatası (page fault) sayısı kaçtır?",
+    "code": "Referans dizisi : 1, 2, 3, 1, 4, 2, 1, 3, 4, 2\nÇerçeve sayısı  : 3",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "5"
+      },
+      {
+        "id": "B",
+        "text": "6"
+      },
+      {
+        "id": "C",
+        "text": "7"
+      },
+      {
+        "id": "D",
+        "text": "8"
+      },
+      {
+        "id": "E",
+        "text": "10"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "LRU, hata anında en uzun süredir erişilmeyen sayfayı çıkarır. İzleme (çerçeve içerikleri en eski→en yeni): 1 → [1] H1; 2 → [1,2] H2; 3 → [1,2,3] H3; 1 → isabet, [2,3,1]; 4 → en eski 2 çıkar, [3,1,4] H4; 2 → en eski 3 çıkar, [1,4,2] H5; 1 → isabet, [4,2,1]; 3 → en eski 4 çıkar, [2,1,3] H6; 4 → en eski 2 çıkar, [1,3,4] H7; 2 → en eski 1 çıkar, [3,4,2] H8. Toplam 8 sayfa hatası. Karşılaştırma için aynı dizide FIFO 6, Optimal (OPT) 5 hata verir; bu örnek LRU'nun her zaman FIFO'dan iyi olmadığını gösterir.",
+    "simpleExplanation": "Bellekte yalnızca 3 sayfa tutabilen bir rafınız var; istenen sayfa rafta yoksa buna sayfa hatası denir ve sayfa diskten getirilir. LRU kuralı, raf doluyken en uzun süredir dokunulmamış kitabı atmaktır. Diziyi izlerseniz: ilk üç sayfa (1, 2, 3) mecburen hatadır; sonra 1 raftadır (isabet), 4 gelir ve en eski olan 2'yi atar, 2 gelir 3'ü atar, 1 yine raftadır, 3 gelir 4'ü atar, 4 gelir 2'yi atar, 2 gelir 1'i atar. Yalnızca iki kez (iki 1 referansı) raftan bulduk; kalan 8 istek hatadır. Dikkat: bir sayfa raftan okunduğunda da 'yeni dokunulmuş' sayılır ve sıranın sonuna geçer.",
+    "optionExplanations": {
+      "A": "5, geleceği bilen Optimal (OPT/MIN) algoritmasının hata sayısıdır; OPT teorik alt sınırdır, LRU'ya ulaşılamaz.",
+      "B": "6, FIFO algoritmasının bu dizideki hata sayısıdır (ilk üç yükleme + 4, 1, 2 için üç değiştirme). LRU bu dizide FIFO'dan daha kötü sonuç verir.",
+      "C": "7, izlemede son referans (2) için hata olmadığı varsayılırsa elde edilir; oysa son adımda çerçevelerde [1,3,4] vardır ve 2 yoktur.",
+      "D": "Doğru. İlk üç referans zorunlu hata, ardından 4, 2, 3, 4, 2 referanslarının her biri hata; yalnızca 4. ve 7. referanslar (1) isabettir.",
+      "E": "10, her referansın hata olduğu anlamına gelir; ancak 4. ve 7. adımlardaki 1 referansları bellekte bulunur ve isabettir."
+    },
+    "keyConcept": "LRU, hata anında en uzun süredir referans edilmeyen sayfayı seçer; isabetler de 'yakınlık' sırasını günceller. OPT alt sınırdır; LRU, FIFO'dan her dizide iyi olmak zorunda değildir.",
+    "examTip": "LRU izlerken çerçeveleri 'en eski → en yeni' sıralı tutun; isabet olan sayfayı listenin sonuna taşımayı unutmayın, en sık hata bu adımda yapılır.",
+    "references": [
+      "Silberschatz, Galvin, Gagne, Operating System Concepts 10. baskı, Bölüm 10.4 (Page Replacement)",
+      "Tanenbaum & Bos, Modern Operating Systems 4. baskı, Bölüm 3.4 (Page Replacement Algorithms)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IS-005",
+    "topic": "IS",
+    "subtopic": "Eşzamanlama – sayma semaforu davranışı",
+    "difficulty": "orta",
+    "question": "Bir şube sunucusunda aynı anda en fazla iki iş parçacığının yazıcı havuzunu kullanabilmesi için başlangıç değeri 2 olan bir sayma semaforu (counting semaphore) S tanımlanmıştır. Sırasıyla T1, T2, T3, T4 ve T5 iş parçacıkları wait(S) çağırmış, ardından iki signal(S) çağrısı yapılmıştır. Klasik tanıma göre (negatif değer, bloke iş parçacığı sayısını gösterir) bu noktada S'nin değeri ve bloke durumdaki iş parçacığı sayısı nedir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "S = 0, bloke iş parçacığı sayısı 1"
+      },
+      {
+        "id": "B",
+        "text": "S = -1, bloke iş parçacığı sayısı 1"
+      },
+      {
+        "id": "C",
+        "text": "S = -3, bloke iş parçacığı sayısı 3"
+      },
+      {
+        "id": "D",
+        "text": "S = 1, bloke iş parçacığı sayısı 0"
+      },
+      {
+        "id": "E",
+        "text": "S = -1, bloke iş parçacığı sayısı 3"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Klasik (Dijkstra/Silberschatz) tanımda wait(S) değeri 1 azaltır ve sonuç negatifse çağıran bloke olur; signal(S) değeri 1 artırır ve bloke iş parçacığı varsa birini uyandırır. Başlangıç S = 2. T1 ve T2'nin wait çağrıları S'yi 1 ve 0'a düşürür, ikisi de geçer. T3, T4, T5 çağrılarında S sırasıyla -1, -2, -3 olur ve üçü bloke olur. İlk signal: S = -2, bir iş parçacığı (T3) uyanır. İkinci signal: S = -1, T4 uyanır. Sonuçta S = -1 ve yalnızca T5 bloke kalır; |S| bloke sayısına eşittir.",
+    "simpleExplanation": "Semaforu, iki anahtarlı bir yazıcı odası kapısı gibi düşünün; başta 2 anahtar vardır. T1 ve T2 anahtarları alıp girer, sayı 0'a düşer. T3, T4 ve T5 geldiğinde anahtar yoktur; her biri kapıda bekler ve sayı -1, -2, -3 olur (eksi değer kaçının beklediğini gösterir). Sonra iki kez signal yapılır, yani iki anahtar geri bırakılır: her biri bekleyenlerden birini içeri alır, sayı -2 ve ardından -1 olur. Sonuçta S = -1 ve kapıda tek bir iş parçacığı (T5) bekler.",
+    "optionExplanations": {
+      "A": "S = 0 olması için toplam wait ve signal sayılarının başlangıç değerini tam tüketmesi gerekirdi (5 wait - 2 signal = 3 net azalma; 2 - 3 = -1). Ayrıca S = 0 iken bloke iş parçacığı olmaz.",
+      "B": "Doğru. 2 - 5 + 2 = -1; negatif değerin büyüklüğü bloke sayısını verir: 1 (T5).",
+      "C": "S = -3 iki signal çağrısı yapılmadan önceki ara durumdur; signal çağrıları hem değeri artırır hem de bloke iş parçacıklarını uyandırır.",
+      "D": "S = 1, yalnızca bir wait yapılmış gibi düşünülerek bulunur; beş wait ve iki signal sonunda net üç azalma vardır.",
+      "E": "S = -1 doğru ancak klasik tanımda negatif değerin büyüklüğü bloke sayısını verir; iki signal iki iş parçacığını uyandırdığı için 1 bloke kalır, 3 değil."
+    },
+    "keyConcept": "Sayma semaforunda S = başlangıç - wait sayısı + signal sayısı; S < 0 ise |S| kadar iş parçacığı bloke, S ≥ 0 ise S kadar boş kaynak vardır.",
+    "examTip": "Semafor sorularında wait'leri ve signal'leri tek tek sayın ve negatif değerin anlamını (bloke sayısı) hatırlayın; signal'in bir bekleyeni uyandırdığını unutmayın.",
+    "references": [
+      "Silberschatz, Galvin, Gagne, Operating System Concepts 10. baskı, Bölüm 6.6 (Semaphores)",
+      "Dijkstra, 'Cooperating Sequential Processes', 1965"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IS-006",
+    "topic": "IS",
+    "subtopic": "Unix dosya izinleri ve chmod sayısal gösterimi",
+    "difficulty": "temel",
+    "question": "Bir Linux sunucuda yönetici, gün sonu raporlarının bulunduğu dizin için 'chmod 750 raporlar' komutunu çalıştırmıştır. Bu komutun ardından 'ls -l' çıktısında dizinin izin alanı aşağıdakilerden hangisi gibi görünür?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "drwxr-xr-x"
+      },
+      {
+        "id": "B",
+        "text": "drwxr-x---"
+      },
+      {
+        "id": "C",
+        "text": "drw-r-x---"
+      },
+      {
+        "id": "D",
+        "text": "drwx-w----"
+      },
+      {
+        "id": "E",
+        "text": "dr-xrwx---"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Sayısal (octal) izin gösteriminde her basamak sırasıyla sahip (owner), grup (group) ve diğerleri (others) için okuma r=4, yazma w=2, çalıştırma x=1 değerlerinin toplamıdır. 7 = 4+2+1 = rwx, 5 = 4+1 = r-x, 0 = --- anlamına gelir. Dolayısıyla 750, sahibe tam yetki, gruba okuma ve dizine girme (x), diğerlerine hiçbir yetki vermez: rwxr-x---. Baştaki 'd' dosya tipinin dizin olduğunu gösterir. Bankacılıkta raporların yalnızca ilgili ekibe (grup) açık olması 'en az ayrıcalık' ilkesine uygundur.",
+    "simpleExplanation": "Linux'ta izinler üç gruba verilir: dosyanın sahibi, sahibin grubu ve diğer herkes. Her gruba bir rakam yazılır ve rakam okuma (4), yazma (2) ve çalıştırma (1) değerlerinin toplamıdır. 7 = 4+2+1 her şeyi yapabilir (rwx), 5 = 4+1 okuyup girebilir ama yazamaz (r-x), 0 hiçbir şey yapamaz (---). Böylece 750, 'sahip her şeyi yapar, grup bakar ama değiştiremez, yabancılar hiç dokunamaz' demektir: rwxr-x---. Baştaki d harfi bunun bir klasör (dizin) olduğunu söyler.",
+    "optionExplanations": {
+      "A": "rwxr-xr-x, 755'in karşılığıdır; diğer kullanıcılara da okuma ve girme izni verir. 750'de son basamak 0 olduğu için diğerleri hiçbir izne sahip değildir.",
+      "B": "Doğru. 7→rwx (sahip), 5→r-x (grup), 0→--- (diğerleri).",
+      "C": "rw-r-x--- 650'ye karşılık gelir; sahibin x izni eksiktir. Dizinlerde x izni olmadan sahibi dizine giremez.",
+      "D": "rwx-w---- 720'ye karşılık gelir; grup için 2 (yalnızca yazma) yorumlanmıştır, oysa 5 = okuma + çalıştırma'dır.",
+      "E": "r-xrwx--- 570'in karşılığıdır; sahip ve grup basamakları yer değiştirilmiştir. Sayısal gösterimde ilk basamak her zaman sahibe aittir."
+    },
+    "keyConcept": "chmod sayısal mod: her basamak r(4)+w(2)+x(1) toplamı; sıra sahip-grup-diğerleri. Dizinlerde x izni, dizine girme (traverse) yetkisidir.",
+    "examTip": "Octal basamakları hızlıca çevirin: 7=rwx, 6=rw-, 5=r-x, 4=r--, 0=---. Üç basamağı soldan sağa sahip/grup/diğerleri olarak yazın.",
+    "references": [
+      "Silberschatz, Galvin, Gagne, Operating System Concepts 10. baskı, Bölüm 13.4 (Protection)",
+      "The Linux Programming Interface (Kerrisk), Bölüm 15 (File Attributes)",
+      "chmod(1) ve chmod(2) Linux man sayfaları"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IS-007",
+    "topic": "IS",
+    "subtopic": "Çekirdek modu, kullanıcı modu ve sistem çağrıları",
+    "difficulty": "orta",
+    "question": "Çift modlu (dual-mode) çalışan modern bir işletim sisteminde kullanıcı programının yürüttüğü işlemlerle ilgili aşağıdaki ifadelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Bir dosyadan veri okunması: kullanıcı programı disk sürücüsüne doğrudan erişemez; read() sistem çağrısı tuzak (trap) komutuyla çekirdek moduna geçişi tetikler, çekirdek işlemi tamamlayıp sonucu döndürdükten sonra kullanıcı moduna dönülür."
+      },
+      {
+        "id": "B",
+        "text": "İki tamsayının toplanması: aritmetik komutlar ayrıcalıklı (privileged) komutlar olduğundan her toplama için çekirdek moduna geçiş gerekir."
+      },
+      {
+        "id": "C",
+        "text": "Bir dosyadan veri okunması: sistem çağrısı sırasında CPU kullanıcı modunda kalır; çekirdek moduna geçiş yalnızca donanım kesmesi (interrupt) geldiğinde olur."
+      },
+      {
+        "id": "D",
+        "text": "Bir dizide döngüyle arama yapılması: bellek erişimi içerdiği için her bellek erişiminde çekirdek moduna geçilir ve sayfa tablosu kontrol edilir."
+      },
+      {
+        "id": "E",
+        "text": "Sistem çağrıları printf gibi kütüphane fonksiyonlarıyla aynı şeydir ve kullanıcı modunda tamamen çalıştıkları için mod değişimi gerektirmez."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Çift modlu çalışmada donanım, mod bitiyle kullanıcı modu ve çekirdek modunu ayırır. G/Ç cihazlarına erişim, bellek yönetimi yazmaçlarını değiştirme veya kesmeleri kapatma gibi ayrıcalıklı komutlar yalnızca çekirdek modunda yürütülebilir. Kullanıcı programı dosya okumak istediğinde read() sistem çağrısını kullanır: kütüphane sarmalayıcısı (wrapper) bir tuzak/sistem çağrısı komutu (örn. x86-64'te syscall) yürütür, CPU çekirdek moduna geçer, çekirdekteki sistem çağrısı işleyicisi isteği yetki kontrolüyle yerine getirir ve geri dönüşte mod biti tekrar kullanıcı moduna ayarlanır. Sıradan aritmetik ve bellek erişimleri ise kullanıcı modunda doğrudan yürütülür; adres çevirisini donanım (MMU) yapar, çekirdeğe geçiş gerekmez.",
+    "simpleExplanation": "İşlemci iki modda çalışır: kullanıcı modu (sıradan programlar) ve çekirdek modu (işletim sisteminin kendisi). Program hesap yapmak veya kendi hafızasında dolaşmak gibi zararsız işleri kendi başına yapabilir. Ama diske dokunmak gibi tehlikeli bir iş isterse bunu kendisi yapamaz; bir sistem çağrısı ile işletim sisteminden ister. Bu, bankadaki müşterinin kasaya kendisinin girmemesi, gişedeki görevliden para istemesi gibidir: görevli (çekirdek) kontrol eder, işi yapar, sonucu verir ve müşteri tekrar kendi tarafına döner. Dosya okuma işte böyle çalışır.",
+    "optionExplanations": {
+      "A": "Doğru. Sistem çağrısı, kontrollü bir giriş noktası (trap) üzerinden kullanıcı modundan çekirdek moduna geçişin standart mekanizmasıdır.",
+      "B": "Aritmetik komutlar ayrıcalıklı değildir; eğer her toplama çekirdeğe geçiş gerektirseydi program performansı çöker ve çift modun amacı ortadan kalkardı.",
+      "C": "Sistem çağrısı tam da çekirdek moduna geçiş için kullanılır; CPU kullanıcı modunda kalsaydı disk sürücüsünün ayrıcalıklı G/Ç komutlarını yürütemezdi. Kesmeler çekirdeğe geçişin diğer (asenkron) yoludur, tek yolu değildir.",
+      "D": "Sanal adresten fiziksel adrese çevirme donanımdaki MMU ve TLB tarafından kullanıcı modunda şeffaf olarak yapılır; çekirdek yalnızca sayfa hatası (page fault) oluştuğunda devreye girer.",
+      "E": "printf bir kütüphane fonksiyonudur ve kullanıcı modunda biçimlendirme yapar; ancak çıktıyı yazmak için sonunda write() sistem çağrısını çağırır ve bu çağrı mod değişimi gerektirir. Kütüphane fonksiyonu ile sistem çağrısı aynı şey değildir."
+    },
+    "keyConcept": "Ayrıcalıklı işlemler (G/Ç, bellek yönetimi, kesme kontrolü) yalnızca çekirdek modunda yapılır; kullanıcı programı bunlara sistem çağrısı (trap) ile kontrollü biçimde erişir.",
+    "examTip": "Bir işlemin sistem çağrısı gerektirip gerektirmediğini anlamak için sorun: 'Bu işlem donanıma veya başka süreçlerin kaynaklarına dokunuyor mu?' Evet ise çekirdek modu gerekir.",
+    "references": [
+      "Silberschatz, Galvin, Gagne, Operating System Concepts 10. baskı, Bölüm 1.4.2 (Dual-Mode and Multimode Operation) ve 2.3 (System Calls)",
+      "Tanenbaum & Bos, Modern Operating Systems 4. baskı, Bölüm 1.6 (System Calls)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IS-008",
+    "topic": "IS",
+    "subtopic": "Süreç oluşturma – fork() semantiği",
+    "difficulty": "ileri",
+    "question": "Aşağıdaki C programı bir Linux sisteminde derlenip çalıştırılmıştır (fork() ve wait() çağrılarının başarılı olduğu varsayılmaktadır). Standart çıktıda görünen satırlar ve sıraları aşağıdakilerden hangisidir?",
+    "code": "#include <stdio.h>\n#include <unistd.h>\n#include <sys/wait.h>\n\nint main(void) {\n    int x = 5;\n    pid_t p = fork();\n    if (p == 0) {\n        x += 10;\n        printf(\"cocuk %d\\n\", x);\n    } else {\n        wait(NULL);\n        printf(\"ebeveyn %d\\n\", x);\n    }\n    return 0;\n}",
+    "codeLanguage": "c",
+    "options": [
+      {
+        "id": "A",
+        "text": "cocuk 15 / ebeveyn 15"
+      },
+      {
+        "id": "B",
+        "text": "cocuk 5 / ebeveyn 5"
+      },
+      {
+        "id": "C",
+        "text": "cocuk 15 / ebeveyn 5"
+      },
+      {
+        "id": "D",
+        "text": "ebeveyn 15 / cocuk 5"
+      },
+      {
+        "id": "E",
+        "text": "Yalnızca 'ebeveyn 15' yazdırılır; çocuk süreç çıktı üretmez."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "fork(), çağıran sürecin adres alanının bir kopyasına sahip yeni bir çocuk süreç oluşturur; çocuğa 0, ebeveyne çocuğun PID'si döner. Çağrıdan sonra iki süreç bağımsız adres alanlarına sahiptir (kopyala-yazarken, copy-on-write ile verimli kopyalanır). Çocukta x += 10 yalnızca çocuğun kopyasını 15 yapar; ebeveynin x'i 5 kalır. Ebeveyn wait(NULL) ile çocuğun bitmesini beklediğinden önce çocuk 'cocuk 15', ardından ebeveyn 'ebeveyn 5' yazdırır. wait() olmasaydı sıra zamanlayıcıya bağlı olurdu, ancak değerler yine 15 ve 5 olurdu.",
+    "simpleExplanation": "fork() çağrısı çalışan programın birebir kopyasını çıkarır; artık iki ayrı program (ebeveyn ve çocuk) vardır ve her birinin kendi hafızası, kendi x değişkeni bulunur. Bir belgenin fotokopisini alıp birine vermeniz gibi: o kişi kendi kopyasına yazarsa sizin kağıdınız değişmez. Çocuk kendi x'ini 10 artırıp 15 yazdırır; ebeveynin x'i 5 kalır. Ebeveyn wait() ile 'çocuk bitsin, sonra yazarım' dediği için önce 'cocuk 15', sonra 'ebeveyn 5' görünür.",
+    "optionExplanations": {
+      "A": "Ebeveynin de 15 görmesi için çocuk ve ebeveynin belleği paylaşması gerekirdi; fork() ayrı adres alanı oluşturur. Bellek paylaşımı iş parçacıklarının (thread) özelliğidir.",
+      "B": "Çocuk süreç x += 10 satırını yürütür ve kendi kopyasını 15 yapar; 'cocuk 5' yazması mümkün değildir.",
+      "C": "Doğru. Çocuk kendi kopyasını değiştirir (15), ebeveynin kopyası değişmez (5); wait() sayesinde çocuk satırı önce yazılır.",
+      "D": "Hem değerler hem de sıra terstir: ebeveyn x'i değiştirmez (5) ve wait() nedeniyle çocuktan sonra yazar.",
+      "E": "fork() başarılı olduğunda çocuk süreç p == 0 dalını yürütür ve printf ile çıktı üretir; çocuğun çıktı üretmemesi için fork()'un başarısız olması (-1 dönmesi) gerekirdi."
+    },
+    "keyConcept": "fork() sonrasında ebeveyn ve çocuk ayrı adres alanlarına sahiptir; birinin değişken değişikliği diğerine yansımaz. wait() ebeveyni çocuk bitene kadar bloke eder ve çıktı sırasını belirler.",
+    "examTip": "fork() sorularında iki ayrı sütun açın (ebeveyn / çocuk) ve her değişkeni ayrı izleyin; wait() varsa çıktı sırası kesin, yoksa 'sıra belirsiz' seçeneklerine dikkat edin.",
+    "references": [
+      "Silberschatz, Galvin, Gagne, Operating System Concepts 10. baskı, Bölüm 3.3 (Operations on Processes)",
+      "Kerrisk, The Linux Programming Interface, Bölüm 24 (Process Creation)",
+      "fork(2) ve wait(2) Linux man sayfaları"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "MIM-001",
+    "topic": "MIM",
+    "subtopic": "Sayı gösterimi – ikiye tümleyen",
+    "difficulty": "temel",
+    "question": "8 bitlik ikiye tümleyen (two's complement) gösteriminde -37 sayısının ikili ve onaltılık karşılığı aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "1101 1011 (0xDB)"
+      },
+      {
+        "id": "B",
+        "text": "1010 0101 (0xA5)"
+      },
+      {
+        "id": "C",
+        "text": "1101 1010 (0xDA)"
+      },
+      {
+        "id": "D",
+        "text": "0010 0101 (0x25)"
+      },
+      {
+        "id": "E",
+        "text": "1110 1011 (0xEB)"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Önce +37 ikiliye çevrilir: 37 = 32 + 4 + 1 → 0010 0101 (0x25). İkiye tümleyen için bitler ters çevrilir (bire tümleyen): 1101 1010. Ardından 1 eklenir: 1101 1011. Onaltılık karşılığı 1101 = D, 1011 = B → 0xDB. Doğrulama: 0xDB = 219; 219 - 256 = -37. Alternatif kısa yol: 256 - 37 = 219 = 0xDB.",
+    "simpleExplanation": "Bilgisayarlar eksi sayıları ikiye tümleyen denen bir yöntemle saklar. Yöntemin tarifi: sayının pozitif halini ikiliye çevir (37 = 0010 0101), tüm bitleri tersle (1101 1010), sonra 1 ekle (1101 1011). Onaltılıkta 1101 = D, 1011 = B olduğu için 0xDB çıkar. Kontrol için şöyle düşünün: 8 bitlik bir sayaç saat gibi 256'da başa döner; -37, 0'dan 37 geri gitmek yani 256 - 37 = 219'a gelmek demektir ve 219 da 0xDB'dir.",
+    "optionExplanations": {
+      "A": "Doğru. 0x25 → bitleri ters çevir 0xDA → 1 ekle 0xDB; 219 - 256 = -37.",
+      "B": "1010 0101, işaret-büyüklük (sign-magnitude) gösterimidir: en soldaki bit 1 (negatif), kalan 7 bit 37. İkiye tümleyende bu değer -91'e karşılık gelir.",
+      "C": "1101 1010 (0xDA) bire tümleyen (one's complement) sonucudur; 1 ekleme adımı unutulmuştur. İkiye tümleyende 0xDA = -38'dir.",
+      "D": "0010 0101 (0x25) +37'nin gösterimidir; işaret biti 0 olduğu için pozitiftir.",
+      "E": "1110 1011 (0xEB) = 235; 235 - 256 = -21'dir. Bu sonuç, +37 yerine 21'in (0001 0101) tümleyeni alındığında çıkar; yani 37'nin ikilisinde 32 biti yerine yanlışlıkla 16 biti kullanılmıştır."
+    },
+    "keyConcept": "İkiye tümleyen: pozitif sayının bitlerini ters çevir ve 1 ekle; ya da 2^n - |x| hesapla. n bitte aralık -2^(n-1) ... 2^(n-1)-1.",
+    "examTip": "Sonucu mutlaka geri çevirip doğrulayın: onaltılık değeri onluğa çevirin, 256 (8 bit için) çıkarın; istenen negatif sayıyı vermelidir.",
+    "references": [
+      "Patterson & Hennessy, Computer Organization and Design (RISC-V Edition), Bölüm 2.4 (Signed and Unsigned Numbers)",
+      "Stallings, Computer Organization and Architecture 10. baskı, Bölüm 10 (Computer Arithmetic)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "MIM-002",
+    "topic": "MIM",
+    "subtopic": "Önbellek – doğrudan eşlemeli adres ayrıştırma",
+    "difficulty": "ileri",
+    "question": "32 bitlik bayt adresleme kullanan bir işlemcide 16 KB kapasiteli, 64 baytlık bloklara sahip doğrudan eşlemeli (direct-mapped) bir veri önbelleği bulunmaktadır. 0x0001A3C8 adresine yapılan erişim için önbellek satır (index) numarası ve etiket (tag) alanının bit sayısı aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Index 0x3C, tag 20 bit"
+      },
+      {
+        "id": "B",
+        "text": "Index 0xA3, tag 16 bit"
+      },
+      {
+        "id": "C",
+        "text": "Index 0x8F, tag 18 bit"
+      },
+      {
+        "id": "D",
+        "text": "Index 0x8F, tag 20 bit"
+      },
+      {
+        "id": "E",
+        "text": "Index 0x1A, tag 18 bit"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Satır sayısı = 16 KB / 64 B = 16384 / 64 = 256 = 2^8 → index 8 bit. Blok içi ofset = log2(64) = 6 bit. Tag = 32 - 8 - 6 = 18 bit. Adres 0x0001A3C8'in son 14 bitinden ofset ve index ayrılır: 0x1A3C8 = 0001 1010 0011 1100 1000 (ikili). Son 6 bit (ofset) = 00 1000 = 8; sonraki 8 bit (index) = 1000 1111 = 0x8F = 143; kalan bitler (tag) = 0x6. Alternatif hesap: 0x1A3C8 / 64 = 1679 (tam kısım), 1679 mod 256 = 143 = 0x8F; 1679 / 256 = 6 = tag.",
+    "simpleExplanation": "Önbelleği, 256 çekmeceli bir dolap gibi düşünün; her çekmeceye bellekten 64 baytlık bir parça (blok) konur. 16 KB / 64 B = 256 çekmece olduğundan çekmece numarası için 8 bit gerekir, 64 bayt içindeki yer için de 6 bit. Adresin en sağındaki 6 bit 'blok içinde nerede', sonraki 8 bit 'hangi çekmece', geri kalan 32 - 6 - 8 = 18 bit ise 'bu çekmecedeki parça gerçekten benim mi' sorusunu yanıtlayan etikettir. 0x1A3C8 adresini 64'e bölünce 1679 çıkar; 1679'u 256'ya bölünce kalan 143 = 0x8F çekmece numarasıdır. Adresi bayt bayt okumak (0xA3 veya 0x3C sanmak) en sık yapılan hatadır.",
+    "optionExplanations": {
+      "A": "0x3C adresin orta baytının bir kısmını index sanmaktan kaynaklanır; ofset 6 bit olduğu için index baytla hizalı değildir. Tag 20 bit de yanlıştır (index 8 + ofset 6 = 14, tag 18).",
+      "B": "0xA3 adresin ikinci baytıdır; ofset bitlerinin 8 (bir bayt) olduğu varsayılmıştır. Blok 64 B olduğu için ofset 6 bittir ve index 0xA3 değil 0x8F çıkar. Tag 16 da bu yanlış varsayımın sonucudur.",
+      "C": "Doğru. 256 satır → 8 bit index; 64 B blok → 6 bit ofset; tag = 32 - 14 = 18 bit; (0x1A3C8 >> 6) & 0xFF = 0x8F.",
+      "D": "Index doğru hesaplanmış ancak tag 20 bit verilmiştir; bu, ofsetin 4 bit (16 B blok) olduğu varsayımına denk gelir. 64 B blok için ofset 6, tag 18'dir.",
+      "E": "0x1A adresin üst baytıdır ve tag alanının bir parçasıdır, index değil. Index alanı ofsetin hemen üstündeki 8 bittir."
+    },
+    "keyConcept": "Doğrudan eşlemeli önbellek: ofset = log2(blok boyutu), index = log2(satır sayısı), tag = adres biti - index - ofset. Satır sayısı = kapasite / blok boyutu.",
+    "examTip": "Adresi ikiliye çevirip sağdan ofset ve index bitlerini kesin; bayt sınırlarına göre okumak (orta baytı index sanmak) en sık yapılan hatadır.",
+    "references": [
+      "Patterson & Hennessy, Computer Organization and Design (RISC-V Edition), Bölüm 5.3 (The Basics of Caches)",
+      "Hennessy & Patterson, Computer Architecture: A Quantitative Approach 6. baskı, Ek B (Review of Memory Hierarchy)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "MIM-003",
+    "topic": "MIM",
+    "subtopic": "Boru hattı tehlikeleri (pipeline hazards)",
+    "difficulty": "orta",
+    "question": "Klasik 5 aşamalı (IF-ID-EX-MEM-WB) bir RISC boru hattında, veri iletme (forwarding) donanımı bulunmaktadır. Aşağıdaki komut dizisi için tehlike (hazard) analizi aşağıdakilerden hangisinde doğru verilmiştir?",
+    "code": "lw   $t0, 0($s0)      # $t0 <- Mem[$s0]\nadd  $t1, $t0, $t2    # $t1 <- $t0 + $t2\nsub  $t3, $t1, $t4    # $t3 <- $t1 - $t4",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "Kontrol tehlikesi vardır; dallanma tahmini (branch prediction) ile çözülür."
+      },
+      {
+        "id": "B",
+        "text": "Yapısal tehlike vardır; lw ve add aynı çevrimde belleğe erişmek istediği için biri duraklatılır."
+      },
+      {
+        "id": "C",
+        "text": "Veri tehlikesi (RAW) vardır; forwarding donanımı sayesinde hiçbir duraklama (stall) olmadan yürütülür."
+      },
+      {
+        "id": "D",
+        "text": "Veri tehlikesi (RAW) vardır; lw-add arasındaki yük-kullan (load-use) bağımlılığı forwarding'e rağmen 1 çevrim duraklama gerektirir, add-sub bağımlılığı ise forwarding ile duraklamasız çözülür."
+      },
+      {
+        "id": "E",
+        "text": "Yazmadan sonra yazma (WAW) tehlikesi vardır; add ve sub aynı yazmaca yazdığı için sıra bozulabilir."
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "İki okuma-yazma-sonrası (Read After Write, RAW) bağımlılığı vardır: add, lw'nin yazdığı $t0'ı; sub, add'in yazdığı $t1'i okur. lw sonucu ancak MEM aşamasının sonunda hazır olur; add ise EX aşamasının başında bu değere ihtiyaç duyar. lw'nin MEM aşaması ile add'in EX aşaması aynı çevrime denk geldiği için forwarding bile değeri zamanında ulaştıramaz; add bir çevrim duraklatılır (load-use hazard), ardından MEM/WB'den EX'e forwarding yapılır. add-sub arasındaki bağımlılıkta ise add'in sonucu EX sonunda hazırdır ve EX/MEM ara yazmacından doğrudan sub'ın EX girişine iletilir; duraklama gerekmez. Derleyici, lw ile add arasına bağımsız bir komut yerleştirerek (instruction scheduling) bu duraklamayı gizleyebilir.",
+    "simpleExplanation": "Boru hattı, komutları fabrika bandı gibi aynı anda farklı aşamalarda işler. Sorun, bir komutun henüz hazır olmayan bir sonuca ihtiyaç duymasıdır. lw komutu belleğe gittiği için sonucu geç getirir; hemen arkasındaki add bu sonucu o kadar erken istiyor ki, iletme (forwarding) denen kestirme yol bile yetişemez; add bir çevrim beklemek zorundadır. Sonraki sub komutu ise add'in sonucunu ister; add hesaplamayı erken bitirdiği için sonuç kestirme yolla hemen iletilir, bekleme olmaz. Kısaca: 'yükle ve hemen kullan' bir çevrim bekletir, 'hesapla ve hemen kullan' bekletmez.",
+    "optionExplanations": {
+      "A": "Kontrol tehlikesi dallanma veya atlama komutlarında oluşur; dizide dallanma yoktur.",
+      "B": "Yapısal tehlike, aynı donanım biriminin aynı çevrimde iki komut tarafından istenmesidir. Klasik 5 aşamalı boru hattında komut ve veri bellekleri ayrıdır; add zaten belleğe erişmez.",
+      "C": "Forwarding çoğu RAW tehlikesini çözer ancak yük-kullan durumunda yüklenen veri MEM sonunda hazır olduğundan hemen sonraki komutun EX aşamasına yetişmez; 1 çevrim duraklama kaçınılmazdır.",
+      "D": "Doğru. load-use → 1 stall + forwarding; ALU-ALU → forwarding ile 0 stall.",
+      "E": "add $t1'e, sub ise $t3'e yazar; aynı yazmaca yazma yoktur. Ayrıca sıralı (in-order) 5 aşamalı boru hattında WAW tehlikesi oluşmaz; bu tehlike sırasız (out-of-order) yürütmede görülür."
+    },
+    "keyConcept": "RAW veri tehlikeleri forwarding ile çözülür; tek istisna yük-kullan (load-use) tehlikesidir ve 1 çevrim duraklama ister. Derleyici komut yeniden sıralamasıyla bu duraklama gizlenebilir.",
+    "examTip": "lw'den hemen sonra lw'nin hedef yazmacını kullanan bir komut gördüğünüzde 'forwarding + 1 stall' deyin; iki ALU komutu arasındaki bağımlılıkta 'forwarding, 0 stall'.",
+    "references": [
+      "Patterson & Hennessy, Computer Organization and Design (RISC-V Edition), Bölüm 4.7 (Data Hazards: Forwarding versus Stalling)",
+      "Hennessy & Patterson, Computer Architecture: A Quantitative Approach 6. baskı, Ek C (Pipelining: Basic and Intermediate Concepts)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "MIM-004",
+    "topic": "MIM",
+    "subtopic": "Amdahl yasası ile hızlanma hesabı",
+    "difficulty": "ileri",
+    "question": "Bir bankanın gün sonu toplu işleminde çalışma süresinin %60'ı paralelleştirilebilen hesaplama adımlarına, %40'ı ise paralelleştirilemeyen sıralı adımlara (veri tabanı kilitleri, sıralı günlük yazımı) harcanmaktadır. Paralel kısım 4 çekirdek kullanılarak 4 kat hızlandırıldığında toplam hızlanma (speedup) yaklaşık kaçtır?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "4,0"
+      },
+      {
+        "id": "B",
+        "text": "1,82"
+      },
+      {
+        "id": "C",
+        "text": "2,5"
+      },
+      {
+        "id": "D",
+        "text": "1,6"
+      },
+      {
+        "id": "E",
+        "text": "3,4"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Amdahl yasası: Hızlanma = 1 / [(1 - P) + P / S], burada P iyileştirilen kısmın oranı, S o kısmın hızlanma katıdır. P = 0,60, S = 4: yeni süre = 0,40 + 0,60/4 = 0,40 + 0,15 = 0,55 (eski sürenin oranı olarak). Hızlanma = 1 / 0,55 ≈ 1,82. Sıralı %40'lık kısım değişmediği için 4 çekirdek bile toplamı yalnızca 1,82 kat hızlandırır; çekirdek sayısı sonsuza giderse üst sınır 1 / 0,40 = 2,5 olur.",
+    "simpleExplanation": "Amdahl yasası şunu söyler: bir işin hızlandıramadığınız kısmı toplam kazancı sınırlar. İşin %40'ı tek sıra beklemek gibi hızlanmayan kısım, %60'ı ise 4 kişiye dağıtılabilen kısımdır. 4 kişiyle %60'lık kısım 4 kat kısalır ve %15'e düşer; sıralı %40 aynen kalır. Yeni toplam süre eskisinin 0,40 + 0,15 = 0,55'idir; yani iş yaklaşık 1 / 0,55 = 1,82 kat hızlanır. Market kasasında 10 kasa açsanız da herkesin aynı tek kapıdan çıkması gerekiyorsa kuyruk ancak o kapının izin verdiği kadar hızlanır.",
+    "optionExplanations": {
+      "A": "4,0 yalnızca programın tamamı (%100) paralelleştirilebilir olsaydı elde edilirdi; sıralı kısım göz ardı edilmiştir.",
+      "B": "Doğru. 1 / (0,40 + 0,60/4) = 1 / 0,55 ≈ 1,82.",
+      "C": "2,5 = 1 / 0,40 teorik üst sınırdır; paralel kısım sıfır süreye indirilse (sonsuz çekirdek) ulaşılır, 4 çekirdekle değil.",
+      "D": "1,6 = 1 + 0,6 şeklinde oranların doğrudan toplanmasıyla bulunur; Amdahl formülü süre oranlarının tersini alır.",
+      "E": "3,4 = 4 × 0,6 + 1 × 0,4 gibi ağırlıklı ortalama hızlanma alınmasıyla bulunur; hızlanmalar ağırlıklı ortalamayla değil sürelerin toplamıyla birleştirilir."
+    },
+    "keyConcept": "Amdahl: Hızlanma = 1 / [(1-P) + P/S]. Üst sınır 1/(1-P); iyileştirilemeyen kısım toplam kazancı sınırlar.",
+    "examTip": "Önce yeni süreyi oran olarak hesaplayın (sıralı + paralel/S), sonra tersini alın. Üst sınır sorulursa paralel kısmı sıfır sayın.",
+    "references": [
+      "Hennessy & Patterson, Computer Architecture: A Quantitative Approach 6. baskı, Bölüm 1.9 (Quantitative Principles of Computer Design)",
+      "Amdahl, 'Validity of the single processor approach to achieving large scale computing capabilities', AFIPS 1967"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "MIM-005",
+    "topic": "MIM",
+    "subtopic": "CPI ve yürütme süresi hesabı",
+    "difficulty": "orta",
+    "question": "2 GHz saat frekanslı bir işlemcide çalışan bir programın komut karışımı ve komut sınıflarının çevrim sayıları aşağıdaki tabloda verilmiştir. Program toplam 10^9 komut yürütmektedir. Ortalama CPI (komut başına çevrim) ve toplam yürütme süresi nedir?",
+    "code": "Komut sınıfı      Oran    CPI\nALU               %50     1\nYükle/Sakla       %30     3\nDallanma          %20     2",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "CPI = 2,0; süre = 1,0 s"
+      },
+      {
+        "id": "B",
+        "text": "CPI = 1,8; süre = 0,45 s"
+      },
+      {
+        "id": "C",
+        "text": "CPI = 1,8; süre = 1,8 s"
+      },
+      {
+        "id": "D",
+        "text": "CPI = 6,0; süre = 3,0 s"
+      },
+      {
+        "id": "E",
+        "text": "CPI = 1,8; süre = 0,9 s"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Ortalama CPI, her sınıfın CPI'ının oranıyla ağırlıklandırılmış toplamıdır: 0,50 × 1 + 0,30 × 3 + 0,20 × 2 = 0,5 + 0,9 + 0,4 = 1,8. Toplam çevrim = komut sayısı × CPI = 10^9 × 1,8 = 1,8 × 10^9 çevrim. Yürütme süresi = çevrim / frekans = 1,8 × 10^9 / (2 × 10^9 Hz) = 0,9 saniye. Temel CPU performans denklemi: Süre = Komut sayısı × CPI × Çevrim süresi.",
+    "simpleExplanation": "CPI, bir komutun ortalama kaç saat vuruşu (çevrim) sürdüğünü söyler. Komutların yarısı 1, %30'u 3 ve %20'si 2 çevrim sürüyorsa ortalamayı ağırlıklı alırız: 0,5×1 + 0,3×3 + 0,2×2 = 1,8 çevrim. 1 milyar komut × 1,8 = 1,8 milyar çevrim gerekir. İşlemci saniyede 2 milyar çevrim attığı için süre 1,8 / 2 = 0,9 saniyedir. Bu, 'her ürün ortalama 1,8 saniye alıyor, saniyede 2 ürün geçiriyoruz' diye bant hızını hesaplamak gibidir.",
+    "optionExplanations": {
+      "A": "CPI 2,0 üç sınıfın CPI'larının basit (ağırlıksız) ortalamasıdır ((1+3+2)/3); oranlar hesaba katılmalıdır.",
+      "B": "CPI doğru ancak süre 1,8 × 10^9 çevrimin 4 GHz'e bölünmesiyle bulunmuştur; frekans 2 GHz'dir.",
+      "C": "CPI doğru ancak çevrim sayısının frekansa bölünmesi unutulmuştur; 1,8 × 10^9 çevrim 1,8 saniye değil, 2 GHz'de 0,9 saniyedir.",
+      "D": "CPI 6,0 CPI'ların toplamıdır (1+3+2); ağırlıklı ortalama alınmamıştır.",
+      "E": "Doğru. CPI = 1,8; süre = 10^9 × 1,8 / 2×10^9 = 0,9 s."
+    },
+    "keyConcept": "Süre = Komut sayısı × CPI × Çevrim süresi (= Komut sayısı × CPI / Frekans). Ortalama CPI, sınıf oranlarıyla ağırlıklandırılır.",
+    "examTip": "Oranları ondalığa çevirip CPI'larla çarpın, toplayın; sonra 10^9 ve GHz'lerin üslerinin sadeleşmesine dikkat edin.",
+    "references": [
+      "Patterson & Hennessy, Computer Organization and Design (RISC-V Edition), Bölüm 1.6 (Performance)",
+      "Hennessy & Patterson, Computer Architecture: A Quantitative Approach 6. baskı, Bölüm 1.9"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "MIM-006",
+    "topic": "MIM",
+    "subtopic": "RISC ve CISC mimari karşılaştırması",
+    "difficulty": "temel",
+    "question": "Aşağıdakilerden hangisi RISC (Reduced Instruction Set Computer) mimarisinin karakteristik bir özelliğidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Sabit uzunluklu komut biçimi ve belleğe yalnızca yükle/sakla (load/store) komutlarıyla erişilmesi"
+      },
+      {
+        "id": "B",
+        "text": "Çok sayıda adresleme modu ve değişken uzunluklu komutlar"
+      },
+      {
+        "id": "C",
+        "text": "Komutların donanımda doğrudan değil, mikro-kod (microcode) yorumlayıcısı ile yürütülmesi"
+      },
+      {
+        "id": "D",
+        "text": "Aritmetik komutların işlenenlerini doğrudan bellekten alıp sonucu belleğe yazabilmesi"
+      },
+      {
+        "id": "E",
+        "text": "Az sayıda genel amaçlı yazmaç (register) bulunması ve karmaşık işlerin tek komutla yapılması"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "RISC felsefesi, az sayıda, basit ve sabit uzunluklu komutlarla boru hattı (pipelining) işlemeyi kolaylaştırmayı hedefler. Belleğe erişim yalnızca load ve store komutlarıyla yapılır (load/store mimarisi); aritmetik komutlar yalnızca yazmaçlar üzerinde çalışır. Bu nedenle RISC işlemcilerde geniş bir genel amaçlı yazmaç dosyası (örn. 32 yazmaç) bulunur ve komutların çoğu tek çevrimde kodlanıp çözülür (hardwired control). ARM, RISC-V ve MIPS tipik örneklerdir; x86 ise CISC örneğidir (ancak modern x86 işlemciler içeride CISC komutlarını RISC benzeri mikro-işlemlere çevirir).",
+    "simpleExplanation": "RISC işlemci tasarımında felsefe 'az ama basit komut'tur. Komutlar hep aynı uzunluktadır, böylece işlemci hangi komutun nerede bittiğini düşünmeden hızla okur; belleğe sadece 'yükle' ve 'sakla' komutları dokunur, hesaplar yalnızca yazmaçlar (register) arasında yapılır. Bunu Lego'ya benzetin: az sayıda standart parça ile her şeyi hızlı kurarsınız. CISC ise çok çeşitli, değişken boyutlu ve bazen tek başına çok iş yapan karmaşık parçalar kullanır. Sabit uzunluk ve yükle/sakla erişimi RISC'in imzasıdır.",
+    "optionExplanations": {
+      "A": "Doğru. Sabit uzunluk kolay kod çözme ve boru hattı; load/store mimarisi ise basit, tek tip bellek erişimi sağlar.",
+      "B": "Çok sayıda adresleme modu ve değişken uzunluklu komutlar (x86'da 1-15 bayt) CISC özelliğidir; kod çözmeyi karmaşıklaştırır.",
+      "C": "Mikro-kodlu kontrol birimi, karmaşık komutları küçük adımlara çevirmek için CISC'te yaygındır; RISC donanımsal (hardwired) kontrol tercih eder.",
+      "D": "Bellek-bellek veya bellek-yazmaç aritmetik işlenenleri CISC'in (örn. x86 'add [mem], eax') özelliğidir; RISC'te aritmetik yalnızca yazmaçlar arasında yapılır.",
+      "E": "Az yazmaç ve 'tek komutla çok iş' CISC yaklaşımıdır; RISC geniş yazmaç dosyası ve basit komutlar kullanır."
+    },
+    "keyConcept": "RISC: basit/sabit uzunluklu komutlar, load/store mimarisi, çok yazmaç, hardwired kontrol, boru hattı dostu. CISC: karmaşık/değişken komutlar, çok adresleme modu, mikro-kod.",
+    "examTip": "Şıkta 'bellek işlenenli aritmetik', 'değişken uzunluk', 'mikro-kod' görürseniz CISC; 'load/store', 'sabit uzunluk', 'çok yazmaç' görürseniz RISC deyin.",
+    "references": [
+      "Patterson & Hennessy, Computer Organization and Design (RISC-V Edition), Bölüm 2 (Instructions: Language of the Computer)",
+      "Stallings, Computer Organization and Architecture 10. baskı, Bölüm 15 (Reduced Instruction Set Computers)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "MIM-007",
+    "topic": "MIM",
+    "subtopic": "Bellek hiyerarşisi – ortalama bellek erişim süresi (AMAT)",
+    "difficulty": "orta",
+    "question": "İki seviyeli önbelleğe sahip bir işlemcide L1 isabet süresi 1 çevrim, L1 ıskalama oranı %5; L2 isabet süresi 10 çevrim, L2'nin yerel (local) ıskalama oranı %20; ana bellek erişim süresi 100 çevrimdir. Ortalama bellek erişim süresi (Average Memory Access Time, AMAT) kaç çevrimdir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "1,5"
+      },
+      {
+        "id": "B",
+        "text": "2,0"
+      },
+      {
+        "id": "C",
+        "text": "2,5"
+      },
+      {
+        "id": "D",
+        "text": "6,0"
+      },
+      {
+        "id": "E",
+        "text": "3,5"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "AMAT = L1 isabet süresi + L1 ıskalama oranı × L1 ıskalama cezası. L1 ıskalama cezası ise L2'ye erişimin kendisidir: L2 isabet süresi + L2 yerel ıskalama oranı × bellek erişim süresi = 10 + 0,20 × 100 = 30 çevrim. Dolayısıyla AMAT = 1 + 0,05 × 30 = 1 + 1,5 = 2,5 çevrim. Yerel ıskalama oranı, L2'ye ulaşan erişimler içindeki ıskalama oranıdır; küresel (global) L2 ıskalama oranı 0,05 × 0,20 = %1 olur.",
+    "simpleExplanation": "Veri ararken önce en yakın çekmeceye (L1) bakılır; %95 ihtimalle oradadır ve 1 çevrim sürer. Bulunamazsa (%5) ikinci dolaba (L2) gidilir: bu 10 çevrim alır, ve oraya gidenlerin %20'si orada da bulunamayıp 100 çevrimlik ana belleğe iner. L2'ye gitmenin ortalama maliyeti 10 + 0,2×100 = 30 çevrimdir. Toplam ortalama: 1 + 0,05×30 = 2,5 çevrim. Mantık içten dışa doğrudur: önce uzaktaki katın ortalamasını hesaplayın, sonra onu yakın katın 'kaçırma cezası' olarak kullanın.",
+    "optionExplanations": {
+      "A": "1,5 = 1 + 0,05 × 10; L2'nin ıskalayıp belleğe gitme maliyeti (0,20 × 100) ihmal edilmiştir.",
+      "B": "2,0 = 1 + 0,05 × 20; L2 ıskalama cezası yalnızca 0,20 × 100 alınıp L2 isabet süresi (10) unutulmuştur.",
+      "C": "Doğru. L1 ıskalama cezası = 10 + 0,2 × 100 = 30; AMAT = 1 + 0,05 × 30 = 2,5.",
+      "D": "6,0 = 1 + 0,05 × 100; L2 hiç yokmuş gibi her L1 ıskalaması doğrudan belleğe gidiyor varsayılmıştır.",
+      "E": "3,5 = 1 + 0,05 × 10 + 0,20 × 10; L2 ıskalama oranı küresel oran gibi L1 ıskalama oranıyla çarpılmadan uygulanmıştır."
+    },
+    "keyConcept": "AMAT = isabet süresi + ıskalama oranı × ıskalama cezası; çok seviyede ceza, alt seviyenin AMAT'ıdır. Yerel ıskalama oranı o seviyeye ulaşan erişimlere göredir.",
+    "examTip": "İçten dışa hesaplayın: önce L2'nin ortalama süresini (10 + 0,2×100), sonra bunu L1'in ıskalama cezası olarak kullanın.",
+    "references": [
+      "Hennessy & Patterson, Computer Architecture: A Quantitative Approach 6. baskı, Ek B.3 (Six Basic Cache Optimizations)",
+      "Patterson & Hennessy, Computer Organization and Design (RISC-V Edition), Bölüm 5.4 (Measuring and Improving Cache Performance)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "MIM-008",
+    "topic": "MIM",
+    "subtopic": "Kesme (interrupt) ve yoklama (polling) mekanizmaları",
+    "difficulty": "orta",
+    "question": "Bir ATM'nin kart okuyucusu, kart takıldığında işlemciye haber vermek için kesme (interrupt) mekanizmasını kullanmaktadır. Kesme ve yoklama (polling) mekanizmalarıyla ilgili aşağıdaki ifadelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Yoklama yönteminde cihaz hazır olduğunu işlemciye kendisi bildirir; kesme yönteminde ise işlemci cihazın durum yazmacını sürekli sorgular."
+      },
+      {
+        "id": "B",
+        "text": "Kesme geldiğinde işlemci yürütmekte olduğu komutu tamamlar, program sayacını ve durum yazmacını kaydeder, kesme vektör tablosundan ilgili kesme hizmet yordamının (ISR) adresini alır ve onu çekirdek modunda çalıştırır."
+      },
+      {
+        "id": "C",
+        "text": "Kesmeler asenkron olaylar olduğu için ancak işlemci boşta (idle) iken işlenebilir; meşgul işlemci kesmeyi kaybeder."
+      },
+      {
+        "id": "D",
+        "text": "Kesme vektör tablosu kullanıcı adres alanında tutulur; böylece uygulamalar kendi kesme işleyicilerini doğrudan kaydedebilir."
+      },
+      {
+        "id": "E",
+        "text": "Yoklama her durumda kesmeden daha az işlemci yükü getirir; bu nedenle modern işletim sistemleri klavye ve ağ kartı gibi cihazlar için yoklamayı tercih eder."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Kesme, cihazın işlemciye asenkron olarak sinyal göndermesidir. İşlemci her komut çevriminin sonunda kesme hattını kontrol eder; bekleyen kesme varsa mevcut komutu bitirir, geri dönebilmek için program sayacı (PC) ve durum yazmacını (PSW/flags) kaydeder, kesme numarasını kullanarak kesme vektör tablosundan hizmet yordamının adresini okur, çekirdek moduna geçer ve ISR'yi yürütür. ISR bitince kaydedilen bağlam geri yüklenir ve kesilen program kaldığı yerden devam eder. Yoklamada ise işlemci cihazın durum yazmacını döngüyle okur; nadiren olay üreten cihazlarda (kart okuyucu gibi) bu yöntem işlemci zamanını boşa harcar, bu nedenle kesme tercih edilir.",
+    "simpleExplanation": "Kesme (interrupt) kapı zili gibidir: kart takılınca cihaz işlemciye 'bak bana' sinyali gönderir, işlemci o anki işini bir kenara not eder (program sayacı ve durum yazmacı), bu cihaz için önceden hazırlanmış küçük programın (kesme hizmet yordamı) adresini bir tablodan bulur, onu yetkili modda çalıştırır ve sonra kaldığı yere döner. Yoklama (polling) ise işlemcinin sürekli kapıya gidip 'biri geldi mi?' diye bakmasıdır; nadiren olan olaylar için zaman kaybıdır. Doğru seçenek, kesme işlendiğinde atılan adımları sırayla doğru anlatan seçenektir.",
+    "optionExplanations": {
+      "A": "Tanımlar ters verilmiştir: yoklamada işlemci sorgular, kesmede cihaz bildirir.",
+      "B": "Doğru. Kesme işleme adımları: komutu tamamla → bağlamı kaydet → vektör tablosundan ISR adresi → çekirdek modunda ISR → bağlamı geri yükle.",
+      "C": "Kesmeler tam da işlemci meşgulken dikkatini çekmek için vardır; donanım kesmeyi bekletir (pending) ve komut sınırında işler. Kesme yalnızca maskelenmişse ertelenir, kaybolmaz.",
+      "D": "Kesme vektör tablosu çekirdek tarafından korunan bellekte tutulur; kullanıcı uygulamalarının doğrudan değiştirmesi güvenlik ve kararlılık açısından kabul edilemez. Uygulamalar yalnızca işletim sistemi aracılığıyla (örn. sinyal işleyicileri) dolaylı olarak olaylara abone olabilir.",
+      "E": "Yoklama yalnızca çok yüksek olay hızına sahip cihazlarda (örn. yük altındaki ağ kartında NAPI benzeri karma yaklaşımlar) kesme fırtınasını önlemek için kısmen kullanılır; klavye gibi seyrek olay üreten cihazlar için kesme çok daha verimlidir."
+    },
+    "keyConcept": "Kesme: cihaz işlemciyi asenkron uyarır, bağlam kaydedilip vektör tablosu üzerinden ISR çekirdek modunda çalışır. Yoklama: işlemci cihazı döngüyle sorgular, seyrek olaylarda verimsizdir.",
+    "examTip": "Kesme adımlarını sırayla ezberleyin: 'tamamla-kaydet-vektör-ISR-geri yükle'. 'Boştayken işlenir' veya 'kullanıcı alanında vektör tablosu' gibi ifadeler her zaman yanlıştır.",
+    "references": [
+      "Stallings, Computer Organization and Architecture 10. baskı, Bölüm 3.2 (Computer Function – Interrupts) ve Bölüm 7 (Input/Output)",
+      "Silberschatz, Galvin, Gagne, Operating System Concepts 10. baskı, Bölüm 12.2.2 (Interrupts)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "WEB-001",
+    "topic": "WEB",
+    "subtopic": "HTTP metotları ve idempotentlik",
+    "difficulty": "temel",
+    "question": "Bir mobil bankacılık uygulaması, ağ hatası durumunda isteği otomatik olarak yeniden göndermektedir (retry). Aşağıdaki HTTP metotlarından hangisi idempotent DEĞİLDİR ve bu nedenle yeniden gönderildiğinde (örneğin para transferinin iki kez gerçekleşmesi gibi) yan etkiye yol açabilir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "GET"
+      },
+      {
+        "id": "B",
+        "text": "PUT"
+      },
+      {
+        "id": "C",
+        "text": "POST"
+      },
+      {
+        "id": "D",
+        "text": "DELETE"
+      },
+      {
+        "id": "E",
+        "text": "HEAD"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "HTTP semantiğinde (RFC 9110) bir metot, aynı isteğin bir veya birden çok kez yapılmasının sunucu durumunda aynı etkiyi yaratması durumunda idempotenttir. GET ve HEAD güvenli (safe) ve idempotenttir; PUT aynı temsili yerine koyduğu için, DELETE ise kaynak bir kez silindikten sonra tekrar silmenin durumu değiştirmemesi nedeniyle idempotenttir. POST ise yeni kaynak oluşturma veya işlem başlatma gibi yan etkili işlemler için tanımlıdır ve idempotentliği garanti edilmez; aynı POST /transferler isteği iki kez gönderilirse iki transfer oluşabilir. Bu nedenle ödeme API'lerinde istemci tarafından üretilen bir Idempotency-Key başlığı kullanılır.",
+    "simpleExplanation": "İdempotent, 'bir kez de yapsan on kez de yapsan sonuç aynı' demektir. Işığı açma düğmesi gibi: 'açık yap' komutunu kaç kez verseniz ışık sadece açık olur (PUT, DELETE, GET böyledir). POST ise 'bir tane daha ekle' komutudur: her tekrar yeni bir kayıt, yani yeni bir para transferi oluşturabilir. Bu yüzden ağ hatasında isteği otomatik tekrarlayan bir uygulama POST ile iki kez para gönderebilir. Çözüm, isteğe bir 'bu işlem zaten yapıldı mı' anahtarı eklemektir.",
+    "optionExplanations": {
+      "A": "GET güvenli ve idempotenttir; yalnızca okuma yapar, tekrar gönderilmesi sunucu durumunu değiştirmez.",
+      "B": "PUT, kaynağın tamamını verilen temsille değiştirir; aynı isteği tekrarlamak kaynağı aynı duruma getirir, dolayısıyla idempotenttir.",
+      "C": "Doğru. POST'un idempotentliği tanım gereği garanti edilmez; tekrarlanan POST ayrı işlemler yaratabilir.",
+      "D": "DELETE idempotenttir: ilk çağrı kaynağı siler, sonraki çağrılar 404 dönebilir ancak sunucu durumu değişmez (durum kodunun farklı olması idempotentliği bozmaz).",
+      "E": "HEAD, GET ile aynı ancak gövdesiz yanıt döndüren güvenli ve idempotent bir metottur."
+    },
+    "keyConcept": "İdempotent metotlar: GET, HEAD, PUT, DELETE, OPTIONS. POST ve PATCH idempotentlik garantisi vermez. Güvenli (safe) metotlar: GET, HEAD, OPTIONS.",
+    "examTip": "İdempotentlik yanıt kodunun aynı olması değil, sunucu durumunun aynı kalmasıdır. Finansal API'lerde POST için Idempotency-Key kontrolünü hatırlayın.",
+    "references": [
+      "RFC 9110 (HTTP Semantics), Bölüm 9.2.2 (Idempotent Methods)",
+      "Fielding, Architectural Styles and the Design of Network-based Software Architectures (REST tezi), 2000"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "WEB-002",
+    "topic": "WEB",
+    "subtopic": "HTTP durum kodları – kimlik doğrulama ve yetkilendirme",
+    "difficulty": "temel",
+    "question": "Bir şube personeli internet şubesi yönetim paneline geçerli kimlik bilgileriyle giriş yapmış ve geçerli bir oturum belirteci (token) almıştır. Ardından yalnızca iç denetim rolüne açık olan GET /admin/raporlar uç noktasına istek göndermiştir. REST tasarım ilkelerine uygun bir sunucunun döndürmesi gereken en uygun HTTP durum kodu aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "400 Bad Request"
+      },
+      {
+        "id": "B",
+        "text": "401 Unauthorized"
+      },
+      {
+        "id": "C",
+        "text": "404 Not Found"
+      },
+      {
+        "id": "D",
+        "text": "403 Forbidden"
+      },
+      {
+        "id": "E",
+        "text": "500 Internal Server Error"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "401 Unauthorized, adının aksine kimlik doğrulama (authentication) eksikliğini veya geçersizliğini ifade eder: sunucu istemcinin kim olduğunu bilmiyordur ve WWW-Authenticate başlığıyla kimlik bilgisi ister. 403 Forbidden ise kimliği doğrulanmış ancak istenen kaynağa yetkisi (authorization) olmayan istemci için kullanılır; kimlik bilgilerinin yeniden gönderilmesi sonucu değiştirmez. Senaryoda kullanıcı doğrulanmış, yetkisi yetersizdir → 403. Bazı sistemler kaynağın varlığını gizlemek için 404 döndürmeyi tercih eder; bu güvenlik amaçlı bir seçimdir ancak semantik olarak en uygun kod 403'tür.",
+    "simpleExplanation": "401 ve 403 sık karıştırılır. 401 'seni tanımıyorum, kimliğini göster' demektir; 403 ise 'seni tanıyorum ama buraya girme yetkin yok' demektir. Senaryoda personel geçerli bir giriş yapmış, yani kimliği bellidir; sadece denetim raporlarına yetkisi yoktur. Bina kartı olan ama yönetim katına kartı çalışmayan bir çalışan gibi: kart geçerli, kapı kapalı. Bu yüzden doğru yanıt 403 Forbidden'dır.",
+    "optionExplanations": {
+      "A": "400, isteğin sözdizimsel veya biçimsel olarak hatalı olduğunu belirtir; istek biçimsel olarak geçerlidir, sorun yetkidir.",
+      "B": "401 kimlik doğrulamanın eksik/geçersiz olduğunu söyler. Kullanıcı geçerli bir oturum belirtecine sahiptir; sorun kimlik değil yetkidir. Bu, 401 ve 403'ün en sık karıştırıldığı noktadır.",
+      "C": "404 kaynağın bulunmadığını ifade eder; kaynak vardır. Varlığı gizlemek için 404 dönme bir güvenlik politikası olabilir ama 'en uygun' semantik yanıt değildir.",
+      "D": "Doğru. Kimlik doğrulandı, yetki yok → 403 Forbidden.",
+      "E": "500 sunucu tarafında beklenmedik bir hata oluştuğunu belirtir; yetki reddi beklenen ve kontrollü bir sonuçtur, sunucu hatası değildir."
+    },
+    "keyConcept": "401 = kimliğin kim? (authentication); 403 = kimsin biliyorum ama yetkin yok (authorization). 403'te kimlik bilgisini tekrar göndermek işe yaramaz.",
+    "examTip": "Senaryoda 'giriş yapmış/geçerli token' ifadesi varsa 401'i eleyin; 'token süresi dolmuş/yok' ifadesi varsa 401 seçin.",
+    "references": [
+      "RFC 9110 (HTTP Semantics), Bölüm 15.5.2 (401 Unauthorized) ve 15.5.4 (403 Forbidden)",
+      "OWASP Top 10 (2021), A01: Broken Access Control"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "WEB-003",
+    "topic": "WEB",
+    "subtopic": "JavaScript tip dönüşümleri ve operatör davranışı",
+    "difficulty": "orta",
+    "question": "Aşağıdaki JavaScript (ES2020+) kodu çalıştırıldığında konsola ne yazdırılır?",
+    "code": "console.log(typeof null, 0.1 + 0.2 === 0.3, \"5\" + 3, \"5\" - 3, [] == false);",
+    "codeLanguage": "javascript",
+    "options": [
+      {
+        "id": "A",
+        "text": "object false 53 2 true"
+      },
+      {
+        "id": "B",
+        "text": "null false 8 2 false"
+      },
+      {
+        "id": "C",
+        "text": "object true 53 2 true"
+      },
+      {
+        "id": "D",
+        "text": "object false 8 2 false"
+      },
+      {
+        "id": "E",
+        "text": "null false 53 2 true"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "typeof null, JavaScript'in tarihsel bir hatası nedeniyle 'object' döndürür (düzeltmek geriye uyumluluğu bozacağı için standartta korunmuştur). 0.1 + 0.2, IEEE 754 çift duyarlıklı kayan nokta gösteriminde 0.30000000000000004 olduğundan 0.3 ile eşit değildir → false. + operatörü işlenenlerden biri string ise birleştirme yapar: \"5\" + 3 → \"53\". - operatörü yalnızca sayısal tanımlı olduğundan string sayıya çevrilir: \"5\" - 3 → 2. [] == false gevşek eşitlikte: boş dizi ToPrimitive ile \"\" olur, \"\" sayıya çevrilince 0, false sayıya çevrilince 0; 0 == 0 → true. Çıktı: object false 53 2 true.",
+    "simpleExplanation": "JavaScript bazı tuhaflıklarıyla ünlüdür. typeof null tarihi bir hata nedeniyle 'object' der. 0.1 + 0.2 bilgisayarın ondalık sayıları tam tutamaması yüzünden 0.30000000000000004 çıkar, bu yüzden 0.3'e eşit değildir. Artı işareti yanında metin görünce yapıştırma yapar: '5' + 3 = '53'; eksi işareti ise sadece sayılarla çalıştığı için metni sayıya çevirir: '5' - 3 = 2. Çift eşittir (==) karşılaştırmadan önce tipleri dönüştürür; boş dizi de false da sonunda 0 olur ve eşit sayılır.",
+    "optionExplanations": {
+      "A": "Doğru. typeof null → 'object'; kayan nokta eşitsizliği → false; string birleştirme → '53'; sayısal çıkarma → 2; gevşek eşitlik dönüşümü → true.",
+      "B": "typeof null 'null' değil 'object' döndürür; \"5\" + 3 ise birleştirme yapar (\"53\"), toplama değil; [] == false ise true'dur.",
+      "C": "0.1 + 0.2 === 0.3 ikili kayan nokta hatası nedeniyle false'tur; sonuç 0.30000000000000004'tür.",
+      "D": "\"5\" + 3 string birleştirmesi olduğu için \"53\" verir, 8 değil. [] == false gevşek eşitlikte true'dur ([] → \"\" → 0).",
+      "E": "Diğer dört değer doğru ancak typeof null 'object' döndürür; 'null' değeri typeof'un döndürdüğü tipler arasında yoktur."
+    },
+    "keyConcept": "typeof null === 'object' (tarihsel hata); ikili kayan nokta 0.1+0.2 ≠ 0.3; + string varsa birleştirir, - her zaman sayısal; == gevşek eşitlik tip dönüşümü yapar, === yapmaz.",
+    "examTip": "JS çıktı sorularında + ve == gördüğünüzde durup tip dönüşümünü yazın; kayan nokta karşılaştırmasında eşitlik beklemeyin (Number.EPSILON ile karşılaştırılır).",
+    "references": [
+      "ECMAScript 2020 Language Specification, Bölüm 7.1 (Type Conversion) ve 7.2.14 (Abstract Equality Comparison, sonraki sürümlerde IsLooselyEqual)",
+      "MDN Web Docs – typeof, Equality comparisons and sameness",
+      "IEEE 754-2019 (Floating-Point Arithmetic)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "WEB-004",
+    "topic": "WEB",
+    "subtopic": "Oturum yönetimi – çerez bayrakları ve JWT",
+    "difficulty": "orta",
+    "question": "Bir internet bankacılığı uygulamasında oturum yönetimi için imzalı (HS256) ancak şifrelenmemiş JWT kullanılması ve bu belirtecin nerede saklanacağı tartışılmaktadır. Aşağıdaki ifadelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "JWT imzalandığı için payload'daki veriler (örneğin kullanıcı rolü) şifrelidir; istemci bu verileri okuyamaz."
+      },
+      {
+        "id": "B",
+        "text": "Sunucu tarafı oturum (server-side session) kullanılırsa sunucu durumsuz (stateless) olur; JWT ise sunucuda oturum tablosu tutulmasını gerektirir."
+      },
+      {
+        "id": "C",
+        "text": "HttpOnly bayraklı çerezde saklanan belirteç JavaScript ile okunamaz; bu nedenle CSRF saldırılarına karşı tam koruma sağlar."
+      },
+      {
+        "id": "D",
+        "text": "localStorage'da saklanan JWT'ye sayfadaki JavaScript erişemez; bu nedenle XSS saldırılarına karşı güvenlidir."
+      },
+      {
+        "id": "E",
+        "text": "Standart imzalı JWT'nin payload'ı Base64URL kodludur ve herkes tarafından okunabilir; imza yalnızca bütünlüğü korur. Belirtecin HttpOnly ve Secure bayraklı çerezde saklanması XSS ile çalınmasını zorlaştırır."
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "JWS tipi JWT üç parçadan oluşur: header.payload.signature; header ve payload yalnızca Base64URL ile kodlanır, şifrelenmez. İmza (HMAC veya RSA/ECDSA) payload'ın değiştirilmediğini garanti eder, gizliliğini değil; gizlilik için JWE (şifreli JWT) gerekir. Belirtecin saklanma yeri saldırı yüzeyini belirler: localStorage sayfadaki tüm JavaScript'e açıktır, XSS açığı varsa belirteç çalınır. HttpOnly bayraklı çerez ise document.cookie ile okunamaz, Secure bayrağı yalnızca HTTPS üzerinden gönderilmesini sağlar. Çerez her istekte otomatik gönderildiği için CSRF riski ayrıca ele alınmalı; SameSite=Strict/Lax özniteliği ve/veya anti-CSRF belirteci kullanılmalıdır.",
+    "simpleExplanation": "İmzalı JWT, mühürlü ama şeffaf bir zarf gibidir: içindeki yazıyı herkes okuyabilir, mühür yalnızca yazının değiştirilmediğini garanti eder. Bu nedenle şifre gibi gizli bilgiler JWT'nin içine konmaz. Belirteci nerede sakladığınız da önemlidir: localStorage sayfadaki her JavaScript'in açabildiği bir çekmecedir; siteye zararlı bir betik sızarsa (XSS) belirteci çalar. HttpOnly bayraklı çerez ise JavaScript'in açamadığı kilitli bir çekmecedir, Secure bayrağı da bunu yalnızca güvenli (HTTPS) bağlantıda taşır. Çerezin kendi riski olan CSRF ise ayrı önlemlerle (SameSite) kapatılır.",
+    "optionExplanations": {
+      "A": "İmza bütünlük sağlar, gizlilik sağlamaz. Payload Base64URL ile çözülerek herkes tarafından okunabilir; hassas veri JWT payload'ına konulmamalıdır.",
+      "B": "Tersine çevrilmiştir: sunucu tarafı oturumda sunucu oturum deposu tutar (durumlu); JWT kendi içinde kullanıcı bilgisini taşıdığı için sunucu durumsuz çalışabilir (iptal listesi tutulmazsa).",
+      "C": "HttpOnly, belirtecin JavaScript ile okunmasını engeller (XSS'e karşı hırsızlığı zorlaştırır) ama tarayıcı çerezi her istekte otomatik gönderdiği için CSRF'yi engellemez; CSRF için SameSite bayrağı ve/veya anti-CSRF belirteci gerekir.",
+      "D": "localStorage, aynı kaynaktaki tüm JavaScript'e açıktır; XSS ile enjekte edilen kod localStorage.getItem ile belirteci okuyabilir. Bu, localStorage'ın en bilinen zayıflığıdır.",
+      "E": "Doğru. İmza = bütünlük; payload okunabilir; HttpOnly + Secure çerez XSS'e karşı saklama güvenliğini artırır."
+    },
+    "keyConcept": "JWS: imzalı ama şifresiz, payload okunabilir. HttpOnly → XSS ile okunamaz; Secure → yalnızca HTTPS; SameSite → CSRF azaltımı. localStorage XSS'e açıktır.",
+    "examTip": "'İmzalı' ile 'şifreli'yi ayırın. Çerez bayraklarını saldırıya eşleyin: HttpOnly↔XSS okuma, Secure↔ağ dinleme, SameSite↔CSRF.",
+    "references": [
+      "RFC 7519 (JSON Web Token) ve RFC 7515 (JSON Web Signature)",
+      "RFC 6265 (HTTP State Management Mechanism)",
+      "OWASP Cheat Sheet Series – Session Management ve JSON Web Token Cheat Sheet"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "WEB-005",
+    "topic": "WEB",
+    "subtopic": "Aynı kaynak politikası ve CORS",
+    "difficulty": "orta",
+    "question": "https://app.banka.com.tr adresinden yüklenen tek sayfalı bir uygulama (SPA), https://api.banka.com.tr/hesaplar/42 adresine Content-Type: application/json gövdeli bir PUT isteği göndermektedir. Bu durumla ilgili aşağıdaki ifadelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Aynı kaynak politikası (same-origin policy) sunucu tarafından uygulanır; API sunucusu farklı kaynaktan gelen isteği kendisi reddeder."
+      },
+      {
+        "id": "B",
+        "text": "Tarayıcı önce OPTIONS metoduyla bir ön kontrol (preflight) isteği gönderir; sunucu Access-Control-Allow-Origin ve Access-Control-Allow-Methods başlıklarıyla izin verirse gerçek PUT isteği yapılır."
+      },
+      {
+        "id": "C",
+        "text": "app ve api aynı kök alan adının (banka.com.tr) alt alanları olduğu için aynı kaynak sayılır; CORS gerekmez."
+      },
+      {
+        "id": "D",
+        "text": "CORS, isteğin sunucuya ulaşmasını tamamen engeller; ön kontrol başarısız olursa sunucuya hiçbir istek gitmez ve basit (simple) isteklerde de aynı kural geçerlidir."
+      },
+      {
+        "id": "E",
+        "text": "Sunucu Access-Control-Allow-Origin: * ile birlikte Access-Control-Allow-Credentials: true gönderirse, çerez taşıyan istekler tüm kaynaklardan kabul edilir."
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Kaynak (origin) şema + ana makine adı + port üçlüsüdür; app.banka.com.tr ve api.banka.com.tr farklı ana makine adları olduğundan farklı kaynaklardır. Aynı kaynak politikası tarayıcı tarafından uygulanır. PUT metodu ve application/json içerik türü 'basit istek' koşullarını aşar; bu nedenle tarayıcı gerçek isteği göndermeden önce OPTIONS ile ön kontrol yapar ve Origin, Access-Control-Request-Method, Access-Control-Request-Headers başlıklarını gönderir. Sunucu Access-Control-Allow-Origin: https://app.banka.com.tr, Access-Control-Allow-Methods: PUT ve gerekirse Access-Control-Allow-Headers: Content-Type ile yanıtlarsa tarayıcı asıl PUT isteğini gönderir. Basit isteklerde (GET, HEAD, belirli içerik türleriyle POST) ön kontrol yapılmaz; istek sunucuya gider, ancak yanıt uygun CORS başlığı taşımıyorsa tarayıcı yanıtı JavaScript'e vermez.",
+    "simpleExplanation": "Tarayıcı, bir siteden yüklenen sayfanın başka bir adrese istek atmasına şüpheyle yaklaşır. app.banka.com.tr ile api.banka.com.tr farklı alan adları olduğu için 'başka adres' sayılır. JSON gövdeli PUT gibi sıradan olmayan bir istekte tarayıcı önce kapıyı çalar: OPTIONS ile 'buradan PUT atabilir miyim?' diye sorar (ön kontrol). Sunucu Access-Control-Allow-Origin ve Allow-Methods başlıklarıyla 'evet' derse gerçek istek gönderilir. Bu, bir binaya girmeden önce resepsiyondan izin almaya benzer; kontrolü yapan sunucu değil tarayıcıdır.",
+    "optionExplanations": {
+      "A": "Aynı kaynak politikası ve CORS tarayıcı tarafında uygulanır; sunucu yalnızca izin başlıklarını üretir. curl gibi tarayıcı dışı istemciler CORS'tan hiç etkilenmez; bu nedenle CORS bir sunucu güvenlik denetimi değildir.",
+      "B": "Doğru. Basit olmayan istek → OPTIONS ön kontrol → izin başlıkları → asıl istek.",
+      "C": "Kaynak karşılaştırmasında ana makine adı tam eşleşmelidir; alt alan adları farklı kaynaktır. (Çerez kapsamı için Domain özniteliği alt alanları kapsayabilir, ancak bu CORS'u değil çerez gönderimini etkiler.)",
+      "D": "Basit isteklerde ön kontrol yoktur; istek sunucuya ulaşır ve işlenir, tarayıcı yalnızca yanıtı betiğe vermez. Bu yüzden CORS, CSRF'ye karşı koruma yerine geçmez.",
+      "E": "Tarayıcılar kimlik bilgili (credentials) isteklerde joker (*) kaynağı reddeder; Access-Control-Allow-Credentials: true kullanıldığında Allow-Origin açık bir kaynak adı olmalıdır."
+    },
+    "keyConcept": "Origin = şema + host + port. CORS tarayıcıda uygulanır; basit olmayan istekler OPTIONS ön kontrolü gerektirir; kimlik bilgili isteklerde '*' kullanılamaz.",
+    "examTip": "Önce 'aynı kaynak mı?' (üçlüyü karşılaştır), sonra 'basit istek mi?' (GET/HEAD/POST + izinli içerik türü) sorun; değilse ön kontrol vardır.",
+    "references": [
+      "Fetch Standard (WHATWG), CORS protocol bölümü",
+      "MDN Web Docs – Cross-Origin Resource Sharing (CORS) ve Same-origin policy",
+      "RFC 6454 (The Web Origin Concept)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "WEB-006",
+    "topic": "WEB",
+    "subtopic": "REST ilkeleri ve kaynak odaklı API tasarımı",
+    "difficulty": "orta",
+    "question": "Bir banka, 123 numaralı hesabın hareketlerini listeleyen ve yeni bir para transferi oluşturan iki uç nokta tasarlamaktadır. REST ilkelerine (kaynak odaklı URI, HTTP metotlarının semantik kullanımı, güvenli metotların yan etkisiz olması) en uygun tasarım aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "GET /getHesapHareketleri?id=123 ve GET /yeniTransfer?kaynak=123&hedef=456&tutar=100"
+      },
+      {
+        "id": "B",
+        "text": "POST /hesaplar/123/hareketler/listele ve POST /transferler/olustur"
+      },
+      {
+        "id": "C",
+        "text": "GET /hesaplar/123 ve PUT /transferler"
+      },
+      {
+        "id": "D",
+        "text": "GET /hesaplar/123/hareketler ve POST /transferler"
+      },
+      {
+        "id": "E",
+        "text": "DELETE /hesaplar/123/hareketler?action=list ve GET /transferler/yeni"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "REST'te URI'ler kaynakları (isimleri) temsil eder, eylem HTTP metoduyla ifade edilir. Hesabın hareketleri, hesap kaynağının alt koleksiyonudur: /hesaplar/123/hareketler; listeleme güvenli ve idempotent bir okuma olduğundan GET kullanılır. Yeni transfer oluşturma, /transferler koleksiyonuna yeni bir öğe eklemektir; sunucu yeni kaynağın kimliğini belirleyeceği için POST uygundur ve başarılı yanıt 201 Created ile Location başlığı taşır. URI'de fiil (getX, olustur, listele) kullanmak ve GET ile durum değiştirmek (transfer yapmak) REST ilkelerine aykırıdır; GET yan etkisiz olmalıdır çünkü ön yükleyiciler, önbellekler ve tarayıcı geçmişi GET'i güvenle tekrarlayabilir.",
+    "simpleExplanation": "REST'te adres (URI) bir şeyin adını söyler, ne yapılacağını ise HTTP metodu söyler. 'Hesap 123'ün hareketleri' bir şeydir: /hesaplar/123/hareketler; onu okumak için GET kullanılır. 'Yeni transfer' ise transferler koleksiyonuna eklenecek yeni bir kayıttır; ekleme için POST kullanılır. Adrese fiil koymak (getX, olustur) ya da GET ile para göndermek yanlıştır; çünkü GET 'yalnızca bak, bir şey değiştirme' sözü verir ve tarayıcılar ya da önbellekler onu rahatça tekrar çağırabilir. Kütüphane kataloğunda rafın adını yazıp 'oku' ya da 'ekle' demek gibi düşünün.",
+    "optionExplanations": {
+      "A": "URI'de fiil kullanımı (getHesapHareketleri) RPC tarzıdır; daha önemlisi GET ile para transferi yapmak güvenli metodu yan etkili kullanmaktır. Tarayıcı ön yüklemesi veya önbellek yenilemesi istenmeyen transferler üretebilir.",
+      "B": "Listeleme için POST kullanmak, önbelleklenebilir ve idempotent bir okumayı yan etkili metoda zorlar; URI'lerdeki 'listele' ve 'olustur' fiilleri de metodun işini tekrar eder.",
+      "C": "GET /hesaplar/123 hesabın kendisini döndürür, hareketleri değil. PUT /transferler ise koleksiyonun tamamını değiştirme anlamına gelir; PUT, istemcinin kaynağın URI'sini bildiği durumda (PUT /transferler/{id}) kullanılır, yeni kayıt oluşturma için POST'tur.",
+      "D": "Doğru. İsim tabanlı hiyerarşik URI, okuma için GET, koleksiyona ekleme için POST.",
+      "E": "DELETE listeleme için semantik olarak yanlıştır ve ?action=list gibi sorgu parametresiyle metot anlamını değiştirmek REST'e aykırıdır; GET ile transfer oluşturmak da güvenli metodu yan etkili kullanır."
+    },
+    "keyConcept": "REST: URI = isim (kaynak/koleksiyon), metot = eylem. GET okuma (yan etkisiz), POST koleksiyona ekleme (201 + Location), PUT bilinen URI'de tam değiştirme, DELETE silme.",
+    "examTip": "URI'de fiil görürseniz veya GET bir şey 'yapıyorsa' şıkkı eleyin. Oluşturma için sunucu kimlik üretiyorsa POST, istemci URI biliyorsa PUT.",
+    "references": [
+      "Fielding, Architectural Styles and the Design of Network-based Software Architectures (REST tezi), Bölüm 5, 2000",
+      "RFC 9110 (HTTP Semantics), Bölüm 9 (Methods)",
+      "Richardson & Ruby, RESTful Web Services, O'Reilly"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "WEB-007",
+    "topic": "WEB",
+    "subtopic": "Web önbellekleme başlıkları ve koşullu istekler",
+    "difficulty": "ileri",
+    "question": "Bir bankanın döviz kuru API'si, GET /api/kurlar isteğine şu başlıklarla yanıt vermektedir: Cache-Control: max-age=600 ve ETag: \"v7\". Tarayıcı bu yanıtı t=0 anında önbelleğe almıştır. t=900 saniyede aynı kaynak tekrar istendiğinde, kaynak sunucuda değişmemişse tarayıcı ve sunucu arasında ne olur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Tarayıcı, ETag değişmediğini bildiği için sunucuya hiç başvurmadan önbellekteki kopyayı kullanır."
+      },
+      {
+        "id": "B",
+        "text": "Tarayıcı Cache-Control: no-store başlığıyla yeni bir istek gönderir ve sunucu önbelleklemeyi iptal eder."
+      },
+      {
+        "id": "C",
+        "text": "Tarayıcı If-None-Match: \"v7\" başlığıyla koşullu istek gönderir; sunucu gövdesiz 304 Not Modified yanıtı döner ve tarayıcı önbellekteki kopyayı tazeleyip kullanır."
+      },
+      {
+        "id": "D",
+        "text": "max-age aşıldığı için tarayıcı önbellek kopyasını siler ve sunucu her durumda 200 OK ile tam gövdeyi yeniden gönderir."
+      },
+      {
+        "id": "E",
+        "text": "ETag yalnızca Last-Modified başlığı yoksa kullanılır; bu durumda tarayıcı önce If-Modified-Since göndermeyi dener, başarısız olursa 404 alır."
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Cache-Control: max-age=600, yanıtın 600 saniye boyunca 'taze' (fresh) sayılacağını belirtir; bu süre içinde tarayıcı sunucuya sormadan önbellekten yanıt verir. t=900'de kopya bayatlamıştır (stale) ancak silinmez; tarayıcı doğrulama (revalidation) yapar. Elinde ETag olduğu için If-None-Match: \"v7\" başlığıyla koşullu GET gönderir. Sunucu mevcut ETag'i karşılaştırır; eşleşiyorsa gövde göndermeden 304 Not Modified döner (yeni Cache-Control başlıklarıyla tazelik süresini yeniler). Tarayıcı önbellekteki gövdeyi kullanır. Böylece bant genişliği tasarrufu sağlanır ve veri güncelliği korunur. Kaynak değişmiş olsaydı sunucu 200 OK ile yeni gövdeyi ve yeni ETag'i gönderirdi.",
+    "simpleExplanation": "max-age=600, 'bu yanıtı 10 dakika boyunca sormadan kullanabilirsin' demektir. 900. saniyede süre geçmiştir; tarayıcı kopyayı çöpe atmaz ama artık 'taze' saymaz. Elinde ETag adlı bir sürüm etiketi ('v7') olduğu için sunucuya 'elimde v7 var, değişti mi?' diye sorar (If-None-Match). Sunucu 'değişmedi' anlamında gövdesiz, küçük bir 304 yanıtı döner ve tarayıcı eski kopyayı kullanmaya devam eder, tazelik süresini de yeniler. Bu, gazete bayisine 'yeni baskı çıktı mı?' diye sorup 'hayır, elindeki güncel' cevabını almaya benzer; gazeteyi yeniden satın almazsınız.",
+    "optionExplanations": {
+      "A": "Tarayıcı ETag'in değişip değişmediğini sunucuya sormadan bilemez; ETag yerel karar için değil, koşullu doğrulama için kullanılır. Tazelik süresi (600 s) geçtiği için sunucuya başvurmak zorunludur.",
+      "B": "no-store bir istek yönergesi olarak 'yanıtı saklama' anlamı taşır ve otomatik doğrulamada tarayıcı tarafından gönderilmez; senaryoyla ilgisi yoktur.",
+      "C": "Doğru. Bayat kopya + ETag → If-None-Match → 304 → gövde yeniden indirilmez.",
+      "D": "Bayat kopya silinmez; doğrulama için saklanır. Sunucu yalnızca kaynak değişmişse 200 ve tam gövde döndürür; değişmemişse 304 ile gövde tasarrufu sağlanır.",
+      "E": "ETag, Last-Modified'a göre daha güçlü ve öncelikli doğrulayıcıdır; ikisi birlikte varsa If-None-Match öncelik taşır. Doğrulama başarısızlığı 404 üretmez."
+    },
+    "keyConcept": "max-age → tazelik süresi; süre geçince kopya bayatlar ve doğrulanır. ETag/If-None-Match (veya Last-Modified/If-Modified-Since) → 304 Not Modified ile gövdesiz tazeleme.",
+    "examTip": "Zamanı max-age ile karşılaştırın: içindeyse 'sunucuya gitmez'; dışındaysa 'koşullu istek + 304 ya da 200'. 'Önbellek silinir' ifadesi genellikle yanlıştır.",
+    "references": [
+      "RFC 9111 (HTTP Caching), Bölüm 4.3 (Validation) ve 5.2 (Cache-Control)",
+      "RFC 9110 (HTTP Semantics), Bölüm 13.1.2 (If-None-Match) ve 15.4.5 (304 Not Modified)",
+      "MDN Web Docs – HTTP caching"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "WEB-008",
+    "topic": "WEB",
+    "subtopic": "HTTPS ve TLS el sıkışmasının rolü",
+    "difficulty": "ileri",
+    "question": "Bir mobil bankacılık uygulaması https://api.banka.com.tr adresine TLS 1.3 ile bağlanmaktadır. TLS el sıkışmasının (handshake) sağladığı güvenlik özellikleriyle ilgili aşağıdaki ifadelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Sunucu kimliği, güvenilir bir sertifika otoritesince imzalanmış X.509 sertifikasıyla doğrulanır; geçici (ephemeral) ECDHE anahtar değişimiyle her oturum için yeni bir simetrik anahtar türetilir (ileri gizlilik); uygulama verisi bu simetrik anahtarla (örneğin AES-GCM) şifrelenir."
+      },
+      {
+        "id": "B",
+        "text": "Tüm uygulama verisi sunucunun RSA açık anahtarıyla şifrelenir; simetrik şifreleme TLS'de kullanılmaz."
+      },
+      {
+        "id": "C",
+        "text": "TLS 1.3'te sunucu kimliği doğrulanmaz; protokol yalnızca gizlilik (şifreleme) sağlar, kimlik doğrulama HTTP katmanına bırakılır."
+      },
+      {
+        "id": "D",
+        "text": "Sertifika doğrulaması TLS'in değil HTTP'nin işidir; bu nedenle sertifika bilgileri HTTP başlıklarında taşınır."
+      },
+      {
+        "id": "E",
+        "text": "TLS 1.2'de RSA anahtar taşıma (RSA key transport) kullanılmışsa, sunucunun özel anahtarı sonradan ele geçirilse bile daha önce kaydedilmiş trafik çözülemez."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "TLS el sıkışması üç temel iş yapar: (1) Kimlik doğrulama: sunucu, bir sertifika otoritesi (CA) tarafından imzalanmış X.509 sertifikasını gönderir; istemci imza zincirini, geçerlilik süresini ve alan adını doğrular ve böylece ortadaki adam (MITM) saldırısına karşı korunur. (2) Anahtar anlaşması: TLS 1.3'te yalnızca geçici (ephemeral) Diffie-Hellman (ECDHE/DHE) kullanılır; her oturum için yeni paylaşılan sır üretilir, sunucunun uzun ömürlü özel anahtarı yalnızca imzalamada kullanılır, bu da ileri gizlilik (forward secrecy) sağlar. (3) Hibrit şifreleme: asimetrik işlemler yalnızca anahtar anlaşmasında kullanılır; yüksek hacimli uygulama verisi hızlı simetrik AEAD şifreleriyle (AES-GCM, ChaCha20-Poly1305) şifrelenir ve bütünlüğü korunur.",
+    "simpleExplanation": "TLS el sıkışması üç şeyi birden halleder. Önce sunucu bir kimlik kartı (sertifika) gösterir; bu kart güvenilir bir otorite tarafından imzalanmıştır, böylece sahte bir sunucuyla konuşmadığınızdan emin olursunuz. Sonra iki taraf, Diffie-Hellman denen bir yöntemle, araya giren kimsenin öğrenemeyeceği geçici bir ortak şifre üretir; her bağlantıda yeni şifre üretildiği için sunucunun anahtarı ileride çalınsa bile eski kayıtlar açılamaz (ileri gizlilik). En sonunda asıl veriler bu ortak şifreyle hızlı simetrik şifreleme (AES-GCM) kullanılarak korunur. Yani: kimlik kartı, ortak gizli anahtar, hızlı kilit.",
+    "optionExplanations": {
+      "A": "Doğru. Sertifika → kimlik; ECDHE → oturum anahtarı ve ileri gizlilik; simetrik AEAD → veri gizliliği ve bütünlüğü.",
+      "B": "Asimetrik şifreleme yavaş ve büyük veri için uygunsuzdur; TLS hibrit modeldir. Ayrıca TLS 1.3, RSA ile anahtar şifrelemeyi (key transport) tamamen kaldırmıştır.",
+      "C": "TLS'in temel amaçlarından biri sunucu kimlik doğrulamasıdır; sertifika doğrulaması olmadan şifreleme MITM saldırısına karşı anlamsızdır. Kimlik doğrulama HTTP'ye bırakılmaz.",
+      "D": "Sertifika alışverişi ve doğrulaması TLS el sıkışmasının parçasıdır ve HTTP başlamadan önce tamamlanır; HTTP başlıkları sertifika taşımaz.",
+      "E": "Tam tersidir: RSA anahtar taşımada oturum anahtarı sunucunun açık anahtarıyla şifrelenip gönderildiği için özel anahtar ele geçirilirse kaydedilmiş tüm eski trafik çözülebilir. İleri gizlilik için (EC)DHE gerekir; TLS 1.3 bu yüzden RSA anahtar taşımayı yasaklamıştır."
+    },
+    "keyConcept": "TLS = kimlik doğrulama (sertifika/CA) + anahtar anlaşması (ECDHE, ileri gizlilik) + simetrik AEAD şifreleme. Asimetrik yalnızca el sıkışmada, simetrik veri aktarımında.",
+    "examTip": "'Tüm veri RSA ile şifrelenir' veya 'TLS kimlik doğrulamaz' ifadelerini hemen eleyin. İleri gizlilik = geçici DH; RSA anahtar taşıma ileri gizlilik sağlamaz.",
+    "references": [
+      "RFC 8446 (The Transport Layer Security Protocol Version 1.3)",
+      "RFC 5280 (Internet X.509 Public Key Infrastructure Certificate and CRL Profile)",
+      "Kurose & Ross, Computer Networking: A Top-Down Approach 8. baskı, Bölüm 8.6 (Securing TCP Connections: TLS)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  }
+]

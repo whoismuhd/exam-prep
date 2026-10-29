@@ -1,0 +1,2694 @@
+{
+  "IBG": {
+    "summary": "İnternet ve bilgi güvenliği konusu, bilgi varlıklarının gizlilik, bütünlük ve erişilebilirliğini korumak için kullanılan ilke, politika ve teknik kontrolleri kapsar. Sınavda CIA üçlüsü, kimlik doğrulama faktörleri, güvenlik duvarı ve VPN kavramları, HTTPS/TLS, e-posta güvenliği ve zararlı yazılım türleri gibi temel kavramlar sorulur.",
+    "concepts": [
+      "CIA üçlüsü: Gizlilik (confidentiality) yetkisiz erişimi engeller, Bütünlük (integrity) yetkisiz değişikliği engeller, Erişilebilirlik (availability) yetkili kullanıcıların ihtiyaç anında erişimini garanti eder. Buna inkâr edilemezlik (non-repudiation) ve hesap verebilirlik (accountability) eklenir.",
+      "AAA: Kimlik doğrulama (authentication) 'kimsin', yetkilendirme (authorization) 'neye erişebilirsin', hesap kaydı (accounting) 'ne yaptın' sorularına yanıt verir. RADIUS ve TACACS+ AAA protokolleridir.",
+      "Kimlik doğrulama faktörleri: bildiğin bir şey (parola, PIN), sahip olduğun bir şey (token, SMS kodu, akıllı kart), olduğun bir şey (parmak izi, yüz). Çok faktörlü kimlik doğrulama (MFA) en az iki farklı faktör sınıfı gerektirir.",
+      "Güvenlik duvarı (firewall) türleri: paket filtreleme (durumsuz, katman 3-4), durum bilgisi tutan (stateful, bağlantı tablosu), uygulama katmanı/proxy ve yeni nesil (NGFW, uygulama tanıma ve IPS ile). DMZ, dışa açık sunucuların konulduğu ara bölgedir.",
+      "IDS (Intrusion Detection System) saldırıyı tespit edip uyarır, IPS (Intrusion Prevention System) ise hat üzerinde (inline) çalışıp trafiği engeller. İmza tabanlı tespit bilinen kalıpları, anomali tabanlı tespit normalden sapmayı arar.",
+      "VPN (Virtual Private Network) genel ağ üzerinden şifreli tünel kurar. IPsec ağ katmanında (AH bütünlük, ESP şifreleme; taşıma ve tünel modu), SSL/TLS VPN uygulama katmanında çalışır.",
+      "HTTPS = HTTP + TLS (Transport Layer Security), port 443. TLS el sıkışmasında sunucu sertifikası ile kimlik doğrulanır, asimetrik yöntemle oturum anahtarı anlaşılır, veri simetrik şifreyle taşınır. TLS 1.2 ve 1.3 güncel sürümlerdir; SSL 3.0, TLS 1.0 ve 1.1 kullanımdan kaldırılmıştır.",
+      "PKI (Public Key Infrastructure): Sertifika Otoritesi (CA) X.509 sertifikası imzalar; sertifika iptali CRL veya OCSP ile kontrol edilir. Tarayıcı güven zinciri kök CA'dan yaprak sertifikaya uzanır.",
+      "Zararlı yazılım türleri: virüs (konak dosyaya eklenir), solucan (worm, kendi kendine yayılır), truva atı (trojan, meşru görünür), fidye yazılımı (ransomware, veriyi şifreler), casus yazılım (spyware), rootkit (gizlenir), botnet (uzaktan yönetilen zombi ağı).",
+      "Sosyal mühendislik: oltalama (phishing), hedefli oltalama (spear phishing), üst düzey yönetici hedefli (whaling), sesli (vishing), SMS ile (smishing), yem bırakma (baiting), omuz üstü izleme (shoulder surfing). En etkili savunma farkındalık eğitimidir.",
+      "E-posta güvenliği: SPF gönderici IP'sini, DKIM mesaj imzasını, DMARC bu ikisinin politikasını tanımlar. S/MIME ve PGP uçtan uca e-posta şifreleme ve imza sağlar.",
+      "Parola güvenliği: Parolalar tuzlama (salt) ile birlikte yavaş özet fonksiyonlarıyla (bcrypt, scrypt, Argon2, PBKDF2) saklanır; düz metin veya düz MD5/SHA-1 saklama kabul edilemezdir.",
+      "Derinlemesine savunma (defense in depth) katmanlı kontroller, en az ayrıcalık (least privilege) yalnızca gerekli yetki, görevler ayrılığı (segregation of duties) tek kişinin kritik süreci baştan sona yürütmemesi ilkesidir.",
+      "Güvenlik politikası, standart, prosedür ve kılavuz hiyerarşisi: politika üst yönetimin niyetini, standart zorunlu teknik gerekliliği, prosedür adım adım uygulamayı, kılavuz tavsiyeyi belirtir."
+    ],
+    "comparisons": [
+      {
+        "title": "IDS vs IPS",
+        "rows": [
+          [
+            "Özellik",
+            "IDS",
+            "IPS"
+          ],
+          [
+            "Konum",
+            "Pasif, trafik kopyasını izler (SPAN/TAP)",
+            "Hat üzerinde (inline)"
+          ],
+          [
+            "Tepki",
+            "Uyarı/log üretir",
+            "Engeller, bağlantıyı keser"
+          ],
+          [
+            "Yanlış pozitif etkisi",
+            "Analist zamanı",
+            "Meşru trafiği keser"
+          ],
+          [
+            "Gecikme etkisi",
+            "Yok",
+            "Var"
+          ]
+        ]
+      },
+      {
+        "title": "Kimlik doğrulama faktörleri",
+        "rows": [
+          [
+            "Faktör",
+            "Açıklama",
+            "Örnek",
+            "Zayıflık"
+          ],
+          [
+            "Bilgi",
+            "Bildiğin şey",
+            "Parola, PIN, gizli soru",
+            "Tahmin, oltalama, sızıntı"
+          ],
+          [
+            "Sahiplik",
+            "Sahip olduğun şey",
+            "OTP cihazı, akıllı kart, telefon",
+            "Kayıp/çalınma, SIM değiştirme"
+          ],
+          [
+            "Biyometri",
+            "Olduğun şey",
+            "Parmak izi, yüz, iris",
+            "Değiştirilemez, sahtecilik"
+          ]
+        ]
+      },
+      {
+        "title": "Güvenlik duvarı türleri",
+        "rows": [
+          [
+            "Tür",
+            "Çalıştığı katman",
+            "Karar verisi",
+            "Not"
+          ],
+          [
+            "Paket filtreleme (durumsuz)",
+            "3-4",
+            "IP, port, protokol",
+            "Hızlı, bağlam yok"
+          ],
+          [
+            "Durum bilgili (stateful)",
+            "3-4",
+            "Bağlantı durumu tablosu",
+            "Yanıt paketlerini otomatik tanır"
+          ],
+          [
+            "Uygulama/proxy",
+            "7",
+            "İçerik, URL, komut",
+            "Yavaş ama derin denetim"
+          ],
+          [
+            "WAF",
+            "7 (HTTP)",
+            "HTTP istek/yanıt",
+            "SQLi, XSS gibi web saldırılarına özel"
+          ]
+        ]
+      }
+    ],
+    "formulas": [],
+    "misconceptions": [
+      "Yanılgı: Parola ile SMS kodu kullanmak iki faktör, parola ile gizli soru kullanmak da iki faktördür. Doğrusu: Parola ve gizli soru aynı faktör sınıfındadır (bilgi); MFA farklı sınıflardan en az iki faktör gerektirir.",
+      "Yanılgı: HTTPS siteyi tamamen güvenli yapar. Doğrusu: TLS yalnızca iletim sırasındaki gizlilik, bütünlük ve sunucu kimliğini sağlar; uygulamadaki SQL enjeksiyonu veya zayıf yetkilendirme HTTPS ile çözülmez.",
+      "Yanılgı: IDS saldırıyı durdurur. Doğrusu: IDS tespit eder ve uyarır; durdurma işlevi IPS'e aittir.",
+      "Yanılgı: Virüs ve solucan aynı şeydir. Doğrusu: Virüs bir konak dosyaya bağlıdır ve kullanıcı eylemiyle yayılır, solucan ağ üzerinden kendi başına yayılır.",
+      "Yanılgı: Parolaları şifrelemek (encrypt) en doğru saklama yöntemidir. Doğrusu: Parolalar geri çevrilemeyen, tuzlanmış ve yavaş özet (hash) fonksiyonlarıyla saklanır; şifreleme anahtar ele geçince tüm parolaları açığa çıkarır.",
+      "Yanılgı: Güvenlik duvarı varsa antivirüse gerek yoktur. Doğrusu: Güvenlik duvarı ağ trafiğini filtreler; USB ile gelen veya izinli kanaldan (e-posta eki) inen zararlı yazılımı uç nokta koruması yakalar. Derinlemesine savunma gerekir."
+    ],
+    "example": "Bir banka çalışanı, 'hesabınız askıya alınacak' konulu bir e-postadaki bağlantıya tıklayıp kurumsal parolasını sahte bir giriş sayfasına girer. Bu bir oltalama (phishing) saldırısıdır. Kurumda MFA zorunlu olduğu için saldırgan yalnızca parolayla giriş yapamaz; ayrıca DMARC politikası 'reject' olarak ayarlı olsaydı sahte gönderen alanından gelen e-posta zaten teslim edilmezdi. Olay sonrası parola sıfırlanır, kullanıcıya farkındalık eğitimi verilir ve olay SIEM kayıtlarıyla birleştirilerek başka tıklayan var mı araştırılır.",
+    "references": [
+      "Stallings & Brown, Computer Security: Principles and Practice, Bölüm 1, 3, 9, 22",
+      "NIST SP 800-63B (Digital Identity Guidelines, kimlik doğrulama)",
+      "NIST SP 800-41 Rev.1 (Guidelines on Firewalls and Firewall Policy)",
+      "RFC 8446 (TLS 1.3), RFC 7208 (SPF), RFC 6376 (DKIM), RFC 7489 (DMARC)",
+      "ISO/IEC 27002:2022 kontrol kataloğu"
+    ]
+  },
+  "NET": {
+    "summary": "Bilgisayar ağları konusu, verinin bir uçtan diğerine nasıl taşındığını OSI ve TCP/IP katman modelleri üzerinden açıklar. Sınavda IP adresleme ve alt ağ hesabı, TCP/UDP farkları, iyi bilinen port numaraları, yönlendirme ve anahtarlama cihazlarının hangi katmanda çalıştığı ve DNS/DHCP/ARP gibi temel protokollerin işlevi en sık sorulan başlıklardır.",
+    "concepts": [
+      "OSI modeli (Open Systems Interconnection) 7 katmandır: 1 Fiziksel, 2 Veri Bağı, 3 Ağ, 4 Taşıma, 5 Oturum, 6 Sunum, 7 Uygulama. TCP/IP modeli ise 4 (veya 5) katmanla aynı işi daha pratik tanımlar.",
+      "Kapsülleme (encapsulation): Her katman üstten aldığı veriye kendi başlığını ekler. Birim adları: Taşıma katmanında segment, Ağ katmanında paket, Veri Bağı katmanında çerçeve (frame), Fiziksel katmanda bit.",
+      "Hub 1. katman, switch (anahtar) 2. katman (MAC adresine göre iletir), router (yönlendirici) 3. katman (IP adresine göre yönlendirir) cihazlarıdır. Katman 3 anahtar hem anahtarlama hem yönlendirme yapar.",
+      "IPv4 adresi 32 bit, IPv6 adresi 128 bittir. IPv4'te özel (private) bloklar: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 (RFC 1918). 127.0.0.1 loopback adresidir.",
+      "CIDR (Classless Inter-Domain Routing) gösteriminde /24 maskesi 255.255.255.0'a karşılık gelir ve 254 kullanılabilir host adresi verir. Bir alt ağın ilk adresi ağ adresi, son adresi yayın (broadcast) adresidir.",
+      "TCP (Transmission Control Protocol) bağlantılı, güvenilir, sıralı teslimat sağlar; üçlü el sıkışma (SYN, SYN-ACK, ACK) ile bağlantı kurar, akış ve tıkanıklık kontrolü yapar. UDP (User Datagram Protocol) bağlantısız, düşük gecikmeli, teslimat garantisi vermeyen protokoldür.",
+      "İyi bilinen portlar: FTP 20/21, SSH 22, Telnet 23, SMTP 25, DNS 53, HTTP 80, POP3 110, IMAP 143, HTTPS 443, RDP 3389, MySQL 3306, MSSQL 1433. 0-1023 arası sistem portları, 49152-65535 arası dinamik portlardır.",
+      "DNS (Domain Name System) alan adını IP'ye çevirir ve UDP 53 kullanır (büyük yanıtlarda ve bölge aktarımında TCP). Kayıt tipleri: A (IPv4), AAAA (IPv6), MX (posta), CNAME (takma ad), NS, PTR (ters çözümleme).",
+      "DHCP (Dynamic Host Configuration Protocol) IP adresi, maske, ağ geçidi ve DNS bilgisini otomatik dağıtır; DORA adımları Discover, Offer, Request, Acknowledge'dır. ARP (Address Resolution Protocol) IP adresinden MAC adresi bulur.",
+      "NAT (Network Address Translation) özel IP adreslerini tek bir genel IP'ye çevirir; PAT/NAT overload port numarasıyla ayrım yapar. Bu, IPv4 adres tükenmesini geciktiren temel mekanizmadır.",
+      "Yönlendirme protokolleri: RIP uzaklık vektörü (hop sayısı, en fazla 15), OSPF bağlantı durumu (Dijkstra, maliyet metriği), BGP yol vektörü ve otonom sistemler arası (İnternet omurgası). Statik yönlendirme elle girilir.",
+      "ICMP (Internet Control Message Protocol) hata ve tanılama mesajları taşır; ping (Echo Request/Reply) ve traceroute (TTL süresi dolma mesajları) ICMP'ye dayanır.",
+      "VLAN (Virtual LAN, IEEE 802.1Q) tek fiziksel anahtarı mantıksal yayın alanlarına böler; VLAN'lar arası iletişim için yönlendirme gerekir. Kablosuz ağ standardı IEEE 802.11, Ethernet IEEE 802.3'tür.",
+      "MTU (Maximum Transmission Unit) Ethernet'te 1500 bayttır; TTL (Time To Live) her yönlendiricide 1 azalır ve sıfırlanınca paket atılır, böylece sonsuz döngüler engellenir."
+    ],
+    "comparisons": [
+      {
+        "title": "TCP vs UDP",
+        "rows": [
+          [
+            "Özellik",
+            "TCP",
+            "UDP"
+          ],
+          [
+            "Bağlantı",
+            "Bağlantılı (üçlü el sıkışma)",
+            "Bağlantısız"
+          ],
+          [
+            "Güvenilirlik",
+            "ACK, yeniden iletim, sıralama",
+            "Garanti yok"
+          ],
+          [
+            "Başlık boyutu",
+            "En az 20 bayt",
+            "8 bayt"
+          ],
+          [
+            "Akış/tıkanıklık kontrolü",
+            "Var",
+            "Yok"
+          ],
+          [
+            "Hız",
+            "Daha yavaş",
+            "Daha hızlı, düşük gecikme"
+          ],
+          [
+            "Tipik kullanım",
+            "HTTP, SMTP, FTP, SSH",
+            "DNS, DHCP, VoIP, video akışı"
+          ]
+        ]
+      },
+      {
+        "title": "Hub vs Switch vs Router",
+        "rows": [
+          [
+            "Özellik",
+            "Hub",
+            "Switch",
+            "Router"
+          ],
+          [
+            "OSI katmanı",
+            "1 (Fiziksel)",
+            "2 (Veri Bağı)",
+            "3 (Ağ)"
+          ],
+          [
+            "Karar verme bilgisi",
+            "Yok, her porta yayar",
+            "MAC adresi tablosu",
+            "IP yönlendirme tablosu"
+          ],
+          [
+            "Çarpışma alanı",
+            "Tek alan",
+            "Port başına ayrı",
+            "Port başına ayrı"
+          ],
+          [
+            "Yayın alanı",
+            "Tek",
+            "Tek (VLAN yoksa)",
+            "Ağları ayırır"
+          ]
+        ]
+      },
+      {
+        "title": "OSI ve TCP/IP katman eşlemesi",
+        "rows": [
+          [
+            "OSI",
+            "TCP/IP",
+            "Örnek protokol / birim"
+          ],
+          [
+            "7 Uygulama, 6 Sunum, 5 Oturum",
+            "Uygulama",
+            "HTTP, DNS, SMTP, TLS (sunum/oturum)"
+          ],
+          [
+            "4 Taşıma",
+            "Taşıma",
+            "TCP, UDP / segment"
+          ],
+          [
+            "3 Ağ",
+            "İnternet",
+            "IP, ICMP, OSPF / paket"
+          ],
+          [
+            "2 Veri Bağı, 1 Fiziksel",
+            "Ağ erişimi",
+            "Ethernet, ARP, Wi-Fi / çerçeve, bit"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Kullanılabilir host sayısı = 2^(32 - önek uzunluğu) - 2 (ağ ve yayın adresi düşülür)",
+      "Alt ağ sayısı = 2^(ödünç alınan bit sayısı)",
+      "Maske /n için blok boyutu = 2^(32 - n); /26 → 64 adres, 62 host",
+      "Toplam bit: IPv4 = 32 bit (4 oktet), IPv6 = 128 bit (8 adet 16 bitlik grup), MAC = 48 bit"
+    ],
+    "misconceptions": [
+      "Yanılgı: Switch IP adresine bakarak iletim yapar. Doğrusu: Klasik switch 2. katman cihazıdır ve MAC adres tablosunu kullanır; IP'ye bakan cihaz router'dır.",
+      "Yanılgı: /24 ağda 256 cihaz adreslenir. Doğrusu: 256 adresten biri ağ adresi, biri yayın adresidir; 254 host kullanılabilir.",
+      "Yanılgı: UDP güvenilir olmadığı için kullanışsızdır. Doğrusu: Gecikmeye duyarlı uygulamalarda (VoIP, DNS sorguları, oyun) yeniden iletim beklemek daha zararlıdır; UDP tercih edilir.",
+      "Yanılgı: HTTPS 80 portunu kullanır. Doğrusu: HTTP 80, HTTPS 443 portunu kullanır.",
+      "Yanılgı: DNS yalnızca UDP kullanır. Doğrusu: Varsayılan UDP 53'tür ama 512 baytı aşan yanıtlar ve bölge aktarımları (zone transfer) TCP 53 ile yapılır.",
+      "Yanılgı: 172.32.0.0 özel bir IP adresidir. Doğrusu: Özel blok 172.16.0.0 ile 172.31.255.255 arasıdır; 172.32.x.x genel adrestir."
+    ],
+    "example": "Bankanın bir şubesine 192.168.10.0/24 bloğu verilmiştir ve her biri en fazla 50 cihaz barındıran 4 bölüm (gişe, operasyon, yönetim, misafir Wi-Fi) için ayrı alt ağ istenmektedir. 50 host için 2^6 - 2 = 62 ≥ 50 olduğundan host kısmı 6 bit, önek /26 olur. Alt ağlar 192.168.10.0/26, .64/26, .128/26 ve .192/26 şeklinde oluşur; örneğin ikinci alt ağda ağ adresi .64, ilk host .65, son host .126, yayın adresi .127'dir. Misafir Wi-Fi alt ağı ile gişe alt ağı arasındaki trafik router veya katman 3 anahtar üzerinden geçeceği için burada erişim kontrol listesi (ACL) uygulanabilir.",
+    "references": [
+      "Kurose & Ross, Computer Networking: A Top-Down Approach, Bölüm 1-5",
+      "Tanenbaum & Wetherall, Computer Networks, Bölüm 1, 4, 5, 6",
+      "RFC 791 (IP), RFC 793 (TCP), RFC 768 (UDP), RFC 1918 (özel adresler), RFC 4632 (CIDR)",
+      "IANA Service Name and Transport Protocol Port Number Registry"
+    ]
+  },
+  "VTYS": {
+    "summary": "Veri tabanı yönetim sistemleri konusu, ilişkisel modelin temel kavramlarını, SQL ile veri tanımlama ve sorgulama, normalizasyon, işlem (transaction) yönetimi ve indeksleme gibi başlıkları kapsar. Sınavda anahtar türleri, JOIN çeşitleri, GROUP BY/HAVING, normal formlar, ACID özellikleri, eş zamanlılık sorunları ve yalıtım düzeyleri en çok sorulan alanlardır.",
+    "concepts": [
+      "İlişkisel model: Tablo (ilişki, relation), satır (tuple, kayıt), sütun (attribute, nitelik), alan değerleri kümesi (domain). Şema (schema) yapı tanımı, örnek (instance) belirli andaki veridir. Derece sütun sayısı, kardinalite satır sayısıdır.",
+      "Anahtarlar: Süper anahtar satırı tekil belirleyen herhangi küme, aday anahtar (candidate key) indirgenemez (minimal) süper anahtar, birincil anahtar (primary key) seçilen aday anahtar (NULL olamaz, tekil), alternatif anahtar seçilmeyen adaylar, yabancı anahtar (foreign key) başka tablonun birincil anahtarına referans verir.",
+      "Bütünlük kısıtları: Varlık bütünlüğü (birincil anahtar NULL olamaz), referans bütünlüğü (yabancı anahtar ya NULL ya da var olan bir değere işaret eder), alan bütünlüğü (CHECK, NOT NULL, tip). ON DELETE CASCADE / SET NULL / RESTRICT referans davranışını belirler.",
+      "SQL alt dilleri: DDL (CREATE, ALTER, DROP, TRUNCATE), DML (SELECT, INSERT, UPDATE, DELETE), DCL (GRANT, REVOKE), TCL (COMMIT, ROLLBACK, SAVEPOINT). TRUNCATE DDL'dir ve çoğu sistemde geri alınamaz, WHERE almaz.",
+      "SELECT mantıksal işlem sırası: FROM → WHERE → GROUP BY → HAVING → SELECT → DISTINCT → ORDER BY → LIMIT. WHERE satırları gruplamadan önce, HAVING grupları gruplamadan sonra filtreler; HAVING içinde toplama fonksiyonu kullanılabilir, WHERE'de kullanılamaz.",
+      "JOIN türleri: INNER JOIN eşleşenleri, LEFT (OUTER) JOIN sol tablonun tüm satırlarını (eşleşmeyene NULL), RIGHT JOIN sağın tümünü, FULL OUTER JOIN her ikisinin tümünü, CROSS JOIN kartezyen çarpımı (m×n satır) verir. Self join tablonun kendisiyle birleşimidir.",
+      "Toplama fonksiyonları COUNT, SUM, AVG, MIN, MAX NULL değerleri yok sayar; COUNT(*) tüm satırları, COUNT(sütun) NULL olmayanları sayar. NULL ile karşılaştırma IS NULL / IS NOT NULL ile yapılır; = NULL her zaman bilinmeyen (UNKNOWN) döner.",
+      "Normalizasyon: 1NF atomik değerler ve tekrarlayan grup yok; 2NF 1NF + kısmi bağımlılık yok (anahtar olmayan her nitelik tüm birincil anahtara bağlı); 3NF 2NF + geçişli bağımlılık yok; BCNF her fonksiyonel bağımlılıkta sol taraf süper anahtar. Normalizasyon tekrarı ve güncelleme anomalilerini azaltır, denormalizasyon okuma performansı için bilinçli geri adımdır.",
+      "ACID: Atomiklik (ya hep ya hiç), Tutarlılık (kısıtlar korunur), Yalıtım (eş zamanlı işlemler birbirini görmez), Dayanıklılık (COMMIT sonrası kayıp olmaz; yazma öncesi günlük WAL ile sağlanır).",
+      "Eş zamanlılık sorunları: Kirli okuma (dirty read, commit edilmemiş veriyi okuma), tekrarlanamayan okuma (non-repeatable read, aynı satır iki okumada farklı), hayalet okuma (phantom read, satır kümesi değişir), kayıp güncelleme (lost update).",
+      "Yalıtım düzeyleri (SQL standardı): READ UNCOMMITTED (kirli okumaya izin verir), READ COMMITTED (kirli okumayı engeller), REPEATABLE READ (tekrarlanamayan okumayı engeller), SERIALIZABLE (hayaleti de engeller, en yavaş). Kilitleme (2PL) ve çok sürümlü eş zamanlılık (MVCC) yalıtım mekanizmalarıdır.",
+      "İndeks: B+ ağacı indeksleri aralık ve eşitlik sorgularını O(log n) yapar, hash indeks yalnızca eşitlikte hızlıdır. Kümelenmiş (clustered) indeks tabloda fiziksel sırayı belirler ve tablo başına bir tane olabilir; kümelenmemiş indeks ayrı yapıdır. İndeks okuma hızını artırır, yazma maliyetini artırır.",
+      "Görünüm (view) saklanan sorgu, saklı yordam (stored procedure) sunucuda saklanan program, tetikleyici (trigger) INSERT/UPDATE/DELETE olayında otomatik çalışan koddur. Materyalize görünüm sonucu fiziksel saklar.",
+      "ER modeli: Varlık, nitelik, ilişki; kardinalite 1:1, 1:N, M:N. M:N ilişki ilişkisel şemaya ara (kesişim) tablo ile dönüştürülür. Zayıf varlık kendi anahtarı olmayan ve sahibine bağımlı varlıktır."
+    ],
+    "comparisons": [
+      {
+        "title": "JOIN türleri",
+        "rows": [
+          [
+            "JOIN",
+            "Döndürdüğü satırlar",
+            "Eşleşmeyen tarafta"
+          ],
+          [
+            "INNER",
+            "Her iki tabloda eşleşenler",
+            "Satır yok"
+          ],
+          [
+            "LEFT OUTER",
+            "Solun tümü + eşleşen sağ",
+            "Sağ sütunlar NULL"
+          ],
+          [
+            "RIGHT OUTER",
+            "Sağın tümü + eşleşen sol",
+            "Sol sütunlar NULL"
+          ],
+          [
+            "FULL OUTER",
+            "Her ikisinin tümü",
+            "Karşı taraf NULL"
+          ],
+          [
+            "CROSS",
+            "Kartezyen çarpım (m × n)",
+            "Eşleşme koşulu yok"
+          ]
+        ]
+      },
+      {
+        "title": "Yalıtım düzeyleri ve engellenen sorunlar",
+        "rows": [
+          [
+            "Düzey",
+            "Kirli okuma",
+            "Tekrarlanamayan okuma",
+            "Hayalet okuma"
+          ],
+          [
+            "READ UNCOMMITTED",
+            "Mümkün",
+            "Mümkün",
+            "Mümkün"
+          ],
+          [
+            "READ COMMITTED",
+            "Engellenir",
+            "Mümkün",
+            "Mümkün"
+          ],
+          [
+            "REPEATABLE READ",
+            "Engellenir",
+            "Engellenir",
+            "Mümkün"
+          ],
+          [
+            "SERIALIZABLE",
+            "Engellenir",
+            "Engellenir",
+            "Engellenir"
+          ]
+        ]
+      },
+      {
+        "title": "DELETE vs TRUNCATE vs DROP",
+        "rows": [
+          [
+            "Özellik",
+            "DELETE",
+            "TRUNCATE",
+            "DROP"
+          ],
+          [
+            "Dil sınıfı",
+            "DML",
+            "DDL",
+            "DDL"
+          ],
+          [
+            "WHERE",
+            "Var",
+            "Yok",
+            "Yok"
+          ],
+          [
+            "Geri alma",
+            "ROLLBACK ile",
+            "Çoğu sistemde hayır",
+            "Hayır"
+          ],
+          [
+            "Yapı",
+            "Tablo kalır",
+            "Tablo kalır, veri gider",
+            "Tablo tamamen silinir"
+          ],
+          [
+            "Tetikleyici",
+            "Çalışır",
+            "Çalışmaz",
+            "-"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "CROSS JOIN satır sayısı = m × n",
+      "B+ ağacı arama/ekleme/silme karmaşıklığı = O(log n); sıralı tarama O(n)",
+      "Normal form zinciri: 1NF ⊃ 2NF ⊃ 3NF ⊃ BCNF (her BCNF tablo aynı zamanda 3NF'dir)",
+      "COUNT(*) tüm satırlar, COUNT(sütun) = NULL olmayan satır sayısı, AVG = SUM / COUNT(sütun)"
+    ],
+    "misconceptions": [
+      "Yanılgı: WHERE ve HAVING aynı işi görür. Doğrusu: WHERE gruplamadan önce satırları, HAVING gruplamadan sonra grupları filtreler; toplama fonksiyonu yalnızca HAVING'de kullanılabilir.",
+      "Yanılgı: Birincil anahtar ile UNIQUE kısıtı aynıdır. Doğrusu: Birincil anahtar NULL kabul etmez ve tabloda bir tane olur; UNIQUE kısıtı NULL kabul eder (çoğu sistemde birden çok NULL satır; SQL Server tek NULL) ve bir tabloda birden fazla UNIQUE kısıtı olabilir.",
+      "Yanılgı: NULL = NULL karşılaştırması TRUE verir. Doğrusu: Sonuç UNKNOWN'dur ve WHERE'de satır seçilmez; IS NULL kullanılır.",
+      "Yanılgı: Her tabloya çok indeks eklemek performansı her zaman artırır. Doğrusu: İndeks okuma sorgularını hızlandırır ama her INSERT/UPDATE/DELETE'te güncellenmesi gerekir ve yer tutar.",
+      "Yanılgı: READ COMMITTED düzeyi tüm eş zamanlılık sorunlarını çözer. Doğrusu: Yalnızca kirli okumayı engeller; tekrarlanamayan ve hayalet okuma hâlâ mümkündür.",
+      "Yanılgı: 3NF'deki tablo her zaman BCNF'dir. Doğrusu: 3NF, sağ tarafı asal nitelik (bir aday anahtarın parçası) olan bağımlılıklarda sol tarafın süper anahtar olmamasına izin verir; BCNF bu istisnayı kaldırır."
+    ],
+    "example": "Bir banka denetçisi, 'her müşterinin toplam bakiyesi 1.000.000 TL'yi aşan müşterileri listele' sorgusunu inceliyor: SELECT m.musteri_id, SUM(h.bakiye) AS toplam FROM musteri m JOIN hesap h ON m.musteri_id = h.musteri_id GROUP BY m.musteri_id HAVING SUM(h.bakiye) > 1000000. Hesabı olmayan müşterilerin de görünmesi istenirse JOIN yerine LEFT JOIN kullanılır ve SUM NULL döneceği için COALESCE(SUM(h.bakiye),0) ile sarmalanır. Koşul WHERE'e yazılsaydı hata alınırdı çünkü SUM gruplamadan sonra hesaplanır. Para transferinde ise iki hesabın güncellenmesi tek işlem içinde yapılır; ikinci UPDATE başarısız olursa ROLLBACK ile birincisi de geri alınır (atomiklik).",
+    "references": [
+      "Elmasri & Navathe, Fundamentals of Database Systems, Bölüm 3, 5, 6, 14, 15, 20, 21",
+      "Silberschatz, Korth & Sudarshan, Database System Concepts, Bölüm 3, 4, 7, 14, 17, 18",
+      "ISO/IEC 9075 (SQL standardı) yalıtım düzeyi tanımları",
+      "Codd, A Relational Model of Data for Large Shared Data Banks (1970)"
+    ]
+  },
+  "VYA": {
+    "summary": "Veri yapıları ve algoritmalar, verinin bellekte nasıl düzenlendiğini ve bu düzen üzerinde arama, sıralama ve dolaşma işlemlerinin ne kadar maliyetli olduğunu inceler. Sınavda Big-O karmaşıklığı, dizi/bağlı liste/yığın/kuyruk farkları, ağaç dolaşmaları, ikili arama ağacı, yığın (heap), hash tablosu, sıralama algoritmalarının karmaşıklıkları ve BFS/DFS/Dijkstra gibi çizge algoritmaları sorulur.",
+    "concepts": [
+      "Big-O gösterimi en kötü durum üst sınırını verir; yaygın sınıflar artan sırayla O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2^n) < O(n!). Ω alt sınır, Θ sıkı sınırdır. Sabitler ve düşük dereceli terimler atılır.",
+      "Dizi (array) ardışık bellek, indeksle O(1) erişim, ortaya ekleme/silme O(n). Bağlı liste (linked list) düğüm+işaretçi, baştan ekleme O(1), indeksle erişim O(n). Çift yönlü listede önceki işaretçisi de vardır.",
+      "Yığın (stack) LIFO: push, pop, peek O(1). Kullanım: fonksiyon çağrı yığını, parantez eşleme, geri alma (undo), DFS, infix→postfix dönüşüm. Kuyruk (queue) FIFO: enqueue, dequeue O(1); BFS, yazıcı kuyruğu, işletim sistemi zamanlayıcı. Deque iki uçludur.",
+      "İkili arama (binary search) sıralı dizide O(log n); her adımda arama aralığı yarıya iner. Sırasız dizide doğrusal arama O(n) gerekir.",
+      "İkili ağaç: Her düğümün en fazla 2 çocuğu vardır. Dolaşmalar: Preorder (kök-sol-sağ), Inorder (sol-kök-sağ), Postorder (sol-sağ-kök), Level-order (BFS). n düğümlü ikili ağaçta n-1 kenar vardır; tam ikili ağaçta yükseklik h için en fazla 2^(h+1)-1 düğüm bulunur.",
+      "İkili arama ağacı (BST): sol < kök < sağ; inorder dolaşma sıralı çıktı verir. Arama/ekleme/silme ortalama O(log n), dengesizse (örneğin sıralı ekleme) O(n). AVL ve Kırmızı-Siyah ağaçlar dengeyi koruyarak O(log n) garanti eder.",
+      "Yığın ağacı (heap): Tam ikili ağaç; min-heap'te kök en küçük, max-heap'te en büyük eleman. Ekleme ve silme O(log n), en küçük/büyüğe bakma O(1). Öncelik kuyruğu uygulamasıdır; dizi gösteriminde i'nin çocukları 2i+1 ve 2i+2'dir.",
+      "Hash tablosu: Anahtarı özet fonksiyonu ile indekse çevirir; ortalama O(1) ekleme/arama/silme, en kötü O(n). Çakışma çözümü: zincirleme (chaining, bağlı liste) veya açık adresleme (doğrusal/kuadratik sondalama, çift hash). Yük faktörü = eleman sayısı / kova sayısı.",
+      "Basit sıralamalar O(n²): Kabarcık (bubble), seçme (selection), ekleme (insertion; neredeyse sıralı veride O(n)). Hızlı sıralamalar O(n log n): Birleştirme (merge, kararlı, O(n) ek bellek), hızlı (quick, ortalama O(n log n), en kötü O(n²), yerinde), yığın (heap sort, O(1) ek bellek, kararsız).",
+      "Karşılaştırma tabanlı sıralamanın alt sınırı Ω(n log n)'dir. Sayma (counting), kova (bucket) ve radix sıralama karşılaştırma yapmaz ve belirli koşullarda O(n+k) çalışır. Kararlı (stable) sıralama eşit anahtarların sırasını korur.",
+      "Çizge (graph): Köşe (vertex) ve kenar (edge); yönlü/yönsüz, ağırlıklı/ağırlıksız. Gösterim: komşuluk matrisi O(V²) bellek, komşuluk listesi O(V+E). BFS kuyruk kullanır, ağırlıksız en kısa yolu bulur; DFS yığın/özyineleme kullanır; her ikisi O(V+E).",
+      "Dijkstra negatif olmayan ağırlıklı çizgede tek kaynaktan en kısa yolları O((V+E) log V) (ikili yığın ile) bulur; Bellman-Ford negatif kenarlara izin verir O(VE); Floyd-Warshall tüm çiftler O(V³). Minimum yayılan ağaç (MST) için Kruskal (kenar sıralama, birleşik-bul) ve Prim (yığın) kullanılır.",
+      "Özyineleme (recursion) taban durumu ve özyinelemeli adımdan oluşur; çağrı yığını kullandığı için derin özyineleme yığın taşmasına (stack overflow) yol açabilir. Dinamik programlama örtüşen alt problemleri hafızaya alarak (memoization) üstel karmaşıklığı polinoma düşürür (Fibonacci O(2^n) → O(n)).",
+      "Algoritma tasarım paradigmaları: Böl ve yönet (merge sort, binary search), açgözlü (greedy; Dijkstra, Huffman, Kruskal), dinamik programlama (sırt çantası, en uzun ortak alt dizi), geri izleme (backtracking; N-vezir)."
+    ],
+    "comparisons": [
+      {
+        "title": "Sıralama algoritmaları karmaşıklığı",
+        "rows": [
+          [
+            "Algoritma",
+            "En iyi",
+            "Ortalama",
+            "En kötü",
+            "Ek bellek",
+            "Kararlı"
+          ],
+          [
+            "Kabarcık (Bubble)",
+            "O(n)",
+            "O(n²)",
+            "O(n²)",
+            "O(1)",
+            "Evet"
+          ],
+          [
+            "Seçme (Selection)",
+            "O(n²)",
+            "O(n²)",
+            "O(n²)",
+            "O(1)",
+            "Hayır"
+          ],
+          [
+            "Ekleme (Insertion)",
+            "O(n)",
+            "O(n²)",
+            "O(n²)",
+            "O(1)",
+            "Evet"
+          ],
+          [
+            "Birleştirme (Merge)",
+            "O(n log n)",
+            "O(n log n)",
+            "O(n log n)",
+            "O(n)",
+            "Evet"
+          ],
+          [
+            "Hızlı (Quick)",
+            "O(n log n)",
+            "O(n log n)",
+            "O(n²)",
+            "O(log n)",
+            "Hayır"
+          ],
+          [
+            "Yığın (Heap)",
+            "O(n log n)",
+            "O(n log n)",
+            "O(n log n)",
+            "O(1)",
+            "Hayır"
+          ],
+          [
+            "Sayma (Counting)",
+            "O(n+k)",
+            "O(n+k)",
+            "O(n+k)",
+            "O(n+k)",
+            "Evet"
+          ]
+        ]
+      },
+      {
+        "title": "Veri yapısı işlem karmaşıklıkları (ortalama)",
+        "rows": [
+          [
+            "Yapı",
+            "Erişim",
+            "Arama",
+            "Ekleme",
+            "Silme"
+          ],
+          [
+            "Dizi",
+            "O(1)",
+            "O(n)",
+            "O(n)",
+            "O(n)"
+          ],
+          [
+            "Sıralı dizi",
+            "O(1)",
+            "O(log n)",
+            "O(n)",
+            "O(n)"
+          ],
+          [
+            "Bağlı liste",
+            "O(n)",
+            "O(n)",
+            "O(1) baştan",
+            "O(1) baştan"
+          ],
+          [
+            "Yığın / Kuyruk",
+            "Uçtan O(1)",
+            "O(n)",
+            "O(1)",
+            "O(1)"
+          ],
+          [
+            "Hash tablosu",
+            "-",
+            "O(1)",
+            "O(1)",
+            "O(1)"
+          ],
+          [
+            "Dengeli BST (AVL)",
+            "O(log n)",
+            "O(log n)",
+            "O(log n)",
+            "O(log n)"
+          ],
+          [
+            "Heap",
+            "Kök O(1)",
+            "O(n)",
+            "O(log n)",
+            "O(log n)"
+          ]
+        ]
+      },
+      {
+        "title": "BFS vs DFS",
+        "rows": [
+          [
+            "Özellik",
+            "BFS",
+            "DFS"
+          ],
+          [
+            "Yardımcı yapı",
+            "Kuyruk",
+            "Yığın / özyineleme"
+          ],
+          [
+            "Dolaşma sırası",
+            "Seviye seviye",
+            "Derinlik öncelikli"
+          ],
+          [
+            "Karmaşıklık",
+            "O(V+E)",
+            "O(V+E)"
+          ],
+          [
+            "Tipik kullanım",
+            "Ağırlıksız en kısa yol, en yakın komşular",
+            "Döngü tespiti, topolojik sıralama, bağlı bileşenler"
+          ],
+          [
+            "Bellek",
+            "Geniş çizgede fazla (sınır kümesi)",
+            "Derin çizgede yığın derinliği"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Toplam 1+2+...+n = n(n+1)/2 → O(n²) (iç içe iki döngünün tipik maliyeti)",
+      "İkili arama en fazla ⌈log₂(n+1)⌉ karşılaştırma yapar; n = 1024 için 11 adım",
+      "Yüksekliği h olan tam ikili ağaçta düğüm sayısı ≤ 2^(h+1) - 1; n düğümlü dengeli ağaçta h ≈ ⌊log₂ n⌋",
+      "Heap dizi gösterimi (0 tabanlı): çocuklar 2i+1 ve 2i+2, ebeveyn ⌊(i-1)/2⌋",
+      "Hash yük faktörü α = n / m; zincirlemede ortalama arama O(1 + α)",
+      "Yönsüz tam çizgede kenar sayısı = V(V-1)/2; ağaçta kenar sayısı = V - 1",
+      "Master teoremi: T(n) = 2T(n/2) + O(n) → O(n log n) (merge sort); T(n) = T(n/2) + O(1) → O(log n) (binary search)"
+    ],
+    "misconceptions": [
+      "Yanılgı: Quick sort her zaman O(n log n)'dir. Doğrusu: Ortalama O(n log n), ancak kötü pivot seçiminde (örneğin sıralı dizide ilk eleman pivot) O(n²)'ye düşer.",
+      "Yanılgı: Hash tablosu her zaman O(1)'dir. Doğrusu: Ortalama O(1); kötü hash fonksiyonu veya yüksek yük faktöründe tüm anahtarlar aynı kovaya düşerse O(n) olur.",
+      "Yanılgı: BST'de arama her zaman O(log n)'dir. Doğrusu: Dengesiz BST (sıralı veri eklenmiş) bağlı listeye dönüşür ve O(n) olur; garanti için AVL/Kırmızı-Siyah ağaç gerekir.",
+      "Yanılgı: O(n log n) algoritma her n için O(n²) algoritmadan hızlıdır. Doğrusu: Big-O asimptotik davranıştır; küçük n'de sabitler nedeniyle insertion sort quick sort'tan hızlı olabilir, bu yüzden hibrit sıralamalar küçük parçalarda insertion sort kullanır.",
+      "Yanılgı: Dijkstra negatif ağırlıklı kenarlarla da çalışır. Doğrusu: Açgözlü yaklaşımı negatif kenarda yanlış sonuç verir; Bellman-Ford kullanılır.",
+      "Yanılgı: Inorder dolaşma her ikili ağaçta sıralı çıktı verir. Doğrusu: Yalnızca ikili ARAMA ağacında (BST) inorder dolaşma sıralı dizi üretir."
+    ],
+    "example": "Bir ödeme sisteminde her gün 10 milyon işlem kaydının müşteri numarasına göre hızla sorgulanması gerekiyor. Sırasız dizide doğrusal arama 10 milyon adıma kadar sürer; önce merge sort ile sıralamak O(n log n) ≈ 10⁷ × 23 adım, sonra her sorgu ikili arama ile en fazla 24 adımdır. Sorgular çok sıksa ve aralık sorgusu gerekmiyorsa hash tablosu ortalama O(1) ile daha iyidir; 'bakiyesi X ile Y arasındaki müşteriler' gibi aralık sorgusu varsa B+ ağacı veya dengeli BST tercih edilir. Denetçi, uygulamanın 'en büyük 10 işlemi' her defasında tüm listeyi sıralayarak bulduğunu görürse O(n log n) yerine 10 elemanlı min-heap ile O(n log 10) ≈ O(n) çözüm önerebilir.",
+    "references": [
+      "Cormen, Leiserson, Rivest & Stein (CLRS), Introduction to Algorithms, Bölüm 2-4, 6-8, 10-13, 22-24",
+      "Weiss, Data Structures and Algorithm Analysis in C/Java, Bölüm 2-7, 9",
+      "Sedgewick & Wayne, Algorithms, 4th ed., Bölüm 1-4",
+      "Goodrich & Tamassia, Data Structures and Algorithms"
+    ]
+  },
+  "PRG": {
+    "summary": "Yapısal ve nesne tabanlı programlama konusu, kontrol yapıları, fonksiyonlar, parametre aktarımı ve bellek yönetimi gibi yapısal temellerle birlikte sınıf, nesne, kalıtım, çok biçimlilik, kapsülleme ve soyutlama gibi OOP ilkelerini kapsar. Sınavda kod çıktısı sorusu, değer/referans ile aktarım, static ve final anlamları, aşırı yükleme ile ezme farkı, soyut sınıf ile arayüz karşılaştırması ve SOLID ilkeleri sık görülür.",
+    "concepts": [
+      "Yapısal programlama üç temel yapıya dayanır: sıralı (sequence), seçim (if/switch) ve tekrar (for/while/do-while). goto kullanımından kaçınılır; her blok tek giriş tek çıkışlıdır (Böhm-Jacopini teoremi).",
+      "Değer ile aktarım (pass by value) kopya gönderir, fonksiyon içindeki değişiklik çağırana yansımaz. Referans ile aktarım (pass by reference) değişkenin kendisine erişim verir. Java'da tüm aktarımlar değerle yapılır; nesne referansının kopyası gönderildiği için nesnenin içeriği değişebilir ama referans yeniden atanamaz.",
+      "Kapsam (scope) ve ömür: Yerel değişken bloğun sonunda ölür ve yığında (stack) tutulur; dinamik tahsis edilen nesneler öbekte (heap) tutulur. Java/C# çöp toplayıcı (garbage collector) kullanır, C'de malloc/free ile elle yönetim yapılır; serbest bırakılmayan bellek sızıntı (memory leak) yaratır.",
+      "Tamsayı bölme ve tip dönüşümü: C/Java'da 7/2 = 3, 7.0/2 = 3.5, 7 % 2 = 1. Örtük genişletme (int → double) otomatik, daraltma (double → int) açık cast ister ve kesirli kısım atılır. Önek/sonek artırma: ++i önce artırır sonra kullanır, i++ önce kullanır sonra artırır.",
+      "Kısa devre değerlendirme: a && b ifadesinde a yanlışsa b hesaplanmaz; a || b'de a doğruysa b hesaplanmaz. switch'te break unutulursa sonraki case'lere düşme (fall-through) olur.",
+      "Sınıf (class) şablon, nesne (object) örnektir. Yapıcı (constructor) nesne oluşturulurken çalışır, sınıf adını taşır ve dönüş tipi yoktur; yıkıcı (destructor, C++) nesne silinirken çalışır. this nesnenin kendisine referanstır.",
+      "Kapsülleme (encapsulation): Alanlar private, erişim getter/setter ile; iç gösterim gizlenir. Erişim belirleyicileri (Java): private yalnızca sınıf içi, default (package) aynı paket, protected paket + alt sınıflar, public her yer.",
+      "Kalıtım (inheritance): Alt sınıf (subclass) üst sınıfın (superclass) üyelerini devralır; 'is-a' ilişkisi. Java'da tek kalıtım (bir sınıf yalnızca bir sınıfı extends eder), C++'ta çoklu kalıtım vardır. super üst sınıfın yapıcı/metodunu çağırır. Kompozisyon (composition) 'has-a' ilişkisidir ve kalıtıma genelde tercih edilir.",
+      "Çok biçimlilik (polymorphism): Aynı çağrının farklı sınıflarda farklı davranması. Derleme zamanı (statik) çok biçimlilik = aşırı yükleme (overloading, aynı ad farklı parametre listesi); çalışma zamanı (dinamik) çok biçimlilik = ezme (overriding, alt sınıf aynı imzalı metodu yeniden yazar, sanal metot tablosu ile çözülür).",
+      "Soyutlama (abstraction): Soyut sınıf (abstract class) en az bir soyut metot içerebilir, örneklenemez, alan ve gövdeli metot barındırabilir. Arayüz (interface) yalnızca sözleşme tanımlar (Java 8+ default metotlar hariç), bir sınıf birden çok arayüz uygulayabilir (implements).",
+      "static üye sınıfa aittir, tüm nesneler paylaşır, nesne oluşturmadan erişilir; static metot this kullanamaz. final değişken sabit (tek atama), final metot ezilemez, final sınıf kalıtılamaz. C#'ta karşılığı sealed/readonly/const'tur.",
+      "SOLID: Tek Sorumluluk (S), Açık-Kapalı (O: genişlemeye açık, değişikliğe kapalı), Liskov Yerine Geçme (L: alt sınıf üst sınıfın yerine kullanılabilir), Arayüz Ayrımı (I: küçük arayüzler), Bağımlılığın Ters Çevrilmesi (D: soyutlamaya bağımlı ol).",
+      "Tasarım kalıpları (GoF): Yaratımsal (Singleton tek örnek, Factory nesne üretimini soyutlar, Builder adım adım kurma), Yapısal (Adapter arayüz uyarlama, Decorator davranış ekleme, Facade basit ön yüz), Davranışsal (Observer yayınla-abone ol, Strategy değiştirilebilir algoritma, Command).",
+      "İstisna yönetimi (exception handling): try-catch-finally; finally her durumda çalışır (return olsa bile). Java'da checked istisna (IOException) ya yakalanır ya throws ile bildirilir; unchecked (RuntimeException, NullPointerException, ArithmeticException) zorunlu değildir. Alt sınıf istisnalar üst sınıftan önce yakalanmalıdır."
+    ],
+    "comparisons": [
+      {
+        "title": "Aşırı yükleme (Overloading) vs Ezme (Overriding)",
+        "rows": [
+          [
+            "Özellik",
+            "Overloading",
+            "Overriding"
+          ],
+          [
+            "Yer",
+            "Aynı sınıf (veya alt sınıf)",
+            "Alt sınıf"
+          ],
+          [
+            "İmza",
+            "Aynı ad, farklı parametre listesi",
+            "Aynı ad, aynı parametre listesi"
+          ],
+          [
+            "Dönüş tipi",
+            "Fark yaratmaz (tek başına yeterli değil)",
+            "Aynı veya alt tip (kovaryant)"
+          ],
+          [
+            "Çözümleme zamanı",
+            "Derleme zamanı (statik)",
+            "Çalışma zamanı (dinamik)"
+          ],
+          [
+            "Çok biçimlilik türü",
+            "Statik",
+            "Dinamik"
+          ],
+          [
+            "Engelleyen",
+            "-",
+            "final, static, private metotlar ezilemez"
+          ]
+        ]
+      },
+      {
+        "title": "Soyut sınıf vs Arayüz (Java)",
+        "rows": [
+          [
+            "Özellik",
+            "Soyut sınıf",
+            "Arayüz"
+          ],
+          [
+            "Anahtar sözcük",
+            "abstract class / extends",
+            "interface / implements"
+          ],
+          [
+            "Çoklu",
+            "Tek kalıtım",
+            "Birden çok uygulanabilir"
+          ],
+          [
+            "Alanlar",
+            "Her türlü alan",
+            "Yalnızca public static final sabitler"
+          ],
+          [
+            "Metot gövdesi",
+            "Soyut + somut karışık",
+            "Soyut (Java 8+: default/static gövdeli)"
+          ],
+          [
+            "Yapıcı",
+            "Var (alt sınıf çağırır)",
+            "Yok"
+          ],
+          [
+            "Kullanım amacı",
+            "Ortak kod paylaşımı, 'is-a'",
+            "Yetenek sözleşmesi, 'can-do'"
+          ]
+        ]
+      },
+      {
+        "title": "Derleyici vs Yorumlayıcı",
+        "rows": [
+          [
+            "Özellik",
+            "Derleyici",
+            "Yorumlayıcı"
+          ],
+          [
+            "Çeviri zamanı",
+            "Çalıştırmadan önce tamamı",
+            "Çalışma anında satır satır"
+          ],
+          [
+            "Çalışma hızı",
+            "Yüksek",
+            "Daha düşük"
+          ],
+          [
+            "Hata tespiti",
+            "Derleme zamanında toplu",
+            "Çalışma zamanında satırda"
+          ],
+          [
+            "Taşınabilirlik",
+            "Platforma özel ikili",
+            "Yorumlayıcı olan her yerde"
+          ],
+          [
+            "Örnek",
+            "C, C++, Go",
+            "Python, JavaScript (JIT ile hibrit), Java (bytecode + JVM)"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Tamsayı bölme: 7 / 2 = 3, 7 % 2 = 1, -7 / 2 = -3 (C99/Java sıfıra yuvarlar), 7.0 / 2 = 3.5",
+      "Java: i = 5; x = i++ + ++i → x = 5 + 7 = 12, i = 7 (C/C++'ta bu ifade tanımsız davranıştır)",
+      "Yığın/öbek: yerel değişkenler stack, new/malloc ile tahsis edilenler heap",
+      "Java tamsayı aralıkları: byte 8 bit (-128..127), short 16 bit, int 32 bit (±2,1 milyar), long 64 bit; int taşması sessizce sarmalar"
+    ],
+    "misconceptions": [
+      "Yanılgı: Java nesneleri referans ile aktarır. Doğrusu: Java her zaman değerle aktarır; aktarılan şey referansın kopyasıdır. Nesnenin alanları değiştirilebilir ama parametreye yeni nesne atamak çağıranı etkilemez.",
+      "Yanılgı: Yalnızca dönüş tipi farklı iki metot aşırı yüklemedir. Doğrusu: Aşırı yükleme parametre listesinin farklı olmasını gerektirir; yalnızca dönüş tipi farkı derleme hatasıdır.",
+      "Yanılgı: Soyut sınıf hiç gövdeli metot içeremez. Doğrusu: Soyut sınıf somut metot, alan ve yapıcı içerebilir; yalnızca örneklenemez. Tamamen soyut olan yapı arayüzdür.",
+      "Yanılgı: static metot ezilebilir (override). Doğrusu: static metotlar sınıfa bağlıdır, alt sınıfta aynı imzayla yazmak gizleme (hiding) olur, dinamik bağlama yapılmaz.",
+      "Yanılgı: finally bloğu try içinde return varsa çalışmaz. Doğrusu: finally return'den önce her durumda çalışır (yalnızca System.exit veya JVM çökmesi engeller).",
+      "Yanılgı: Kalıtım kod tekrarını azalttığı için her yerde kompozisyondan iyidir. Doğrusu: Kalıtım sıkı bağlama yaratır ve 'is-a' olmayan ilişkilerde LSP'yi bozar; 'has-a' ilişkileri için kompozisyon tercih edilir."
+    ],
+    "example": "Bir bankacılık uygulamasında Hesap soyut sınıfı bakiye alanı ve paraCek(miktar) soyut metodunu tanımlar; VadesizHesap ve KrediliMevduatHesabi bunu farklı kurallarla ezer (override). İşlem servisi List<Hesap> üzerinde döngüyle hesap.paraCek(100) çağırır ve her nesne kendi sınıfının metodunu çalıştırır; bu çalışma zamanı çok biçimliliğidir. Bakiye alanı private tutulup yalnızca paraYatir/paraCek ile değiştirildiği için (kapsülleme) eksi bakiye kuralı tek yerden denetlenir. Hesap tipi eklendiğinde mevcut servis kodu değişmez (Açık-Kapalı ilkesi); denetçi bu yapıyı 'değişiklik etki alanını daraltan kontrol' olarak değerlendirir.",
+    "references": [
+      "Deitel & Deitel, Java How to Program, Bölüm 2-11",
+      "Kernighan & Ritchie, The C Programming Language, Bölüm 1-5",
+      "Gamma, Helm, Johnson & Vlissides (GoF), Design Patterns",
+      "Martin, Clean Architecture / Agile Software Development (SOLID ilkeleri)",
+      "Oracle, The Java Language Specification (erişim belirleyicileri, overloading/overriding kuralları)"
+    ]
+  },
+  "IS": {
+    "summary": "İşletim sistemleri konusu, işlemci, bellek, dosya ve giriş/çıkış kaynaklarının süreçler arasında nasıl paylaştırıldığını inceler. Sınavda süreç durumları ve iş parçacığı farkı, CPU zamanlama algoritmaları ve ortalama bekleme süresi hesabı, kilitlenme koşulları, sayfalama ve sanal bellek, sayfa değiştirme algoritmaları, Unix dosya izinleri ve temel komutlar en çok çıkan başlıklardır.",
+    "concepts": [
+      "Çekirdek (kernel) donanımı yöneten temel yazılımdır; kullanıcı modu ve çekirdek modu ayrımı vardır. Sistem çağrısı (system call) kullanıcı programının çekirdek hizmetine geçişidir; kesme (interrupt) donanım/yazılım olayıdır. Monolitik (Linux) ve mikro çekirdek (Minix, QNX) mimarileri ayrılır.",
+      "Süreç (process) çalışan programdır; kendi adres alanı, PCB (Process Control Block: PID, durum, kayıtçılar, sayaç) vardır. İş parçacığı (thread) aynı sürecin adres alanını paylaşan hafif yürütme birimidir; yığın (stack) ve kayıtçılar kendine, kod, veri ve açık dosyalar ortaktır.",
+      "Süreç durumları: Yeni (new), Hazır (ready), Çalışıyor (running), Bekliyor (waiting/blocked), Sonlandı (terminated). Çalışıyor → Hazır geçişi zaman dilimi dolmasıyla (preemption), Çalışıyor → Bekliyor G/Ç isteğiyle olur. Bağlam değiştirme (context switch) saf ek yüktür.",
+      "Zamanlama algoritmaları: FCFS (ilk gelen ilk; konvoy etkisi), SJF (en kısa iş; ortalama bekleme süresi en düşük ama açlık riski, önalımlı sürümü SRTF), Öncelikli (düşük öncelik açlık → yaşlandırma/aging çözümü), Round Robin (zaman dilimi/quantum; etkileşimli sistemlerde adil), Çok seviyeli geri beslemeli kuyruk.",
+      "Zamanlama ölçütleri: CPU kullanımı, iş hacmi (throughput), tamamlanma süresi (turnaround = bitiş - varış), bekleme süresi (waiting = turnaround - çalışma süresi), yanıt süresi (response = ilk çalışmaya başlama - varış).",
+      "Kritik bölge (critical section) ve yarış durumu (race condition): Ortak veriye eş zamanlı erişim. Çözümler: muteks (mutex, ikili kilit, sahiplik var), semafor (sayaç, wait/signal veya P/V; ikili ve sayan semafor), monitör, spinlock. Üretici-tüketici, okuyucu-yazıcı, yemek yiyen filozoflar klasik problemlerdir.",
+      "Kilitlenme (deadlock) için 4 koşul aynı anda gerekir: karşılıklı dışlama, tut ve bekle, önalımsızlık, dairesel bekleme. Başa çıkma: önleme (koşullardan birini kır), kaçınma (Banker algoritması, güvenli durum), tespit ve kurtarma, görmezden gelme (devekuşu algoritması).",
+      "Bellek yönetimi: Sürekli tahsiste dış parçalanma (external fragmentation, boş alanlar dağınık) ve iç parçalanma (internal, tahsis edilen blokta boşluk) sorunları vardır. Sayfalama (paging) belleği sabit boyutlu sayfa/çerçevelere (tipik 4 KB) böler, dış parçalanmayı kaldırır; bölütleme (segmentation) değişken boyutlu mantıksal parçalar kullanır.",
+      "Sanal bellek: Mantıksal adres sayfa numarası + ofset; sayfa tablosu (page table) sayfayı fiziksel çerçeveye eşler; TLB (Translation Lookaside Buffer) bu eşlemeyi önbellekler. Talep üzerine sayfalama (demand paging) sayfayı ilk erişimde yükler; sayfa hatası (page fault) diskten getirme gerektirir.",
+      "Sayfa değiştirme algoritmaları: FIFO (en eski çıkar; Belady anomalisi: çerçeve artınca hata artabilir), Optimal (gelecekte en geç kullanılacak; teorik alt sınır), LRU (en uzun süredir kullanılmayan; yığın algoritması, Belady anomalisi yok), Clock/İkinci şans (LRU yaklaşımı). Aşırı sayfalama (thrashing) CPU'nun çoğunlukla sayfa hatası işlemesidir.",
+      "Dosya sistemi: inode (Unix) dosya meta verisi ve blok işaretçileri; FAT, NTFS, ext4 örnek dosya sistemleri. Tahsis yöntemleri: ardışık, bağlı, indeksli. Journaling (ext4, NTFS) çökme sonrası tutarlılık sağlar. Sabit bağ (hard link) aynı inode'u, sembolik bağ (symlink) yolu gösterir.",
+      "Unix izinleri: rwx üçlüleri sahip/grup/diğer için; r=4, w=2, x=1. 755 = rwxr-xr-x, 644 = rw-r--r--, 600 = rw-------, 777 herkes tam yetki. chmod izin, chown sahip, chgrp grup değiştirir; umask varsayılan izinlerden düşülen maskedir (umask 022 → dosya 644, dizin 755). setuid (4), setgid (2), sticky bit (1) özel bitlerdir.",
+      "Temel Linux komutları: ps/top süreçler, kill -9 (SIGKILL) zorla sonlandırma, kill -15 (SIGTERM) nazik sonlandırma, grep arama, find dosya bulma, df disk alanı, du dizin boyutu, tar arşiv, cron zamanlanmış görevler, /etc/passwd kullanıcılar, /etc/shadow parola özetleri (yalnızca root okur), /var/log günlükler.",
+      "G/Ç yönetimi: Programlı G/Ç (yoklama/polling), kesme güdümlü, DMA (Direct Memory Access; CPU'yu meşgul etmeden doğrudan bellek-aygıt aktarımı). Disk zamanlama: FCFS, SSTF, SCAN (asansör), C-SCAN. RAID düzeyleri 0 (şeritleme, yedeksiz), 1 (aynalama), 5 (dağıtık parite, en az 3 disk, 1 disk arızasına dayanır), 6 (çift parite, 2 arıza), 10 (ayna + şerit)."
+    ],
+    "comparisons": [
+      {
+        "title": "Süreç vs İş parçacığı",
+        "rows": [
+          [
+            "Özellik",
+            "Süreç (process)",
+            "İş parçacığı (thread)"
+          ],
+          [
+            "Adres alanı",
+            "Kendine ait",
+            "Süreçle paylaşır"
+          ],
+          [
+            "Oluşturma maliyeti",
+            "Yüksek",
+            "Düşük"
+          ],
+          [
+            "Bağlam değiştirme",
+            "Pahalı (adres alanı değişir)",
+            "Ucuz"
+          ],
+          [
+            "İletişim",
+            "IPC gerekir",
+            "Ortak bellek üzerinden doğrudan"
+          ],
+          [
+            "Hata yalıtımı",
+            "Bir süreç çökse diğeri etkilenmez",
+            "Bir thread çökerse süreç çöker"
+          ],
+          [
+            "Kendine ait",
+            "Kod, veri, heap, açık dosyalar",
+            "Yığın (stack), kayıtçılar, program sayacı"
+          ]
+        ]
+      },
+      {
+        "title": "CPU zamanlama algoritmaları",
+        "rows": [
+          [
+            "Algoritma",
+            "Önalımlı",
+            "Avantaj",
+            "Dezavantaj"
+          ],
+          [
+            "FCFS",
+            "Hayır",
+            "Basit, adil sıra",
+            "Konvoy etkisi, uzun bekleme"
+          ],
+          [
+            "SJF / SRTF",
+            "Hayır / Evet",
+            "En düşük ortalama bekleme",
+            "Süre bilinmez, uzun işler aç kalır"
+          ],
+          [
+            "Öncelikli",
+            "Her ikisi",
+            "Kritik işler önce",
+            "Açlık (çözüm: yaşlandırma)"
+          ],
+          [
+            "Round Robin",
+            "Evet",
+            "Adil, iyi yanıt süresi",
+            "Quantum küçükse bağlam değiştirme yükü"
+          ],
+          [
+            "Çok seviyeli geri besleme",
+            "Evet",
+            "Uyarlanabilir, etkileşimli işlere öncelik",
+            "Karmaşık, parametre ayarı"
+          ]
+        ]
+      },
+      {
+        "title": "Unix izin oktalleri",
+        "rows": [
+          [
+            "Oktal",
+            "Semboller",
+            "Anlamı"
+          ],
+          [
+            "7",
+            "rwx",
+            "Oku + yaz + çalıştır"
+          ],
+          [
+            "6",
+            "rw-",
+            "Oku + yaz"
+          ],
+          [
+            "5",
+            "r-x",
+            "Oku + çalıştır"
+          ],
+          [
+            "4",
+            "r--",
+            "Yalnızca oku"
+          ],
+          [
+            "755",
+            "rwxr-xr-x",
+            "Sahip tam, diğerleri oku/çalıştır (betik, dizin)"
+          ],
+          [
+            "644",
+            "rw-r--r--",
+            "Sahip yazar, diğerleri okur (tipik dosya)"
+          ],
+          [
+            "600",
+            "rw-------",
+            "Yalnızca sahip (özel anahtar, parola dosyası)"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Tamamlanma süresi (turnaround) = Bitiş zamanı - Varış zamanı",
+      "Bekleme süresi = Tamamlanma süresi - CPU çalışma süresi (burst)",
+      "Ortalama bekleme süresi = Tüm süreçlerin bekleme süreleri toplamı / süreç sayısı",
+      "Etkin erişim süresi (EAT) = (1 - p) × bellek erişimi + p × sayfa hatası maliyeti (p = sayfa hatası oranı)",
+      "TLB ile EAT = h × (TLB + bellek) + (1 - h) × (TLB + 2 × bellek) (h = TLB isabet oranı)",
+      "Sayfa sayısı = Mantıksal adres alanı / Sayfa boyutu; 32 bit adres, 4 KB sayfa → 2^32 / 2^12 = 2^20 = 1.048.576 sayfa, ofset 12 bit",
+      "Unix izin değeri = r(4) + w(2) + x(1); dosya izni = 666 - umask, dizin izni = 777 - umask",
+      "RAID 5 kullanılabilir kapasite = (n - 1) × disk boyutu; RAID 6 = (n - 2) × disk; RAID 1 = n/2"
+    ],
+    "misconceptions": [
+      "Yanılgı: Round Robin'de zaman dilimi ne kadar küçükse o kadar iyidir. Doğrusu: Çok küçük quantum bağlam değiştirme yükünü artırır ve iş hacmini düşürür; çok büyük quantum FCFS'e dönüşür.",
+      "Yanılgı: Çok iş parçacıklı program tek çekirdekte daha hızlı çalışır. Doğrusu: Tek çekirdekte iş parçacıkları zaman paylaşır; hız kazancı yalnızca G/Ç beklemeleri örtüşürse veya çok çekirdek varsa olur.",
+      "Yanılgı: Daha çok bellek çerçevesi her zaman daha az sayfa hatası demektir. Doğrusu: FIFO'da Belady anomalisi nedeniyle çerçeve artışı sayfa hatasını artırabilir; LRU ve Optimal'de bu olmaz.",
+      "Yanılgı: Dört kilitlenme koşulundan biri varsa kilitlenme oluşur. Doğrusu: Kilitlenme için dördünün AYNI ANDA sağlanması gerekir; herhangi birini kırmak kilitlenmeyi önler.",
+      "Yanılgı: chmod 777 güvenli bir varsayılandır çünkü 'her şey çalışır'. Doğrusu: 777 herkese yazma yetkisi verir; denetimde kritik bulgu sayılır. Betik için 755, yapılandırma/anahtar için 600 uygundur.",
+      "Yanılgı: kill komutu süreci her zaman anında öldürür. Doğrusu: Varsayılan SIGTERM (15) süreçten kapanmasını ister ve yakalanabilir; SIGKILL (9) yakalanamaz ve zorla sonlandırır."
+    ],
+    "example": "Üç süreç P1 (varış 0, çalışma 8), P2 (varış 1, çalışma 4), P3 (varış 2, çalışma 2) FCFS ile çalışsın: P1 0-8, P2 8-12, P3 12-14; bekleme süreleri 0, 7, 10 → ortalama 17/3 ≈ 5,67. Önalımsız SJF ile P1 0-8, sonra en kısa P3 8-10, P2 10-14; bekleme 0, 9, 6 → ortalama 5. SRTF ile P1 1 birim çalışır; 1. saniyede gelen P2 (4) kalan 7 birimlik P1'den kısa olduğu için P2 başlar; 2. saniyede P3 (2) gelir ve P2'yi (3 kaldı) keser: P3 2-4, P2 4-7, P1 7-14; bekleme 6, 2, 0 → ortalama 8/3 ≈ 2,67. Bir banka sunucusunda denetçi, gece toplu işlem (batch) sürecinin etkileşimli şube işlemlerini yavaşlattığını görürse nice değeriyle önceliğini düşürmeyi veya ayrı zamanlama kuyruğunu önerir.",
+    "references": [
+      "Silberschatz, Galvin & Gagne, Operating System Concepts, Bölüm 3-10, 13",
+      "Tanenbaum & Bos, Modern Operating Systems, Bölüm 2-4, 6",
+      "Stallings, Operating Systems: Internals and Design Principles",
+      "Linux man sayfaları: chmod(1), umask(2), kill(1), ps(1), signal(7)"
+    ]
+  },
+  "WEB": {
+    "summary": "Web teknolojileri konusu, HTTP protokolü, istemci tarafı teknolojiler (HTML, CSS, JavaScript), sunucu tarafı mimariler, REST API'ler, oturum yönetimi ve web güvenliği başlıklarını kapsar. Sınavda HTTP metotları ve durum kodları, GET/POST farkı, çerez ve oturum, REST ilkeleri, JSON/XML, DOM, CORS ve web güvenlik başlıkları en çok sorulan noktalardır.",
+    "concepts": [
+      "HTTP (HyperText Transfer Protocol) durumsuz (stateless) istek-yanıt protokolüdür; port 80, HTTPS 443. HTTP/1.1 kalıcı bağlantı (keep-alive), HTTP/2 ikili çerçeveleme ve çoğullama (multiplexing), HTTP/3 QUIC (UDP üzerinde) kullanır.",
+      "HTTP metotları: GET (veri al, idempotent, güvenli), POST (yeni kaynak oluştur/işlem, idempotent değil), PUT (tamamen değiştir, idempotent), PATCH (kısmi güncelle), DELETE (sil, idempotent), HEAD (yalnızca başlıklar), OPTIONS (desteklenen metotlar; CORS ön uçuş).",
+      "Durum kodları: 1xx bilgi, 2xx başarı (200 OK, 201 Created, 204 No Content), 3xx yönlendirme (301 kalıcı, 302 geçici, 304 Not Modified), 4xx istemci hatası (400 Bad Request, 401 Unauthorized=kimlik doğrulanmamış, 403 Forbidden=yetki yok, 404 Not Found, 405 Method Not Allowed, 429 Too Many Requests), 5xx sunucu hatası (500 Internal Server Error, 502 Bad Gateway, 503 Service Unavailable, 504 Gateway Timeout).",
+      "URL yapısı: şema://kullanıcı@host:port/yol?sorgu#parça; örn. https://ornek.com:443/hesap?id=5#ozet. URL kodlama (percent-encoding) özel karakterleri %20 gibi ifade eder. URI genel tanımlayıcı, URL konum belirten alt kümesidir.",
+      "HTML (HyperText Markup Language) yapı, CSS (Cascading Style Sheets) sunum, JavaScript davranış katmanıdır. HTML5 semantik etiketler (header, nav, article, section, footer), form öğeleri ve yerel depolama (localStorage, sessionStorage) getirdi. DOM (Document Object Model) sayfanın ağaç gösterimidir ve JavaScript ile değiştirilir.",
+      "JavaScript tek iş parçacıklı, olay döngüsü (event loop) tabanlıdır; asenkron işlemler callback, Promise ve async/await ile yönetilir. == tip dönüşümü yapar, === yapmaz ('5' == 5 true, '5' === 5 false). let/const blok kapsamlı, var fonksiyon kapsamlıdır. AJAX/fetch sayfayı yenilemeden sunucuyla veri alışverişi sağlar.",
+      "İstemci-sunucu mimarisi: Ön yüz (front-end) tarayıcıda, arka yüz (back-end) sunucuda çalışır. Üç katmanlı mimari: sunum, iş mantığı, veri. Web sunucuları (Apache, Nginx, IIS) statik içerik ve ters vekil (reverse proxy) sağlar; uygulama sunucuları (Tomcat, Node.js, ASP.NET) dinamik mantığı çalıştırır.",
+      "REST (Representational State Transfer) ilkeleri: istemci-sunucu, durumsuzluk, önbelleklenebilirlik, tek biçimli arayüz (kaynaklar URI ile, işlemler HTTP metotlarıyla), katmanlı sistem. RESTful API'de /hesaplar/123 kaynağına GET/PUT/DELETE uygulanır; SOAP ise XML tabanlı, WSDL ile tanımlı, daha ağır protokoldür. GraphQL tek uç noktadan istemcinin seçtiği alanları döndürür.",
+      "Veri biçimleri: JSON (JavaScript Object Notation) hafif, anahtar-değer, diziler; XML etiket tabanlı, şema (XSD) ve ad alanı destekli. Web servisleri genelde JSON tercih eder; SOAP XML zorunludur.",
+      "Oturum yönetimi: HTTP durumsuz olduğu için çerez (cookie) ile oturum kimliği taşınır. Çerez bayrakları: Secure (yalnızca HTTPS), HttpOnly (JavaScript erişemez, XSS'e karşı), SameSite (Strict/Lax/None, CSRF'ye karşı), Expires/Max-Age. Sunucu tarafı oturum (session) verisi sunucuda, token tabanlı (JWT) oturum istemcide imzalı taşınır.",
+      "JWT (JSON Web Token) başlık.yük.imza yapısında Base64URL kodlu üç parçadır; imza bütünlüğü sağlar ama yük şifreli değildir, gizli veri konmaz. OAuth 2.0 yetkilendirme çerçevesi (yetki kodu akışı), OpenID Connect onun üzerine kimlik doğrulama katmanıdır.",
+      "Aynı köken politikası (Same-Origin Policy): şema + host + port aynı olmalı; CORS (Cross-Origin Resource Sharing) sunucunun Access-Control-Allow-Origin başlığıyla istisna tanımlamasıdır. Ön uçuş (preflight) OPTIONS isteği karmaşık istekler için gönderilir.",
+      "Güvenlik başlıkları: Content-Security-Policy (XSS'e karşı kaynak kısıtı), Strict-Transport-Security (HSTS, HTTPS zorunlu), X-Frame-Options / frame-ancestors (clickjacking), X-Content-Type-Options: nosniff. WAF (Web Application Firewall) HTTP katmanında saldırı imzalarını engeller.",
+      "Önbellekleme ve performans: Cache-Control, ETag, Last-Modified başlıkları; CDN (Content Delivery Network) statik içeriği kullanıcıya yakın sunar. Yük dengeleyici (load balancer) istekleri sunuculara dağıtır; yapışkan oturum (sticky session) veya paylaşımlı oturum deposu (Redis) gerekir."
+    ],
+    "comparisons": [
+      {
+        "title": "GET vs POST",
+        "rows": [
+          [
+            "Özellik",
+            "GET",
+            "POST"
+          ],
+          [
+            "Veri konumu",
+            "URL sorgu dizesi",
+            "İstek gövdesi"
+          ],
+          [
+            "Idempotent",
+            "Evet",
+            "Hayır"
+          ],
+          [
+            "Önbelleklenebilir",
+            "Evet",
+            "Genelde hayır"
+          ],
+          [
+            "Uzunluk sınırı",
+            "URL sınırı (~2 KB pratik)",
+            "Yok (sunucu ayarı)"
+          ],
+          [
+            "Tarayıcı geçmişi/yer imi",
+            "Kaydedilir",
+            "Kaydedilmez"
+          ],
+          [
+            "Kullanım",
+            "Veri okuma, arama",
+            "Form gönderimi, kaynak oluşturma, hassas veri"
+          ]
+        ]
+      },
+      {
+        "title": "REST vs SOAP",
+        "rows": [
+          [
+            "Özellik",
+            "REST",
+            "SOAP"
+          ],
+          [
+            "Tür",
+            "Mimari stil",
+            "Protokol"
+          ],
+          [
+            "Veri biçimi",
+            "JSON, XML, diğer",
+            "Yalnızca XML"
+          ],
+          [
+            "Taşıma",
+            "HTTP",
+            "HTTP, SMTP, diğer"
+          ],
+          [
+            "Sözleşme",
+            "OpenAPI (isteğe bağlı)",
+            "WSDL (zorunlu)"
+          ],
+          [
+            "Durum",
+            "Durumsuz",
+            "Durumlu olabilir"
+          ],
+          [
+            "Güvenlik",
+            "HTTPS, OAuth, JWT",
+            "WS-Security (mesaj düzeyi)"
+          ],
+          [
+            "Ağırlık",
+            "Hafif, hızlı",
+            "Ağır, kurumsal/eski sistemler"
+          ]
+        ]
+      },
+      {
+        "title": "401 vs 403 vs 404",
+        "rows": [
+          [
+            "Kod",
+            "Ad",
+            "Anlamı",
+            "Çözüm"
+          ],
+          [
+            "401",
+            "Unauthorized",
+            "Kimlik doğrulanmamış veya geçersiz",
+            "Giriş yap / geçerli token gönder"
+          ],
+          [
+            "403",
+            "Forbidden",
+            "Kimlik doğru ama yetki yok",
+            "Yetki iste; yeniden giriş çözmez"
+          ],
+          [
+            "404",
+            "Not Found",
+            "Kaynak yok",
+            "URL'yi kontrol et"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Durum kodu sınıfları: 1xx bilgi, 2xx başarı, 3xx yönlendirme, 4xx istemci hatası, 5xx sunucu hatası",
+      "Köken (origin) = şema + host + port; https://a.com ile https://a.com:8443 farklı kökendir",
+      "JWT = Base64URL(başlık) . Base64URL(yük) . İmza(HMAC veya RSA/ECDSA)",
+      "Varsayılan portlar: HTTP 80, HTTPS 443, alternatif geliştirme 8080/8443"
+    ],
+    "misconceptions": [
+      "Yanılgı: 401 yetki, 403 kimlik hatasıdır. Doğrusu: Tam tersi; 401 kimlik doğrulanmamış (Unauthorized adı yanıltıcıdır), 403 kimlik doğru ama erişim izni yok demektir.",
+      "Yanılgı: POST, GET'ten güvenlidir çünkü veri şifrelenir. Doğrusu: POST veriyi yalnızca URL'den gövdeye taşır; şifreleme HTTPS'ten gelir. POST'un avantajı URL'de, günlüklerde ve geçmişte görünmemesidir.",
+      "Yanılgı: JWT yükü şifrelidir, gizli veri konabilir. Doğrusu: Yük yalnızca Base64URL kodludur, herkes okuyabilir; imza yalnızca değiştirilmediğini garanti eder. Gizlilik için JWE veya hiç koymamak gerekir.",
+      "Yanılgı: HttpOnly çerez CSRF'yi engeller. Doğrusu: HttpOnly XSS ile çerez çalınmasını engeller; CSRF'ye karşı SameSite özniteliği ve anti-CSRF token kullanılır.",
+      "Yanılgı: HTTP durumsuz olduğu için oturum tutulamaz. Doğrusu: Protokol durumsuzdur ama uygulama çerez/token ile oturum durumunu her istekte yeniden sunar.",
+      "Yanılgı: CORS, sunucuyu koruyan bir güvenlik duvarıdır. Doğrusu: CORS tarayıcının uyguladığı, başka kökendeki betiğin yanıtı okumasını kısıtlayan politikadır; curl gibi araçlar etkilenmez, sunucu tarafı yetkilendirme yine gerekir."
+    ],
+    "example": "Mobil bankacılık API'si GET /api/hesaplar/123/bakiye isteğine 200 ile JSON döner. Denetçi, oturum süresi dolmuş token ile yapılan isteğin 403 yerine 401 döndürmesi gerektiğini, başka müşterinin hesabına yapılan isteğin ise 401 değil 403 (veya bilgi sızdırmamak için 404) dönmesi gerektiğini not eder. Para transferi uç noktasının GET ile tasarlandığını görürse bunu bulgu yazar: GET idempotent ve önbelleklenebilir olduğundan tarayıcı geçmişi/ön getirme (prefetch) ile istenmeyen transfer tetiklenebilir; POST + anti-CSRF token + SameSite=Strict çerez gerekir. Son olarak yanıt başlıklarında HSTS ve CSP bulunmamasını orta düzey yapılandırma eksikliği olarak raporlar.",
+    "references": [
+      "RFC 9110 (HTTP Semantics), RFC 9112 (HTTP/1.1), RFC 9113 (HTTP/2), RFC 9114 (HTTP/3)",
+      "RFC 6265 (HTTP State Management / Cookies), RFC 7519 (JWT), RFC 6749 (OAuth 2.0)",
+      "Fielding, Architectural Styles and the Design of Network-based Software Architectures (REST tezi, 2000)",
+      "OWASP Cheat Sheet Series (Session Management, CSRF Prevention, HTTP Headers)",
+      "MDN Web Docs (HTTP, CORS, CSS specificity, Web Storage API)"
+    ]
+  },
+  "ERY": {
+    "summary": "Erişim yönetimi, bilgi varlıklarına kimin, hangi koşulda ve ne kadar süreyle erişebileceğini belirleyen politika, süreç ve teknik kontrollerin bütünüdür. Banka BT denetiminde kullanıcı hesabı yaşam döngüsü (işe giriş, görev değişikliği, ayrılış), ayrıcalıklı hesap yönetimi, görevler ayrılığı, en az ayrıcalık ilkesi, periyodik erişim gözden geçirmeleri ve iz kayıtları en sık incelenen kontrol alanıdır; sınavda bu kavramlar senaryo üzerinden sorulur.",
+    "concepts": [
+      "Kimlik tanımlama (identification) kullanıcının kim olduğunu iddia etmesi, kimlik doğrulama (authentication) bunu kanıtlaması, yetkilendirme (authorization) neye erişebileceğinin belirlenmesi, hesap verebilirlik (accountability) yapılanların kullanıcıya bağlanabilmesidir. Bu zincir ancak her kullanıcının tekil ve kişisel hesabı varsa çalışır.",
+      "En az ayrıcalık (least privilege) ilkesi: Kullanıcı ve servislere görevini yapmak için gereken en düşük yetki verilir, fazlası verilmez. Bilmesi gereken (need-to-know) ilkesi verinin yalnızca iş gereği ihtiyaç duyanlarca görülmesidir.",
+      "Görevler ayrılığı (segregation/separation of duties, SoD): Bir işlemin başlatma, onaylama, kaydetme ve mutabakat adımlarının farklı kişilerce yapılması; hata ve suistimali tek kişinin gerçekleştirmesini engeller. Örnek: havale giren personel onaylayamaz; geliştirici üretime kod taşıyamaz. Küçük ekiplerde telafi edici kontrol (compensating control) olarak yönetici gözden geçirmesi veya detaylı iz kaydı kullanılır.",
+      "Erişim kontrol modelleri: DAC (Discretionary; kaynak sahibi yetki verir, Unix izinleri), MAC (Mandatory; sistem etiketlere göre karar verir, askeri sınıflandırma, Bell-LaPadula), RBAC (Role-Based; yetki rollere, kullanıcılar rollere atanır, bankacılıkta standart), ABAC (Attribute-Based; kullanıcı, kaynak, ortam özniteliklerine göre dinamik politika, örn. yalnızca mesai saatinde şube IP'sinden).",
+      "Kullanıcı hesabı yaşam döngüsü: Talep → yönetici ve veri sahibi onayı → tanımlama (provisioning) → periyodik gözden geçirme → görev değişikliğinde yetki güncelleme → ayrılışta zamanında kapatma (de-provisioning). İK sistemiyle entegrasyon ayrılan personelin hesabının açık kalmasını önler; sınavda 'ayrılan personelin hesabı 3 ay sonra hâlâ aktif' tipik bulgudur.",
+      "Yetki birikimi (privilege creep): Görev değiştiren kullanıcının eski yetkilerini de koruması; RBAC ve periyodik gözden geçirme ile önlenir. Hayalet/uykuda hesap (dormant account) uzun süre kullanılmayan hesaptır ve otomatik pasifleştirilmelidir.",
+      "Ayrıcalıklı erişim yönetimi (PAM, Privileged Access Management): root, administrator, DBA, servis hesapları gibi yüksek yetkili hesaplar ayrı envanterde tutulur; parolaları kasada (vault) saklanır, kullanım kayıt altına alınır (oturum kaydı), ihtiyaç anında geçici yetki verilir (just-in-time), paylaşımlı yönetici hesapları kişiselleştirilir veya kullanım öncesi check-out yapılır.",
+      "Kimlik doğrulama güçlendirme: Parola politikası (uzunluk, karmaşıklık, geçmiş, kilitleme eşiği, deneme sayısı), çok faktörlü kimlik doğrulama (özellikle uzaktan erişim, ayrıcalıklı hesap ve internet bankacılığında), tek oturum açma (SSO) ve federasyon (SAML, OpenID Connect), dizin hizmeti (Active Directory, LDAP) ile merkezi yönetim.",
+      "Müşteri tarafında kimlik doğrulama: BDDK düzenlemesi elektronik bankacılıkta müşteri kimlik doğrulamasında birbirinden bağımsız en az iki bileşenin kullanılmasını ve işlem güvenliği için risk temelli ek doğrulama, işlem limitleri ve bildirim gibi kontrolleri bekler. Oturum zaman aşımı ve cihaz eşleştirme destekleyici kontrollerdir.",
+      "Periyodik erişim gözden geçirmesi (access recertification): Veri/sistem sahipleri belirli aralıklarla (kritik sistemlerde daha sık) kullanıcı listelerini ve yetkileri onaylar, gereksiz yetkiler kaldırılır; sonuçlar belgelenir. Denetçi örneklem alarak İK listesi ile sistem kullanıcı listesini karşılaştırır.",
+      "İz kayıtları (audit log): Kim, ne zaman, hangi kaynağa, hangi işlemi yaptı, başarılı mı; özellikle ayrıcalıklı işlemler, yetki değişiklikleri ve başarısız girişler kaydedilir. Kayıtlar değiştirilemez (write-once/merkezi SIEM), zaman damgalı (NTP ile eş zamanlı) ve düzenlemenin öngördüğü süre boyunca saklanır; kayıt alan kişi kaydı silememelidir.",
+      "Uzaktan erişim ve üçüncü taraf erişimi: VPN + MFA, zaman sınırlı hesaplar, tedarikçi personeli için sponsor ve sözleşme, erişimin iş bitiminde kapatılması ve kayıt altına alınması. Dış hizmet sağlayıcı erişimi bankanın sorumluluğunu kaldırmaz.",
+      "Veri sınıflandırma ile erişim bağlantısı: Veriler (gizli, kuruma özel, kamuya açık gibi) sınıflandırılır; sınıf, erişim kontrolünün sıkılığını, şifreleme ve maskeleme ihtiyacını belirler. Müşteri sırrı niteliğindeki verilere erişim 'bilmesi gereken' ilkesine ve kayıt altına alınma zorunluluğuna tabidir.",
+      "COBIT 2019'da erişim yönetimi DSS05 (Managed Security Services) ve DSS06 (Managed Business Process Controls) hedefleriyle, ISO/IEC 27001:2022'de Ek A erişim kontrolü, kimlik yönetimi ve ayrıcalıklı erişim hakları kontrolleriyle, ITIL'de erişim yönetimi süreciyle (v3'te ayrı süreç; ITIL 4'te bilgi güvenliği yönetimi uygulaması içinde) ele alınır. Denetim testi: tasarım etkinliği (kontrol var mı) ve işletim etkinliği (dönem boyunca çalışmış mı)."
+    ],
+    "comparisons": [
+      {
+        "title": "Erişim kontrol modelleri",
+        "rows": [
+          [
+            "Model",
+            "Kararı veren",
+            "Esneklik",
+            "Tipik kullanım"
+          ],
+          [
+            "DAC (İsteğe bağlı)",
+            "Kaynak sahibi",
+            "Yüksek, denetimi zor",
+            "Dosya sistemleri, Unix izinleri"
+          ],
+          [
+            "MAC (Zorunlu)",
+            "Sistem politikası, etiketler",
+            "Düşük, katı",
+            "Askeri/gizlilik dereceli sistemler"
+          ],
+          [
+            "RBAC (Rol tabanlı)",
+            "Rol tanımları",
+            "Orta, ölçeklenebilir",
+            "Bankacılık uygulamaları, ERP"
+          ],
+          [
+            "ABAC (Öznitelik tabanlı)",
+            "Politika motoru (kullanıcı+kaynak+ortam)",
+            "Çok yüksek, dinamik",
+            "Bulut, sıfır güven, bağlama duyarlı erişim"
+          ]
+        ]
+      },
+      {
+        "title": "Önleyici vs Tespit edici vs Düzeltici erişim kontrolleri",
+        "rows": [
+          [
+            "Tür",
+            "Amaç",
+            "Erişim yönetimi örneği"
+          ],
+          [
+            "Önleyici (preventive)",
+            "Olmasını engelle",
+            "MFA, RBAC, hesap kilitleme, görevler ayrılığı"
+          ],
+          [
+            "Tespit edici (detective)",
+            "Olduğunu fark et",
+            "İz kaydı incelemesi, periyodik erişim gözden geçirmesi, SIEM uyarısı"
+          ],
+          [
+            "Düzeltici (corrective)",
+            "Etkisini gider",
+            "Hesap kapatma, yetki geri alma, parola sıfırlama"
+          ]
+        ]
+      },
+      {
+        "title": "Standart kullanıcı hesabı vs Ayrıcalıklı hesap yönetimi",
+        "rows": [
+          [
+            "Özellik",
+            "Standart hesap",
+            "Ayrıcalıklı hesap"
+          ],
+          [
+            "Yetki",
+            "İş rolüyle sınırlı",
+            "Sistem/veri üzerinde geniş"
+          ],
+          [
+            "Kimlik doğrulama",
+            "Parola (+MFA tercihen)",
+            "MFA zorunlu, kasa, oturum kaydı"
+          ],
+          [
+            "Gözden geçirme sıklığı",
+            "Periyodik (örn. yıllık/6 ay)",
+            "Daha sık (örn. 3 ay) ve her kullanım kayıtlı"
+          ],
+          [
+            "Paylaşım",
+            "Yasak",
+            "Yasak; zorunluysa check-out ve kişiye bağlama"
+          ],
+          [
+            "Kullanım",
+            "Günlük işler",
+            "Yalnızca ihtiyaç anında, geçici yükseltme"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Hesap kilitleme politikası örneği: 5 başarısız deneme → 15-30 dk kilit (kaba kuvvete karşı önleyici kontrol)",
+      "Erişim gözden geçirme kapsamı = Aktif hesap sayısı; bulgu oranı = Gereksiz yetkili hesap / İncelenen hesap",
+      "Görevler ayrılığı matrisinde çakışma: aynı kişide 'başlatma' ve 'onaylama' rolleri birlikte varsa SoD ihlali"
+    ],
+    "misconceptions": [
+      "Yanılgı: Güçlü parola politikası varsa ayrıcalıklı hesaplar için ek kontrol gerekmez. Doğrusu: Ayrıcalıklı hesaplar etkisi en yüksek hesaplardır; MFA, kasa, oturum kaydı ve sık gözden geçirme beklenir.",
+      "Yanılgı: Yetkilendirme kimlik doğrulama ile aynı şeydir. Doğrusu: Kimlik doğrulama 'kim olduğunu' kanıtlar, yetkilendirme 'neye erişebileceğini' belirler; doğru kimlikle giren kullanıcı bile yetkisiz işlem yapamamalıdır.",
+      "Yanılgı: Ayrılan personelin hesabını pasifleştirmek yerine parolasını değiştirmek yeterlidir. Doğrusu: Hesap kapatılmalı, yetkileri alınmalı ve kayıt tutulmalıdır; parola değişikliği izlenebilirliği bozar ve paylaşılmış kimlik bilgileri riskini kaldırmaz.",
+      "Yanılgı: RBAC'de her kullanıcıya özel rol tanımlamak en güvenlisidir. Doğrusu: Rol patlaması (role explosion) yönetilemezlik yaratır; roller iş fonksiyonuna göre tanımlanır, istisnalar belgelenir.",
+      "Yanılgı: Görevler ayrılığı yalnızca finansal işlemler için geçerlidir. Doğrusu: BT'de de geliştirme-test-üretim ayrımı, yetki talep eden ile onaylayanın farklı olması, güvenlik yöneticisi ile sistem yöneticisi ayrımı SoD uygulamalarıdır.",
+      "Yanılgı: İz kayıtlarının alınması yeterlidir, incelenmesi gerekmez. Doğrusu: Kayıt tespit edici kontroldür; düzenli inceleme veya SIEM korelasyonu olmadan kontrol işletim etkinliğini sağlamaz."
+    ],
+    "example": "Denetçi, çekirdek bankacılık uygulamasındaki aktif kullanıcı listesini İK'dan alınan ayrılan personel listesiyle karşılaştırır ve 2 ay önce ayrılan bir operasyon uzmanının hesabının aktif olduğunu, son girişinin ayrılış tarihinden sonraya denk geldiğini görür. Ayrıca aynı şubede bir kullanıcının hem 'havale giriş' hem 'havale onay' rolüne sahip olduğunu saptar. Birinci bulgu kullanıcı yaşam döngüsünde İK-BT entegrasyonu eksikliğine (de-provisioning), ikincisi görevler ayrılığı ihlaline işaret eder. Öneriler: İK ayrılış kaydının hesabı otomatik pasifleştirmesi, SoD matrisinin uygulamada çakışma kuralı olarak tanımlanması, 3 aylık erişim gözden geçirmesinin belgelenmesi ve bu dönemdeki işlemlerin iz kayıtlarından incelenmesi.",
+    "references": [
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (Resmî Gazete 15.03.2020, No. 31069), kimlik doğrulama, yetkilendirme, iz kayıtları ve görevler ayrılığı hükümleri (kavram düzeyinde)",
+      "ISO/IEC 27001:2022 ve ISO/IEC 27002:2022, erişim kontrolü, kimlik yönetimi, kimlik doğrulama bilgisi ve ayrıcalıklı erişim hakları kontrolleri",
+      "COBIT 2019 Framework: Governance and Management Objectives, DSS05 ve DSS06",
+      "ITIL v3 Service Operation (Access Management); ITIL 4 Information Security Management uygulaması",
+      "NIST SP 800-53 Rev.5 AC (Access Control) ailesi; NIST SP 800-63B (kimlik doğrulama)",
+      "ISACA, CISA Review Manual, Alan 5 (Protection of Information Assets)"
+    ]
+  },
+  "DGY": {
+    "summary": "Değişiklik yönetimi, bilgi sistemlerindeki yazılım, donanım, yapılandırma ve altyapı değişikliklerinin yetkisiz, test edilmemiş veya belgelenmemiş biçimde üretime geçmesini engelleyen kontrol sürecidir. Banka denetiminde değişiklik talebi, etki ve risk analizi, onay (CAB), test, geri dönüş planı, görevler ayrılığı ile dağıtım, acil değişiklik istisnaları ve üretim ortamının bütünlüğü incelenir; sınavda bu adımların eksikliğinden doğan riskler senaryo olarak sorulur.",
+    "concepts": [
+      "Değişiklik (change): Hizmetleri etkileyebilecek her türlü ekleme, düzenleme veya kaldırma (kod, yapılandırma, yama, altyapı, erişim kuralı). Değişiklik yönetiminin amacı faydalı değişikliklerin hizmet kesintisi ve riski en aza indirilerek, yetkili ve izlenebilir biçimde yapılmasıdır. ITIL 4 buna 'değişiklik etkinleştirme' (change enablement) der.",
+      "ITIL değişiklik türleri: Standart (standard: düşük risk, önceden yetkilendirilmiş, tekrarlayan; örn. rutin parola sıfırlama, onaylı yama), Normal (normal: değerlendirme ve onay gerektirir, kurul gündemine girer), Acil (emergency: hizmet kesintisi/güvenlik açığı için hızlandırılmış onay, sonradan belgeleme ve gözden geçirme).",
+      "Değişiklik yaşam döngüsü: Talep (RFC, Request for Change) → kayıt ve sınıflandırma → etki, risk ve maliyet analizi → onay (yetki düzeyine göre yönetici veya CAB) → geliştirme/yapılandırma → test ve kabul → dağıtım planı ve zamanlama → uygulama → gözden geçirme (PIR, Post-Implementation Review) → kapanış.",
+      "Değişiklik Danışma Kurulu (CAB, Change Advisory Board): İş birimi, BT operasyon, güvenlik, uygulama sahibi ve risk temsilcilerinden oluşur; normal değişiklikleri değerlendirir ve onaylar. Acil değişiklikler için küçük ECAB (Emergency CAB) toplanır. Onay, değişikliği talep eden veya geliştiren kişiden farklı birinden gelmelidir.",
+      "Etki analizi (impact analysis): Değişikliğin hangi sistemleri, arayüzleri, verileri, kullanıcıları ve düzenleyici yükümlülükleri etkilediğinin belirlenmesi; yapılandırma yönetim veritabanı (CMDB) ve bağımlılık haritası bu analizin kaynağıdır. Risk puanı etki × olasılık ile sınıflandırılır (düşük/orta/yüksek).",
+      "Test ve kabul: Değişiklik üretim dışı ortamda (TEST/UAT/staging) test edilir; birim, entegrasyon, regresyon, performans ve güvenlik testleri değişikliğin niteliğine göre seçilir. İş birimi kabulü (UAT imzası) belgelenir. Üretim verisi test ortamında maskelenerek kullanılır.",
+      "Geri dönüş planı (rollback/back-out plan): Değişiklik başarısız olursa önceki duruma dönme adımları, yedekler ve karar kriterleri önceden yazılır ve mümkünse test edilir. Geri dönüşsüz değişikliklerde (veri dönüşümü) ek önlem (yedek, aşamalı geçiş) alınır.",
+      "Görevler ayrılığı ile dağıtım: Kodu geliştiren kişi üretime taşıyamaz; dağıtım operasyon/dağıtım ekibi veya onaya bağlı otomatik boru hattı ile yapılır. Geliştiricilerin üretim ortamına yazma erişimi yoktur; okuma gerekiyorsa kayıtlı ve geçici verilir. Kaynak kod ile üretimdeki ikili dosyanın eşleştiği (sürüm kontrolü, özet karşılaştırma) doğrulanır.",
+      "Yapılandırma yönetimi (configuration management) ve CMDB: Yapılandırma öğeleri (CI: sunucu, uygulama, lisans, ağ cihazı) ve aralarındaki ilişkiler kayıtlıdır; her değişiklik CMDB'de güncellenir. Temel çizgi (baseline) onaylı referans yapılandırmadır; sapmalar (drift) tespit edilir.",
+      "Yama yönetimi (patch management) değişiklik yönetiminin alt kümesidir: Zafiyet duyurusu → kritiklik değerlendirmesi (CVSS) → test → dağıtım → doğrulama. Kritik güvenlik yamaları için tanımlı süre hedefleri (örn. kritik 7-30 gün) ve istisna onayı beklenir.",
+      "Acil değişiklik kontrolü: Hız gerektiği için önceden tam onay alınamaz; ancak en az bir yetkili sözlü/elektronik onay, eşli çalışma (iki kişi), ayrıntılı kayıt ve 1-2 iş günü içinde geriye dönük belgeleme ve CAB gözden geçirmesi zorunludur. Acil değişikliklerin toplam içindeki oranının yüksek olması sürecin atlatıldığına işaret eden denetim göstergesidir.",
+      "Yetkisiz değişiklik tespiti: Üretim ortamında dosya bütünlüğü izleme (FIM), yapılandırma karşılaştırması ve değişiklik kayıtları ile gerçekleşen değişikliklerin mutabakatı yapılır; kaydı olmayan değişiklik yetkisizdir. Denetçi örneklem alıp her değişiklik için talep, onay, test ve dağıtım kanıtını ister.",
+      "Belgeleme ve izlenebilirlik: Her değişiklik için talep eden, onaylayan, uygulayan, tarih, etkilenen CI, test sonuçları, geri dönüş planı ve PIR sonucu kayıtlıdır. Değişiklik takvimi (change schedule/forward schedule of change) ve donma dönemleri (change freeze; yıl sonu, kampanya, bayram) planlanır.",
+      "Çerçeve bağlantıları: COBIT 2019 BAI06 (Managed IT Changes) ve BAI07 (Managed IT Change Acceptance and Transitioning), ISO/IEC 27001:2022 değişiklik yönetimi ve geliştirme-test-üretim ortam ayrımı kontrolleri, ITIL 4 Change Enablement ve Release Management uygulamaları, BDDK yönetmeliğinde değişiklik yönetimi süreci, test ve üretim ortamlarının ayrılması ve kaynak kodun güvenliği beklentileri."
+    ],
+    "comparisons": [
+      {
+        "title": "ITIL değişiklik türleri",
+        "rows": [
+          [
+            "Özellik",
+            "Standart",
+            "Normal",
+            "Acil"
+          ],
+          [
+            "Risk",
+            "Düşük, bilinen",
+            "Değişken",
+            "Yüksek aciliyet"
+          ],
+          [
+            "Onay",
+            "Önceden yetkilendirilmiş (şablon)",
+            "Yetki düzeyine göre yönetici/CAB",
+            "ECAB veya yetkili yönetici, hızlandırılmış"
+          ],
+          [
+            "Test",
+            "Önceden kanıtlanmış prosedür",
+            "Tam test döngüsü",
+            "Mümkün olan en az test, sonradan tamamlanır"
+          ],
+          [
+            "Belgeleme",
+            "Şablon kayıt",
+            "Tam RFC",
+            "Geriye dönük tam belgeleme"
+          ],
+          [
+            "Örnek",
+            "Rutin yama, standart sunucu kurulumu",
+            "Yeni modül, altyapı değişikliği",
+            "Hizmet kesintisi düzeltmesi, sıfır gün yaması"
+          ]
+        ]
+      },
+      {
+        "title": "Dağıtım stratejileri",
+        "rows": [
+          [
+            "Strateji",
+            "Nasıl",
+            "Risk",
+            "Geri dönüş"
+          ],
+          [
+            "Büyük patlama",
+            "Tüm kullanıcılara tek seferde",
+            "Yüksek",
+            "Zor, tüm sistem"
+          ],
+          [
+            "Aşamalı / Pilot",
+            "Önce sınırlı grup/şube",
+            "Orta",
+            "Kolay, etkilenen grup küçük"
+          ],
+          [
+            "Mavi-Yeşil",
+            "İki eş ortam, trafik anahtarlanır",
+            "Düşük",
+            "Çok hızlı, trafiği geri al"
+          ],
+          [
+            "Kanarya",
+            "Trafiğin küçük yüzdesi yeni sürüme",
+            "Düşük",
+            "Hızlı, yüzdeyi sıfırla"
+          ]
+        ]
+      },
+      {
+        "title": "Değişiklik yönetimi vs Olay yönetimi vs Problem yönetimi (ITIL)",
+        "rows": [
+          [
+            "Özellik",
+            "Değişiklik",
+            "Olay (incident)",
+            "Problem"
+          ],
+          [
+            "Amaç",
+            "Değişikliği kontrollü yapmak",
+            "Hizmeti en hızlı geri getirmek",
+            "Kök nedeni bulup tekrarı önlemek"
+          ],
+          [
+            "Tetikleyici",
+            "İş ihtiyacı, problem çözümü, yama",
+            "Hizmet kesintisi/bozulması",
+            "Tekrarlayan veya büyük olaylar"
+          ],
+          [
+            "Çıktı",
+            "Onaylı, test edilmiş, kayıtlı değişiklik",
+            "Geçici çözüm, hizmet restorasyonu",
+            "Kök neden, bilinen hata kaydı, RFC"
+          ],
+          [
+            "Ölçüt",
+            "Başarılı değişiklik oranı, acil oran",
+            "Çözüm süresi (MTTR), SLA",
+            "Tekrarlayan olay sayısı"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Değişiklik başarı oranı = Başarılı değişiklik / Toplam değişiklik × 100 (geri alınan veya olay yaratan değişiklikler başarısız sayılır)",
+      "Acil değişiklik oranı = Acil değişiklik / Toplam değişiklik; yüksek oran sürecin atlatıldığına işaret eder",
+      "Yetkisiz değişiklik = Üretimde tespit edilen değişiklik − Kayıtlı/onaylı değişiklik (mutabakat farkı sıfır olmalıdır)",
+      "Risk sınıfı = Etki × Olasılık (örn. 3×3 matris: 1-3 düşük, 4-6 orta, 7-9 yüksek)"
+    ],
+    "misconceptions": [
+      "Yanılgı: Acil değişiklikler onay ve belgeleme gerektirmez. Doğrusu: Acil değişiklikte onay hızlandırılır ve belgeleme sonraya kalır, ancak ikisi de zorunludur; sonradan CAB gözden geçirmesi yapılır.",
+      "Yanılgı: Küçük bir yapılandırma değişikliği (örn. güvenlik duvarı kuralı) değişiklik yönetimi dışındadır. Doğrusu: Tek satırlık kural değişikliği bile hizmeti kesebilir veya zafiyet açabilir; standart değişiklik şablonu ile kayıt altına alınır.",
+      "Yanılgı: Geliştiricinin üretime erişimi işi hızlandırdığı için kabul edilebilir. Doğrusu: Görevler ayrılığı ihlalidir; test edilmemiş kod ve yetkisiz değişiklik riski yaratır. Hız için onaya bağlı otomatik boru hattı kullanılır.",
+      "Yanılgı: Değişiklik üretime geçince süreç biter. Doğrusu: Uygulama sonrası gözden geçirme (PIR) başarının ve yan etkilerin değerlendirilmesini, CMDB güncellemesini ve derslerin kaydını içerir.",
+      "Yanılgı: Test ortamında kullanılan üretim verisi kopyası sorun değildir çünkü ortam iç ağdadır. Doğrusu: Test ortamları genelde daha az korunur; müşteri sırrı niteliğindeki veri maskelenmeli veya sentetik veri kullanılmalıdır.",
+      "Yanılgı: Yama yönetimi güvenlik ekibinin işidir, değişiklik yönetimiyle ilgisi yoktur. Doğrusu: Yama da bir değişikliktir; test, onay, dağıtım penceresi ve geri dönüş planı aynı süreçten geçer."
+    ],
+    "example": "Bir gece bankanın EFT modülünde kesinti yaşanır. İnceleme, bir geliştiricinin bir gün önce üretim veritabanındaki saklı yordamı doğrudan değiştirdiğini, bu değişikliğin RFC kaydı, testi ve onayı olmadığını ortaya koyar. Denetçi bunu yetkisiz değişiklik ve görevler ayrılığı ihlali olarak sınıflar: geliştiricinin üretimde yazma yetkisi vardı (erişim kontrolü eksikliği), üretim nesnelerinde değişiklik izleme yoktu (tespit kontrolü eksikliği) ve geri dönüş planı olmadığı için kesinti 4 saat sürdü. Öneriler: geliştiricilerin üretim yazma yetkisinin kaldırılması, dağıtımın onaya bağlı boru hattıyla yapılması, veritabanı nesne değişikliklerinin FIM/DDL tetikleyicisiyle izlenmesi ve aylık değişiklik kaydı-üretim mutabakatı. Bu olay ayrıca problem yönetimine kök neden kaydı olarak girer.",
+    "references": [
+      "ITIL 4 Foundation, Change Enablement, Release Management ve Deployment Management uygulamaları",
+      "COBIT 2019 Framework: Governance and Management Objectives, BAI06 (Managed IT Changes), BAI07 (Managed IT Change Acceptance and Transitioning), BAI10 (Managed Configuration)",
+      "ISO/IEC 27002:2022, değişiklik yönetimi, geliştirme/test/üretim ortamlarının ayrılması ve test bilgisi kontrolleri",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020), değişiklik yönetimi ve ortam ayrımı hükümleri (kavram düzeyinde)",
+      "ISACA, CISA Review Manual, Alan 3 (Information Systems Acquisition, Development and Implementation)",
+      "NIST SP 800-40 Rev.4 (Guide to Enterprise Patch Management Planning)"
+    ]
+  },
+  "SDLC": {
+    "summary": "Yazılım mühendisliği ve SDLC konusu, yazılımın gereksinimden bakıma kadar geçen yaşam döngüsünü, süreç modellerini (şelale, V, artımlı, spiral, çevik), test düzeylerini ve kalite ölçütlerini kapsar. Sınavda model karşılaştırmaları, Scrum rolleri ve törenleri, test türleri (birim, entegrasyon, sistem, kabul; kara/beyaz kutu), UML diyagramları, CI/CD ve bankada geliştirme-test-üretim ortam ayrımı sık sorulur.",
+    "concepts": [
+      "SDLC (Software Development Life Cycle) aşamaları: Planlama/fizibilite, gereksinim analizi, tasarım (mimari ve ayrıntılı), gerçekleştirme (kodlama), test, dağıtım (deployment), bakım. Hatanın maliyeti aşama ilerledikçe katlanarak artar; gereksinim hatası en pahalıdır.",
+      "Gereksinim türleri: İşlevsel (sistem ne yapar: 'havale limiti kontrol edilir') ve işlevsel olmayan (nasıl yapar: performans, güvenlik, erişilebilirlik, ölçeklenebilirlik). İzlenebilirlik matrisi gereksinim-tasarım-test eşlemesini gösterir. SRS (Software Requirements Specification) gereksinim belgesidir.",
+      "Şelale (waterfall) modeli aşamalar sıralı ve geri dönüşsüzdür; gereksinimler sabit ve iyi anlaşılmışsa uygundur, değişime kapalıdır. V modeli her geliştirme aşamasına karşılık gelen test aşamasını (birim ↔ tasarım, kabul ↔ gereksinim) eşler ve doğrulama/geçerlemeyi vurgular.",
+      "Artımlı (incremental) model ürünü işlevsel parçalar halinde teslim eder; yinelemeli (iterative) model her turda ürünü iyileştirir. Spiral model risk analizi odaklıdır, her turda planlama, risk analizi, geliştirme, değerlendirme yapılır; büyük ve riskli projelere uygundur. Prototipleme belirsiz gereksinimleri netleştirir.",
+      "Çevik (Agile) Manifesto değerleri: bireyler ve etkileşim, çalışan yazılım, müşteriyle iş birliği, değişime yanıt. Kısa yinelemeler, sürekli geri bildirim ve kendi kendini yöneten ekipler esastır. XP (Extreme Programming) eşli programlama, TDD ve sürekli entegrasyonu vurgular.",
+      "Scrum: Roller Ürün Sahibi (Product Owner; birikimi önceliklendirir), Scrum Master (süreci kolaylaştırır, engelleri kaldırır), Geliştirme Ekibi. Olaylar: Sprint (1-4 hafta, sabit süre), Sprint Planlama, Günlük Scrum (15 dk), Sprint Gözden Geçirme, Sprint Retrospektifi. Eserler: Ürün Birikimi, Sprint Birikimi, Artım (Increment). Kanban ise sürekli akış ve devam eden iş (WIP) sınırı kullanır.",
+      "Test düzeyleri: Birim testi (tek fonksiyon/sınıf, geliştirici, JUnit), Entegrasyon testi (bileşenler arası arayüz; büyük patlama, yukarıdan aşağı, aşağıdan yukarı), Sistem testi (tüm sistem, gereksinimlere karşı), Kabul testi (UAT, müşteri/iş birimi; alfa iç, beta dış). Regresyon testi değişikliğin eskiyi bozmadığını doğrular.",
+      "Test teknikleri: Kara kutu (black box: iç yapı bilinmez; eşdeğerlik bölümleme, sınır değer analizi, karar tablosu), Beyaz kutu (white box: kod bilinir; ifade/dal/yol kapsamı), Gri kutu. Doğrulama (verification) 'ürünü doğru yapıyor muyuz' (belgeye uygunluk), Geçerleme (validation) 'doğru ürünü yapıyor muyuz' (ihtiyaca uygunluk).",
+      "Statik test kodu çalıştırmadan inceler (kod gözden geçirme, statik analiz araçları, SAST); dinamik test çalıştırarak yapar (DAST, sızma testi). Hata (error) insan hatası, kusur (defect/bug) koddaki hata, arıza (failure) çalışma anında görünen sapmadır.",
+      "TDD (Test-Driven Development): Önce başarısız test yaz, sonra geçecek en basit kodu yaz, sonra yeniden düzenle (refactor): kırmızı-yeşil-yeniden düzenle. BDD davranış senaryoları (Given-When-Then) kullanır. Kod kapsamı (coverage) test edilen kod yüzdesidir, kaliteyi tek başına garanti etmez.",
+      "UML diyagramları: Yapısal (sınıf, nesne, bileşen, dağıtım) ve davranışsal (kullanım senaryosu/use case, sıra/sequence, etkinlik/activity, durum/state). Sınıf diyagramında ilişkiler: ilişkilendirme, toplama (aggregation, içi boş elmas), bileşim (composition, dolu elmas, yaşam döngüsü bağlı), kalıtım (içi boş üçgen ok).",
+      "CI/CD: Sürekli Entegrasyon (her commit'te otomatik derleme ve test), Sürekli Teslimat (üretime hazır paket, elle onayla dağıtım), Sürekli Dağıtım (otomatik üretime). DevOps geliştirme ve operasyonu birleştirir; DevSecOps güvenlik testlerini (SAST/DAST/bağımlılık taraması) boru hattına ekler.",
+      "Ortam ayrımı: Geliştirme (DEV) → Test (TEST/QA) → Kullanıcı kabul (UAT) → Ön üretim (staging) → Üretim (PROD). Bankacılıkta geliştiricinin üretime doğrudan erişimi görevler ayrılığı gereği engellenir; üretim verisi test ortamında maskelenerek (data masking) kullanılır.",
+      "Yazılım kalite ölçütleri (ISO/IEC 25010): işlevsel uygunluk, performans, uyumluluk, kullanılabilirlik, güvenilirlik, güvenlik, bakım yapılabilirlik, taşınabilirlik. Teknik borç kısa yol kararlarının birikmiş maliyetidir. Proje tahmini: fonksiyon noktası, COCOMO, planlama pokeri (hikâye puanı). Yazılım hata yoğunluğu = kusur sayısı / KLOC."
+    ],
+    "comparisons": [
+      {
+        "title": "Şelale vs Çevik",
+        "rows": [
+          [
+            "Özellik",
+            "Şelale",
+            "Çevik (Scrum)"
+          ],
+          [
+            "Aşamalar",
+            "Sıralı, tek geçiş",
+            "Yinelemeli, kısa sprintler"
+          ],
+          [
+            "Gereksinim",
+            "Başta sabitlenir",
+            "Sürekli evrilir"
+          ],
+          [
+            "Teslimat",
+            "Projenin sonunda",
+            "Her sprint sonunda çalışan artım"
+          ],
+          [
+            "Müşteri katılımı",
+            "Başta ve sonda",
+            "Sürekli"
+          ],
+          [
+            "Değişiklik maliyeti",
+            "Yüksek",
+            "Düşük"
+          ],
+          [
+            "Belgeleme",
+            "Kapsamlı",
+            "Yeterli düzeyde"
+          ],
+          [
+            "Uygun olduğu durum",
+            "Sabit gereksinim, düzenleyici zorunlu belgeleme",
+            "Belirsiz/değişen gereksinim, hızlı pazar"
+          ]
+        ]
+      },
+      {
+        "title": "Test düzeyleri",
+        "rows": [
+          [
+            "Düzey",
+            "Kapsam",
+            "Kim yapar",
+            "Amaç"
+          ],
+          [
+            "Birim",
+            "Tek fonksiyon/sınıf",
+            "Geliştirici",
+            "Mantık doğruluğu"
+          ],
+          [
+            "Entegrasyon",
+            "Modüller arası arayüz",
+            "Geliştirici/test ekibi",
+            "Arayüz uyumu, veri akışı"
+          ],
+          [
+            "Sistem",
+            "Tüm sistem",
+            "Bağımsız test ekibi",
+            "Gereksinimlere uygunluk (işlevsel + işlevsel olmayan)"
+          ],
+          [
+            "Kabul (UAT)",
+            "İş senaryoları",
+            "Son kullanıcı/iş birimi",
+            "İhtiyacı karşılıyor mu, üretime geçiş onayı"
+          ]
+        ]
+      },
+      {
+        "title": "Kara kutu vs Beyaz kutu test",
+        "rows": [
+          [
+            "Özellik",
+            "Kara kutu",
+            "Beyaz kutu"
+          ],
+          [
+            "Bilgi",
+            "Yalnızca girdi/çıktı",
+            "Kaynak kod ve iç yapı"
+          ],
+          [
+            "Teknikler",
+            "Eşdeğerlik bölümleme, sınır değer, karar tablosu, durum geçişi",
+            "İfade, dal, koşul, yol kapsamı"
+          ],
+          [
+            "Yapan",
+            "Test uzmanı, kullanıcı",
+            "Geliştirici"
+          ],
+          [
+            "Düzey",
+            "Sistem, kabul",
+            "Birim, entegrasyon"
+          ],
+          [
+            "Bulduğu",
+            "Eksik işlev, yanlış davranış",
+            "Ölü kod, mantık hatası, kapsanmayan dal"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Hata yoğunluğu = Kusur sayısı / KLOC (bin satır kod)",
+      "Kod kapsamı (%) = Çalıştırılan ifade (veya dal) sayısı / Toplam ifade (dal) sayısı × 100",
+      "Sprint hızı (velocity) = Sprintte tamamlanan hikâye puanı toplamı; kalan sprint ≈ kalan puan / ortalama hız",
+      "Çevrimsel karmaşıklık (McCabe) = E - N + 2P (kenar, düğüm, bağlı bileşen) = karar noktası sayısı + 1",
+      "SemVer: MAJOR.MINOR.PATCH (2.3.1 → uyumsuz değişiklikte 3.0.0, özellikte 2.4.0, düzeltmede 2.3.2)"
+    ],
+    "misconceptions": [
+      "Yanılgı: Çevik yöntemde belgeleme yapılmaz ve plan yoktur. Doğrusu: Çevik 'kapsamlı belgelemeden çok çalışan yazılım' der; yeterli belgeleme ve sprint planlaması vardır. Düzenlemeye tabi bankalarda çevik ekipler de izlenebilirlik belgesi üretir.",
+      "Yanılgı: Scrum Master ekibin yöneticisidir ve işleri atar. Doğrusu: Scrum Master hizmetkâr lider ve kolaylaştırıcıdır; işi ekip kendi seçer, önceliği Ürün Sahibi belirler.",
+      "Yanılgı: %100 kod kapsamı hatasız yazılım demektir. Doğrusu: Kapsam yalnızca kodun çalıştırıldığını gösterir; yanlış beklenti yazılmış test veya eksik gereksinim yakalanmaz.",
+      "Yanılgı: Test aşaması kodlama bittikten sonra başlar. Doğrusu: Statik testler ve test tasarımı gereksinim aşamasında başlar (sola kaydırma, shift-left); V modeli bunu açıkça gösterir.",
+      "Yanılgı: Doğrulama ve geçerleme aynı şeydir. Doğrusu: Doğrulama belirtime uygunluğu (doğru yapmak), geçerleme ihtiyaca uygunluğu (doğru şeyi yapmak) kontrol eder.",
+      "Yanılgı: Regresyon testi yalnızca değiştirilen modülü test eder. Doğrusu: Regresyon testi değişikliğin sistemin DİĞER kısımlarını bozmadığını doğrular; bu yüzden otomasyon kritiktir."
+    ],
+    "example": "Bankanın kredi başvuru modülüne yeni bir skor kuralı ekleniyor. Geliştirici DEV ortamında birim testlerini (kural fonksiyonu için sınır değerler: skor 0, 499, 500, 1000) yazar ve CI boru hattı her commit'te testleri ve SAST taramasını çalıştırır. Değişiklik TEST ortamında maskelenmiş üretim verisiyle entegrasyon ve regresyon testinden geçer; iş birimi UAT'de Given-When-Then senaryolarıyla kabul eder. Denetçi, geliştiricinin üretime doğrudan dağıtım yetkisi olmadığını, dağıtımın değişiklik yönetimi onayıyla operasyon ekibince yapıldığını ve izlenebilirlik matrisinde gereksinimin test kayıtlarına bağlandığını kanıt olarak ister.",
+    "references": [
+      "Pressman & Maxim, Software Engineering: A Practitioner's Approach, Bölüm 2-5, 19-23",
+      "Sommerville, Software Engineering, Bölüm 2-4, 8",
+      "Schwaber & Sutherland, The Scrum Guide (2020)",
+      "ISTQB Foundation Level Syllabus (test düzeyleri ve teknikleri)",
+      "ISO/IEC/IEEE 12207 (yazılım yaşam döngüsü süreçleri), ISO/IEC 25010 (yazılım kalite modeli)",
+      "Beck ve diğerleri, Manifesto for Agile Software Development (2001); OMG UML 2.5 Specification"
+    ]
+  },
+  "MIM": {
+    "summary": "Bilgisayar mimarisi konusu, işlemcinin komutları nasıl yürüttüğünü, bellek hiyerarşisini ve sayı sistemleri ile verinin ikili gösterimini kapsar. Sınavda ikilik/onaltılık dönüşüm, ikiye tümleyen, CPU bileşenleri ve komut döngüsü, RISC/CISC farkı, önbellek düzeyleri ve isabet oranı, boru hattı ve von Neumann/Harvard mimarileri sorulur.",
+    "concepts": [
+      "Von Neumann mimarisi program ve veriyi aynı bellekte tutar (tek veri yolu, von Neumann darboğazı); Harvard mimarisi komut ve veri belleğini ayırır (gömülü sistemler, DSP). Modern CPU'lar çekirdek içinde ayrı L1 komut/veri önbelleğiyle 'değiştirilmiş Harvard' yaklaşımı kullanır.",
+      "CPU bileşenleri: ALU (Arithmetic Logic Unit) aritmetik/mantık işlemleri, Kontrol Birimi (CU) komutları çözer ve sinyal üretir, kayıtçılar (registers) en hızlı depolama. Özel kayıtçılar: Program Sayacı (PC) sonraki komut adresi, Komut Kayıtçısı (IR) çalışan komut, MAR/MDR bellek adresi/verisi, Akümülatör, Durum/Bayrak kayıtçısı (sıfır, taşma, elde, negatif).",
+      "Komut döngüsü: Getir (fetch, PC'deki adresten komutu al, PC'yi artır), Çöz (decode), Yürüt (execute), Geri yaz (write-back). Saat döngüsü (clock cycle) temel zaman birimidir; CPI (komut başına döngü) ve IPC performans ölçütleridir.",
+      "RISC (Reduced Instruction Set Computer): az ve sabit uzunlukta komut, çoğu komut 1 döngü, çok kayıtçı, load/store mimarisi, donanım basit (ARM, RISC-V, MIPS). CISC (Complex): çok ve değişken uzunlukta komut, bellek-bellek işlemleri, mikrokod (x86). Modern x86 CISC komutları içeride RISC benzeri mikro işlemlere çevirir.",
+      "Boru hattı (pipelining): Komut aşamaları örtüştürülür; k aşamalı boru hattı ideal durumda iş hacmini k kat artırır ama tek komutun gecikmesini azaltmaz. Tehlikeler (hazards): yapısal (kaynak çakışması), veri (RAW bağımlılığı; çözüm iletme/forwarding), kontrol (dallanma; çözüm dallanma tahmini). Süper skalar işlemci döngüde birden çok komut başlatır.",
+      "Bellek hiyerarşisi (hızlıdan yavaşa, pahalıdan ucuza): Kayıtçılar → L1 önbellek (~32-64 KB, 1-4 döngü) → L2 (~256 KB-2 MB) → L3 (MB'lar, paylaşımlı) → Ana bellek DRAM (GB, ~100 ns) → SSD → HDD → manyetik bant. Yerellik ilkesi (zamansal ve uzamsal) hiyerarşinin çalışmasını sağlar.",
+      "Önbellek (cache) eşleme: Doğrudan eşlemeli (her blok tek yere), tam ilişkisel (her yere, pahalı karşılaştırma), küme ilişkisel (n-yollu, uzlaşı). Yazma politikaları: write-through (hemen belleğe) ve write-back (kirli bit, çıkarken yaz). İsabet (hit) ve ıskalama (miss) oranı; ıskalama türleri zorunlu, kapasite, çakışma.",
+      "SRAM hızlı, pahalı, yenileme gerektirmez (önbellek); DRAM yoğun, ucuz, periyodik yenileme ister (ana bellek). ROM/PROM/EPROM/EEPROM/Flash kalıcı belleklerdir; BIOS/UEFI flash'ta tutulur. Uçucu (volatile) bellek güç kesilince silinir.",
+      "Sayı sistemleri: İkilik (2), sekizlik (8), onluk (10), onaltılık (16; 0-9, A-F). Her onaltılık basamak 4 bit, her sekizlik basamak 3 bittir. 1 bayt = 8 bit; 1 KB = 1024 bayt (KiB) veya 1000 bayt (SI); 2^10 = 1024, 2^16 = 65.536, 2^20 ≈ 1 milyon, 2^32 ≈ 4,29 milyar.",
+      "İşaretli tamsayı gösterimleri: İşaret-büyüklük, birin tümleyeni, ikinin tümleyeni (two's complement; modern standart, tek sıfır, toplama/çıkarma aynı donanım). n bitlik ikiye tümleyen aralığı -2^(n-1) ile 2^(n-1)-1; 8 bit için -128..127. Negatif almak: bitleri çevir, 1 ekle.",
+      "Kayan nokta (IEEE 754): Tek duyarlık 32 bit (1 işaret, 8 üs, 23 mantis), çift duyarlık 64 bit (1, 11, 52). Üs önyargılı (bias 127 / 1023) saklanır. 0,1 gibi değerler tam temsil edilemez; bu yüzden parasal hesaplarda ondalık/sabit nokta türleri (DECIMAL) kullanılır.",
+      "Mantık kapıları: AND, OR, NOT, NAND, NOR, XOR; NAND ve NOR evrensel kapılardır. Yarım toplayıcı XOR (toplam) + AND (elde), tam toplayıcı elde girişi de alır. Boole cebri: De Morgan yasaları ¬(A∧B) = ¬A∨¬B, ¬(A∨B) = ¬A∧¬B. Kombinasyonel devre (çıkış yalnızca girişe bağlı: toplayıcı, mux, kodlayıcı) ve ardışıl devre (bellek elemanı: flip-flop, kayıtçı, sayaç).",
+      "Veri yolları (bus): Adres yolu (genişliği adreslenebilir bellek miktarını belirler: 32 bit → 4 GB), veri yolu (bir seferde taşınan bit), kontrol yolu. Kesme (interrupt) ve DMA, G/Ç aygıtları ile CPU'nun eşgüdümünü sağlar. Endianlık: big-endian en anlamlı bayt düşük adreste (ağ bayt sırası), little-endian tersi (x86).",
+      "Amdahl yasası: Bir iyileştirmenin toplam hız kazancı, iyileştirilen kısmın oranıyla sınırlıdır; paralelleştirilemeyen kısım hız kazancını kısıtlar. Moore yasası transistör sayısının yaklaşık 2 yılda ikiye katlanması gözlemidir."
+    ],
+    "comparisons": [
+      {
+        "title": "RISC vs CISC",
+        "rows": [
+          [
+            "Özellik",
+            "RISC",
+            "CISC"
+          ],
+          [
+            "Komut sayısı",
+            "Az, basit",
+            "Çok, karmaşık"
+          ],
+          [
+            "Komut uzunluğu",
+            "Sabit (örn. 32 bit)",
+            "Değişken (1-15 bayt x86)"
+          ],
+          [
+            "Döngü/komut",
+            "Genelde 1",
+            "Birden çok"
+          ],
+          [
+            "Bellek erişimi",
+            "Yalnızca load/store",
+            "Çoğu komut belleğe erişebilir"
+          ],
+          [
+            "Kayıtçı sayısı",
+            "Çok (32+)",
+            "Az"
+          ],
+          [
+            "Kontrol",
+            "Donanım (hardwired)",
+            "Mikrokod"
+          ],
+          [
+            "Örnek",
+            "ARM, RISC-V, MIPS, SPARC",
+            "x86, VAX"
+          ]
+        ]
+      },
+      {
+        "title": "SRAM vs DRAM",
+        "rows": [
+          [
+            "Özellik",
+            "SRAM",
+            "DRAM"
+          ],
+          [
+            "Hücre yapısı",
+            "6 transistör (flip-flop)",
+            "1 transistör + 1 kapasitör"
+          ],
+          [
+            "Yenileme",
+            "Gerekmez",
+            "Periyodik yenileme gerekir"
+          ],
+          [
+            "Hız",
+            "Çok hızlı",
+            "Daha yavaş"
+          ],
+          [
+            "Yoğunluk/maliyet",
+            "Düşük yoğunluk, pahalı",
+            "Yüksek yoğunluk, ucuz"
+          ],
+          [
+            "Kullanım",
+            "Önbellek (L1/L2/L3), kayıtçı dosyası",
+            "Ana bellek"
+          ]
+        ]
+      },
+      {
+        "title": "Bellek hiyerarşisi",
+        "rows": [
+          [
+            "Seviye",
+            "Tipik boyut",
+            "Erişim süresi",
+            "Yönetim"
+          ],
+          [
+            "Kayıtçılar",
+            "Yüzlerce bayt",
+            "< 1 ns",
+            "Derleyici"
+          ],
+          [
+            "L1 önbellek",
+            "32-64 KB/çekirdek",
+            "~1 ns (1-4 döngü)",
+            "Donanım"
+          ],
+          [
+            "L2 önbellek",
+            "256 KB - 2 MB",
+            "~3-10 ns",
+            "Donanım"
+          ],
+          [
+            "L3 önbellek",
+            "Birkaç - onlarca MB",
+            "~10-40 ns",
+            "Donanım"
+          ],
+          [
+            "Ana bellek (DRAM)",
+            "GB'lar",
+            "~50-100 ns",
+            "İşletim sistemi"
+          ],
+          [
+            "SSD",
+            "TB'lar",
+            "~50-100 µs",
+            "İşletim sistemi"
+          ],
+          [
+            "HDD",
+            "TB'lar",
+            "~5-10 ms",
+            "İşletim sistemi"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "n bitlik işaretsiz aralık 0 .. 2^n - 1; n bitlik ikiye tümleyen aralık -2^(n-1) .. 2^(n-1) - 1 (8 bit: 0..255 / -128..127)",
+      "İkiye tümleyen: -x = (bitleri çevir) + 1; örn. 8 bit 5 = 00000101 → -5 = 11111011",
+      "Onaltılık ↔ ikilik: her hex basamak 4 bit (0xA5 = 1010 0101 = 165); sekizlik 3 bit",
+      "Adres yolu n bit → 2^n adreslenebilir konum (32 bit → 4 GiB, 16 bit → 64 KiB)",
+      "Ortalama bellek erişim süresi (AMAT) = İsabet süresi + Iskalama oranı × Iskalama cezası",
+      "CPU süresi = Komut sayısı × CPI × Saat döngü süresi; Saat döngü süresi = 1 / frekans (1 GHz → 1 ns)",
+      "Boru hattı ideal hız kazancı ≈ aşama sayısı k; gerçek hız kazancı = (n × k) / (k + n - 1) döngü karşılaştırmasıyla bulunur",
+      "Amdahl yasası: Hız kazancı = 1 / ((1 - p) + p / s) (p iyileştirilen oran, s o kısmın hızlanması)",
+      "IEEE 754 tek duyarlık: değer = (-1)^işaret × 1.mantis × 2^(üs - 127)"
+    ],
+    "misconceptions": [
+      "Yanılgı: Saat frekansı yüksek olan işlemci her zaman daha hızlıdır. Doğrusu: Performans = komut sayısı × CPI × döngü süresi; düşük frekanslı ama düşük CPI'lı veya çok çekirdekli işlemci daha hızlı olabilir.",
+      "Yanılgı: Boru hattı her komutun yürütme süresini kısaltır. Doğrusu: Boru hattı iş hacmini (birim zamanda biten komut) artırır; tek komutun gecikmesi değişmez, hatta biraz artar.",
+      "Yanılgı: 8 bitlik ikiye tümleyende 10000000 = +128'dir. Doğrusu: En soldaki bit işaret bitidir; 10000000 = -128. 8 bitte en büyük pozitif 127'dir.",
+      "Yanılgı: Önbellek ana bellekten büyük ve yavaştır. Doğrusu: Önbellek SRAM tabanlı, çok küçük (KB-MB) ve çok hızlıdır; ana bellek DRAM tabanlı, büyük ve daha yavaştır.",
+      "Yanılgı: 0,1 + 0,2 kayan noktada tam olarak 0,3 eder. Doğrusu: İkilik kayan noktada 0,1 ve 0,2 tam temsil edilemez; sonuç 0,30000000000000004 olur. Bankacılık hesaplarında DECIMAL/BigDecimal kullanılır.",
+      "Yanılgı: 1 KB her zaman 1000 bayttır. Doğrusu: Bilgisayar bilimlerinde geleneksel olarak 1024 bayt (doğru adı KiB) kullanılır; depolama üreticileri SI anlamında 1000 kullanır, bu yüzden 1 TB disk işletim sisteminde ~931 GiB görünür."
+    ],
+    "example": "Bir denetçi, eski bir çekirdek bankacılık modülünün bakiye alanını 32 bit işaretli tamsayı (kuruş cinsinden) tuttuğunu fark eder. En büyük değer 2^31 - 1 = 2.147.483.647 kuruş ≈ 21,47 milyon TL'dir; bunu aşan bir kurumsal hesap bakiyesi taşma (overflow) ile negatif görünür ve bu bir veri bütünlüğü riskidir. Çözüm olarak 64 bit tamsayı (long, ±9,2 × 10^18) veya DECIMAL(19,2) önerilir; kayan nokta (float/double) ise 0,1 gibi değerleri tam temsil edemediği için parasal alanlarda önerilmez. Aynı incelemede onaltılık 0x7FFFFFFF değerinin bu sınır olduğu ve 0x80000000'ın -2.147.483.648'e karşılık geldiği doğrulanır.",
+    "references": [
+      "Patterson & Hennessy, Computer Organization and Design: The Hardware/Software Interface, Bölüm 1-5",
+      "Stallings, Computer Organization and Architecture, Bölüm 1-5, 9-10, 14-16",
+      "Tanenbaum & Austin, Structured Computer Organization, Bölüm 2-4",
+      "IEEE 754-2019 (kayan nokta standardı)",
+      "Mano & Ciletti, Digital Design (mantık kapıları ve devreler)"
+    ]
+  },
+  "KRP": {
+    "summary": "Kriptografi temelleri, veriyi gizlemek (şifreleme), değişmediğini kanıtlamak (özet ve MAC) ve kaynağını doğrulamak (dijital imza) için kullanılan algoritma ve protokolleri kapsar. Sınavda simetrik/asimetrik ayrımı, AES/RSA/ECC anahtar boyutları, SHA ailesi, dijital imza ile şifreleme arasındaki anahtar kullanım farkı ve TLS'te hibrit şifreleme en sık sorulan noktalardır.",
+    "concepts": [
+      "Simetrik şifreleme (symmetric encryption) tek gizli anahtar kullanır; hızlıdır ancak anahtar dağıtımı sorunu vardır. Örnekler: AES (128/192/256 bit anahtar, 128 bit blok), 3DES (eski), ChaCha20. DES 56 bit anahtarıyla artık güvensizdir.",
+      "Asimetrik şifreleme (asymmetric/public-key) açık ve özel anahtar çifti kullanır. RSA (en az 2048 bit önerilir), ECC (eliptik eğri, 256 bit ECC ≈ 3072 bit RSA güvenlik düzeyi), Diffie-Hellman (anahtar anlaşması), ElGamal.",
+      "Blok şifre (block cipher) sabit uzunlukta blokları (AES: 128 bit) işler, akış şifresi (stream cipher) bit/bayt bazında anahtar akışıyla XOR yapar (RC4 eski, ChaCha20 güncel).",
+      "Blok şifre modları: ECB (aynı açık metin aynı şifreli metin, kalıp sızdırır, kullanılmaz), CBC (zincirleme, IV gerekir), CTR (sayaç, paralel), GCM (kimlik doğrulamalı şifreleme, AEAD; TLS 1.3'te standart).",
+      "Özet fonksiyonu (hash): Rastgele uzunluktaki girdiden sabit uzunlukta özet üretir; tek yönlü, çakışmaya dirençli. MD5 (128 bit) ve SHA-1 (160 bit) çakışma saldırıları nedeniyle kırılmıştır; SHA-256 (256 bit), SHA-3 güncel.",
+      "MAC (Message Authentication Code), özellikle HMAC, paylaşılan anahtar ile hem bütünlük hem kaynak doğrulama sağlar; inkâr edilemezlik sağlamaz çünkü her iki taraf aynı anahtara sahiptir.",
+      "Dijital imza: Gönderici mesajın özetini kendi ÖZEL anahtarıyla imzalar, alıcı göndericinin AÇIK anahtarıyla doğrular. Bütünlük, kimlik doğrulama ve inkâr edilemezlik sağlar (RSA-PSS, ECDSA, EdDSA).",
+      "Açık anahtarla şifrelemede ise gönderici alıcının AÇIK anahtarıyla şifreler, yalnızca alıcı kendi ÖZEL anahtarıyla açar. İmza ile şifrelemede anahtar yönü terstir; sınavda en çok karıştırılan noktadır.",
+      "Hibrit şifreleme: Asimetrik yöntem yalnızca simetrik oturum anahtarını güvenle paylaşmak için kullanılır, veri simetrik (AES) ile şifrelenir. TLS, PGP ve S/MIME bu yaklaşımı kullanır.",
+      "Diffie-Hellman anahtar değişimi iki tarafın güvensiz kanal üzerinden ortak gizli anahtar üretmesini sağlar; kimlik doğrulama içermediği için tek başına MitM'e açıktır, bu yüzden imza/sertifika ile birleştirilir. ECDHE ileri gizlilik (forward secrecy) sağlar.",
+      "PKI ve X.509 sertifikası: Açık anahtarı kimliğe bağlar, Sertifika Otoritesi (CA) tarafından imzalanır. İptal CRL veya OCSP ile kontrol edilir. Kök CA'lar işletim sistemi/tarayıcı güven deposundadır.",
+      "Tuz (salt) parolaya eklenen rastgele değerdir, aynı parolaların aynı özeti üretmesini ve gökkuşağı tablosu (rainbow table) saldırısını engeller. Anahtar türetme için PBKDF2, bcrypt, scrypt, Argon2 yavaşlatılmış fonksiyonlardır.",
+      "Kerckhoffs ilkesi: Sistemin güvenliği algoritmanın gizliliğine değil yalnızca anahtarın gizliliğine dayanmalıdır. Gizli/özel algoritmalar (security through obscurity) zayıf kabul edilir.",
+      "Klasik şifreler: Sezar (kaydırma), Vigenère (çok alfabeli), tek kullanımlık şerit (one-time pad; anahtar mesaj kadar uzun ve bir kez kullanılırsa teorik olarak kırılmaz). Kuantum sonrası kriptografi (post-quantum): NIST 2024'te ML-KEM (Kyber) ve ML-DSA (Dilithium) standartlarını yayımladı."
+    ],
+    "comparisons": [
+      {
+        "title": "Simetrik vs Asimetrik şifreleme",
+        "rows": [
+          [
+            "Özellik",
+            "Simetrik",
+            "Asimetrik"
+          ],
+          [
+            "Anahtar",
+            "Tek gizli anahtar",
+            "Açık + özel anahtar çifti"
+          ],
+          [
+            "Hız",
+            "Çok hızlı",
+            "100-1000 kat yavaş"
+          ],
+          [
+            "Tipik anahtar boyutu",
+            "AES 128/256 bit",
+            "RSA 2048/3072 bit, ECC 256 bit"
+          ],
+          [
+            "Anahtar dağıtımı",
+            "Sorunlu, güvenli kanal gerekir",
+            "Açık anahtar serbestçe paylaşılır"
+          ],
+          [
+            "n kişi için anahtar sayısı",
+            "n(n-1)/2",
+            "2n"
+          ],
+          [
+            "Kullanım",
+            "Toplu veri şifreleme",
+            "Anahtar değişimi, dijital imza"
+          ]
+        ]
+      },
+      {
+        "title": "Özet (hash) vs MAC vs Dijital imza",
+        "rows": [
+          [
+            "Özellik",
+            "Hash",
+            "HMAC",
+            "Dijital imza"
+          ],
+          [
+            "Anahtar",
+            "Yok",
+            "Paylaşılan gizli",
+            "Özel (imza) / açık (doğrulama)"
+          ],
+          [
+            "Bütünlük",
+            "Evet",
+            "Evet",
+            "Evet"
+          ],
+          [
+            "Kaynak doğrulama",
+            "Hayır",
+            "Evet",
+            "Evet"
+          ],
+          [
+            "İnkâr edilemezlik",
+            "Hayır",
+            "Hayır",
+            "Evet"
+          ],
+          [
+            "Örnek",
+            "SHA-256",
+            "HMAC-SHA256",
+            "RSA-PSS, ECDSA"
+          ]
+        ]
+      },
+      {
+        "title": "Şifreleme vs İmzalama: anahtar yönü",
+        "rows": [
+          [
+            "İşlem",
+            "Kullanılan anahtar",
+            "Kimin anahtarı",
+            "Sağladığı"
+          ],
+          [
+            "Şifreleme",
+            "Açık anahtar",
+            "Alıcının",
+            "Gizlilik"
+          ],
+          [
+            "Şifre çözme",
+            "Özel anahtar",
+            "Alıcının",
+            "-"
+          ],
+          [
+            "İmzalama",
+            "Özel anahtar",
+            "Göndericinin",
+            "Kimlik, bütünlük, inkâr edilemezlik"
+          ],
+          [
+            "İmza doğrulama",
+            "Açık anahtar",
+            "Göndericinin",
+            "-"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Simetrik sistemde n kullanıcı için gereken anahtar sayısı = n(n-1)/2; asimetrik sistemde 2n",
+      "Kaba kuvvet anahtar uzayı = 2^(anahtar bit uzunluğu); ortalama deneme 2^(k-1)",
+      "Özet uzunlukları: MD5 128 bit, SHA-1 160 bit, SHA-256 256 bit, SHA-512 512 bit",
+      "Yaklaşık eşdeğer güvenlik: AES-128 ≈ RSA-3072 ≈ ECC-256; AES-256 ≈ RSA-15360 ≈ ECC-512 (NIST SP 800-57)",
+      "Sezar şifresi: C = (P + k) mod 26"
+    ],
+    "misconceptions": [
+      "Yanılgı: Dijital imzada gönderici mesajı alıcının açık anahtarıyla imzalar. Doğrusu: İmza göndericinin ÖZEL anahtarıyla atılır, göndericinin AÇIK anahtarıyla doğrulanır. Alıcının açık anahtarı şifreleme için kullanılır.",
+      "Yanılgı: Şifreleme (encryption) ve özetleme (hashing) aynı şeydir. Doğrusu: Şifreleme geri çevrilebilir ve anahtar gerektirir; özet tek yönlüdür ve anahtarsızdır.",
+      "Yanılgı: HMAC inkâr edilemezlik sağlar. Doğrusu: Anahtar her iki tarafta olduğundan alıcı da aynı MAC'i üretebilir; inkâr edilemezlik yalnızca dijital imza ile sağlanır.",
+      "Yanılgı: 256 bit ECC anahtarı 256 bit AES anahtarı kadar güvenlidir. Doğrusu: ECC-256 yaklaşık AES-128 düzeyinde güvenlik sağlar; asimetrik ve simetrik anahtar boyutları doğrudan karşılaştırılamaz.",
+      "Yanılgı: Daha uzun anahtar her zaman daha güvenli şifreleme demektir. Doğrusu: ECB modu gibi zayıf mod veya kötü anahtar yönetimi ile AES-256 bile sızıntıya yol açar; algoritma, mod, IV ve anahtar yönetimi birlikte değerlendirilir.",
+      "Yanılgı: SHA-256 parola saklamak için idealdir. Doğrusu: SHA-256 çok hızlıdır ve GPU ile saniyede milyarlarca deneme yapılır; parolalar için tuzlu ve yavaş bcrypt/Argon2 gibi fonksiyonlar kullanılır."
+    ],
+    "example": "Banka, müşteri ekstrelerini e-posta ile şifreli göndermek istiyor. Her ekstre AES-256-GCM ile rastgele bir oturum anahtarıyla şifrelenir; oturum anahtarı müşterinin RSA-2048 açık anahtarıyla şifrelenip pakete eklenir (hibrit şifreleme). Banka ayrıca paketin SHA-256 özetini kendi özel anahtarıyla imzalar; müşteri bankanın sertifikasındaki açık anahtarla imzayı doğrulayarak ekstrenin bankadan geldiğini ve değişmediğini anlar, sonra kendi özel anahtarıyla oturum anahtarını açıp ekstreyi okur. Bu tasarım gizlilik (AES), anahtar dağıtımı (RSA) ve inkâr edilemezlik (imza) ihtiyaçlarını birlikte karşılar.",
+    "references": [
+      "Stallings, Cryptography and Network Security: Principles and Practice, Bölüm 3-14",
+      "Paar & Pelzl, Understanding Cryptography",
+      "NIST FIPS 197 (AES), FIPS 180-4 (SHA), FIPS 186-5 (Digital Signature Standard), FIPS 203/204 (ML-KEM, ML-DSA)",
+      "NIST SP 800-57 Part 1 (anahtar yönetimi ve eşdeğer güvenlik düzeyleri)",
+      "RFC 2104 (HMAC), RFC 8017 (PKCS #1 RSA), RFC 5280 (X.509)"
+    ]
+  },
+  "BLT": {
+    "summary": "Bulut bilişim temelleri, bilişim kaynaklarının ağ üzerinden isteğe bağlı ve ölçülebilir biçimde sunulmasını, hizmet ve dağıtım modellerini, sanallaştırma ve konteyner teknolojilerini ve paylaşılan sorumluluk modelini kapsar. Sınavda IaaS/PaaS/SaaS ayrımı, özel/genel/hibrit bulut, NIST'in beş temel özelliği, sanal makine ile konteyner farkı ve banka bulut kullanımında düzenleyici beklentiler (veri yerleşimi, dış hizmet alımı riski) sorulur.",
+    "concepts": [
+      "NIST bulut tanımının 5 temel özelliği: isteğe bağlı self servis, geniş ağ erişimi, kaynak havuzu (çok kiracılı), hızlı esneklik (elasticity), ölçülen hizmet (kullandıkça öde).",
+      "Hizmet modelleri: IaaS (Infrastructure as a Service) sanal makine, depolama, ağ (AWS EC2, Azure VM); PaaS (Platform) çalışma zamanı ve veritabanı yönetimi sağlayıcıda, kod müşteride (Heroku, Azure App Service); SaaS (Software) hazır uygulama (Office 365, Salesforce). FaaS/sunucusuz (serverless) olay tetikli fonksiyonlar (AWS Lambda).",
+      "Dağıtım modelleri: Genel bulut (public, sağlayıcı altyapısı paylaşımlı), Özel bulut (private, tek kuruma ait, yerinde veya barındırılan), Hibrit (ikisinin birleşimi, iş yükü taşınabilir), Topluluk bulutu (community, ortak ihtiyaçlı kurumlar, örn. bankalar), Çoklu bulut (multi-cloud, birden çok sağlayıcı).",
+      "Paylaşılan sorumluluk modeli (shared responsibility): Sağlayıcı 'bulutun güvenliğinden' (fiziksel, hipervizör, ağ altyapısı), müşteri 'buluttaki güvenlikten' (veri, kimlik, erişim, yapılandırma, şifreleme anahtarları) sorumludur. IaaS'ta müşteri sorumluluğu en geniş, SaaS'ta en dardır.",
+      "Sanallaştırma (virtualization): Hipervizör (hypervisor) fiziksel donanım üzerinde birden çok sanal makine (VM) çalıştırır. Tip 1 (bare-metal: VMware ESXi, Hyper-V, KVM, Xen) doğrudan donanımda; Tip 2 (hosted: VirtualBox, VMware Workstation) işletim sistemi üzerinde çalışır. VM kaçışı (VM escape) hipervizör zafiyetiyle yan VM'lere sızmadır.",
+      "Konteyner (container): İşletim sistemi çekirdeğini paylaşan, uygulama ve bağımlılıklarını paketleyen hafif yalıtım birimi (Docker). İmaj (image) şablon, konteyner çalışan örnektir. Orkestrasyon (Kubernetes) konteynerleri pod'lar halinde dağıtır, ölçekler ve iyileştirir.",
+      "Ölçeklenebilirlik: Dikey ölçekleme (scale up, daha güçlü makine) ve yatay ölçekleme (scale out, daha çok makine). Otomatik ölçekleme (auto scaling) yük metriğine göre örnek sayısını değiştirir; yük dengeleyici trafiği dağıtır. Esneklik (elasticity) kaynakların otomatik artıp azalmasıdır.",
+      "Bulut depolama türleri: Nesne depolama (object: S3, Blob; HTTP ile erişilen, meta verili, ölçeklenebilir), blok depolama (block: EBS; VM diski), dosya depolama (file: NFS/SMB paylaşımı). Veri sınıfları sıcak/soğuk/arşiv (Glacier) maliyet-erişim dengesi kurar.",
+      "Bulut kimlik ve erişim yönetimi (IAM): Kullanıcı, grup, rol ve politika; en az ayrıcalık ilkesi, kök (root) hesabın günlük kullanılmaması, MFA, geçici kimlik bilgileri (STS/rol üstlenme). Yanlış yapılandırılmış herkese açık depolama kovası en yaygın bulut sızıntı nedenidir.",
+      "Bulut ağ yapıları: Sanal özel bulut (VPC/VNet), alt ağlar, güvenlik grupları (durum bilgili örnek düzeyinde güvenlik duvarı), ağ ACL'leri (alt ağ düzeyi), VPN veya özel hat (Direct Connect/ExpressRoute) ile kurum ağına bağlantı, bölge (region) ve erişilebilirlik alanı (availability zone) ile yedeklilik.",
+      "Bulut güvenlik araçları: Şifreleme (bekleyen veri için KMS/HSM yönetimli anahtarlar, iletimde TLS), CASB (bulut erişim güvenlik aracısı), CSPM (yapılandırma denetimi), günlükleme (CloudTrail/Activity Log), müşteri yönetimli anahtar (BYOK) kurumun kontrolünü artırır.",
+      "Hizmet düzeyi anlaşması (SLA): Erişilebilirlik yüzdesi (%99,9 = yılda ~8,8 saat kesinti; %99,99 = ~53 dakika), kesinti bildirim süreleri, veri silme ve çıkış (exit) koşulları. Tedarikçi bağımlılığı (vendor lock-in) taşınabilirlik riskidir.",
+      "Banka bakışıyla bulut: Dış hizmet alımı (outsourcing) niteliğindedir; risk değerlendirmesi, sözleşmede denetim hakkı, veri yerleşimi (data residency, verinin yurt içinde tutulması beklentisi), çıkış stratejisi, iş sürekliliği ve BDDK bildirimi/izni süreçleri değerlendirilir. Birincil ve ikincil sistemlerin yeri ve denetlenebilirliği kritik konudur.",
+      "DevOps ve bulut: Altyapı kod olarak (Infrastructure as Code: Terraform, CloudFormation) tekrarlanabilir ve denetlenebilir ortam sağlar; değişmez altyapı (immutable infrastructure) sunucu güncellemek yerine yeni imaj dağıtır. Uç bilişim (edge computing) işlemi veri kaynağına yakın yapar."
+    ],
+    "comparisons": [
+      {
+        "title": "IaaS vs PaaS vs SaaS",
+        "rows": [
+          [
+            "Özellik",
+            "IaaS",
+            "PaaS",
+            "SaaS"
+          ],
+          [
+            "Sağlayıcı yönetir",
+            "Donanım, sanallaştırma, ağ",
+            "+ İşletim sistemi, çalışma zamanı, ara katman",
+            "+ Uygulama ve veri yönetimi"
+          ],
+          [
+            "Müşteri yönetir",
+            "İşletim sistemi, ara katman, uygulama, veri",
+            "Uygulama ve veri",
+            "Yalnızca kullanım/yapılandırma, erişim"
+          ],
+          [
+            "Esneklik",
+            "En yüksek",
+            "Orta",
+            "En düşük"
+          ],
+          [
+            "Güvenlik sorumluluğu (müşteri)",
+            "En geniş",
+            "Orta",
+            "En dar (kimlik, veri sınıflandırma)"
+          ],
+          [
+            "Örnek",
+            "AWS EC2, Azure VM, GCE",
+            "Heroku, App Engine, Azure App Service",
+            "Office 365, Salesforce, Gmail"
+          ]
+        ]
+      },
+      {
+        "title": "Sanal makine vs Konteyner",
+        "rows": [
+          [
+            "Özellik",
+            "Sanal makine",
+            "Konteyner"
+          ],
+          [
+            "Yalıtım",
+            "Donanım düzeyi (hipervizör)",
+            "İşletim sistemi düzeyi (namespace, cgroup)"
+          ],
+          [
+            "İşletim sistemi",
+            "Her VM'de ayrı konuk OS",
+            "Ana çekirdek paylaşılır"
+          ],
+          [
+            "Boyut",
+            "GB'lar",
+            "MB'lar"
+          ],
+          [
+            "Başlama süresi",
+            "Dakikalar",
+            "Saniyeler"
+          ],
+          [
+            "Yoğunluk",
+            "Düşük",
+            "Yüksek"
+          ],
+          [
+            "Güvenlik yalıtımı",
+            "Daha güçlü",
+            "Daha zayıf (çekirdek ortak)"
+          ],
+          [
+            "Araç",
+            "VMware, Hyper-V, KVM",
+            "Docker, containerd, Kubernetes"
+          ]
+        ]
+      },
+      {
+        "title": "Genel vs Özel vs Hibrit bulut",
+        "rows": [
+          [
+            "Özellik",
+            "Genel",
+            "Özel",
+            "Hibrit"
+          ],
+          [
+            "Sahiplik",
+            "Sağlayıcı",
+            "Kurum (veya kuruma özel barındırma)",
+            "Karışık"
+          ],
+          [
+            "Maliyet modeli",
+            "Kullandıkça öde, düşük başlangıç",
+            "Yüksek yatırım",
+            "Karışık"
+          ],
+          [
+            "Kontrol/uyum",
+            "Sınırlı",
+            "Tam",
+            "İş yüküne göre"
+          ],
+          [
+            "Ölçeklenebilirlik",
+            "Neredeyse sınırsız",
+            "Kapasiteyle sınırlı",
+            "Patlama (burst) için genel"
+          ],
+          [
+            "Banka kullanımı",
+            "Düşük hassasiyetli iş yükleri, geliştirme/test",
+            "Çekirdek bankacılık, müşteri verisi",
+            "Yaygın tercih"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Yıllık izin verilen kesinti = (1 - erişilebilirlik) × 525.600 dk: %99 → 5.256 dk (~3,65 gün), %99,9 → ~526 dk (~8,8 saat), %99,99 → ~53 dk, %99,999 → ~5,3 dk",
+      "Seri bileşenlerin toplam erişilebilirliği = A1 × A2 × ... (0,999 × 0,999 ≈ 0,998); paralel yedekli = 1 - (1-A1)(1-A2)",
+      "Toplam sahip olma maliyeti (TCO) = Yatırım (CapEx) + İşletme (OpEx) × yıl; bulutta CapEx → OpEx dönüşümü"
+    ],
+    "misconceptions": [
+      "Yanılgı: Veri buluta taşındığında güvenliğinden tamamen sağlayıcı sorumludur. Doğrusu: Paylaşılan sorumluluk modelinde veri, kimlik, erişim yetkileri ve yapılandırma her zaman müşterinin sorumluluğundadır.",
+      "Yanılgı: Konteyner, sanal makinenin daha hafif ama aynı güvenlikte sürümüdür. Doğrusu: Konteynerler ana çekirdeği paylaşır; çekirdek zafiyeti tüm konteynerleri etkiler, bu yüzden yalıtım VM'den zayıftır.",
+      "Yanılgı: Özel bulut yalnızca kurumun kendi veri merkezinde olur. Doğrusu: Özel bulut tek kuruma ayrılmış olmakla tanımlanır; üçüncü taraf tarafından barındırılabilir (hosted private cloud).",
+      "Yanılgı: %99,9 SLA neredeyse hiç kesinti yok demektir. Doğrusu: Yılda yaklaşık 8,8 saat kesintiye izin verir; kritik bankacılık sistemleri için yüksek olabilir.",
+      "Yanılgı: Bulut her zaman yerinde (on-premise) kurulumdan ucuzdur. Doğrusu: Sabit ve öngörülebilir yüksek yüklerde uzun vadede yerinde kurulum daha ucuz olabilir; bulut değişken yükte ve hızlı başlangıçta avantajlıdır.",
+      "Yanılgı: Bulutta veri yedeği sağlayıcı tarafından otomatik ve yeterli biçimde alınır. Doğrusu: Sağlayıcının altyapı yedekliliği, müşterinin mantıksal hatalardan veya silmeden korunması için yedekleme stratejisinin yerini tutmaz; yedekleme müşterinin sorumluluğundadır."
+    ],
+    "example": "Bir banka müşteri iletişim kampanyası uygulamasını genel bulutta PaaS olarak çalıştırmayı planlıyor. Risk değerlendirmesinde denetçi şu soruları sorar: Müşteri verisi hangi bölgede (region) tutulacak ve veri yerleşimi beklentisi karşılanıyor mu; sözleşmede bankanın ve düzenleyicinin denetim hakkı var mı; şifreleme anahtarları banka tarafından mı yönetiliyor (BYOK); kimlik yönetimi kurumsal dizine (SSO + MFA) bağlı mı; çıkış stratejisi ve veri silme kanıtı tanımlı mı. Depolama kovalarının 'herkese açık' olmadığı CSPM aracıyla doğrulanır. Çekirdek bankacılık sistemi ise hassasiyeti nedeniyle özel bulutta kalır; bu hibrit model olur.",
+    "references": [
+      "NIST SP 800-145 (The NIST Definition of Cloud Computing)",
+      "NIST SP 800-144 (Guidelines on Security and Privacy in Public Cloud Computing)",
+      "ISO/IEC 27017 (bulut hizmetleri için bilgi güvenliği kontrolleri), ISO/IEC 27018 (bulutta kişisel veri)",
+      "CSA (Cloud Security Alliance) Security Guidance ve Cloud Controls Matrix",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020), dış hizmet alımı ve birincil/ikincil sistem hükümleri (kavram düzeyinde)",
+      "Erl, Mahmood & Puttini, Cloud Computing: Concepts, Technology & Architecture"
+    ]
+  },
+  "SIB": {
+    "summary": "Temel siber güvenlik, saldırganın bakış açısıyla tehdit, zafiyet ve saldırı türlerini, savunma tarafında ise tespit, müdahale ve güvenlik mimarisi kavramlarını ele alır. Sınavda OWASP Top 10 web zafiyetleri (SQL enjeksiyonu, XSS, CSRF), DDoS, ortadaki adam, saldırı zinciri, SIEM/SOC, sızma testi türleri ve olay müdahale adımları öne çıkar.",
+    "concepts": [
+      "Tehdit (threat) zarar verebilecek potansiyel olay, zafiyet (vulnerability) istismar edilebilecek zayıflık, istismar (exploit) zafiyeti kullanan kod/yöntem, risk ise tehdidin zafiyeti kullanma olasılığı ile etkisinin birleşimidir.",
+      "SQL enjeksiyonu (SQL injection): Kullanıcı girdisinin doğrudan SQL sorgusuna eklenmesi; ' OR '1'='1 gibi yüklerle kimlik doğrulama atlatılır. Savunma: parametreli sorgular (prepared statements), ORM, en az ayrıcalıklı veritabanı hesabı, girdi doğrulama.",
+      "XSS (Cross-Site Scripting): Saldırgan betiğinin kurbanın tarayıcısında çalışması. Türleri: saklı (stored), yansıtılan (reflected), DOM tabanlı. Savunma: çıktı kodlama (output encoding), Content Security Policy, HttpOnly çerez bayrağı.",
+      "CSRF (Cross-Site Request Forgery): Oturum açmış kullanıcının tarayıcısının saldırganın hazırladığı isteği farkında olmadan göndermesi. Savunma: anti-CSRF token, SameSite çerez özniteliği, kritik işlemlerde yeniden doğrulama.",
+      "OWASP Top 10 (2021): A01 Bozuk Erişim Kontrolü, A02 Kriptografik Hatalar, A03 Enjeksiyon, A04 Güvensiz Tasarım, A05 Güvenlik Yanlış Yapılandırması, A06 Zafiyetli ve Eski Bileşenler, A07 Kimlik Doğrulama Hataları, A08 Yazılım ve Veri Bütünlüğü Hataları, A09 Güvenlik Kaydı ve İzleme Hataları, A10 Sunucu Taraflı İstek Sahteciliği (SSRF).",
+      "DoS/DDoS: Hizmeti kaynak tüketerek erişilmez kılma. Hacim tabanlı (UDP flood, DNS amplification), protokol tabanlı (SYN flood), uygulama katmanı (HTTP flood). Savunma: hız sınırlama, SYN cookie, CDN/temizleme merkezi (scrubbing).",
+      "Ortadaki adam (Man-in-the-Middle, MitM): Saldırganın iki taraf arasına girip trafiği izlemesi veya değiştirmesi; ARP zehirleme, sahte Wi-Fi, SSL stripping örnekleridir. Savunma: TLS, sertifika sabitleme (pinning), HSTS.",
+      "Kaba kuvvet (brute force) tüm kombinasyonları, sözlük saldırısı yaygın parolaları, kimlik bilgisi doldurma (credential stuffing) sızmış parola çiftlerini dener. Savunma: hesap kilitleme, hız sınırlama, MFA, güçlü özetleme.",
+      "Sıfır gün (zero-day) henüz yaması olmayan zafiyettir. CVE (Common Vulnerabilities and Exposures) zafiyet kimliği, CVSS (0-10 arası puan) ciddiyet ölçütüdür; 9.0-10.0 kritik sayılır.",
+      "Saldırı zinciri (Cyber Kill Chain): Keşif, silahlanma, teslimat, istismar, kurulum, komuta-kontrol (C2), hedefte eylem. MITRE ATT&CK saldırgan taktik ve tekniklerini sınıflandıran matristir.",
+      "Sızma testi (penetration test) türleri: kara kutu (bilgi yok), gri kutu (kısmi bilgi), beyaz kutu (tam bilgi). Zafiyet taraması otomatik ve yüzeyseldir; sızma testi istismarı da dener. Kırmızı takım saldırır, mavi takım savunur.",
+      "SIEM (Security Information and Event Management) log toplama, korelasyon ve uyarı üretir; SOC (Security Operations Center) bunları 7/24 izleyen ekiptir. EDR uç noktada, NDR ağda davranış tabanlı tespit yapar.",
+      "Olay müdahale (incident response) yaşam döngüsü (NIST SP 800-61): Hazırlık, Tespit ve Analiz, Sınırlama-Yok Etme-Kurtarma, Olay Sonrası Faaliyet (dersler çıkarma). Adli bilişimde delil bütünlüğü için özet (hash) alınır ve gözetim zinciri tutulur.",
+      "Sıfır güven (zero trust) 'asla güvenme, her zaman doğrula' ilkesiyle ağ konumuna değil kimlik, cihaz ve bağlama göre her isteği doğrular. Ağ bölümlendirme (segmentation) yanal hareketi sınırlar."
+    ],
+    "comparisons": [
+      {
+        "title": "SQL enjeksiyonu vs XSS vs CSRF",
+        "rows": [
+          [
+            "Özellik",
+            "SQL enjeksiyonu",
+            "XSS",
+            "CSRF"
+          ],
+          [
+            "Hedef",
+            "Veritabanı/sunucu",
+            "Kurbanın tarayıcısı",
+            "Kurbanın oturumu"
+          ],
+          [
+            "Çalışma yeri",
+            "Sunucu tarafı",
+            "İstemci tarafı",
+            "İstemciden sunucuya istek"
+          ],
+          [
+            "Temel neden",
+            "Girdinin sorguya birleştirilmesi",
+            "Girdinin kodlanmadan sayfaya yazılması",
+            "İstek kaynağının doğrulanmaması"
+          ],
+          [
+            "Ana savunma",
+            "Parametreli sorgu",
+            "Çıktı kodlama, CSP",
+            "Anti-CSRF token, SameSite"
+          ]
+        ]
+      },
+      {
+        "title": "Zafiyet taraması vs Sızma testi",
+        "rows": [
+          [
+            "Özellik",
+            "Zafiyet taraması",
+            "Sızma testi"
+          ],
+          [
+            "Yöntem",
+            "Otomatik araç",
+            "Uzman, elle ve araçla"
+          ],
+          [
+            "Derinlik",
+            "Bilinen zafiyetleri listeler",
+            "İstismar eder, etkisini gösterir"
+          ],
+          [
+            "Sıklık",
+            "Sürekli/haftalık",
+            "Yıllık veya büyük değişiklik sonrası"
+          ],
+          [
+            "Yanlış pozitif",
+            "Yüksek",
+            "Düşük (doğrulanmış)"
+          ]
+        ]
+      },
+      {
+        "title": "Kara kutu vs Gri kutu vs Beyaz kutu test",
+        "rows": [
+          [
+            "Özellik",
+            "Kara kutu",
+            "Gri kutu",
+            "Beyaz kutu"
+          ],
+          [
+            "Testçinin bilgisi",
+            "Hiç yok",
+            "Kısmi (kullanıcı hesabı, mimari)",
+            "Tam (kaynak kod, yapılandırma)"
+          ],
+          [
+            "Benzetim",
+            "Dış saldırgan",
+            "İçeriden kötü niyetli kullanıcı",
+            "Kod denetimi"
+          ],
+          [
+            "Süre/maliyet",
+            "Uzun keşif",
+            "Orta",
+            "Kapsamlı ama hızlı yönlendirme"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Risk = Tehdit olasılığı × Etki (nitel) veya Yıllık beklenen kayıp (ALE) = Tek kayıp (SLE) × Yıllık gerçekleşme oranı (ARO)",
+      "CVSS puan aralıkları: 0.1-3.9 düşük, 4.0-6.9 orta, 7.0-8.9 yüksek, 9.0-10.0 kritik"
+    ],
+    "misconceptions": [
+      "Yanılgı: Girdiyi istemci tarafında JavaScript ile doğrulamak SQL enjeksiyonunu önler. Doğrusu: İstemci doğrulaması atlatılabilir; koruma sunucu tarafında parametreli sorgularla sağlanır.",
+      "Yanılgı: XSS sunucuyu ele geçirir. Doğrusu: XSS kurbanın tarayıcısında çalışır ve oturum çerezi çalma, sayfa değiştirme gibi istemci tarafı etkiler yaratır.",
+      "Yanılgı: Zafiyet taraması sızma testinin yerini tutar. Doğrusu: Tarama yalnızca bilinen imzaları listeler; mantıksal hatalar ve zincirleme saldırılar sızma testiyle ortaya çıkar.",
+      "Yanılgı: Sıfır gün, 'günün sıfırıncı saatinde yapılan saldırı' demektir. Doğrusu: Üreticinin yama yayınlamak için sıfır gün süresi olmuş, yani henüz bilinmeyen/yamalanmamış zafiyettir.",
+      "Yanılgı: Olay müdahalesinde ilk adım sistemi hemen kapatmaktır. Doğrusu: Önce tespit ve analiz yapılır, deliller korunur; sınırlama stratejisi (ağdan ayırma, izleme) olaya göre seçilir. Kapatma uçucu delilleri yok edebilir.",
+      "Yanılgı: Güçlü parola politikası varsa kimlik bilgisi doldurma saldırısı işe yaramaz. Doğrusu: Bu saldırı başka sitelerden sızmış gerçek parolaları kullanır; parolanın gücü değil tekrar kullanımı sorundur, çözüm MFA ve sızıntı kontrolüdür."
+    ],
+    "example": "İnternet bankacılığı giriş sayfasında bir denetçi, kullanıcı adı alanına admin'-- yazınca hata mesajında SQL sözdizimi parçası görür. Bu, girdinin sorguya doğrudan eklendiğini ve ayrıntılı hata mesajı sızdırıldığını gösterir (A03 Enjeksiyon ve A05 Yanlış Yapılandırma). Bulgu olarak parametreli sorguya geçiş, genel hata sayfası, WAF kuralı ve uygulamanın veritabanı hesabının yalnızca gerekli tablolara yetkili olması önerilir. Düzeltme sonrası yeniden test yapılır ve bulgu kapatılır.",
+    "references": [
+      "OWASP Top 10 (2021) ve OWASP Cheat Sheet Series",
+      "NIST SP 800-61 Rev.2 (Computer Security Incident Handling Guide)",
+      "NIST SP 800-115 (Technical Guide to Information Security Testing and Assessment)",
+      "MITRE ATT&CK Framework; Lockheed Martin Cyber Kill Chain",
+      "Stallings & Brown, Computer Security: Principles and Practice, Bölüm 6, 7, 8, 11"
+    ]
+  },
+  "YIS": {
+    "summary": "Yedekleme ve iş sürekliliği temelleri, veri kaybı ve hizmet kesintisi risklerine karşı verinin kurtarılabilirliğini ve kritik iş süreçlerinin kabul edilebilir sürede yeniden çalışmasını sağlayan kontrolleri kapsar. Sınavda yedekleme türleri (tam, artımlı, fark), 3-2-1 kuralı, RPO/RTO/MTD kavramları, felaket kurtarma merkezi türleri (sıcak/ılık/soğuk), iş etki analizi, iş sürekliliği planı ile felaket kurtarma planı farkı ve test türleri bankacılık senaryolarıyla sorulur.",
+    "concepts": [
+      "Yedekleme (backup) verinin kayıp, bozulma, silme veya fidye yazılımı durumunda geri alınabilmesi için kopyalanmasıdır; yedeklemenin amacı geri yükleme (restore) olduğu için test edilmemiş yedek yok sayılır. Arşivleme (archive) uzun süreli saklama yükümlülüğü için, yedekleme operasyonel kurtarma içindir.",
+      "Yedekleme türleri: Tam (full) tüm veri; Artımlı (incremental) son yedekten (tam veya artımlı) sonra değişenler, en hızlı yedekleme, en yavaş geri yükleme (tam + tüm artımlılar zinciri gerekir); Fark (differential) son TAM yedekten sonra değişenler, geri yükleme tam + son fark ile yapılır, yedek boyutu her gün büyür. Sentetik tam ve sürekli veri koruması (CDP) ileri yöntemlerdir.",
+      "Arşiv biti ve geri yükleme zinciri: Artımlı yedek arşiv bitini sıfırlar, fark yedek sıfırlamaz. Zincirdeki bir artımlı yedek bozuksa sonraki noktalar kurtarılamaz; bu yüzden periyodik tam yedek ve bütünlük doğrulaması (özet/checksum) gerekir.",
+      "3-2-1 kuralı: En az 3 kopya, 2 farklı ortam türünde, 1 kopya farklı lokasyonda (off-site). Fidye yazılımına karşı 3-2-1-1-0 genişletmesi: 1 kopya çevrimdışı veya değiştirilemez (immutable/air-gapped), 0 geri yükleme hatası (test edilmiş). Yedekler şifrelenir ve erişimi kısıtlanır.",
+      "Yedek saklama ve rotasyon: Saklama süresi (retention) düzenleyici ve iş gereğine göre belirlenir; Büyükbaba-Baba-Oğul (GFS: günlük, haftalık, aylık/yıllık) rotasyonu yaygındır. Yedek ortamları etiketlenir, envanteri tutulur, taşıma sırasında korunur ve ömrü dolunca güvenli imha edilir.",
+      "RPO (Recovery Point Objective): Kabul edilebilir en fazla veri kaybı süresi; yedekleme/çoğaltma sıklığını belirler (RPO 1 saat ise en az saatlik yedek veya eş zamansız çoğaltma). RTO (Recovery Time Objective): Hizmetin kesintiden sonra yeniden çalışması için hedef süre. MTD/MTPD (Maximum Tolerable Downtime): İşin katlanabileceği en uzun kesinti; RTO ≤ MTD olmalıdır. WRT (Work Recovery Time) sistem açıldıktan sonra verinin doğrulanıp işin normale dönme süresidir: RTO + WRT ≤ MTD.",
+      "İş etki analizi (BIA, Business Impact Analysis): Kritik iş süreçlerini, bağımlı sistemleri, kesintinin zaman içinde artan mali/itibari/yasal etkisini belirler ve her süreç için MTD, RTO, RPO atar. BIA, iş sürekliliği planlamasının temelidir ve kurtarma önceliğini (hangi sistem önce) verir. Risk değerlendirmesi hangi tehditlerin (deprem, yangın, siber saldırı, tedarikçi arızası) planlanacağını belirler.",
+      "İş sürekliliği planı (BCP, Business Continuity Plan) kesinti sırasında kritik iş süreçlerinin (şube hizmeti, ödeme sistemleri) alternatif yollarla sürdürülmesini kapsar: personel, iletişim ağacı, alternatif çalışma alanı, manuel prosedürler, tedarikçiler. Felaket kurtarma planı (DRP, Disaster Recovery Plan) BCP'nin BT odaklı alt kümesidir: sistemlerin ve verinin felaket kurtarma merkezinde ayağa kaldırılması.",
+      "Felaket kurtarma merkezi (FKM / DR site) türleri: Sıcak (hot: donanım ve güncel veri hazır, dakikalar-saatler, en pahalı), Ilık (warm: donanım var, veri kısmen güncel, saatler-günler), Soğuk (cold: yalnızca alan ve altyapı, günler-haftalar, en ucuz), Aynalı (mirrored/aktif-aktif: eş zamanlı, sıfıra yakın RPO/RTO), Mobil ve karşılıklı anlaşma (reciprocal) seçenekleri. Banka ikincil merkezi birincil merkezden farklı risk bölgesinde (deprem fay hattı dışı) olmalıdır.",
+      "Veri çoğaltma (replication): Eş zamanlı (synchronous) her yazma iki tarafa da işlenince onaylanır, RPO ≈ 0, mesafe sınırı (gecikme) vardır; Eş zamansız (asynchronous) gecikmeli kopya, RPO saniyeler-dakikalar, uzun mesafe. Veritabanı günlük aktarımı (log shipping), depolama düzeyinde çoğaltma ve anlık görüntü (snapshot) teknikleri kullanılır; snapshot yedek yerine geçmez çünkü aynı depolama üzerindedir.",
+      "Yüksek erişilebilirlik (HA) ile felaket kurtarma farkı: HA tek bileşen arızasına karşı aynı lokasyonda yedeklilik (küme/cluster, RAID, çift güç kaynağı, yük dengeleyici; 'tek hata noktası' yok); DR tüm lokasyonun kaybına karşı farklı lokasyondur. RAID disk arızasına karşı korur ama silme, bozulma veya fidye yazılımına karşı yedek değildir.",
+      "İş sürekliliği yaşam döngüsü (ISO 22301): Politika ve kapsam → BIA ve risk değerlendirmesi → strateji seçimi → plan geliştirme → farkındalık ve eğitim → tatbikat/test → bakım ve gözden geçirme (yıllık veya büyük değişiklik sonrası). Plan kopyaları merkez dışında ve erişilebilir tutulur; iletişim ağacı ve kriz yönetim ekibi tanımlanır.",
+      "Test türleri (artan gerçekçilik sırasıyla): Kontrol listesi/okuma (checklist), Masa başı/yapılandırılmış yürüyüş (tabletop/walkthrough), Simülasyon (senaryo canlandırma, üretim kesilmez), Paralel test (FKM sistemleri ayağa kaldırılır, üretim devam eder), Tam kesinti testi (full interruption: üretim FKM'ye alınır, en riskli ve en kanıtlayıcı). BDDK bankaların iş sürekliliği planlarını düzenli test etmesini ve ikincil merkezin gerçek işlem yapabildiğini göstermesini bekler.",
+      "Yedekten geri yükleme testi: Rastgele seçilen yedeklerden periyodik geri yükleme, süre ve veri bütünlüğü ölçümü, sonuçların kayıt altına alınması. Denetçi yedekleme günlüklerini (başarısız işler ve tekrar), saklama politikasına uyumu, off-site kopyanın varlığını, şifrelemeyi ve en son geri yükleme testinin tarihini kanıt olarak ister."
+    ],
+    "comparisons": [
+      {
+        "title": "Tam vs Artımlı vs Fark yedekleme",
+        "rows": [
+          [
+            "Özellik",
+            "Tam (full)",
+            "Artımlı (incremental)",
+            "Fark (differential)"
+          ],
+          [
+            "Neyi yedekler",
+            "Tüm veri",
+            "Son herhangi bir yedekten sonra değişenler",
+            "Son TAM yedekten sonra değişenler"
+          ],
+          [
+            "Yedekleme süresi/boyutu",
+            "En uzun / en büyük",
+            "En kısa / en küçük",
+            "Orta, her gün büyür"
+          ],
+          [
+            "Geri yükleme",
+            "Tek set, en hızlı",
+            "Tam + tüm artımlılar sırayla, en yavaş",
+            "Tam + son fark, orta"
+          ],
+          [
+            "Arşiv biti",
+            "Sıfırlar",
+            "Sıfırlar",
+            "Sıfırlamaz"
+          ],
+          [
+            "Zincir riski",
+            "Yok",
+            "Yüksek (bir halka bozulursa sonrası gider)",
+            "Düşük (yalnızca iki set)"
+          ]
+        ]
+      },
+      {
+        "title": "Felaket kurtarma merkezi türleri",
+        "rows": [
+          [
+            "Tür",
+            "Hazırlık düzeyi",
+            "Kurtarma süresi (RTO)",
+            "Maliyet",
+            "Uygun olduğu durum"
+          ],
+          [
+            "Aynalı / Aktif-aktif",
+            "Eş zamanlı, canlı",
+            "Dakikalar veya sıfır",
+            "En yüksek",
+            "Çekirdek bankacılık, ödeme sistemleri"
+          ],
+          [
+            "Sıcak (hot)",
+            "Donanım + güncel veri",
+            "Dakikalar-saatler",
+            "Yüksek",
+            "Kritik sistemler"
+          ],
+          [
+            "Ilık (warm)",
+            "Donanım + kısmen güncel veri",
+            "Saatler-günler",
+            "Orta",
+            "Önemli ama kritik olmayan"
+          ],
+          [
+            "Soğuk (cold)",
+            "Yalnızca alan, güç, iklimlendirme",
+            "Günler-haftalar",
+            "Düşük",
+            "Düşük öncelikli sistemler"
+          ]
+        ]
+      },
+      {
+        "title": "RPO vs RTO",
+        "rows": [
+          [
+            "Özellik",
+            "RPO",
+            "RTO"
+          ],
+          [
+            "Ölçtüğü",
+            "Kabul edilebilir veri kaybı (zaman olarak)",
+            "Kabul edilebilir kesinti süresi"
+          ],
+          [
+            "Zaman ekseni",
+            "Kesintiden GERİYE",
+            "Kesintiden İLERİYE"
+          ],
+          [
+            "Belirlediği teknoloji",
+            "Yedekleme/çoğaltma sıklığı",
+            "FKM türü, otomasyon, personel hazırlığı"
+          ],
+          [
+            "Örnek",
+            "RPO 15 dk → en az 15 dk'da bir çoğaltma",
+            "RTO 2 saat → sıcak FKM gerekir"
+          ],
+          [
+            "İlişki",
+            "RPO ve RTO birbirinden bağımsızdır; biri sıfır iken diğeri saatler olabilir",
+            "RTO + WRT ≤ MTD"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "RTO + WRT ≤ MTD (Maximum Tolerable Downtime)",
+      "Artımlı yedekte geri yükleme seti = Son tam yedek + ondan sonraki TÜM artımlı yedekler (sırayla)",
+      "Fark yedekte geri yükleme seti = Son tam yedek + yalnızca SON fark yedeği",
+      "3-2-1 kuralı: 3 kopya, 2 farklı ortam, 1 kopya farklı lokasyon (+1 çevrimdışı/değiştirilemez, 0 geri yükleme hatası)",
+      "Erişilebilirlik = MTBF / (MTBF + MTTR); MTBF arızalar arası ortalama süre, MTTR ortalama onarım süresi",
+      "Yıllık izin verilen kesinti = (1 − erişilebilirlik) × 8.760 saat; %99,9 → ~8,8 saat, %99,99 → ~53 dk"
+    ],
+    "misconceptions": [
+      "Yanılgı: RAID veya disk aynalama yedek yerine geçer. Doğrusu: RAID disk arızasına karşı erişilebilirlik sağlar; yanlışlıkla silme, veri bozulması veya fidye yazılımı her iki kopyayı aynı anda etkiler. Yedek ayrı ve zamanda geri gidilebilir kopyadır.",
+      "Yanılgı: Yedek alınıyorsa veri güvendedir. Doğrusu: Geri yükleme testi yapılmamış yedek güvence vermez; denetçi son başarılı geri yükleme testinin kanıtını ister.",
+      "Yanılgı: Fark yedekleme, artımlı yedeklemenin diğer adıdır. Doğrusu: Artımlı son herhangi bir yedekten, fark son TAM yedekten sonraki değişiklikleri alır; geri yükleme setleri ve arşiv biti davranışları farklıdır.",
+      "Yanılgı: RPO ve RTO aynı şeyi ölçer. Doğrusu: RPO geriye dönük veri kaybını, RTO ileriye dönük kesinti süresini ölçer; sıfır RPO (eş zamanlı çoğaltma) ile saatlerce RTO bir arada olabilir.",
+      "Yanılgı: Soğuk felaket kurtarma merkezi ucuz olduğu için bankacılık sistemleri için yeterlidir. Doğrusu: Soğuk merkez günler-haftalar RTO verir; ödeme ve çekirdek bankacılık gibi düşük MTD'li sistemler sıcak veya aynalı merkez gerektirir.",
+      "Yanılgı: Felaket kurtarma merkezi, birincil merkezle aynı şehirde ve aynı binada farklı katta olabilir. Doğrusu: Aynı felaketten (deprem, yangın, sel, elektrik kesintisi) etkilenmemesi için farklı risk bölgesinde olmalıdır."
+    ],
+    "example": "Bankanın kredi kartı yetkilendirme sistemi için iş etki analizi MTD = 2 saat, RPO = 5 dakika belirlemiştir. Mevcut durumda gece saat 02:00'de tam, gün içinde 6 saatte bir artımlı yedek alınıyor ve FKM ılık düzeydedir. Denetçi, 6 saatlik yedek aralığının 5 dakikalık RPO'yu karşılamadığını (en kötü durumda 6 saat işlem kaybı) ve ılık merkezin saatler-günler RTO'sunun 2 saatlik MTD'yi aştığını bulgu olarak yazar. Öneri: veritabanı için eş zamanlı veya saniyeler gecikmeli eş zamansız çoğaltma ile sıcak/aktif-aktif FKM, yedeklerin değiştirilemez (immutable) kopyasıyla 3-2-1-1-0 uyumu ve yılda en az bir kez FKM'de gerçek işlem yapılan tatbikat. Ayrıca son geri yükleme testinin 14 ay önce yapıldığı görülürse bu ikinci bir bulgu olur.",
+    "references": [
+      "ISO 22301:2019 (İş Sürekliliği Yönetim Sistemleri) ve ISO 22313 (uygulama rehberi)",
+      "NIST SP 800-34 Rev.1 (Contingency Planning Guide for Federal Information Systems)",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020), iş sürekliliği, ikincil merkez, yedekleme ve test hükümleri (kavram düzeyinde)",
+      "ISO/IEC 27002:2022, bilgi yedekleme ve kesinti sırasında bilgi güvenliği sürekliliği kontrolleri",
+      "ITIL 4, Service Continuity Management uygulaması",
+      "ISACA, CISA Review Manual, Alan 4 (Information Systems Operations and Business Resilience)",
+      "Silberschatz, Galvin & Gagne, Operating System Concepts (RAID bölümü)"
+    ]
+  },
+  "RISK": {
+    "summary": "BT risk ve kontrolleri konusu, bilgi sistemlerinden kaynaklanan risklerin tanımlanması, ölçülmesi, kontrol edilmesi ve izlenmesi ile bu kontrollerin denetçi tarafından nasıl test edildiğini kapsar. Banka müfettişliği için en kritik konudur: risk yönetimi süreci, kontrol türleri (önleyici/tespit edici/düzeltici, genel/uygulama kontrolleri), üç savunma hattı, COBIT/ISO 27001/BDDK çerçevesi, denetim kanıtı ve örnekleme kavramları sınavda senaryo soruları olarak gelir.",
+    "concepts": [
+      "Risk, bir tehdidin bir zafiyeti kullanarak varlık üzerinde olumsuz etki yaratma olasılığı ve etkisinin birleşimidir. Doğal risk (inherent risk) kontrol yokken, artık/kalan risk (residual risk) kontroller uygulandıktan sonra kalan risktir. Risk iştahı (risk appetite) kurumun kabul etmeye hazır olduğu toplam risk düzeyi, tolerans ise hedeften kabul edilebilir sapmadır.",
+      "Risk yönetimi süreci (ISO 31000 / ISO/IEC 27005 / NIST RMF): Bağlam belirleme → varlık envanteri ve sınıflandırma → risk tanımlama (tehdit, zafiyet) → analiz (olasılık, etki) → değerlendirme (kriterlerle karşılaştırma) → işleme → izleme ve gözden geçirme → iletişim. Risk kaydı (risk register) tüm riskleri, sahiplerini ve işleme planını tutar.",
+      "Risk işleme seçenekleri: Azaltma/kontrol etme (mitigate: kontrol uygula), Kabul etme (accept: iştah içinde, belgelenir ve yönetim onaylar), Aktarma/paylaşma (transfer: sigorta, dış hizmet sözleşmesi; sorumluluk tam aktarılamaz), Kaçınma (avoid: faaliyeti yapmama).",
+      "Risk analizi yöntemleri: Nitel (düşük/orta/yüksek matris, uzman görüşü, hızlı), Nicel (parasal: SLE, ARO, ALE; maliyet-fayda hesabı), Yarı nicel (puanlama). Nicel analizde kontrolün maliyeti sağladığı ALE azalmasından büyükse kontrol ekonomik değildir.",
+      "Kontrol (control): Riski azaltmak için tasarlanan politika, prosedür, uygulama veya teknik mekanizmadır. İşlevine göre: Önleyici (preventive: MFA, görevler ayrılığı, girdi doğrulama), Tespit edici (detective: iz kaydı incelemesi, mutabakat, IDS), Düzeltici (corrective: yedekten dönme, yama, olay müdahalesi); ayrıca caydırıcı (deterrent), telafi edici (compensating) ve yönlendirici (directive: politika, eğitim) kontroller.",
+      "Uygulanma biçimine göre: Yönetsel/idari (politika, eğitim, işe alım kontrolleri), Teknik/mantıksal (şifreleme, güvenlik duvarı, erişim listesi), Fiziksel (kilit, kamera, güvenlik görevlisi). Otomatik kontroller (sistem zorlar, tutarlı) ve manuel kontroller (insan yürütür, hata payı yüksek, örneklem testi gerekir).",
+      "BT genel kontrolleri (ITGC, IT General Controls): Tüm uygulamaları etkileyen kontroller; erişim yönetimi, değişiklik yönetimi, BT operasyonları (iş zamanlama, yedekleme, olay yönetimi), program geliştirme/edinme, fiziksel ve çevresel güvenlik. ITGC zayıfsa uygulama kontrollerine güvenilemez.",
+      "Uygulama kontrolleri (application controls): Belirli bir iş uygulamasındaki işlem düzeyinde kontroller; girdi (zorunlu alan, format, aralık, kontrol basamağı, limit kontrolü, yetki kontrolü), işleme (toplam eşleştirme, sıra kontrolü, çift kayıt kontrolü), çıktı (rapor dağıtım kontrolü, mutabakat) ve arayüz kontrolleri (gönderilen-alınan kayıt sayısı/toplam karşılaştırması).",
+      "Üç savunma hattı (Three Lines Model): 1. hat iş birimleri ve BT operasyonu (riski sahiplenir, kontrolleri işletir), 2. hat risk yönetimi, uyum ve bilgi güvenliği (çerçeve kurar, izler), 3. hat iç denetim/teftiş (bağımsız güvence verir, yönetim kuruluna/denetim komitesine raporlar). Dış denetim ve düzenleyici (BDDK) kurum dışı güvence sağlar.",
+      "Kontrol testi: Tasarım etkinliği (kontrol, riski giderecek şekilde tasarlanmış mı; yürüyüş testi/walkthrough) ve işletim etkinliği (dönem boyunca tutarlı çalışmış mı; örneklem testi). Kanıt türleri: inceleme (belge), gözlem, sorgulama (tek başına en zayıf), yeniden gerçekleştirme (en güçlü), analitik prosedürler, bilgisayar destekli denetim teknikleri (CAAT: tüm veri setini analiz, mükerrer kayıt, Benford).",
+      "Denetim riski = Doğal risk × Kontrol riski × Tespit riski. Kontrol riski yüksekse denetçi daha fazla maddi doğrulama testi yapar (tespit riskini düşürür). Önemlilik (materiality) bulgunun karar vericileri etkileme eşiğidir. Bulgu yazımında 5 öğe: durum (condition), kriter (criteria), neden (cause), etki (effect), öneri (recommendation).",
+      "BDDK yönetmeliğinin öngördüğü BT yönetişimi: Yönetim kurulunun nihai sorumluluğu, bilgi sistemleri stratejisi ve risk yönetimi süreci, bilgi güvenliği politikası ve sorumlu birimi, BT süreçlerinin iç kontrol ve iç denetim kapsamına alınması, birincil ve ikincil sistemlerin yurt içinde bulundurulması beklentisi, dış hizmet alımında risk değerlendirmesi ve denetim hakkı, olayların ve kesintilerin raporlanması. Ayrıca bağımsız denetim kuruluşlarınca periyodik bilgi sistemleri denetimi yaptırılır.",
+      "COBIT 2019: BT yönetişim ve yönetim çerçevesi; 5 alan (EDM Değerlendir-Yönlendir-İzle: yönetişim; APO Hizala-Planla-Düzenle; BAI Kur-Edin-Uygula; DSS Teslim-Hizmet-Destek; MEA İzle-Değerlendir-Ölç) ve 40 yönetişim/yönetim hedefi. Risk için APO12 (Managed Risk), güvenlik için APO13, iç kontrol için MEA02 öne çıkar. Yetenek düzeyleri 0-5 ile süreç olgunluğu ölçülür.",
+      "ISO/IEC 27001:2022: Bilgi Güvenliği Yönetim Sistemi (BGYS/ISMS) gereklilikleri; risk temelli yaklaşım, kapsam, liderlik, risk değerlendirme ve işleme, Uygulanabilirlik Bildirgesi (SoA), Ek A kontrolleri (2022'de 4 tema: organizasyonel, insan, fiziksel, teknolojik; 93 kontrol), iç tetkik, yönetim gözden geçirmesi, sürekli iyileştirme (PUKÖ: Planla-Uygula-Kontrol et-Önlem al). ISO 27001 sertifikalandırılır, ISO 27002 kontrol uygulama rehberidir."
+    ],
+    "comparisons": [
+      {
+        "title": "Kontrol türleri (işleve göre)",
+        "rows": [
+          [
+            "Tür",
+            "Zaman",
+            "Amaç",
+            "BT örneği",
+            "Bankacılık örneği"
+          ],
+          [
+            "Önleyici",
+            "Olay öncesi",
+            "Oluşmasını engelle",
+            "MFA, güvenlik duvarı, girdi doğrulama, görevler ayrılığı",
+            "Havale limiti, çift onay (maker-checker)"
+          ],
+          [
+            "Tespit edici",
+            "Olay sırasında/sonrası",
+            "Fark et ve raporla",
+            "IDS, iz kaydı incelemesi, FIM, mutabakat",
+            "Günlük hesap mutabakatı, dolandırıcılık izleme"
+          ],
+          [
+            "Düzeltici",
+            "Olay sonrası",
+            "Etkiyi gider, düzelt",
+            "Yedekten geri dönüş, yama, olay müdahalesi",
+            "Ters kayıt, müşteri bilgilendirme"
+          ],
+          [
+            "Telafi edici",
+            "Birincil kontrol yoksa",
+            "Boşluğu kapat",
+            "SoD mümkün değilse yönetici gözden geçirmesi",
+            "Küçük şubede ikinci imza yerine merkez onayı"
+          ]
+        ]
+      },
+      {
+        "title": "BT genel kontrolleri vs Uygulama kontrolleri",
+        "rows": [
+          [
+            "Özellik",
+            "ITGC",
+            "Uygulama kontrolleri"
+          ],
+          [
+            "Kapsam",
+            "Tüm sistem ve uygulamalar",
+            "Tek bir iş uygulaması/işlem"
+          ],
+          [
+            "Örnek alanlar",
+            "Erişim, değişiklik, operasyon, geliştirme, fiziksel güvenlik",
+            "Girdi, işleme, çıktı, arayüz kontrolleri"
+          ],
+          [
+            "Sahibi",
+            "BT yönetimi",
+            "İş süreci sahibi + BT"
+          ],
+          [
+            "İlişki",
+            "Uygulama kontrollerinin güvenilirliğinin temeli",
+            "ITGC zayıfsa güvenilmez"
+          ],
+          [
+            "Test yaklaşımı",
+            "Süreç ve örneklem testi",
+            "İşlem testi, yeniden hesaplama, CAAT"
+          ]
+        ]
+      },
+      {
+        "title": "Üç savunma hattı",
+        "rows": [
+          [
+            "Hat",
+            "Kim",
+            "Rol",
+            "Bağımsızlık"
+          ],
+          [
+            "1. hat",
+            "İş birimleri, BT operasyonu",
+            "Riski sahiplenir, kontrolleri işletir",
+            "Yok (süreç sahibi)"
+          ],
+          [
+            "2. hat",
+            "Risk yönetimi, uyum, bilgi güvenliği",
+            "Çerçeve, politika, izleme, danışmanlık",
+            "Kısmi"
+          ],
+          [
+            "3. hat",
+            "İç denetim / teftiş",
+            "Bağımsız güvence, yönetim kuruluna rapor",
+            "Tam (fonksiyonel bağımsızlık)"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Risk = Olasılık × Etki (nitel matris) veya Risk = Tehdit × Zafiyet × Varlık değeri",
+      "Tek kayıp beklentisi SLE = Varlık değeri (AV) × Maruz kalma faktörü (EF)",
+      "Yıllık kayıp beklentisi ALE = SLE × Yıllık gerçekleşme oranı (ARO)",
+      "Kontrolün değeri = ALE(önce) − ALE(sonra) − Kontrolün yıllık maliyeti (pozitifse ekonomik)",
+      "Artık risk = Doğal risk − Kontrollerin azalttığı risk (kavramsal)",
+      "Denetim riski = Doğal risk × Kontrol riski × Tespit riski",
+      "Kontrol riski yüksek → maddi doğrulama testi artar; kontrol riski düşük → kontrollere güven, örneklem küçülür"
+    ],
+    "misconceptions": [
+      "Yanılgı: Riskin kabul edilmesi riski görmezden gelmektir. Doğrusu: Kabul, riskin analiz edilip iştah içinde kaldığına yetkili yönetimin belgeli karar vermesidir; görmezden gelme ise analiz edilmemiş risktir.",
+      "Yanılgı: Riski sigortaya veya dış hizmet sağlayıcıya aktarmak sorumluluğu da aktarır. Doğrusu: Mali etki paylaşılır ama düzenleyici ve müşteriye karşı sorumluluk bankada kalır; BDDK dış hizmet alımında bankanın sorumluluğunun devam ettiğini açıkça belirtir.",
+      "Yanılgı: Artık risk sıfıra indirilmelidir. Doğrusu: Sıfır risk yoktur ve maliyeti sonsuzdur; hedef artık riski iştah/tolerans sınırına çekmektir.",
+      "Yanılgı: Sorgulama (yönetimle görüşme) tek başına yeterli denetim kanıtıdır. Doğrusu: Sorgulama en zayıf kanıt türüdür; belge incelemesi, gözlem veya yeniden gerçekleştirme ile desteklenmelidir.",
+      "Yanılgı: Kontrolün var olması (politika yazılmış, araç kurulmuş) etkin olduğunu gösterir. Doğrusu: Tasarım etkinliği yeterli değildir; işletim etkinliği dönem boyunca örneklemle test edilmelidir.",
+      "Yanılgı: İç denetim 2. savunma hattıdır. Doğrusu: İç denetim bağımsız güvence veren 3. hattır; 2. hat risk yönetimi, uyum ve bilgi güvenliği fonksiyonlarıdır."
+    ],
+    "example": "Bankanın internet bankacılığı sunucusunda yılda ortalama 2 kez hizmet kesintisi yaşanıyor; her kesintinin işlem kaybı ve itibar maliyeti 400.000 TL hesaplanıyor (SLE). ALE = 400.000 × 2 = 800.000 TL. Yedekli (aktif-aktif) mimari ve yük dengeleyici yatırımı yıllık 300.000 TL maliyetle kesinti sıklığını yılda 0,25'e düşürecekse yeni ALE = 100.000 TL; sağlanan azalma 700.000 TL, net fayda 400.000 TL olduğu için kontrol ekonomik olarak gerekçelidir. Denetçi raporunda bulguyu durum (yedeksiz tek sunucu), kriter (BDDK'nın hizmet sürekliliği ve risk yönetimi beklentisi, kurumun %99,9 SLA hedefi), neden (kapasite planlamasının eksikliği), etki (yıllık 800.000 TL beklenen kayıp ve düzenleyici bildirim riski), öneri (yedekli mimari + aylık KRI izleme) biçiminde yazar ve kalan riskin yönetim tarafından kabul edildiğinin belgelenmesini ister.",
+    "references": [
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (Resmî Gazete 15.03.2020, No. 31069), BT yönetişimi, risk yönetimi, iç kontrol, dış hizmet alımı ve denetim hükümleri (kavram düzeyinde)",
+      "BDDK, Bankaların İç Sistemleri ve İçsel Sermaye Yeterliliği Değerlendirme Süreci Hakkında Yönetmelik (iç kontrol, risk yönetimi, iç denetim fonksiyonları)",
+      "COBIT 2019 Framework: Introduction and Methodology; Governance and Management Objectives (APO12, APO13, MEA02)",
+      "ISO/IEC 27001:2022, ISO/IEC 27002:2022, ISO/IEC 27005:2022 (bilgi güvenliği risk yönetimi), ISO 31000:2018",
+      "NIST SP 800-30 Rev.1 (Guide for Conducting Risk Assessments), NIST SP 800-37 Rev.2 (Risk Management Framework), NIST SP 800-53 Rev.5",
+      "IIA, The IIA's Three Lines Model (2020); ISACA, CISA Review Manual, Alan 1 ve 2; ISACA, Risk IT Framework"
+    ]
+  },
+  "GT": {
+    "summary": "Güncel teknolojiler konusu, bankacılığı dönüştüren yapay zekâ, büyük veri, blok zinciri, nesnelerin interneti, 5G, kuantum bilişim, açık bankacılık ve dijital kimlik gibi teknolojilerin temel kavramlarını ve getirdikleri riskleri kapsar. Sınavda tanım düzeyinde sorular (makine öğrenmesi türleri, blok zinciri özellikleri, büyük verinin V'leri, API ekonomisi) ve bu teknolojilerin bankacılıkta kullanımı ile denetim/uyum sonuçları sorulur.",
+    "concepts": [
+      "Yapay zekâ (AI) insan zekâsını taklit eden sistemlerin genel adı; makine öğrenmesi (ML) veriden örüntü öğrenen alt alan; derin öğrenme (DL) çok katmanlı yapay sinir ağlarıyla ML alt alanı. Üretken yapay zekâ (generative AI) ve büyük dil modelleri (LLM; GPT, Claude, Gemini, Llama) metin/kod/görüntü üretir.",
+      "Makine öğrenmesi türleri: Gözetimli (supervised: etiketli veri; sınıflandırma örn. dolandırıcılık var/yok, regresyon örn. kredi skoru), Gözetimsiz (unsupervised: etiketsiz; kümeleme ile müşteri segmentasyonu, anomali tespiti), Pekiştirmeli (reinforcement: ödül/ceza ile deneme-yanılma). Aşırı öğrenme (overfitting) eğitim verisini ezberleyip genellememektir; eğitim/doğrulama/test ayrımı ile kontrol edilir.",
+      "Yapay zekâ riskleri ve yönetişimi: Veri yanlılığı (bias) ve ayrımcılık (kredi kararlarında), açıklanabilirlik (explainability; kara kutu modeller), model riski ve doğrulama, veri gizliliği, prompt enjeksiyonu ve halüsinasyon (LLM). AB Yapay Zekâ Yasası (EU AI Act, 2024) kredi skorlamayı 'yüksek riskli' sınıflandırır; NIST AI RMF ve ISO/IEC 42001 (yapay zekâ yönetim sistemi) yönetişim çerçeveleridir.",
+      "Büyük veri (big data) özellikleri (V'ler): Hacim (volume), Hız (velocity), Çeşitlilik (variety), Doğruluk (veracity), Değer (value). Teknolojiler: Hadoop (HDFS dağıtık dosya sistemi + MapReduce), Apache Spark (bellek içi işleme), NoSQL veritabanları, veri gölü (data lake, ham veri) ile veri ambarı (data warehouse, yapılandırılmış, analitik) ayrımı, ETL/ELT süreçleri.",
+      "Veri analitiği düzeyleri: Tanımlayıcı (ne oldu), Tanısal (neden oldu), Tahmine dayalı (ne olacak), Kuralcı (ne yapmalı). Veri yönetişimi (data governance) veri sahipliği, kalitesi, sözlüğü ve soy bilgisini (lineage) tanımlar; KVKK (6698 sayılı Kişisel Verilerin Korunması Kanunu) ve GDPR kişisel verinin işlenme şartlarını düzenler; anonimleştirme ve takma adlandırma (pseudonymization) analitikte gizlilik korur.",
+      "Blok zinciri (blockchain): Kriptografik özetle birbirine bağlı, zaman damgalı blokların dağıtık ve değiştirilemez (immutable) defteri; konsensüs mekanizmaları İş İspatı (Proof of Work, Bitcoin, enerji yoğun), Hisse İspatı (Proof of Stake, Ethereum 2022 sonrası). Açık/izinsiz (public/permissionless) ve izinli/konsorsiyum (permissioned: Hyperledger Fabric, R3 Corda) ağlar; bankalar izinli ağları tercih eder.",
+      "Akıllı sözleşme (smart contract) blok zincirinde koşullar sağlandığında otomatik çalışan koddur; kod hataları geri alınamaz zarar yaratabilir (DAO saldırısı). Kripto varlıklar, stablecoin, merkez bankası dijital parası (CBDC; Dijital Türk Lirası projesi TCMB tarafından yürütülmektedir) ve tokenizasyon (varlıkların dijital temsili) bankacılığı ilgilendiren uygulamalardır. Blok zinciri her problemi çözmez; merkezi veritabanı çoğu durumda daha hızlı ve ucuzdur.",
+      "Nesnelerin interneti (IoT): Sensör ve gömülü cihazların internete bağlanması; ATM/POS telemetri, akıllı şube, giyilebilir ödeme. Riskler: zayıf varsayılan parolalar, yama eksikliği, botnet (Mirai), geniş saldırı yüzeyi; ağ bölümlendirme ve cihaz kimlik yönetimi savunmalardır. Uç bilişim (edge computing) veriyi kaynağa yakın işler.",
+      "5G: Yüksek bant genişliği, çok düşük gecikme (~1 ms hedef), yoğun cihaz desteği, ağ dilimleme (network slicing). Yazılım tanımlı ağ (SDN) kontrol ve veri düzlemini ayırır; ağ fonksiyonu sanallaştırma (NFV) donanım cihazlarını yazılıma taşır; SD-WAN şube bağlantılarını merkezi yönetir.",
+      "Kuantum bilişim: Kübit (qubit) süperpozisyon ve dolanıklık ile belirli problemleri üstel hızlandırır. Shor algoritması RSA ve ECC'yi, Grover algoritması simetrik anahtar aramasını (etkin anahtar uzunluğunu yarıya indirir: AES-128 → 64 bit etkin, bu yüzden AES-256 önerilir) tehdit eder. Kuantum sonrası kriptografiye (NIST FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA; 2024) geçiş 'şimdi topla, sonra çöz' riskine karşı bugünden planlanır; kripto çeviklik (crypto agility) algoritma değiştirebilme yeteneğidir.",
+      "Açık bankacılık (open banking) ve API ekonomisi: Bankanın müşteri onayıyla hesap bilgisi (AISP) ve ödeme başlatma (PISP) hizmetlerini üçüncü taraflara standart API'lerle açması; Avrupa'da PSD2, Türkiye'de TCMB'nin ödeme hizmetleri ve veri paylaşım servisleri düzenlemeleri ile BKM'nin açık bankacılık API altyapısı (2021-2022'den itibaren kademeli). Riskler: API güvenliği (OAuth 2.0, güçlü müşteri doğrulaması), üçüncü taraf riski, veri paylaşım rızası. BaaS (Banking as a Service) ve fintek iş birlikleri bu altyapıya dayanır.",
+      "Dijital kimlik ve ödeme yenilikleri: Uzaktan müşteri edinimi (video ile kimlik tespiti; BDDK 2021 düzenlemesi), e-Devlet ve e-imza/mobil imza, biyometrik kimlik doğrulama, FAST (TCMB anlık ödeme sistemi, 7/24), karekod (QR) ile ödeme, temassız ve tokenize kart ödemeleri (Apple Pay/Google Pay benzeri), dijital cüzdanlar. Sahtecilikte deepfake ve sentetik kimlik yeni tehditlerdir.",
+      "Düzenleyici teknoloji (RegTech) ve denetim teknolojisi (SupTech): Uyum izleme, şüpheli işlem bildirimi (MASAK), müşterini tanı (KYC/AML) süreçlerinde yapay zekâ ve veri analitiği; sürekli denetim (continuous auditing) ve sürekli izleme (continuous monitoring) denetçinin örneklem yerine tüm veri üzerinde çalışmasını sağlar.",
+      "Siber güvenlikte güncel yaklaşımlar: Sıfır güven mimarisi (zero trust, NIST SP 800-207), SASE (ağ + güvenlik bulutta birleşik), XDR (genişletilmiş tespit ve müdahale), güvenlik otomasyonu (SOAR), yapay zekâ destekli tehdit tespiti ve saldırganların da yapay zekâ kullanması (otomatik oltalama, deepfake sesli dolandırıcılık). Fidye yazılımı hizmet olarak (RaaS) ve tedarik zinciri saldırıları (SolarWinds 2020) öne çıkan tehditlerdir."
+    ],
+    "comparisons": [
+      {
+        "title": "Makine öğrenmesi türleri",
+        "rows": [
+          [
+            "Tür",
+            "Veri",
+            "Amaç",
+            "Bankacılık örneği"
+          ],
+          [
+            "Gözetimli",
+            "Etiketli",
+            "Sınıflandırma, regresyon",
+            "Kredi skoru, dolandırıcılık sınıflandırma"
+          ],
+          [
+            "Gözetimsiz",
+            "Etiketsiz",
+            "Kümeleme, boyut indirgeme, anomali",
+            "Müşteri segmentasyonu, anormal işlem tespiti"
+          ],
+          [
+            "Pekiştirmeli",
+            "Ödül sinyali",
+            "Ardışık karar optimizasyonu",
+            "Portföy yönetimi, dinamik fiyatlama"
+          ]
+        ]
+      },
+      {
+        "title": "Açık (izinsiz) vs İzinli blok zinciri",
+        "rows": [
+          [
+            "Özellik",
+            "Açık / İzinsiz",
+            "İzinli / Konsorsiyum"
+          ],
+          [
+            "Katılım",
+            "Herkes",
+            "Yetkili kurumlar"
+          ],
+          [
+            "Konsensüs",
+            "PoW, PoS",
+            "PBFT, Raft gibi hızlı protokoller"
+          ],
+          [
+            "Hız/ölçek",
+            "Düşük (Bitcoin ~7 işlem/sn)",
+            "Yüksek (binlerce işlem/sn)"
+          ],
+          [
+            "Gizlilik",
+            "Şeffaf, takma adlı",
+            "Erişim kontrollü, kanal bazlı gizlilik"
+          ],
+          [
+            "Örnek",
+            "Bitcoin, Ethereum",
+            "Hyperledger Fabric, R3 Corda"
+          ],
+          [
+            "Banka kullanımı",
+            "Kripto varlık saklama, CBDC araştırma",
+            "Ticaret finansmanı, bankalar arası mutabakat, KYC paylaşımı"
+          ]
+        ]
+      },
+      {
+        "title": "Veri ambarı vs Veri gölü",
+        "rows": [
+          [
+            "Özellik",
+            "Veri ambarı (warehouse)",
+            "Veri gölü (lake)"
+          ],
+          [
+            "Veri biçimi",
+            "Yapılandırılmış, şema önceden (schema-on-write)",
+            "Ham, her biçim, şema okurken (schema-on-read)"
+          ],
+          [
+            "Kullanıcı",
+            "İş analisti, raporlama",
+            "Veri bilimci, ML"
+          ],
+          [
+            "İşleme",
+            "ETL (dönüştür, sonra yükle)",
+            "ELT (yükle, sonra dönüştür)"
+          ],
+          [
+            "Maliyet",
+            "Yüksek (optimize depolama)",
+            "Düşük (nesne depolama)"
+          ],
+          [
+            "Risk",
+            "Esneklik düşük",
+            "Veri bataklığına dönüşme, yönetişim zorluğu"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Büyük verinin 5 V'si: Volume, Velocity, Variety, Veracity, Value",
+      "Grover etkisi: n bitlik simetrik anahtarın kuantum etkin güvenliği ≈ n/2 bit (AES-128 → 64 bit, AES-256 → 128 bit)",
+      "Sınıflandırma ölçütleri: Doğruluk = (TP+TN)/Toplam; Kesinlik (precision) = TP/(TP+FP); Duyarlılık (recall) = TP/(TP+FN); F1 = 2·P·R/(P+R)",
+      "Dolandırıcılık tespitinde yanlış pozitif = meşru işlemi engellemek (müşteri memnuniyetsizliği), yanlış negatif = dolandırıcılığı kaçırmak (mali kayıp)"
+    ],
+    "misconceptions": [
+      "Yanılgı: Blok zinciri verisi şifreli olduğu için gizlidir. Doğrusu: Açık blok zincirinde işlemler herkesçe okunabilir; kriptografi değiştirilemezlik ve imza için kullanılır, gizlilik için değil. Gizlilik için izinli ağ veya ek teknikler gerekir.",
+      "Yanılgı: Yapay zekâ modeli yüksek doğruluk veriyorsa adildir ve güvenilirdir. Doğrusu: Dengesiz veride %99 doğruluk anlamsız olabilir (tüm işlemleri 'temiz' demek); ayrıca tarihsel veri yanlılığı ayrımcı kararlara yol açar. Kesinlik/duyarlılık ve adalet ölçütleri birlikte değerlendirilir.",
+      "Yanılgı: Kuantum bilgisayarlar tüm şifrelemeyi kırar. Doğrusu: Shor algoritması RSA/ECC gibi asimetrik şifreleri kırar; AES gibi simetrik şifreler Grover ile yalnızca zayıflar ve anahtar boyutunu artırmak yeterlidir.",
+      "Yanılgı: Veri gölü, veri ambarının yerini alır. Doğrusu: İkisi farklı ihtiyaçları karşılar; göl ham ve esnek, ambar yapılandırılmış ve raporlamaya optimize. Modern mimariler ikisini birleştirir (lakehouse).",
+      "Yanılgı: Açık bankacılık, bankanın müşteri verisini izinsiz paylaşmasıdır. Doğrusu: Paylaşım yalnızca müşterinin açık rızasıyla, yetkilendirilmiş üçüncü taraflara, güçlü kimlik doğrulama ve standart API ile yapılır.",
+      "Yanılgı: Üretken yapay zekânın verdiği bilgi her zaman doğrudur. Doğrusu: LLM'ler halüsinasyon (uydurma) üretebilir ve prompt enjeksiyonuna açıktır; bankacılıkta çıktıların insan denetimi ve kaynak doğrulaması gerekir."
+    ],
+    "example": "Banka, kart işlemlerinde dolandırıcılığı gerçek zamanlı tespit etmek için gözetimli bir makine öğrenmesi modeli devreye alıyor. Model, geçmiş etiketli işlemlerle (dolandırıcılık/temiz) eğitilir; işlemlerin yalnızca %0,1'i dolandırıcılık olduğu için doğruluk ölçütü yanıltıcıdır, ekip kesinlik ve duyarlılığı izler. Denetçi model riski kapsamında şunları sorar: eğitim verisinde belirli müşteri gruplarına karşı yanlılık test edildi mi, kararlar açıklanabilir mi (müşteri itirazında gerekçe), model performansı zamanla düşüyor mu (drift) ve yeniden eğitim değişiklik yönetiminden geçiyor mu, modelin kullandığı kişisel veriler KVKK'ya uygun işleniyor mu. Ayrıca kart tokenizasyonu ve FAST ile anlık ödemelerin geri alınamaz olması, tespitin milisaniyeler içinde yapılmasını zorunlu kılar; bu yüzden model uç noktaya yakın, düşük gecikmeli mimaride çalıştırılır.",
+    "references": [
+      "Russell & Norvig, Artificial Intelligence: A Modern Approach (4. baskı)",
+      "Géron, Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow",
+      "Nakamoto, Bitcoin: A Peer-to-Peer Electronic Cash System (2008); Hyperledger Fabric belgeleri",
+      "NIST AI Risk Management Framework (AI RMF 1.0, 2023); ISO/IEC 42001:2023; EU AI Act (2024)",
+      "NIST FIPS 203, 204, 205 (kuantum sonrası kriptografi, 2024); NIST SP 800-207 (Zero Trust Architecture)",
+      "Avrupa Birliği PSD2 direktifi; TCMB Ödeme Hizmetleri ve Elektronik Para düzenlemeleri; BKM Açık Bankacılık API dokümantasyonu",
+      "6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK); BDDK Uzaktan Kimlik Tespiti Yönetmeliği (2021)",
+      "Marr, Big Data: Using SMART Big Data, Analytics and Metrics"
+    ]
+  }
+}

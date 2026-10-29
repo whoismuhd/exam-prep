@@ -1,0 +1,31 @@
+{
+  "exam": {
+    "name": "VakıfBank 2026 – Bilgisayar Mühendisliği Alan Bilgisi",
+    "date": "2026-11-15",
+    "sectionQuestions": 40,
+    "totalQuestions": 140,
+    "totalMinutes": 210,
+    "derivedSectionMinutes": 60,
+    "negativeMarking": false
+  },
+  "topics": [
+    {"id": "IBG",  "order": 1,  "name": "İnternet ve Bilgi Güvenliği", "short": "İnternet ve Bilgi Güv.", "name_en": "Internet and Information Security", "short_en": "Internet & Info Security", "priority": "orta"},
+    {"id": "NET",  "order": 2,  "name": "Network (Bilgisayar Ağları)", "short": "Network", "name_en": "Networking", "short_en": "Networking", "priority": "yüksek"},
+    {"id": "VTYS", "order": 3,  "name": "Veri Tabanı Yönetim Sistemleri", "short": "Veri Tabanı", "name_en": "Database Management Systems", "short_en": "Databases", "priority": "yüksek"},
+    {"id": "VYA",  "order": 4,  "name": "Veri Yapıları ve Algoritmalar", "short": "Veri Yapıları ve Alg.", "name_en": "Data Structures and Algorithms", "short_en": "Data Structures & Alg.", "priority": "yüksek"},
+    {"id": "PRG",  "order": 5,  "name": "Yapısal Programlama ve Nesne Tabanlı Programlama", "short": "Programlama / OOP", "name_en": "Structured and Object-Oriented Programming", "short_en": "Programming / OOP", "priority": "yüksek"},
+    {"id": "IS",   "order": 6,  "name": "İşletim Sistemleri", "short": "İşletim Sistemleri", "name_en": "Operating Systems", "short_en": "Operating Systems", "priority": "yüksek"},
+    {"id": "WEB",  "order": 7,  "name": "Web Teknolojileri ve Uygulamaları", "short": "Web Teknolojileri", "name_en": "Web Technologies and Applications", "short_en": "Web Technologies", "priority": "orta"},
+    {"id": "ERY",  "order": 8,  "name": "Erişim Yönetimi", "short": "Erişim Yönetimi", "name_en": "Access Management", "short_en": "Access Management", "priority": "yüksek"},
+    {"id": "DGY",  "order": 9,  "name": "Değişiklik Yönetimi", "short": "Değişiklik Yönetimi", "name_en": "Change Management", "short_en": "Change Management", "priority": "orta"},
+    {"id": "SDLC", "order": 10, "name": "Yazılım Mühendisliği ve SDLC", "short": "Yazılım Müh. / SDLC", "name_en": "Software Engineering and SDLC", "short_en": "Software Eng. / SDLC", "priority": "orta"},
+    {"id": "MIM",  "order": 11, "name": "Bilgisayar Mimarisi", "short": "Bilgisayar Mimarisi", "name_en": "Computer Architecture", "short_en": "Computer Architecture", "priority": "tamamlayıcı"},
+    {"id": "KRP",  "order": 12, "name": "Kriptografi Temelleri", "short": "Kriptografi", "name_en": "Cryptography Fundamentals", "short_en": "Cryptography", "priority": "orta"},
+    {"id": "BLT",  "order": 13, "name": "Bulut Bilişim Temelleri", "short": "Bulut Bilişim", "name_en": "Cloud Computing Fundamentals", "short_en": "Cloud Computing", "priority": "tamamlayıcı"},
+    {"id": "SIB",  "order": 14, "name": "Temel Siber Güvenlik", "short": "Siber Güvenlik", "name_en": "Cybersecurity Fundamentals", "short_en": "Cybersecurity", "priority": "yüksek"},
+    {"id": "YIS",  "order": 15, "name": "Yedekleme ve İş Sürekliliği Temelleri", "short": "Yedekleme / İş Sürekliliği", "name_en": "Backup and Business Continuity Fundamentals", "short_en": "Backup / Continuity", "priority": "orta"},
+    {"id": "RISK", "order": 16, "name": "BT Risk ve Kontrolleri", "short": "BT Risk ve Kontrolleri", "name_en": "IT Risk and Controls", "short_en": "IT Risk & Controls", "priority": "yüksek"},
+    {"id": "GT",   "order": 17, "name": "Güncel Teknolojiler", "short": "Güncel Teknolojiler", "name_en": "Emerging Technologies", "short_en": "Emerging Tech", "priority": "tamamlayıcı"}
+  ],
+  "mockExtraTopics": ["NET", "VTYS", "VYA", "PRG", "SIB", "RISK"]
+}

@@ -1,0 +1,1199 @@
+[
+  {
+    "id": "NET-001",
+    "topic": "NET",
+    "subtopic": "OSI ve TCP/IP katmanları",
+    "difficulty": "temel",
+    "question": "Bir bankanın şube ağında yer alan cihazların ve protokollerin gördüğü işlevler OSI referans modeline göre sınıflandırılmak istenmektedir. Aşağıdaki işlev–katman eşleştirmelerinden hangisi doğrudur?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "Port numarasına göre uygulama süreçlerinin ayrıştırılması – Ağ katmanı (3. katman)"
+      },
+      {
+        "id": "B",
+        "text": "MAC adresine göre çerçevelerin (frame) anahtar portlarına iletilmesi – Ağ katmanı (3. katman)"
+      },
+      {
+        "id": "C",
+        "text": "Hedef IP adresine göre paketin bir sonraki atlamaya (next hop) yönlendirilmesi – Ağ katmanı (3. katman)"
+      },
+      {
+        "id": "D",
+        "text": "Kayıp segmentlerin yeniden gönderilmesiyle uçtan uca güvenilir teslim – Veri bağı katmanı (2. katman)"
+      },
+      {
+        "id": "E",
+        "text": "TLS ile oturum verisinin şifrelenmesi – Fiziksel katman (1. katman)"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "OSI modelinde her katmanın ayırt edici işlevi ve adresleme birimi vardır: 2. katman (veri bağı) MAC adresleriyle çerçeve iletir ve anahtarların (switch) çalıştığı katmandır; 3. katman (ağ) IP adresleriyle yönlendirme (routing) yapar ve yönlendiricilerin (router) katmanıdır; 4. katman (taşıma) port numaralarıyla süreçleri ayırır ve TCP ile güvenilir teslim sağlar. Hedef IP adresine bakarak bir sonraki atlamayı seçmek tam olarak ağ katmanının görevidir; bu nedenle C doğrudur.",
+    "simpleExplanation": "OSI modeli, ağ iletişimini bir mektubun yolculuğu gibi katmanlara ayıran bir şemadır. Her katmanın kendi 'adresi' vardır: 2. katman cihazın fabrika numarası gibi olan MAC adresine, 3. katman IP adresine, 4. katman ise port numarasına bakar. Bir paketi hedef IP adresine bakıp 'bir sonraki durağa' yönlendirmek, postacının zarfın üzerindeki şehir adresine bakıp doğru kamyona koymasına benzer; bu iş 3. katmanın, yani ağ katmanının işidir ve yönlendiriciler (router) burada çalışır. Bu yüzden C doğrudur. Diğer seçenekler adresi yanlış katmana eşlemiştir: port numarası 4. katmana, MAC adresi 2. katmana aittir; şifreleme ise kabloların bulunduğu 1. katmanda yapılmaz.",
+    "optionExplanations": {
+      "A": "Port numarası, taşıma katmanının (4. katman, TCP/UDP) adresleme birimidir; ağ katmanı IP adresiyle çalışır. Katman 3 ile 4'ün adresleme birimleri karıştırılmıştır.",
+      "B": "MAC adresine göre çerçeve iletimi anahtarların işidir ve veri bağı katmanında (2. katman) gerçekleşir; ağ katmanı değil.",
+      "C": "Doğru. IP adresine göre yol seçimi (yönlendirme) ağ katmanının temel işlevidir; yönlendiriciler bu katmanda çalışır.",
+      "D": "Yeniden gönderim ve sıra numarasıyla uçtan uca güvenilirlik TCP'nin, yani taşıma katmanının (4. katman) işlevidir. Veri bağı katmanı yalnızca komşu düğümler arasındaki tek atlamada çerçeve bütünlüğünü (CRC) denetler.",
+      "E": "TLS, OSI'de oturum/sunum katmanlarına (TCP/IP modelinde uygulama katmanının altına) yerleştirilir; fiziksel katman bitlerin kablo veya hava üzerinden iletimiyle ilgilenir, şifreleme yapmaz."
+    },
+    "keyConcept": "2. katman = MAC/çerçeve/anahtar; 3. katman = IP/paket/yönlendirici; 4. katman = port/segment/TCP-UDP.",
+    "examTip": "Katman sorularında önce 'hangi adres kullanılıyor?' diye sorun: MAC → 2, IP → 3, port → 4. Cihaz adı verildiyse switch → 2, router → 3, firewall (durum denetimli) → 3-4.",
+    "references": [
+      "Kurose & Ross, Computer Networking: A Top-Down Approach, Bölüm 1.5 (Protocol Layers)",
+      "Tanenbaum & Wetherall, Computer Networks, Bölüm 1.4 (Reference Models)",
+      "ISO/IEC 7498-1 (OSI Basic Reference Model)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "NET-002",
+    "topic": "NET",
+    "subtopic": "Yaygın port numaraları",
+    "difficulty": "temel",
+    "question": "Bir BT denetçisi, bankanın DMZ güvenlik duvarındaki (firewall) kural setini incelerken her kuralın yanına yazılan 'hizmet – port' açıklamalarını doğrulamaktadır. Aşağıdaki hizmet–varsayılan port eşleştirmelerinden hangisi hatalıdır?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "SSH – TCP 22"
+      },
+      {
+        "id": "B",
+        "text": "HTTPS – TCP 443"
+      },
+      {
+        "id": "C",
+        "text": "DNS – UDP/TCP 53"
+      },
+      {
+        "id": "D",
+        "text": "RDP (Uzak Masaüstü) – TCP 3389"
+      },
+      {
+        "id": "E",
+        "text": "SMTP – TCP 110"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "IANA tarafından atanmış iyi bilinen (well-known) portlar: SSH 22, HTTPS 443, DNS 53 (sorgular genellikle UDP; bölge aktarımı ve UDP'ye sığmayan büyük yanıtlar TCP), RDP 3389. SMTP'nin varsayılan portu TCP 25'tir (istemci gönderimi için 587, SMTPS için 465). TCP 110 ise POP3 protokolüne aittir; dolayısıyla E seçeneğindeki eşleştirme hatalıdır. Denetimde yanlış port açıklaması, gereksiz açık portların gözden kaçmasına yol açabilir.",
+    "simpleExplanation": "Bilgisayarlar birbirine bağlanırken 'port' denen numaralı kapılar kullanır ve her hizmetin alışılmış bir kapı numarası vardır, tıpkı bir apartmanda her dairenin kendi kapı numarası olması gibi. SSH 22, HTTPS 443, DNS 53 ve uzak masaüstü (RDP) 3389 numaralı kapıları kullanır; bu dört eşleştirme doğrudur. SMTP ise e-posta GÖNDERME protokolüdür ve kapısı 25'tir. 110 numaralı kapı, e-posta ALMA protokolü olan POP3'e aittir. Yani E seçeneği iki e-posta protokolünün numaralarını birbirine karıştırmıştır; soru 'hatalı olanı' sorduğu için doğru cevap E'dir.",
+    "optionExplanations": {
+      "A": "Doğru eşleştirme: SSH, TCP 22 üzerinden şifreli uzak kabuk erişimi sağlar.",
+      "B": "Doğru eşleştirme: HTTPS (HTTP over TLS) TCP 443 kullanır; HTTP ise TCP 80.",
+      "C": "Doğru eşleştirme: DNS 53 numaralı portu kullanır; küçük sorgular UDP ile, bölge aktarımı (zone transfer) ve UDP'ye sığmayan (EDNS yoksa 512 baytı aşan) yanıtlar TCP ile taşınır.",
+      "D": "Doğru eşleştirme: Microsoft Uzak Masaüstü Protokolü TCP 3389 kullanır; denetimlerde internete açık 3389 kritik bulgu sayılır.",
+      "E": "Hatalı eşleştirme. SMTP'nin portu TCP 25'tir; TCP 110, e-posta alma protokolü POP3'e aittir. 'Her ikisi de e-posta' benzerliğinden kaynaklanan tipik bir karışıklıktır."
+    },
+    "keyConcept": "E-posta portları: SMTP 25/587/465 (gönderme), POP3 110/995 (alma), IMAP 143/993 (alma).",
+    "examTip": "Port sorularında e-posta üçlüsünü (25, 110, 143) ve güvenli karşılıklarını (465/587, 995, 993) birlikte ezberleyin; çeldiriciler çoğunlukla bu grubu birbirine karıştırır.",
+    "references": [
+      "IANA Service Name and Transport Protocol Port Number Registry",
+      "RFC 5321 (SMTP)",
+      "RFC 1939 (POP3)",
+      "Kurose & Ross, Computer Networking: A Top-Down Approach, Bölüm 2 (Application Layer)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "NET-003",
+    "topic": "NET",
+    "subtopic": "TCP üçlü el sıkışma ve sıra numaraları",
+    "difficulty": "orta",
+    "question": "Bir mobil bankacılık istemcisi sunucuya TCP bağlantısı açmaktadır. İstemci, başlangıç sıra numarası (ISN) 1000 olan bir SYN segmenti gönderir; sunucunun başlangıç sıra numarası ise 5000'dir. Üçlü el sıkışmanın (three-way handshake) kalan iki segmentindeki sıra (seq) ve onay (ack) numaraları aşağıdakilerden hangisinde doğru verilmiştir?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "SYN-ACK: seq=5000, ack=1000; ACK: seq=1000, ack=5000"
+      },
+      {
+        "id": "B",
+        "text": "SYN-ACK: seq=5000, ack=1001; ACK: seq=1001, ack=5001"
+      },
+      {
+        "id": "C",
+        "text": "SYN-ACK: seq=5000, ack=1001; ACK: seq=1002, ack=5001"
+      },
+      {
+        "id": "D",
+        "text": "SYN-ACK: seq=5000, ack=5001; ACK: seq=1001, ack=1001"
+      },
+      {
+        "id": "E",
+        "text": "SYN-ACK: seq=5000, ack=1000; ACK: seq=1001, ack=5001"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "TCP'de SYN bayrağı, veri taşımasa da bir sıra numarası tüketir. İstemci seq=1000 ile SYN gönderdiğinde sunucu 'bir sonraki beklediğim bayt' olan ack=1001'i döner ve kendi ISN'si ile seq=5000 gönderir (SYN-ACK). İstemci ise sunucunun SYN'ini onaylamak için ack=5001 yazar; kendi sıra numarası SYN'den sonra 1001 olmuştur. Böylece üçüncü segment seq=1001, ack=5001 olur. Bu segment veri taşımadığı için sonraki ilk veri baytı da 1001 numarasını alır.",
+    "simpleExplanation": "İki bilgisayar TCP ile konuşmaya başlarken üç adımlı bir selamlaşma yapar: 'Merhaba' (SYN), 'Merhaba, seni duydum' (SYN-ACK) ve 'Ben de seni duydum' (ACK). Her taraf gönderdiği baytları numaralandırır; 'ack' alanı ise 'senden bir sonraki beklediğim numara bu' demektir. İstemci 1000 numarasıyla başladığında, SYN mesajı veri taşımasa da bir numara 'yer'; bu yüzden sunucu 'sıradaki beklediğim 1001' der. Sunucu da kendi 5000 numarasıyla başlar, istemci ona 'sıradaki beklediğim 5001' diye cevap verir ve kendi numarası artık 1001 olmuştur. Böylece SYN-ACK: seq=5000, ack=1001 ve ACK: seq=1001, ack=5001 olur; cevap B'dir.",
+    "optionExplanations": {
+      "A": "SYN'in sıra numarası tükettiği göz ardı edilmiştir; ack alanı 'alınan son bayt' değil 'beklenen sonraki bayt' olduğundan 1000 ve 5000 değerleri bir eksiktir.",
+      "B": "Doğru. SYN bir sıra numarası tüketir: sunucu ack=1001, istemci ack=5001 gönderir; istemcinin seq'i 1001'e ilerlemiştir.",
+      "C": "İstemcinin seq'i 1002 olmaz; SYN tek bir numara tüketir, SYN-ACK'i almak istemcinin kendi sıra numarasını ilerletmez.",
+      "D": "Sıra ve onay alanları birbirine karıştırılmıştır: sunucu kendi ISN'sini onaylamaz, istemcinin SYN'ini onaylar (ack=1001).",
+      "E": "SYN-ACK'teki ack değeri yanlıştır; sunucu istemcinin SYN'ini aldığını göstermek için 1000 değil 1001 bekler."
+    },
+    "keyConcept": "SYN ve FIN bayrakları birer sıra numarası tüketir; ack alanı her zaman 'beklenen bir sonraki bayt' numarasıdır.",
+    "examTip": "El sıkışma sorularında kuralı uygulayın: karşı tarafın seq'ine +1 ekleyip ack yazın; saf ACK segmenti seq'i ilerletmez.",
+    "references": [
+      "RFC 9293 (Transmission Control Protocol)",
+      "Kurose & Ross, Computer Networking: A Top-Down Approach, Bölüm 3.5 (Connection-Oriented Transport: TCP)",
+      "Stevens, TCP/IP Illustrated Vol. 1, Bölüm 13 (TCP Connection Management)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "NET-004",
+    "topic": "NET",
+    "subtopic": "IP adresleme ve subnetting",
+    "difficulty": "orta",
+    "question": "Bir şubedeki ATM'nin IP yapılandırması 172.16.5.77/27 olarak verilmiştir. Bu ATM'nin bulunduğu alt ağın ağ adresi (network address) ve yayın adresi (broadcast address) aşağıdakilerden hangisidir?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ağ: 172.16.5.64 – Yayın: 172.16.5.95"
+      },
+      {
+        "id": "B",
+        "text": "Ağ: 172.16.5.0 – Yayın: 172.16.5.255"
+      },
+      {
+        "id": "C",
+        "text": "Ağ: 172.16.5.64 – Yayın: 172.16.5.127"
+      },
+      {
+        "id": "D",
+        "text": "Ağ: 172.16.5.72 – Yayın: 172.16.5.95"
+      },
+      {
+        "id": "E",
+        "text": "Ağ: 172.16.5.32 – Yayın: 172.16.5.63"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "/27 önekinde host biti sayısı 32 - 27 = 5'tir; blok büyüklüğü 2^5 = 32 adrestir. Son oktetteki alt ağ sınırları 0, 32, 64, 96, 128, ... şeklinde 32'nin katlarıdır. 77 sayısı 64 ile 95 arasında kaldığından ağ adresi 172.16.5.64, yayın adresi 172.16.5.64 + 31 = 172.16.5.95 olur. Kullanılabilir host aralığı 172.16.5.65 – 172.16.5.94'tür (30 host). Alt ağ maskesi 255.255.255.224'tür.",
+    "simpleExplanation": "IP adresinin yanındaki /27, adresin ilk 27 bitinin 'mahalle' (ağ), kalan 5 bitinin ise 'kapı numarası' (cihaz) olduğunu söyler. 5 bit ile 2×2×2×2×2 = 32 farklı numara yazılabilir; yani her alt ağ 32 adreslik bir apartman bloğu gibidir. Bloklar son sayıda 0, 32, 64, 96, 128 diye 32'nin katlarından başlar. Adresimizin son sayısı 77; bu sayı 64 ile 95 arasına düşer. Dolayısıyla bloğun ilk adresi (ağ adresi) 172.16.5.64, son adresi (yayın adresi) 172.16.5.95 olur. Cevap A'dır.",
+    "optionExplanations": {
+      "A": "Doğru. Blok 32; 77 ∈ [64, 95] → ağ .64, yayın .95.",
+      "B": "Bu değerler /24 (maske 255.255.255.0) için geçerlidir; /27 önekinin son okteti de böldüğü dikkate alınmamıştır.",
+      "C": "Ağ adresi doğru ancak yayın adresi /26 bloğuna (64 adres: 64–127) göre hesaplanmıştır; /27 bloğu 32 adrestir.",
+      "D": "72 bir /27 sınırı değildir (32'nin katı değil). Ağ adresi, host adresinin aşağıya yuvarlanması değil, bloğun başlangıcıdır.",
+      "E": "32–63 bloğu bir önceki /27 alt ağıdır; 77 bu aralığın dışındadır."
+    },
+    "keyConcept": "Blok büyüklüğü = 2^(32 - önek); ağ adresi = bloğun başlangıcı (host adresini blok büyüklüğüne göre aşağı yuvarla); yayın = ağ + blok - 1.",
+    "examTip": "Son oktette 'ilgili bitin değeri' tablosunu kullanın: /25→128, /26→64, /27→32, /28→16, /29→8, /30→4. Host adresini bu sayının katına aşağı yuvarlayın.",
+    "references": [
+      "RFC 4632 (Classless Inter-domain Routing)",
+      "RFC 1918 (Address Allocation for Private Internets)",
+      "Kurose & Ross, Computer Networking: A Top-Down Approach, Bölüm 4.3 (IPv4 Addressing)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "NET-005",
+    "topic": "NET",
+    "subtopic": "IP adresleme ve subnetting (alt ağ tasarımı)",
+    "difficulty": "orta",
+    "question": "Bir bölge müdürlüğüne 10.20.0.0/22 adres bloğu tahsis edilmiştir. Ağ ekibi bu bloğu, her birinde en az 100 host bulunabilecek 6 ayrı VLAN'a eşit büyüklükte bölmek istemektedir. Adres israfını en aza indiren önek uzunluğu, bu önekle elde edilen alt ağ sayısı ve alt ağ başına kullanılabilir host sayısı aşağıdakilerden hangisidir?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "/24 – 4 alt ağ – 254 host"
+      },
+      {
+        "id": "B",
+        "text": "/26 – 16 alt ağ – 62 host"
+      },
+      {
+        "id": "C",
+        "text": "/25 – 4 alt ağ – 128 host"
+      },
+      {
+        "id": "D",
+        "text": "/25 – 8 alt ağ – 126 host"
+      },
+      {
+        "id": "E",
+        "text": "/23 – 2 alt ağ – 510 host"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "En az 100 host için 2^h - 2 ≥ 100 koşulunu sağlayan en küçük h = 7'dir (2^7 - 2 = 126); bu da 32 - 7 = /25 önekine karşılık gelir. /22 bloğunu /25'e bölmek 25 - 22 = 3 ek bit kullanır, yani 2^3 = 8 alt ağ elde edilir. 8 ≥ 6 olduğundan gereksinim karşılanır ve 2 alt ağ gelecekteki büyüme için yedek kalır. Alt ağlar: 10.20.0.0/25, 10.20.0.128/25, 10.20.1.0/25, ..., 10.20.3.128/25.",
+    "simpleExplanation": "Elimizde /22'lik büyük bir adres bloğu var ve bunu, her birinde en az 100 cihaz olabilecek 6 eşit parçaya bölmek istiyoruz. Önce 'cihaz numarası için kaç bit gerekir?' diye soruyoruz: 7 bit ile 128 adres olur, bunun 2'si (ağ ve yayın adresi) kullanılamaz, 126 kalır; bu 100'den fazla, yeterli. 6 bit ise yalnızca 62 cihaz verirdi, az kalırdı. 32 - 7 = 25, yani her parça /25 olacak. /22'den /25'e geçerken aradaki 3 bit 'parça numarası' için kullanılır; 3 bitle 2×2×2 = 8 parça çıkar, istediğimiz 6'dan fazla, iki tanesi yedek kalır. Cevap D: /25, 8 alt ağ, 126 host.",
+    "optionExplanations": {
+      "A": "/24 host gereksinimini karşılar ancak /22'den yalnızca 4 alt ağ çıkar; 6 VLAN için yetersizdir ve ayrıca 254 host adresi gereksiz israftır.",
+      "B": "/26 ile 16 alt ağ elde edilir ancak alt ağ başına 62 host, 100 host gereksinimini karşılamaz.",
+      "C": "Önek doğru seçilmiş ancak hesap hatalıdır: /22'den /25'e 3 bit fark olduğu için alt ağ sayısı 4 değil 8'dir; host sayısı da ağ ve yayın adresleri düşülünce 128 değil 126'dır.",
+      "D": "Doğru. 2^7 - 2 = 126 ≥ 100; 2^(25-22) = 8 alt ağ ≥ 6 VLAN.",
+      "E": "/23 yalnızca 2 alt ağ verir; 6 VLAN için yetersizdir ve 510 host adresi büyük israftır."
+    },
+    "keyConcept": "Alt ağ sayısı = 2^(yeni önek - eski önek); host sayısı = 2^(32 - yeni önek) - 2. Her iki gereksinimi birlikte sağlayan öneği seçin.",
+    "examTip": "Önce host gereksiniminden host bit sayısını bulun (2^h - 2 ≥ gerekli host), sonra kalan bitlerle alt ağ sayısını kontrol edin; iki koşul da sağlanmalıdır.",
+    "references": [
+      "RFC 4632 (Classless Inter-domain Routing)",
+      "RFC 1878 (Variable Length Subnet Table For IPv4)",
+      "Kurose & Ross, Computer Networking: A Top-Down Approach, Bölüm 4.3 (IPv4 Addressing)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "NET-006",
+    "topic": "NET",
+    "subtopic": "DHCP, ARP, DNS ve paket akışı senaryosu",
+    "difficulty": "orta",
+    "question": "Şubede yeni kurulan bir bilgisayar ağa bağlanır; henüz IP adresi yoktur. Kullanıcı tarayıcıya https://ebanka.ornek.com.tr yazar. DNS sunucusu ve web sunucusu şube ağının dışında, veri merkezinde yer almaktadır. Sayfanın yüklenmesine kadar gerçekleşen protokol olaylarının zaman sırası aşağıdakilerden hangisinde doğru verilmiştir?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "DNS sorgusu → DHCP ile IP alma → Varsayılan ağ geçidi için ARP → TCP el sıkışma → TLS el sıkışma → HTTP GET"
+      },
+      {
+        "id": "B",
+        "text": "DHCP ile IP alma → DNS sorgusu → Varsayılan ağ geçidi için ARP → TCP el sıkışma → TLS el sıkışma → HTTP GET"
+      },
+      {
+        "id": "C",
+        "text": "DHCP ile IP alma → Varsayılan ağ geçidi için ARP → DNS sorgusu → TCP el sıkışma → TLS el sıkışma → HTTP GET"
+      },
+      {
+        "id": "D",
+        "text": "Varsayılan ağ geçidi için ARP → DHCP ile IP alma → DNS sorgusu → TCP el sıkışma → TLS el sıkışma → HTTP GET"
+      },
+      {
+        "id": "E",
+        "text": "DHCP ile IP alma → Varsayılan ağ geçidi için ARP → DNS sorgusu → TLS el sıkışma → TCP el sıkışma → HTTP GET"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Bilgisayarın önce bir IP adresine, alt ağ maskesine, varsayılan ağ geçidine ve DNS sunucu adresine ihtiyacı vardır; bunları DHCP (Discover-Offer-Request-Ack, UDP 67/68, yayın ile) sağlar. DNS sunucusu başka bir ağda olduğundan DNS sorgusunu taşıyan çerçevenin hedef MAC'i ağ geçidinin MAC'i olmalıdır; bu MAC, ARP ile öğrenilir. Ardından DNS sorgusu (UDP 53) ile sunucunun IP'si çözülür. Sonra TCP üçlü el sıkışması (443 portuna) kurulur; TLS el sıkışması TCP'nin üzerinde çalıştığı için TCP'den sonra gelir; en son şifreli HTTP GET gönderilir.",
+    "simpleExplanation": "Yeni bir bilgisayarın bir web sayfasını açabilmesi için adımların belli bir sırası vardır; her adım bir sonrakinin ön koşuludur. Önce bilgisayarın bir adresi olmalı; bunu DHCP verir (yeni taşındığınız evin adresini öğrenmek gibi). Sonra dış dünyaya açılan kapı olan ağ geçidinin fiziksel adresini (MAC) ARP ile öğrenir; çünkü DNS sunucusu başka ağdadır ve mesaj önce bu kapıdan geçmelidir. Ardından DNS ile 'ebanka.ornek.com.tr' adının hangi IP'ye karşılık geldiğini sorar (telefon rehberinde isimden numara bulmak gibi). Sunucunun IP'si öğrenildikten sonra TCP ile bağlantı kurulur, bu bağlantının üzerinde TLS ile şifreli kanal açılır ve en son sayfa istenir (HTTP GET). Bu sıra C seçeneğindedir.",
+    "optionExplanations": {
+      "A": "IP adresi olmayan bir host DNS sorgusu gönderemez; DNS, UDP/IP üzerinde çalışır ve DHCP'den sonra gelmelidir.",
+      "B": "DNS sunucusu başka bir ağda olduğundan DNS paketini taşıyan çerçeve ağ geçidinin MAC adresine gönderilmelidir; bu adres ARP ile DNS sorgusundan önce öğrenilir.",
+      "C": "Doğru. DHCP (adres bilgileri) → ARP (ağ geçidi MAC'i) → DNS (IP çözümü) → TCP (bağlantı) → TLS (şifreli kanal) → HTTP.",
+      "D": "Host, ağ geçidinin IP adresini DHCP'den öğrenir; dolayısıyla DHCP'den önce ağ geçidi için ARP sorgusu yapamaz. DHCP'nin kendisi ARP gerektirmez, çünkü yayın (broadcast) ile çalışır.",
+      "E": "TLS, TCP'nin sağladığı güvenilir bağlantı üzerinde çalışır; TCP el sıkışması tamamlanmadan TLS el sıkışması başlayamaz."
+    },
+    "keyConcept": "Bağlantı akışı: DHCP (adres) → ARP (L2 komşu/ağ geçidi MAC) → DNS (ad → IP) → TCP → TLS → HTTP. Her adım bir sonrakinin ön koşulunu üretir.",
+    "examTip": "Sıralama sorularında 'bu adımı yapmak için neye ihtiyaç var?' diye geriye doğru sorun: DNS için IP + ağ geçidi MAC'i, TLS için TCP bağlantısı gerekir.",
+    "references": [
+      "RFC 2131 (Dynamic Host Configuration Protocol)",
+      "RFC 826 (Address Resolution Protocol)",
+      "RFC 1035 (Domain Names - Implementation and Specification)",
+      "Kurose & Ross, Computer Networking: A Top-Down Approach, Bölüm 6.7 (A Day in the Life of a Web Page Request)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "NET-007",
+    "topic": "NET",
+    "subtopic": "NAT/PAT ve VLAN",
+    "difficulty": "ileri",
+    "question": "Bir şube yönlendiricisi, VLAN 10'daki istemcileri tek bir genel IP adresi (198.51.100.7) ile internete çıkaran PAT (Port Address Translation, NAT overload) yapmaktadır. 192.168.10.10 ve 192.168.10.11 adresli iki istemci, aynı anda ve tesadüfen aynı kaynak portla (51000) 203.0.113.5:443 adresindeki sunucuya bağlanmak ister. Yönlendiricinin davranışı aşağıdakilerden hangisinde doğru açıklanmıştır?",
+    "code": "İç kaynak                 Hedef               Genel (dış) kaynak\n192.168.10.10:51000  ->  203.0.113.5:443  ->  198.51.100.7:?\n192.168.10.11:51000  ->  203.0.113.5:443  ->  198.51.100.7:?",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "İkinci bağlantıyı reddeder; aynı kaynak port aynı genel IP'de ikinci kez kullanılamaz."
+      },
+      {
+        "id": "B",
+        "text": "Her iki bağlantı için de 198.51.100.7:51000 kullanılır; dönen paketler iç hostların MAC adresine göre ayrıştırılır."
+      },
+      {
+        "id": "C",
+        "text": "İkinci istemci için NAT havuzundan ikinci bir genel IP adresi tahsis eder; aksi hâlde çeviri yapılamaz."
+      },
+      {
+        "id": "D",
+        "text": "Kaynak porta dokunmaz, hedef portu (443) her bağlantı için farklı bir değere çevirir."
+      },
+      {
+        "id": "E",
+        "text": "İkinci bağlantının kaynak portunu farklı bir porta (ör. 51001) çevirir; dönen paketleri hedef port numarasına göre ilgili iç host ve porta geri eşler."
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "PAT, birden fazla iç adresi tek bir genel adrese çevirirken bağlantıları (iç IP, iç port) ↔ (genel IP, genel port) eşlemesiyle ayırır. İlk bağlantıya 198.51.100.7:51000 verilebilir; ikinci bağlantının kaynak portu aynı olduğu için çakışmayı önlemek adına yönlendirici onu kullanılmayan bir porta (ör. 51001) çevirir ve bunu NAT çeviri tablosuna yazar. Sunucudan 198.51.100.7:51001'e dönen paket, tablo sayesinde 192.168.10.11:51000'e geri çevrilir. Böylece tek bir genel IP ile binlerce eş zamanlı bağlantı taşınabilir; sınır, kullanılabilir port sayısıdır (yaklaşık 64.000).",
+    "simpleExplanation": "Bir şubede onlarca bilgisayar var ama internete çıkan tek bir genel adres var; PAT bu paylaşımı sağlar. Bunu bir ofis santraline benzetin: dışarıya tek numara görünür, içeride herkesin kendi dahili numarası vardır ve santral dönen çağrıyı doğru masaya bağlar. Yönlendirici 'iç adres + port' ikilisini 'genel adres + port' ikilisine çevirip bir tabloya yazar. İki bilgisayar tesadüfen aynı kaynak portu (51000) kullanırsa ikisine aynı genel port verilemez; yönlendirici ikincisine boş bir port (ör. 51001) atar. Sunucudan 51001'e dönen cevap, tablo sayesinde doğru bilgisayara ve doğru porta geri gönderilir. Cevap E'dir.",
+    "optionExplanations": {
+      "A": "PAT'in amacı tam da bu çakışmayı çözmektir; yönlendirici bağlantıyı reddetmez, port numarasını yeniden yazar.",
+      "B": "Dış ağdan dönen paketler iç hostların MAC adresini taşımaz (MAC adresleri yalnızca yerel bağlantıda anlamlıdır); ayrıca iki bağlantı aynı 5'li (IP/port çiftleri + protokol) ile ayrıştırılamaz.",
+      "C": "Bu, dinamik NAT (adres havuzu) davranışıdır; PAT/overload tek genel IP ile çalışır ve ikinci bir adrese ihtiyaç duymaz.",
+      "D": "Hedef port sunucunun dinlediği porttur (443); değiştirilmesi bağlantının yanlış hizmete gitmesine yol açar. PAT yalnızca kaynak IP ve gerekirse kaynak portu değiştirir.",
+      "E": "Doğru. Çakışan kaynak port yeniden atanır; NAT tablosu dönüş paketlerini hedef porta göre doğru iç hosta yönlendirir."
+    },
+    "keyConcept": "PAT = (iç IP, iç port) → (tek genel IP, benzersiz genel port). Port çakışmasında genel port yeniden atanır; dönüş trafiği NAT tablosuyla eşlenir.",
+    "examTip": "NAT türlerini ayırın: statik (1:1 sabit), dinamik (havuzdan 1:1 geçici), PAT/overload (N:1, port ile ayırma). 'Tek genel IP, çok iç host' ifadesi her zaman PAT'tir.",
+    "references": [
+      "RFC 3022 (Traditional IP Network Address Translator)",
+      "RFC 2663 (IP Network Address Translator Terminology and Considerations)",
+      "Kurose & Ross, Computer Networking: A Top-Down Approach, Bölüm 4.3 (The Internet Protocol: IPv4 Addressing, NAT)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "NET-008",
+    "topic": "NET",
+    "subtopic": "Yönlendirme tablosu ve en uzun önek eşleşmesi",
+    "difficulty": "ileri",
+    "question": "Bir veri merkezi yönlendiricisinin yönlendirme tablosu aşağıda verilmiştir. Hedef IP adresi 10.20.31.7 olan bir paket geldiğinde yönlendirici paketi hangi komşuya (next hop) iletir?",
+    "code": "Hedef ağ          Sonraki atlama\n10.0.0.0/8        R1\n10.20.0.0/16      R2\n10.20.30.0/24     R3\n0.0.0.0/0         R4 (varsayılan rota)",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "R1"
+      },
+      {
+        "id": "B",
+        "text": "R2"
+      },
+      {
+        "id": "C",
+        "text": "R3"
+      },
+      {
+        "id": "D",
+        "text": "R4"
+      },
+      {
+        "id": "E",
+        "text": "Paket R2 ve R3 arasında eşit maliyetli yük paylaşımıyla bölünür"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "IP yönlendirmede birden fazla girdi eşleşiyorsa en uzun önek eşleşmesi (longest prefix match) kuralı uygulanır: en çok bit eşleşen, yani en özgül rota kazanır. 10.20.31.7 adresi 10.0.0.0/8 (ilk 8 bit: 10) ve 10.20.0.0/16 (ilk 16 bit: 10.20) ile eşleşir; 0.0.0.0/0 her adresle eşleşir. 10.20.30.0/24 ise yalnızca 10.20.30.0 – 10.20.30.255 aralığını kapsar; üçüncü oktet 31 olduğundan bu girdi eşleşmez. Eşleşenler arasında en uzun önek /16'dır; paket R2'ye gönderilir.",
+    "simpleExplanation": "Yönlendirme tablosu, bir postanenin 'şu adreslere şu kamyon gider' listesine benzer. 10.20.31.7 adresi hem '10 ile başlayan her şey' (/8) hem de '10.20 ile başlayan her şey' (/16) kurallarına uyar; varsayılan rota zaten her şeye uyar. 10.20.30.0/24 kuralı ise yalnızca 10.20.30 ile başlayan adresleri kapsar; bizim adresin üçüncü sayısı 31 olduğu için bu kurala uymaz. Birden fazla kural uyduğunda yönlendirici en ayrıntılı (en uzun) olanı seçer; üzerinde 'Türkiye' yazan kamyon yerine 'Ankara' yazan kamyonu seçmek gibi. Uyan kurallar arasında en uzun olan /16 olduğundan paket R2'ye gider; cevap B'dir.",
+    "optionExplanations": {
+      "A": "/8 girdisi eşleşir ancak /16 daha özgüldür (daha uzun önek); yönlendirici tabloda ilk görülen değil en uzun eşleşen girdiyi seçer.",
+      "B": "Doğru. 10.20.0.0/16 eşleşen en uzun önektir; 10.20.30.0/24 üçüncü oktet 31 olduğu için eşleşmez.",
+      "C": "10.20.30.0/24 yalnızca 10.20.30.x adreslerini kapsar; 10.20.31.7 bu aralığın dışındadır. '30 ile 31 yakın' olması eşleşme anlamına gelmez.",
+      "D": "Varsayılan rota yalnızca başka hiçbir girdi eşleşmediğinde kullanılır; burada iki özgül girdi eşleşmektedir.",
+      "E": "Eşit maliyetli yük paylaşımı (ECMP) yalnızca aynı önek için birden fazla eş maliyetli yol varsa uygulanır; farklı önek uzunlukları arasında bölüştürme yapılmaz."
+    },
+    "keyConcept": "En uzun önek eşleşmesi: eşleşen girdiler arasında en büyük önek uzunluğuna sahip olan seçilir; varsayılan rota (/0) en son çaredir.",
+    "examTip": "Her girdi için 'hedef adres bu bloğun aralığında mı?' kontrolü yapın (önek uzunluğuna göre blok sınırlarını hesaplayın); eşleşenlerden en uzun öneği seçin.",
+    "references": [
+      "RFC 4632 (Classless Inter-domain Routing)",
+      "RFC 1812 (Requirements for IP Version 4 Routers), Bölüm 5.2.4",
+      "Kurose & Ross, Computer Networking: A Top-Down Approach, Bölüm 4.1–4.2 (Forwarding, Longest Prefix Matching)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VTYS-001",
+    "topic": "VTYS",
+    "subtopic": "Birincil ve yabancı anahtar bütünlüğü",
+    "difficulty": "temel",
+    "question": "Aşağıdaki tablolar verilmiştir. Hesap.musteri_id sütunu, Musteri.musteri_id sütununa referans veren bir yabancı anahtardır (FOREIGN KEY) ve kısıt ON DELETE / ON UPDATE için varsayılan davranışa (NO ACTION) sahiptir. Aşağıdaki ifadelerden hangisi bütünlük hatası vermeden başarıyla çalışır?",
+    "code": "Musteri (musteri_id PK, ad)\n-----------------------------\n1 | Ali\n2 | Ayşe\n\nHesap (hesap_id PK, musteri_id FK, bakiye)\n--------------------------------------------\n100 | 1 | 500\n101 | 1 | 250\n102 | 2 | 900",
+    "codeLanguage": "sql",
+    "options": [
+      {
+        "id": "A",
+        "text": "INSERT INTO Hesap VALUES (103, 3, 100);"
+      },
+      {
+        "id": "B",
+        "text": "DELETE FROM Musteri WHERE musteri_id = 1;"
+      },
+      {
+        "id": "C",
+        "text": "INSERT INTO Musteri VALUES (2, 'Mehmet');"
+      },
+      {
+        "id": "D",
+        "text": "UPDATE Hesap SET musteri_id = 2 WHERE hesap_id = 101;"
+      },
+      {
+        "id": "E",
+        "text": "UPDATE Musteri SET musteri_id = 5 WHERE musteri_id = 2;"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Referans bütünlüğü (referential integrity), yabancı anahtar değerinin referans verilen tabloda var olan bir birincil anahtar değerine (veya NULL'a) karşılık gelmesini zorunlu kılar. D seçeneğinde 101 numaralı hesabın müşterisi 1'den 2'ye değiştirilmektedir; 2 numaralı müşteri Musteri tablosunda mevcut olduğundan kısıt sağlanır ve güncelleme başarılıdır. Diğer tüm seçenekler ya var olmayan bir müşteriye referans verir, ya referans verilen bir satırı siler/değiştirir, ya da birincil anahtarı tekrarlar.",
+    "simpleExplanation": "Yabancı anahtar, bir tablodaki satırın başka bir tabloda gerçekten var olan bir kayda işaret etmesini zorunlu kılar; tıpkı bir banka hesabının mutlaka gerçek bir müşteriye ait olması gibi. Kural iki yönlü çalışır: var olmayan bir müşteriye hesap açılamaz ve hesabı olan bir müşteri silinemez ya da numarası değiştirilemez. A seçeneği 3 numaralı müşteriye hesap açmaya çalışıyor ama öyle bir müşteri yok. B, hesapları olan Ali'yi silmeye çalışıyor; E ise hesabı olan Ayşe'nin numarasını değiştiriyor; ikisi de yasak. C, zaten var olan 2 numarasıyla ikinci bir müşteri eklemeye çalışıyor; aynı kimlik numarasıyla iki kişi olamaz. D ise 101 numaralı hesabı 2 numaralı müşteriye, yani gerçekten var olan birine bağlıyor; bu yüzden sorunsuz çalışır.",
+    "optionExplanations": {
+      "A": "Musteri tablosunda musteri_id = 3 yoktur; var olmayan bir anahtara referans veren satır eklenemez (yabancı anahtar ihlali).",
+      "B": "1 numaralı müşteriye 100 ve 101 numaralı hesaplar referans vermektedir; NO ACTION davranışında bu satır silinemez. Silme ancak ON DELETE CASCADE veya önce hesapların silinmesiyle mümkün olur.",
+      "C": "musteri_id = 2 zaten mevcuttur; birincil anahtar (PRIMARY KEY) benzersiz olmalıdır, bu ekleme varlık bütünlüğünü ihlal eder.",
+      "D": "Doğru. Yeni değer 2, Musteri tablosunda var olan bir birincil anahtardır; referans bütünlüğü korunur.",
+      "E": "102 numaralı hesap musteri_id = 2'ye referans verir; NO ACTION ile referans verilen anahtar değeri değiştirilemez (ON UPDATE CASCADE olsaydı hesaplar da güncellenirdi)."
+    },
+    "keyConcept": "Yabancı anahtar değeri ya NULL olmalı ya da ana tabloda var olmalıdır; referans verilen satır NO ACTION/RESTRICT altında silinemez veya anahtarı değiştirilemez.",
+    "examTip": "Her ifade için iki soru sorun: 'Yeni FK değeri ana tabloda var mı?' ve 'Dokunulan PK'ya referans veren alt satır var mı?' Biri bile olumsuzsa ifade hata verir.",
+    "references": [
+      "Silberschatz, Korth & Sudarshan, Database System Concepts (7. baskı), Bölüm 4.4 (Integrity Constraints)",
+      "Elmasri & Navathe, Fundamentals of Database Systems, Bölüm 5 (Relational Model Constraints)",
+      "ISO/IEC 9075 (SQL Standardı)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VTYS-002",
+    "topic": "VTYS",
+    "subtopic": "ACID özellikleri",
+    "difficulty": "temel",
+    "question": "Bir çekirdek bankacılık uygulaması, hesaplar arası transferi aşağıdaki iki ifadeyle gerçekleştirmektedir ve veri tabanı bağlantısı otomatik işleme (autocommit) modundadır. İlk UPDATE çalıştıktan hemen sonra uygulama sunucusu çökmüş; sistem geri geldiğinde 100 numaralı hesaptan 500 TL düşülmüş, 200 numaralı hesaba ise hiçbir şey eklenmemiş olduğu görülmüştür. Bu durumda ihlal edilen ACID özelliği aşağıdakilerden hangisidir?",
+    "code": "UPDATE Hesap SET bakiye = bakiye - 500 WHERE hesap_no = 100;\n-- uygulama sunucusu burada çöktü\nUPDATE Hesap SET bakiye = bakiye + 500 WHERE hesap_no = 200;",
+    "codeLanguage": "sql",
+    "options": [
+      {
+        "id": "A",
+        "text": "Atomiklik (Atomicity)"
+      },
+      {
+        "id": "B",
+        "text": "Tutarlılık (Consistency)"
+      },
+      {
+        "id": "C",
+        "text": "Yalıtım (Isolation)"
+      },
+      {
+        "id": "D",
+        "text": "Dayanıklılık (Durability)"
+      },
+      {
+        "id": "E",
+        "text": "Eşzamanlılık (Concurrency)"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Atomiklik, bir işlemi (transaction) oluşturan tüm adımların ya tamamının kalıcı olmasını ya da hiçbirinin uygulanmamasını ('ya hep ya hiç') garanti eder. Autocommit modunda her UPDATE ayrı bir işlem olarak anında kalıcılaşır; dolayısıyla ilk UPDATE tek başına commit edilmiş, ikincisi hiç çalışmamıştır. Mantıksal olarak tek bir iş birimi olan transfer yarım kalmıştır: para 'kaybolmuştur'. Çözüm, iki ifadeyi BEGIN TRANSACTION ... COMMIT bloğuna almaktır; böylece çökme hâlinde VTYS ilk UPDATE'i geri alır (rollback).",
+    "simpleExplanation": "Para transferi iki adımdan oluşur: bir hesaptan düş, diğerine ekle. Bu iki adım tek bir paket olarak düşünülmelidir: ya ikisi de olur ya hiçbiri olmaz. Buna atomiklik denir; 'atom gibi bölünmez' demektir. Senaryoda bağlantı autocommit modundaydı, yani her adım tek başına hemen kalıcı oldu: ilk adım yapıldı, sunucu çöktü, ikinci adım hiç yapılmadı ve para havada kaldı. Veri tabanı 'kaydedilen kaybolmadı' diye dayanıklılık görevini yerine getirmiş, araya başka bir işlem girmediği için yalıtım sorunu da yok. Bölünemez olması gereken işin yarım kalması atomikliğin ihlalidir; cevap A'dır.",
+    "optionExplanations": {
+      "A": "Doğru. Transferin iki adımından yalnızca biri kalıcı olmuştur; 'ya hep ya hiç' ilkesi, yani atomiklik ihlal edilmiştir.",
+      "B": "Tutarlılık, işlemin veri tabanını bir geçerli durumdan diğerine taşımasını (kısıtların korunmasını) ifade eder. Burada toplam bakiyenin değişmesi bir tutarsızlık sonucudur, ancak kök neden adımların bölünebilir olmasıdır; tanımlanmış bir kısıt (CHECK, FK) ihlali söz konusu değildir.",
+      "C": "Yalıtım, eşzamanlı işlemlerin birbirini etkilememesini sağlar. Senaryoda başka bir işlem yoktur; sorun tek bir işlemin yarım kalmasıdır.",
+      "D": "Dayanıklılık, commit edilen verinin çökmeden sonra da korunmasını ifade eder. İlk UPDATE korunmuştur, yani dayanıklılık aslında sağlanmıştır; sorun bu adımın tek başına commit edilmiş olmasıdır.",
+      "E": "Eşzamanlılık denetimi ACID'in bir harfi değildir; yalıtımı sağlamak için kullanılan mekanizmaların (kilitleme, MVCC) genel adıdır."
+    },
+    "keyConcept": "Atomiklik: işlemin tüm adımları ya tamamen uygulanır ya hiç uygulanmaz. Autocommit, çok adımlı iş birimlerinde atomikliği yok eder.",
+    "examTip": "'Yarım kaldı / bir adım yapıldı diğeri yapılmadı' → Atomiklik; 'commit edildi ama kayboldu' → Dayanıklılık; 'başka işlem araya girdi' → Yalıtım; 'kısıt bozuldu' → Tutarlılık.",
+    "references": [
+      "Silberschatz, Korth & Sudarshan, Database System Concepts (7. baskı), Bölüm 17.1 (Transaction Concept)",
+      "Gray & Reuter, Transaction Processing: Concepts and Techniques, Bölüm 1",
+      "Elmasri & Navathe, Fundamentals of Database Systems, Bölüm 20 (Transaction Processing)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VTYS-003",
+    "topic": "VTYS",
+    "subtopic": "SQL JOIN türleri",
+    "difficulty": "orta",
+    "question": "Aşağıdaki tablolar üzerinde verilen LEFT JOIN sorgusu kaç satır döndürür? Aynı sorguda LEFT JOIN yerine INNER JOIN kullanılsaydı kaç satır dönerdi?",
+    "code": "Musteri                      Hesap\nid | ad                      hesap_no | musteri_id | bakiye\n---+--------                 ---------+------------+-------\n1  | Ali                     100      | 1          | 500\n2  | Ayşe                    101      | 1          | 250\n3  | Mehmet                  102      | 2          | 900\n4  | Zeynep                  103      | NULL       | 100\n\nSELECT m.ad, h.bakiye\nFROM Musteri m LEFT JOIN Hesap h ON m.id = h.musteri_id;",
+    "codeLanguage": "sql",
+    "options": [
+      {
+        "id": "A",
+        "text": "LEFT JOIN: 4 satır, INNER JOIN: 3 satır"
+      },
+      {
+        "id": "B",
+        "text": "LEFT JOIN: 6 satır, INNER JOIN: 3 satır"
+      },
+      {
+        "id": "C",
+        "text": "LEFT JOIN: 5 satır, INNER JOIN: 4 satır"
+      },
+      {
+        "id": "D",
+        "text": "LEFT JOIN: 4 satır, INNER JOIN: 4 satır"
+      },
+      {
+        "id": "E",
+        "text": "LEFT JOIN: 5 satır, INNER JOIN: 3 satır"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "LEFT JOIN sol tablodaki (Musteri) her satırı korur. Ali'nin 2 hesabı vardır (2 satır: 500, 250), Ayşe'nin 1 hesabı (900), Mehmet ve Zeynep'in hesabı yoktur ancak LEFT JOIN onları bakiye = NULL ile yine döndürür (2 satır). Toplam 2 + 1 + 1 + 1 = 5 satır. INNER JOIN yalnızca eşleşen çiftleri döndürür: Ali-500, Ali-250, Ayşe-900 → 3 satır. 103 numaralı hesabın musteri_id değeri NULL'dur; NULL hiçbir değere eşit olmadığı için (NULL = 1 sonucu UNKNOWN) hiçbir müşteriyle eşleşmez ve sol tablo odaklı bu sorguda görünmez (RIGHT veya FULL JOIN olsaydı görünürdü).",
+    "simpleExplanation": "LEFT JOIN, soldaki tablodaki (Musteri) herkesi listeye alır; karşısına uyan hesap varsa yazar, yoksa boş (NULL) bırakır. Ali'nin 2 hesabı var, 2 satır olur; Ayşe'nin 1 hesabı var, 1 satır. Mehmet ve Zeynep'in hesabı yok ama LEFT JOIN onları da boş bakiyeyle gösterir: 2 satır daha. Toplam 2 + 1 + 1 + 1 = 5. INNER JOIN ise yalnızca iki tarafta da eşleşme olanları gösterir: Ali-500, Ali-250, Ayşe-900, yani 3 satır. 103 numaralı hesabın müşterisi boş (NULL) olduğu için hiç kimseyle eşleşmez ve bu sorguda hiç görünmez. Cevap E'dir.",
+    "optionExplanations": {
+      "A": "LEFT JOIN'in 4 satır dönmesi için her müşterinin en fazla bir eşleşmesi olması gerekirdi; Ali'nin iki hesabı iki satır üretir. 'Sol tablodaki satır sayısı kadar döner' yanılgısıdır.",
+      "B": "6 satır, FULL OUTER JOIN sonucudur (5 + musteri_id NULL olan 103 numaralı hesap). LEFT JOIN sağ tablodaki eşleşmeyen satırları eklemez.",
+      "C": "LEFT JOIN sayısı doğru ancak INNER JOIN 4 satır dönmez; 103 numaralı hesabın NULL musteri_id'si hiçbir müşteriyle eşleşmez.",
+      "D": "Her iki sayı da yanlıştır; 4 satır, Hesap tablosunu sol tablo alıp RIGHT JOIN mantığıyla düşünmenin sonucudur.",
+      "E": "Doğru. LEFT JOIN: Ali×2 + Ayşe×1 + Mehmet(NULL) + Zeynep(NULL) = 5; INNER JOIN: yalnızca 3 eşleşen çift."
+    },
+    "keyConcept": "LEFT JOIN = INNER JOIN sonucu + sol tablonun eşleşmeyen satırları (sağ sütunlar NULL). Bir-çok ilişkide satır sayısı sol tablonun satır sayısını aşabilir. NULL = x daima UNKNOWN'dur, eşleşme üretmez.",
+    "examTip": "JOIN sayma sorularında sol tablodaki her satır için eşleşme sayısını yazın (0 ise LEFT JOIN'de 1 say, INNER'da 0 say) ve toplayın.",
+    "references": [
+      "Silberschatz, Korth & Sudarshan, Database System Concepts (7. baskı), Bölüm 4.1 (Join Expressions)",
+      "Elmasri & Navathe, Fundamentals of Database Systems, Bölüm 7.1 (Joined Tables in SQL)",
+      "ISO/IEC 9075 (SQL Standardı)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VTYS-004",
+    "topic": "VTYS",
+    "subtopic": "GROUP BY, HAVING ve WHERE sırası",
+    "difficulty": "orta",
+    "question": "Aşağıdaki Islem tablosu üzerinde verilen sorgunun sonuç kümesi hangisidir?",
+    "code": "Islem\nislem_id | sube     | tutar\n---------+----------+------\n1        | Kadıköy  | 1200\n2        | Kadıköy  |  800\n3        | Çankaya  | 3000\n4        | Çankaya  |  500\n5        | Çankaya  |  700\n6        | Bornova  |  400\n\nSELECT sube, COUNT(*) AS adet, SUM(tutar) AS toplam\nFROM Islem\nWHERE tutar >= 500\nGROUP BY sube\nHAVING SUM(tutar) > 2000;",
+    "codeLanguage": "sql",
+    "options": [
+      {
+        "id": "A",
+        "text": "(Kadıköy, 2, 2000) ve (Çankaya, 3, 4200)"
+      },
+      {
+        "id": "B",
+        "text": "Yalnızca (Çankaya, 3, 4200)"
+      },
+      {
+        "id": "C",
+        "text": "(Çankaya, 3, 4200) ve (Bornova, 1, 400)"
+      },
+      {
+        "id": "D",
+        "text": "Yalnızca (Çankaya, 2, 3700)"
+      },
+      {
+        "id": "E",
+        "text": "(Kadıköy, 2, 2000), (Çankaya, 3, 4200) ve (Bornova, 1, 400)"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Mantıksal değerlendirme sırası WHERE → GROUP BY → HAVING şeklindedir. WHERE tutar >= 500 koşulu yalnızca 6 numaralı satırı (Bornova, 400) eler; 500 TL'lik 4 numaralı satır '>=' nedeniyle kalır. Gruplama: Kadıköy → adet 2, toplam 2000; Çankaya → adet 3, toplam 3000 + 500 + 700 = 4200; Bornova grubu oluşmaz. HAVING SUM(tutar) > 2000 (kesin büyüklük) Kadıköy'ü (2000 > 2000 yanlış) eler, Çankaya'yı (4200) geçirir. Sonuç tek satırdır: (Çankaya, 3, 4200).",
+    "simpleExplanation": "Bu sorguyu üç aşamalı bir süzgeç gibi düşünün. Önce WHERE tek tek satırlara bakar: tutarı 500'den küçük olan yalnızca Bornova'nın 400'lük işlemi var, o çıkar; 500'lük satır 'büyük veya eşit' dendiği için kalır. Sonra GROUP BY kalan satırları şubeye göre kümeler: Kadıköy 2 işlem, toplam 2000; Çankaya 3 işlem, toplam 3000 + 500 + 700 = 4200; Bornova'nın satırı kalmadığı için grubu da yok. En son HAVING gruplara bakar ve toplamı 2000'den KESİN olarak büyük olanları tutar: Kadıköy'ün toplamı tam 2000, 'daha büyük' değil, elenir; Çankaya 4200 ile kalır. Geriye yalnızca (Çankaya, 3, 4200) kalır; cevap B'dir.",
+    "optionExplanations": {
+      "A": "Kadıköy'ün toplamı tam 2000'dir; HAVING koşulu '> 2000' olduğundan (>= değil) Kadıköy elenir.",
+      "B": "Doğru. WHERE ile 400'lük satır elenir; gruplar Kadıköy (2000) ve Çankaya (4200) olur; HAVING > 2000 yalnızca Çankaya'yı geçirir.",
+      "C": "Bornova satırı (400) WHERE tutar >= 500 koşulunu sağlamadığı için gruplamaya hiç girmez; girseydi bile 400 > 2000 koşulunu geçemezdi.",
+      "D": "500 TL'lik 4 numaralı satır yanlışlıkla elenmiştir (koşul '> 500' gibi okunmuş); '>=' ile bu satır kalır, Çankaya 3 işlem ve 4200 toplam olur.",
+      "E": "Hem WHERE hem HAVING göz ardı edilmiştir; bu, filtre uygulanmadan yapılan ham gruplamanın sonucudur."
+    },
+    "keyConcept": "WHERE satırları gruplamadan önce, HAVING grupları gruplamadan sonra filtreler. Karşılaştırma operatörlerinde (>, >=) sınır değerine dikkat edin.",
+    "examTip": "SQL sonuç sorularını kâğıt üzerinde adım adım çözün: 1) WHERE ile satırları çizin, 2) kalanları gruplayın ve toplamları yazın, 3) HAVING ile grupları eleyin.",
+    "references": [
+      "Silberschatz, Korth & Sudarshan, Database System Concepts (7. baskı), Bölüm 3.7 (Aggregate Functions)",
+      "Elmasri & Navathe, Fundamentals of Database Systems, Bölüm 7.1 (More Complex SQL Retrieval Queries: GROUP BY ve HAVING)",
+      "ISO/IEC 9075 (SQL Standardı)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VTYS-005",
+    "topic": "VTYS",
+    "subtopic": "Normalizasyon (1NF, 2NF, 3NF)",
+    "difficulty": "orta",
+    "question": "Bir bankanın kredi takip tablosu aşağıdaki gibidir. Birincil anahtar yalnızca kredi_no sütunudur. Tabloda şu fonksiyonel bağımlılıklar geçerlidir: kredi_no → (musteri_tc, sube_kodu, tutar); musteri_tc → musteri_ad; sube_kodu → sube_ad. Tüm sütunlar atomik değer içermektedir. Bu tablonun sağladığı en yüksek normal form hangisidir?",
+    "code": "Kredi\nkredi_no (PK) | musteri_tc  | musteri_ad | sube_kodu | sube_ad   | tutar\n--------------+-------------+------------+-----------+-----------+-------\nK001          | 11111111110 | Ali Kaya   | S01       | Kadıköy   | 50000\nK002          | 22222222220 | Ayşe Demir | S02       | Çankaya   | 80000\nK003          | 11111111110 | Ali Kaya   | S02       | Çankaya   | 20000",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "Yalnızca 1NF (2NF'yi sağlamaz)"
+      },
+      {
+        "id": "B",
+        "text": "3NF"
+      },
+      {
+        "id": "C",
+        "text": "2NF (3NF'yi sağlamaz)"
+      },
+      {
+        "id": "D",
+        "text": "BCNF"
+      },
+      {
+        "id": "E",
+        "text": "1NF'yi bile sağlamaz"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "1NF: tüm sütunlar atomik ve tekrarlayan grup yok → sağlanır. 2NF: anahtar olmayan her sütun birincil anahtarın tamamına bağımlı olmalı; kısmi bağımlılık (partial dependency) yalnızca bileşik anahtarlarda ortaya çıkar. Anahtar tek sütun (kredi_no) olduğundan kısmi bağımlılık mümkün değildir → 2NF sağlanır. 3NF: anahtar olmayan sütunlar başka bir anahtar olmayan sütuna geçişli (transitive) bağımlı olmamalı; ancak kredi_no → musteri_tc → musteri_ad ve kredi_no → sube_kodu → sube_ad geçişli bağımlılıklarıdır (K001 ve K003'te 'Ali Kaya', K002 ve K003'te 'Çankaya' tekrarı buna işarettir) → 3NF sağlanmaz. Çözüm: Musteri(musteri_tc, musteri_ad) ve Sube(sube_kodu, sube_ad) tablolarını ayırmak.",
+    "simpleExplanation": "Normalizasyon, bir tabloda aynı bilginin tekrar tekrar yazılmasını önlemek için uyulan kurallar dizisidir. 1NF: her hücrede tek bir değer olmalı; soru bunun sağlandığını söylüyor. 2NF: anahtar birden fazla sütundan oluşuyorsa, diğer sütunlar anahtarın yalnızca bir parçasına bağlı olmamalı; burada anahtar tek sütun (kredi_no) olduğu için bu sorun hiç çıkamaz, 2NF kendiliğinden sağlanır. 3NF: anahtar olmayan bir sütun, başka bir anahtar olmayan sütuna bağlı olmamalı. Oysa müşteri adı müşteri TC'sine, şube adı da şube koduna bağlı; bu yüzden 'Ali Kaya' ve 'Çankaya' tabloda tekrar ediyor ve Ali'nin adı değişse birden fazla satır düzeltmek gerekir. Demek ki tablo 2NF'dedir ama 3NF'yi sağlamaz; cevap C.",
+    "optionExplanations": {
+      "A": "2NF, bileşik anahtara kısmi bağımlılığı yasaklar; anahtar tek sütun olduğundan tablo 2NF'yi otomatik olarak sağlar. Geçişli bağımlılık 2NF değil 3NF ihlalidir; bu iki kavram sık karıştırılır.",
+      "B": "musteri_tc → musteri_ad ve sube_kodu → sube_ad bağımlılıklarının sol tarafı anahtar değildir; anahtar olmayan sütunun anahtar olmayan sütuna bağımlılığı 3NF'yi bozar.",
+      "C": "Doğru. Tek sütunlu anahtar nedeniyle 2NF sağlanır; geçişli bağımlılıklar nedeniyle 3NF sağlanmaz.",
+      "D": "BCNF, 3NF'den daha katıdır (her belirleyici aday anahtar olmalı); 3NF sağlanmıyorsa BCNF de sağlanamaz.",
+      "E": "Soru metninde tüm sütunların atomik olduğu belirtilmiştir; çok değerli veya tekrarlayan grup yoktur, dolayısıyla 1NF sağlanır."
+    },
+    "keyConcept": "2NF kısmi bağımlılığı (bileşik anahtarın parçasına bağımlılık), 3NF geçişli bağımlılığı (anahtar olmayan → anahtar olmayan) yasaklar. Tek sütunlu anahtar 1NF'den otomatik 2NF demektir.",
+    "examTip": "Normal form sorularında önce anahtarın tek mi bileşik mi olduğuna bakın: tek sütunlu anahtar varsa 2NF tartışması kapanır, doğrudan geçişli bağımlılık (3NF) arayın.",
+    "references": [
+      "Silberschatz, Korth & Sudarshan, Database System Concepts (7. baskı), Bölüm 7 (Relational Database Design)",
+      "Elmasri & Navathe, Fundamentals of Database Systems, Bölüm 14 (Basics of Functional Dependencies and Normalization)",
+      "Codd, E. F. (1972), Further Normalization of the Data Base Relational Model"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VTYS-006",
+    "topic": "VTYS",
+    "subtopic": "İndeksler (B-tree, bileşik indeks)",
+    "difficulty": "orta",
+    "question": "Islem tablosu üzerinde CREATE INDEX ix_sube_tarih ON Islem (sube_kodu, tarih); komutuyla bir bileşik (composite) B-tree indeksi oluşturulmuştur. Tabloda başka indeks yoktur. Aşağıdaki sorguların WHERE koşullarından hangisi bu indeksten etkin biçimde yararlanamaz ve tam tablo taramasına (full table scan) yol açar?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "WHERE sube_kodu = 'K01'"
+      },
+      {
+        "id": "B",
+        "text": "WHERE sube_kodu = 'K01' AND tarih = DATE '2026-01-05'"
+      },
+      {
+        "id": "C",
+        "text": "WHERE sube_kodu = 'K01' AND tarih > DATE '2026-01-01'"
+      },
+      {
+        "id": "D",
+        "text": "WHERE tarih = DATE '2026-01-05'"
+      },
+      {
+        "id": "E",
+        "text": "WHERE sube_kodu IN ('K01', 'K02')"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "B-tree bileşik indeksi, anahtarları önce birinci sütuna (sube_kodu), aynı sube_kodu içinde ikinci sütuna (tarih) göre sıralı tutar; tıpkı soyad-ad sırasına göre dizilmiş bir telefon rehberi gibi. Bu nedenle indeks yalnızca en soldaki sütunla başlayan koşullar için aranabilir (en sol önek kuralı, leftmost prefix rule). Yalnızca tarih üzerinde filtre yapan D seçeneğinde, aranan tarih indeks içinde her şube bloğunda ayrı ayrı dağılmış olduğundan optimize edici indeksi aralık araması için kullanamaz; tabloyu (veya tüm indeksi) taramak zorunda kalır. Çözüm, tarih için ayrı bir indeks ya da (tarih, sube_kodu) sıralı ikinci bir bileşik indekstir. (Not: Bazı VTYS'ler, birinci sütunun çok az farklı değeri varsa 'index skip scan' adlı bir istisna uygulayabilir; genel kural ve sınav beklentisi en sol önek kuralıdır.)",
+    "simpleExplanation": "Bileşik indeks, kayıtları önce şube koduna sonra tarihe göre dizilmiş bir fihrist gibi tutar; tıpkı telefon rehberinin önce soyada, sonra ada göre sıralı olması gibi. Rehberde soyadını bildiğiniz birini hızla bulursunuz; soyadı ve adı birlikte bilirseniz daha da hızlı. Ama yalnızca adı 'Ahmet' olanları aramak isterseniz rehber işe yaramaz, çünkü Ahmet'ler her soyadın altına dağılmıştır; rehberi baştan sona okumak gerekir. D seçeneği yalnızca tarihe göre arıyor, yani indeksin ilk sütunu olan şube kodunu hiç kullanmıyor; bu yüzden veri tabanı tüm tabloyu taramak zorunda kalır. Diğer seçeneklerin hepsi şube koduyla başladığı için indeksten yararlanır.",
+    "optionExplanations": {
+      "A": "Birinci sütun üzerinde eşitlik: indeksin en sol öneki kullanılır, 'K01' bloğu doğrudan bulunur.",
+      "B": "Her iki sütunda eşitlik: indeksin tamamı kullanılır, en seçici eşleşmedir.",
+      "C": "Birinci sütunda eşitlik, ikincide aralık: 'K01' bloğu içinde tarih sıralı olduğundan aralık taraması (range scan) verimli yapılır.",
+      "D": "Doğru. Koşul indeksin en sol sütununu (sube_kodu) içermez; B-tree'de tarih değerleri şube bloklarına dağılmış olduğu için indeks arama için kullanılamaz.",
+      "E": "IN listesi birinci sütun üzerinde iki eşitlik koşuluna dönüşür; optimize edici her değer için indeks araması yapar."
+    },
+    "keyConcept": "Bileşik B-tree indeksi yalnızca en soldaki sütun(lar)dan başlayan koşullarda kullanılır (en sol önek kuralı); sütun sırası indeksin kullanılabilirliğini belirler.",
+    "examTip": "İndeks sorularında koşulun indeksin ilk sütununu içermesine, sütun üzerinde fonksiyon (UPPER(ad)) veya baştan joker (LIKE '%x') olmamasına bakın; bunlar indeksi devre dışı bırakır.",
+    "references": [
+      "Silberschatz, Korth & Sudarshan, Database System Concepts (7. baskı), Bölüm 14.3 (B+-Tree Index Files) ve 14.6 (Multiple-Key Access)",
+      "Elmasri & Navathe, Fundamentals of Database Systems, Bölüm 17 (Indexing Structures for Files)",
+      "Winand, M., SQL Performance Explained, Bölüm 2 (The Where Clause)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VTYS-007",
+    "topic": "VTYS",
+    "subtopic": "Yalıtım düzeyleri ve eşzamanlılık anomalileri",
+    "difficulty": "ileri",
+    "question": "Bir kredi değerlendirme işlemi (T1), müşterinin hesap bakiyesini aynı işlem içinde iki kez okumaktadır. Zaman çizelgesi aşağıda verilmiştir. T1'in ikinci okumada farklı bir değer görmesi, hangi eşzamanlılık anomalisidir ve bu anomaliyi engelleyen en düşük ANSI SQL yalıtım düzeyi (isolation level) hangisidir?",
+    "code": "Zaman | T1 (kredi değerlendirme)                    | T2 (para çekme)\n------+---------------------------------------------+------------------------------------------\nt1    | SELECT bakiye FROM Hesap WHERE no=100; -> 1000 |\nt2    |                                             | UPDATE Hesap SET bakiye=300 WHERE no=100;\nt3    |                                             | COMMIT;\nt4    | SELECT bakiye FROM Hesap WHERE no=100; -> 300  |\nt5    | COMMIT;                                     |",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "Kirli okuma (dirty read) – READ COMMITTED"
+      },
+      {
+        "id": "B",
+        "text": "Tekrarlanamayan okuma (non-repeatable read) – READ COMMITTED"
+      },
+      {
+        "id": "C",
+        "text": "Tekrarlanamayan okuma (non-repeatable read) – REPEATABLE READ"
+      },
+      {
+        "id": "D",
+        "text": "Hayalet okuma (phantom read) – REPEATABLE READ"
+      },
+      {
+        "id": "E",
+        "text": "Hayalet okuma (phantom read) – SERIALIZABLE"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "T1 aynı satırı iki kez okur ve arada T2 bu satırı güncelleyip commit ettiği için farklı değerler görür; bu, tekrarlanamayan okuma anomalisidir. T2 commit ettiği için okunan veri 'kirli' değildir (kirli okuma, commit edilmemiş veriyi okumaktır). Hayalet okuma ise aynı koşulla çalıştırılan sorgunun ikinci kez farklı satır KÜMESİ (eklenen/silinen satırlar) döndürmesidir; burada tek bir satırın değeri değişmiştir. ANSI SQL'e göre READ UNCOMMITTED ve READ COMMITTED bu anomaliye izin verir; REPEATABLE READ, işlem boyunca okunan satırları kilitleyerek (veya sürüm tutarak) tekrarlanamayan okumayı engelleyen en düşük düzeydir. SERIALIZABLE de engeller ancak 'en düşük' değildir.",
+    "simpleExplanation": "T1 aynı hesabın bakiyesini iki kez okuyor; arada T2 bakiyeyi değiştirip kaydediyor (commit). Böylece T1 ilk okumada 1000, ikinci okumada 300 görüyor. Aynı soruyu iki kez sorup farklı cevap almaya 'tekrarlanamayan okuma' denir. 'Kirli okuma' değil, çünkü T2 değişikliği kaydetmiş, yarım bırakmamış. 'Hayalet okuma' da değil, çünkü yeni satır eklenmedi ya da silinmedi, var olan satırın değeri değişti. Yalıtım düzeyleri basamak gibidir: READ COMMITTED yalnızca kaydedilmiş veriyi okumayı garanti eder ama bu sorunu engellemez; bir üst basamak olan REPEATABLE READ, işlem bitene kadar okunan satırın değişmemesini sağlar. Sorunu engelleyen en düşük düzey bu olduğundan cevap C'dir.",
+    "optionExplanations": {
+      "A": "Kirli okuma, commit EDİLMEMİŞ veriyi okumaktır; T2 t3'te commit etmiştir, dolayısıyla t4'teki okuma kirli değildir. Ayrıca READ COMMITTED kirli okumayı engeller ama tekrarlanamayan okumayı engellemez.",
+      "B": "Anomali doğru adlandırılmış ancak READ COMMITTED yalnızca commit edilmiş veriyi okumayı garanti eder; aynı işlem içinde iki okumanın aynı sonucu vermesini garanti etmez. Senaryo tam da READ COMMITTED altında gerçekleşir.",
+      "C": "Doğru. Aynı satırın iki okuması arasında başka bir işlemin commit edilmiş güncellemesi görülmüştür (tekrarlanamayan okuma); REPEATABLE READ bunu engelleyen en düşük düzeydir.",
+      "D": "Hayalet okuma, bir aralık sorgusunun ikinci çalıştırmada yeni eklenen/silinen satırlar görmesidir; burada satır sayısı değil mevcut satırın değeri değişmiştir. REPEATABLE READ, ANSI tanımına göre hayalet okumayı engellemez.",
+      "E": "Anomali hayalet okuma değildir; ayrıca SERIALIZABLE bu anomaliyi engeller ama 'en düşük' düzey değildir, REPEATABLE READ yeterlidir."
+    },
+    "keyConcept": "Anomali hiyerarşisi: kirli okuma (RU'da) < tekrarlanamayan okuma (RC'de) < hayalet okuma (RR'de) < hiçbiri (SERIALIZABLE). Her düzey bir alt düzeyin anomalisini kapatır.",
+    "examTip": "Önce 'aynı satır mı, satır kümesi mi değişti?' sorun: aynı satırın değeri → tekrarlanamayan okuma; satır sayısı → hayalet. Sonra 'veri commit edilmiş miydi?' → hayırsa kirli okuma.",
+    "references": [
+      "ISO/IEC 9075 (SQL Standardı), işlem yalıtım düzeyleri",
+      "Silberschatz, Korth & Sudarshan, Database System Concepts (7. baskı), Bölüm 17.8 (Transaction Isolation Levels)",
+      "Berenson et al. (1995), A Critique of ANSI SQL Isolation Levels, ACM SIGMOD"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VTYS-008",
+    "topic": "VTYS",
+    "subtopic": "Kilitleme, ölü kilit ve transfer atomikliği",
+    "difficulty": "ileri",
+    "question": "Bir bankanın EFT modülünde iki transfer işlemi eşzamanlı çalışmaktadır ve VTYS satır düzeyinde kilitleme (row-level locking) kullanmaktadır. Her UPDATE, güncellediği satır üzerinde işlem sonuna (COMMIT) kadar tutulan bir özel kilit (exclusive lock) alır. Aşağıdaki zaman çizelgesinde t3'ten sonra ne olur ve bu sorunu kök nedeninden çözen tasarım önlemi hangisidir?",
+    "code": "T1: 100 -> 200 hesabına 500 TL          T2: 200 -> 100 hesabına 300 TL\n--------------------------------------------------------------------------------\nt1  BEGIN;\n    UPDATE Hesap SET bakiye=bakiye-500\n      WHERE hesap_no=100;               BEGIN;\nt2                                      UPDATE Hesap SET bakiye=bakiye-300\n                                          WHERE hesap_no=200;\nt3  UPDATE Hesap SET bakiye=bakiye+500\n      WHERE hesap_no=200;  -- bekler\nt4                                      UPDATE Hesap SET bakiye=bakiye+300\n                                          WHERE hesap_no=100;  -- bekler",
+    "codeLanguage": "sql",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ölü kilit (deadlock) oluşur; VTYS işlemlerden birini kurban seçip geri alır. Kalıcı çözüm, tüm transferlerde hesap satırlarını her zaman aynı sırada (ör. küçük hesap_no önce) kilitlemektir."
+      },
+      {
+        "id": "B",
+        "text": "Ölü kilit oluşur; çözüm, yalıtım düzeyini READ UNCOMMITTED'a düşürmektir, böylece kilit beklemesi ortadan kalkar."
+      },
+      {
+        "id": "C",
+        "text": "Ölü kilit oluşur; çözüm, her UPDATE'i kendi ayrı işleminde (ayrı BEGIN/COMMIT) çalıştırmaktır, böylece kilitler hemen bırakılır."
+      },
+      {
+        "id": "D",
+        "text": "Ölü kilit oluşmaz; T2 t4'te T1'in bitmesini bekler, T1 t3'te 200 numaralı satırı okumadan günceller ve COMMIT eder."
+      },
+      {
+        "id": "E",
+        "text": "Ölü kilit oluşur; çözüm, Hesap tablosundaki yabancı anahtar kısıtlarını kaldırarak kilit kapsamını daraltmaktır."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "t1'de T1 100 numaralı satırı, t2'de T2 200 numaralı satırı özel kilitle tutar. t3'te T1 200 numaralı satırı güncellemek ister ancak kilit T2'dedir → bekler. t4'te T2 100 numaralı satırı ister ancak kilit T1'dedir → bekler. İki işlem birbirinin bıraktığı kilidi beklediği için döngüsel bekleme, yani ölü kilit oluşur; VTYS'nin ölü kilit algılayıcısı (bekleme grafiğinde döngü) işlemlerden birini geri alır. Kök neden, kaynakların farklı sırada edinilmesidir. Tüm transferlerin ilgili hesapları sabit bir küresel sırada (ör. hesap_no küçükten büyüğe) kilitlemesi döngüsel beklemeyi imkânsız kılar; her iki işlem de önce 100'ü isteyecek, biri bekleyip diğeri bitince devam edecektir. Bu, Coffman koşullarından 'döngüsel bekleme'yi ortadan kaldırır.",
+    "simpleExplanation": "İki kişi iki kapıdan geçmek istiyor: birincisi A kapısını tutmuş B'yi bekliyor, ikincisi B kapısını tutmuş A'yı bekliyor; ikisi de sonsuza kadar bekler. Buna ölü kilit denir. Senaryoda T1 100 numaralı hesabı kilitleyip 200'ü istiyor, T2 ise 200'ü kilitleyip 100'ü istiyor; tam bu durum. Veri tabanı bunu fark eder ve işlemlerden birini geri alıp düğümü çözer, ama asıl çözüm bunun hiç oluşmamasıdır. Herkes kapılardan her zaman aynı sırada geçerse (ör. önce küçük numaralı hesap) karşılıklı bekleme oluşamaz: iki işlem de önce 100'ü ister, biri bekler, diğeri bitirir, sonra sıra ona gelir. Diğer çözüm önerileri ya işe yaramaz ya da transferi yarım bırakma riski doğurur. Cevap A'dır.",
+    "optionExplanations": {
+      "A": "Doğru. Karşılıklı bekleme bir ölü kilittir; kaynakların her zaman aynı sırada kilitlenmesi döngüsel beklemeyi yapısal olarak engeller.",
+      "B": "READ UNCOMMITTED yalnızca OKUMA kilitlerini kaldırır; UPDATE'lerin aldığı özel yazma kilitleri her yalıtım düzeyinde korunur. Ölü kilit yine oluşur, üstelik kirli okuma riski eklenir.",
+      "C": "Ayrı işlemler ölü kilidi önler ancak transferin atomikliğini yok eder: ilk UPDATE commit edildikten sonra bir hata olursa para kaybolur. Bir sorunu başka, daha ağır bir sorunla değiştirmektir.",
+      "D": "t3'te T1'in 200 numaralı satıra yazması, T2'nin bu satırdaki özel kilidi nedeniyle bloke olur; T1 ilerleyemez. Hem T1 hem T2 beklediği için ölü kilit kaçınılmazdır.",
+      "E": "Yabancı anahtar kısıtları bu senaryoda rol oynamaz; iki işlem aynı tablonun satırlarını çapraz sırada kilitlemektedir. Kısıt kaldırmak veri bütünlüğünü zayıflatır, ölü kilidi çözmez."
+    },
+    "keyConcept": "Ölü kilit = döngüsel bekleme. Önleme: kaynakları (satırları) her işlemde aynı küresel sırada kilitle. Algılama: bekleme grafiği (wait-for graph) döngüsü → kurban işlemi geri al ve yeniden dene.",
+    "examTip": "Zaman çizelgesinde kimin hangi satırı tuttuğunu ve kimi beklediğini ok ile çizin; ok zinciri kendisine dönüyorsa ölü kilittir. Çözüm seçeneklerinde atomikliği bozanları (ayrı işlem, autocommit) hemen eleyin.",
+    "references": [
+      "Silberschatz, Korth & Sudarshan, Database System Concepts (7. baskı), Bölüm 18.2 (Deadlock Handling)",
+      "Elmasri & Navathe, Fundamentals of Database Systems, Bölüm 21.1.3 (Dealing with Deadlock and Starvation)",
+      "Gray & Reuter, Transaction Processing: Concepts and Techniques, Bölüm 7 (Isolation Concepts)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VYA-001",
+    "topic": "VYA",
+    "subtopic": "Big-O karmaşıklık analizi",
+    "difficulty": "temel",
+    "question": "Aşağıdaki Java 17 kod parçasının n giriş boyutuna göre zaman karmaşıklığı (Big-O) nedir?",
+    "code": "int count = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = 1; j < n; j = j * 2) {\n        count++;\n    }\n}",
+    "codeLanguage": "java",
+    "options": [
+      {
+        "id": "A",
+        "text": "O(n)"
+      },
+      {
+        "id": "B",
+        "text": "O(log n)"
+      },
+      {
+        "id": "C",
+        "text": "O(n log n)"
+      },
+      {
+        "id": "D",
+        "text": "O(n²)"
+      },
+      {
+        "id": "E",
+        "text": "O(n² log n)"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Dış döngü i = 0, 1, ..., n-1 olmak üzere n kez çalışır. İç döngüde j, 1'den başlayıp her adımda ikiye katlanır (1, 2, 4, 8, ...); j ≥ n olduğunda durur. Bu nedenle iç döngü yaklaşık log₂(n) kez döner (ör. n = 1024 için 10 kez). Toplam iş = n × log₂ n → O(n log n). Örneğin n = 8 için iç döngü j = 1, 2, 4 ile 3 kez döner, toplam 8 × 3 = 24 artış olur.",
+    "simpleExplanation": "İki iç içe döngü var; toplam iş, dıştaki döngünün kaç kez döndüğü ile içtekinin kaç kez döndüğünün çarpımıdır. Dış döngü i'yi birer birer artırır, n kez döner. İç döngüde j birer artmaz, her adımda ikiye katlanır: 1, 2, 4, 8, 16... Bu şekilde n'e ulaşmak çok az adım alır; örneğin n = 1024 için yalnızca 10 adım. 'Kaç kez ikiye katlayarak n'e ulaşırım?' sorusunun cevabı log n'dir. Toplam: n × log n, yani O(n log n). Cevap C'dir.",
+    "optionExplanations": {
+      "A": "İç döngünün sabit sayıda döndüğü varsayılmıştır; oysa dönüş sayısı n ile birlikte (logaritmik olarak) büyür.",
+      "B": "Yalnızca iç döngünün karmaşıklığıdır; dış döngünün n kez tekrarladığı göz ardı edilmiştir.",
+      "C": "Doğru. Dış döngü n kez, iç döngü (j ikiye katlandığı için) log₂ n kez: n × log n.",
+      "D": "İç döngünün j++ ile arttığı varsayılmıştır; j = j * 2 ile artış doğrusal değil üsteldir, dolayısıyla dönüş sayısı n değil log n'dir.",
+      "E": "Hem fazladan bir n çarpanı eklenmiş hem de logaritma korunmuştur; kodda yalnızca iki iç içe döngü vardır."
+    },
+    "keyConcept": "Sayaç her adımda sabit çarpanla çarpılıyor/bölünüyorsa o döngü O(log n); iç içe döngülerde karmaşıklıklar çarpılır.",
+    "examTip": "Her döngüyü ayrı analiz edin: 'i++ / i--' → n, 'i *= 2 / i /= 2' → log n, 'i += k (sabit k)' → n/k = O(n); bağımsız döngüler toplanır, iç içe döngüler çarpılır.",
+    "references": [
+      "Cormen, Leiserson, Rivest & Stein, Introduction to Algorithms (CLRS), Bölüm 3 (Characterizing Running Times)",
+      "Sedgewick & Wayne, Algorithms (4. baskı), Bölüm 1.4 (Analysis of Algorithms)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VYA-002",
+    "topic": "VYA",
+    "subtopic": "Yığın (stack) işlem izleme",
+    "difficulty": "temel",
+    "question": "Başta boş olan bir yığın (stack) üzerinde sırasıyla şu işlemler yapılmaktadır: push(5), push(8), pop(), push(3), push(9), pop(), pop(), push(1). pop() çağrılarının döndürdüğü değerlerin sırası ve işlemler bittiğinde yığının içeriği (alttan üste) aşağıdakilerden hangisidir?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "pop sırası: 5, 8, 3 – Son içerik: [9, 1]"
+      },
+      {
+        "id": "B",
+        "text": "pop sırası: 8, 9, 3 – Son içerik: [5, 1]"
+      },
+      {
+        "id": "C",
+        "text": "pop sırası: 8, 3, 9 – Son içerik: [5, 1]"
+      },
+      {
+        "id": "D",
+        "text": "pop sırası: 8, 9, 3 – Son içerik: [1, 5]"
+      },
+      {
+        "id": "E",
+        "text": "pop sırası: 8, 9, 5 – Son içerik: [3, 1]"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Yığın LIFO (son giren ilk çıkar) ilkesiyle çalışır. Adım adım: push(5) → [5]; push(8) → [5, 8]; pop() → 8 döner, [5]; push(3) → [5, 3]; push(9) → [5, 3, 9]; pop() → 9 döner, [5, 3]; pop() → 3 döner, [5]; push(1) → [5, 1]. Dolayısıyla pop'lar 8, 9, 3 sırasıyla döner ve son içerik alttan üste [5, 1]'dir; tepe (top) eleman 1'dir.",
+    "simpleExplanation": "Yığın, üst üste konan tabaklar gibidir: en son konan tabak en üsttedir ve ilk o alınır. push üste tabak koyar, pop üstteki tabağı alır. Adım adım: 5 koy [5], 8 koy [5, 8], al → 8 çıkar [5], 3 koy [5, 3], 9 koy [5, 3, 9], al → 9 çıkar [5, 3], al → 3 çıkar [5], 1 koy [5, 1]. Alınan tabaklar sırasıyla 8, 9, 3; sonunda altta 5, üstte 1 kalır. Cevap B'dir.",
+    "optionExplanations": {
+      "A": "Bu, kuyruk (queue, FIFO) davranışıdır: ilk giren ilk çıkar. Yığında son eklenen eleman çıkar.",
+      "B": "Doğru. LIFO izlemesi: 8, 9, 3 çıkar; geride [5, 1] kalır.",
+      "C": "İkinci ve üçüncü pop sırası ters yazılmıştır; push(9)'dan sonra tepe 9 olduğundan önce 9 çıkar, sonra 3.",
+      "D": "pop sırası doğru ancak son içerik ters yazılmıştır: 5 en altta kalır, 1 en son eklendiği için tepededir.",
+      "E": "Üçüncü pop'ta 5'in çıkması için 3'ün çıkmamış olması gerekir; 3, 5'in üstünde olduğundan önce çıkar."
+    },
+    "keyConcept": "Yığın LIFO: pop her zaman en son push edilen (tepe) elemanı döndürür. Kuyruk FIFO: dequeue en önce eklenen elemanı döndürür.",
+    "examTip": "İzleme sorularında her işlemden sonra yığının tamamını köşeli parantezle yazın; pop'ta sağdaki (tepe) elemanı silip kenara not edin.",
+    "references": [
+      "Cormen, Leiserson, Rivest & Stein, Introduction to Algorithms (CLRS), Bölüm 10.1 (Stacks and Queues)",
+      "Sedgewick & Wayne, Algorithms (4. baskı), Bölüm 1.3 (Bags, Queues, and Stacks)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VYA-003",
+    "topic": "VYA",
+    "subtopic": "Özyineleme (recursion) çıktısı",
+    "difficulty": "orta",
+    "question": "Aşağıdaki Python 3 programının ekrana yazdırdığı değer nedir?",
+    "code": "def g(n):\n    if n == 0:\n        return 0\n    return n + g(n // 2)\n\nprint(g(10))",
+    "codeLanguage": "python",
+    "options": [
+      {
+        "id": "A",
+        "text": "15"
+      },
+      {
+        "id": "B",
+        "text": "17"
+      },
+      {
+        "id": "C",
+        "text": "55"
+      },
+      {
+        "id": "D",
+        "text": "18"
+      },
+      {
+        "id": "E",
+        "text": "19"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Python'da // tam sayı bölmesidir (aşağı yuvarlar). Çağrı zinciri: g(10) = 10 + g(5); g(5) = 5 + g(2); g(2) = 2 + g(1); g(1) = 1 + g(0); g(0) = 0 (taban durumu). Geriye doğru toplama: g(1) = 1, g(2) = 3, g(5) = 8, g(10) = 18. Toplam 10 + 5 + 2 + 1 = 18; çağrı derinliği log₂ n ile orantılıdır (5 çağrı).",
+    "simpleExplanation": "Fonksiyon kendini çağırıyor: her seferinde n'i toplama ekliyor ve n'in yarısıyla (küsuratı atarak) devam ediyor, n sıfır olunca duruyor. Sayıları yazalım: 10, sonra 10'un yarısı 5, sonra 5'in yarısı 2 (2,5'in küsuratı atılır), sonra 2'nin yarısı 1, sonra 1'in yarısı 0 ve orada durup 0 ekler. Toplam 10 + 5 + 2 + 1 + 0 = 18. En sık yapılan hata 1'i unutmaktır: fonksiyon n sıfır olunca duruyor, 1 olunca değil, bu yüzden 1 de toplanır. Cevap D'dir.",
+    "optionExplanations": {
+      "A": "10 + 5 = 15 ile durulmuştur; g(2) ve g(1)'in katkıları (2 + 1) eklenmemiştir.",
+      "B": "g(1) çağrısının 1 katkısı unutulmuştur (10 + 5 + 2 = 17); taban durumu n == 0 olduğu için n = 1 de toplanır.",
+      "C": "55, 1'den 10'a kadar tüm sayıların toplamıdır; bu, fonksiyonun g(n - 1) ile çağrıldığı yanılgısına dayanır. Oysa n // 2 ile her adımda n yarılanır.",
+      "D": "Doğru. 10 + 5 + 2 + 1 + 0 = 18.",
+      "E": "g(0)'ın 1 döndürdüğü varsayılmış gibi fazladan 1 eklenmiştir; taban durumu 0 döndürür."
+    },
+    "keyConcept": "Özyinelemeli çıktı sorularında çağrıları taban duruma kadar açın, sonra geri dönüş değerlerini aşağıdan yukarıya toplayın. // tam sayı bölmesidir.",
+    "examTip": "Çağrı ağacını yazın: g(10) → g(5) → g(2) → g(1) → g(0). Her satırın yanına katkısını not edin; taban durumunun değerini (0 mı 1 mi?) iki kez kontrol edin.",
+    "references": [
+      "Cormen, Leiserson, Rivest & Stein, Introduction to Algorithms (CLRS), Bölüm 4 (Divide-and-Conquer)",
+      "Python 3 resmî dokümantasyonu, Binary arithmetic operations (// operatörü)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VYA-004",
+    "topic": "VYA",
+    "subtopic": "İkili arama (binary search)",
+    "difficulty": "orta",
+    "question": "Sıralı dizi A = [3, 8, 15, 21, 34, 47, 59, 73, 88] üzerinde 47 değeri ikili arama (binary search) ile aranmaktadır. Algoritma low = 0, high = 8 ile başlar ve her adımda mid = (low + high) // 2 indeksini inceler; A[mid] < hedef ise low = mid + 1, A[mid] > hedef ise high = mid - 1 yapılır. Hedefle karşılaştırılan dizi elemanları sırasıyla hangileridir?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "34, 59, 47"
+      },
+      {
+        "id": "B",
+        "text": "34, 47"
+      },
+      {
+        "id": "C",
+        "text": "47"
+      },
+      {
+        "id": "D",
+        "text": "34, 73, 47"
+      },
+      {
+        "id": "E",
+        "text": "3, 8, 15, 21, 34, 47"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "1. adım: low = 0, high = 8 → mid = 4, A[4] = 34 < 47 → low = 5. 2. adım: low = 5, high = 8 → mid = (5 + 8) // 2 = 6, A[6] = 59 > 47 → high = 5. 3. adım: low = 5, high = 5 → mid = 5, A[5] = 47 = hedef → bulundu. Karşılaştırılan elemanlar 34, 59, 47'dir; 9 elemanlı dizide en fazla ⌊log₂ 9⌋ + 1 = 4 karşılaştırma gerekir. İkili aramanın ön koşulu dizinin sıralı olması ve rastgele erişim (O(1) indeksleme) sağlamasıdır; bağlı listede verimli çalışmaz.",
+    "simpleExplanation": "İkili arama, sıralı bir sözlükte kelime ararken ortadan açıp 'aradığım bundan önce mi sonra mı?' diye bakarak yarıyı atmaya benzer. Dizide 9 eleman var (0'dan 8'e). İlk adımda ortadaki 4. indekse bakılır: 34; aradığımız 47 daha büyük, sol yarı atılır ve aralık 5–8 olur. Yeni orta (5 + 8) / 2 = 6,5, küsurat atılır, 6; oradaki 59 aradığımızdan büyük, sağ taraf atılır, aralık 5–5 olur. Son adımda 5. indekse bakılır: 47, bulundu. Karşılaştırılan sayılar sırasıyla 34, 59, 47; cevap A'dır.",
+    "optionExplanations": {
+      "A": "Doğru. mid indeksleri 4 → 6 → 5; değerler 34 → 59 → 47.",
+      "B": "İkinci adımda mid = (5 + 8) // 2 = 6'dır, 5 değil; tam sayı bölmesi 6.5'i 6'ya yuvarlar ve A[6] = 59 incelenir.",
+      "C": "Dizinin ortası (indeks 4) 34'tür, 47 değil; ilk adımda hedef doğrudan bulunmaz.",
+      "D": "İkinci adımda high hâlâ 8 olduğu için mid 7 değil 6'dır; 73 (indeks 7) hiç incelenmez.",
+      "E": "Bu, doğrusal arama (linear search) izidir; ikili arama her adımda arama aralığını yarıya indirir."
+    },
+    "keyConcept": "İkili arama sıralı ve rastgele erişimli dizide çalışır; her adımda aralık yarılanır, en kötü durum O(log n). mid hesabında tam sayı bölmesine dikkat edin.",
+    "examTip": "Her adımda (low, high, mid, A[mid]) dörtlüsünü tablo hâlinde yazın; low ve high'ın güncellemesinde mid ± 1 kullanıldığını unutmayın.",
+    "references": [
+      "Cormen, Leiserson, Rivest & Stein, Introduction to Algorithms (CLRS), Bölüm 2.3 (Designing Algorithms; ikili arama alıştırması 2.3-5 / 4. baskıda 2.3-6)",
+      "Sedgewick & Wayne, Algorithms (4. baskı), Bölüm 1.1 (Binary Search)",
+      "Knuth, The Art of Computer Programming Vol. 3, Bölüm 6.2.1 (Searching an Ordered Table)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VYA-005",
+    "topic": "VYA",
+    "subtopic": "Sıralama algoritmalarının özellikleri",
+    "difficulty": "orta",
+    "question": "Bir bankanın gün sonu raporunda işlemler tutara göre sıralanacak, ancak aynı tutara sahip işlemlerin kronolojik (giriş) sırası korunacaktır; ayrıca veri hacmi büyük olduğu için en kötü durumda bile O(n log n) zaman garantisi istenmektedir. Ek O(n) bellek kullanımı kabul edilebilirdir. Bu gereksinimlerin tümünü karşılayan sıralama algoritması hangisidir?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "Hızlı sıralama (Quicksort)"
+      },
+      {
+        "id": "B",
+        "text": "Yığın sıralaması (Heapsort)"
+      },
+      {
+        "id": "C",
+        "text": "Araya ekleme sıralaması (Insertion sort)"
+      },
+      {
+        "id": "D",
+        "text": "Seçme sıralaması (Selection sort)"
+      },
+      {
+        "id": "E",
+        "text": "Birleştirme sıralaması (Merge sort)"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Eşit anahtarlı elemanların giriş sırasını koruma özelliğine kararlılık (stability) denir. Gereksinimler: kararlı + en kötü durum O(n log n) + O(n) ek bellek kabul edilebilir. Merge sort her durumda (en iyi, ortalama, en kötü) O(n log n) çalışır, birleştirme adımında soldaki elemanı önce aldığı için kararlıdır ve O(n) yardımcı dizi kullanır; tüm koşulları sağlar. Quicksort ve Heapsort kararlı değildir (Quicksort'un en kötü durumu ayrıca O(n²)'dir); Insertion sort kararlı ama O(n²); Selection sort hem kararsız hem O(n²)'dir.",
+    "simpleExplanation": "Üç şart var: aynı tutardaki işlemler orijinal sıralarını korusun (buna 'kararlı sıralama' denir), en kötü durumda bile hızlı olsun (n log n) ve fazladan bellek kullanılabilsin. Kararlı sıralamayı, insanları boya göre dizerken aynı boydakilerin yerini değiştirmemek gibi düşünün. Quicksort ve Heapsort hızlıdır ama eşit elemanların yerini karıştırabilir; Quicksort'un ayrıca kötü günü çok yavaştır. Insertion ve Selection sort büyük verilerde çok yavaştır (n²). Merge sort ise veriyi ikiye böl, her yarıyı sırala, sonra sıraya uyarak birleştir mantığıyla çalışır; eşitlerde her zaman soldakini önce alır (kararlı), her durumda n log n sürer ve bunun için fazladan bir dizi kullanır. Üç şartı da sağlayan tek seçenek Merge sort, yani E'dir.",
+    "optionExplanations": {
+      "A": "Quicksort standart hâliyle kararlı değildir (bölümleme eşit elemanların sırasını bozar) ve en kötü durumu O(n²)'dir; iki gereksinimi de karşılamaz.",
+      "B": "Heapsort en kötü durumda O(n log n) ve yerinde (in-place) çalışır ancak yığın yapısı eşit elemanların göreli sırasını korumaz, kararsızdır.",
+      "C": "Insertion sort kararlıdır ve küçük/neredeyse sıralı verilerde hızlıdır, ancak en kötü ve ortalama durumu O(n²)'dir; büyük veri gereksinimini karşılamaz.",
+      "D": "Selection sort O(n²)'dir ve uzak konumlardan yapılan takaslar nedeniyle kararsızdır; hiçbir gereksinimi karşılamaz.",
+      "E": "Doğru. Merge sort kararlıdır, her durumda O(n log n)'dir ve O(n) ek bellek kullanır; gereksinimlerle birebir örtüşür."
+    },
+    "keyConcept": "Kararlı: Merge, Insertion, Bubble, Counting/Radix. Kararsız: Quick, Heap, Selection. Garantili O(n log n): Merge, Heap. Yerinde (O(1) ek bellek): Heap, Insertion, Selection, Quick (log n yığın).",
+    "examTip": "Soruda 'eşit elemanların sırası korunsun' geçiyorsa kararlılık, 'en kötü durumda da' geçiyorsa Quicksort'u eleyin; 'ek bellek yok' geçiyorsa Merge sort'u eleyin.",
+    "references": [
+      "Cormen, Leiserson, Rivest & Stein, Introduction to Algorithms (CLRS), Bölüm 2.3 (Merge Sort), 6 (Heapsort), 7 (Quicksort), 8.1 (Lower Bounds for Sorting)",
+      "Sedgewick & Wayne, Algorithms (4. baskı), Bölüm 2.5 (Sorting Applications: Stability)",
+      "Knuth, The Art of Computer Programming Vol. 3, Bölüm 5 (Sorting)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VYA-006",
+    "topic": "VYA",
+    "subtopic": "Hash tablosu ve çakışma çözümü (doğrusal yoklama)",
+    "difficulty": "orta",
+    "question": "7 slotlu (0–6) bir hash tablosunda h(k) = k mod 7 fonksiyonu ve çakışma çözümü için doğrusal yoklama (linear probing, bir sonraki slota geç, sona gelince başa dön) kullanılmaktadır. Boş tabloya sırasıyla 10, 22, 31, 4, 15, 28 anahtarları eklenmektedir. 15 ve 4 anahtarları hangi slotlara yerleşir?",
+    "code": "",
+    "codeLanguage": "",
+    "options": [
+      {
+        "id": "A",
+        "text": "15 → slot 1, 4 → slot 4"
+      },
+      {
+        "id": "B",
+        "text": "15 → slot 2, 4 → slot 5"
+      },
+      {
+        "id": "C",
+        "text": "15 → slot 2, 4 → slot 6"
+      },
+      {
+        "id": "D",
+        "text": "15 → slot 6, 4 → slot 5"
+      },
+      {
+        "id": "E",
+        "text": "15 → slot 2, 4 → slot 4"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Ekleme sırasıyla: 10 mod 7 = 3 → slot 3 boş, yerleşir. 22 mod 7 = 1 → slot 1. 31 mod 7 = 3 → slot 3 dolu (10) → çakışma, bir sonraki slot 4 boş → slot 4. 4 mod 7 = 4 → slot 4 dolu (31) → çakışma → slot 5 boş → slot 5. 15 mod 7 = 1 → slot 1 dolu (22) → çakışma → slot 2 boş → slot 2. 28 mod 7 = 0 → slot 0. Son tablo: [28, 22, 15, 10, 31, 4, boş]. Dolayısıyla 15 → slot 2, 4 → slot 5; toplam üç çakışma yaşanmıştır. Ekleme sırası önemlidir: 4, 31'den önce eklenseydi slot 4'e yerleşir ve 31 slot 5'e giderdi.",
+    "simpleExplanation": "Hash tablosu, her anahtarı bir formülle bir kutuya koyar: burada kutu numarası, sayının 7'ye bölümünden kalandır. Kutu doluysa bir sonraki boş kutuya geçilir (doğrusal yoklama). Sırayla yerleştirelim: 10 → kalan 3, kutu 3. 22 → kalan 1, kutu 1. 31 → kalan 3, kutu 3 dolu, kutu 4'e. 4 → kalan 4, ama kutu 4'ü biraz önce 31 kaptı; bir sonrakine, kutu 5'e. 15 → kalan 1, kutu 1 dolu (22), kutu 2'ye. 28 → kalan 0, kutu 0. Yani 15 kutu 2'ye, 4 kutu 5'e yerleşir; cevap B'dir. Püf noktası, daha önce kayan anahtarların (31 gibi) başka kutuları doldurduğunu unutmamaktır.",
+    "optionExplanations": {
+      "A": "Çakışmalar yok sayılıp doğrudan hash değerleri yazılmıştır; oysa slot 1 (22) ve slot 4 (31) daha önce dolmuştur.",
+      "B": "Doğru. 15 için slot 1 dolu → 2; 4 için slot 4 (31 tarafından) dolu → 5.",
+      "C": "4 anahtarı için slot 5 boştur; yoklama ilk boş slotta durur, 6'ya kadar ilerlemez.",
+      "D": "15 anahtarı için yoklama ileri doğru (1 → 2) yapılır, geriye (1 → 0 → 6) değil; ayrıca slot 2 boşken daha uzağa gidilmez.",
+      "E": "15'in yerleşimi doğru ancak 4 eklenirken slot 4 zaten 31 ile doludur (31 mod 7 = 3 çakışması nedeniyle oraya kaymıştı); 4 bir sonraki boş slota, 5'e gider."
+    },
+    "keyConcept": "Doğrusal yoklamada çakışan anahtar, hash slotundan başlayarak ilk boş slota yerleşir (tablo sonunda başa dönülür). Daha önce kaymış anahtarlar sonraki yerleşimleri etkiler (birincil kümelenme).",
+    "examTip": "Tabloyu 0'dan 6'ya çizin ve anahtarları verilen sırayla tek tek yerleştirin; önceki çakışmaların başka slotları doldurduğunu unutmayın, bu en sık yapılan hatadır.",
+    "references": [
+      "Cormen, Leiserson, Rivest & Stein, Introduction to Algorithms (CLRS), Bölüm 11.4 (Open Addressing)",
+      "Sedgewick & Wayne, Algorithms (4. baskı), Bölüm 3.4 (Hash Tables: Linear Probing)",
+      "Knuth, The Art of Computer Programming Vol. 3, Bölüm 6.4 (Hashing)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VYA-007",
+    "topic": "VYA",
+    "subtopic": "İkili yığın (binary heap) işlemleri",
+    "difficulty": "ileri",
+    "question": "Bir minimum yığın (min-heap) dizi gösterimiyle A = [2, 5, 7, 9, 6, 8] olarak verilmiştir (i indeksli düğümün çocukları 2i+1 ve 2i+2'dedir, kök indeks 0). Bu yığın üzerinde bir kez extract-min (en küçüğü çıkar) işlemi yapıldıktan sonra dizinin içeriği ne olur?",
+    "code": "Başlangıç: A = [2, 5, 7, 9, 6, 8]\n\n        2\n      /   \\\n     5     7\n    / \\   /\n   9   6 8",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "[5, 6, 7, 9, 8]"
+      },
+      {
+        "id": "B",
+        "text": "[5, 6, 7, 8, 9]"
+      },
+      {
+        "id": "C",
+        "text": "[5, 8, 7, 9, 6]"
+      },
+      {
+        "id": "D",
+        "text": "[5, 7, 6, 9, 8]"
+      },
+      {
+        "id": "E",
+        "text": "[8, 5, 7, 9, 6]"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "extract-min üç adımdan oluşur: (1) kök (2) döndürülür; (2) dizinin son elemanı (8) köke taşınır ve boyut 5'e düşer → [8, 5, 7, 9, 6]; (3) yığın özelliğini onarmak için kökten aşağı eleme (sift-down / heapify) yapılır. İndeks 0'daki 8'in çocukları 5 (indeks 1) ve 7 (indeks 2); en küçük çocuk 5 < 8 → takas → [5, 8, 7, 9, 6]. Şimdi 8 indeks 1'de; çocukları 9 (indeks 3) ve 6 (indeks 4); en küçük 6 < 8 → takas → [5, 6, 7, 9, 8]. 8 artık indeks 4'te ve çocuğu yok; işlem O(log n) sürede biter. Sonuç [5, 6, 7, 9, 8] geçerli bir min-heap'tir (her ebeveyn çocuklarından küçük).",
+    "simpleExplanation": "Min-heap, her ebeveynin çocuklarından küçük olduğu bir ağaçtır; en küçük sayı her zaman tepededir. En küçüğü çıkarmak üç adımdır: tepedeki 2'yi al; dizinin son elemanı 8'i boşalan tepeye koy → [8, 5, 7, 9, 6]; sonra 8'i yerine otursun diye aşağı it. 8'in çocukları 5 ve 7; küçüğü 5 ile yer değiştir → [5, 8, 7, 9, 6]. Şimdi 8'in çocukları 9 ve 6; küçüğü 6 ile yer değiştir → [5, 6, 7, 9, 8]. 8'in artık çocuğu kalmadı, duruyoruz. Sonuç [5, 6, 7, 9, 8]; cevap A'dır. Dikkat: heap sıralı bir liste değildir, bu yüzden 9 ile 8'in yeri değişmez.",
+    "optionExplanations": {
+      "A": "Doğru. Son eleman köke taşınır, iki kez aşağı eleme ile [5, 6, 7, 9, 8] elde edilir.",
+      "B": "Yığın sıralı bir dizi değildir; aşağı eleme yalnızca kök-çocuk yolu boyunca takas yapar, 9 ile 8'in yerini değiştirmez (ikisi kardeş/farklı dallardadır).",
+      "C": "Aşağı eleme yarım bırakılmıştır: ilk takastan sonra 8 indeks 1'de çocukları 9 ve 6 ile karşılaştırılmalı; 6 < 8 olduğu için ikinci takas gereklidir. Bu dizide 8 > 6 ebeveyn-çocuk ilişkisi yığın özelliğini bozar.",
+      "D": "Kökün çocuklarından küçüğüyle (5 ile 7'den 5) değil, sanki 7 ile takas yapılmış gibi düşünülmüştür; ayrıca 7'nin indeks 1'e taşınması ağacın yapısını değiştirir.",
+      "E": "Yalnızca son elemanın köke taşınması yapılmış, aşağı eleme hiç uygulanmamıştır; 8 kökte iken 5 ve 7 çocukları yığın özelliğini ihlal eder."
+    },
+    "keyConcept": "extract-min: kökü al → son elemanı köke koy → en küçük çocukla takas ederek aşağı ele (sift-down) → O(log n). Yığın kısmi sıralıdır, tam sıralı dizi değildir.",
+    "examTip": "Dizi gösteriminde çocuk indekslerini (2i+1, 2i+2) yazarak ağacı çizin; aşağı elemede her zaman iki çocuğun KÜÇÜĞÜ ile takas yapın ve çocuk kalmayınca durun.",
+    "references": [
+      "Cormen, Leiserson, Rivest & Stein, Introduction to Algorithms (CLRS), Bölüm 6 (Heapsort: Maintaining the Heap Property, Priority Queues)",
+      "Sedgewick & Wayne, Algorithms (4. baskı), Bölüm 2.4 (Priority Queues)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "VYA-008",
+    "topic": "VYA",
+    "subtopic": "Graf dolaşımı (DFS/BFS)",
+    "difficulty": "ileri",
+    "question": "Aşağıdaki yönsüz grafta A düğümünden başlayan özyinelemeli derinlik öncelikli arama (DFS) yapılmaktadır. Her düğümün komşuları alfabetik sırayla ziyaret edilmektedir. Düğümlerin ilk ziyaret edilme sırası aşağıdakilerden hangisidir?",
+    "code": "Kenarlar: A-B, A-C, B-D, B-E, C-F, E-F\n\nKomşuluk listesi (alfabetik):\nA: B, C\nB: A, D, E\nC: A, F\nD: B\nE: B, F\nF: C, E",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "A, B, C, D, E, F"
+      },
+      {
+        "id": "B",
+        "text": "A, B, D, E, C, F"
+      },
+      {
+        "id": "C",
+        "text": "A, C, F, E, B, D"
+      },
+      {
+        "id": "D",
+        "text": "A, B, D, E, F, C"
+      },
+      {
+        "id": "E",
+        "text": "A, B, E, F, C, D"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "DFS, bir komşuya gidince geri dönmeden önce o dalı sonuna kadar izler. A ziyaret edilir; A'nın ilk komşusu B'ye gidilir. B'nin komşuları A (ziyaret edildi), D → D ziyaret edilir; D'nin tek komşusu B ziyaret edilmiş → geri B'ye. B'nin sıradaki komşusu E → E ziyaret edilir; E'nin komşuları B (ziyaret edildi), F → F ziyaret edilir; F'nin komşuları C (ziyaret edilmedi) → C ziyaret edilir; C'nin komşuları A ve F ziyaret edilmiş → geri dönülür. Tüm düğümler bitti. Sıra: A, B, D, E, F, C. Buna karşılık aynı graf ve kuraldaki BFS sırası A, B, C, D, E, F olur; iki algoritma C'nin ziyaret zamanında ayrışır.",
+    "simpleExplanation": "Derinlik öncelikli arama (DFS), bir labirentte hep ilk gördüğünüz koridora dalıp çıkmaza gelince geri dönmek gibidir. A'dan başlıyoruz, alfabetik ilk komşu B'ye gidiyoruz. B'nin ilk görülmemiş komşusu D; D'ye gidiyoruz, D çıkmaz (tek komşusu B zaten gezildi), B'ye dönüyoruz. B'nin sıradaki komşusu E; E'ye, oradan görülmemiş komşusu F'ye, F'den de görülmemiş komşusu C'ye gidiyoruz. Artık her yer gezildi. Sıra: A, B, D, E, F, C; cevap D'dir. C'ye A'dan değil F üzerinden ulaşıldı, çünkü DFS A'nın ikinci komşusuna dönmeden önce B dalını sonuna kadar izler.",
+    "optionExplanations": {
+      "A": "Bu, BFS (genişlik öncelikli) sırasıdır: A'nın tüm komşuları (B, C) bitmeden derine inilmez. DFS'te B'den sonra C'ye değil, B'nin komşusu D'ye gidilir.",
+      "B": "DFS, E'den sonra B'ye geri dönüp A'nın ikinci komşusu C'ye gitmez; E'nin ziyaret edilmemiş komşusu F varken önce F'ye iner, C'ye F üzerinden ulaşılır.",
+      "C": "Komşular alfabetik sırayla ziyaret edildiğinde A'dan önce B'ye gidilir, C'ye değil; bu sıra ters alfabetik kuralın sonucudur.",
+      "D": "Doğru. A → B → D (çıkmaz, geri) → E → F → C; her adımda ziyaret edilmemiş ilk alfabetik komşuya inilir.",
+      "E": "B'nin alfabetik olarak ilk ziyaret edilmemiş komşusu D'dir, E değil; D atlanamaz."
+    },
+    "keyConcept": "DFS bir dalı sonuna kadar izler (yığın/özyineleme), BFS düzey düzey ilerler (kuyruk). Komşu ziyaret sırası sonucu belirler; soru bunu mutlaka verir.",
+    "examTip": "DFS izlerken bir 'yol yığını' tutun: ilerlerken düğümü ekleyin, komşusu kalmayınca çıkarıp bir öncekinin SIRADAKİ ziyaret edilmemiş komşusuna geçin. Çıkmaz düğümlerde (D gibi) geri dönüşü unutmayın.",
+    "references": [
+      "Cormen, Leiserson, Rivest & Stein, Introduction to Algorithms (CLRS), Bölüm 20 (Elementary Graph Algorithms: BFS ve DFS; 3. baskıda Bölüm 22)",
+      "Sedgewick & Wayne, Algorithms (4. baskı), Bölüm 4.1 (Undirected Graphs: Depth-First Search, Breadth-First Search)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  }
+]

@@ -1,0 +1,1603 @@
+[
+  {
+    "id": "IBG-001",
+    "topic": "IBG",
+    "subtopic": "CIA üçlüsü (gizlilik, bütünlük, erişilebilirlik)",
+    "difficulty": "temel",
+    "question": "Bir bankada aynı hafta içinde üç olay yaşanmıştır: (1) Bir çağrı merkezi çalışanı, yetkisi olmadığı hâlde ünlü bir müşterinin hesap bakiyesini görüntüleyip arkadaşına anlatmıştır. (2) Toplu ödeme dosyasındaki bir hata nedeniyle 150 müşterinin maaş tutarı yanlış hesaba aktarılmıştır. (3) Hafta sonu yapılan hizmet dışı bırakma (DDoS) saldırısı nedeniyle mobil bankacılık 4 saat kullanılamamıştır. Bu olaylar sırasıyla CIA üçlüsünün hangi bileşenlerini ihlal etmiştir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Bütünlük, gizlilik, erişilebilirlik"
+      },
+      {
+        "id": "B",
+        "text": "Gizlilik, erişilebilirlik, bütünlük"
+      },
+      {
+        "id": "C",
+        "text": "Gizlilik, bütünlük, erişilebilirlik"
+      },
+      {
+        "id": "D",
+        "text": "Erişilebilirlik, bütünlük, gizlilik"
+      },
+      {
+        "id": "E",
+        "text": "Bütünlük, erişilebilirlik, gizlilik"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Gizlilik (confidentiality), bilginin yalnızca yetkili kişilerce görülmesidir; yetkisiz görüntüleme ve paylaşma (olay 1) gizlilik ihlalidir. Bütünlük (integrity), verinin doğru ve eksiksiz kalmasıdır; yanlış tutarın yanlış hesaba gitmesi (olay 2) veri bütünlüğünü bozar. Erişilebilirlik (availability), hizmetin ihtiyaç duyulduğunda kullanılabilir olmasıdır; DDoS nedeniyle mobil bankacılığın durması (olay 3) erişilebilirlik ihlalidir.",
+    "simpleExplanation": "Bilgi güvenliğinin üç temel hedefi vardır: gizlilik, bütünlük ve erişilebilirlik. Bunu bir günlük gibi düşünün: gizlilik, günlüğü sizden başka kimsenin okumaması; bütünlük, içine yazdıklarınızın kimse tarafından değiştirilmemesi; erişilebilirlik ise istediğiniz an günlüğe ulaşabilmeniz demektir. Çağrı merkezi çalışanının yetkisiz bakiye görmesi 'okunmaması gereken şeyin okunması', yani gizlilik ihlalidir. Maaşların yanlış hesaba gitmesi verinin bozulmasıdır, yani bütünlük ihlali. Mobil bankacılığın 4 saat çalışmaması ise 'ulaşamama', yani erişilebilirlik ihlalidir.",
+    "optionExplanations": {
+      "A": "İlk iki bileşenin yeri değiştirilmiştir: yetkisiz görüntüleme veri değiştirmediği için bütünlük değil gizlilik ihlalidir; yanlış aktarım ise gizlilik değil bütünlük sorunudur.",
+      "B": "Toplu ödeme hatası hizmeti durdurmamış, veriyi bozmuştur; bu nedenle erişilebilirlik değil bütünlük ihlalidir. DDoS ise veriyi bozmaz, hizmeti durdurur.",
+      "C": "Doğru. Yetkisiz görüntüleme → gizlilik; yanlış tutar/hesap → bütünlük; hizmet kesintisi → erişilebilirlik.",
+      "D": "Sıralama tamamen tersine çevrilmiştir; çağrı merkezi olayında hizmet kesintisi yoktur, DDoS olayında ise veri sızıntısı yoktur.",
+      "E": "Bütünlük ve erişilebilirlik birinci ve ikinci olaylara yanlış atanmıştır; bir çalışanın veri görüntülemesi veriyi değiştirmez ve hizmeti kesmez."
+    },
+    "keyConcept": "Gizlilik = yetkisiz görme; bütünlük = yetkisiz/hatalı değiştirme; erişilebilirlik = hizmetin kullanılamaması.",
+    "examTip": "Olayı 'görüldü mü, değişti mi, durdu mu' sorularıyla sınıflandırın; üç sorudan hangisine evet deniyorsa o bileşen ihlal edilmiştir.",
+    "references": [
+      "Stallings & Brown, Computer Security: Principles and Practice, Bölüm 1",
+      "ISO/IEC 27000:2018, Terimler ve tanımlar",
+      "NIST SP 800-12 Rev. 1, Bölüm 1"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IBG-002",
+    "topic": "IBG",
+    "subtopic": "Bilgi sınıflandırma",
+    "difficulty": "temel",
+    "question": "Bir banka bilgi varlıklarını dört düzeyde sınıflandırmaktadır: Kamuya Açık, Dâhili, Gizli ve Çok Gizli. Aşağıdaki varlıklardan hangisinin sınıflandırması, bu şemaya göre en olası biçimde yanlış atanmıştır?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Müşterilerin kimlik numarası, hesap bakiyesi ve işlem geçmişini içeren çekirdek bankacılık tabloları → Kamuya Açık"
+      },
+      {
+        "id": "B",
+        "text": "Şubelerin çalışma saatleri ve ATM adresleri → Kamuya Açık"
+      },
+      {
+        "id": "C",
+        "text": "Çalışanlara yönelik yemekhane menüsü ve servis güzergâhları → Dâhili"
+      },
+      {
+        "id": "D",
+        "text": "Henüz kamuya açıklanmamış birleşme ve devralma müzakere notları → Çok Gizli"
+      },
+      {
+        "id": "E",
+        "text": "Güvenlik duvarı kural setleri ve ağ topolojisi → Gizli"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Bilgi sınıflandırmanın amacı, bilginin yetkisiz açıklanması hâlinde oluşacak zararın büyüklüğüne göre koruma düzeyini belirlemektir. Müşterilerin kimlik, bakiye ve işlem verileri hem KVKK kapsamında kişisel veri hem de 5411 sayılı Bankacılık Kanunu md. 73 anlamında müşteri sırrı niteliğindedir; ifşası ağır hukuki ve itibari zarara yol açar. Bu nedenle en az 'Gizli' düzeyinde sınıflandırılmalıdır; 'Kamuya Açık' ataması açıkça yanlıştır. Diğer seçeneklerdeki atamalar, zarar potansiyeliyle uyumludur.",
+    "simpleExplanation": "Bilgi sınıflandırma, bilgileri 'ifşa olursa ne kadar zarar verir' sorusuna göre etiketlemektir; tıpkı evdeki eşyaları 'herkes görebilir', 'sadece aile', 'kasada saklanır' diye ayırmak gibi. Şube saatleri zaten herkese açık bilgidir, bunu kasaya koymanın anlamı yoktur. Ama müşterilerin kimlik numarası, bakiyesi ve işlem geçmişi bankanın en hassas bilgilerindendir; bunları 'herkes görebilir' rafına koymak, kasadaki parayı sokağa bırakmak gibidir. Bu yüzden en açık hata, müşteri verisinin 'Kamuya Açık' olarak etiketlenmesidir.",
+    "optionExplanations": {
+      "A": "Doğru. Müşteri verisi müşteri sırrı (Bankacılık Kanunu md. 73) ve kişisel veridir; 'Kamuya Açık' olarak sınıflandırılması en ciddi hatadır.",
+      "B": "Şube saatleri ve ATM adresleri zaten bankanın web sitesinde yayımlanan bilgilerdir; 'Kamuya Açık' ataması uygundur.",
+      "C": "Yemekhane menüsü ifşa edilse ciddi zarar oluşturmaz ama kamuya duyurulması da gereksizdir; 'Dâhili' düzeyi makuldür.",
+      "D": "Açıklanmamış birleşme bilgisi içeriden öğrenenlerin ticareti riski taşır ve hisse fiyatını etkiler; en yüksek düzey olan 'Çok Gizli' uygundur.",
+      "E": "Güvenlik duvarı kuralları ve topoloji, saldırganın işine yarayacak teknik bilgidir; 'Gizli' ataması uygundur."
+    },
+    "keyConcept": "Sınıflandırma düzeyi, bilginin yetkisiz açıklanması durumunda oluşacak etkiyle orantılı olmalıdır.",
+    "examTip": "Müşteriye ait her türlü finansal ve kimlik verisini otomatik olarak yüksek sınıfa koyun; 'zaten web sitesinde var mı' sorusu Kamuya Açık ayrımını netleştirir.",
+    "references": [
+      "ISO/IEC 27001:2022, Ek A 5.12 (Bilginin sınıflandırılması)",
+      "ISO/IEC 27002:2022, 5.12-5.13",
+      "6698 sayılı Kişisel Verilerin Korunması Kanunu, md. 3",
+      "5411 sayılı Bankacılık Kanunu, md. 73 (Sırların saklanması)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IBG-003",
+    "topic": "IBG",
+    "subtopic": "Oltalama (phishing) ve sosyal mühendislik",
+    "difficulty": "orta",
+    "question": "Bir banka çalışanı aşağıdaki e-postayı almıştır. E-postada, oltalama (phishing) saldırısı olduğuna işaret eden en güçlü teknik kanıt aşağıdakilerden hangisidir?",
+    "code": "Kimden: BT Destek <bt-destek@vakifbank-guvenlik-portal.com>\nKime: ahmet.yilmaz@vakifbank.com.tr\nKonu: ACİL: Hesabınız 2 saat içinde kapatılacak\n\nSayın Çalışan,\n\nParolanızın süresi dolmuştur. Hesabınızın kapatılmasını önlemek için\n2 saat içinde aşağıdaki bağlantıdan parolanızı yenileyin:\n\n  Parolamı Yenile  (bağlantı hedefi: http://185.203.xx.xx/portal/login)\n\nBT Destek Ekibi",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "E-postanın 'Sayın Çalışan' gibi kişiselleştirilmemiş bir hitapla başlaması"
+      },
+      {
+        "id": "B",
+        "text": "Konu satırında 'ACİL' ifadesinin bulunması"
+      },
+      {
+        "id": "C",
+        "text": "E-postanın BT Destek biriminden gelmiş gibi görünmesi"
+      },
+      {
+        "id": "D",
+        "text": "Gönderici alan adının bankanın gerçek alan adı olmaması ve bağlantının şifrelenmemiş (http) bir IP adresine gitmesi"
+      },
+      {
+        "id": "E",
+        "text": "Parolanın süresinin dolduğunun bildirilmesi"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Oltalama e-postalarında aciliyet, genel hitap ve otorite taklidi gibi psikolojik işaretler yaygındır ancak tek başına kanıt sayılmaz; meşru bir BT birimi de acil bir duyuru gönderebilir. Teknik olarak en güçlü kanıt, gönderici alan adının bankanın gerçek alan adı (vakifbank.com.tr) yerine banka adını içeren ancak bankaya ait olmayan bir alan adı (vakifbank-guvenlik-portal.com) olması ve bağlantının kurumsal bir alan adı yerine doğrudan, şifrelenmemiş (HTTP) bir IP adresine gitmesidir. Meşru kurumsal parola yenileme sayfaları kurumun kendi alan adında ve HTTPS üzerinden sunulur.",
+    "simpleExplanation": "Oltalama e-postaları sizi korkutup aceleyle bir bağlantıya tıklatmaya çalışır. 'Acil', 'hesabınız kapatılacak' gibi sözler şüphe uyandırır ama tek başına kanıt değildir; gerçek bir BT birimi de acil duyuru gönderebilir. Asıl kanıt zarfın üzerindeki adres gibidir: gönderen adresi bankanın gerçek alan adı değildir ve bağlantı da bankanın sitesine değil, şifresiz bir IP adresine gidiyor. Bu, size 'bankadan geliyorum' diyen birinin kartvizitinde başka bir şirketin adının yazması gibidir. Gönderen alan adı ve bağlantının gittiği yer her zaman en güvenilir ipucudur.",
+    "optionExplanations": {
+      "A": "Genel hitap şüphe uyandıran bir işaret olsa da pek çok meşru toplu duyuru da kişiselleştirilmez; kesin teknik kanıt değildir.",
+      "B": "Aciliyet, sosyal mühendisliğin klasik baskı tekniğidir ama meşru güvenlik duyuruları da acil olabilir; tek başına kanıt değildir.",
+      "C": "BT Destek'ten gelmesi başlı başına şüpheli değildir; şüpheli olan gönderenin iddia ettiği kurumla alan adının eşleşmemesidir.",
+      "D": "Doğru. Alan adı uyumsuzluğu ve HTTP üzerinden ham IP adresine giden bağlantı, kaynak doğrulaması açısından nesnel ve en güçlü teknik kanıttır.",
+      "E": "Parola süresi dolumu gerçek bir kurumsal politika konusu olabilir; içerik iddiası, kaynak kanıtı yerine geçmez."
+    },
+    "keyConcept": "Oltalama tespitinde psikolojik işaretler (aciliyet, otorite) şüphe uyandırır; gönderici alan adı ve bağlantı hedefi gibi teknik işaretler ise kanıt sağlar.",
+    "examTip": "Bu tür sorularda 'en güçlü kanıt' istendiğinde duygu/dil temelli seçenekleri eleyin, alan adı ve URL hedefine bakan seçeneği işaretleyin.",
+    "references": [
+      "NIST SP 800-177 Rev. 1, Trustworthy Email",
+      "Hadnagy, Social Engineering: The Science of Human Hacking, Bölüm 2",
+      "ENISA Threat Landscape, Phishing bölümü"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IBG-004",
+    "topic": "IBG",
+    "subtopic": "E-posta güvenliği: SPF, DKIM, DMARC",
+    "difficulty": "orta",
+    "question": "Bir bankanın e-posta güvenliği ekibi, kurumun alan adını taklit eden (spoofing) sahte e-postaların müşterilere ulaştığını tespit etmiştir. Ekip, alan adından gönderilmiş gibi görünen ancak hem SPF hem DKIM doğrulamasından geçemeyen iletilerin alıcı sunucular tarafından reddedilmesini ve bu reddedilen iletilere ilişkin toplu raporların bankaya gönderilmesini istemektedir. Bu iki gereksinimi birlikte karşılayan mekanizma aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "SPF (Sender Policy Framework) kaydına '-all' eklemek"
+      },
+      {
+        "id": "B",
+        "text": "DMARC (Domain-based Message Authentication, Reporting and Conformance) kaydını 'p=reject' politikası ve 'rua' rapor adresiyle yayımlamak"
+      },
+      {
+        "id": "C",
+        "text": "DKIM (DomainKeys Identified Mail) anahtar uzunluğunu 2048 bite çıkarmak"
+      },
+      {
+        "id": "D",
+        "text": "Gelen e-postalar için S/MIME imza zorunluluğu getirmek"
+      },
+      {
+        "id": "E",
+        "text": "Alan adının MX kayıtlarını yalnızca bankanın kendi posta sunucularına yönlendirmek"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "SPF, hangi IP adreslerinin alan adı adına posta gönderebileceğini; DKIM ise iletinin alan adının özel anahtarıyla imzalandığını doğrular. Ancak bu iki mekanizmanın başarısız olması hâlinde alıcının ne yapacağını belirleyen ve sonuçları alan adı sahibine raporlayan mekanizma DMARC'tır. 'p=reject' politikası doğrulamadan geçemeyen iletilerin reddedilmesini ister; 'rua' etiketi toplu (aggregate) raporların gönderileceği adresi belirtir. SPF ve DKIM tek başına ne politika uygulatır ne de rapor üretir.",
+    "simpleExplanation": "E-posta sahteciliğinde saldırgan, zarfa bankanın adını yazıp sahte mektup gönderir. SPF, 'bankanın adına kimler mektup gönderebilir' listesidir; DKIM ise mektuba bankanın mührünü basar. Ama bu ikisi, mühürsüz veya listede olmayan bir mektup geldiğinde postacının ne yapacağını söylemez. DMARC tam olarak bu kuralı koyar: 'Doğrulamayı geçemeyen mektupları reddet' (p=reject) der ve 'kaç mektup reddettiğini bana raporla' (rua) diye ekler. Hem reddetme hem raporlama istendiğinde cevap DMARC'tır.",
+    "optionExplanations": {
+      "A": "'-all', SPF'te yetkisiz kaynakların 'fail' sonucu almasını sağlar ancak alıcının bu sonuca göre ne yapacağını zorlamaz ve rapor mekanizması içermez; ayrıca SPF görünen 'From' başlığını değil zarf göndericisini (MAIL FROM) ve HELO kimliğini kontrol eder.",
+      "B": "Doğru. DMARC, SPF/DKIM sonuçlarını görünen 'From' alanıyla hizalar (alignment), başarısızlıkta uygulanacak politikayı (none/quarantine/reject) bildirir ve rua/ruf etiketleriyle raporlama sağlar.",
+      "C": "Anahtar uzunluğunu artırmak imzanın kriptografik dayanıklılığını yükseltir ancak imzasız sahte iletilerin reddedilmesini veya raporlanmasını sağlamaz.",
+      "D": "S/MIME uçtan uca ileti imzalamadır ve istemci sertifikası gerektirir; alan adı düzeyinde sahtecilik politikası veya raporlama sunmaz, müşterilere dayatılamaz.",
+      "E": "MX kayıtları alan adına gelen postanın nereye teslim edileceğini belirler; alan adı adına giden sahte postayı engellemekle ilgisi yoktur."
+    },
+    "keyConcept": "SPF = yetkili gönderici IP'leri; DKIM = kriptografik imza; DMARC = hizalama + politika (none/quarantine/reject) + raporlama (rua/ruf).",
+    "examTip": "'Reddedilsin ve bana raporlansın' ifadesini gördüğünüzde yanıt daima DMARC'tır; SPF ve DKIM yalnızca doğrulama girdisi üretir.",
+    "references": [
+      "RFC 7208 (SPF)",
+      "RFC 6376 (DKIM)",
+      "RFC 7489 (DMARC)",
+      "NIST SP 800-177 Rev. 1, Trustworthy Email"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IBG-005",
+    "topic": "IBG",
+    "subtopic": "Güvenli tarama: HTTPS ve sertifika uyarıları",
+    "difficulty": "orta",
+    "question": "Bir banka müşterisi, otel kablosuz ağına bağlıyken internet bankacılığı adresini yazdığında tarayıcı 'Bağlantınız gizli değil: sertifika bu site için verilmemiş (NET::ERR_CERT_COMMON_NAME_INVALID)' uyarısı göstermektedir. Aynı adres bir gün önce evdeki ağdan sorunsuz açılmıştır. Müşterinin bilgi güvenliği açısından en doğru davranışı aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "'Gelişmiş' seçeneğinden 'Siteye yine de devam et' diyerek giriş yapmak; çünkü adres doğru yazılmıştır"
+      },
+      {
+        "id": "B",
+        "text": "Tarayıcının önbelleğini temizleyip sayfayı yenilemek ve uyarı sürerse giriş yapmak"
+      },
+      {
+        "id": "C",
+        "text": "Adres çubuğunda 'https' yazdığı için bağlantıyı güvenli kabul edip işleme devam etmek"
+      },
+      {
+        "id": "D",
+        "text": "Sertifika uyarısı önemsiz bir tarayıcı hatası olduğundan sayfayı başka bir tarayıcıda açıp giriş yapmak"
+      },
+      {
+        "id": "E",
+        "text": "Siteye giriş yapmamak, güvenilmeyen ağdan çıkıp mobil veri veya VPN gibi güvenilir bir bağlantı üzerinden tekrar denemek ve durumu bankaya bildirmek"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "HTTPS bağlantısında tarayıcı, sunucunun sunduğu sertifikanın güvenilir bir sertifika otoritesi (CA) tarafından imzalandığını, süresinin geçmediğini ve sertifikadaki alan adının ziyaret edilen alan adıyla eşleştiğini kontrol eder. Alan adı uyumsuzluğu uyarısı, araya giren bir cihazın (ortadaki adam / man-in-the-middle) trafiği kendi sertifikasıyla sunuyor olabileceğine işaret eder; aynı adresin güvenilir bir ağda sorunsuz açılması bu şüpheyi güçlendirir. Uyarıyı geçerek giriş yapmak, kullanıcı adı ve parolanın saldırgana teslim edilmesiyle sonuçlanabilir. Doğru davranış işlemi yapmamak, güvenilir ağa geçmek ve bankayı bilgilendirmektir.",
+    "simpleExplanation": "Tarayıcıdaki kilit simgesi, 'karşımdaki gerçekten banka mı?' sorusunu bir kimlik belgesiyle (sertifika) kontrol eder. Uyarı, bu kimlik belgesinin siteye uymadığını söylüyor; aynı site evde sorunsuz açıldığı için sorun büyük olasılıkla otel ağında araya giren birindedir. Bu, bankaya giderken yolda sizi durdurup 'banka memuruyum, kartınızı verin' diyen, kimliği uyumsuz birine benzer. Doğru davranış kimliğinizi vermemek, yani giriş yapmamak, güvendiğiniz bir bağlantıya (mobil veri, VPN) geçmek ve durumu bankaya bildirmektir. Uyarıyı 'yine de devam et' diyerek geçmek, parolanızı saldırgana teslim etmek anlamına gelebilir.",
+    "optionExplanations": {
+      "A": "Adresin doğru yazılması, trafiğin doğru sunucuya ulaştığını garanti etmez; DNS veya ağ düzeyinde yönlendirme yapılabilir. Uyarıyı geçmek kimlik bilgilerini riske atar.",
+      "B": "Önbellek, sunucunun sunduğu sertifikayı etkilemez; uyarı devam ettiğinde giriş yapmak riskli davranıştır.",
+      "C": "'https' yalnızca şifreli bir kanal kurulmaya çalışıldığını gösterir; şifreleme, karşı tarafın kimliğinin doğrulanmadan yapılması hâlinde saldırganla şifreli konuşmak anlamına gelir.",
+      "D": "Sertifika doğrulaması tarayıcıya özgü değildir; başka tarayıcı da aynı uyarıyı verir. Uyarıyı 'hata' sayıp yok saymak temel bir farkındalık eksikliğidir.",
+      "E": "Doğru. Güvenilmeyen ağda sertifika uyarısı ortadaki adam saldırısının en tipik belirtisidir; işlem yapmamak ve güvenilir kanala geçmek en doğru tutumdur."
+    },
+    "keyConcept": "Sertifika uyarısı, sunucunun kimliğinin doğrulanamadığı anlamına gelir; HTTPS'in güvenliği şifrelemeden önce kimlik doğrulamaya dayanır.",
+    "examTip": "'Güvenilmeyen ağ + sertifika uyarısı + hassas işlem' üçlüsü gördüğünüzde yanıt her zaman 'devam etme, güvenilir kanala geç, bildir' seçeneğidir.",
+    "references": [
+      "RFC 8446 (TLS 1.3)",
+      "RFC 5280 (X.509 PKI Sertifika Profili)",
+      "Stallings, Cryptography and Network Security, Bölüm 17 (Transport-Level Security)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IBG-006",
+    "topic": "IBG",
+    "subtopic": "KVKK: veri sorumlusu ve veri işleyen",
+    "difficulty": "orta",
+    "question": "Bir banka, müşterilerine işlem bilgilendirme SMS'lerini göndermek için dış bir toplu mesaj firmasıyla sözleşme yapmıştır. Firma, bankanın ilettiği telefon numarası ve mesaj içeriklerini yalnızca bankanın talimatı doğrultusunda iletmekte, kendi amaçları için kullanmamaktadır. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kavramları açısından banka ve SMS firmasının rolleri aşağıdakilerden hangisinde doğru verilmiştir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Banka veri sorumlusu, SMS firması veri işleyendir"
+      },
+      {
+        "id": "B",
+        "text": "Banka veri işleyen, SMS firması veri sorumlusudur"
+      },
+      {
+        "id": "C",
+        "text": "Her ikisi de bağımsız veri sorumlusudur"
+      },
+      {
+        "id": "D",
+        "text": "Her ikisi de veri işleyendir; veri sorumlusu müşterinin kendisidir"
+      },
+      {
+        "id": "E",
+        "text": "Banka ilgili kişi, SMS firması veri sorumlusudur"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "KVKK'ya göre veri sorumlusu (data controller), kişisel verilerin işleme amaçlarını ve vasıtalarını belirleyen, veri kayıt sisteminin kurulmasından ve yönetilmesinden sorumlu olan gerçek veya tüzel kişidir. Veri işleyen (data processor) ise veri sorumlusunun verdiği yetkiye dayanarak onun adına kişisel verileri işleyen kişidir. Senaryoda hangi müşteriye hangi mesajın neden gönderileceğine banka karar vermekte, SMS firması ise yalnızca talimatla iletim yapmaktadır. Dolayısıyla banka veri sorumlusu, SMS firması veri işleyendir. Veri sorumlusu sıfatı sözleşmeyle veri işleyene devredilemez; KVKK md. 12/2 uyarınca banka, veri güvenliği tedbirlerinin alınmasından veri işleyenle birlikte müştereken sorumludur ve bunu sözleşme ve denetimle sağlamakla yükümlüdür.",
+    "simpleExplanation": "KVKK'da iki ana rol vardır. Veri sorumlusu, 'bu veriler neden ve nasıl kullanılacak' kararını veren taraftır; veri işleyen ise onun talimatıyla işi yapan yardımcıdır. Bunu bir restoran ile paket servis kuryesine benzetebilirsiniz: yemeği kime ve neden göndereceğine restoran karar verir, kurye yalnızca verilen adrese teslim eder. Senaryoda hangi müşteriye hangi SMS'in gideceğine banka karar veriyor, SMS firması sadece iletiyor. Bu nedenle banka veri sorumlusu, SMS firması veri işleyendir; müşteri ise verisi işlenen 'ilgili kişi'dir.",
+    "optionExplanations": {
+      "A": "Doğru. Amaç ve vasıtayı belirleyen banka veri sorumlusu, talimatla iletim yapan firma veri işleyendir.",
+      "B": "Roller ters çevrilmiştir; SMS firması işleme amacını belirlemez, sadece talimat uygular.",
+      "C": "Firma, verileri kendi amaçları için kullanmadığı için bağımsız veri sorumlusu olmaz; bağımsız sorumluluk, firmanın kendi amaçlarıyla işleme yapması hâlinde söz konusu olurdu.",
+      "D": "Müşteri 'ilgili kişi'dir (veri sahibi), veri sorumlusu değildir; veri sorumlusu sıfatı amaç belirleyen kuruma aittir.",
+      "E": "'İlgili kişi' kişisel verisi işlenen gerçek kişidir; banka tüzel kişi olup bu senaryoda ilgili kişi değil, veri sorumlusudur."
+    },
+    "keyConcept": "Veri sorumlusu amacı ve yöntemi belirler; veri işleyen onun adına ve talimatıyla işler; ilgili kişi verisi işlenen gerçek kişidir.",
+    "examTip": "'Kim neden işleneceğine karar veriyor?' sorusunun yanıtı veri sorumlusudur; 'kim sadece talimatla yapıyor?' sorusunun yanıtı veri işleyendir.",
+    "references": [
+      "6698 sayılı Kişisel Verilerin Korunması Kanunu, md. 3 (Tanımlar) ve md. 12 (Veri güvenliğine ilişkin yükümlülükler)",
+      "Kişisel Verileri Koruma Kurumu, Veri Sorumlusu ve Veri İşleyen (rehber)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IBG-007",
+    "topic": "IBG",
+    "subtopic": "Parola politikası ve çok faktörlü kimlik doğrulama (MFA)",
+    "difficulty": "ileri",
+    "question": "Bir bankanın ayrıcalıklı (privileged) sistem yöneticileri, uzaktan erişimde kullanıcı adı + parola ve SMS ile gelen tek kullanımlık kod (OTP) ile kimlik doğrulamaktadır. Son olayda bir saldırgan, yöneticinin parolasını oltalama ile ele geçirmiş, ardından operatör nezdinde SIM kart değişimi (SIM swap) yaptırarak SMS kodunu da almış ve sisteme girmiştir. Bu saldırı zincirini en etkili biçimde kıran kontrol aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Parola uzunluğunu en az 16 karaktere çıkarmak ve 30 günde bir değiştirilmesini zorunlu kılmak"
+      },
+      {
+        "id": "B",
+        "text": "SMS OTP yerine e-posta ile gönderilen OTP kullanmak"
+      },
+      {
+        "id": "C",
+        "text": "SMS OTP yerine FIDO2/WebAuthn tabanlı donanım güvenlik anahtarı gibi oltalamaya dirençli bir ikinci faktör kullanmak"
+      },
+      {
+        "id": "D",
+        "text": "Kullanıcılara yılda bir oltalama farkındalık eğitimi vermek"
+      },
+      {
+        "id": "E",
+        "text": "Hesap kilitleme eşiğini 3 başarısız denemeye düşürmek"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Saldırı zinciri iki halkadan oluşur: parolanın oltalanması ve SMS kodunun SIM değişimiyle ele geçirilmesi. SMS tabanlı OTP, telefon numarasına bağlı olduğundan SIM swap ve SS7 zayıflıklarına açıktır; NIST SP 800-63B (Rev. 3, 5.1.3.3) bu yöntemi 'kısıtlı' (restricted) kimlik doğrulayıcı olarak sınıflandırır. FIDO2/WebAuthn gibi oltalamaya dirençli (phishing-resistant) yöntemler, kimlik doğrulamayı sitenin gerçek alan adına kriptografik olarak bağlar (origin binding) ve özel anahtar cihazdan çıkmaz; dolayısıyla hem sahte site üzerinden kod çalınması hem de SIM değişimi etkisiz kalır. BDDK'nın 2020 tarihli Yönetmeliği de uzaktan ve ayrıcalıklı erişimlerde güçlü kimlik doğrulama kullanılmasını öngörür.",
+    "simpleExplanation": "Saldırgan iki kapıdan geçti: parolayı sahte bir siteyle çaldı, SMS kodunu da telefon hattını kendi üzerine aldırarak (SIM değişimi) ele geçirdi. SMS kodu telefon numarasına bağlıdır; numara çalınırsa kod da çalınır. FIDO2 donanım anahtarı ise bir ev anahtarı gibi fiziksel olarak sizde durur ve yalnızca gerçek banka sitesinin kilidini açar; sahte siteye takılsa bile çalışmaz. Böylece hem sahte site hem SIM değişimi işe yaramaz hâle gelir. Parolayı uzatmak ya da kilitleme eşiğini düşürmek bu iki kapıdan hiçbirini kapatmaz.",
+    "optionExplanations": {
+      "A": "Parola ne kadar uzun olsa da oltalama ile aynen ele geçirilir; zorunlu periyodik parola değişimi NIST SP 800-63B tarafından önerilmez (Rev. 4'te açıkça yasaklanmıştır) ve bu zinciri kırmaz.",
+      "B": "E-posta OTP, SIM değişimini etkisiz kılar ama e-posta hesabının kendisi de oltalanabilir veya ele geçirilebilir; sahte site üzerinden gerçek zamanlı kod çalma (relay) saldırısına açıktır.",
+      "C": "Doğru. Donanım anahtarı özel anahtarı cihazda tutar ve yanıtı gerçek alan adına bağlar; hem oltalama hem SIM swap halkasını kırar.",
+      "D": "Farkındalık eğitimi faydalı bir tamamlayıcı kontroldür ama yılda bir yapılan eğitim, teknik olarak zinciri kırmaz; insan hatası devam eder.",
+      "E": "Hesap kilitleme kaba kuvvet (brute force) saldırılarına karşıdır; saldırgan doğru parola ve kodu tek denemede kullandığı için etkisizdir."
+    },
+    "keyConcept": "Kimlik doğrulamanın gücü en zayıf faktörle sınırlıdır; SMS OTP SIM değişimine açıktır, FIDO2/WebAuthn ise oltalamaya ve aktarım saldırılarına dirençlidir.",
+    "examTip": "Senaryodaki her saldırı halkasını listeleyin; yalnızca tüm halkaları kıran seçeneği işaretleyin. 'Parola politikası sıkılaştırma' seçenekleri oltalama senaryolarında çeldiricidir.",
+    "references": [
+      "NIST SP 800-63B, Digital Identity Guidelines: Authentication and Lifecycle Management, 5.1.3 (Out-of-band) ve 5.2.5 (Verifier impersonation resistance)",
+      "FIDO Alliance, FIDO2/WebAuthn spesifikasyonu",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020), kimlik doğrulama hükümleri"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "IBG-008",
+    "topic": "IBG",
+    "subtopic": "KVKK: açık rıza ve hukuki sebepler",
+    "difficulty": "ileri",
+    "question": "Bir banka, mobil uygulamasının kullanım sözleşmesine şu maddeyi eklemiştir: 'Uygulamayı kullanmaya devam ederek kişisel verilerinizin iş ortaklarımızın sigorta ve tatil ürünlerinin pazarlanması amacıyla bu ortaklara aktarılmasına açık rıza vermiş sayılırsınız. Bu maddeyi kabul etmeyen müşteriler uygulamayı kullanamaz.' KVKK'nın açık rıza (explicit consent) kavramı açısından bu uygulamanın değerlendirmesi aşağıdakilerden hangisinde doğru verilmiştir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Geçerlidir; çünkü müşteri sözleşmeyi kabul etmekle rızasını açıkça beyan etmiştir"
+      },
+      {
+        "id": "B",
+        "text": "Geçerlidir; çünkü bankacılık hizmeti sunmak için pazarlama amaçlı aktarım sözleşmenin ifası kapsamında zorunludur"
+      },
+      {
+        "id": "C",
+        "text": "Geçersizdir; çünkü KVKK kişisel verilerin üçüncü kişilere aktarılmasını her koşulda yasaklar"
+      },
+      {
+        "id": "D",
+        "text": "Geçersizdir; çünkü rıza, hizmetin ön şartı olarak dayatıldığı için özgür iradeye dayanmaz ve bankacılık hizmetiyle ilgisiz bir amaç için paket hâlinde alınmıştır"
+      },
+      {
+        "id": "E",
+        "text": "Geçersizdir; çünkü açık rıza yalnızca noter onaylı yazılı belge ile alınabilir"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "KVKK md. 3'e göre açık rıza, 'belirli bir konuya ilişkin, bilgilendirilmeye dayanan ve özgür iradeyle açıklanan rıza'dır. Kanun metni bu üç unsuru sayar; Kişisel Verileri Koruma Kurulu'nun kararları ve Kurumun Açık Rıza Rehberi'ndeki uygulamaya göre, bir hizmetin sunulması rızaya bağlanmışsa (hizmet şartı olarak rıza) ve rıza konusu hizmet için gerekli olmayan bir amaçsa, özgür irade unsuru zedelenir ve rıza geçersizdir. Üçüncü taraf ürünlerinin pazarlanması için aktarım, bankacılık hizmetinin ifası için zorunlu değildir; dolayısıyla sözleşmenin ifası hukuki sebebine de dayandırılamaz. Ayrıca rıza 'devam ederek' şeklinde zımni biçimde ve diğer şartlarla paketlenmiş olarak alınmıştır; açık rıza ayrıştırılmış ve olumlu bir irade beyanı gerektirir.",
+    "simpleExplanation": "KVKK'da açık rıza, 'ne için izin verdiğini bilerek ve özgürce evet demek' anlamına gelir. Burada banka, 'uygulamayı kullanmak istiyorsan verilerini tatil ve sigorta pazarlaması için başkalarına vermemi kabul etmek zorundasın' diyor. Bu, bir markete girmek için kapıda 'telefon numaranı reklam şirketlerine vermeyi kabul et' kâğıdı imzalatmaya benzer; alışveriş için gerekli olmayan bir şeyi şart koşmaktır. Zorla ve paket hâlinde alınan 'evet' özgür irade sayılmadığı için, Kişisel Verileri Koruma Kurulu'nun uygulamasına göre bu rıza geçersizdir. Üstelik 'kullanmaya devam ederek kabul etmiş sayılırsınız' demek, kişinin açıkça evet demesi değildir.",
+    "optionExplanations": {
+      "A": "Sözleşmenin kabulü, pazarlama amaçlı aktarım için ayrı ve özgür bir irade beyanı değildir; rıza paket hâlinde ve dayatma ile alınmıştır.",
+      "B": "Sözleşmenin ifası hukuki sebebi, yalnızca hizmetin sunulması için gerekli işlemeyi kapsar; üçüncü taraf ürün pazarlaması hizmetin ifası için zorunlu değildir.",
+      "C": "KVKK aktarımı yasaklamaz; md. 8 ve 9 çerçevesinde açık rıza veya diğer hukuki sebeplerle aktarım mümkündür. Sorun aktarımın kendisi değil, rızanın alınış biçimidir.",
+      "D": "Doğru. Kurul uygulamasına göre hizmet şartına bağlanan ve ilgisiz amaç için paketlenen rıza, özgür irade ve belirli konu unsurlarını karşılamadığı için geçersizdir.",
+      "E": "KVKK açık rıza için noter veya özel bir şekil şartı öngörmez; elektronik ortamda da alınabilir. Önemli olan ispat edilebilirlik ve üç unsurun varlığıdır."
+    },
+    "keyConcept": "Açık rızanın üç unsuru: belirli konuya ilişkin olma, bilgilendirmeye dayanma, özgür irade. Hizmetin ön şartı olarak dayatılan veya paketlenmiş rıza geçersizdir.",
+    "examTip": "Senaryoda 'kabul etmeyen hizmeti kullanamaz' ifadesi görürseniz özgür irade unsuru sorgulanır; 'hizmet için gerekli mi?' sorusu sözleşmenin ifası sebebini test eder.",
+    "references": [
+      "6698 sayılı Kişisel Verilerin Korunması Kanunu, md. 3, 5, 8, 9",
+      "Kişisel Verileri Koruma Kurumu, Açık Rıza (rehber)",
+      "Kişisel Verileri Koruma Kurumu, Kişisel Verilerin İşlenmesine İlişkin Temel İlkeler (rehber)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "SIB-001",
+    "topic": "SIB",
+    "subtopic": "Zafiyet, tehdit ve risk kavramları",
+    "difficulty": "temel",
+    "question": "Bir bankanın ATM ağına ilişkin iç denetim raporunda şu üç ifade yer almaktadır: (1) 'ATM işletim sistemlerine 2 yıldır güvenlik güncellemesi uygulanmamıştır.' (2) 'Bölgede ATM'lere zararlı yazılım yükleyerek nakit çektiren organize suç grupları aktiftir.' (3) 'Bu durumun gerçekleşme olasılığı yüksek, olası kayıp 5 milyon TL olarak değerlendirilmiştir.' Bu ifadeler sırasıyla hangi kavramlara karşılık gelir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Tehdit, zafiyet, risk"
+      },
+      {
+        "id": "B",
+        "text": "Zafiyet, tehdit, risk"
+      },
+      {
+        "id": "C",
+        "text": "Risk, tehdit, zafiyet"
+      },
+      {
+        "id": "D",
+        "text": "Zafiyet, risk, tehdit"
+      },
+      {
+        "id": "E",
+        "text": "Tehdit, risk, zafiyet"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Zafiyet (vulnerability), bir varlıktaki istismar edilebilir zayıflıktır; güncellenmemiş işletim sistemi bir zafiyettir. Tehdit (threat), zafiyeti istismar edebilecek potansiyel olay veya aktördür; aktif suç grupları tehdit kaynağıdır. Risk (risk) ise tehdidin zafiyeti istismar etme olasılığı ile oluşacak etkinin birleşimidir; 'olasılık yüksek, kayıp 5 milyon TL' ifadesi riskin olasılık ve etki boyutlarını tanımlar. Formül olarak Risk = Tehdit × Zafiyet × Etki (ya da Olasılık × Etki) biçiminde özetlenir.",
+    "simpleExplanation": "Bu üç kavramı bir evle düşünün. Zafiyet, evin kilidi bozuk kapısıdır: güncellenmemiş ATM işletim sistemi tam olarak budur. Tehdit, mahallede dolaşan hırsızdır: ATM'lere zararlı yazılım yükleyen suç grubu bu role karşılık gelir. Risk ise 'hırsızın bozuk kapıdan girme ihtimali ne kadar ve girerse ne kadar kaybederiz' sorusunun cevabıdır: 'olasılık yüksek, kayıp 5 milyon TL' tam olarak bir risk ifadesidir. Hırsız yoksa bozuk kapı tek başına risk oluşturmaz; ikisi birlikte riski oluşturur.",
+    "optionExplanations": {
+      "A": "Güncellenmemiş sistem kendisi saldırmaz, saldırıya açık bir zayıflıktır; bu yüzden tehdit değil zafiyettir. Suç grubu ise zafiyet değil tehdit aktörüdür.",
+      "B": "Doğru. Zayıflık → zafiyet; zayıflığı istismar edebilecek aktör → tehdit; olasılık × etki → risk.",
+      "C": "Risk, olasılık ve etki içeren bir değerlendirmedir; birinci ifadede olasılık veya etki yoktur, yalnızca bir zayıflık tanımlanmıştır.",
+      "D": "İkinci ifade bir aktörü tanımlar, olasılık ve etki içermez; dolayısıyla risk değil tehdittir. Üçüncü ifade ise zafiyet değil risk değerlendirmesidir.",
+      "E": "Üçüncü ifade zafiyet değil riskin ölçülmüş hâlidir; birinci ifade de bir aktör olmadığından tehdit sayılmaz."
+    },
+    "keyConcept": "Zafiyet = zayıflık; tehdit = zayıflığı istismar edebilecek olay/aktör; risk = olasılık × etki. Tehdit olmadan zafiyet risk oluşturmaz.",
+    "examTip": "İfadede 'eksik, güncellenmemiş, kapatılmamış' varsa zafiyet; 'saldırgan, grup, deprem' gibi aktör/olay varsa tehdit; 'olasılık, etki, kayıp' varsa risk.",
+    "references": [
+      "NIST SP 800-30 Rev. 1, Guide for Conducting Risk Assessments",
+      "ISO/IEC 27005:2022, Bilgi güvenliği riski yönetimi",
+      "Stallings & Brown, Computer Security: Principles and Practice, Bölüm 14"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "SIB-002",
+    "topic": "SIB",
+    "subtopic": "Zararlı yazılım türleri",
+    "difficulty": "temel",
+    "question": "Bir bankanın güvenlik operasyon merkezi (SOC) üç farklı olay kaydetmiştir: (1) Bir çalışan 'fatura görüntüleyici' sandığı programı kurmuş; program arka planda saldırgana uzaktan erişim sağlayan bir arka kapı açmıştır. (2) Bir şube ağında, kullanıcı etkileşimi olmadan SMB zafiyetini kullanarak kendini bilgisayardan bilgisayara kopyalayan bir yazılım tespit edilmiştir. (3) Veri merkezindeki dosya sunucularının içerikleri şifrelenmiş ve çözüm anahtarı için kripto para talep eden bir not bırakılmıştır. Bu üç olaydaki zararlı yazılım türleri sırasıyla aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Solucan (worm), truva atı (trojan), fidye yazılımı (ransomware)"
+      },
+      {
+        "id": "B",
+        "text": "Virüs, solucan, casus yazılım (spyware)"
+      },
+      {
+        "id": "C",
+        "text": "Truva atı, virüs, fidye yazılımı"
+      },
+      {
+        "id": "D",
+        "text": "Truva atı, solucan, fidye yazılımı"
+      },
+      {
+        "id": "E",
+        "text": "Rootkit, solucan, casus yazılım"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Truva atı (trojan), meşru bir program gibi görünerek kullanıcı tarafından bilerek çalıştırılan ancak gizli zararlı işlev taşıyan yazılımdır; 'fatura görüntüleyici' kılığındaki arka kapı tipik bir truva atıdır. Solucan (worm), kullanıcı etkileşimi gerektirmeden ağ zafiyetlerini kullanarak kendini otonom biçimde yayan zararlıdır; SMB üzerinden yayılma (WannaCry'daki gibi) solucan davranışıdır. Fidye yazılımı (ransomware), verileri şifreleyerek erişimi engelleyen ve fidye talep eden zararlıdır. Virüs ise solucandan farklı olarak yayılmak için bir taşıyıcı dosyaya eklenir ve kullanıcı eylemi gerektirir.",
+    "simpleExplanation": "Zararlı yazılımları yayılma ve davranış biçimlerine göre ayırırız. Truva atı, hediye paketi içinde gizlenen bir tuzak gibidir: kullanıcı 'fatura görüntüleyici' sanıp kendi eliyle kurar, ama içinde arka kapı vardır. Solucan, kimse dokunmasa da ağdaki açıklardan bilgisayardan bilgisayara kendi kendine atlayan bir yazılımdır; şubedeki SMB açığından yayılan program budur. Fidye yazılımı ise dosyalarınızı kilitleyip 'anahtarı istiyorsan para öde' diyen dijital bir rehin alıcıdır. Sıra bu yüzden truva atı, solucan, fidye yazılımıdır.",
+    "optionExplanations": {
+      "A": "İlk iki tür yer değiştirmiştir: kullanıcının bilerek kurduğu sahte program truva atıdır, kendini otonom kopyalayan yazılım solucandır.",
+      "B": "Virüs kendini yaymak için taşıyıcı dosya ve kullanıcı eylemi gerektirir; birinci olayda kullanıcı aldatılmış ama yayılma yoktur. Üçüncü olay veri çalmaz, şifreler; casus yazılım değildir.",
+      "C": "İkinci olayda yazılım kullanıcı etkileşimi olmadan ağ üzerinden yayılmaktadır; bu virüs değil solucan özelliğidir.",
+      "D": "Doğru. Kılık değiştirme → truva atı; otonom ağ yayılımı → solucan; şifreleme + fidye → fidye yazılımı.",
+      "E": "Rootkit, varlığını gizlemek için işletim sistemi bileşenlerini değiştiren zararlıdır; birinci olayın ayırt edici özelliği gizlenme değil kılık değiştirmedir. Üçüncü olay da casusluk değil şifrelemedir."
+    },
+    "keyConcept": "Truva atı aldatarak çalıştırılır; solucan kendi başına ağda yayılır; virüs taşıyıcı dosyaya tutunur; fidye yazılımı şifreleyip fidye ister.",
+    "examTip": "'Kullanıcı etkileşimi olmadan yayıldı' ifadesi solucanı, 'meşru program sanıldı' ifadesi truva atını işaret eder.",
+    "references": [
+      "Stallings & Brown, Computer Security: Principles and Practice, Bölüm 6 (Malicious Software)",
+      "NIST SP 800-83 Rev. 1, Guide to Malware Incident Prevention and Handling",
+      "ENISA Threat Landscape, Ransomware bölümü"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "SIB-003",
+    "topic": "SIB",
+    "subtopic": "OWASP Top 10: SQL enjeksiyonu",
+    "difficulty": "orta",
+    "question": "Bir bankanın müşteri portalında kullanılan aşağıdaki Java 17 kod parçası sızma testinde SQL enjeksiyonu (SQL injection) açığı olarak raporlanmıştır. Açığı kök nedeninden gideren en doğru düzeltme aşağıdakilerden hangisidir?",
+    "code": "String musteriNo = request.getParameter(\"musteriNo\");\nString sql = \"SELECT ad, bakiye FROM hesaplar WHERE musteri_no = '\" + musteriNo + \"'\";\nStatement stmt = conn.createStatement();\nResultSet rs = stmt.executeQuery(sql);",
+    "codeLanguage": "java",
+    "options": [
+      {
+        "id": "A",
+        "text": "musteriNo değişkenindeki tek tırnak karakterlerini silip sorguyu aynı biçimde çalıştırmak"
+      },
+      {
+        "id": "B",
+        "text": "Veritabanı bağlantısını SSL/TLS ile şifrelemek"
+      },
+      {
+        "id": "C",
+        "text": "Sorgu çalıştırılmadan önce girdiyi tamamen büyük harfe çevirmek"
+      },
+      {
+        "id": "D",
+        "text": "Hata mesajlarını kullanıcıya göstermeyip genel bir hata sayfasına yönlendirmek"
+      },
+      {
+        "id": "E",
+        "text": "Sorguyu PreparedStatement ile '... WHERE musteri_no = ?' biçiminde yazıp değeri setString(1, musteriNo) ile bağlamak"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Açığın kök nedeni, kullanıcıdan gelen verinin SQL cümlesinin metnine doğrudan birleştirilmesidir (string concatenation); böylece veri ile komut birbirine karışır ve girdi, sorgunun yapısını değiştirebilir. Parametreli sorgu (prepared statement) kullanıldığında sorgu şablonu önce derlenir, parametre değeri daha sonra yalnızca veri olarak bağlanır; girdi ne içerse içersin sorgunun yapısı değişmez. OWASP bu düzeltmeyi enjeksiyona karşı birincil savunma olarak tanımlar. Diğer seçenekler ya eksik kara liste yaklaşımıdır ya da soruna dolaylı/ilgisiz katkı sağlar.",
+    "simpleExplanation": "Koddaki sorun, kullanıcının yazdığı metnin SQL komutunun içine doğrudan yapıştırılmasıdır. Bu, bir garsona 'müşteri ne derse aynen mutfağa ilet' demek gibidir; müşteri 'bir çorba ve kasayı boşalt' derse mutfak ikisini de yapar. PreparedStatement ile sorgu önce sabit bir şablon olarak hazırlanır, kullanıcının girdiği değer ise sonradan yalnızca 'veri' olarak yerine konur; komut gibi yorumlanamaz. Tırnak silmek ya da büyük harfe çevirmek gibi filtreler deliği kapatmaz, sadece saldırganın başka yol aramasına yol açar. Kök çözüm, veriyle komutu birbirinden ayırmaktır.",
+    "optionExplanations": {
+      "A": "Belirli karakterleri silmek kara liste (blacklist) yaklaşımıdır; farklı kodlamalar, yorum işaretleri veya sayısal alanlarda tırnaksız enjeksiyon gibi yollarla aşılabilir. Kök nedeni gidermez.",
+      "B": "Bağlantı şifrelemesi, uygulama ile veritabanı arasındaki trafiğin dinlenmesini engeller; sorgunun içeriğindeki zararlı yapı şifreli kanaldan aynen geçer.",
+      "C": "Büyük harfe çevirmek SQL anahtar kelimelerini etkilemez (SQL büyük/küçük harfe duyarsızdır) ve girdinin sorgu yapısını bozmasını engellemez.",
+      "D": "Hata mesajlarını gizlemek saldırganın bilgi toplamasını zorlaştırır (güvenlik gereği iyi bir uygulamadır) ancak enjeksiyonun kendisini engellemez; kör (blind) enjeksiyon hâlâ mümkündür.",
+      "E": "Doğru. Parametreli sorgu veri ile komutu ayırır; girdinin sorgu yapısını değiştirmesi mümkün olmaz."
+    },
+    "keyConcept": "SQL enjeksiyonunun kök nedeni veri ile komutun karışmasıdır; çözüm parametreli sorgu (prepared statement) ile ikisini ayırmaktır.",
+    "examTip": "Kodda '+' ile SQL birleştirmesi görürseniz açık vardır; 'kök neden' istenen soruda filtreleme/kodlama seçeneklerini değil parametreli sorguyu seçin.",
+    "references": [
+      "OWASP Top 10:2021, A03 Injection",
+      "OWASP Cheat Sheet Series, SQL Injection Prevention Cheat Sheet",
+      "CWE-89: Improper Neutralization of Special Elements used in an SQL Command"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "SIB-004",
+    "topic": "SIB",
+    "subtopic": "OWASP Top 10: Kırık erişim denetimi (IDOR)",
+    "difficulty": "orta",
+    "question": "Bir bankanın mobil uygulaması hesap özetini 'GET /api/hesap/ozet?hesapId=4471023' isteğiyle getirmektedir. Sızma testinde, oturum açmış bir test kullanıcısının hesapId değerini 4471024 olarak değiştirdiğinde başka bir müşterinin hesap özetini görebildiği tespit edilmiştir. Bu zafiyetin OWASP Top 10 (2021) sınıfı ve en uygun düzeltme aşağıdakilerden hangisinde doğru verilmiştir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "A03 Injection; hesapId parametresini sayısal tip kontrolünden geçirmek"
+      },
+      {
+        "id": "B",
+        "text": "A07 Identification and Authentication Failures; oturum süresini kısaltmak ve MFA eklemek"
+      },
+      {
+        "id": "C",
+        "text": "A01 Broken Access Control; sunucu tarafında istenen hesabın oturumdaki kullanıcıya ait olduğunu her istekte doğrulamak"
+      },
+      {
+        "id": "D",
+        "text": "A05 Security Misconfiguration; API sunucusunda ayrıntılı hata mesajlarını kapatmak"
+      },
+      {
+        "id": "E",
+        "text": "A02 Cryptographic Failures; hesapId değerini istemci tarafında AES ile şifreleyip göndermek"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Senaryo, güvensiz doğrudan nesne referansı (Insecure Direct Object Reference, IDOR) örneğidir: kullanıcı kimliği doğrulanmış (authenticated) ancak eriştiği kaynağa yetkisi (authorization) kontrol edilmemiştir. OWASP Top 10:2021'de bu durum A01 Broken Access Control altında yer alır ve listenin ilk sırasındadır. Doğru düzeltme, sunucu tarafında her istekte 'bu hesap, oturumu açık olan kullanıcıya ait mi?' kontrolünü yapmaktır; alternatif olarak tahmin edilemeyen dolaylı referanslar kullanılabilir ancak bu tek başına yeterli değildir, yetki kontrolü esastır. Kimlik doğrulama zaten çalıştığı için A07 değildir.",
+    "simpleExplanation": "Kullanıcı sisteme doğru şekilde giriş yapmış, yani 'kim olduğu' doğrulanmış. Ama 'bu hesaba bakmaya yetkin var mı?' sorusu hiç sorulmamış. Bu, otelde size kendi odanızın anahtar kartı verilmesi ama kartın her odayı açması gibidir: kimliğiniz doğru, yetkiniz yanlış. Bu tür hatalara 'kırık erişim denetimi' denir ve OWASP listesinin ilk sırasındadır. Çözüm, sunucunun her istekte 'istenen hesap gerçekten bu kullanıcıya mı ait?' kontrolünü yapmasıdır; istemci tarafında şifreleme veya hata mesajlarını gizleme bu kontrolün yerini tutmaz.",
+    "optionExplanations": {
+      "A": "Girdi sayısaldır ve sorgu yapısı değişmemiştir; sorun enjeksiyon değil, geçerli bir değerle yetkisiz kaynağa erişimdir. Tip kontrolü IDOR'u engellemez.",
+      "B": "Kullanıcı zaten doğru biçimde oturum açmıştır; kimlik doğrulama değil yetkilendirme eksiktir. MFA eklemek, kimliği doğrulanmış kullanıcının başka hesaba erişmesini engellemez.",
+      "C": "Doğru. Nesne düzeyinde yetkilendirme eksikliği A01 Broken Access Control'dür; çözüm sunucu tarafında sahiplik/yetki kontrolüdür.",
+      "D": "Hata mesajlarını kapatmak bilgi sızıntısını azaltır ancak yetkisiz erişimin kendisini engellemez; sorun yapılandırma değil iş mantığındaki eksik kontroldür.",
+      "E": "İstemci tarafında şifreleme, anahtarın istemcide bulunmasını gerektirir ve saldırgan aynı istemciyi kullanır; ayrıca gizlemek (obscurity) yetki kontrolünün yerini tutmaz."
+    },
+    "keyConcept": "Kimlik doğrulama 'kimsin?', yetkilendirme 'buna erişebilir misin?' sorusudur. IDOR, yetkilendirmenin nesne düzeyinde yapılmamasıdır (A01).",
+    "examTip": "'Parametreyi değiştirince başkasının verisini gördü' ifadesi her zaman Broken Access Control / IDOR'dur; çözüm istemci değil sunucu tarafındadır.",
+    "references": [
+      "OWASP Top 10:2021, A01 Broken Access Control",
+      "OWASP API Security Top 10 (2023), API1 Broken Object Level Authorization",
+      "CWE-639: Authorization Bypass Through User-Controlled Key"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "SIB-005",
+    "topic": "SIB",
+    "subtopic": "Güvenlik duvarı, IDS ve IPS farkları",
+    "difficulty": "orta",
+    "question": "Bir bankanın ağ güvenliği mimarisi gözden geçirilmektedir. Mevcut durumda internet bankacılığı sunucularının önünde yalnızca 5-tuple (kaynak/hedef IP, kaynak/hedef port, protokol) temelli bir paket filtreleme güvenlik duvarı bulunmaktadır. Güvenlik ekibi, 443 numaralı porttan gelen ancak bilinen bir saldırı imzası taşıyan trafiğin hem tespit edilmesini hem de hedefe ulaşmadan otomatik olarak engellenmesini istemektedir. Bu gereksinimi karşılayan bileşen ve konumlandırma aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Saldırı tespit sistemi (IDS); trafiğin bir kopyasını alan SPAN/ayna portuna bağlı (pasif)"
+      },
+      {
+        "id": "B",
+        "text": "Ağ erişim denetimi (NAC); uç nokta cihazlarının uyumluluğunu kontrol eden"
+      },
+      {
+        "id": "C",
+        "text": "Mevcut paket filtreleme güvenlik duvarında 443 portunu kapatmak"
+      },
+      {
+        "id": "D",
+        "text": "Durum bilgili (stateful) güvenlik duvarı; yalnızca bağlantı tablosunu tutan"
+      },
+      {
+        "id": "E",
+        "text": "Saldırı önleme sistemi (IPS); trafiğin üzerinden geçtiği hat üzerinde (inline) konumlandırılmış"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Paket filtreleme güvenlik duvarı yalnızca başlık bilgilerine (IP, port, protokol) bakar; 443 numaralı porta izin verildiğinde içerikteki saldırıyı göremez. IDS (Intrusion Detection System), trafiği imza veya anomali temelli inceler ancak pasif çalışır: yalnızca uyarı üretir, engelleyemez. IPS (Intrusion Prevention System) ise aynı analiz yeteneğine sahip olup trafiğin geçtiği hat üzerinde (inline) durur ve zararlı paketleri hedefe ulaşmadan düşürebilir. Gereksinim 'tespit + otomatik engelleme' olduğundan doğru bileşen inline IPS'tir. Not: TLS trafiğinin incelenebilmesi için IPS'in TLS sonlandırma/çözme yetkisine sahip olması gerekir.",
+    "simpleExplanation": "Paket filtreleyen güvenlik duvarı, binanın kapısındaki 'sadece 443 numaralı kapıdan girilir' tabelası gibidir; kapıdan girenin çantasında ne olduğuna bakmaz. IDS, kapıdaki güvenlik kamerasıdır: şüpheli bir şey görür ve alarm çalar ama kimseyi durduramaz. IPS ise kapıda duran güvenlik görevlisidir: çantayı kontrol eder ve tehlikeli bir şey görürse içeri sokmaz. Trafiğin hem incelenmesi hem de hedefe ulaşmadan engellenmesi istendiği için gereken şey, trafiğin geçtiği hattın üzerine (inline) yerleştirilen IPS'tir.",
+    "optionExplanations": {
+      "A": "IDS pasif çalışır; ayna porttan kopya trafik aldığı için paketi engelleyemez, yalnızca alarm üretir. 'Hedefe ulaşmadan engelleme' gereksinimini karşılamaz.",
+      "B": "NAC, ağa bağlanan uç cihazların kimliğini ve uyumluluğunu denetler; internetten gelen trafiğin içeriğini incelemez.",
+      "C": "443 portunu kapatmak internet bankacılığının tamamen durması anlamına gelir; meşru trafiği de keser, çözüm değil hizmet kesintisidir.",
+      "D": "Stateful güvenlik duvarı bağlantının meşru bir oturuma ait olduğunu izler ancak yük (payload) içindeki saldırı imzasını incelemez.",
+      "E": "Doğru. Inline IPS hem içerik tabanlı tespit yapar hem de zararlı paketi anında düşürür."
+    },
+    "keyConcept": "Güvenlik duvarı başlığa göre filtreler; IDS içeriği inceler ama yalnızca uyarır (pasif); IPS içeriği inceler ve engeller (inline).",
+    "examTip": "'Tespit et' → IDS yeterli; 'tespit et ve engelle' → IPS; 'port/IP düzeyinde izin ver/engelle' → güvenlik duvarı.",
+    "references": [
+      "NIST SP 800-94, Guide to Intrusion Detection and Prevention Systems (IDPS)",
+      "NIST SP 800-41 Rev. 1, Guidelines on Firewalls and Firewall Policy",
+      "Stallings & Brown, Computer Security: Principles and Practice, Bölüm 8 ve 9"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "SIB-006",
+    "topic": "SIB",
+    "subtopic": "Olay müdahale adımları",
+    "difficulty": "orta",
+    "question": "Bir bankanın SOC ekibi, bir şube bilgisayarında fidye yazılımının çalışmaya başladığını ve dosya paylaşımlarını şifrelemeye başladığını tespit etmiştir. NIST SP 800-61 olay müdahale yaşam döngüsüne göre, bu anda ekibin öncelikle yapması gereken eylem ve ait olduğu aşama aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Etkilenen bilgisayarı ağdan izole etmek ve paylaşım erişimini kesmek — Containment (Sınırlama)"
+      },
+      {
+        "id": "B",
+        "text": "Etkilenen bilgisayarı kapatıp diski formatlamak — Eradication (Yok etme)"
+      },
+      {
+        "id": "C",
+        "text": "Yedeklerden tüm dosyaları geri yükleyip hizmeti açmak — Recovery (Kurtarma)"
+      },
+      {
+        "id": "D",
+        "text": "Olayın nasıl gerçekleştiğine dair ders çıkarma toplantısı yapmak — Post-Incident Activity (Olay sonrası)"
+      },
+      {
+        "id": "E",
+        "text": "Tüm çalışanlara fidye yazılımı farkındalık e-postası göndermek — Preparation (Hazırlık)"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "NIST SP 800-61 Rev. 2'ye göre olay müdahale yaşam döngüsü dört aşamadan oluşur (2025'te yayımlanan Rev. 3, aynı faaliyetleri CSF 2.0 işlevleri etrafında yeniden düzenler): Hazırlık (Preparation), Tespit ve Analiz (Detection and Analysis), Sınırlama-Yok etme-Kurtarma (Containment, Eradication, Recovery) ve Olay Sonrası Faaliyet (Post-Incident Activity). Olay tespit edildiği ve aktif olarak yayıldığı anda ilk öncelik zararın büyümesini durdurmaktır: etkilenen makineyi ağdan izole etmek ve paylaşımlara erişimini kesmek sınırlama (containment) eylemidir. Makineyi kapatıp formatlamak hem delilleri (bellek, zararlı örneği) yok eder hem de yok etme aşamasına sınırlama yapılmadan geçmek anlamına gelir. Kurtarma ve ders çıkarma daha sonra gelir.",
+    "simpleExplanation": "Bir odada yangın başladığında ilk işiniz raporu yazmak veya evi yeniden boyamak değil, yangının diğer odalara yayılmasını engellemek için kapıyı kapatmaktır. Fidye yazılımı da şifrelemeye başlamış ve yayılıyorsa ilk adım o bilgisayarı ağdan ayırmaktır; buna 'sınırlama' denir. Bilgisayarı kapatıp formatlamak yangını söndürür gibi görünür ama 'yangın nasıl çıktı' sorusuna cevap verecek tüm izleri de yok eder. Yedekten geri yükleme ve ders çıkarma toplantısı daha sonraki adımlardır. Önce yayılmayı durdur, sonra temizle, sonra geri getir, en sonunda da öğren.",
+    "optionExplanations": {
+      "A": "Doğru. Yayılmayı durdurmak için ağdan izolasyon, sınırlama aşamasının ilk ve en kritik eylemidir; delilleri de korur.",
+      "B": "Formatlamak adli delilleri (bellek imajı, zararlı örneği, iz kayıtları) yok eder ve kök neden analizini imkânsız kılar; ayrıca yok etme, sınırlamadan önce yapılmaz.",
+      "C": "Zararlı hâlâ aktifken yedekleri geri yüklemek, yedeklerin de şifrelenmesine yol açabilir; kurtarma, sınırlama ve yok etmeden sonra gelir.",
+      "D": "Ders çıkarma, olay kapatıldıktan sonra yapılan olay sonrası faaliyettir; aktif saldırı sırasında yapılmaz.",
+      "E": "Farkındalık e-postası hazırlık aşamasına ait önleyici bir eylemdir; aktif olayda yayılmayı durdurmaz."
+    },
+    "keyConcept": "Olay müdahale sırası: Hazırlık → Tespit/Analiz → Sınırlama → Yok etme → Kurtarma → Ders çıkarma. Aktif olayda ilk iş sınırlamadır.",
+    "examTip": "'Yayılıyor, ne yapmalı?' sorusunda yanıt daima izolasyon (sınırlama); 'kapat/formatla' seçenekleri delil kaybı nedeniyle çeldiricidir.",
+    "references": [
+      "NIST SP 800-61 Rev. 2, Computer Security Incident Handling Guide, Bölüm 3",
+      "ISO/IEC 27035-1:2023, Bilgi güvenliği olay yönetimi",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020), bilgi güvenliği olay yönetimi hükümleri"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "SIB-007",
+    "topic": "SIB",
+    "subtopic": "Derinlemesine savunma ve en az yetki",
+    "difficulty": "ileri",
+    "question": "Bir bankada çekirdek bankacılık veritabanına erişen uygulama servis hesabı, veritabanında DBA (tam yönetici) yetkisiyle tanımlıdır. Uygulama sunucusundaki bir web zafiyeti istismar edilerek bu servis hesabının kimlik bilgileri ele geçirilmiş ve saldırgan tüm müşteri tablolarını dışa aktarmıştır. Olay incelemesinde, veritabanı sunucusunun ağ segmentine uygulama sunucusu dışındaki her kaynaktan erişimin açık olduğu ve veritabanı erişim iz kayıtlarının (audit log) tutulmadığı da görülmüştür. Derinlemesine savunma (defense in depth) ve en az yetki (least privilege) ilkeleri açısından aşağıdaki değerlendirmelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Web zafiyeti kapatılsaydı diğer eksiklikler önemsiz olurdu; derinlemesine savunma tek güçlü katmana dayanmayı öngörür"
+      },
+      {
+        "id": "B",
+        "text": "En az yetki ilkesi yalnızca insan kullanıcılar için geçerlidir; servis hesapları işlevsel gereklilik nedeniyle tam yetkili olabilir"
+      },
+      {
+        "id": "C",
+        "text": "Ağ segmentasyonu ve iz kayıtları önleyici kontroller olduğu için bu olayı kesin olarak engellerdi"
+      },
+      {
+        "id": "D",
+        "text": "Servis hesabının DBA yetkisi en az yetki ilkesini ihlal eder; yalnızca uygulamanın ihtiyaç duyduğu tablolara SELECT/INSERT/UPDATE yetkisi verilmiş olsaydı, web zafiyeti istismar edilse bile toplu dışa aktarma ve şema değişikliği olanakları ciddi biçimde kısıtlanırdı"
+      },
+      {
+        "id": "E",
+        "text": "Derinlemesine savunma ilkesi gereği önce iz kaydı tutulması, ardından yetki kısıtlaması yapılması gerekirdi; iz kaydı ihlali tek başına önler"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "En az yetki ilkesi, her özne (insan veya servis hesabı) için yalnızca görevin gerektirdiği asgari yetkinin tanımlanmasını öngörür. Uygulamanın çalışması için DBA yetkisi gerekmez; tablolara sınırlı DML yetkisi yeterlidir. Böyle olsaydı, web zafiyeti istismar edilse bile saldırganın hareket alanı (blast radius) daralırdı. Derinlemesine savunma ise hiçbir tek katmanın yeterli sayılmamasını, birden fazla bağımsız katmanın (uygulama güvenliği, ağ segmentasyonu, erişim yetkisi, iz kaydı ve izleme) birlikte kullanılmasını ister. Senaryoda üç katman da eksik olduğu için tek zafiyet tam veri sızıntısına dönüşmüştür. İz kayıtları tespit edici kontroldür, önleyici değildir; segmentasyon ise saldırganın zaten geldiği uygulama sunucusu yolunu kapatmazdı.",
+    "simpleExplanation": "'En az yetki' ilkesi, herkese sadece işini yapması için gereken anahtarları vermek demektir. Uygulamanın veritabanı hesabına 'tam yönetici' yetkisi verilmesi, bir temizlik görevlisine binanın tüm kasalarını açan anahtarı vermek gibidir: görevli dürüst olsa bile anahtar çalınırsa hırsız her şeyi alır. Uygulama yalnızca birkaç tabloyu okuyup yazsa yeterdi; saldırgan web açığından girse bile tüm müşteri verisini dışarı taşıyamazdı. 'Derinlemesine savunma' ise tek bir kilide güvenmemek, art arda birkaç engel koymaktır. Bu olayda web açığı, aşırı yetki, açık ağ ve eksik kayıt üst üste gelmiş; bir tanesi bile sağlam olsaydı zarar çok küçülürdü.",
+    "optionExplanations": {
+      "A": "Derinlemesine savunma tam tersini söyler: hiçbir katman tek başına güvenilmez, birinin aşılması hâlinde diğerleri zararı sınırlamalıdır.",
+      "B": "En az yetki tüm özneler (insan, servis, süreç) için geçerlidir; servis hesapları insan gözetimi olmadan çalıştığı için aşırı yetki daha da tehlikelidir.",
+      "C": "İz kaydı tespit edici (detective) bir kontroldür, saldırıyı önlemez. Segmentasyon da uygulama sunucusundan gelen erişimi (saldırganın kullandığı yol) zaten izin verilen bir yol olduğu için engellemezdi.",
+      "D": "Doğru. Servis hesabına görev için gereken asgari yetkinin verilmesi, istismar hâlinde etkiyi sınırlar; bu hem en az yetki hem derinlemesine savunmanın özüdür.",
+      "E": "İz kaydı ihlali önlemez, sonradan tespit ve soruşturmayı mümkün kılar; ilkeler arasında böyle bir sıralama zorunluluğu da yoktur, katmanlar birlikte uygulanır."
+    },
+    "keyConcept": "En az yetki, bir kontrol aşıldığında saldırganın etki alanını daraltır; derinlemesine savunma, birbirinden bağımsız önleyici, tespit edici ve düzeltici katmanların birlikte kullanılmasıdır.",
+    "examTip": "Servis hesabı + yönetici yetkisi kombinasyonu gördüğünüzde en az yetki ihlalini işaretleyin; iz kaydını 'önleyici' olarak sunan seçenekler çeldiricidir.",
+    "references": [
+      "Saltzer & Schroeder, The Protection of Information in Computer Systems (1975), Least Privilege ilkesi",
+      "NIST SP 800-53 Rev. 5, AC-6 (Least Privilege) ve AU-2 (Audit Events)",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020), ayrıcalıklı erişim ve iz kayıtları hükümleri"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "SIB-008",
+    "topic": "SIB",
+    "subtopic": "Sızma testi aşamaları ve DDoS",
+    "difficulty": "ileri",
+    "question": "Bir banka, BDDK düzenlemesi gereği yıllık sızma testini dış bir firmaya yaptırmaktadır. Firma, test raporunda şu bulguları aşamalarına göre sunmuştur: (1) Bankaya ait alt alan adları ve açık portlar listelenmiş, çalışan sürümler belirlenmiş. (2) Bir test sunucusundaki eski sürüm uygulama üzerinden ters kabuk (reverse shell) elde edilmiş. (3) Bu sunucudan iç ağdaki dizin servisine yönelik hak yükseltme denenmiş ve etki alanı yönetici yetkisine ulaşılmış. (4) Bulgular, kanıtlar ve iyileştirme önerileri raporlanmış. Ayrıca firma, 'hizmet dışı bırakma testlerinin kapsam dışı bırakıldığını' belirtmiştir. Bu rapora ilişkin aşağıdaki değerlendirmelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Aşama 3, sızma testi metodolojisinde 'keşif' (reconnaissance) adımına karşılık gelir"
+      },
+      {
+        "id": "B",
+        "text": "Hizmet dışı bırakma testlerinin kapsam dışı bırakılması metodolojik bir eksikliktir; sızma testi her zaman DDoS saldırısı içermelidir"
+      },
+      {
+        "id": "C",
+        "text": "Aşama 1 keşif/tarama, aşama 2 istismar (exploitation), aşama 3 istismar sonrası (post-exploitation) ve yanal hareket, aşama 4 raporlama adımlarıdır; DDoS testlerinin üretim ortamında kapsam dışı tutulması, hizmet sürekliliği riski nedeniyle yaygın ve kabul edilebilir bir kural belirleme (rules of engagement) tercihidir"
+      },
+      {
+        "id": "D",
+        "text": "Aşama 2'de ters kabuk elde edilmesi, testin yetkilendirme sınırlarını aştığını gösterir; sızma testi yalnızca zafiyet taramasıyla sınırlı olmalıdır"
+      },
+      {
+        "id": "E",
+        "text": "DDoS ve DoS aynı şeydir; firma tek bir kaynaktan yük testi yaparak bu kapsamı doldurmuş sayılır"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Sızma testi (penetration test) tipik olarak planlama ve kapsam belirleme, keşif (reconnaissance) ve tarama (scanning/enumeration), zafiyet analizi, istismar (exploitation), istismar sonrası (post-exploitation: hak yükseltme, yanal hareket, kalıcılık) ve raporlama aşamalarından oluşur. Senaryodaki aşamalar bu sıraya uymaktadır. Zafiyet taramasından farklı olarak sızma testi, zafiyetleri gerçekten istismar ederek etkiyi kanıtlar; dolayısıyla ters kabuk elde edilmesi yetki aşımı değil, testin doğasıdır. Hizmet dışı bırakma (DoS) testleri üretim sistemlerinde gerçek kesinti yaratabileceği için kural belirleme (rules of engagement) belgesinde sıklıkla kapsam dışı tutulur veya yalnızca test ortamında yapılır; bu, metodolojik eksiklik değil bilinçli bir risk kararıdır. DoS tek kaynaktan, DDoS (Distributed DoS) ise çok sayıda dağıtık kaynaktan (botnet) yapılan saldırıdır; bunlar aynı şey değildir.",
+    "simpleExplanation": "Sızma testi, bankanın kendi izniyle tuttuğu 'iyi niyetli hırsızın' binaya girmeyi denemesidir. Önce binanın etrafını dolaşıp kapı ve pencereleri sayar (keşif), sonra zayıf bir pencereden içeri girer (istismar), içeride ilerleyip yönetici odasının anahtarına ulaşır (istismar sonrası), en sonunda da 'şuradan girdim, şunları düzeltin' diye rapor yazar. Rapordaki aşamalar tam bu sıraya uyuyor. Hizmeti çökertme (DDoS) testi ise gerçek bir binada yangın söndürme sistemini açıp 'dayanıklı mı' diye bakmaya benzer; gerçek hasar verebileceği için genellikle anlaşmada kapsam dışı bırakılır ve bu kabul edilen bir uygulamadır.",
+    "optionExplanations": {
+      "A": "Keşif, hedef hakkında bilgi toplama aşamasıdır (aşama 1). Hak yükseltme ve iç ağda ilerleme istismar sonrası (post-exploitation) aşamasına aittir.",
+      "B": "DoS/DDoS testleri üretim ortamında hizmet kesintisi riski taşıdığı için çoğu sızma testinde kapsam dışı tutulur; zorunlu bir bileşen değildir.",
+      "C": "Doğru. Aşamalar standart metodolojiye uygundur ve DoS testlerinin kapsam dışı tutulması kural belirleme kapsamında meşru bir tercihtir.",
+      "D": "Sızma testini zafiyet taramasından ayıran özellik tam da kontrollü istismardır; yetkilendirme sınırı kapsam belgesiyle çizilir, istismar yapılmasıyla değil.",
+      "E": "DoS tek kaynaktan, DDoS çok sayıda dağıtık kaynaktan gerçekleştirilir; tek kaynaklı yük testi DDoS dayanıklılığını ölçmez."
+    },
+    "keyConcept": "Sızma testi aşamaları: kapsam → keşif/tarama → istismar → istismar sonrası → raporlama. Kapsam ve kurallar (rules of engagement) hangi test türlerinin yapılacağını belirler.",
+    "examTip": "Aşama sorularında 'bilgi topla → içeri gir → içeride ilerle → raporla' sırasını ezberleyin; DoS testlerinin kapsam dışı olması genellikle doğru uygulamadır.",
+    "references": [
+      "NIST SP 800-115, Technical Guide to Information Security Testing and Assessment",
+      "Penetration Testing Execution Standard (PTES)",
+      "OWASP Web Security Testing Guide (WSTG)",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020), sızma testi hükümleri"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "KRP-001",
+    "topic": "KRP",
+    "subtopic": "Simetrik ve asimetrik şifreleme: anahtar sayısı",
+    "difficulty": "temel",
+    "question": "Bir bankanın 20 şubesi, birbirleriyle ikili olarak gizli haberleşmek istemektedir. Her şube çifti için ayrı bir paylaşılan gizli anahtar kullanılan simetrik şifreleme ile, her şubenin bir açık/özel anahtar çiftine sahip olduğu asimetrik şifreleme karşılaştırıldığında, toplamda gereken anahtar sayıları sırasıyla kaçtır?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Simetrik 20, asimetrik 40"
+      },
+      {
+        "id": "B",
+        "text": "Simetrik 400, asimetrik 20"
+      },
+      {
+        "id": "C",
+        "text": "Simetrik 190, asimetrik 40"
+      },
+      {
+        "id": "D",
+        "text": "Simetrik 380, asimetrik 20"
+      },
+      {
+        "id": "E",
+        "text": "Simetrik 190, asimetrik 20"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Simetrik şifrelemede her taraf çifti için ayrı bir gizli anahtar gerekir; n taraf için çift sayısı n(n-1)/2'dir. n = 20 için 20 × 19 / 2 = 190 anahtar. Asimetrik şifrelemede her taraf bir açık (public) ve bir özel (private) anahtara sahiptir; başkasıyla konuşmak için ek anahtar gerekmez. n = 20 için 2n = 40 anahtar (20 açık + 20 özel). Bu fark, asimetrik şifrelemenin anahtar dağıtımı sorununu neden çözdüğünü gösterir; ancak asimetrik işlemler yavaş olduğu için uygulamada hibrit yaklaşım (asimetrikle anahtar paylaş, simetrikle veri şifrele) kullanılır.",
+    "simpleExplanation": "Simetrik şifrelemede her iki kişi arasında ortak bir gizli anahtar olmalıdır; tıpkı her arkadaş çiftinin kendine özel bir şifreli defteri olması gibi. 20 şube için kaç farklı çift olduğunu sayarsak 20 × 19 / 2 = 190 çift, yani 190 anahtar çıkar. Asimetrik şifrelemede ise her şubenin iki anahtarı vardır: herkese dağıttığı açık anahtar (posta kutusunun yarığı gibi) ve sadece kendinde kalan özel anahtar (kutunun anahtarı gibi). Kiminle konuşacağı fark etmez, her şube için 2 anahtar yeter: 20 × 2 = 40. Şube sayısı arttıkça 190'ın nasıl hızla büyüdüğü, asimetrik şifrelemenin neden icat edildiğini gösterir.",
+    "optionExplanations": {
+      "A": "Simetrik için 20, her şubenin tek anahtarla herkesle konuşabileceği varsayımına dayanır; bu durumda anahtarı bilen herkes tüm trafiği okur, ikili gizlilik sağlanmaz.",
+      "B": "400 = n², sıralı çiftleri ve kendisiyle konuşmayı da sayar; ayrıca asimetrik için 20 yalnızca açık anahtarları sayar, özel anahtarlar unutulmuştur.",
+      "C": "Doğru. Simetrik: C(20,2) = 190; asimetrik: 2 × 20 = 40.",
+      "D": "380 = n(n-1), her çifti iki kez (A→B ve B→A) sayar; simetrik anahtar her iki yönde aynıdır. Asimetrik 20 de özel anahtarları saymaz.",
+      "E": "Simetrik sayı doğrudur ancak asimetrikte her şubenin iki anahtarı (açık + özel) olduğu için toplam 40'tır, 20 değil."
+    },
+    "keyConcept": "Simetrik: n(n-1)/2 anahtar; asimetrik: 2n anahtar (her tarafa bir çift).",
+    "examTip": "Simetrik anahtar sayısı sorularında n² veya n(n-1) çeldiricilerine dikkat edin; doğru formül kombinasyon C(n,2)'dir.",
+    "references": [
+      "Stallings, Cryptography and Network Security, Bölüm 3 ve 9",
+      "Paar & Pelzl, Understanding Cryptography, Bölüm 6"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "KRP-002",
+    "topic": "KRP",
+    "subtopic": "Klasik şifreleme: Sezar ve XOR işlemi",
+    "difficulty": "temel",
+    "question": "Bir güvenlik dersinde iki küçük örnek verilmiştir. (1) İngiliz alfabesi (26 harf) üzerinde 3 kaydırmalı Sezar şifresi ile 'ATM' metni şifrelenmiştir. (2) Tek baytlık düz metin 0x5A, anahtar 0x3C ile XOR'lanmıştır. Bu iki işlemin sonuçları sırasıyla aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "DWP ve 0x66"
+      },
+      {
+        "id": "B",
+        "text": "DWP ve 0x96"
+      },
+      {
+        "id": "C",
+        "text": "XQJ ve 0x66"
+      },
+      {
+        "id": "D",
+        "text": "DWO ve 0x18"
+      },
+      {
+        "id": "E",
+        "text": "CVL ve 0x66"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Sezar şifresinde her harf alfabede k konum ileri kaydırılır: C = (P + k) mod 26. A(0)+3 = D, T(19)+3 = 22 = W, M(12)+3 = 15 = P; sonuç 'DWP'. XOR işleminde bitler karşılıklı karşılaştırılır: 0x5A = 0101 1010, 0x3C = 0011 1100. Bit bit XOR: 0110 0110 = 0x66. XOR'un özelliği gereği 0x66 XOR 0x3C = 0x5A olup aynı anahtarla şifre çözülür; bu özellik akış şifrelerinin (stream cipher) ve tek kullanımlık şeridin (one-time pad) temelidir.",
+    "simpleExplanation": "Sezar şifresi, alfabedeki her harfi belirli sayıda ileri kaydırmaktır. 3 kaydırırsak A → D, T → W, M → P olur, yani 'ATM' metni 'DWP' olur. XOR ise iki sayıyı bit bit karşılaştırır: bitler aynıysa 0, farklıysa 1 yazar. 0x5A = 0101 1010 ve 0x3C = 0011 1100 sayılarını alt alta koyup her sütuna bakarsak 0110 0110, yani 0x66 çıkar. XOR'un güzel yanı, aynı anahtarla bir kez daha XOR yaparsanız orijinal sayıya geri dönmenizdir; şifreleme ve çözme aynı işlemdir.",
+    "optionExplanations": {
+      "A": "Doğru. (A,T,M) + 3 → (D,W,P); 0101 1010 XOR 0011 1100 = 0110 0110 = 0x66.",
+      "B": "Sezar sonucu doğru ancak 0x96 = 1001 0110, 0x5A + 0x3C toplamıdır (0x5A + 0x3C = 0x96); XOR ile toplama karıştırılmıştır.",
+      "C": "XQJ, 3 geriye kaydırma (deşifreleme yönü) ile elde edilir: A-3 = X, T-3 = Q, M-3 = J. XOR sonucu doğrudur.",
+      "D": "M+3 = P'dir, O değil (O = M+2). 0x18 = 0001 1000 ise 0x5A AND 0x3C sonucudur, XOR değil.",
+      "E": "CVL, 2 kaydırmayla (A+2=C, T+2=V) başlar ancak M+2 = O olmalıydı; tutarsız bir kaydırmadır. XOR kısmı doğrudur."
+    },
+    "keyConcept": "Sezar: C = (P + k) mod 26. XOR: aynı bitler 0, farklı bitler 1; aynı anahtarla ikinci XOR düz metni geri verir.",
+    "examTip": "XOR sorularında her iki sayıyı 4'erli ikili gruplara yazın; toplama (ADD) ve AND sonuçları tipik çeldiricidir.",
+    "references": [
+      "Stallings, Cryptography and Network Security, Bölüm 3 (Classical Encryption Techniques)",
+      "Paar & Pelzl, Understanding Cryptography, Bölüm 1 ve 2"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "KRP-003",
+    "topic": "KRP",
+    "subtopic": "Özet fonksiyonları ve parola tuzlama",
+    "difficulty": "orta",
+    "question": "Bir bankanın eski bir iç uygulamasında parolalar veritabanında SHA-256(parola) biçiminde, tuzsuz (unsalted) olarak saklanmaktadır. Veritabanı tablosunun sızması durumunda saldırganın işini en çok kolaylaştıran zayıflık ve bunu gideren doğru yöntem aşağıdakilerden hangisidir?",
+    "code": "kullanici_adi | parola_ozeti\n--------------|------------------------------------------------------------------\nayse.k        | 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8\nmehmet.t      | 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8\nzeynep.d      | ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "SHA-256 kırılmış bir algoritmadır; MD5'e geçilmelidir"
+      },
+      {
+        "id": "B",
+        "text": "Her kullanıcı için aynı sabit tuz değeri kullanılmalı ve bu tuz kaynak koda gömülmelidir"
+      },
+      {
+        "id": "C",
+        "text": "Özet değeri çok uzundur; parolaların ilk 8 karakterinin özeti saklanmalıdır"
+      },
+      {
+        "id": "D",
+        "text": "Parolalar özet yerine AES ile şifrelenerek saklanmalıdır; böylece gerektiğinde geri okunabilir"
+      },
+      {
+        "id": "E",
+        "text": "Aynı parolalar aynı özeti ürettiği için önceden hesaplanmış tablolar (rainbow table) ve toplu sözlük saldırıları tüm kullanıcılara aynı anda uygulanabilir; her kullanıcı için rastgele tuz (salt) eklenip bcrypt/Argon2 gibi yavaş bir parola özetleme fonksiyonu kullanılmalıdır"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Tabloda ayse.k ve mehmet.t'nin özetleri aynıdır; bu, her ikisinin aynı parolayı kullandığını hemen ortaya çıkarır (söz konusu değer 'password' kelimesinin SHA-256 özetidir). Tuzsuz özetlerde saldırgan, bir kere hesapladığı sözlük/rainbow tablosunu tüm kullanıcılara aynı anda uygular. Her kullanıcıya özgü rastgele tuz eklendiğinde aynı parola bile farklı özet üretir ve her hesap ayrı ayrı saldırılmak zorunda kalınır. Ayrıca SHA-256 çok hızlı bir genel amaçlı özet fonksiyonu olduğundan saniyede milyarlarca deneme yapılabilir; bcrypt, scrypt veya Argon2 gibi kasıtlı olarak yavaş ve bellek yoğun parola özetleme fonksiyonları kaba kuvvet maliyetini artırır.",
+    "simpleExplanation": "Parolaları özet (hash) olarak saklamak, parolayı tanınmaz bir parmak izine çevirmektir. Ama 'tuz' eklenmemişse aynı parolanın parmak izi herkes için aynıdır; tabloda iki kullanıcının özeti birebir aynı, demek ki ikisi de aynı parolayı (bu örnekte 'password') kullanıyor. Saldırgan, yaygın parolaların parmak izlerini önceden hesaplayıp tek seferde tüm tabloyla karşılaştırabilir. Tuz, her kullanıcının parolasına farklı bir rastgele ek koymaktır; böylece aynı parola bile farklı parmak izi üretir ve her hesap ayrı ayrı kırılmak zorunda kalır. Ayrıca SHA-256 çok hızlı olduğu için saldırgan saniyede milyarlarca deneme yapabilir; bcrypt veya Argon2 gibi kasıtlı olarak yavaş fonksiyonlar bu denemeleri çok pahalı hâle getirir.",
+    "optionExplanations": {
+      "A": "SHA-256 kırılmamıştır; aksine MD5 çakışma saldırılarına açık, kullanımdan kaldırılmış bir algoritmadır. Sorun algoritmanın kırıklığı değil, tuzsuz ve hızlı olmasıdır.",
+      "B": "Sabit (global) tuz, tüm kullanıcılar için aynı olduğundan aynı parolalar yine aynı özeti üretir ve tek bir rainbow tablosu yeterli olur; tuz kullanıcıya özgü ve rastgele olmalıdır.",
+      "C": "Özet uzunluğunu veya girdi uzunluğunu kısaltmak güvenliği azaltır; parolanın yalnızca ilk 8 karakterini kullanmak etkin parola uzayını daraltır.",
+      "D": "Parolaların geri okunabilir biçimde saklanması, anahtar ele geçirildiğinde tüm parolaların açığa çıkmasına yol açar; parolaların asla geri çözülebilir olmaması gerekir.",
+      "E": "Doğru. Tekrarlayan özetler tuz eksikliğini kanıtlar; rastgele tuz + yavaş parola özetleme fonksiyonu standart çözümdür."
+    },
+    "keyConcept": "Tuz (salt), aynı parolaların farklı özet üretmesini sağlar ve ön hesaplama saldırılarını engeller; parola özetleme için hızlı değil kasıtlı yavaş fonksiyonlar (bcrypt, scrypt, Argon2) kullanılır.",
+    "examTip": "Tabloda iki kullanıcının özeti aynıysa 'tuz yok' sonucuna hemen varın; 'AES ile şifrele' seçeneği geri çözülebilirlik nedeniyle daima yanlıştır.",
+    "references": [
+      "NIST SP 800-63B, 5.1.1.2 (Memorized Secret Verifiers)",
+      "OWASP Cheat Sheet Series, Password Storage Cheat Sheet",
+      "Paar & Pelzl, Understanding Cryptography, Bölüm 11 (Hash Functions)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "KRP-004",
+    "topic": "KRP",
+    "subtopic": "Sayısal imza: hangi anahtar imzalar, hangisi doğrular",
+    "difficulty": "orta",
+    "question": "Bir bankanın hazine birimi, muhabir bankaya gönderdiği ödeme talimatlarını sayısal imza (digital signature) ile imzalamaktadır. Muhabir banka, talimatın gerçekten bankadan geldiğini ve yolda değiştirilmediğini doğrulamak istemektedir. İmzalama ve doğrulama sürecinde kullanılan anahtarlar ve sağlanan güvenlik hizmetleri aşağıdakilerden hangisinde doğru verilmiştir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Banka kendi açık anahtarıyla imzalar, muhabir kendi özel anahtarıyla doğrular; gizlilik ve bütünlük sağlanır"
+      },
+      {
+        "id": "B",
+        "text": "Banka muhabirin açık anahtarıyla imzalar, muhabir kendi özel anahtarıyla doğrular; gizlilik sağlanır"
+      },
+      {
+        "id": "C",
+        "text": "Banka kendi özel anahtarıyla talimatın özetini imzalar, muhabir bankanın açık anahtarıyla doğrular; bütünlük, kaynak doğrulama ve inkâr edilemezlik sağlanır, gizlilik sağlanmaz"
+      },
+      {
+        "id": "D",
+        "text": "Banka ve muhabir paylaşılan simetrik anahtarla imzalar ve doğrular; inkâr edilemezlik sağlanır"
+      },
+      {
+        "id": "E",
+        "text": "Banka kendi özel anahtarıyla imzalar, muhabir kendi özel anahtarıyla doğrular; bütünlük ve gizlilik sağlanır"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Sayısal imzada imzalayan, mesajın özetini (hash) kendi özel anahtarıyla işler; doğrulayan ise imzalayanın açık anahtarıyla bu imzayı açarak elde ettiği özeti, mesajdan kendi hesapladığı özetle karşılaştırır. Özel anahtar yalnızca sahibinde bulunduğu için imza, mesajın o kişiden geldiğini (kaynak doğrulama) ve değişmediğini (bütünlük) kanıtlar; ayrıca imzalayan 'ben imzalamadım' diyemez (inkâr edilemezlik, non-repudiation). Sayısal imza mesajı şifrelemediği için gizlilik sağlamaz; gizlilik için talimatın ayrıca alıcının açık anahtarıyla (veya hibrit biçimde simetrik anahtarla) şifrelenmesi gerekir.",
+    "simpleExplanation": "Sayısal imza, bir belgeye yalnızca sizin atabileceğiniz ama herkesin doğrulayabileceği bir mühür basmaktır. Mühür özel anahtarınızla basılır; özel anahtar sadece sizde olduğu için mührü başkası taklit edemez. Karşı taraf, herkese açık olan açık anahtarınızla mührü kontrol eder ve 'bunu gerçekten banka göndermiş ve içerik değişmemiş' sonucuna varır. Banka sonradan 'ben göndermedim' de diyemez; buna inkâr edilemezlik denir. Ancak mühür basmak belgeyi zarfa koymaz; içeriği herkes okuyabilir, yani imza gizlilik sağlamaz. Gizlilik isteniyorsa ayrıca şifreleme gerekir.",
+    "optionExplanations": {
+      "A": "Açık anahtar herkeste bulunduğu için onunla 'imzalamak' kimseyi bağlamaz; herkes aynı imzayı üretebilirdi. İmza gizlilik de sağlamaz.",
+      "B": "Alıcının açık anahtarıyla işlem yapmak şifrelemedir, imzalama değil; gizlilik sağlar ama kaynağı doğrulamaz ve inkâr edilemezlik vermez.",
+      "C": "Doğru. Özel anahtar imzalar, karşı tarafın açık anahtarı doğrular; bütünlük + kaynak doğrulama + inkâr edilemezlik sağlanır, gizlilik sağlanmaz.",
+      "D": "Paylaşılan simetrik anahtarla üretilen değer MAC/HMAC'tir; her iki taraf da üretebildiği için üçüncü tarafa karşı inkâr edilemezlik sağlamaz.",
+      "E": "Muhabirin kendi özel anahtarı, bankanın imzasıyla matematiksel olarak ilişkili değildir; doğrulama ancak bankanın açık anahtarıyla yapılır. Gizlilik de sağlanmaz."
+    },
+    "keyConcept": "İmza: gönderenin özel anahtarı imzalar, gönderenin açık anahtarı doğrular. Şifreleme: alıcının açık anahtarı şifreler, alıcının özel anahtarı çözer.",
+    "examTip": "'Kimden geldiğini kanıtla' → gönderenin özel anahtarı; 'yalnızca alıcı okusun' → alıcının açık anahtarı. İmza gizlilik sağlamaz.",
+    "references": [
+      "Stallings, Cryptography and Network Security, Bölüm 13 (Digital Signatures)",
+      "NIST FIPS 186-5, Digital Signature Standard (DSS)",
+      "Paar & Pelzl, Understanding Cryptography, Bölüm 10"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "KRP-005",
+    "topic": "KRP",
+    "subtopic": "PKI, sertifikalar ve sertifika otoritesi",
+    "difficulty": "orta",
+    "question": "Bir müşteri bankanın internet şubesine bağlanırken tarayıcı, sunucudan gelen X.509 sertifikasını doğrulamaktadır. Aşağıdakilerden hangisi bu doğrulama sürecinin bir parçası DEĞİLDİR?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Sertifikadaki alan adının (Subject/SAN) ziyaret edilen alan adıyla eşleştiğinin kontrol edilmesi"
+      },
+      {
+        "id": "B",
+        "text": "Sertifikanın geçerlilik tarihlerinin (not before / not after) kontrol edilmesi"
+      },
+      {
+        "id": "C",
+        "text": "Sertifika üzerindeki sertifika otoritesi (CA) imzasının, tarayıcının güvenilir kök depolarındaki CA açık anahtarıyla zincir boyunca doğrulanması"
+      },
+      {
+        "id": "D",
+        "text": "Sunucunun özel anahtarının tarayıcıya gönderilip sertifikadaki açık anahtarla eşleştiğinin kontrol edilmesi"
+      },
+      {
+        "id": "E",
+        "text": "Sertifikanın iptal edilmediğinin CRL veya OCSP ile kontrol edilmesi"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Açık anahtar altyapısında (PKI) sertifika, bir alan adı ile bir açık anahtarı güvenilir bir sertifika otoritesinin (CA) imzasıyla bağlar. Tarayıcı, sertifikadaki ad eşleşmesini, geçerlilik süresini, imza zincirini güvenilir bir köke kadar ve iptal durumunu (CRL/OCSP) kontrol eder. Sunucunun özel anahtarı ise hiçbir zaman ağ üzerinden gönderilmez; sunucu özel anahtara sahip olduğunu TLS el sıkışmasında bir imza (CertificateVerify) üreterek kanıtlar, tarayıcı bu imzayı sertifikadaki açık anahtarla doğrular. Özel anahtarın gönderilmesi PKI'ın temel ilkesine aykırıdır.",
+    "simpleExplanation": "Sertifika, bir web sitesinin 'ben gerçekten bu bankayım' diyen kimlik kartıdır ve güvenilir bir kurum (sertifika otoritesi) tarafından imzalanmıştır. Tarayıcı bu kartta adın siteyle uyuştuğuna, sürenin dolmadığına, imzanın güvenilir bir kuruma kadar zincirleme doğrulandığına ve kartın iptal edilmediğine bakar. Ama sunucunun özel anahtarı hiçbir zaman karşıya gönderilmez; bu, kimliğinizi kanıtlamak için evinizin anahtarını yabancıya vermek gibi olurdu. Sunucu, özel anahtara sahip olduğunu bir imza üreterek kanıtlar; tarayıcı bu imzayı karttaki açık anahtarla kontrol eder. Bu yüzden 'özel anahtarın gönderilmesi' doğrulama sürecinin parçası değildir.",
+    "optionExplanations": {
+      "A": "Ad eşleşmesi, sertifikanın ziyaret edilen site için verildiğini kanıtlar; eşleşmezse 'common name invalid' uyarısı çıkar. Doğrulamanın parçasıdır.",
+      "B": "Süresi geçmiş veya henüz başlamamış sertifika reddedilir; tarih kontrolü doğrulamanın parçasıdır.",
+      "C": "Zincir doğrulaması (sunucu sertifikası → ara CA → kök CA) PKI güveninin çekirdeğidir; tarayıcı kök CA açık anahtarıyla imzaları kontrol eder.",
+      "D": "Doğru (sürecin parçası değildir). Özel anahtar asla gönderilmez; sahiplik, özel anahtarla üretilen bir imzanın açık anahtarla doğrulanmasıyla kanıtlanır.",
+      "E": "İptal kontrolü, anahtarı sızmış veya yanlış verilmiş sertifikaların reddedilmesini sağlar; CRL veya OCSP ile yapılır."
+    },
+    "keyConcept": "Sertifika = kimlik + açık anahtar + CA imzası. Doğrulama: ad, tarih, zincir, iptal. Özel anahtar hiçbir zaman paylaşılmaz; sahiplik imzayla kanıtlanır.",
+    "examTip": "'DEĞİLDİR' sorularında özel anahtarın gönderilmesi, paylaşılması veya CA'ya verilmesini içeren seçenek neredeyse her zaman aranan yanıttır.",
+    "references": [
+      "RFC 5280, Internet X.509 PKI Certificate and CRL Profile",
+      "RFC 6960 (OCSP)",
+      "RFC 8446 (TLS 1.3), 4.4.3 Certificate Verify",
+      "Stallings, Cryptography and Network Security, Bölüm 14 (Key Management and Distribution)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "KRP-006",
+    "topic": "KRP",
+    "subtopic": "TLS el sıkışması ve hibrit şifreleme",
+    "difficulty": "orta",
+    "question": "Bir mobil bankacılık uygulaması sunucuyla TLS 1.3 üzerinden haberleşmektedir. El sıkışma (handshake) sırasında ECDHE anahtar değişimi ve sunucu sertifikası kullanılmakta, el sıkışma sonrasında işlem verileri AES-256-GCM ile şifrelenmektedir. Bu tasarımda asimetrik ve simetrik bileşenlerin rollerine ilişkin aşağıdaki ifadelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "İşlem verileri sunucunun RSA/ECDSA açık anahtarıyla şifrelenir; AES yalnızca el sıkışma mesajlarını korur"
+      },
+      {
+        "id": "B",
+        "text": "ECDHE gizlilik sağlamaz, yalnızca sunucu kimliğini doğrular; kimlik doğrulama ise AES-GCM tarafından yapılır"
+      },
+      {
+        "id": "C",
+        "text": "Sertifikadaki açık anahtar doğrudan AES anahtarı olarak kullanılır; böylece anahtar değişimine gerek kalmaz"
+      },
+      {
+        "id": "D",
+        "text": "ECDHE her oturum için geçici bir paylaşılan sır üretir ve bu sırdan simetrik oturum anahtarları türetilir; sertifika sunucunun kimliğini doğrular; AES-GCM toplu veriyi hızlı biçimde şifreler ve bütünlüğünü korur"
+      },
+      {
+        "id": "E",
+        "text": "Sunucunun uzun ömürlü özel anahtarı ele geçirilirse, geçmişte kaydedilmiş tüm oturumlar da çözülebilir; çünkü oturum anahtarı bu özel anahtarla şifrelenerek gönderilmiştir"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "TLS hibrit bir sistemdir. Asimetrik bileşenler iki iş yapar: (1) ECDHE (geçici eliptik eğri Diffie-Hellman) ile iki taraf, ağı dinleyen birinin hesaplayamayacağı bir paylaşılan sır üzerinde anlaşır; (2) sunucu, sertifikasındaki açık anahtara karşılık gelen özel anahtarla el sıkışmayı imzalayarak kimliğini kanıtlar. Paylaşılan sırdan anahtar türetme fonksiyonu (HKDF) ile simetrik oturum anahtarları üretilir ve asıl veri, çok daha hızlı olan AES-256-GCM ile şifrelenir; GCM aynı zamanda bütünlük (AEAD) sağlar. ECDHE geçici anahtar kullandığı için sunucunun uzun ömürlü anahtarı sonradan sızsa bile geçmiş oturumlar çözülemez (ileri gizlilik, forward secrecy).",
+    "simpleExplanation": "TLS iki tür şifrelemeyi birlikte kullanır çünkü her birinin iyi olduğu iş farklıdır. Asimetrik yöntemler yavaş ama tanışma için idealdir: ECDHE ile iki taraf, hattı dinleyen birinin hesaplayamayacağı ortak bir sır üretir; sertifika ve imza ise 'karşımdaki gerçekten banka' güvencesini verir. Bu ortak sırdan türetilen simetrik anahtarla asıl veriler AES-GCM ile hızla şifrelenir; AES çok hızlıdır ve aynı zamanda verinin yolda değiştirilmediğini de kontrol eder. Bunu şöyle düşünün: önce kimlik göstererek bir kez buluşup gizli bir parola kararlaştırırsınız, sonra bütün yazışmayı o parolayla hızlıca yaparsınız. Her oturumda yeni bir sır üretildiği için sunucunun uzun ömürlü anahtarı yıllar sonra çalınsa bile eski yazışmalar okunamaz.",
+    "optionExplanations": {
+      "A": "Toplu veri asimetrik şifrelemeyle korunmaz; asimetrik işlemler yavaştır ve veri boyutu sınırlıdır. Roller tersine yazılmıştır.",
+      "B": "Tam tersidir: ECDHE anahtar anlaşması (gizliliğin temeli) sağlar, kimlik doğrulama sertifika ve imza ile yapılır; AES-GCM kimlik doğrulamaz, veri şifreler ve bütünlük sağlar.",
+      "C": "Açık anahtar herkese açıktır; onu simetrik anahtar olarak kullanmak gizliliği tamamen yok ederdi. Ayrıca açık anahtar ile AES anahtarı farklı boyut ve yapıdadır.",
+      "D": "Doğru. ECDHE → geçici paylaşılan sır → HKDF → simetrik anahtarlar; sertifika → kimlik; AES-GCM → hızlı şifreleme + bütünlük.",
+      "E": "Bu ifade RSA anahtar taşıma (key transport) yöntemini tanımlar ve ileri gizlilik eksikliğini anlatır; TLS 1.3 bu yöntemi kaldırmıştır, ECDHE ile oturum anahtarı özel anahtarla şifrelenmez ve geçmiş oturumlar korunur."
+    },
+    "keyConcept": "TLS = asimetrik (kimlik doğrulama + anahtar anlaşması) + simetrik (hızlı veri şifreleme). Geçici DH (ECDHE) ileri gizlilik sağlar.",
+    "examTip": "Hibrit sistem sorularında 'asimetrik anahtarla toplu veri şifrelenir' seçeneğini eleyin; 'geçici' (ephemeral) kelimesini ileri gizlilikle eşleştirin.",
+    "references": [
+      "RFC 8446, The Transport Layer Security (TLS) Protocol Version 1.3",
+      "RFC 5869 (HKDF)",
+      "Stallings, Cryptography and Network Security, Bölüm 17 (Transport-Level Security)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "KRP-007",
+    "topic": "KRP",
+    "subtopic": "HMAC ile sayısal imza karşılaştırması",
+    "difficulty": "ileri",
+    "question": "Bir banka, iki farklı entegrasyon için bütünlük ve kaynak doğrulama mekanizması seçmektedir. Senaryo 1: Bankanın kendi iki iç mikroservisi arasında yüksek hacimli mesajlaşma. Senaryo 2: Bankanın bir ödeme kuruluşuna gönderdiği ve uyuşmazlık hâlinde mahkemede 'bu talimatı banka gönderdi' kanıtı olarak kullanılması gereken ödeme talimatları. HMAC-SHA256 ile RSA/ECDSA sayısal imza seçimine ilişkin aşağıdaki değerlendirmelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Senaryo 1 için HMAC uygundur (hızlı, paylaşılan anahtar kurum içinde yönetilebilir); Senaryo 2 için sayısal imza gereklidir, çünkü HMAC anahtarı her iki tarafta da bulunduğundan mesajı hangi tarafın ürettiği üçüncü tarafa kanıtlanamaz"
+      },
+      {
+        "id": "B",
+        "text": "Her iki senaryoda sayısal imza zorunludur; HMAC bütünlük sağlamaz"
+      },
+      {
+        "id": "C",
+        "text": "Her iki senaryoda HMAC yeterlidir; HMAC de sayısal imza gibi inkâr edilemezlik sağlar"
+      },
+      {
+        "id": "D",
+        "text": "Senaryo 1 için sayısal imza, Senaryo 2 için HMAC uygundur; çünkü HMAC asimetrik olduğundan taraflar arası güven gerektirmez"
+      },
+      {
+        "id": "E",
+        "text": "HMAC yalnızca şifreleme sağlar, imza yalnızca bütünlük sağlar; bu nedenle ikisi birlikte kullanılmalıdır"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "HMAC (Hash-based Message Authentication Code), paylaşılan gizli anahtar ve bir özet fonksiyonuyla hesaplanır; bütünlük ve 'anahtarı bilen biri tarafından üretildi' anlamında kaynak doğrulama sağlar. Ancak anahtar her iki tarafta da bulunduğu için alıcı da aynı HMAC'i üretebilir; dolayısıyla üçüncü bir tarafa (mahkeme) mesajı hangi tarafın ürettiği kanıtlanamaz, inkâr edilemezlik (non-repudiation) yoktur. Sayısal imza ise yalnızca imzalayanın özel anahtarıyla üretilebildiği için inkâr edilemezlik sağlar; buna karşılık asimetrik işlemler HMAC'ten çok daha yavaştır. Bu nedenle yüksek hacimli, aynı güven alanındaki iç servisler için HMAC; hukuki kanıt gereken dış taraf iletişimi için sayısal imza uygundur.",
+    "simpleExplanation": "HMAC, iki tarafın paylaştığı gizli bir anahtarla mesaja mühür basmaktır; hızlıdır ve mesajın değişmediğini gösterir. Ama mührü her iki taraf da basabildiği için üçüncü bir kişiye (örneğin mahkemeye) 'bunu kesinlikle karşı taraf gönderdi' diye kanıtlayamazsınız; karşı taraf 'sen de aynı anahtara sahipsin, kendin yazmış olabilirsin' diyebilir. Sayısal imza ise yalnızca gönderenin özel anahtarıyla üretilir; bu yüzden gönderen inkâr edemez. Bankanın kendi içindeki iki servis için hızlı ve pratik olan HMAC yeterlidir, ama dış kuruluşa giden ve mahkemede kanıt olacak ödeme talimatları için sayısal imza gerekir. 'Kim gönderdiğini üçüncü tarafa kanıtlamak' gerekiyorsa cevap her zaman imzadır.",
+    "optionExplanations": {
+      "A": "Doğru. HMAC hızlı ve simetriktir (iç kullanım için ideal); imza asimetrik olup inkâr edilemezlik sağlar (dış taraf ve hukuki kanıt için gerekli).",
+      "B": "HMAC bütünlük ve kaynak doğrulama sağlar; eksik olan yalnızca inkâr edilemezliktir. İç servisler için imza zorunlu değildir ve gereksiz performans maliyeti getirir.",
+      "C": "HMAC inkâr edilemezlik sağlamaz; alıcı da anahtara sahip olduğundan 'bu mesajı karşı taraf üretti' iddiası üçüncü tarafa kanıtlanamaz.",
+      "D": "HMAC simetriktir, asimetrik değil; roller tersine yazılmıştır. Hukuki kanıt gereken senaryoda HMAC yetersizdir.",
+      "E": "HMAC şifreleme yapmaz, mesaj açıkta kalır; imza da yalnızca bütünlük değil kaynak doğrulama ve inkâr edilemezlik sağlar. İki mekanizmayı birlikte kullanmak bu amaçla gerekli değildir."
+    },
+    "keyConcept": "HMAC: simetrik, hızlı, bütünlük + kaynak doğrulama, inkâr edilemezlik yok. Sayısal imza: asimetrik, yavaş, bütünlük + kaynak doğrulama + inkâr edilemezlik.",
+    "examTip": "Senaryoda 'üçüncü tarafa kanıt', 'mahkeme', 'inkâr' kelimeleri geçiyorsa yanıt sayısal imzadır; 'yüksek hacim, iç sistem' ise HMAC.",
+    "references": [
+      "RFC 2104 (HMAC)",
+      "NIST FIPS 198-1, The Keyed-Hash Message Authentication Code",
+      "Stallings, Cryptography and Network Security, Bölüm 12 (Message Authentication Codes) ve 13 (Digital Signatures)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "KRP-008",
+    "topic": "KRP",
+    "subtopic": "Anahtar uzunluğu ve entropi akıl yürütmesi",
+    "difficulty": "ileri",
+    "question": "Bir bankanın güvenlik mimarı, mobil uygulama girişinde kullanılan 6 haneli sayısal PIN'in (000000-999999) entropisini, 128 bitlik rastgele AES anahtarıyla karşılaştırmaktadır. Saldırganın saniyede 10^9 deneme yapabildiği çevrimdışı (offline) bir senaryo varsayılmıştır. Aşağıdaki değerlendirmelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "6 haneli PIN yaklaşık 60 bit entropiye sahiptir (6 × 10 bit); AES-128 ile karşılaştırılabilir düzeydedir"
+      },
+      {
+        "id": "B",
+        "text": "6 haneli PIN yaklaşık 20 bit entropiye sahiptir ve çevrimdışı saldırıda 1 saniyeden kısa sürede tüm uzay taranır; 128 bit anahtarın tüm uzayını taramak ise aynı hızla evrenin yaşını kat kat aşan süre gerektirir; bu nedenle PIN'in güvenliği entropisine değil çevrimiçi deneme sınırlaması ve cihaz bağlama gibi dış kontrollere dayanır"
+      },
+      {
+        "id": "C",
+        "text": "AES-128'in anahtar uzunluğunu 256 bite çıkarmak güvenliği 2 kat artırır; PIN'i 7 haneye çıkarmak ise 10 kat artırır, dolayısıyla PIN uzatmak daha etkilidir"
+      },
+      {
+        "id": "D",
+        "text": "Entropi bit sayısı, karakter sayısına eşittir; 6 haneli PIN 6 bit, 16 karakterlik AES anahtarı 16 bit entropiye sahiptir"
+      },
+      {
+        "id": "E",
+        "text": "6 haneli PIN'in SHA-256 ile özetlenmesi, entropisini 256 bite çıkarır ve çevrimdışı saldırıya karşı AES-128 kadar güvenli hâle getirir"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Entropi, olası değer sayısının 2 tabanında logaritmasıdır. 6 haneli PIN için 10^6 olasılık vardır: log2(10^6) = 6 × log2(10) ≈ 6 × 3,32 ≈ 19,9 bit. Saniyede 10^9 deneme ile 10^6 değerin tamamı 0,001 saniyede taranır. 128 bitlik anahtar için 2^128 ≈ 3,4 × 10^38 olasılık vardır; aynı hızla tarama 3,4 × 10^29 saniye ≈ 10^22 yıl sürer (evrenin yaşı ≈ 1,4 × 10^10 yıl). Bu nedenle PIN, çevrimdışı kaba kuvvete karşı asla dayanamaz; güvenliği yanlış deneme sayısı sınırı, gecikme (rate limiting), cihaz bağlama ve donanım güvenli bölge gibi dış kontrollerle sağlanır. Özet almak entropi eklemez; girdi uzayı yine 10^6'dır.",
+    "simpleExplanation": "Entropi, 'kaç farklı olasılık var' sorusunun bit cinsinden ifadesidir. 6 haneli PIN'in 1 milyon olasılığı vardır; bu yaklaşık 20 bit eder, çünkü her ondalık hane 10 bit değil yaklaşık 3,3 bit taşır. Saniyede 1 milyar deneme yapan bir saldırgan 1 milyon olasılığı saniyenin binde birinde bitirir. 128 bitlik anahtarın olasılık sayısı ise 2^128, yani 3 ve ardından 38 sıfır; aynı hızla taramak evrenin yaşından trilyonlarca kat uzun sürer. Bu yüzden PIN'in güvenliği kendisinden değil, 'üç yanlıştan sonra kilitlenir' gibi deneme sınırlarından ve cihaza bağlı olmasından gelir. PIN'i özetlemek (hash) de yardımcı olmaz; saldırgan 1 milyon PIN'in hepsini özetleyip karşılaştırır.",
+    "optionExplanations": {
+      "A": "Her ondalık hane 10 bit değil log2(10) ≈ 3,32 bit taşır; 6 hane ≈ 20 bittir. 60 bit hesabı, hane sayısını bit sayısıyla karıştırmaktır.",
+      "B": "Doğru. log2(10^6) ≈ 19,9 bit; 10^6 / 10^9 = 1 ms. 2^128 / 10^9 saniye ≈ 10^22 yıl. PIN güvenliği dış kontrollere bağlıdır.",
+      "C": "Anahtarı 128 bitten 256 bite çıkarmak uzayı 2^128 kat büyütür, 2 kat değil; PIN'e bir hane eklemek ise yalnızca 10 kat büyütür (≈3,3 bit). Karşılaştırma tersine yapılmıştır.",
+      "D": "Entropi karakter sayısı değil, olası değer sayısının logaritmasıdır; 6 haneli PIN ≈ 20 bit, 128 bitlik rastgele anahtar 128 bittir.",
+      "E": "Özet fonksiyonu girdi uzayını genişletmez; saldırgan 10^6 PIN'in her birini özetleyip karşılaştırır. Çıktı uzunluğu (256 bit) ile girdi entropisi (≈20 bit) farklı kavramlardır."
+    },
+    "keyConcept": "Entropi = log2(olası değer sayısı). Her ondalık hane ≈ 3,32 bit. Özet alma entropi eklemez; düşük entropili sırlar yalnızca deneme sınırlamasıyla korunur.",
+    "examTip": "Entropi hesabında 'hane × 10' veya 'karakter = bit' çeldiricilerine düşmeyin; 2^10 ≈ 10^3 yaklaşımı hızlı dönüşüm sağlar (10 bit ≈ 3 hane).",
+    "references": [
+      "NIST SP 800-63B, Ek A (Strength of Memorized Secrets)",
+      "NIST SP 800-57 Part 1 Rev. 5, Recommendation for Key Management",
+      "Ferguson, Schneier & Kohno, Cryptography Engineering, Bölüm 9 (Generating Randomness)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "BLT-001",
+    "topic": "BLT",
+    "subtopic": "IaaS, PaaS ve SaaS hizmet modelleri",
+    "difficulty": "temel",
+    "question": "Bir banka üç farklı bulut hizmeti kullanmaktadır: (1) Çalışanlar için tarayıcıdan erişilen, bankanın yalnızca kullanıcı hesaplarını ve ayarlarını yönettiği bir kurumsal e-posta ve ofis uygulaması paketi. (2) Geliştiricilerin kodlarını yükleyip çalıştırdığı, işletim sistemi yamaları ve çalışma zamanı (runtime) güncellemeleri sağlayıcı tarafından yapılan bir uygulama platformu. (3) Bankanın kendi işletim sistemini kurup yönettiği, sağlayıcının yalnızca sanal makine, depolama ve ağ sunduğu sanal sunucular. Bu hizmetler sırasıyla hangi hizmet modellerine örnektir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "SaaS, PaaS, IaaS"
+      },
+      {
+        "id": "B",
+        "text": "PaaS, SaaS, IaaS"
+      },
+      {
+        "id": "C",
+        "text": "SaaS, IaaS, PaaS"
+      },
+      {
+        "id": "D",
+        "text": "IaaS, PaaS, SaaS"
+      },
+      {
+        "id": "E",
+        "text": "PaaS, IaaS, SaaS"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "NIST SP 800-145 üç hizmet modelini müşterinin yönettiği katmana göre ayırır. SaaS (Software as a Service) modelinde müşteri hazır uygulamayı kullanır, yalnızca kullanıcı düzeyi ayarları yönetir (örnek 1: e-posta/ofis paketi). PaaS (Platform as a Service) modelinde müşteri kendi uygulamasını dağıtır ancak işletim sistemi, çalışma zamanı ve ara katmanı sağlayıcı yönetir (örnek 2). IaaS (Infrastructure as a Service) modelinde sağlayıcı yalnızca işlem, depolama ve ağ kaynaklarını sunar; işletim sisteminden itibaren her şeyi müşteri kurar ve yönetir (örnek 3).",
+    "simpleExplanation": "Bulut hizmet modellerini 'ne kadarını ben yönetiyorum' sorusuyla ayırırız; pizza benzetmesi işe yarar. SaaS, restoranda pizza yemektir: her şey hazır, siz sadece yersiniz; tarayıcıdan kullanılan e-posta paketi budur. PaaS, mutfağı ve fırını hazır bulup kendi pizzanızı yapmaktır: siz kodu (malzemeyi) getirirsiniz, fırını ve işletim sistemini sağlayıcı bakımda tutar. IaaS ise boş bir mutfak kiralamaktır: fırın, tezgâh ve elektrik verilir ama işletim sistemi dâhil her şeyi siz kurar ve yönetirsiniz. Sıra bu yüzden SaaS, PaaS, IaaS'tır.",
+    "optionExplanations": {
+      "A": "Doğru. Hazır uygulama → SaaS; kod yükle, platformu sağlayıcı yönetir → PaaS; işletim sistemini sen kur → IaaS.",
+      "B": "Birinci hizmette müşteri kod dağıtmamakta, hazır uygulamayı kullanmaktadır; bu PaaS değil SaaS'tır. İkinci hizmette ise kod dağıtımı vardır, SaaS değil PaaS'tır.",
+      "C": "İkinci hizmette işletim sistemini sağlayıcı yönetir; müşterinin işletim sistemini yönettiği model IaaS'tır ve bu üçüncü hizmete karşılık gelir.",
+      "D": "Sıralama tamamen tersine çevrilmiştir; e-posta paketi en yüksek soyutlama düzeyi olan SaaS'tır, sanal sunucu en düşük düzey olan IaaS'tır.",
+      "E": "Üçüncü hizmette müşteri işletim sistemini kendisi kurduğu için SaaS olamaz; SaaS'ta müşteri altyapıya hiç dokunmaz."
+    },
+    "keyConcept": "Sorumluluk sınırı: IaaS → işletim sisteminden yukarısı müşteride; PaaS → uygulama ve veri müşteride; SaaS → yalnızca kullanım ve ayarlar müşteride.",
+    "examTip": "'Müşteri ne kuruyor/yönetiyor?' sorusunu sorun: işletim sistemi → IaaS; sadece kod → PaaS; hiçbir şey, sadece kullanıyor → SaaS.",
+    "references": [
+      "NIST SP 800-145, The NIST Definition of Cloud Computing",
+      "Erl, Mahmood & Puttini, Cloud Computing: Concepts, Technology & Architecture, Bölüm 4"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "BLT-002",
+    "topic": "BLT",
+    "subtopic": "Esneklik ve ölçeklenebilirlik",
+    "difficulty": "temel",
+    "question": "Bir bankanın mobil bankacılık arka ucu, maaş günlerinde normalin 5 katı istek almaktadır. Bulut ortamında bu yük artışında otomatik olarak yeni sunucu örnekleri eklenmekte, yük düştüğünde ise bu örnekler otomatik olarak kaldırılmaktadır. Bu davranışı en doğru tanımlayan kavram ve ölçeklenebilirlik (scalability) ile farkı aşağıdakilerden hangisinde doğru verilmiştir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Ölçeklenebilirlik; esneklik ise yalnızca depolama kapasitesinin artırılabilmesidir"
+      },
+      {
+        "id": "B",
+        "text": "Esneklik (elasticity); kaynakların talebe göre otomatik ve çift yönlü (artış/azalış) ayarlanmasıdır. Ölçeklenebilirlik ise sistemin kapasitesinin artırılabilme yeteneğidir ve otomatik ya da azalma yönlü olmak zorunda değildir"
+      },
+      {
+        "id": "C",
+        "text": "Dikey ölçekleme (scale-up); mevcut sunucuların CPU ve bellek kapasitesinin artırılmasıdır"
+      },
+      {
+        "id": "D",
+        "text": "Yüksek erişilebilirlik (high availability); sistemin kesintisiz çalışmasını sağlar"
+      },
+      {
+        "id": "E",
+        "text": "Çoklu kiracılık (multi-tenancy); aynı kaynakların birden fazla müşteri tarafından paylaşılmasıdır"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "NIST, hızlı esnekliği (rapid elasticity) bulutun beş temel özelliğinden biri olarak tanımlar: kaynaklar talebe göre, çoğu zaman otomatik olarak, hızla artırılır ve azaltılır; böylece kullanıcıya sınırsız kaynak varmış gibi görünür ve yalnızca kullanılan kadar ödenir. Ölçeklenebilirlik daha genel bir sistem özelliğidir: sistemin artan yükü kaynak eklenerek (yatay: örnek sayısı; dikey: örnek gücü) karşılayabilme yeteneğidir; elle yapılabilir ve kaynakları geri azaltmayı içermesi gerekmez. Senaryodaki 'otomatik ekleme ve kaldırma', esnekliğin tanımıdır; teknik olarak yatay ölçekleme (scale-out/in) kullanılmaktadır.",
+    "simpleExplanation": "Esneklik, kaynakların ihtiyaca göre kendiliğinden hem artması hem de azalmasıdır; bir lastik bant gibi gerildiğinde uzar, bırakıldığında eski hâline döner. Maaş günü istekler 5 kat artınca otomatik sunucu eklenmesi, yük düşünce bunların otomatik kaldırılması tam olarak bu davranıştır. Ölçeklenebilirlik ise daha genel bir kavramdır: 'bu sistem büyüyebilir mi' sorusunun cevabıdır; elle sunucu ekleyerek de sağlanabilir ve geri küçülmeyi içermesi gerekmez. Yani her esnek sistem ölçeklenebilir, ama her ölçeklenebilir sistem esnek değildir. 'Otomatik' ve 'geri azalma' kelimeleri esnekliğin işaretidir.",
+    "optionExplanations": {
+      "A": "Senaryoda otomatik ve çift yönlü ayarlama vardır; bu esnekliktir. Esneklik depolamayla sınırlı değildir, tüm kaynak türleri için geçerlidir.",
+      "B": "Doğru. Esneklik = talebe göre otomatik, çift yönlü kaynak ayarı; ölçeklenebilirlik = kapasite artırma yeteneği (genel kavram).",
+      "C": "Senaryoda sunucu sayısı artırılmaktadır (yatay ölçekleme, scale-out); mevcut sunucunun büyütülmesi (dikey) söz konusu değildir.",
+      "D": "Yüksek erişilebilirlik, bileşen arızalarında hizmetin sürmesiyle ilgilidir; yük dalgalanmasına göre kaynak ayarlamak değildir.",
+      "E": "Çoklu kiracılık sağlayıcının kaynakları farklı müşteriler arasında paylaştırmasıdır; tek bir müşterinin yüküne göre otomatik kaynak ayarını tanımlamaz."
+    },
+    "keyConcept": "Esneklik = otomatik, talebe bağlı, çift yönlü kaynak ayarı (bulutun temel özelliği). Ölçeklenebilirlik = kapasiteyi artırabilme yeteneği (daha genel).",
+    "examTip": "'Otomatik' ve 'yük düşünce geri alınır' ifadeleri esnekliğe işaret eder; yalnızca 'daha fazla yükü taşıyabilir' ifadesi ölçeklenebilirliktir.",
+    "references": [
+      "NIST SP 800-145, The NIST Definition of Cloud Computing (Essential Characteristics)",
+      "Erl, Mahmood & Puttini, Cloud Computing: Concepts, Technology & Architecture, Bölüm 3 ve 11"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "BLT-003",
+    "topic": "BLT",
+    "subtopic": "Paylaşılan sorumluluk modeli",
+    "difficulty": "orta",
+    "question": "Bir banka, IaaS modelinde kiraladığı sanal makinelerde kredi başvuru uygulamasını çalıştırmaktadır. Bir denetimde, sanal makinedeki işletim sisteminin 8 aydır yamalanmadığı ve uygulama veritabanının internete açık bir depolama kovasında (bucket) şifrelenmemiş yedeğinin bulunduğu tespit edilmiştir. Banka yönetimi 'bu güvenlik açıkları bulut sağlayıcısının sorumluluğundadır' demektedir. Paylaşılan sorumluluk modeli (shared responsibility model) açısından aşağıdaki değerlendirmelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Yönetim haklıdır; bulutta tüm güvenlik sorumluluğu sağlayıcıya aittir"
+      },
+      {
+        "id": "B",
+        "text": "Yönetim haklıdır; IaaS'ta sağlayıcı işletim sistemi yamalarından sorumludur, banka yalnızca uygulamadan sorumludur"
+      },
+      {
+        "id": "C",
+        "text": "Sorumluluk yalnızca sözleşmede yazanla belirlenir; sözleşmede madde yoksa sağlayıcı sorumludur"
+      },
+      {
+        "id": "D",
+        "text": "Yönetim kısmen haklıdır; işletim sistemi yaması bankanın, depolama kovası izinleri ise sağlayıcının sorumluluğundadır"
+      },
+      {
+        "id": "E",
+        "text": "Yönetim haksızdır; IaaS modelinde konuk işletim sisteminin yamalanması, verinin şifrelenmesi ve depolama erişim izinlerinin yapılandırılması müşterinin sorumluluğundadır; sağlayıcı fiziksel altyapı, hipervizör ve ağ omurgasının güvenliğinden sorumludur"
+      }
+    ],
+    "correctAnswer": "E",
+    "explanation": "Paylaşılan sorumluluk modelinde sağlayıcı 'bulutun güvenliğinden' (security of the cloud: fiziksel veri merkezi, donanım, hipervizör, altyapı ağı), müşteri ise 'buluttaki güvenlikten' (security in the cloud) sorumludur. IaaS'ta müşterinin sorumluluğu en geniştir: konuk işletim sistemi ve yamaları, kurulan yazılımlar, kimlik ve erişim yönetimi, verinin şifrelenmesi ve depolama kaynaklarının erişim yapılandırması. Senaryodaki iki eksiklik de (yamalanmamış işletim sistemi, herkese açık ve şifrelenmemiş yedek) tipik müşteri yapılandırma hatalarıdır. Veri ve erişim yönetimi hizmet modelinden bağımsız olarak her zaman müşteride kalır. BDDK açısından da bankanın dış hizmet aldığında nihai sorumluluğu devredilemez.",
+    "simpleExplanation": "Bulutta güvenlik sorumluluğu, ev sahibi ile kiracı arasındaki gibi paylaşılır. IaaS modelinde sağlayıcı binayı, elektriği ve temeli (fiziksel veri merkezi, donanım, hipervizör) korur; kiracı olan banka ise dairenin içindeki her şeyden, yani işletim sistemini güncellemekten, kapıyı kilitlemekten (depolama izinleri) ve değerli eşyaları kasaya koymaktan (şifreleme) sorumludur. Yamalanmamış işletim sistemi ve herkese açık, şifrelenmemiş yedek tam olarak 'daire içi' hatalardır. Dolayısıyla 'sağlayıcının sorumluluğu' iddiası yanlıştır. Hangi modelde olursa olsun veri ve erişim yönetimi her zaman müşteride kalır.",
+    "optionExplanations": {
+      "A": "Hiçbir bulut modelinde tüm sorumluluk sağlayıcıya ait değildir; en azından veri, erişim ve kullanıcı yönetimi her zaman müşteride kalır.",
+      "B": "IaaS'ta işletim sistemini müşteri kurar ve yönetir; yamalama müşterinin işidir. Sağlayıcının yama sorumluluğu ancak PaaS/SaaS'ta işletim sistemi katmanı için geçerlidir.",
+      "C": "Sözleşme ayrıntıları belirler ancak modelin genel ilkeleri sektör standardıdır; ayrıca banka düzenleyici karşısında nihai sorumluluğu sözleşmeyle devredemez.",
+      "D": "Depolama kovasının herkese açık olması, müşterinin yaptığı bir erişim politikası yapılandırmasıdır; sağlayıcı aracı sunar, nasıl yapılandırılacağı müşteriye aittir.",
+      "E": "Doğru. IaaS'ta sağlayıcı hipervizöre kadar, müşteri işletim sisteminden itibaren sorumludur; depolama izinleri ve veri şifrelemesi müşteri yapılandırmasıdır."
+    },
+    "keyConcept": "Sağlayıcı: bulutun güvenliği (fiziksel, hipervizör, altyapı). Müşteri: buluttaki güvenlik (veri, erişim, yapılandırma; IaaS'ta ayrıca işletim sistemi ve üzeri).",
+    "examTip": "Yama, erişim izni, şifreleme, kimlik yönetimi ile ilgili her eksiklik müşterinindir; yalnızca fiziksel/hipervizör düzeyi sağlayıcıdadır. Modelden bağımsız olarak veri her zaman müşterinin sorumluluğudur.",
+    "references": [
+      "NIST SP 800-144, Guidelines on Security and Privacy in Public Cloud Computing",
+      "Cloud Security Alliance (CSA), Security Guidance for Critical Areas of Focus in Cloud Computing v4.0, Domain 1",
+      "ISO/IEC 27017:2015, Bulut hizmetleri için bilgi güvenliği kontrolleri"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "BLT-004",
+    "topic": "BLT",
+    "subtopic": "Dağıtım modelleri: genel, özel, hibrit bulut ve veri yerleşimi",
+    "difficulty": "orta",
+    "question": "Bir banka, çekirdek bankacılık sistemini ve müşteri verilerini düzenleyici gereklilikler (verilerin yurt içinde tutulması, birincil ve ikincil sistemlerin yurt içinde bulunması) nedeniyle kendi veri merkezinde tutmak zorundadır. Ancak pazarlama kampanyalarının analitik işlemleri için dönemsel olarak büyük hesaplama gücüne ihtiyaç duymakta ve bu iş yükünde kişisel veri kullanılmamaktadır (anonimleştirilmiş veri). Bankanın hem uyum gerekliliğini hem de maliyet etkinliğini karşılayan en uygun dağıtım modeli aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Tüm sistemleri yurt dışındaki bir genel buluta (public cloud) taşımak; maliyet avantajı uyum gerekliliğinden önceliklidir"
+      },
+      {
+        "id": "B",
+        "text": "Tüm sistemleri kendi veri merkezindeki özel bulutta (private cloud) tutmak ve analitik için yıl boyunca en yüksek yüke göre donanım satın almak"
+      },
+      {
+        "id": "C",
+        "text": "Topluluk bulutu (community cloud): tüm bankaların müşteri verilerini ortak bir yurt dışı altyapıda birleştirmek"
+      },
+      {
+        "id": "D",
+        "text": "Hibrit bulut (hybrid cloud): çekirdek bankacılık ve müşteri verisi kendi veri merkezindeki özel bulutta kalır, anonimleştirilmiş analitik iş yükü ise ihtiyaç anında genel buluta taşınır (cloud bursting)"
+      },
+      {
+        "id": "E",
+        "text": "Analitik iş yükü dâhil tüm verileri genel bulutta tutup yalnızca yedekleri yurt içinde saklamak"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "NIST dört dağıtım modeli tanımlar: özel (private), topluluk (community), genel (public) ve hibrit (hybrid). Hibrit bulut, iki veya daha fazla farklı bulut altyapısının (örneğin özel + genel) veri ve uygulama taşınabilirliği sağlayan teknolojiyle birbirine bağlanmasıdır. Senaryoda düzenleyici gereklilik, müşteri verisinin ve birincil/ikincil sistemlerin yurt içinde kalmasını zorunlu kılar; bu kısım özel bulutta kalmalıdır. Kişisel veri içermeyen, dönemsel ve yoğun analitik iş yükü ise genel bulutun esnekliğinden ve kullandıkça öde modelinden yararlanabilir; bu yaklaşım 'cloud bursting' olarak bilinir. Böylece hem uyum hem maliyet etkinliği sağlanır.",
+    "simpleExplanation": "Bankanın iki farklı ihtiyacı var: müşteri verisi ve çekirdek sistemler kurallar gereği yurt içinde, kendi kontrolünde kalmalı; pazarlama analitiği ise yılda birkaç kez çok güçlü bilgisayar istiyor ama kişisel veri içermiyor. Her şeyi kendi veri merkezinde tutmak, yılda iki kez kullanacağınız bir kamyonu satın almak gibidir; her şeyi genel buluta taşımak ise kuralları çiğnemektir. Hibrit bulut ikisini birleştirir: hassas kısım evde (özel bulut) kalır, yoğun dönemlerde anonim analitik işi dışarıdaki büyük bilgisayarlara (genel bulut) gönderilir ve iş bitince kapatılır. Buna 'cloud bursting' denir. Hem kurallara uyum hem maliyet avantajı böyle sağlanır.",
+    "optionExplanations": {
+      "A": "Müşteri verisinin ve birincil sistemlerin yurt dışına taşınması düzenleyici gereklilikleri doğrudan ihlal eder; maliyet, uyumun önüne geçemez.",
+      "B": "Uyumu sağlar ancak dönemsel yük için yıl boyu atıl kalacak donanım satın almak maliyet etkin değildir; bulutun esnekliğinden yararlanılmamıştır.",
+      "C": "Topluluk bulutu ortak çıkarları olan kurumların paylaştığı altyapıdır; ancak müşteri verisini yurt dışında birleştirmek veri yerleşimi kuralını ihlal eder ve bankalar arası veri paylaşımı bankacılık sırrına aykırıdır.",
+      "D": "Doğru. Hassas ve düzenlemeye tabi yük özelde, hassas olmayan dönemsel yük genelde; hibrit model her iki gereksinimi karşılar.",
+      "E": "Yedeklerin yurt içinde olması yeterli değildir; birincil sistemlerin ve verinin kendisinin yurt içinde bulunması gerekir."
+    },
+    "keyConcept": "Hibrit bulut, düzenlemeye tabi iş yükünü özel bulutta tutarken esnek/dönemsel iş yükünü genel buluta taşımaya izin verir (cloud bursting). Veri yerleşimi (data residency) gereklilikleri dağıtım modelini belirler.",
+    "examTip": "'Düzenleyici gereklilik + dönemsel yoğun yük' birlikte geçiyorsa yanıt neredeyse her zaman hibrit buluttur; hem 'hepsi genel' hem 'hepsi özel' seçenekleri bir gereksinimi feda eder.",
+    "references": [
+      "NIST SP 800-145, The NIST Definition of Cloud Computing (Deployment Models)",
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020), birincil ve ikincil sistemlerin yurt içinde bulundurulması hükümleri",
+      "Erl, Mahmood & Puttini, Cloud Computing: Concepts, Technology & Architecture, Bölüm 4"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "BLT-005",
+    "topic": "BLT",
+    "subtopic": "Sanallaştırma ve konteynerler",
+    "difficulty": "orta",
+    "question": "Bir banka, mikroservis mimarisine geçerken sanal makineler (VM) yerine Docker konteynerleri kullanmayı değerlendirmektedir. Bir güvenlik mimarı, 'aynı sunucudaki konteynerler arasındaki yalıtım (isolation), aynı sunucudaki sanal makineler arasındaki yalıtımdan daha zayıftır' uyarısında bulunmuştur. Bu uyarının teknik dayanağı aşağıdakilerden hangisidir?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Konteynerler her zaman root yetkisiyle çalışmak zorundadır, sanal makineler ise çalışmaz"
+      },
+      {
+        "id": "B",
+        "text": "Aynı sunucudaki tüm konteynerler ana makinenin (host) tek bir işletim sistemi çekirdeğini (kernel) paylaşır; çekirdekteki bir zafiyet tüm konteynerleri etkileyebilir. Sanal makinelerin her biri kendi çekirdeğine sahiptir ve hipervizör tarafından donanım düzeyinde ayrılır"
+      },
+      {
+        "id": "C",
+        "text": "Konteyner imajları şifrelenemez, sanal makine diskleri ise şifrelenebilir"
+      },
+      {
+        "id": "D",
+        "text": "Konteynerler ana makinenin ağ yığınını doğrudan paylaştığı için aralarında ağ düzeyinde yalıtım veya güvenlik duvarı kuralı uygulanamaz"
+      },
+      {
+        "id": "E",
+        "text": "Konteynerler yalnızca Linux'ta çalışır; Linux'un kendisi sanal makine hipervizörlerinden daha az güvenlidir"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Sanal makineler, hipervizör üzerinde her biri kendi konuk işletim sistemi ve çekirdeğiyle çalışır; yalıtım sınırı hipervizördür ve donanım destekli sanallaştırma (Intel VT-x, AMD-V) ile güçlendirilir. Konteynerler ise işletim sistemi düzeyinde sanallaştırmadır: Linux çekirdeğinin ad alanları (namespaces) ve kaynak grupları (cgroups) özellikleriyle süreçler birbirinden ayrılır, ancak hepsi aynı çekirdeği paylaşır. Bu nedenle bir konteynerden çekirdek zafiyeti yoluyla kaçış (container escape) hâlinde ana makine ve diğer konteynerler tehlikeye girer; saldırı yüzeyi çekirdeğin tamamıdır. Konteynerlerin avantajı hafiflik ve hızlı başlatmadır; bu avantaj, çekirdek paylaşımından kaynaklanan yalıtım zayıflığıyla birlikte gelir.",
+    "simpleExplanation": "Sanal makineler, aynı binadaki ayrı daireler gibidir: her birinin kendi kapısı, kendi tesisatı (kendi işletim sistemi çekirdeği) vardır ve aralarındaki duvar (hipervizör) kalındır. Konteynerler ise aynı dairede paravanlarla ayrılmış odalar gibidir: hızlı kurulur, az yer kaplar ama hepsi aynı tesisatı, yani aynı işletim sistemi çekirdeğini paylaşır. Paylaşılan çekirdekte bir açık bulunursa saldırgan bir konteynerden çıkıp ana makineye ve diğer konteynerlere ulaşabilir; sanal makinede ise ayrıca hipervizörü de aşması gerekir. Konteynerlerin hafifliği tam da bu paylaşımdan gelir, dolayısıyla yalıtım zayıflığı da aynı kaynaktan doğar.",
+    "optionExplanations": {
+      "A": "Konteynerler root olmayan kullanıcılarla çalıştırılabilir (rootless mod, USER yönergesi); root ile çalışma varsayılan bir pratik hatasıdır, mimari zorunluluk değildir.",
+      "B": "Doğru. Paylaşılan çekirdek, konteyner yalıtımının temel zayıflığıdır; VM'ler ayrı çekirdek ve hipervizör sınırıyla daha güçlü yalıtım sunar.",
+      "C": "Konteyner imajları ve kayıt defterleri şifrelenebilir ve imzalanabilir; bu özellik yalıtım düzeyiyle ilgili değildir.",
+      "D": "Varsayılan köprü (bridge) ağında her konteynerin kendi ağ ad alanı (network namespace) ve sanal arabirimi vardır; ana makine ağını paylaşma (host network modu) isteğe bağlı bir seçimdir. Ağ politikaları (örneğin Kubernetes NetworkPolicy) konteynerler arasında uygulanabilir; yalıtım zayıflığının kaynağı ağ değil, paylaşılan çekirdektir.",
+      "E": "Windows konteynerleri de vardır; ayrıca sorun işletim sisteminin güvenlik düzeyi değil, çekirdeğin paylaşılması nedeniyle yalıtım sınırının ince olmasıdır."
+    },
+    "keyConcept": "VM: hipervizör + ayrı çekirdek → güçlü yalıtım, ağır. Konteyner: paylaşılan çekirdek + namespaces/cgroups → hafif, hızlı, daha zayıf yalıtım.",
+    "examTip": "Konteyner-VM karşılaştırmasında 'çekirdek paylaşımı' anahtar ifadedir; yalıtım, kaçış (escape) ve saldırı yüzeyi sorularının yanıtı buradadır.",
+    "references": [
+      "NIST SP 800-190, Application Container Security Guide",
+      "NIST SP 800-125, Guide to Security for Full Virtualization Technologies",
+      "Docker resmî dokümantasyonu, Docker security"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "BLT-006",
+    "topic": "BLT",
+    "subtopic": "Sunucusuz (serverless) mimari",
+    "difficulty": "orta",
+    "question": "Bir banka, müşterilerin yüklediği kimlik belgesi görüntülerini otomatik olarak boyutlandıran ve filigran ekleyen bir işlevi sunucusuz (serverless, FaaS) bir platforma taşımıştır. İşlev, görüntü depolama alanına yeni dosya eklendiğinde tetiklenmekte ve ortalama 2 saniye çalışmaktadır. Sunucusuz mimariye ilişkin aşağıdaki ifadelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Sunucusuz işlevler çağrılar arasında durum (state) bilgisini bellekte güvenle saklayabilir; bu nedenle oturum ve ara sonuç verileri işlev içinde tutulmalıdır"
+      },
+      {
+        "id": "B",
+        "text": "Banka işlevin çalıştığı sunucuların işletim sistemini yamalamak ve kapasitesini planlamakla sorumludur"
+      },
+      {
+        "id": "C",
+        "text": "Sunucu yönetimi, ölçekleme ve kapasite planlaması sağlayıcıya aittir; banka yalnızca işlev kodu ve yapılandırmasından sorumludur, ücretlendirme çalışma süresi ve çağrı sayısına göre yapılır, işlevler olay (event) ile tetiklenir ve durumsuz (stateless) tasarlanır"
+      },
+      {
+        "id": "D",
+        "text": "Sunucusuz işlevler sürekli çalışan süreçlerdir; bu nedenle uzun süreli toplu işler (batch) için en uygun modeldir"
+      },
+      {
+        "id": "E",
+        "text": "Sunucusuz mimari IaaS'ın bir alt türüdür; banka sanal makineleri kendisi oluşturur ancak faturalandırma saniye bazlıdır"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Sunucusuz bilişim, özellikle FaaS (Function as a Service) modeli, geliştiricinin yalnızca iş mantığını (işlev kodunu) yazdığı, altyapının tedariki, ölçeklenmesi, yamalanması ve kapasite planlamasının tamamen sağlayıcı tarafından yapıldığı bir modeldir. Sunucular elbette vardır ancak müşteriye görünmez. İşlevler olay güdümlüdür (örneğin depolamaya dosya eklenmesi), kısa ömürlüdür, durumsuz tasarlanır (kalıcı durum harici bir depoda tutulur) ve yalnızca çalıştıkları süre ve çağrı sayısı kadar ücretlendirilir; boşta kalan süre için ödeme yapılmaz. Bu özellikler, senaryodaki kısa ve olay tetikli görüntü işleme işi için idealdir. Buna karşılık soğuk başlatma (cold start) gecikmesi, çalışma süresi sınırları ve sağlayıcıya bağımlılık (vendor lock-in) dezavantajlarıdır.",
+    "simpleExplanation": "'Sunucusuz' demek sunucu olmaması değil, sunucuyu sizin görmemeniz ve yönetmemeniz demektir; tıpkı taksiye bindiğinizde arabanın bakımını, sigortasını ve yakıtını düşünmemeniz gibi. Banka yalnızca küçük bir kod parçası yazar: 'yeni bir dosya gelince onu boyutlandır ve filigran ekle'. Dosya gelince (olay) kod çalışır, 2 saniye sürer, biter ve banka sadece o 2 saniye için ödeme yapar; boşta beklemenin ücreti yoktur. Sunucuların yamalanması ve kapasitenin ayarlanması tamamen sağlayıcının işidir. Bu işlevler kısa ömürlü ve hafızasız (durumsuz) tasarlanır; saatler süren işler veya bellekte uzun süre tutulması gereken bilgiler için uygun değildir.",
+    "optionExplanations": {
+      "A": "İşlev örnekleri geçicidir; sağlayıcı herhangi bir anda örneği sonlandırabilir veya yeni bir örnek başlatabilir, bellekteki veri sonraki çağrıya aktarılmaz. Bu yüzden işlevler durumsuz tasarlanır ve kalıcı durum harici bir veritabanı ya da önbellekte tutulur.",
+      "B": "Sunucusuz modelin temel vaadi tam da bu sorumlulukların sağlayıcıya geçmesidir; müşteri işletim sistemine erişemez ve kapasite planlamaz.",
+      "C": "Doğru. Sunucu yönetimi sağlayıcıda, kod müşteride; olay tetikli, durumsuz, çalışma süresi bazlı ücretlendirme.",
+      "D": "İşlevler kısa ömürlüdür ve çalışma süresi üst sınırı vardır (tipik olarak dakikalar düzeyinde); saatler süren toplu işler için uygun değildir.",
+      "E": "Sunucusuz, IaaS değil PaaS'ın ötesinde bir soyutlama düzeyidir; müşteri sanal makine oluşturmaz, bir sanal makine görmez."
+    },
+    "keyConcept": "FaaS: kod sende, sunucu sağlayıcıda; olay tetikli, durumsuz, kısa ömürlü, çalıştığı kadar öde. Dezavantaj: soğuk başlatma, süre sınırı, sağlayıcı bağımlılığı.",
+    "examTip": "'Sunucusuz = sunucu yok' tuzağına düşmeyin; 'kapasite planlaması müşteride' diyen seçenek sunucusuz modelin tanımına aykırıdır.",
+    "references": [
+      "NIST SP 800-145, The NIST Definition of Cloud Computing",
+      "Cloud Security Alliance (CSA), Security Guidance v4.0, Domain 14 (Related Technologies, Serverless)",
+      "Roberts, Serverless Architectures (martinfowler.com makalesi)"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "BLT-007",
+    "topic": "BLT",
+    "subtopic": "Çoklu kiracılık ve veri yalıtımı",
+    "difficulty": "ileri",
+    "question": "Bir banka, SaaS modelinde sunulan ve birden fazla finans kuruluşunun aynı uygulama örneğini ve veritabanını paylaştığı çok kiracılı (multi-tenant) bir müşteri ilişkileri yönetimi (CRM) hizmetine geçmeyi değerlendirmektedir. BT denetçisi, çoklu kiracılığa özgü riskleri ve bunlara karşı kontrolleri değerlendirmek istemektedir. Aşağıdaki değerlendirmelerden hangisi doğrudur?",
+    "code": null,
+    "codeLanguage": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Çoklu kiracılıkta her müşterinin verisi fiziksel olarak ayrı sunucularda tutulduğu için kiracılar arası veri sızıntısı riski yoktur"
+      },
+      {
+        "id": "B",
+        "text": "Kiracılar arası yalıtımın sağlanması tamamen müşterinin sorumluluğundadır; sağlayıcının bu konuda bir yükümlülüğü yoktur"
+      },
+      {
+        "id": "C",
+        "text": "Çoklu kiracılık yalnızca IaaS modelinde görülür; SaaS'ta her müşteriye ayrı uygulama örneği verilmesi zorunludur"
+      },
+      {
+        "id": "D",
+        "text": "Temel risk, uygulama veya veritabanı katmanındaki bir mantık hatası ya da erişim denetimi zafiyeti nedeniyle bir kiracının başka bir kiracının verisine erişebilmesidir; kontroller arasında kiracı kimliğine dayalı satır düzeyi erişim denetimi, kiracıya özgü şifreleme anahtarları, bağımsız güvence raporları (örneğin ISO/IEC 27001, SOC 2) ve sağlayıcının sızma testi sonuçlarının incelenmesi yer alır"
+      },
+      {
+        "id": "E",
+        "text": "Banka, veri yalıtımını kendi sızma testiyle doğrulayabilir; sağlayıcının izni olmadan diğer kiracıların verisine erişmeyi denemek hukuken sorunsuzdur"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Çoklu kiracılık, aynı fiziksel ve mantıksal kaynakların (uygulama örneği, veritabanı, altyapı) birden fazla müşteri (kiracı) tarafından paylaşılması ve yalıtımın yazılım katmanında mantıksal olarak sağlanmasıdır; bulutun maliyet avantajının temel kaynağıdır. En önemli risk, bu mantıksal yalıtımın bir zafiyet (örneğin kiracı kimliğinin filtrelenmediği bir sorgu, IDOR) veya yanlış yapılandırma nedeniyle aşılması ve kiracılar arası veri sızıntısıdır. Denetçi, sağlayıcının yalıtım tasarımını (kiracı kimliğine bağlı erişim denetimi, kiracı başına anahtar, ayrı şema veya satır düzeyi güvenlik), bağımsız güvence raporlarını ve sızma testi kanıtlarını incelemelidir. Banka kendi başına diğer kiracıların verisine erişmeyi denemek gibi testler yapamaz; bu, sözleşme ve yasa dışıdır.",
+    "simpleExplanation": "Çok kiracılı SaaS, birçok şirketin aynı apartmanda oturması gibidir: bina, asansör ve tesisat ortaktır, yalnızca daire kapıları (yazılımdaki erişim kontrolleri) ayrıdır. Fiziksel ayrım yoktur; yalıtım tamamen yazılımın doğru çalışmasına bağlıdır. En büyük risk, bir kapı kilidinin arızalanması, yani bir yazılım hatası yüzünden bir bankanın başka bir bankanın müşteri verisini görebilmesidir. Denetçi bu kilitlerin sağlamlığını, sağlayıcının bağımsız denetim raporlarını (ISO 27001, SOC 2) ve sızma testi sonuçlarını inceleyerek değerlendirir; her kiracıya ayrı şifreleme anahtarı verilmesi de ek bir güvencedir. Ama banka komşu dairelerin kapısını kendisi zorlamayı deneyemez; bu hem yasa dışıdır hem diğer kiracıların hakkını ihlal eder.",
+    "optionExplanations": {
+      "A": "Çoklu kiracılığın tanımı gereği kaynaklar paylaşılır, fiziksel ayrım yoktur; yalıtım mantıksaldır ve bu yüzden sızıntı riski vardır.",
+      "B": "SaaS'ta uygulama ve veritabanı katmanını sağlayıcı işlettiği için yalıtım sağlayıcının sorumluluğundadır; müşteri bunu değerlendirir ve kanıt talep eder, kendisi uygulayamaz.",
+      "C": "Çoklu kiracılık tüm hizmet modellerinde görülür ve SaaS'ın en tipik özelliğidir; ayrı uygulama örneği (single-tenant) istisnai ve daha maliyetli bir seçenektir.",
+      "D": "Doğru. Mantıksal yalıtımın aşılması temel risktir; kontroller tasarım incelemesi, kiracıya özgü anahtar ve bağımsız güvence kanıtlarıdır.",
+      "E": "Başka kiracıların verisine erişmeyi denemek, sağlayıcının izni olsa bile diğer kiracıların haklarını ihlal eder; hukuken ve etik olarak kabul edilemez. Yalıtım güvencesi sağlayıcının bağımsız testleriyle alınır."
+    },
+    "keyConcept": "Çoklu kiracılık = paylaşılan kaynak + mantıksal yalıtım. Risk: kiracılar arası veri sızıntısı. Kontrol: yalıtım tasarımı incelemesi, kiracı başına anahtar, bağımsız güvence raporları.",
+    "examTip": "'Fiziksel olarak ayrı' ifadesi çoklu kiracılığın tanımıyla çelişir; denetçinin kendi sızma testiyle başka kiracıyı hedeflemesi her zaman yanlış seçenektir.",
+    "references": [
+      "NIST SP 800-144, Guidelines on Security and Privacy in Public Cloud Computing",
+      "Cloud Security Alliance (CSA), Security Guidance v4.0, Domain 1 ve 11",
+      "ISO/IEC 27017:2015, 9.5.1 (Sanal bilgi işlem ortamlarında ayrım)",
+      "ISACA, Cloud Computing Audit Program"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "id": "BLT-008",
+    "topic": "BLT",
+    "subtopic": "Bankalarda bulut dış hizmet alımı riskleri",
+    "difficulty": "ileri",
+    "question": "Bir banka, kredi kartı sahtecilik tespit sistemini bir genel bulut sağlayıcısından destek hizmeti (dış hizmet) olarak almayı planlamaktadır. BDDK düzenlemesi çerçevesinde bankanın dış hizmet alımına ilişkin yükümlülükleri açısından, BT denetçisinin planlama aşamasında işaret etmesi gereken EN KRİTİK eksiklik aşağıdakilerden hangisidir?",
+    "code": "Planlama dokümanından özet:\n- Sağlayıcı: Yurt dışı merkezli genel bulut, veri bölgesi: AB (Frankfurt)\n- İşlenen veri: Kart numarası (maskelenmemiş), işlem tutarı, müşteri kimlik no\n- Sözleşme: Sağlayıcının standart hizmet şartları; denetim hakkı maddesi yok\n- Çıkış planı: Yok ('gerekirse başka sağlayıcıya geçeriz')\n- Risk değerlendirmesi: Yalnızca maliyet-fayda analizi yapıldı\n- Bankanın iç ekibi: Sağlayıcının yönetim konsoluna tam yetkili 1 kişi",
+    "codeLanguage": "text",
+    "options": [
+      {
+        "id": "A",
+        "text": "Maskelenmemiş kart numarası ve müşteri kimlik bilgisi içeren birincil sistemin yurt dışında konumlandırılması, veri yerleşimi gerekliliğini ihlal eder; ayrıca denetim hakkı, çıkış stratejisi ve kapsamlı risk değerlendirmesinin bulunmaması, dış hizmet alımının temel koşullarının karşılanmadığını gösterir"
+      },
+      {
+        "id": "B",
+        "text": "Yönetim konsoluna erişen kişi sayısının yalnızca 1 olması; en az 5 kişiye tam yetki verilmelidir"
+      },
+      {
+        "id": "C",
+        "text": "Frankfurt veri bölgesinin seçilmesi; AB içinde başka bir bölge seçilmesi sorunu çözer"
+      },
+      {
+        "id": "D",
+        "text": "Sağlayıcının standart şartlarının kullanılması; sözleşme Türkçe yazılmadığı sürece geçersizdir"
+      },
+      {
+        "id": "E",
+        "text": "En kritik eksiklik çıkış planının olmamasıdır; sağlayıcı AB veri koruma kurallarına (GDPR) tabi olduğu için verinin Frankfurt'ta tutulması veri yerleşimi açısından sorun oluşturmaz"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "BDDK'nın Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmeliği (2020), bankaların birincil ve ikincil sistemlerini yurt içinde bulundurmasını ve dış hizmet (destek hizmeti) alımlarında risk yönetimi, sözleşmede denetim ve bilgi edinme hakkı, hizmetin kesintisiz sürdürülmesi ve çıkış stratejisi gibi koşulların sağlanmasını öngörür; ayrıca bankanın hizmeti dış kaynaktan alması, nihai sorumluluğunu ortadan kaldırmaz. Senaryoda sahtecilik tespit sistemi kart ve kimlik verisi işleyen birincil bir sistemdir ve yurt dışında konumlandırılması veri yerleşimi gerekliliğini ihlal eder; bu, projenin bu hâliyle ilerleyemeyeceği anlamına gelen en kritik eksikliktir. Denetim hakkının, çıkış planının ve kapsamlı risk değerlendirmesinin bulunmaması da düzenlemenin dış hizmet koşullarına aykırıdır. Tek kişiye tam yetki verilmesi ise ayrıcalıklı erişim ve görevler ayrılığı açısından ciddi ancak düzeltilebilir bir sorundur.",
+    "simpleExplanation": "BDDK, bankaların ana sistemlerini ve müşteri verilerini Türkiye sınırları içinde tutmasını ister; bu, 'kasanın anahtarı yurt dışına çıkmaz' kuralı gibidir. Planda kart numaraları ve kimlik bilgileri Frankfurt'taki bir buluta gidiyor; bu, projenin daha baştan yapılamaz olması anlamına gelir ve başka hangi yurt dışı bölge seçilirse seçilsin sorun çözülmez. Üstüne, bankanın sağlayıcıyı denetleme hakkı yok, işler kötüye giderse çıkış planı yok ve risk olarak yalnızca maliyete bakılmış; bunlar da dış hizmet alımında bulunması zorunlu koşullardır. Tek kişiye tam yetki verilmesi de ciddidir ama düzeltilebilir bir ayrıntıdır. En kritik eksiklik, verinin ve sistemin yurt dışında olmasıyla birlikte bu temel koşulların hiçbirinin karşılanmamasıdır.",
+    "optionExplanations": {
+      "A": "Doğru. Veri yerleşimi ihlali projenin temelini geçersiz kılar; denetim hakkı, çıkış stratejisi ve risk değerlendirmesi eksikliği de dış hizmet alımının zorunlu koşullarına aykırıdır.",
+      "B": "Tek kişinin tam yetkili olması görevler ayrılığı ve iş sürekliliği açısından sorunludur ancak çözüm yetkili sayısını artırmak değil, en az yetki ve çift onay gibi kontroller uygulamaktır; ayrıca en kritik eksiklik değildir.",
+      "C": "Sorun belirli bir yurt dışı bölgenin seçimi değil, verinin ve birincil sistemin yurt dışında olmasıdır; AB içinde bölge değiştirmek gerekliliği karşılamaz.",
+      "D": "Sözleşmenin dilinden ziyade içeriği (denetim hakkı, veri koruma, hizmet seviyesi, çıkış hükümleri) önemlidir; standart şartların eksikliği denetim hakkı yokluğuyla ilgilidir, dille değil.",
+      "E": "Sağlayıcının GDPR'a tabi olması, BDDK düzenlemesinin birincil ve ikincil sistemlerin yurt içinde bulundurulması gerekliliğinin yerine geçmez; yabancı bir hukuk düzenine uyum, Türk düzenleyicinin yer şartını karşılamaz. Çıkış planının olmaması ciddi bir eksikliktir ancak veri yerleşimi ihlali yanında ikincil kalır."
+    },
+    "keyConcept": "Bankaların bulut/dış hizmet alımında: birincil ve ikincil sistemler yurt içinde; risk değerlendirmesi, sözleşmede denetim hakkı, çıkış stratejisi şart; nihai sorumluluk bankada kalır.",
+    "examTip": "Dış hizmet senaryolarında 'veri/sistem yurt dışında' ifadesini gördüğünüzde en kritik eksiklik budur; 'denetim hakkı yok' ve 'çıkış planı yok' da düzenleyici kırmızı çizgileridir.",
+    "references": [
+      "BDDK, Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik (2020), birincil/ikincil sistemler ve dış hizmet alımına ilişkin hükümler",
+      "BDDK, Bankaların Destek Hizmeti Almalarına İlişkin Yönetmelik",
+      "COBIT 2019, APO10 (Managed Vendors)",
+      "ISACA, Cloud Computing Audit Program"
+    ],
+    "sourceType": "original_practice",
+    "reviewStatus": "reviewed"
+  }
+]
