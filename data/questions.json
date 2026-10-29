@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T21:44:25.850Z",
+  "generatedAt": "2026-10-29T21:58:08.012Z",
   "count": 136,
   "questions": [
     {
@@ -35,6 +35,28 @@
       "correctAnswer": "C",
       "explanation": "Gizlilik (confidentiality), bilginin yalnızca yetkili kişilerce görülmesidir; yetkisiz görüntüleme ve paylaşma (olay 1) gizlilik ihlalidir. Bütünlük (integrity), verinin doğru ve eksiksiz kalmasıdır; yanlış tutarın yanlış hesaba gitmesi (olay 2) veri bütünlüğünü bozar. Erişilebilirlik (availability), hizmetin ihtiyaç duyulduğunda kullanılabilir olmasıdır; DDoS nedeniyle mobil bankacılığın durması (olay 3) erişilebilirlik ihlalidir.",
       "simpleExplanation": "Bilgi güvenliğinin üç temel hedefi vardır: gizlilik, bütünlük ve erişilebilirlik. Bunu bir günlük gibi düşünün: gizlilik, günlüğü sizden başka kimsenin okumaması; bütünlük, içine yazdıklarınızın kimse tarafından değiştirilmemesi; erişilebilirlik ise istediğiniz an günlüğe ulaşabilmeniz demektir. Çağrı merkezi çalışanının yetkisiz bakiye görmesi 'okunmaması gereken şeyin okunması', yani gizlilik ihlalidir. Maaşların yanlış hesaba gitmesi verinin bozulmasıdır, yani bütünlük ihlali. Mobil bankacılığın 4 saat çalışmaması ise 'ulaşamama', yani erişilebilirlik ihlalidir.",
+      "en": {
+        "subtopic": "The CIA triad (confidentiality, integrity, availability)",
+        "question": "Three incidents occurred at a bank in the same week: (1) A call-centre employee, without being authorised to do so, viewed a celebrity customer's account balance and told a friend about it. (2) Because of an error in a bulk payment file, the salary amounts of 150 customers were transferred to the wrong accounts. (3) Because of a denial-of-service (DDoS) attack carried out over the weekend, mobile banking was unavailable for 4 hours. Which components of the CIA triad did these incidents violate, respectively?",
+        "options": {
+          "A": "Integrity, confidentiality, availability",
+          "B": "Confidentiality, availability, integrity",
+          "C": "Confidentiality, integrity, availability",
+          "D": "Availability, integrity, confidentiality",
+          "E": "Integrity, availability, confidentiality"
+        },
+        "explanation": "Confidentiality means that information is seen only by authorised people; unauthorised viewing and sharing (incident 1) is a confidentiality breach. Integrity means that data remains accurate and complete; the wrong amount going to the wrong account (incident 2) corrupts data integrity. Availability means that the service is usable when it is needed; mobile banking going down because of the DDoS attack (incident 3) is an availability breach.",
+        "optionExplanations": {
+          "A": "The first two components are swapped: unauthorised viewing does not alter data, so it is a confidentiality breach, not an integrity breach; the wrong transfer is an integrity problem, not a confidentiality one.",
+          "B": "The bulk payment error did not stop the service, it corrupted data; so it is an integrity breach, not an availability one. DDoS, on the other hand, does not corrupt data, it stops the service.",
+          "C": "Correct. Unauthorised viewing → confidentiality; wrong amount/account → integrity; service outage → availability.",
+          "D": "The order is completely reversed; there was no service outage in the call-centre incident, and there was no data leak in the DDoS incident.",
+          "E": "Integrity and availability are wrongly assigned to the first and second incidents; an employee viewing data neither alters the data nor interrupts the service."
+        },
+        "keyConcept": "Confidentiality = unauthorised viewing; integrity = unauthorised/erroneous modification; availability = the service being unusable.",
+        "examTip": "Classify the incident with the questions 'was it seen, was it changed, did it stop'; whichever of the three gets a yes, that component was violated.",
+        "simpleExplanation": "Information security has three basic goals: confidentiality, integrity and availability. Think of it like a diary: confidentiality means nobody but you reads the diary; integrity means nobody changes what you wrote in it; availability means you can get to the diary whenever you want. The call-centre employee seeing a balance without permission is 'something that should not be read being read', in other words a confidentiality breach. Salaries going to the wrong account is the data being corrupted, so an integrity breach. Mobile banking not working for 4 hours is 'not being able to reach it', so an availability breach."
+      },
       "optionExplanations": {
         "A": "İlk iki bileşenin yeri değiştirilmiştir: yetkisiz görüntüleme veri değiştirmediği için bütünlük değil gizlilik ihlalidir; yanlış aktarım ise gizlilik değil bütünlük sorunudur.",
         "B": "Toplu ödeme hatası hizmeti durdurmamış, veriyi bozmuştur; bu nedenle erişilebilirlik değil bütünlük ihlalidir. DDoS ise veriyi bozmaz, hizmeti durdurur.",
@@ -85,6 +107,28 @@
       "correctAnswer": "A",
       "explanation": "Bilgi sınıflandırmanın amacı, bilginin yetkisiz açıklanması hâlinde oluşacak zararın büyüklüğüne göre koruma düzeyini belirlemektir. Müşterilerin kimlik, bakiye ve işlem verileri hem KVKK kapsamında kişisel veri hem de 5411 sayılı Bankacılık Kanunu md. 73 anlamında müşteri sırrı niteliğindedir; ifşası ağır hukuki ve itibari zarara yol açar. Bu nedenle en az 'Gizli' düzeyinde sınıflandırılmalıdır; 'Kamuya Açık' ataması açıkça yanlıştır. Diğer seçeneklerdeki atamalar, zarar potansiyeliyle uyumludur.",
       "simpleExplanation": "Bilgi sınıflandırma, bilgileri 'ifşa olursa ne kadar zarar verir' sorusuna göre etiketlemektir; tıpkı evdeki eşyaları 'herkes görebilir', 'sadece aile', 'kasada saklanır' diye ayırmak gibi. Şube saatleri zaten herkese açık bilgidir, bunu kasaya koymanın anlamı yoktur. Ama müşterilerin kimlik numarası, bakiyesi ve işlem geçmişi bankanın en hassas bilgilerindendir; bunları 'herkes görebilir' rafına koymak, kasadaki parayı sokağa bırakmak gibidir. Bu yüzden en açık hata, müşteri verisinin 'Kamuya Açık' olarak etiketlenmesidir.",
+      "en": {
+        "subtopic": "Information classification",
+        "question": "A bank classifies its information assets at four levels: Public, Internal, Confidential and Top Secret. Under this scheme, which of the following assets has most likely been assigned the wrong classification?",
+        "options": {
+          "A": "Core banking tables containing customers' identity numbers, account balances and transaction history → Public",
+          "B": "Branch opening hours and ATM addresses → Public",
+          "C": "The staff canteen menu and shuttle routes → Internal",
+          "D": "Negotiation notes on a merger and acquisition not yet announced publicly → Top Secret",
+          "E": "Firewall rule sets and network topology → Confidential"
+        },
+        "explanation": "The purpose of information classification is to set the level of protection according to the size of the harm that would result if the information were disclosed without authorisation. Customers' identity, balance and transaction data are both personal data under KVKK (Turkish Personal Data Protection Law) and customer secrets within the meaning of Article 73 of Banking Law No. 5411; their disclosure causes serious legal and reputational harm. They must therefore be classified at least as 'Confidential'; the 'Public' assignment is plainly wrong. The assignments in the other options are consistent with their potential for harm.",
+        "optionExplanations": {
+          "A": "Correct. Customer data is a customer secret (Banking Law Art. 73) and personal data; classifying it as 'Public' is the most serious error.",
+          "B": "Branch hours and ATM addresses are information already published on the bank's website; the 'Public' assignment is appropriate.",
+          "C": "Disclosure of the canteen menu would not cause serious harm, but there is also no need to announce it to the public; the 'Internal' level is reasonable.",
+          "D": "Unannounced merger information carries insider-trading risk and affects the share price; the highest level, 'Top Secret', is appropriate.",
+          "E": "Firewall rules and topology are technical information that would be useful to an attacker; the 'Confidential' assignment is appropriate."
+        },
+        "keyConcept": "The classification level must be proportionate to the impact that unauthorised disclosure of the information would have.",
+        "examTip": "Automatically put every kind of customer financial and identity data in a high class; the question 'is it already on the website?' clarifies the Public boundary.",
+        "simpleExplanation": "Information classification is labelling information according to the question 'how much harm would it do if it got out'; just like sorting the things in your house into 'anyone can see it', 'family only' and 'kept in the safe'. Branch hours are already open to everyone, so there is no point putting them in the safe. But customers' identity numbers, balances and transaction history are among the bank's most sensitive information; putting them on the 'anyone can see it' shelf is like leaving the money from the safe out on the street. So the most obvious mistake is labelling customer data as 'Public'."
+      },
       "optionExplanations": {
         "A": "Doğru. Müşteri verisi müşteri sırrı (Bankacılık Kanunu md. 73) ve kişisel veridir; 'Kamuya Açık' olarak sınıflandırılması en ciddi hatadır.",
         "B": "Şube saatleri ve ATM adresleri zaten bankanın web sitesinde yayımlanan bilgilerdir; 'Kamuya Açık' ataması uygundur.",
@@ -136,6 +180,28 @@
       "correctAnswer": "D",
       "explanation": "Oltalama e-postalarında aciliyet, genel hitap ve otorite taklidi gibi psikolojik işaretler yaygındır ancak tek başına kanıt sayılmaz; meşru bir BT birimi de acil bir duyuru gönderebilir. Teknik olarak en güçlü kanıt, gönderici alan adının bankanın gerçek alan adı (vakifbank.com.tr) yerine banka adını içeren ancak bankaya ait olmayan bir alan adı (vakifbank-guvenlik-portal.com) olması ve bağlantının kurumsal bir alan adı yerine doğrudan, şifrelenmemiş (HTTP) bir IP adresine gitmesidir. Meşru kurumsal parola yenileme sayfaları kurumun kendi alan adında ve HTTPS üzerinden sunulur.",
       "simpleExplanation": "Oltalama e-postaları sizi korkutup aceleyle bir bağlantıya tıklatmaya çalışır. 'Acil', 'hesabınız kapatılacak' gibi sözler şüphe uyandırır ama tek başına kanıt değildir; gerçek bir BT birimi de acil duyuru gönderebilir. Asıl kanıt zarfın üzerindeki adres gibidir: gönderen adresi bankanın gerçek alan adı değildir ve bağlantı da bankanın sitesine değil, şifresiz bir IP adresine gidiyor. Bu, size 'bankadan geliyorum' diyen birinin kartvizitinde başka bir şirketin adının yazması gibidir. Gönderen alan adı ve bağlantının gittiği yer her zaman en güvenilir ipucudur.",
+      "en": {
+        "subtopic": "Phishing and social engineering",
+        "question": "A bank employee has received the e-mail below. Which of the following is the strongest technical evidence in the e-mail that it is a phishing attack?",
+        "options": {
+          "A": "The e-mail opening with a non-personalised greeting such as 'Sayın Çalışan' (Dear Employee)",
+          "B": "The word 'ACİL' (URGENT) appearing in the subject line",
+          "C": "The e-mail appearing to come from the IT Support unit",
+          "D": "The sender domain not being the bank's real domain, and the link going to an unencrypted (http) IP address",
+          "E": "The notification that the password has expired"
+        },
+        "explanation": "Psychological cues such as urgency, a generic greeting and impersonation of authority are common in phishing e-mails, but on their own they do not count as proof; a legitimate IT department can also send an urgent announcement. Technically, the strongest evidence is that the sender domain is not the bank's real domain (vakifbank.com.tr) but a domain that contains the bank's name yet does not belong to the bank (vakifbank-guvenlik-portal.com), and that the link goes directly to an unencrypted (HTTP) IP address instead of a corporate domain name. Legitimate corporate password-reset pages are served on the organisation's own domain over HTTPS.",
+        "optionExplanations": {
+          "A": "Although a generic greeting is a suspicious sign, many legitimate bulk announcements are not personalised either; it is not conclusive technical evidence.",
+          "B": "Urgency is the classic pressure technique of social engineering, but legitimate security announcements can be urgent too; on its own it is not proof.",
+          "C": "Coming from IT Support is not suspicious in itself; what is suspicious is that the domain does not match the organisation the sender claims to be.",
+          "D": "Correct. The domain mismatch and the link going to a raw IP address over HTTP are objective and the strongest technical evidence in terms of source verification.",
+          "E": "Password expiry can be a genuine matter of corporate policy; a claim in the content is no substitute for evidence about the source."
+        },
+        "keyConcept": "In phishing detection, psychological cues (urgency, authority) raise suspicion; technical cues such as the sender domain and link target provide evidence.",
+        "examTip": "When this type of question asks for the 'strongest evidence', eliminate the options based on emotion or wording and mark the option that looks at the domain name and URL target.",
+        "simpleExplanation": "Phishing e-mails try to scare you into clicking a link in a hurry. Words like 'urgent' and 'your account will be closed' raise suspicion but are not proof on their own; a real IT department can also send an urgent notice. The real evidence is like the address on the envelope: the sender address is not the bank's real domain, and the link goes to an unencrypted IP address, not the bank's website. This is like someone who says 'I'm from the bank' handing you a business card with another company's name on it. The sender domain and where the link goes are always the most reliable clue."
+      },
       "optionExplanations": {
         "A": "Genel hitap şüphe uyandıran bir işaret olsa da pek çok meşru toplu duyuru da kişiselleştirilmez; kesin teknik kanıt değildir.",
         "B": "Aciliyet, sosyal mühendisliğin klasik baskı tekniğidir ama meşru güvenlik duyuruları da acil olabilir; tek başına kanıt değildir.",
@@ -186,6 +252,28 @@
       "correctAnswer": "B",
       "explanation": "SPF, hangi IP adreslerinin alan adı adına posta gönderebileceğini; DKIM ise iletinin alan adının özel anahtarıyla imzalandığını doğrular. Ancak bu iki mekanizmanın başarısız olması hâlinde alıcının ne yapacağını belirleyen ve sonuçları alan adı sahibine raporlayan mekanizma DMARC'tır. 'p=reject' politikası doğrulamadan geçemeyen iletilerin reddedilmesini ister; 'rua' etiketi toplu (aggregate) raporların gönderileceği adresi belirtir. SPF ve DKIM tek başına ne politika uygulatır ne de rapor üretir.",
       "simpleExplanation": "E-posta sahteciliğinde saldırgan, zarfa bankanın adını yazıp sahte mektup gönderir. SPF, 'bankanın adına kimler mektup gönderebilir' listesidir; DKIM ise mektuba bankanın mührünü basar. Ama bu ikisi, mühürsüz veya listede olmayan bir mektup geldiğinde postacının ne yapacağını söylemez. DMARC tam olarak bu kuralı koyar: 'Doğrulamayı geçemeyen mektupları reddet' (p=reject) der ve 'kaç mektup reddettiğini bana raporla' (rua) diye ekler. Hem reddetme hem raporlama istendiğinde cevap DMARC'tır.",
+      "en": {
+        "subtopic": "E-mail security: SPF, DKIM, DMARC",
+        "question": "A bank's e-mail security team has found that fake e-mails spoofing the organisation's domain are reaching customers. The team wants messages that appear to be sent from the domain but fail both SPF and DKIM verification to be rejected by receiving servers, and wants aggregate reports about these rejected messages to be sent to the bank. Which of the following mechanisms meets both requirements together?",
+        "options": {
+          "A": "Adding '-all' to the SPF (Sender Policy Framework) record",
+          "B": "Publishing a DMARC (Domain-based Message Authentication, Reporting and Conformance) record with a 'p=reject' policy and a 'rua' reporting address",
+          "C": "Increasing the DKIM (DomainKeys Identified Mail) key length to 2048 bits",
+          "D": "Making S/MIME signatures mandatory for incoming e-mail",
+          "E": "Pointing the domain's MX records only at the bank's own mail servers"
+        },
+        "explanation": "SPF verifies which IP addresses may send mail on behalf of the domain; DKIM verifies that the message was signed with the domain's private key. But the mechanism that determines what the receiver should do when these two mechanisms fail, and that reports the results to the domain owner, is DMARC. The 'p=reject' policy asks that messages failing verification be rejected; the 'rua' tag specifies the address to which aggregate reports are sent. On their own, SPF and DKIM neither enforce a policy nor generate reports.",
+        "optionExplanations": {
+          "A": "'-all' makes unauthorised sources receive a 'fail' result in SPF, but it does not force the receiver to act on that result and contains no reporting mechanism; moreover, SPF checks the envelope sender (MAIL FROM) and the HELO identity, not the visible 'From' header.",
+          "B": "Correct. DMARC aligns the SPF/DKIM results with the visible 'From' field (alignment), states the policy to apply on failure (none/quarantine/reject) and provides reporting via the rua/ruf tags.",
+          "C": "Increasing the key length raises the cryptographic strength of the signature but does not cause unsigned fake messages to be rejected or reported.",
+          "D": "S/MIME is end-to-end message signing and requires client certificates; it offers no domain-level anti-spoofing policy or reporting, and cannot be imposed on customers.",
+          "E": "MX records determine where mail addressed to the domain is delivered; they have nothing to do with blocking fake mail sent on behalf of the domain."
+        },
+        "keyConcept": "SPF = authorised sender IPs; DKIM = cryptographic signature; DMARC = alignment + policy (none/quarantine/reject) + reporting (rua/ruf).",
+        "examTip": "When you see 'should be rejected and reported to me', the answer is always DMARC; SPF and DKIM only produce verification input.",
+        "simpleExplanation": "In e-mail spoofing, the attacker writes the bank's name on the envelope and sends a fake letter. SPF is the list of 'who may send letters in the bank's name'; DKIM stamps the bank's seal on the letter. But these two do not tell the postman what to do when a letter arrives without a seal or from someone not on the list. DMARC sets exactly that rule: it says 'reject letters that fail verification' (p=reject) and adds 'report to me how many letters you rejected' (rua). When both rejecting and reporting are wanted, the answer is DMARC."
+      },
       "optionExplanations": {
         "A": "'-all', SPF'te yetkisiz kaynakların 'fail' sonucu almasını sağlar ancak alıcının bu sonuca göre ne yapacağını zorlamaz ve rapor mekanizması içermez; ayrıca SPF görünen 'From' başlığını değil zarf göndericisini (MAIL FROM) ve HELO kimliğini kontrol eder.",
         "B": "Doğru. DMARC, SPF/DKIM sonuçlarını görünen 'From' alanıyla hizalar (alignment), başarısızlıkta uygulanacak politikayı (none/quarantine/reject) bildirir ve rua/ruf etiketleriyle raporlama sağlar.",
@@ -237,6 +325,28 @@
       "correctAnswer": "E",
       "explanation": "HTTPS bağlantısında tarayıcı, sunucunun sunduğu sertifikanın güvenilir bir sertifika otoritesi (CA) tarafından imzalandığını, süresinin geçmediğini ve sertifikadaki alan adının ziyaret edilen alan adıyla eşleştiğini kontrol eder. Alan adı uyumsuzluğu uyarısı, araya giren bir cihazın (ortadaki adam / man-in-the-middle) trafiği kendi sertifikasıyla sunuyor olabileceğine işaret eder; aynı adresin güvenilir bir ağda sorunsuz açılması bu şüpheyi güçlendirir. Uyarıyı geçerek giriş yapmak, kullanıcı adı ve parolanın saldırgana teslim edilmesiyle sonuçlanabilir. Doğru davranış işlemi yapmamak, güvenilir ağa geçmek ve bankayı bilgilendirmektir.",
       "simpleExplanation": "Tarayıcıdaki kilit simgesi, 'karşımdaki gerçekten banka mı?' sorusunu bir kimlik belgesiyle (sertifika) kontrol eder. Uyarı, bu kimlik belgesinin siteye uymadığını söylüyor; aynı site evde sorunsuz açıldığı için sorun büyük olasılıkla otel ağında araya giren birindedir. Bu, bankaya giderken yolda sizi durdurup 'banka memuruyum, kartınızı verin' diyen, kimliği uyumsuz birine benzer. Doğru davranış kimliğinizi vermemek, yani giriş yapmamak, güvendiğiniz bir bağlantıya (mobil veri, VPN) geçmek ve durumu bankaya bildirmektir. Uyarıyı 'yine de devam et' diyerek geçmek, parolanızı saldırgana teslim etmek anlamına gelebilir.",
+      "en": {
+        "subtopic": "Safe browsing: HTTPS and certificate warnings",
+        "question": "A bank customer connected to a hotel wireless network types in the internet banking address and the browser shows the warning 'Your connection is not private: the certificate was not issued for this site (NET::ERR_CERT_COMMON_NAME_INVALID)'. The same address opened without any problem from the home network a day earlier. Which of the following is the most correct behaviour for the customer from an information security standpoint?",
+        "options": {
+          "A": "Logging in by choosing 'Advanced' and then 'Proceed to site anyway', because the address was typed correctly",
+          "B": "Clearing the browser cache, refreshing the page and logging in if the warning persists",
+          "C": "Treating the connection as secure because the address bar shows 'https' and continuing with the transaction",
+          "D": "Opening the page in another browser and logging in, since the certificate warning is a trivial browser error",
+          "E": "Not logging in to the site, leaving the untrusted network and trying again over a trusted connection such as mobile data or a VPN, and reporting the situation to the bank"
+        },
+        "explanation": "In an HTTPS connection the browser checks that the certificate presented by the server was signed by a trusted certificate authority (CA), that it has not expired, and that the domain name in the certificate matches the domain being visited. A domain mismatch warning indicates that an intervening device (man-in-the-middle) may be serving the traffic with its own certificate; the fact that the same address opened without problems on a trusted network strengthens this suspicion. Bypassing the warning and logging in may result in the username and password being handed to the attacker. The correct behaviour is not to perform the transaction, to switch to a trusted network and to inform the bank.",
+        "optionExplanations": {
+          "A": "Typing the address correctly does not guarantee that the traffic reaches the right server; redirection can occur at the DNS or network level. Bypassing the warning puts credentials at risk.",
+          "B": "The cache does not affect the certificate the server presents; logging in while the warning persists is risky behaviour.",
+          "C": "'https' only shows that an attempt is being made to set up an encrypted channel; if encryption is done without verifying the identity of the other party, it means talking to the attacker over an encrypted channel.",
+          "D": "Certificate validation is not browser-specific; another browser would give the same warning. Treating the warning as a 'bug' and ignoring it is a basic lack of awareness.",
+          "E": "Correct. A certificate warning on an untrusted network is the most typical sign of a man-in-the-middle attack; not transacting and switching to a trusted channel is the right attitude."
+        },
+        "keyConcept": "A certificate warning means the server's identity could not be verified; the security of HTTPS rests on authentication before encryption.",
+        "examTip": "When you see the trio 'untrusted network + certificate warning + sensitive transaction', the answer is always the option 'do not proceed, switch to a trusted channel, report'.",
+        "simpleExplanation": "The padlock icon in the browser checks the question 'is the other side really the bank?' against an identity document (the certificate). The warning is saying that this identity document does not match the site; since the same site opened fine at home, the problem is most likely someone intercepting on the hotel network. This is like someone with a mismatched ID stopping you on the way to the bank and saying 'I'm a bank officer, give me your card'. The right thing is not to hand over your identity, in other words not to log in, to switch to a connection you trust (mobile data, VPN) and to report the situation to the bank. Bypassing the warning with 'proceed anyway' can mean handing your password to the attacker."
+      },
       "optionExplanations": {
         "A": "Adresin doğru yazılması, trafiğin doğru sunucuya ulaştığını garanti etmez; DNS veya ağ düzeyinde yönlendirme yapılabilir. Uyarıyı geçmek kimlik bilgilerini riske atar.",
         "B": "Önbellek, sunucunun sunduğu sertifikayı etkilemez; uyarı devam ettiğinde giriş yapmak riskli davranıştır.",
@@ -287,6 +397,28 @@
       "correctAnswer": "A",
       "explanation": "KVKK'ya göre veri sorumlusu (data controller), kişisel verilerin işleme amaçlarını ve vasıtalarını belirleyen, veri kayıt sisteminin kurulmasından ve yönetilmesinden sorumlu olan gerçek veya tüzel kişidir. Veri işleyen (data processor) ise veri sorumlusunun verdiği yetkiye dayanarak onun adına kişisel verileri işleyen kişidir. Senaryoda hangi müşteriye hangi mesajın neden gönderileceğine banka karar vermekte, SMS firması ise yalnızca talimatla iletim yapmaktadır. Dolayısıyla banka veri sorumlusu, SMS firması veri işleyendir. Veri sorumlusu sıfatı sözleşmeyle veri işleyene devredilemez; KVKK md. 12/2 uyarınca banka, veri güvenliği tedbirlerinin alınmasından veri işleyenle birlikte müştereken sorumludur ve bunu sözleşme ve denetimle sağlamakla yükümlüdür.",
       "simpleExplanation": "KVKK'da iki ana rol vardır. Veri sorumlusu, 'bu veriler neden ve nasıl kullanılacak' kararını veren taraftır; veri işleyen ise onun talimatıyla işi yapan yardımcıdır. Bunu bir restoran ile paket servis kuryesine benzetebilirsiniz: yemeği kime ve neden göndereceğine restoran karar verir, kurye yalnızca verilen adrese teslim eder. Senaryoda hangi müşteriye hangi SMS'in gideceğine banka karar veriyor, SMS firması sadece iletiyor. Bu nedenle banka veri sorumlusu, SMS firması veri işleyendir; müşteri ise verisi işlenen 'ilgili kişi'dir.",
+      "en": {
+        "subtopic": "KVKK: data controller and data processor",
+        "question": "A bank has signed a contract with an external bulk messaging company to send transaction notification SMS messages to its customers. The company transmits the telephone numbers and message contents supplied by the bank solely in accordance with the bank's instructions and does not use them for its own purposes. In terms of the concepts of Personal Data Protection Law No. 6698 (KVKK, the Turkish Personal Data Protection Law), which of the following correctly gives the roles of the bank and the SMS company?",
+        "options": {
+          "A": "The bank is the data controller, the SMS company is the data processor",
+          "B": "The bank is the data processor, the SMS company is the data controller",
+          "C": "Both are independent data controllers",
+          "D": "Both are data processors; the data controller is the customer",
+          "E": "The bank is the data subject, the SMS company is the data controller"
+        },
+        "explanation": "Under KVKK, the data controller (veri sorumlusu) is the natural or legal person who determines the purposes and means of processing personal data and is responsible for establishing and managing the data filing system. The data processor (veri işleyen) is the person who processes personal data on behalf of the data controller on the basis of the authority granted by the controller. In the scenario, the bank decides which message is sent to which customer and why, while the SMS company merely transmits on instruction. Therefore the bank is the data controller and the SMS company is the data processor. The status of data controller cannot be transferred to the data processor by contract; under KVKK Art. 12/2 the bank is jointly responsible with the data processor for taking data security measures, and is obliged to ensure this through contract and audit.",
+        "optionExplanations": {
+          "A": "Correct. The bank, which determines the purpose and means, is the data controller; the company transmitting on instruction is the data processor.",
+          "B": "The roles are reversed; the SMS company does not determine the purpose of processing, it only follows instructions.",
+          "C": "Because the company does not use the data for its own purposes, it does not become an independent data controller; independent responsibility would arise if the company processed for its own purposes.",
+          "D": "The customer is the 'data subject' (ilgili kişi), not the data controller; the status of data controller belongs to the organisation that determines the purpose.",
+          "E": "The 'data subject' is the natural person whose personal data is processed; the bank is a legal person and in this scenario is the data controller, not the data subject."
+        },
+        "keyConcept": "The data controller determines the purpose and method; the data processor processes on its behalf and on its instructions; the data subject is the natural person whose data is processed.",
+        "examTip": "The answer to 'who decides why it is processed?' is the data controller; the answer to 'who just does it on instruction?' is the data processor.",
+        "simpleExplanation": "There are two main roles in KVKK. The data controller is the party that decides 'why and how will this data be used'; the data processor is the helper that does the work on its instructions. You can compare it to a restaurant and a delivery courier: the restaurant decides who the food is sent to and why, the courier only delivers to the given address. In the scenario, the bank decides which SMS goes to which customer, the SMS company just delivers it. So the bank is the data controller and the SMS company is the data processor; the customer is the 'data subject' whose data is processed."
+      },
       "optionExplanations": {
         "A": "Doğru. Amaç ve vasıtayı belirleyen banka veri sorumlusu, talimatla iletim yapan firma veri işleyendir.",
         "B": "Roller ters çevrilmiştir; SMS firması işleme amacını belirlemez, sadece talimat uygular.",
@@ -336,6 +468,28 @@
       "correctAnswer": "C",
       "explanation": "Saldırı zinciri iki halkadan oluşur: parolanın oltalanması ve SMS kodunun SIM değişimiyle ele geçirilmesi. SMS tabanlı OTP, telefon numarasına bağlı olduğundan SIM swap ve SS7 zayıflıklarına açıktır; NIST SP 800-63B (Rev. 3, 5.1.3.3) bu yöntemi 'kısıtlı' (restricted) kimlik doğrulayıcı olarak sınıflandırır. FIDO2/WebAuthn gibi oltalamaya dirençli (phishing-resistant) yöntemler, kimlik doğrulamayı sitenin gerçek alan adına kriptografik olarak bağlar (origin binding) ve özel anahtar cihazdan çıkmaz; dolayısıyla hem sahte site üzerinden kod çalınması hem de SIM değişimi etkisiz kalır. BDDK'nın 2020 tarihli Yönetmeliği de uzaktan ve ayrıcalıklı erişimlerde güçlü kimlik doğrulama kullanılmasını öngörür.",
       "simpleExplanation": "Saldırgan iki kapıdan geçti: parolayı sahte bir siteyle çaldı, SMS kodunu da telefon hattını kendi üzerine aldırarak (SIM değişimi) ele geçirdi. SMS kodu telefon numarasına bağlıdır; numara çalınırsa kod da çalınır. FIDO2 donanım anahtarı ise bir ev anahtarı gibi fiziksel olarak sizde durur ve yalnızca gerçek banka sitesinin kilidini açar; sahte siteye takılsa bile çalışmaz. Böylece hem sahte site hem SIM değişimi işe yaramaz hâle gelir. Parolayı uzatmak ya da kilitleme eşiğini düşürmek bu iki kapıdan hiçbirini kapatmaz.",
+      "en": {
+        "subtopic": "Password policy and multi-factor authentication (MFA)",
+        "question": "A bank's privileged system administrators authenticate for remote access with username + password and a one-time code (OTP) sent by SMS. In the latest incident, an attacker obtained an administrator's password through phishing, then had the SIM card replaced at the mobile operator (SIM swap), thereby also receiving the SMS code, and logged into the system. Which of the following controls breaks this attack chain most effectively?",
+        "options": {
+          "A": "Increasing the password length to at least 16 characters and requiring it to be changed every 30 days",
+          "B": "Using an OTP sent by e-mail instead of SMS OTP",
+          "C": "Using a phishing-resistant second factor such as a FIDO2/WebAuthn-based hardware security key instead of SMS OTP",
+          "D": "Giving users phishing awareness training once a year",
+          "E": "Lowering the account lockout threshold to 3 failed attempts"
+        },
+        "explanation": "The attack chain consists of two links: phishing of the password and capture of the SMS code through a SIM swap. Because SMS-based OTP is tied to the telephone number, it is exposed to SIM swap and SS7 weaknesses; NIST SP 800-63B (Rev. 3, 5.1.3.3) classifies this method as a 'restricted' authenticator. Phishing-resistant methods such as FIDO2/WebAuthn cryptographically bind the authentication to the site's real domain (origin binding) and the private key never leaves the device; so both theft of the code via a fake site and a SIM swap become ineffective. The BDDK Regulation of 2020 also requires strong authentication for remote and privileged access.",
+        "optionExplanations": {
+          "A": "However long the password is, it is captured intact through phishing; mandatory periodic password changes are not recommended by NIST SP 800-63B (explicitly prohibited in Rev. 4) and do not break this chain.",
+          "B": "E-mail OTP neutralises the SIM swap, but the e-mail account itself can also be phished or compromised; it is open to real-time code theft (relay) attacks through a fake site.",
+          "C": "Correct. The hardware key keeps the private key on the device and binds the response to the real domain; it breaks both the phishing and the SIM swap link.",
+          "D": "Awareness training is a useful complementary control, but training given once a year does not technically break the chain; human error continues.",
+          "E": "Account lockout is a defence against brute-force attacks; it is ineffective because the attacker used the correct password and code in a single attempt."
+        },
+        "keyConcept": "The strength of authentication is limited by the weakest factor; SMS OTP is exposed to SIM swap, whereas FIDO2/WebAuthn is resistant to phishing and relay attacks.",
+        "examTip": "List every link of the attack in the scenario; mark only the option that breaks all the links. 'Tighten the password policy' options are distractors in phishing scenarios.",
+        "simpleExplanation": "The attacker went through two doors: stole the password with a fake website, and captured the SMS code by having the phone line transferred to themselves (SIM swap). An SMS code is tied to the phone number; if the number is stolen, so is the code. A FIDO2 hardware key, on the other hand, stays physically with you like a house key and only unlocks the real bank website; even if it is plugged in on a fake site, it does not work. So both the fake site and the SIM swap become useless. Making the password longer or lowering the lockout threshold closes neither of these two doors."
+      },
       "optionExplanations": {
         "A": "Parola ne kadar uzun olsa da oltalama ile aynen ele geçirilir; zorunlu periyodik parola değişimi NIST SP 800-63B tarafından önerilmez (Rev. 4'te açıkça yasaklanmıştır) ve bu zinciri kırmaz.",
         "B": "E-posta OTP, SIM değişimini etkisiz kılar ama e-posta hesabının kendisi de oltalanabilir veya ele geçirilebilir; sahte site üzerinden gerçek zamanlı kod çalma (relay) saldırısına açıktır.",
@@ -386,6 +540,28 @@
       "correctAnswer": "D",
       "explanation": "KVKK md. 3'e göre açık rıza, 'belirli bir konuya ilişkin, bilgilendirilmeye dayanan ve özgür iradeyle açıklanan rıza'dır. Kanun metni bu üç unsuru sayar; Kişisel Verileri Koruma Kurulu'nun kararları ve Kurumun Açık Rıza Rehberi'ndeki uygulamaya göre, bir hizmetin sunulması rızaya bağlanmışsa (hizmet şartı olarak rıza) ve rıza konusu hizmet için gerekli olmayan bir amaçsa, özgür irade unsuru zedelenir ve rıza geçersizdir. Üçüncü taraf ürünlerinin pazarlanması için aktarım, bankacılık hizmetinin ifası için zorunlu değildir; dolayısıyla sözleşmenin ifası hukuki sebebine de dayandırılamaz. Ayrıca rıza 'devam ederek' şeklinde zımni biçimde ve diğer şartlarla paketlenmiş olarak alınmıştır; açık rıza ayrıştırılmış ve olumlu bir irade beyanı gerektirir.",
       "simpleExplanation": "KVKK'da açık rıza, 'ne için izin verdiğini bilerek ve özgürce evet demek' anlamına gelir. Burada banka, 'uygulamayı kullanmak istiyorsan verilerini tatil ve sigorta pazarlaması için başkalarına vermemi kabul etmek zorundasın' diyor. Bu, bir markete girmek için kapıda 'telefon numaranı reklam şirketlerine vermeyi kabul et' kâğıdı imzalatmaya benzer; alışveriş için gerekli olmayan bir şeyi şart koşmaktır. Zorla ve paket hâlinde alınan 'evet' özgür irade sayılmadığı için, Kişisel Verileri Koruma Kurulu'nun uygulamasına göre bu rıza geçersizdir. Üstelik 'kullanmaya devam ederek kabul etmiş sayılırsınız' demek, kişinin açıkça evet demesi değildir.",
+      "en": {
+        "subtopic": "KVKK: explicit consent and legal bases",
+        "question": "A bank has added the following clause to the terms of use of its mobile app: 'By continuing to use the app, you are deemed to have given explicit consent to the transfer of your personal data to our business partners for the purpose of marketing those partners' insurance and holiday products. Customers who do not accept this clause cannot use the app.' In terms of KVKK's concept of explicit consent (açık rıza), which of the following correctly assesses this practice?",
+        "options": {
+          "A": "It is valid, because by accepting the terms the customer has expressly declared their consent",
+          "B": "It is valid, because transfer for marketing purposes is necessary for the performance of the contract in order to provide the banking service",
+          "C": "It is invalid, because KVKK prohibits the transfer of personal data to third parties under all circumstances",
+          "D": "It is invalid, because the consent is imposed as a precondition of the service and so is not based on free will, and it was obtained in a bundled form for a purpose unrelated to the banking service",
+          "E": "It is invalid, because explicit consent can only be obtained by a notarised written document"
+        },
+        "explanation": "Under KVKK Art. 3, explicit consent is 'consent relating to a specific subject, based on being informed, and declared with free will'. The text of the law lists these three elements; according to the decisions of the Personal Data Protection Board (Kişisel Verileri Koruma Kurulu) and the practice in the Authority's Explicit Consent Guide, if the provision of a service is made conditional on consent (consent as a condition of service) and the subject of the consent is a purpose not necessary for the service, the free-will element is impaired and the consent is invalid. Transfer for the marketing of third-party products is not necessary for the performance of the banking service; so it cannot be based on the legal basis of performance of a contract either. Moreover, the consent was obtained implicitly, in the form of 'by continuing', and bundled with the other terms; explicit consent requires a separate and affirmative declaration of will.",
+        "optionExplanations": {
+          "A": "Accepting the terms is not a separate and free declaration of will for the marketing transfer; the consent was obtained in a bundle and by imposition.",
+          "B": "The legal basis of performance of a contract covers only the processing necessary to provide the service; marketing third-party products is not necessary for the performance of the service.",
+          "C": "KVKK does not prohibit transfer; under Arts. 8 and 9, transfer is possible with explicit consent or on other legal bases. The problem is not the transfer itself but the way the consent was obtained.",
+          "D": "Correct. According to Board practice, consent that is tied to a condition of service and bundled for an unrelated purpose is invalid because it does not meet the elements of free will and a specific subject.",
+          "E": "KVKK does not require a notary or any specific form for explicit consent; it can also be obtained electronically. What matters is provability and the presence of the three elements."
+        },
+        "keyConcept": "The three elements of explicit consent: relating to a specific subject, based on being informed, free will. Consent imposed as a precondition of the service or bundled is invalid.",
+        "examTip": "If you see the phrase 'those who do not accept cannot use the service' in the scenario, the free-will element is called into question; the question 'is it necessary for the service?' tests the performance-of-contract basis.",
+        "simpleExplanation": "In KVKK, explicit consent means 'saying yes freely, knowing what you are giving permission for'. Here the bank is saying 'if you want to use the app, you have to accept me giving your data to others for holiday and insurance marketing'. This is like making you sign a paper at the door saying 'agree to give your phone number to advertising companies' in order to enter a supermarket; it imposes a condition that is not needed for shopping. Because a 'yes' obtained by force and in a bundle does not count as free will, under the practice of the Personal Data Protection Board this consent is invalid. On top of that, saying 'by continuing to use you are deemed to have accepted' is not the person clearly saying yes."
+      },
       "optionExplanations": {
         "A": "Sözleşmenin kabulü, pazarlama amaçlı aktarım için ayrı ve özgür bir irade beyanı değildir; rıza paket hâlinde ve dayatma ile alınmıştır.",
         "B": "Sözleşmenin ifası hukuki sebebi, yalnızca hizmetin sunulması için gerekli işlemeyi kapsar; üçüncü taraf ürün pazarlaması hizmetin ifası için zorunlu değildir.",
@@ -6168,6 +6344,28 @@
       "correctAnswer": "C",
       "explanation": "Simetrik şifrelemede her taraf çifti için ayrı bir gizli anahtar gerekir; n taraf için çift sayısı n(n-1)/2'dir. n = 20 için 20 × 19 / 2 = 190 anahtar. Asimetrik şifrelemede her taraf bir açık (public) ve bir özel (private) anahtara sahiptir; başkasıyla konuşmak için ek anahtar gerekmez. n = 20 için 2n = 40 anahtar (20 açık + 20 özel). Bu fark, asimetrik şifrelemenin anahtar dağıtımı sorununu neden çözdüğünü gösterir; ancak asimetrik işlemler yavaş olduğu için uygulamada hibrit yaklaşım (asimetrikle anahtar paylaş, simetrikle veri şifrele) kullanılır.",
       "simpleExplanation": "Simetrik şifrelemede her iki kişi arasında ortak bir gizli anahtar olmalıdır; tıpkı her arkadaş çiftinin kendine özel bir şifreli defteri olması gibi. 20 şube için kaç farklı çift olduğunu sayarsak 20 × 19 / 2 = 190 çift, yani 190 anahtar çıkar. Asimetrik şifrelemede ise her şubenin iki anahtarı vardır: herkese dağıttığı açık anahtar (posta kutusunun yarığı gibi) ve sadece kendinde kalan özel anahtar (kutunun anahtarı gibi). Kiminle konuşacağı fark etmez, her şube için 2 anahtar yeter: 20 × 2 = 40. Şube sayısı arttıkça 190'ın nasıl hızla büyüdüğü, asimetrik şifrelemenin neden icat edildiğini gösterir.",
+      "en": {
+        "subtopic": "Symmetric and asymmetric encryption: number of keys",
+        "question": "A bank's 20 branches want to communicate confidentially with each other in pairs. When symmetric encryption using a separate shared secret key for each pair of branches is compared with asymmetric encryption in which each branch has one public/private key pair, how many keys are required in total, respectively?",
+        "options": {
+          "A": "Symmetric 20, asymmetric 40",
+          "B": "Symmetric 400, asymmetric 20",
+          "C": "Symmetric 190, asymmetric 40",
+          "D": "Symmetric 380, asymmetric 20",
+          "E": "Symmetric 190, asymmetric 20"
+        },
+        "explanation": "In symmetric encryption a separate secret key is needed for each pair of parties; for n parties the number of pairs is n(n-1)/2. For n = 20, 20 × 19 / 2 = 190 keys. In asymmetric encryption each party has one public and one private key; no additional key is needed to talk to anyone else. For n = 20, 2n = 40 keys (20 public + 20 private). This difference shows why asymmetric encryption solves the key distribution problem; however, because asymmetric operations are slow, in practice a hybrid approach is used (share the key asymmetrically, encrypt the data symmetrically).",
+        "optionExplanations": {
+          "A": "20 for symmetric rests on the assumption that each branch can talk to everyone with a single key; in that case anyone who knows the key reads all the traffic, and pairwise confidentiality is not achieved.",
+          "B": "400 = n², which also counts ordered pairs and talking to oneself; moreover, 20 for asymmetric counts only the public keys, the private keys have been forgotten.",
+          "C": "Correct. Symmetric: C(20,2) = 190; asymmetric: 2 × 20 = 40.",
+          "D": "380 = n(n-1), which counts each pair twice (A→B and B→A); a symmetric key is the same in both directions. The asymmetric 20 also fails to count the private keys.",
+          "E": "The symmetric count is correct, but since each branch has two keys (public + private) in the asymmetric case, the total is 40, not 20."
+        },
+        "keyConcept": "Symmetric: n(n-1)/2 keys; asymmetric: 2n keys (one pair per party).",
+        "examTip": "In symmetric key-count questions watch out for the n² and n(n-1) distractors; the correct formula is the combination C(n,2).",
+        "simpleExplanation": "In symmetric encryption there must be a shared secret key between every two people; just like every pair of friends having their own private coded notebook. If we count how many different pairs there are among 20 branches, we get 20 × 19 / 2 = 190 pairs, so 190 keys. In asymmetric encryption each branch has two keys: the public key it hands out to everyone (like the slot of a letterbox) and the private key that stays only with it (like the key to the box). It does not matter who it talks to, 2 keys per branch are enough: 20 × 2 = 40. How quickly 190 grows as the number of branches increases shows why asymmetric encryption was invented."
+      },
       "optionExplanations": {
         "A": "Simetrik için 20, her şubenin tek anahtarla herkesle konuşabileceği varsayımına dayanır; bu durumda anahtarı bilen herkes tüm trafiği okur, ikili gizlilik sağlanmaz.",
         "B": "400 = n², sıralı çiftleri ve kendisiyle konuşmayı da sayar; ayrıca asimetrik için 20 yalnızca açık anahtarları sayar, özel anahtarlar unutulmuştur.",
@@ -6217,6 +6415,28 @@
       "correctAnswer": "A",
       "explanation": "Sezar şifresinde her harf alfabede k konum ileri kaydırılır: C = (P + k) mod 26. A(0)+3 = D, T(19)+3 = 22 = W, M(12)+3 = 15 = P; sonuç 'DWP'. XOR işleminde bitler karşılıklı karşılaştırılır: 0x5A = 0101 1010, 0x3C = 0011 1100. Bit bit XOR: 0110 0110 = 0x66. XOR'un özelliği gereği 0x66 XOR 0x3C = 0x5A olup aynı anahtarla şifre çözülür; bu özellik akış şifrelerinin (stream cipher) ve tek kullanımlık şeridin (one-time pad) temelidir.",
       "simpleExplanation": "Sezar şifresi, alfabedeki her harfi belirli sayıda ileri kaydırmaktır. 3 kaydırırsak A → D, T → W, M → P olur, yani 'ATM' metni 'DWP' olur. XOR ise iki sayıyı bit bit karşılaştırır: bitler aynıysa 0, farklıysa 1 yazar. 0x5A = 0101 1010 ve 0x3C = 0011 1100 sayılarını alt alta koyup her sütuna bakarsak 0110 0110, yani 0x66 çıkar. XOR'un güzel yanı, aynı anahtarla bir kez daha XOR yaparsanız orijinal sayıya geri dönmenizdir; şifreleme ve çözme aynı işlemdir.",
+      "en": {
+        "subtopic": "Classical ciphers: Caesar and the XOR operation",
+        "question": "Two small examples were given in a security class. (1) The text 'ATM' was encrypted with a Caesar cipher with shift 3 over the English alphabet (26 letters). (2) The single-byte plaintext 0x5A was XORed with the key 0x3C. Which of the following gives the results of these two operations, respectively?",
+        "options": {
+          "A": "DWP and 0x66",
+          "B": "DWP and 0x96",
+          "C": "XQJ and 0x66",
+          "D": "DWO and 0x18",
+          "E": "CVL and 0x66"
+        },
+        "explanation": "In the Caesar cipher each letter is shifted k positions forward in the alphabet: C = (P + k) mod 26. A(0)+3 = D, T(19)+3 = 22 = W, M(12)+3 = 15 = P; the result is 'DWP'. In the XOR operation the bits are compared pairwise: 0x5A = 0101 1010, 0x3C = 0011 1100. Bitwise XOR: 0110 0110 = 0x66. By the property of XOR, 0x66 XOR 0x3C = 0x5A, so decryption uses the same key; this property is the basis of stream ciphers and the one-time pad.",
+        "optionExplanations": {
+          "A": "Correct. (A,T,M) + 3 → (D,W,P); 0101 1010 XOR 0011 1100 = 0110 0110 = 0x66.",
+          "B": "The Caesar result is correct, but 0x96 = 1001 0110 is the sum of 0x5A + 0x3C (0x5A + 0x3C = 0x96); XOR has been confused with addition.",
+          "C": "XQJ is obtained with a shift of 3 backwards (the decryption direction): A-3 = X, T-3 = Q, M-3 = J. The XOR result is correct.",
+          "D": "M+3 = P, not O (O = M+2). And 0x18 = 0001 1000 is the result of 0x5A AND 0x3C, not XOR.",
+          "E": "CVL starts with a shift of 2 (A+2=C, T+2=V) but then M+2 should have been O; it is an inconsistent shift. The XOR part is correct."
+        },
+        "keyConcept": "Caesar: C = (P + k) mod 26. XOR: same bits give 0, different bits give 1; a second XOR with the same key returns the plaintext.",
+        "examTip": "In XOR questions write both numbers in binary groups of 4; the addition (ADD) and AND results are typical distractors.",
+        "simpleExplanation": "The Caesar cipher shifts every letter of the alphabet forward by a set number. If we shift by 3, A → D, T → W, M → P, so the text 'ATM' becomes 'DWP'. XOR compares two numbers bit by bit: it writes 0 if the bits are the same and 1 if they are different. If we put the numbers 0x5A = 0101 1010 and 0x3C = 0011 1100 one under the other and look at each column, we get 0110 0110, which is 0x66. The nice thing about XOR is that if you XOR once more with the same key you get back to the original number; encryption and decryption are the same operation."
+      },
       "optionExplanations": {
         "A": "Doğru. (A,T,M) + 3 → (D,W,P); 0101 1010 XOR 0011 1100 = 0110 0110 = 0x66.",
         "B": "Sezar sonucu doğru ancak 0x96 = 1001 0110, 0x5A + 0x3C toplamıdır (0x5A + 0x3C = 0x96); XOR ile toplama karıştırılmıştır.",
@@ -6266,6 +6486,28 @@
       "correctAnswer": "E",
       "explanation": "Tabloda ayse.k ve mehmet.t'nin özetleri aynıdır; bu, her ikisinin aynı parolayı kullandığını hemen ortaya çıkarır (söz konusu değer 'password' kelimesinin SHA-256 özetidir). Tuzsuz özetlerde saldırgan, bir kere hesapladığı sözlük/rainbow tablosunu tüm kullanıcılara aynı anda uygular. Her kullanıcıya özgü rastgele tuz eklendiğinde aynı parola bile farklı özet üretir ve her hesap ayrı ayrı saldırılmak zorunda kalınır. Ayrıca SHA-256 çok hızlı bir genel amaçlı özet fonksiyonu olduğundan saniyede milyarlarca deneme yapılabilir; bcrypt, scrypt veya Argon2 gibi kasıtlı olarak yavaş ve bellek yoğun parola özetleme fonksiyonları kaba kuvvet maliyetini artırır.",
       "simpleExplanation": "Parolaları özet (hash) olarak saklamak, parolayı tanınmaz bir parmak izine çevirmektir. Ama 'tuz' eklenmemişse aynı parolanın parmak izi herkes için aynıdır; tabloda iki kullanıcının özeti birebir aynı, demek ki ikisi de aynı parolayı (bu örnekte 'password') kullanıyor. Saldırgan, yaygın parolaların parmak izlerini önceden hesaplayıp tek seferde tüm tabloyla karşılaştırabilir. Tuz, her kullanıcının parolasına farklı bir rastgele ek koymaktır; böylece aynı parola bile farklı parmak izi üretir ve her hesap ayrı ayrı kırılmak zorunda kalır. Ayrıca SHA-256 çok hızlı olduğu için saldırgan saniyede milyarlarca deneme yapabilir; bcrypt veya Argon2 gibi kasıtlı olarak yavaş fonksiyonlar bu denemeleri çok pahalı hâle getirir.",
+      "en": {
+        "subtopic": "Hash functions and password salting",
+        "question": "In an old internal application at a bank, passwords are stored in the database as SHA-256(password), unsalted. Which of the following gives the weakness that most helps an attacker if the database table leaks, and the correct method for fixing it?",
+        "options": {
+          "A": "SHA-256 is a broken algorithm; MD5 should be adopted",
+          "B": "The same fixed salt value should be used for every user and this salt should be embedded in the source code",
+          "C": "The hash value is too long; the hash of the first 8 characters of the password should be stored",
+          "D": "Passwords should be stored encrypted with AES instead of hashed, so that they can be read back when needed",
+          "E": "Because identical passwords produce identical hashes, precomputed tables (rainbow tables) and bulk dictionary attacks can be applied to all users at once; a random salt should be added per user and a slow password hashing function such as bcrypt/Argon2 should be used"
+        },
+        "explanation": "In the table, the hashes of ayse.k and mehmet.t are identical; this immediately reveals that both use the same password (the value in question is the SHA-256 hash of the word 'password'). With unsalted hashes, the attacker applies a dictionary/rainbow table computed once to all users simultaneously. When a random salt unique to each user is added, even the same password produces a different hash, and every account has to be attacked separately. Moreover, because SHA-256 is a very fast general-purpose hash function, billions of guesses per second are possible; deliberately slow and memory-hard password hashing functions such as bcrypt, scrypt or Argon2 increase the cost of brute force.",
+        "optionExplanations": {
+          "A": "SHA-256 is not broken; on the contrary, MD5 is a deprecated algorithm vulnerable to collision attacks. The problem is not that the algorithm is broken, but that it is unsalted and fast.",
+          "B": "A fixed (global) salt is the same for all users, so identical passwords still produce identical hashes and a single rainbow table suffices; the salt must be per-user and random.",
+          "C": "Shortening the hash length or the input length reduces security; using only the first 8 characters of the password narrows the effective password space.",
+          "D": "Storing passwords in a readable form means all passwords are exposed if the key is compromised; passwords must never be recoverable.",
+          "E": "Correct. Repeated hashes prove the absence of a salt; random salt + a slow password hashing function is the standard solution."
+        },
+        "keyConcept": "A salt makes identical passwords produce different hashes and prevents precomputation attacks; for password hashing, deliberately slow functions (bcrypt, scrypt, Argon2) are used, not fast ones.",
+        "examTip": "If two users in the table have the same hash, conclude 'no salt' immediately; the 'encrypt with AES' option is always wrong because of recoverability.",
+        "simpleExplanation": "Storing passwords as a hash means turning the password into an unrecognisable fingerprint. But if no 'salt' has been added, the fingerprint of the same password is the same for everyone; in the table two users have exactly the same hash, which means they both use the same password ('password' in this example). An attacker can precompute the fingerprints of common passwords and compare them against the whole table in one go. A salt means adding a different random extra to each user's password; that way even the same password produces a different fingerprint and every account has to be cracked separately. Also, because SHA-256 is very fast, the attacker can make billions of guesses per second; deliberately slow functions like bcrypt or Argon2 make those guesses very expensive."
+      },
       "optionExplanations": {
         "A": "SHA-256 kırılmamıştır; aksine MD5 çakışma saldırılarına açık, kullanımdan kaldırılmış bir algoritmadır. Sorun algoritmanın kırıklığı değil, tuzsuz ve hızlı olmasıdır.",
         "B": "Sabit (global) tuz, tüm kullanıcılar için aynı olduğundan aynı parolalar yine aynı özeti üretir ve tek bir rainbow tablosu yeterli olur; tuz kullanıcıya özgü ve rastgele olmalıdır.",
@@ -6316,6 +6558,28 @@
       "correctAnswer": "C",
       "explanation": "Sayısal imzada imzalayan, mesajın özetini (hash) kendi özel anahtarıyla işler; doğrulayan ise imzalayanın açık anahtarıyla bu imzayı açarak elde ettiği özeti, mesajdan kendi hesapladığı özetle karşılaştırır. Özel anahtar yalnızca sahibinde bulunduğu için imza, mesajın o kişiden geldiğini (kaynak doğrulama) ve değişmediğini (bütünlük) kanıtlar; ayrıca imzalayan 'ben imzalamadım' diyemez (inkâr edilemezlik, non-repudiation). Sayısal imza mesajı şifrelemediği için gizlilik sağlamaz; gizlilik için talimatın ayrıca alıcının açık anahtarıyla (veya hibrit biçimde simetrik anahtarla) şifrelenmesi gerekir.",
       "simpleExplanation": "Sayısal imza, bir belgeye yalnızca sizin atabileceğiniz ama herkesin doğrulayabileceği bir mühür basmaktır. Mühür özel anahtarınızla basılır; özel anahtar sadece sizde olduğu için mührü başkası taklit edemez. Karşı taraf, herkese açık olan açık anahtarınızla mührü kontrol eder ve 'bunu gerçekten banka göndermiş ve içerik değişmemiş' sonucuna varır. Banka sonradan 'ben göndermedim' de diyemez; buna inkâr edilemezlik denir. Ancak mühür basmak belgeyi zarfa koymaz; içeriği herkes okuyabilir, yani imza gizlilik sağlamaz. Gizlilik isteniyorsa ayrıca şifreleme gerekir.",
+      "en": {
+        "subtopic": "Digital signatures: which key signs, which verifies",
+        "question": "A bank's treasury unit signs the payment instructions it sends to a correspondent bank with a digital signature. The correspondent bank wants to verify that the instruction really came from the bank and was not altered in transit. Which of the following correctly gives the keys used in the signing and verification process and the security services provided?",
+        "options": {
+          "A": "The bank signs with its own public key, the correspondent verifies with its own private key; confidentiality and integrity are provided",
+          "B": "The bank signs with the correspondent's public key, the correspondent verifies with its own private key; confidentiality is provided",
+          "C": "The bank signs the hash of the instruction with its own private key, the correspondent verifies with the bank's public key; integrity, origin authentication and non-repudiation are provided, confidentiality is not",
+          "D": "The bank and the correspondent sign and verify with a shared symmetric key; non-repudiation is provided",
+          "E": "The bank signs with its own private key, the correspondent verifies with its own private key; integrity and confidentiality are provided"
+        },
+        "explanation": "In a digital signature the signer processes the hash of the message with their own private key; the verifier opens this signature with the signer's public key and compares the hash obtained with the hash they compute from the message themselves. Because the private key is held only by its owner, the signature proves that the message came from that person (origin authentication) and was not altered (integrity); moreover, the signer cannot say 'I did not sign it' (non-repudiation). Since a digital signature does not encrypt the message, it does not provide confidentiality; for confidentiality the instruction must additionally be encrypted with the recipient's public key (or, in hybrid form, with a symmetric key).",
+        "optionExplanations": {
+          "A": "Because the public key is held by everyone, 'signing' with it binds nobody; anyone could have produced the same signature. A signature also does not provide confidentiality.",
+          "B": "Operating with the recipient's public key is encryption, not signing; it provides confidentiality but does not authenticate the origin or give non-repudiation.",
+          "C": "Correct. The private key signs, the counterparty's copy of the public key verifies; integrity + origin authentication + non-repudiation are provided, confidentiality is not.",
+          "D": "A value produced with a shared symmetric key is a MAC/HMAC; because both parties can produce it, it does not provide non-repudiation towards a third party.",
+          "E": "The correspondent's own private key is not mathematically related to the bank's signature; verification can only be done with the bank's public key. Confidentiality is not provided either."
+        },
+        "keyConcept": "Signature: the sender's private key signs, the sender's public key verifies. Encryption: the recipient's public key encrypts, the recipient's private key decrypts.",
+        "examTip": "'Prove who it came from' → the sender's private key; 'only the recipient should read it' → the recipient's public key. A signature does not provide confidentiality.",
+        "simpleExplanation": "A digital signature is stamping a document with a seal that only you can apply but anyone can verify. The seal is applied with your private key; because the private key is only with you, nobody else can forge the seal. The other party checks the seal with your public key, which is open to everyone, and concludes 'the bank really sent this and the content has not changed'. The bank also cannot later say 'I did not send it'; this is called non-repudiation. But stamping a seal does not put the document in an envelope; anyone can read the content, so a signature does not provide confidentiality. If confidentiality is wanted, encryption is needed in addition."
+      },
       "optionExplanations": {
         "A": "Açık anahtar herkeste bulunduğu için onunla 'imzalamak' kimseyi bağlamaz; herkes aynı imzayı üretebilirdi. İmza gizlilik de sağlamaz.",
         "B": "Alıcının açık anahtarıyla işlem yapmak şifrelemedir, imzalama değil; gizlilik sağlar ama kaynağı doğrulamaz ve inkâr edilemezlik vermez.",
@@ -6366,6 +6630,28 @@
       "correctAnswer": "D",
       "explanation": "Açık anahtar altyapısında (PKI) sertifika, bir alan adı ile bir açık anahtarı güvenilir bir sertifika otoritesinin (CA) imzasıyla bağlar. Tarayıcı, sertifikadaki ad eşleşmesini, geçerlilik süresini, imza zincirini güvenilir bir köke kadar ve iptal durumunu (CRL/OCSP) kontrol eder. Sunucunun özel anahtarı ise hiçbir zaman ağ üzerinden gönderilmez; sunucu özel anahtara sahip olduğunu TLS el sıkışmasında bir imza (CertificateVerify) üreterek kanıtlar, tarayıcı bu imzayı sertifikadaki açık anahtarla doğrular. Özel anahtarın gönderilmesi PKI'ın temel ilkesine aykırıdır.",
       "simpleExplanation": "Sertifika, bir web sitesinin 'ben gerçekten bu bankayım' diyen kimlik kartıdır ve güvenilir bir kurum (sertifika otoritesi) tarafından imzalanmıştır. Tarayıcı bu kartta adın siteyle uyuştuğuna, sürenin dolmadığına, imzanın güvenilir bir kuruma kadar zincirleme doğrulandığına ve kartın iptal edilmediğine bakar. Ama sunucunun özel anahtarı hiçbir zaman karşıya gönderilmez; bu, kimliğinizi kanıtlamak için evinizin anahtarını yabancıya vermek gibi olurdu. Sunucu, özel anahtara sahip olduğunu bir imza üreterek kanıtlar; tarayıcı bu imzayı karttaki açık anahtarla kontrol eder. Bu yüzden 'özel anahtarın gönderilmesi' doğrulama sürecinin parçası değildir.",
+      "en": {
+        "subtopic": "PKI, certificates and the certificate authority",
+        "question": "While a customer connects to the bank's internet branch, the browser validates the X.509 certificate received from the server. Which of the following is NOT part of this validation process?",
+        "options": {
+          "A": "Checking that the domain name in the certificate (Subject/SAN) matches the domain being visited",
+          "B": "Checking the certificate's validity dates (not before / not after)",
+          "C": "Verifying the certificate authority (CA) signature on the certificate along the chain with the CA public key in the browser's trusted root store",
+          "D": "The server's private key being sent to the browser and checked to match the public key in the certificate",
+          "E": "Checking via CRL or OCSP that the certificate has not been revoked"
+        },
+        "explanation": "In a public key infrastructure (PKI), a certificate binds a domain name to a public key with the signature of a trusted certificate authority (CA). The browser checks the name match in the certificate, the validity period, the signature chain up to a trusted root, and the revocation status (CRL/OCSP). The server's private key, however, is never sent over the network; the server proves possession of the private key by producing a signature (CertificateVerify) during the TLS handshake, and the browser verifies this signature with the public key in the certificate. Sending the private key would contradict the fundamental principle of PKI.",
+        "optionExplanations": {
+          "A": "The name match proves that the certificate was issued for the site being visited; if it does not match, a 'common name invalid' warning appears. It is part of validation.",
+          "B": "An expired or not-yet-valid certificate is rejected; the date check is part of validation.",
+          "C": "Chain validation (server certificate → intermediate CA → root CA) is the core of PKI trust; the browser checks the signatures with the root CA public key.",
+          "D": "Correct (it is not part of the process). The private key is never sent; possession is proven by verifying a signature produced with the private key against the public key.",
+          "E": "The revocation check ensures that certificates whose keys have leaked or that were wrongly issued are rejected; it is done via CRL or OCSP."
+        },
+        "keyConcept": "Certificate = identity + public key + CA signature. Validation: name, dates, chain, revocation. The private key is never shared; possession is proven with a signature.",
+        "examTip": "In 'is NOT' questions, the option involving the private key being sent, shared or handed to the CA is almost always the answer being sought.",
+        "simpleExplanation": "A certificate is a website's identity card saying 'I really am this bank', signed by a trusted organisation (the certificate authority). The browser checks that the name on this card matches the site, that it has not expired, that the signature chains up to a trusted organisation, and that the card has not been cancelled. But the server's private key is never sent across; that would be like handing a stranger the key to your house to prove your identity. The server proves it has the private key by producing a signature; the browser checks that signature with the public key on the card. That is why 'sending the private key' is not part of the validation process."
+      },
       "optionExplanations": {
         "A": "Ad eşleşmesi, sertifikanın ziyaret edilen site için verildiğini kanıtlar; eşleşmezse 'common name invalid' uyarısı çıkar. Doğrulamanın parçasıdır.",
         "B": "Süresi geçmiş veya henüz başlamamış sertifika reddedilir; tarih kontrolü doğrulamanın parçasıdır.",
@@ -6417,6 +6703,28 @@
       "correctAnswer": "D",
       "explanation": "TLS hibrit bir sistemdir. Asimetrik bileşenler iki iş yapar: (1) ECDHE (geçici eliptik eğri Diffie-Hellman) ile iki taraf, ağı dinleyen birinin hesaplayamayacağı bir paylaşılan sır üzerinde anlaşır; (2) sunucu, sertifikasındaki açık anahtara karşılık gelen özel anahtarla el sıkışmayı imzalayarak kimliğini kanıtlar. Paylaşılan sırdan anahtar türetme fonksiyonu (HKDF) ile simetrik oturum anahtarları üretilir ve asıl veri, çok daha hızlı olan AES-256-GCM ile şifrelenir; GCM aynı zamanda bütünlük (AEAD) sağlar. ECDHE geçici anahtar kullandığı için sunucunun uzun ömürlü anahtarı sonradan sızsa bile geçmiş oturumlar çözülemez (ileri gizlilik, forward secrecy).",
       "simpleExplanation": "TLS iki tür şifrelemeyi birlikte kullanır çünkü her birinin iyi olduğu iş farklıdır. Asimetrik yöntemler yavaş ama tanışma için idealdir: ECDHE ile iki taraf, hattı dinleyen birinin hesaplayamayacağı ortak bir sır üretir; sertifika ve imza ise 'karşımdaki gerçekten banka' güvencesini verir. Bu ortak sırdan türetilen simetrik anahtarla asıl veriler AES-GCM ile hızla şifrelenir; AES çok hızlıdır ve aynı zamanda verinin yolda değiştirilmediğini de kontrol eder. Bunu şöyle düşünün: önce kimlik göstererek bir kez buluşup gizli bir parola kararlaştırırsınız, sonra bütün yazışmayı o parolayla hızlıca yaparsınız. Her oturumda yeni bir sır üretildiği için sunucunun uzun ömürlü anahtarı yıllar sonra çalınsa bile eski yazışmalar okunamaz.",
+      "en": {
+        "subtopic": "The TLS handshake and hybrid encryption",
+        "question": "A mobile banking app communicates with the server over TLS 1.3. During the handshake, ECDHE key exchange and a server certificate are used, and after the handshake the transaction data is encrypted with AES-256-GCM. Which of the following statements about the roles of the asymmetric and symmetric components in this design is correct?",
+        "options": {
+          "A": "The transaction data is encrypted with the server's RSA/ECDSA public key; AES protects only the handshake messages",
+          "B": "ECDHE does not provide confidentiality, it only authenticates the server; authentication is in turn performed by AES-GCM",
+          "C": "The public key in the certificate is used directly as the AES key, so no key exchange is needed",
+          "D": "ECDHE produces an ephemeral shared secret for each session and symmetric session keys are derived from this secret; the certificate authenticates the server; AES-GCM encrypts the bulk data quickly and protects its integrity",
+          "E": "If the server's long-term private key is compromised, all sessions recorded in the past can also be decrypted, because the session key was sent encrypted with this private key"
+        },
+        "explanation": "TLS is a hybrid system. The asymmetric components do two jobs: (1) with ECDHE (ephemeral elliptic-curve Diffie-Hellman) the two parties agree on a shared secret that an eavesdropper on the network cannot compute; (2) the server proves its identity by signing the handshake with the private key corresponding to the public key in its certificate. Symmetric session keys are produced from the shared secret with a key derivation function (HKDF), and the actual data is encrypted with the much faster AES-256-GCM; GCM also provides integrity (AEAD). Because ECDHE uses ephemeral keys, past sessions cannot be decrypted even if the server's long-term key leaks later (forward secrecy).",
+        "optionExplanations": {
+          "A": "Bulk data is not protected with asymmetric encryption; asymmetric operations are slow and the data size is limited. The roles are written the wrong way round.",
+          "B": "It is the exact opposite: ECDHE provides key agreement (the basis of confidentiality), authentication is done with the certificate and signature; AES-GCM does not authenticate, it encrypts data and provides integrity.",
+          "C": "The public key is open to everyone; using it as the symmetric key would destroy confidentiality entirely. Moreover, a public key and an AES key differ in size and structure.",
+          "D": "Correct. ECDHE → ephemeral shared secret → HKDF → symmetric keys; certificate → identity; AES-GCM → fast encryption + integrity.",
+          "E": "This statement describes the RSA key transport method and explains the lack of forward secrecy; TLS 1.3 removed this method, with ECDHE the session key is not encrypted with the private key and past sessions remain protected."
+        },
+        "keyConcept": "TLS = asymmetric (authentication + key agreement) + symmetric (fast data encryption). Ephemeral DH (ECDHE) provides forward secrecy.",
+        "examTip": "In hybrid-system questions, eliminate the option 'bulk data is encrypted with the asymmetric key'; pair the word 'ephemeral' with forward secrecy.",
+        "simpleExplanation": "TLS uses two kinds of encryption together because each is good at a different job. Asymmetric methods are slow but ideal for the introduction: with ECDHE the two parties produce a shared secret that someone listening on the line cannot compute; the certificate and signature give the assurance 'the other side really is the bank'. With the symmetric key derived from this shared secret, the actual data is encrypted quickly with AES-GCM; AES is very fast and also checks that the data was not altered on the way. Think of it like this: first you meet once, show ID and agree a secret password, then you do all the correspondence quickly with that password. Because a new secret is produced in every session, even if the server's long-term key is stolen years later, the old correspondence cannot be read."
+      },
       "optionExplanations": {
         "A": "Toplu veri asimetrik şifrelemeyle korunmaz; asimetrik işlemler yavaştır ve veri boyutu sınırlıdır. Roller tersine yazılmıştır.",
         "B": "Tam tersidir: ECDHE anahtar anlaşması (gizliliğin temeli) sağlar, kimlik doğrulama sertifika ve imza ile yapılır; AES-GCM kimlik doğrulamaz, veri şifreler ve bütünlük sağlar.",
@@ -6467,6 +6775,28 @@
       "correctAnswer": "A",
       "explanation": "HMAC (Hash-based Message Authentication Code), paylaşılan gizli anahtar ve bir özet fonksiyonuyla hesaplanır; bütünlük ve 'anahtarı bilen biri tarafından üretildi' anlamında kaynak doğrulama sağlar. Ancak anahtar her iki tarafta da bulunduğu için alıcı da aynı HMAC'i üretebilir; dolayısıyla üçüncü bir tarafa (mahkeme) mesajı hangi tarafın ürettiği kanıtlanamaz, inkâr edilemezlik (non-repudiation) yoktur. Sayısal imza ise yalnızca imzalayanın özel anahtarıyla üretilebildiği için inkâr edilemezlik sağlar; buna karşılık asimetrik işlemler HMAC'ten çok daha yavaştır. Bu nedenle yüksek hacimli, aynı güven alanındaki iç servisler için HMAC; hukuki kanıt gereken dış taraf iletişimi için sayısal imza uygundur.",
       "simpleExplanation": "HMAC, iki tarafın paylaştığı gizli bir anahtarla mesaja mühür basmaktır; hızlıdır ve mesajın değişmediğini gösterir. Ama mührü her iki taraf da basabildiği için üçüncü bir kişiye (örneğin mahkemeye) 'bunu kesinlikle karşı taraf gönderdi' diye kanıtlayamazsınız; karşı taraf 'sen de aynı anahtara sahipsin, kendin yazmış olabilirsin' diyebilir. Sayısal imza ise yalnızca gönderenin özel anahtarıyla üretilir; bu yüzden gönderen inkâr edemez. Bankanın kendi içindeki iki servis için hızlı ve pratik olan HMAC yeterlidir, ama dış kuruluşa giden ve mahkemede kanıt olacak ödeme talimatları için sayısal imza gerekir. 'Kim gönderdiğini üçüncü tarafa kanıtlamak' gerekiyorsa cevap her zaman imzadır.",
+      "en": {
+        "subtopic": "HMAC compared with digital signatures",
+        "question": "A bank is choosing an integrity and origin authentication mechanism for two different integrations. Scenario 1: High-volume messaging between two of the bank's own internal microservices. Scenario 2: Payment instructions sent by the bank to a payment institution, which in the event of a dispute must be usable in court as proof that 'the bank sent this instruction'. Which of the following assessments of the choice between HMAC-SHA256 and an RSA/ECDSA digital signature is correct?",
+        "options": {
+          "A": "HMAC is suitable for Scenario 1 (fast, the shared key can be managed within the organisation); a digital signature is required for Scenario 2, because the HMAC key is held by both parties and so it cannot be proven to a third party which party produced the message",
+          "B": "A digital signature is mandatory in both scenarios; HMAC does not provide integrity",
+          "C": "HMAC is sufficient in both scenarios; HMAC provides non-repudiation just like a digital signature",
+          "D": "A digital signature is suitable for Scenario 1 and HMAC for Scenario 2, because HMAC is asymmetric and so does not require trust between the parties",
+          "E": "HMAC provides only encryption and a signature provides only integrity; therefore the two must be used together"
+        },
+        "explanation": "HMAC (Hash-based Message Authentication Code) is computed with a shared secret key and a hash function; it provides integrity and origin authentication in the sense of 'produced by someone who knows the key'. But because the key is held by both parties, the recipient can also produce the same HMAC; so it cannot be proven to a third party (a court) which party produced the message, and there is no non-repudiation. A digital signature, which can only be produced with the signer's private key, provides non-repudiation; on the other hand, asymmetric operations are much slower than HMAC. Therefore HMAC is suitable for high-volume internal services within the same trust domain, and a digital signature for communication with external parties where legal proof is required.",
+        "optionExplanations": {
+          "A": "Correct. HMAC is fast and symmetric (ideal for internal use); a signature is asymmetric and provides non-repudiation (required for external parties and legal proof).",
+          "B": "HMAC provides integrity and origin authentication; the only thing missing is non-repudiation. A signature is not mandatory for internal services and brings unnecessary performance cost.",
+          "C": "HMAC does not provide non-repudiation; because the recipient also holds the key, the claim 'the other party produced this message' cannot be proven to a third party.",
+          "D": "HMAC is symmetric, not asymmetric; the roles are written the wrong way round. HMAC is insufficient in the scenario requiring legal proof.",
+          "E": "HMAC does not encrypt, the message remains in the clear; and a signature provides not only integrity but also origin authentication and non-repudiation. Using the two mechanisms together is not necessary for this purpose."
+        },
+        "keyConcept": "HMAC: symmetric, fast, integrity + origin authentication, no non-repudiation. Digital signature: asymmetric, slow, integrity + origin authentication + non-repudiation.",
+        "examTip": "If the scenario mentions 'proof to a third party', 'court' or 'repudiation', the answer is a digital signature; if it is 'high volume, internal system', HMAC.",
+        "simpleExplanation": "HMAC is stamping a message with a secret key shared by two parties; it is fast and shows that the message has not changed. But because both parties can apply the stamp, you cannot prove to a third person (for example a court) that 'the other party definitely sent this'; the other party can say 'you have the same key too, you could have written it yourself'. A digital signature, on the other hand, is produced only with the sender's private key; that is why the sender cannot deny it. For two services inside the bank, the fast and practical HMAC is enough, but for payment instructions going to an external institution that will be evidence in court, a digital signature is needed. If 'proving to a third party who sent it' is required, the answer is always a signature."
+      },
       "optionExplanations": {
         "A": "Doğru. HMAC hızlı ve simetriktir (iç kullanım için ideal); imza asimetrik olup inkâr edilemezlik sağlar (dış taraf ve hukuki kanıt için gerekli).",
         "B": "HMAC bütünlük ve kaynak doğrulama sağlar; eksik olan yalnızca inkâr edilemezliktir. İç servisler için imza zorunlu değildir ve gereksiz performans maliyeti getirir.",
@@ -6517,6 +6847,28 @@
       "correctAnswer": "B",
       "explanation": "Entropi, olası değer sayısının 2 tabanında logaritmasıdır. 6 haneli PIN için 10^6 olasılık vardır: log2(10^6) = 6 × log2(10) ≈ 6 × 3,32 ≈ 19,9 bit. Saniyede 10^9 deneme ile 10^6 değerin tamamı 0,001 saniyede taranır. 128 bitlik anahtar için 2^128 ≈ 3,4 × 10^38 olasılık vardır; aynı hızla tarama 3,4 × 10^29 saniye ≈ 10^22 yıl sürer (evrenin yaşı ≈ 1,4 × 10^10 yıl). Bu nedenle PIN, çevrimdışı kaba kuvvete karşı asla dayanamaz; güvenliği yanlış deneme sayısı sınırı, gecikme (rate limiting), cihaz bağlama ve donanım güvenli bölge gibi dış kontrollerle sağlanır. Özet almak entropi eklemez; girdi uzayı yine 10^6'dır.",
       "simpleExplanation": "Entropi, 'kaç farklı olasılık var' sorusunun bit cinsinden ifadesidir. 6 haneli PIN'in 1 milyon olasılığı vardır; bu yaklaşık 20 bit eder, çünkü her ondalık hane 10 bit değil yaklaşık 3,3 bit taşır. Saniyede 1 milyar deneme yapan bir saldırgan 1 milyon olasılığı saniyenin binde birinde bitirir. 128 bitlik anahtarın olasılık sayısı ise 2^128, yani 3 ve ardından 38 sıfır; aynı hızla taramak evrenin yaşından trilyonlarca kat uzun sürer. Bu yüzden PIN'in güvenliği kendisinden değil, 'üç yanlıştan sonra kilitlenir' gibi deneme sınırlarından ve cihaza bağlı olmasından gelir. PIN'i özetlemek (hash) de yardımcı olmaz; saldırgan 1 milyon PIN'in hepsini özetleyip karşılaştırır.",
+      "en": {
+        "subtopic": "Reasoning about key length and entropy",
+        "question": "A bank's security architect is comparing the entropy of the 6-digit numeric PIN (000000-999999) used for mobile app login with that of a random 128-bit AES key. An offline scenario in which the attacker can make 10^9 guesses per second is assumed. Which of the following assessments is correct?",
+        "options": {
+          "A": "A 6-digit PIN has about 60 bits of entropy (6 × 10 bits); it is at a level comparable to AES-128",
+          "B": "A 6-digit PIN has about 20 bits of entropy and in an offline attack the whole space is searched in under 1 second; searching the whole space of a 128-bit key at the same rate would take a time exceeding the age of the universe many times over; therefore the PIN's security rests not on its entropy but on external controls such as online attempt limiting and device binding",
+          "C": "Increasing the AES-128 key length to 256 bits increases security 2-fold, whereas increasing the PIN to 7 digits increases it 10-fold, so lengthening the PIN is more effective",
+          "D": "The number of entropy bits equals the number of characters; a 6-digit PIN has 6 bits and a 16-character AES key has 16 bits of entropy",
+          "E": "Hashing the 6-digit PIN with SHA-256 raises its entropy to 256 bits and makes it as secure as AES-128 against offline attack"
+        },
+        "explanation": "Entropy is the base-2 logarithm of the number of possible values. For a 6-digit PIN there are 10^6 possibilities: log2(10^6) = 6 × log2(10) ≈ 6 × 3.32 ≈ 19.9 bits. At 10^9 guesses per second, all 10^6 values are searched in 0.001 seconds. For a 128-bit key there are 2^128 ≈ 3.4 × 10^38 possibilities; searching at the same rate takes 3.4 × 10^29 seconds ≈ 10^22 years (the age of the universe is ≈ 1.4 × 10^10 years). Therefore the PIN can never withstand offline brute force; its security is provided by external controls such as a limit on the number of wrong attempts, delays (rate limiting), device binding and a hardware secure enclave. Hashing does not add entropy; the input space is still 10^6.",
+        "optionExplanations": {
+          "A": "Each decimal digit carries log2(10) ≈ 3.32 bits, not 10; 6 digits ≈ 20 bits. The 60-bit calculation confuses the number of digits with the number of bits.",
+          "B": "Correct. log2(10^6) ≈ 19.9 bits; 10^6 / 10^9 = 1 ms. 2^128 / 10^9 seconds ≈ 10^22 years. PIN security depends on external controls.",
+          "C": "Increasing the key from 128 to 256 bits enlarges the space by a factor of 2^128, not 2; adding one digit to the PIN enlarges it only 10-fold (≈3.3 bits). The comparison is made backwards.",
+          "D": "Entropy is not the number of characters but the logarithm of the number of possible values; a 6-digit PIN ≈ 20 bits, a random 128-bit key is 128 bits.",
+          "E": "A hash function does not expand the input space; the attacker hashes each of the 10^6 PINs and compares. The output length (256 bits) and the input entropy (≈20 bits) are different concepts."
+        },
+        "keyConcept": "Entropy = log2(number of possible values). Each decimal digit ≈ 3.32 bits. Hashing does not add entropy; low-entropy secrets are protected only by attempt limiting.",
+        "examTip": "In entropy calculations do not fall for the 'digits × 10' or 'character = bit' distractors; the approximation 2^10 ≈ 10^3 gives a quick conversion (10 bits ≈ 3 digits).",
+        "simpleExplanation": "Entropy is the question 'how many different possibilities are there' expressed in bits. A 6-digit PIN has 1 million possibilities; that is about 20 bits, because each decimal digit carries roughly 3.3 bits, not 10. An attacker making 1 billion guesses per second finishes 1 million possibilities in a thousandth of a second. The number of possibilities for a 128-bit key is 2^128, that is a 3 followed by 38 zeros; searching it at the same speed would take trillions of times longer than the age of the universe. That is why the PIN's security comes not from itself but from attempt limits like 'locks after three wrong tries' and from being tied to the device. Hashing the PIN does not help either; the attacker hashes all 1 million PINs and compares."
+      },
       "optionExplanations": {
         "A": "Her ondalık hane 10 bit değil log2(10) ≈ 3,32 bit taşır; 6 hane ≈ 20 bittir. 60 bit hesabı, hane sayısını bit sayısıyla karıştırmaktır.",
         "B": "Doğru. log2(10^6) ≈ 19,9 bit; 10^6 / 10^9 = 1 ms. 2^128 / 10^9 saniye ≈ 10^22 yıl. PIN güvenliği dış kontrollere bağlıdır.",
@@ -6567,6 +6919,28 @@
       "correctAnswer": "A",
       "explanation": "NIST SP 800-145 üç hizmet modelini müşterinin yönettiği katmana göre ayırır. SaaS (Software as a Service) modelinde müşteri hazır uygulamayı kullanır, yalnızca kullanıcı düzeyi ayarları yönetir (örnek 1: e-posta/ofis paketi). PaaS (Platform as a Service) modelinde müşteri kendi uygulamasını dağıtır ancak işletim sistemi, çalışma zamanı ve ara katmanı sağlayıcı yönetir (örnek 2). IaaS (Infrastructure as a Service) modelinde sağlayıcı yalnızca işlem, depolama ve ağ kaynaklarını sunar; işletim sisteminden itibaren her şeyi müşteri kurar ve yönetir (örnek 3).",
       "simpleExplanation": "Bulut hizmet modellerini 'ne kadarını ben yönetiyorum' sorusuyla ayırırız; pizza benzetmesi işe yarar. SaaS, restoranda pizza yemektir: her şey hazır, siz sadece yersiniz; tarayıcıdan kullanılan e-posta paketi budur. PaaS, mutfağı ve fırını hazır bulup kendi pizzanızı yapmaktır: siz kodu (malzemeyi) getirirsiniz, fırını ve işletim sistemini sağlayıcı bakımda tutar. IaaS ise boş bir mutfak kiralamaktır: fırın, tezgâh ve elektrik verilir ama işletim sistemi dâhil her şeyi siz kurar ve yönetirsiniz. Sıra bu yüzden SaaS, PaaS, IaaS'tır.",
+      "en": {
+        "subtopic": "IaaS, PaaS and SaaS service models",
+        "question": "A bank uses three different cloud services: (1) A corporate e-mail and office application suite accessed by employees through a browser, in which the bank manages only user accounts and settings. (2) An application platform where developers upload and run their code, with operating system patches and runtime updates performed by the provider. (3) Virtual servers on which the bank installs and manages its own operating system, with the provider offering only virtual machines, storage and networking. Which service models are these services examples of, respectively?",
+        "options": {
+          "A": "SaaS, PaaS, IaaS",
+          "B": "PaaS, SaaS, IaaS",
+          "C": "SaaS, IaaS, PaaS",
+          "D": "IaaS, PaaS, SaaS",
+          "E": "PaaS, IaaS, SaaS"
+        },
+        "explanation": "NIST SP 800-145 distinguishes the three service models by the layer the customer manages. In the SaaS (Software as a Service) model the customer uses a ready-made application and manages only user-level settings (example 1: the e-mail/office suite). In the PaaS (Platform as a Service) model the customer deploys its own application, but the operating system, runtime and middleware are managed by the provider (example 2). In the IaaS (Infrastructure as a Service) model the provider offers only compute, storage and network resources; the customer installs and manages everything from the operating system upwards (example 3).",
+        "optionExplanations": {
+          "A": "Correct. Ready-made application → SaaS; upload code, provider manages the platform → PaaS; you install the operating system → IaaS.",
+          "B": "In the first service the customer does not deploy code, it uses a ready-made application; this is SaaS, not PaaS. In the second service there is code deployment, so it is PaaS, not SaaS.",
+          "C": "In the second service the provider manages the operating system; the model in which the customer manages the operating system is IaaS, and that corresponds to the third service.",
+          "D": "The order is completely reversed; the e-mail suite is SaaS, the highest level of abstraction, and the virtual server is IaaS, the lowest level.",
+          "E": "The third service cannot be SaaS because the customer installs the operating system itself; in SaaS the customer never touches the infrastructure."
+        },
+        "keyConcept": "Responsibility boundary: IaaS → from the operating system upwards is the customer's; PaaS → application and data are the customer's; SaaS → only usage and settings are the customer's.",
+        "examTip": "Ask 'what does the customer install/manage?': operating system → IaaS; code only → PaaS; nothing, just uses it → SaaS.",
+        "simpleExplanation": "We distinguish cloud service models by the question 'how much of it do I manage'; the pizza analogy helps. SaaS is eating pizza at a restaurant: everything is ready, you just eat; the e-mail suite used from a browser is this. PaaS is finding the kitchen and oven ready and making your own pizza: you bring the code (the ingredients), the provider maintains the oven and the operating system. IaaS is renting an empty kitchen: the oven, the counter and the electricity are provided, but you install and manage everything, operating system included. So the order is SaaS, PaaS, IaaS."
+      },
       "optionExplanations": {
         "A": "Doğru. Hazır uygulama → SaaS; kod yükle, platformu sağlayıcı yönetir → PaaS; işletim sistemini sen kur → IaaS.",
         "B": "Birinci hizmette müşteri kod dağıtmamakta, hazır uygulamayı kullanmaktadır; bu PaaS değil SaaS'tır. İkinci hizmette ise kod dağıtımı vardır, SaaS değil PaaS'tır.",
@@ -6616,6 +6990,28 @@
       "correctAnswer": "B",
       "explanation": "NIST, hızlı esnekliği (rapid elasticity) bulutun beş temel özelliğinden biri olarak tanımlar: kaynaklar talebe göre, çoğu zaman otomatik olarak, hızla artırılır ve azaltılır; böylece kullanıcıya sınırsız kaynak varmış gibi görünür ve yalnızca kullanılan kadar ödenir. Ölçeklenebilirlik daha genel bir sistem özelliğidir: sistemin artan yükü kaynak eklenerek (yatay: örnek sayısı; dikey: örnek gücü) karşılayabilme yeteneğidir; elle yapılabilir ve kaynakları geri azaltmayı içermesi gerekmez. Senaryodaki 'otomatik ekleme ve kaldırma', esnekliğin tanımıdır; teknik olarak yatay ölçekleme (scale-out/in) kullanılmaktadır.",
       "simpleExplanation": "Esneklik, kaynakların ihtiyaca göre kendiliğinden hem artması hem de azalmasıdır; bir lastik bant gibi gerildiğinde uzar, bırakıldığında eski hâline döner. Maaş günü istekler 5 kat artınca otomatik sunucu eklenmesi, yük düşünce bunların otomatik kaldırılması tam olarak bu davranıştır. Ölçeklenebilirlik ise daha genel bir kavramdır: 'bu sistem büyüyebilir mi' sorusunun cevabıdır; elle sunucu ekleyerek de sağlanabilir ve geri küçülmeyi içermesi gerekmez. Yani her esnek sistem ölçeklenebilir, ama her ölçeklenebilir sistem esnek değildir. 'Otomatik' ve 'geri azalma' kelimeleri esnekliğin işaretidir.",
+      "en": {
+        "subtopic": "Elasticity and scalability",
+        "question": "A bank's mobile banking back end receives 5 times the normal number of requests on payday. In the cloud environment, new server instances are added automatically during this load increase, and when the load drops these instances are removed automatically. Which of the following correctly gives the concept that best describes this behaviour and its difference from scalability?",
+        "options": {
+          "A": "Scalability; elasticity is only the ability to increase storage capacity",
+          "B": "Elasticity; it is the automatic, two-way (increase/decrease) adjustment of resources according to demand. Scalability is the ability of the system's capacity to be increased, and does not have to be automatic or in the decreasing direction",
+          "C": "Vertical scaling (scale-up); it is the increase of the CPU and memory capacity of existing servers",
+          "D": "High availability; it ensures that the system runs without interruption",
+          "E": "Multi-tenancy; it is the sharing of the same resources by more than one customer"
+        },
+        "explanation": "NIST defines rapid elasticity as one of the five essential characteristics of cloud: resources are rapidly increased and decreased according to demand, often automatically; so resources appear unlimited to the user and only what is used is paid for. Scalability is a more general system property: the system's ability to handle increasing load by adding resources (horizontal: number of instances; vertical: power of an instance); it can be done manually and need not include scaling resources back down. The 'automatic adding and removing' in the scenario is the definition of elasticity; technically, horizontal scaling (scale-out/in) is being used.",
+        "optionExplanations": {
+          "A": "The scenario has automatic and two-way adjustment; that is elasticity. Elasticity is not limited to storage, it applies to all resource types.",
+          "B": "Correct. Elasticity = automatic, two-way resource adjustment according to demand; scalability = the ability to increase capacity (general concept).",
+          "C": "In the scenario the number of servers is increased (horizontal scaling, scale-out); enlarging an existing server (vertical) is not involved.",
+          "D": "High availability is about the service continuing when components fail; it is not adjusting resources according to load fluctuations.",
+          "E": "Multi-tenancy is the provider sharing resources among different customers; it does not describe automatic resource adjustment according to a single customer's load."
+        },
+        "keyConcept": "Elasticity = automatic, demand-driven, two-way resource adjustment (an essential cloud characteristic). Scalability = the ability to increase capacity (more general).",
+        "examTip": "The phrases 'automatic' and 'taken back when the load drops' point to elasticity; 'can carry more load' alone is scalability.",
+        "simpleExplanation": "Elasticity is resources both growing and shrinking by themselves according to need; like a rubber band that stretches when pulled and returns to its old shape when released. Servers being added automatically when requests rise 5-fold on payday, and being removed automatically when the load drops, is exactly this behaviour. Scalability is a more general concept: it is the answer to 'can this system grow'; it can also be achieved by adding servers manually and need not include shrinking back. So every elastic system is scalable, but not every scalable system is elastic. The words 'automatic' and 'scaling back down' are the signs of elasticity."
+      },
       "optionExplanations": {
         "A": "Senaryoda otomatik ve çift yönlü ayarlama vardır; bu esnekliktir. Esneklik depolamayla sınırlı değildir, tüm kaynak türleri için geçerlidir.",
         "B": "Doğru. Esneklik = talebe göre otomatik, çift yönlü kaynak ayarı; ölçeklenebilirlik = kapasite artırma yeteneği (genel kavram).",
@@ -6665,6 +7061,28 @@
       "correctAnswer": "E",
       "explanation": "Paylaşılan sorumluluk modelinde sağlayıcı 'bulutun güvenliğinden' (security of the cloud: fiziksel veri merkezi, donanım, hipervizör, altyapı ağı), müşteri ise 'buluttaki güvenlikten' (security in the cloud) sorumludur. IaaS'ta müşterinin sorumluluğu en geniştir: konuk işletim sistemi ve yamaları, kurulan yazılımlar, kimlik ve erişim yönetimi, verinin şifrelenmesi ve depolama kaynaklarının erişim yapılandırması. Senaryodaki iki eksiklik de (yamalanmamış işletim sistemi, herkese açık ve şifrelenmemiş yedek) tipik müşteri yapılandırma hatalarıdır. Veri ve erişim yönetimi hizmet modelinden bağımsız olarak her zaman müşteride kalır. BDDK açısından da bankanın dış hizmet aldığında nihai sorumluluğu devredilemez.",
       "simpleExplanation": "Bulutta güvenlik sorumluluğu, ev sahibi ile kiracı arasındaki gibi paylaşılır. IaaS modelinde sağlayıcı binayı, elektriği ve temeli (fiziksel veri merkezi, donanım, hipervizör) korur; kiracı olan banka ise dairenin içindeki her şeyden, yani işletim sistemini güncellemekten, kapıyı kilitlemekten (depolama izinleri) ve değerli eşyaları kasaya koymaktan (şifreleme) sorumludur. Yamalanmamış işletim sistemi ve herkese açık, şifrelenmemiş yedek tam olarak 'daire içi' hatalardır. Dolayısıyla 'sağlayıcının sorumluluğu' iddiası yanlıştır. Hangi modelde olursa olsun veri ve erişim yönetimi her zaman müşteride kalır.",
+      "en": {
+        "subtopic": "The shared responsibility model",
+        "question": "A bank runs its loan application system on virtual machines rented under the IaaS model. An audit found that the operating system on the virtual machine had not been patched for 8 months, and that an unencrypted backup of the application database was in a storage bucket open to the internet. The bank's management says 'these security gaps are the responsibility of the cloud provider'. In terms of the shared responsibility model, which of the following assessments is correct?",
+        "options": {
+          "A": "Management is right; in the cloud all security responsibility belongs to the provider",
+          "B": "Management is right; in IaaS the provider is responsible for operating system patches, the bank is responsible only for the application",
+          "C": "Responsibility is determined only by what is written in the contract; if there is no clause in the contract, the provider is responsible",
+          "D": "Management is partly right; the operating system patch is the bank's responsibility, but the storage bucket permissions are the provider's responsibility",
+          "E": "Management is wrong; in the IaaS model, patching the guest operating system, encrypting the data and configuring storage access permissions are the customer's responsibility; the provider is responsible for the security of the physical infrastructure, the hypervisor and the network backbone"
+        },
+        "explanation": "In the shared responsibility model the provider is responsible for 'security of the cloud' (the physical data centre, hardware, hypervisor, infrastructure network) and the customer for 'security in the cloud'. In IaaS the customer's responsibility is at its widest: the guest operating system and its patches, installed software, identity and access management, encryption of data and the access configuration of storage resources. Both deficiencies in the scenario (the unpatched operating system, the publicly accessible and unencrypted backup) are typical customer configuration errors. Data and access management always remain with the customer regardless of the service model. From the BDDK perspective too, when a bank obtains an external service its ultimate responsibility cannot be transferred.",
+        "optionExplanations": {
+          "A": "In no cloud model does all responsibility belong to the provider; at the very least, data, access and user management always remain with the customer.",
+          "B": "In IaaS the customer installs and manages the operating system; patching is the customer's job. The provider's patching responsibility applies to the operating system layer only in PaaS/SaaS.",
+          "C": "The contract determines the details, but the general principles of the model are an industry standard; moreover, the bank cannot transfer its ultimate responsibility towards the regulator by contract.",
+          "D": "The storage bucket being publicly accessible is an access policy configuration made by the customer; the provider supplies the tool, how it is configured belongs to the customer.",
+          "E": "Correct. In IaaS the provider is responsible up to the hypervisor and the customer from the operating system upwards; storage permissions and data encryption are customer configuration."
+        },
+        "keyConcept": "Provider: security of the cloud (physical, hypervisor, infrastructure). Customer: security in the cloud (data, access, configuration; in IaaS also the operating system and above).",
+        "examTip": "Every deficiency relating to patching, access permissions, encryption or identity management is the customer's; only the physical/hypervisor level is the provider's. Regardless of the model, data is always the customer's responsibility.",
+        "simpleExplanation": "Security responsibility in the cloud is shared like between a landlord and a tenant. In the IaaS model the provider protects the building, the electricity and the foundations (the physical data centre, hardware, hypervisor); the bank, as the tenant, is responsible for everything inside the flat, that is, updating the operating system, locking the door (storage permissions) and putting the valuables in the safe (encryption). An unpatched operating system and a publicly accessible, unencrypted backup are exactly 'inside the flat' mistakes. So the claim 'it is the provider's responsibility' is wrong. Whatever the model, data and access management always stay with the customer."
+      },
       "optionExplanations": {
         "A": "Hiçbir bulut modelinde tüm sorumluluk sağlayıcıya ait değildir; en azından veri, erişim ve kullanıcı yönetimi her zaman müşteride kalır.",
         "B": "IaaS'ta işletim sistemini müşteri kurar ve yönetir; yamalama müşterinin işidir. Sağlayıcının yama sorumluluğu ancak PaaS/SaaS'ta işletim sistemi katmanı için geçerlidir.",
@@ -6715,6 +7133,28 @@
       "correctAnswer": "D",
       "explanation": "NIST dört dağıtım modeli tanımlar: özel (private), topluluk (community), genel (public) ve hibrit (hybrid). Hibrit bulut, iki veya daha fazla farklı bulut altyapısının (örneğin özel + genel) veri ve uygulama taşınabilirliği sağlayan teknolojiyle birbirine bağlanmasıdır. Senaryoda düzenleyici gereklilik, müşteri verisinin ve birincil/ikincil sistemlerin yurt içinde kalmasını zorunlu kılar; bu kısım özel bulutta kalmalıdır. Kişisel veri içermeyen, dönemsel ve yoğun analitik iş yükü ise genel bulutun esnekliğinden ve kullandıkça öde modelinden yararlanabilir; bu yaklaşım 'cloud bursting' olarak bilinir. Böylece hem uyum hem maliyet etkinliği sağlanır.",
       "simpleExplanation": "Bankanın iki farklı ihtiyacı var: müşteri verisi ve çekirdek sistemler kurallar gereği yurt içinde, kendi kontrolünde kalmalı; pazarlama analitiği ise yılda birkaç kez çok güçlü bilgisayar istiyor ama kişisel veri içermiyor. Her şeyi kendi veri merkezinde tutmak, yılda iki kez kullanacağınız bir kamyonu satın almak gibidir; her şeyi genel buluta taşımak ise kuralları çiğnemektir. Hibrit bulut ikisini birleştirir: hassas kısım evde (özel bulut) kalır, yoğun dönemlerde anonim analitik işi dışarıdaki büyük bilgisayarlara (genel bulut) gönderilir ve iş bitince kapatılır. Buna 'cloud bursting' denir. Hem kurallara uyum hem maliyet avantajı böyle sağlanır.",
+      "en": {
+        "subtopic": "Deployment models: public, private, hybrid cloud and data residency",
+        "question": "A bank is obliged to keep its core banking system and customer data in its own data centre because of regulatory requirements (data kept within the country, primary and secondary systems located within the country). However, it periodically needs large computing power for the analytics of its marketing campaigns, and no personal data is used in this workload (anonymised data). Which of the following is the most appropriate deployment model that meets both the bank's compliance requirement and cost-effectiveness?",
+        "options": {
+          "A": "Moving all systems to a public cloud abroad; the cost advantage takes priority over the compliance requirement",
+          "B": "Keeping all systems in a private cloud in its own data centre and buying hardware sized for peak load all year round for analytics",
+          "C": "Community cloud: combining the customer data of all banks on a shared infrastructure abroad",
+          "D": "Hybrid cloud: core banking and customer data stay in the private cloud in its own data centre, while the anonymised analytics workload is moved to the public cloud when needed (cloud bursting)",
+          "E": "Keeping all data, including the analytics workload, in the public cloud and storing only the backups within the country"
+        },
+        "explanation": "NIST defines four deployment models: private, community, public and hybrid. A hybrid cloud is the connection of two or more distinct cloud infrastructures (for example private + public) by technology that enables data and application portability. In the scenario, the regulatory requirement obliges customer data and the primary/secondary systems to remain within the country; this part must stay in the private cloud. The periodic, intensive analytics workload, which contains no personal data, can benefit from the elasticity and pay-as-you-go model of the public cloud; this approach is known as 'cloud bursting'. In this way both compliance and cost-effectiveness are achieved.",
+        "optionExplanations": {
+          "A": "Moving customer data and primary systems abroad directly violates the regulatory requirements; cost cannot take precedence over compliance.",
+          "B": "It achieves compliance, but buying hardware that will sit idle all year for a periodic load is not cost-effective; the elasticity of the cloud has not been used.",
+          "C": "A community cloud is infrastructure shared by organisations with common interests; but combining customer data abroad violates the data residency rule, and sharing data between banks is contrary to banking secrecy.",
+          "D": "Correct. Sensitive and regulated load in the private cloud, non-sensitive periodic load in the public cloud; the hybrid model meets both requirements.",
+          "E": "Backups being within the country is not sufficient; the primary systems and the data itself must be located within the country."
+        },
+        "keyConcept": "A hybrid cloud allows the regulated workload to be kept in the private cloud while moving the elastic/periodic workload to the public cloud (cloud bursting). Data residency requirements determine the deployment model.",
+        "examTip": "If 'regulatory requirement + periodic heavy load' appear together, the answer is almost always hybrid cloud; both the 'all public' and 'all private' options sacrifice one requirement.",
+        "simpleExplanation": "The bank has two different needs: customer data and core systems must, by the rules, stay within the country under its own control; marketing analytics wants very powerful computers a few times a year but contains no personal data. Keeping everything in its own data centre is like buying a lorry you will use twice a year; moving everything to the public cloud is breaking the rules. A hybrid cloud combines the two: the sensitive part stays at home (private cloud), and in busy periods the anonymous analytics job is sent to the big computers outside (public cloud) and switched off when the job is done. This is called 'cloud bursting'. Both compliance with the rules and the cost advantage are achieved this way."
+      },
       "optionExplanations": {
         "A": "Müşteri verisinin ve birincil sistemlerin yurt dışına taşınması düzenleyici gereklilikleri doğrudan ihlal eder; maliyet, uyumun önüne geçemez.",
         "B": "Uyumu sağlar ancak dönemsel yük için yıl boyu atıl kalacak donanım satın almak maliyet etkin değildir; bulutun esnekliğinden yararlanılmamıştır.",
@@ -6765,6 +7205,28 @@
       "correctAnswer": "B",
       "explanation": "Sanal makineler, hipervizör üzerinde her biri kendi konuk işletim sistemi ve çekirdeğiyle çalışır; yalıtım sınırı hipervizördür ve donanım destekli sanallaştırma (Intel VT-x, AMD-V) ile güçlendirilir. Konteynerler ise işletim sistemi düzeyinde sanallaştırmadır: Linux çekirdeğinin ad alanları (namespaces) ve kaynak grupları (cgroups) özellikleriyle süreçler birbirinden ayrılır, ancak hepsi aynı çekirdeği paylaşır. Bu nedenle bir konteynerden çekirdek zafiyeti yoluyla kaçış (container escape) hâlinde ana makine ve diğer konteynerler tehlikeye girer; saldırı yüzeyi çekirdeğin tamamıdır. Konteynerlerin avantajı hafiflik ve hızlı başlatmadır; bu avantaj, çekirdek paylaşımından kaynaklanan yalıtım zayıflığıyla birlikte gelir.",
       "simpleExplanation": "Sanal makineler, aynı binadaki ayrı daireler gibidir: her birinin kendi kapısı, kendi tesisatı (kendi işletim sistemi çekirdeği) vardır ve aralarındaki duvar (hipervizör) kalındır. Konteynerler ise aynı dairede paravanlarla ayrılmış odalar gibidir: hızlı kurulur, az yer kaplar ama hepsi aynı tesisatı, yani aynı işletim sistemi çekirdeğini paylaşır. Paylaşılan çekirdekte bir açık bulunursa saldırgan bir konteynerden çıkıp ana makineye ve diğer konteynerlere ulaşabilir; sanal makinede ise ayrıca hipervizörü de aşması gerekir. Konteynerlerin hafifliği tam da bu paylaşımdan gelir, dolayısıyla yalıtım zayıflığı da aynı kaynaktan doğar.",
+      "en": {
+        "subtopic": "Virtualisation and containers",
+        "question": "A bank is considering using Docker containers instead of virtual machines (VMs) as it moves to a microservices architecture. A security architect has warned that 'the isolation between containers on the same server is weaker than the isolation between virtual machines on the same server'. Which of the following is the technical basis of this warning?",
+        "options": {
+          "A": "Containers always have to run with root privileges, whereas virtual machines do not",
+          "B": "All containers on the same server share a single operating system kernel of the host; a vulnerability in the kernel can affect all containers. Each virtual machine has its own kernel and is separated at the hardware level by the hypervisor",
+          "C": "Container images cannot be encrypted, whereas virtual machine disks can",
+          "D": "Because containers directly share the host's network stack, no network-level isolation or firewall rule can be applied between them",
+          "E": "Containers run only on Linux, and Linux itself is less secure than virtual machine hypervisors"
+        },
+        "explanation": "Virtual machines run on a hypervisor, each with its own guest operating system and kernel; the isolation boundary is the hypervisor, reinforced by hardware-assisted virtualisation (Intel VT-x, AMD-V). Containers, on the other hand, are operating-system-level virtualisation: processes are separated from each other by the namespaces and cgroups features of the Linux kernel, but they all share the same kernel. Therefore, in the event of an escape from a container through a kernel vulnerability (container escape), the host and the other containers are endangered; the attack surface is the whole kernel. The advantage of containers is lightness and fast start-up; this advantage comes together with the isolation weakness stemming from kernel sharing.",
+        "optionExplanations": {
+          "A": "Containers can be run as non-root users (rootless mode, the USER directive); running as root is a default practice error, not an architectural necessity.",
+          "B": "Correct. The shared kernel is the fundamental weakness of container isolation; VMs offer stronger isolation with separate kernels and the hypervisor boundary.",
+          "C": "Container images and registries can be encrypted and signed; this feature is unrelated to the level of isolation.",
+          "D": "On the default bridge network each container has its own network namespace and virtual interface; sharing the host network (host network mode) is an optional choice. Network policies (for example Kubernetes NetworkPolicy) can be applied between containers; the source of the isolation weakness is not the network but the shared kernel.",
+          "E": "Windows containers exist too; moreover, the problem is not the security level of the operating system but the thinness of the isolation boundary because the kernel is shared."
+        },
+        "keyConcept": "VM: hypervisor + separate kernel → strong isolation, heavy. Container: shared kernel + namespaces/cgroups → light, fast, weaker isolation.",
+        "examTip": "In container-vs-VM comparisons, 'kernel sharing' is the key phrase; the answer to isolation, escape and attack-surface questions lies here.",
+        "simpleExplanation": "Virtual machines are like separate flats in the same building: each has its own door and its own plumbing (its own operating system kernel), and the wall between them (the hypervisor) is thick. Containers are like rooms in the same flat separated by partitions: quick to set up and taking little space, but they all share the same plumbing, that is, the same operating system kernel. If a hole is found in the shared kernel, an attacker can get out of one container and reach the host and the other containers; in a virtual machine they would also have to get past the hypervisor. The lightness of containers comes precisely from this sharing, so the isolation weakness arises from the same source."
+      },
       "optionExplanations": {
         "A": "Konteynerler root olmayan kullanıcılarla çalıştırılabilir (rootless mod, USER yönergesi); root ile çalışma varsayılan bir pratik hatasıdır, mimari zorunluluk değildir.",
         "B": "Doğru. Paylaşılan çekirdek, konteyner yalıtımının temel zayıflığıdır; VM'ler ayrı çekirdek ve hipervizör sınırıyla daha güçlü yalıtım sunar.",
@@ -6815,6 +7277,28 @@
       "correctAnswer": "C",
       "explanation": "Sunucusuz bilişim, özellikle FaaS (Function as a Service) modeli, geliştiricinin yalnızca iş mantığını (işlev kodunu) yazdığı, altyapının tedariki, ölçeklenmesi, yamalanması ve kapasite planlamasının tamamen sağlayıcı tarafından yapıldığı bir modeldir. Sunucular elbette vardır ancak müşteriye görünmez. İşlevler olay güdümlüdür (örneğin depolamaya dosya eklenmesi), kısa ömürlüdür, durumsuz tasarlanır (kalıcı durum harici bir depoda tutulur) ve yalnızca çalıştıkları süre ve çağrı sayısı kadar ücretlendirilir; boşta kalan süre için ödeme yapılmaz. Bu özellikler, senaryodaki kısa ve olay tetikli görüntü işleme işi için idealdir. Buna karşılık soğuk başlatma (cold start) gecikmesi, çalışma süresi sınırları ve sağlayıcıya bağımlılık (vendor lock-in) dezavantajlarıdır.",
       "simpleExplanation": "'Sunucusuz' demek sunucu olmaması değil, sunucuyu sizin görmemeniz ve yönetmemeniz demektir; tıpkı taksiye bindiğinizde arabanın bakımını, sigortasını ve yakıtını düşünmemeniz gibi. Banka yalnızca küçük bir kod parçası yazar: 'yeni bir dosya gelince onu boyutlandır ve filigran ekle'. Dosya gelince (olay) kod çalışır, 2 saniye sürer, biter ve banka sadece o 2 saniye için ödeme yapar; boşta beklemenin ücreti yoktur. Sunucuların yamalanması ve kapasitenin ayarlanması tamamen sağlayıcının işidir. Bu işlevler kısa ömürlü ve hafızasız (durumsuz) tasarlanır; saatler süren işler veya bellekte uzun süre tutulması gereken bilgiler için uygun değildir.",
+      "en": {
+        "subtopic": "Serverless architecture",
+        "question": "A bank has moved a function that automatically resizes and watermarks the identity document images uploaded by customers to a serverless (FaaS) platform. The function is triggered when a new file is added to the image storage area and runs for 2 seconds on average. Which of the following statements about serverless architecture is correct?",
+        "options": {
+          "A": "Serverless functions can safely keep state in memory between invocations; therefore session and intermediate result data should be kept inside the function",
+          "B": "The bank is responsible for patching the operating system of the servers the function runs on and for planning their capacity",
+          "C": "Server management, scaling and capacity planning belong to the provider; the bank is responsible only for the function code and its configuration, billing is based on execution time and number of invocations, functions are triggered by events and are designed to be stateless",
+          "D": "Serverless functions are continuously running processes; therefore they are the most suitable model for long-running batch jobs",
+          "E": "Serverless architecture is a subtype of IaaS; the bank creates the virtual machines itself, but billing is per second"
+        },
+        "explanation": "Serverless computing, in particular the FaaS (Function as a Service) model, is a model in which the developer writes only the business logic (the function code), while provisioning, scaling, patching and capacity planning of the infrastructure are done entirely by the provider. Servers do of course exist, but they are invisible to the customer. Functions are event-driven (for example a file being added to storage), short-lived, designed to be stateless (persistent state is kept in an external store) and billed only for the time they run and the number of invocations; nothing is paid for idle time. These characteristics are ideal for the short, event-triggered image processing job in the scenario. On the other hand, cold-start latency, execution time limits and dependence on the provider (vendor lock-in) are its disadvantages.",
+        "optionExplanations": {
+          "A": "Function instances are ephemeral; the provider can terminate an instance or start a new one at any moment, and data in memory is not carried over to the next invocation. That is why functions are designed to be stateless and persistent state is kept in an external database or cache.",
+          "B": "The basic promise of the serverless model is precisely that these responsibilities pass to the provider; the customer cannot access the operating system and does not plan capacity.",
+          "C": "Correct. Server management with the provider, code with the customer; event-triggered, stateless, billing based on execution time.",
+          "D": "Functions are short-lived and have an upper limit on execution time (typically of the order of minutes); they are not suitable for batch jobs lasting hours.",
+          "E": "Serverless is a level of abstraction beyond PaaS, not IaaS; the customer does not create virtual machines and does not see a virtual machine."
+        },
+        "keyConcept": "FaaS: the code is yours, the server is the provider's; event-triggered, stateless, short-lived, pay for what runs. Disadvantages: cold start, time limit, provider dependence.",
+        "examTip": "Do not fall into the trap 'serverless = no servers'; an option saying 'capacity planning is the customer's' contradicts the definition of the serverless model.",
+        "simpleExplanation": "'Serverless' does not mean there is no server, it means you do not see or manage the server; just like when you get into a taxi you do not think about the car's maintenance, insurance and fuel. The bank writes only a small piece of code: 'when a new file arrives, resize it and add a watermark'. When a file arrives (the event) the code runs, takes 2 seconds, finishes, and the bank pays only for those 2 seconds; there is no charge for waiting idle. Patching the servers and adjusting capacity is entirely the provider's job. These functions are designed to be short-lived and memoryless (stateless); they are not suitable for jobs lasting hours or for information that needs to be kept in memory for a long time."
+      },
       "optionExplanations": {
         "A": "İşlev örnekleri geçicidir; sağlayıcı herhangi bir anda örneği sonlandırabilir veya yeni bir örnek başlatabilir, bellekteki veri sonraki çağrıya aktarılmaz. Bu yüzden işlevler durumsuz tasarlanır ve kalıcı durum harici bir veritabanı ya da önbellekte tutulur.",
         "B": "Sunucusuz modelin temel vaadi tam da bu sorumlulukların sağlayıcıya geçmesidir; müşteri işletim sistemine erişemez ve kapasite planlamaz.",
@@ -6865,6 +7349,28 @@
       "correctAnswer": "D",
       "explanation": "Çoklu kiracılık, aynı fiziksel ve mantıksal kaynakların (uygulama örneği, veritabanı, altyapı) birden fazla müşteri (kiracı) tarafından paylaşılması ve yalıtımın yazılım katmanında mantıksal olarak sağlanmasıdır; bulutun maliyet avantajının temel kaynağıdır. En önemli risk, bu mantıksal yalıtımın bir zafiyet (örneğin kiracı kimliğinin filtrelenmediği bir sorgu, IDOR) veya yanlış yapılandırma nedeniyle aşılması ve kiracılar arası veri sızıntısıdır. Denetçi, sağlayıcının yalıtım tasarımını (kiracı kimliğine bağlı erişim denetimi, kiracı başına anahtar, ayrı şema veya satır düzeyi güvenlik), bağımsız güvence raporlarını ve sızma testi kanıtlarını incelemelidir. Banka kendi başına diğer kiracıların verisine erişmeyi denemek gibi testler yapamaz; bu, sözleşme ve yasa dışıdır.",
       "simpleExplanation": "Çok kiracılı SaaS, birçok şirketin aynı apartmanda oturması gibidir: bina, asansör ve tesisat ortaktır, yalnızca daire kapıları (yazılımdaki erişim kontrolleri) ayrıdır. Fiziksel ayrım yoktur; yalıtım tamamen yazılımın doğru çalışmasına bağlıdır. En büyük risk, bir kapı kilidinin arızalanması, yani bir yazılım hatası yüzünden bir bankanın başka bir bankanın müşteri verisini görebilmesidir. Denetçi bu kilitlerin sağlamlığını, sağlayıcının bağımsız denetim raporlarını (ISO 27001, SOC 2) ve sızma testi sonuçlarını inceleyerek değerlendirir; her kiracıya ayrı şifreleme anahtarı verilmesi de ek bir güvencedir. Ama banka komşu dairelerin kapısını kendisi zorlamayı deneyemez; bu hem yasa dışıdır hem diğer kiracıların hakkını ihlal eder.",
+      "en": {
+        "subtopic": "Multi-tenancy and data isolation",
+        "question": "A bank is considering moving to a multi-tenant customer relationship management (CRM) service offered under the SaaS model, in which more than one financial institution shares the same application instance and database. The IT auditor wants to assess the risks specific to multi-tenancy and the controls against them. Which of the following assessments is correct?",
+        "options": {
+          "A": "In multi-tenancy each customer's data is kept on physically separate servers, so there is no risk of data leakage between tenants",
+          "B": "Ensuring isolation between tenants is entirely the customer's responsibility; the provider has no obligation in this regard",
+          "C": "Multi-tenancy is seen only in the IaaS model; in SaaS each customer must be given a separate application instance",
+          "D": "The fundamental risk is that one tenant can access another tenant's data because of a logic error or access control vulnerability in the application or database layer; the controls include row-level access control based on tenant identity, tenant-specific encryption keys, independent assurance reports (for example ISO/IEC 27001, SOC 2) and review of the provider's penetration test results",
+          "E": "The bank can verify data isolation with its own penetration test; attempting to access other tenants' data without the provider's permission is legally unproblematic"
+        },
+        "explanation": "Multi-tenancy is the sharing of the same physical and logical resources (application instance, database, infrastructure) by more than one customer (tenant), with isolation provided logically in the software layer; it is the main source of the cloud's cost advantage. The most important risk is that this logical isolation is bypassed through a vulnerability (for example a query that does not filter on tenant identity, IDOR) or a misconfiguration, resulting in data leakage between tenants. The auditor should review the provider's isolation design (tenant-identity-based access control, per-tenant keys, separate schema or row-level security), independent assurance reports and penetration test evidence. The bank cannot carry out tests such as attempting to access other tenants' data on its own; that is contrary to the contract and the law.",
+        "optionExplanations": {
+          "A": "By the definition of multi-tenancy, resources are shared and there is no physical separation; isolation is logical, and that is why there is a leakage risk.",
+          "B": "In SaaS the provider operates the application and database layer, so isolation is the provider's responsibility; the customer assesses it and requests evidence, it cannot implement it itself.",
+          "C": "Multi-tenancy is seen in all service models and is the most typical feature of SaaS; a separate application instance (single-tenant) is an exceptional and more costly option.",
+          "D": "Correct. Bypassing of logical isolation is the fundamental risk; the controls are design review, tenant-specific keys and independent assurance evidence.",
+          "E": "Attempting to access other tenants' data violates the rights of the other tenants even with the provider's permission; it is legally and ethically unacceptable. Isolation assurance is obtained through the provider's independent tests."
+        },
+        "keyConcept": "Multi-tenancy = shared resources + logical isolation. Risk: data leakage between tenants. Control: review of the isolation design, per-tenant keys, independent assurance reports.",
+        "examTip": "The phrase 'physically separate' contradicts the definition of multi-tenancy; the auditor targeting another tenant with their own penetration test is always the wrong option.",
+        "simpleExplanation": "Multi-tenant SaaS is like many companies living in the same apartment block: the building, the lift and the plumbing are shared, only the flat doors (the access controls in the software) are separate. There is no physical separation; isolation depends entirely on the software working correctly. The biggest risk is a door lock failing, that is, one bank being able to see another bank's customer data because of a software bug. The auditor assesses the strength of these locks by examining the provider's independent audit reports (ISO 27001, SOC 2) and penetration test results; giving each tenant a separate encryption key is an extra assurance. But the bank cannot try to force the neighbours' doors itself; that is both illegal and a violation of the other tenants' rights."
+      },
       "optionExplanations": {
         "A": "Çoklu kiracılığın tanımı gereği kaynaklar paylaşılır, fiziksel ayrım yoktur; yalıtım mantıksaldır ve bu yüzden sızıntı riski vardır.",
         "B": "SaaS'ta uygulama ve veritabanı katmanını sağlayıcı işlettiği için yalıtım sağlayıcının sorumluluğundadır; müşteri bunu değerlendirir ve kanıt talep eder, kendisi uygulayamaz.",
@@ -6916,6 +7422,28 @@
       "correctAnswer": "A",
       "explanation": "BDDK'nın Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmeliği (2020), bankaların birincil ve ikincil sistemlerini yurt içinde bulundurmasını ve dış hizmet (destek hizmeti) alımlarında risk yönetimi, sözleşmede denetim ve bilgi edinme hakkı, hizmetin kesintisiz sürdürülmesi ve çıkış stratejisi gibi koşulların sağlanmasını öngörür; ayrıca bankanın hizmeti dış kaynaktan alması, nihai sorumluluğunu ortadan kaldırmaz. Senaryoda sahtecilik tespit sistemi kart ve kimlik verisi işleyen birincil bir sistemdir ve yurt dışında konumlandırılması veri yerleşimi gerekliliğini ihlal eder; bu, projenin bu hâliyle ilerleyemeyeceği anlamına gelen en kritik eksikliktir. Denetim hakkının, çıkış planının ve kapsamlı risk değerlendirmesinin bulunmaması da düzenlemenin dış hizmet koşullarına aykırıdır. Tek kişiye tam yetki verilmesi ise ayrıcalıklı erişim ve görevler ayrılığı açısından ciddi ancak düzeltilebilir bir sorundur.",
       "simpleExplanation": "BDDK, bankaların ana sistemlerini ve müşteri verilerini Türkiye sınırları içinde tutmasını ister; bu, 'kasanın anahtarı yurt dışına çıkmaz' kuralı gibidir. Planda kart numaraları ve kimlik bilgileri Frankfurt'taki bir buluta gidiyor; bu, projenin daha baştan yapılamaz olması anlamına gelir ve başka hangi yurt dışı bölge seçilirse seçilsin sorun çözülmez. Üstüne, bankanın sağlayıcıyı denetleme hakkı yok, işler kötüye giderse çıkış planı yok ve risk olarak yalnızca maliyete bakılmış; bunlar da dış hizmet alımında bulunması zorunlu koşullardır. Tek kişiye tam yetki verilmesi de ciddidir ama düzeltilebilir bir ayrıntıdır. En kritik eksiklik, verinin ve sistemin yurt dışında olmasıyla birlikte bu temel koşulların hiçbirinin karşılanmamasıdır.",
+      "en": {
+        "subtopic": "Risks of cloud outsourcing in banks",
+        "question": "A bank plans to obtain its credit card fraud detection system from a public cloud provider as a support service (outsourced service). In terms of the bank's obligations relating to outsourcing under BDDK regulation, which of the following is the MOST CRITICAL deficiency the IT auditor should point out at the planning stage?",
+        "options": {
+          "A": "Locating a primary system containing unmasked card numbers and customer identity information abroad violates the data residency requirement; moreover, the absence of an audit right, an exit strategy and a comprehensive risk assessment shows that the basic conditions for outsourcing are not met",
+          "B": "The number of people with access to the management console being only 1; at least 5 people should be given full privileges",
+          "C": "The choice of the Frankfurt data region; choosing another region within the EU solves the problem",
+          "D": "The use of the provider's standard terms; the contract is invalid unless it is written in Turkish",
+          "E": "The most critical deficiency is the absence of an exit plan; because the provider is subject to EU data protection rules (GDPR), keeping the data in Frankfurt poses no problem in terms of data residency"
+        },
+        "explanation": "The BDDK Regulation on Banks' Information Systems and Electronic Banking Services (Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik, 2020) requires banks to keep their primary and secondary systems within the country and, in outsourcing (support service) arrangements, to meet conditions such as risk management, audit and information rights in the contract, uninterrupted continuation of the service and an exit strategy; moreover, the bank obtaining the service from an external source does not remove its ultimate responsibility. In the scenario, the fraud detection system is a primary system processing card and identity data, and locating it abroad violates the data residency requirement; this is the most critical deficiency, meaning the project cannot proceed in its current form. The absence of an audit right, an exit plan and a comprehensive risk assessment is also contrary to the regulation's outsourcing conditions. Giving full privileges to a single person is a serious but correctable problem in terms of privileged access and segregation of duties (görevler ayrılığı).",
+        "optionExplanations": {
+          "A": "Correct. The data residency violation invalidates the foundation of the project; the absence of an audit right, exit strategy and risk assessment is also contrary to the mandatory outsourcing conditions.",
+          "B": "A single person having full privileges is problematic in terms of segregation of duties and business continuity, but the solution is not to increase the number of privileged people but to apply controls such as least privilege and dual approval; moreover, it is not the most critical deficiency.",
+          "C": "The problem is not the choice of a particular region abroad, but the data and the primary system being abroad; changing region within the EU does not meet the requirement.",
+          "D": "What matters is the content of the contract (audit right, data protection, service level, exit provisions) rather than its language; the deficiency of the standard terms relates to the absence of an audit right, not to language.",
+          "E": "The provider being subject to the GDPR does not replace the BDDK regulation's requirement that primary and secondary systems be kept within the country; compliance with a foreign legal regime does not satisfy the Turkish regulator's location condition. The absence of an exit plan is a serious deficiency, but it is secondary beside the data residency violation."
+        },
+        "keyConcept": "In banks' cloud/outsourcing arrangements: primary and secondary systems within the country; a risk assessment, an audit right in the contract and an exit strategy are required; ultimate responsibility stays with the bank.",
+        "examTip": "In outsourcing scenarios, when you see the phrase 'data/system abroad', that is the most critical deficiency; 'no audit right' and 'no exit plan' are also regulatory red lines.",
+        "simpleExplanation": "BDDK wants banks to keep their main systems and customer data within Turkey's borders; this is like a rule saying 'the key to the safe does not leave the country'. In the plan, card numbers and identity information go to a cloud in Frankfurt; this means the project is unworkable from the outset, and the problem is not solved whichever other foreign region is chosen. On top of that, the bank has no right to audit the provider, there is no exit plan if things go wrong, and only cost was looked at as a risk; these too are conditions that must be present in outsourcing. Giving full privileges to a single person is serious too, but it is a correctable detail. The most critical deficiency is the data and the system being abroad, combined with none of these basic conditions being met."
+      },
       "optionExplanations": {
         "A": "Doğru. Veri yerleşimi ihlali projenin temelini geçersiz kılar; denetim hakkı, çıkış stratejisi ve risk değerlendirmesi eksikliği de dış hizmet alımının zorunlu koşullarına aykırıdır.",
         "B": "Tek kişinin tam yetkili olması görevler ayrılığı ve iş sürekliliği açısından sorunludur ancak çözüm yetkili sayısını artırmak değil, en az yetki ve çift onay gibi kontroller uygulamaktır; ayrıca en kritik eksiklik değildir.",
@@ -6967,6 +7495,28 @@
       "correctAnswer": "B",
       "explanation": "Zafiyet (vulnerability), bir varlıktaki istismar edilebilir zayıflıktır; güncellenmemiş işletim sistemi bir zafiyettir. Tehdit (threat), zafiyeti istismar edebilecek potansiyel olay veya aktördür; aktif suç grupları tehdit kaynağıdır. Risk (risk) ise tehdidin zafiyeti istismar etme olasılığı ile oluşacak etkinin birleşimidir; 'olasılık yüksek, kayıp 5 milyon TL' ifadesi riskin olasılık ve etki boyutlarını tanımlar. Formül olarak Risk = Tehdit × Zafiyet × Etki (ya da Olasılık × Etki) biçiminde özetlenir.",
       "simpleExplanation": "Bu üç kavramı bir evle düşünün. Zafiyet, evin kilidi bozuk kapısıdır: güncellenmemiş ATM işletim sistemi tam olarak budur. Tehdit, mahallede dolaşan hırsızdır: ATM'lere zararlı yazılım yükleyen suç grubu bu role karşılık gelir. Risk ise 'hırsızın bozuk kapıdan girme ihtimali ne kadar ve girerse ne kadar kaybederiz' sorusunun cevabıdır: 'olasılık yüksek, kayıp 5 milyon TL' tam olarak bir risk ifadesidir. Hırsız yoksa bozuk kapı tek başına risk oluşturmaz; ikisi birlikte riski oluşturur.",
+      "en": {
+        "subtopic": "Vulnerability, threat and risk concepts",
+        "question": "An internal audit report on a bank's ATM network contains the following three statements: (1) 'No security updates have been applied to the ATM operating systems for 2 years.' (2) 'Organised crime groups that install malware on ATMs to dispense cash are active in the region.' (3) 'The likelihood of this occurring is assessed as high, and the potential loss as 5 million TL.' Which concepts do these statements correspond to, respectively?",
+        "options": {
+          "A": "Threat, vulnerability, risk",
+          "B": "Vulnerability, threat, risk",
+          "C": "Risk, threat, vulnerability",
+          "D": "Vulnerability, risk, threat",
+          "E": "Threat, risk, vulnerability"
+        },
+        "explanation": "A vulnerability is an exploitable weakness in an asset; an unpatched operating system is a vulnerability. A threat is a potential event or actor that can exploit the vulnerability; active crime groups are a threat source. Risk is the combination of the likelihood that the threat exploits the vulnerability and the resulting impact; the statement 'likelihood high, loss 5 million TL' defines the likelihood and impact dimensions of the risk. As a formula it is summarised as Risk = Threat × Vulnerability × Impact (or Likelihood × Impact).",
+        "optionExplanations": {
+          "A": "The unpatched system does not attack by itself, it is a weakness open to attack; so it is a vulnerability, not a threat. The crime group is a threat actor, not a vulnerability.",
+          "B": "Correct. Weakness → vulnerability; actor able to exploit the weakness → threat; likelihood × impact → risk.",
+          "C": "Risk is an assessment that includes likelihood and impact; the first statement contains no likelihood or impact, it only describes a weakness.",
+          "D": "The second statement describes an actor and contains no likelihood or impact; so it is a threat, not a risk. The third statement is a risk assessment, not a vulnerability.",
+          "E": "The third statement is the measured form of a risk, not a vulnerability; and the first statement does not count as a threat since there is no actor."
+        },
+        "keyConcept": "Vulnerability = weakness; threat = event/actor able to exploit the weakness; risk = likelihood × impact. Without a threat, a vulnerability does not create risk.",
+        "examTip": "If the statement contains 'missing, unpatched, not closed', it is a vulnerability; if it contains an actor/event such as 'attacker, group, earthquake', it is a threat; if it contains 'likelihood, impact, loss', it is a risk.",
+        "simpleExplanation": "Think of these three concepts with a house. The vulnerability is the door with the broken lock: an unpatched ATM operating system is exactly that. The threat is the burglar roaming the neighbourhood: the crime group installing malware on ATMs plays this role. Risk is the answer to the question 'how likely is the burglar to come in through the broken door, and how much do we lose if he does': 'likelihood high, loss 5 million TL' is exactly a risk statement. If there is no burglar, the broken door alone does not create risk; the two together create the risk."
+      },
       "optionExplanations": {
         "A": "Güncellenmemiş sistem kendisi saldırmaz, saldırıya açık bir zayıflıktır; bu yüzden tehdit değil zafiyettir. Suç grubu ise zafiyet değil tehdit aktörüdür.",
         "B": "Doğru. Zayıflık → zafiyet; zayıflığı istismar edebilecek aktör → tehdit; olasılık × etki → risk.",
@@ -7017,6 +7567,28 @@
       "correctAnswer": "D",
       "explanation": "Truva atı (trojan), meşru bir program gibi görünerek kullanıcı tarafından bilerek çalıştırılan ancak gizli zararlı işlev taşıyan yazılımdır; 'fatura görüntüleyici' kılığındaki arka kapı tipik bir truva atıdır. Solucan (worm), kullanıcı etkileşimi gerektirmeden ağ zafiyetlerini kullanarak kendini otonom biçimde yayan zararlıdır; SMB üzerinden yayılma (WannaCry'daki gibi) solucan davranışıdır. Fidye yazılımı (ransomware), verileri şifreleyerek erişimi engelleyen ve fidye talep eden zararlıdır. Virüs ise solucandan farklı olarak yayılmak için bir taşıyıcı dosyaya eklenir ve kullanıcı eylemi gerektirir.",
       "simpleExplanation": "Zararlı yazılımları yayılma ve davranış biçimlerine göre ayırırız. Truva atı, hediye paketi içinde gizlenen bir tuzak gibidir: kullanıcı 'fatura görüntüleyici' sanıp kendi eliyle kurar, ama içinde arka kapı vardır. Solucan, kimse dokunmasa da ağdaki açıklardan bilgisayardan bilgisayara kendi kendine atlayan bir yazılımdır; şubedeki SMB açığından yayılan program budur. Fidye yazılımı ise dosyalarınızı kilitleyip 'anahtarı istiyorsan para öde' diyen dijital bir rehin alıcıdır. Sıra bu yüzden truva atı, solucan, fidye yazılımıdır.",
+      "en": {
+        "subtopic": "Types of malware",
+        "question": "A bank's security operations centre (SOC) has recorded three different incidents: (1) An employee installed a program they believed to be an 'invoice viewer'; in the background the program opened a backdoor giving the attacker remote access. (2) On a branch network, software was detected that copied itself from computer to computer using an SMB vulnerability, with no user interaction. (3) The contents of the file servers in the data centre were encrypted and a note was left demanding cryptocurrency for the decryption key. Which of the following gives the malware types in these three incidents, respectively?",
+        "options": {
+          "A": "Worm, trojan, ransomware",
+          "B": "Virus, worm, spyware",
+          "C": "Trojan, virus, ransomware",
+          "D": "Trojan, worm, ransomware",
+          "E": "Rootkit, worm, spyware"
+        },
+        "explanation": "A trojan is software that looks like a legitimate program and is knowingly run by the user but carries a hidden malicious function; the backdoor disguised as an 'invoice viewer' is a typical trojan. A worm is malware that spreads autonomously using network vulnerabilities without requiring user interaction; spreading over SMB (as in WannaCry) is worm behaviour. Ransomware is malware that encrypts data to block access and demands a ransom. A virus, unlike a worm, attaches itself to a carrier file in order to spread and requires user action.",
+        "optionExplanations": {
+          "A": "The first two types are swapped: the fake program knowingly installed by the user is a trojan, the software that copies itself autonomously is a worm.",
+          "B": "A virus requires a carrier file and user action to spread; in the first incident the user was deceived but there was no spreading. The third incident does not steal data, it encrypts it; it is not spyware.",
+          "C": "In the second incident the software spreads over the network without user interaction; this is a characteristic of a worm, not a virus.",
+          "D": "Correct. Disguise → trojan; autonomous network propagation → worm; encryption + ransom → ransomware.",
+          "E": "A rootkit is malware that modifies operating system components to hide its presence; the distinguishing feature of the first incident is disguise, not hiding. The third incident is also encryption, not spying."
+        },
+        "keyConcept": "A trojan is run by deception; a worm spreads over the network on its own; a virus attaches to a carrier file; ransomware encrypts and demands a ransom.",
+        "examTip": "The phrase 'spread without user interaction' points to a worm, 'was thought to be a legitimate program' points to a trojan.",
+        "simpleExplanation": "We separate malware by how it spreads and behaves. A trojan is like a trap hidden inside a gift box: the user thinks it is an 'invoice viewer' and installs it with their own hands, but there is a backdoor inside. A worm is software that jumps from computer to computer by itself through holes in the network, even if nobody touches it; the program spreading through the SMB hole at the branch is this. Ransomware is a digital hostage-taker that locks your files and says 'pay up if you want the key'. So the order is trojan, worm, ransomware."
+      },
       "optionExplanations": {
         "A": "İlk iki tür yer değiştirmiştir: kullanıcının bilerek kurduğu sahte program truva atıdır, kendini otonom kopyalayan yazılım solucandır.",
         "B": "Virüs kendini yaymak için taşıyıcı dosya ve kullanıcı eylemi gerektirir; birinci olayda kullanıcı aldatılmış ama yayılma yoktur. Üçüncü olay veri çalmaz, şifreler; casus yazılım değildir.",
@@ -7067,6 +7639,28 @@
       "correctAnswer": "E",
       "explanation": "Açığın kök nedeni, kullanıcıdan gelen verinin SQL cümlesinin metnine doğrudan birleştirilmesidir (string concatenation); böylece veri ile komut birbirine karışır ve girdi, sorgunun yapısını değiştirebilir. Parametreli sorgu (prepared statement) kullanıldığında sorgu şablonu önce derlenir, parametre değeri daha sonra yalnızca veri olarak bağlanır; girdi ne içerse içersin sorgunun yapısı değişmez. OWASP bu düzeltmeyi enjeksiyona karşı birincil savunma olarak tanımlar. Diğer seçenekler ya eksik kara liste yaklaşımıdır ya da soruna dolaylı/ilgisiz katkı sağlar.",
       "simpleExplanation": "Koddaki sorun, kullanıcının yazdığı metnin SQL komutunun içine doğrudan yapıştırılmasıdır. Bu, bir garsona 'müşteri ne derse aynen mutfağa ilet' demek gibidir; müşteri 'bir çorba ve kasayı boşalt' derse mutfak ikisini de yapar. PreparedStatement ile sorgu önce sabit bir şablon olarak hazırlanır, kullanıcının girdiği değer ise sonradan yalnızca 'veri' olarak yerine konur; komut gibi yorumlanamaz. Tırnak silmek ya da büyük harfe çevirmek gibi filtreler deliği kapatmaz, sadece saldırganın başka yol aramasına yol açar. Kök çözüm, veriyle komutu birbirinden ayırmaktır.",
+      "en": {
+        "subtopic": "OWASP Top 10: SQL injection",
+        "question": "The following Java 17 code fragment used in a bank's customer portal was reported in a penetration test as a SQL injection vulnerability. Which of the following is the most correct fix that removes the vulnerability at its root cause?",
+        "options": {
+          "A": "Removing the single-quote characters from the musteriNo variable and running the query in the same form",
+          "B": "Encrypting the database connection with SSL/TLS",
+          "C": "Converting the input entirely to upper case before the query is run",
+          "D": "Not showing error messages to the user and redirecting to a generic error page",
+          "E": "Writing the query with a PreparedStatement in the form '... WHERE musteri_no = ?' and binding the value with setString(1, musteriNo)"
+        },
+        "explanation": "The root cause of the vulnerability is that data coming from the user is concatenated directly into the text of the SQL statement (string concatenation); data and command become mixed, and the input can change the structure of the query. When a parameterised query (prepared statement) is used, the query template is compiled first and the parameter value is bound afterwards purely as data; whatever the input contains, the structure of the query does not change. OWASP defines this fix as the primary defence against injection. The other options are either incomplete blacklist approaches or contribute to the problem only indirectly or not at all.",
+        "optionExplanations": {
+          "A": "Removing specific characters is a blacklist approach; it can be bypassed through different encodings, comment markers or quote-less injection in numeric fields. It does not remove the root cause.",
+          "B": "Connection encryption prevents eavesdropping on the traffic between the application and the database; the malicious structure in the query content passes through the encrypted channel unchanged.",
+          "C": "Converting to upper case does not affect SQL keywords (SQL is case-insensitive) and does not stop the input from breaking the query structure.",
+          "D": "Hiding error messages makes it harder for the attacker to gather information (a good practice for security) but does not prevent the injection itself; blind injection is still possible.",
+          "E": "Correct. A parameterised query separates data from command; it becomes impossible for the input to change the query structure."
+        },
+        "keyConcept": "The root cause of SQL injection is data and command being mixed; the solution is to separate the two with a parameterised query (prepared statement).",
+        "examTip": "If you see SQL concatenation with '+' in the code, there is a vulnerability; in a question asking for the 'root cause', choose the parameterised query, not filtering/encoding options.",
+        "simpleExplanation": "The problem in the code is that the text the user typed is pasted directly into the SQL command. This is like telling a waiter 'pass whatever the customer says straight to the kitchen'; if the customer says 'one soup and empty the till', the kitchen does both. With a PreparedStatement, the query is first prepared as a fixed template, and the value the user entered is put in its place afterwards purely as 'data'; it cannot be interpreted as a command. Filters like deleting quotes or converting to upper case do not close the hole, they just make the attacker look for another way in. The root solution is to separate data from command."
+      },
       "optionExplanations": {
         "A": "Belirli karakterleri silmek kara liste (blacklist) yaklaşımıdır; farklı kodlamalar, yorum işaretleri veya sayısal alanlarda tırnaksız enjeksiyon gibi yollarla aşılabilir. Kök nedeni gidermez.",
         "B": "Bağlantı şifrelemesi, uygulama ile veritabanı arasındaki trafiğin dinlenmesini engeller; sorgunun içeriğindeki zararlı yapı şifreli kanaldan aynen geçer.",
@@ -7117,6 +7711,28 @@
       "correctAnswer": "C",
       "explanation": "Senaryo, güvensiz doğrudan nesne referansı (Insecure Direct Object Reference, IDOR) örneğidir: kullanıcı kimliği doğrulanmış (authenticated) ancak eriştiği kaynağa yetkisi (authorization) kontrol edilmemiştir. OWASP Top 10:2021'de bu durum A01 Broken Access Control altında yer alır ve listenin ilk sırasındadır. Doğru düzeltme, sunucu tarafında her istekte 'bu hesap, oturumu açık olan kullanıcıya ait mi?' kontrolünü yapmaktır; alternatif olarak tahmin edilemeyen dolaylı referanslar kullanılabilir ancak bu tek başına yeterli değildir, yetki kontrolü esastır. Kimlik doğrulama zaten çalıştığı için A07 değildir.",
       "simpleExplanation": "Kullanıcı sisteme doğru şekilde giriş yapmış, yani 'kim olduğu' doğrulanmış. Ama 'bu hesaba bakmaya yetkin var mı?' sorusu hiç sorulmamış. Bu, otelde size kendi odanızın anahtar kartı verilmesi ama kartın her odayı açması gibidir: kimliğiniz doğru, yetkiniz yanlış. Bu tür hatalara 'kırık erişim denetimi' denir ve OWASP listesinin ilk sırasındadır. Çözüm, sunucunun her istekte 'istenen hesap gerçekten bu kullanıcıya mı ait?' kontrolünü yapmasıdır; istemci tarafında şifreleme veya hata mesajlarını gizleme bu kontrolün yerini tutmaz.",
+      "en": {
+        "subtopic": "OWASP Top 10: Broken access control (IDOR)",
+        "question": "A bank's mobile app retrieves the account summary with the request 'GET /api/hesap/ozet?hesapId=4471023'. During a penetration test it was found that when a logged-in test user changed the hesapId value to 4471024, they could see another customer's account summary. Which of the following correctly gives the OWASP Top 10 (2021) category of this vulnerability and the most appropriate fix?",
+        "options": {
+          "A": "A03 Injection; passing the hesapId parameter through a numeric type check",
+          "B": "A07 Identification and Authentication Failures; shortening the session timeout and adding MFA",
+          "C": "A01 Broken Access Control; verifying on the server side, on every request, that the requested account belongs to the user in the session",
+          "D": "A05 Security Misconfiguration; turning off detailed error messages on the API server",
+          "E": "A02 Cryptographic Failures; encrypting the hesapId value on the client side with AES before sending it"
+        },
+        "explanation": "The scenario is an example of an Insecure Direct Object Reference (IDOR): the user is authenticated, but their authorisation for the resource they access was not checked. In OWASP Top 10:2021 this falls under A01 Broken Access Control, which is at the top of the list. The correct fix is to check on the server side, on every request, 'does this account belong to the logged-in user?'; alternatively, unguessable indirect references can be used, but that alone is not sufficient, the authorisation check is essential. Since authentication already works, it is not A07.",
+        "optionExplanations": {
+          "A": "The input is numeric and the query structure did not change; the problem is not injection but access to an unauthorised resource with a valid value. A type check does not prevent IDOR.",
+          "B": "The user has already logged in correctly; what is missing is authorisation, not authentication. Adding MFA does not stop an authenticated user from accessing another account.",
+          "C": "Correct. A lack of object-level authorisation is A01 Broken Access Control; the solution is a server-side ownership/authorisation check.",
+          "D": "Turning off error messages reduces information leakage but does not prevent the unauthorised access itself; the problem is a missing check in the business logic, not configuration.",
+          "E": "Client-side encryption requires the key to be on the client, and the attacker uses the same client; moreover, obscurity is no substitute for an authorisation check."
+        },
+        "keyConcept": "Authentication asks 'who are you?', authorisation asks 'may you access this?'. IDOR is authorisation not being performed at the object level (A01).",
+        "examTip": "The phrase 'changed the parameter and saw someone else's data' is always Broken Access Control / IDOR; the fix is on the server side, not the client.",
+        "simpleExplanation": "The user logged into the system correctly, so 'who they are' was verified. But the question 'are you allowed to look at this account?' was never asked. This is like a hotel giving you the key card to your own room but the card opening every room: your identity is right, your permission is wrong. Errors like this are called 'broken access control' and they are at the top of the OWASP list. The solution is for the server to check on every request 'does the requested account really belong to this user?'; encryption on the client side or hiding error messages does not replace this check."
+      },
       "optionExplanations": {
         "A": "Girdi sayısaldır ve sorgu yapısı değişmemiştir; sorun enjeksiyon değil, geçerli bir değerle yetkisiz kaynağa erişimdir. Tip kontrolü IDOR'u engellemez.",
         "B": "Kullanıcı zaten doğru biçimde oturum açmıştır; kimlik doğrulama değil yetkilendirme eksiktir. MFA eklemek, kimliği doğrulanmış kullanıcının başka hesaba erişmesini engellemez.",
@@ -7167,6 +7783,28 @@
       "correctAnswer": "E",
       "explanation": "Paket filtreleme güvenlik duvarı yalnızca başlık bilgilerine (IP, port, protokol) bakar; 443 numaralı porta izin verildiğinde içerikteki saldırıyı göremez. IDS (Intrusion Detection System), trafiği imza veya anomali temelli inceler ancak pasif çalışır: yalnızca uyarı üretir, engelleyemez. IPS (Intrusion Prevention System) ise aynı analiz yeteneğine sahip olup trafiğin geçtiği hat üzerinde (inline) durur ve zararlı paketleri hedefe ulaşmadan düşürebilir. Gereksinim 'tespit + otomatik engelleme' olduğundan doğru bileşen inline IPS'tir. Not: TLS trafiğinin incelenebilmesi için IPS'in TLS sonlandırma/çözme yetkisine sahip olması gerekir.",
       "simpleExplanation": "Paket filtreleyen güvenlik duvarı, binanın kapısındaki 'sadece 443 numaralı kapıdan girilir' tabelası gibidir; kapıdan girenin çantasında ne olduğuna bakmaz. IDS, kapıdaki güvenlik kamerasıdır: şüpheli bir şey görür ve alarm çalar ama kimseyi durduramaz. IPS ise kapıda duran güvenlik görevlisidir: çantayı kontrol eder ve tehlikeli bir şey görürse içeri sokmaz. Trafiğin hem incelenmesi hem de hedefe ulaşmadan engellenmesi istendiği için gereken şey, trafiğin geçtiği hattın üzerine (inline) yerleştirilen IPS'tir.",
+      "en": {
+        "subtopic": "Differences between firewall, IDS and IPS",
+        "question": "A bank's network security architecture is being reviewed. Currently, in front of the internet banking servers there is only a packet-filtering firewall based on the 5-tuple (source/destination IP, source/destination port, protocol). The security team wants traffic arriving on port 443 that carries a known attack signature to be both detected and automatically blocked before it reaches its destination. Which of the following components and placements meets this requirement?",
+        "options": {
+          "A": "Intrusion detection system (IDS); connected to a SPAN/mirror port that receives a copy of the traffic (passive)",
+          "B": "Network access control (NAC); checking the compliance of endpoint devices",
+          "C": "Closing port 443 on the existing packet-filtering firewall",
+          "D": "Stateful firewall; keeping only a connection table",
+          "E": "Intrusion prevention system (IPS); placed inline on the path the traffic passes through"
+        },
+        "explanation": "A packet-filtering firewall looks only at header information (IP, port, protocol); once port 443 is allowed, it cannot see an attack in the content. An IDS (Intrusion Detection System) inspects traffic on a signature or anomaly basis but operates passively: it only generates alerts, it cannot block. An IPS (Intrusion Prevention System) has the same analysis capability but sits inline on the path the traffic passes through and can drop malicious packets before they reach the destination. Since the requirement is 'detection + automatic blocking', the correct component is an inline IPS. Note: for TLS traffic to be inspected, the IPS must have TLS termination/decryption capability.",
+        "optionExplanations": {
+          "A": "An IDS operates passively; because it receives a copy of the traffic from a mirror port it cannot block the packet, it only generates an alarm. It does not meet the requirement of 'blocking before it reaches the destination'.",
+          "B": "NAC checks the identity and compliance of endpoint devices connecting to the network; it does not inspect the content of traffic coming from the internet.",
+          "C": "Closing port 443 means internet banking stops entirely; it cuts legitimate traffic too, it is a service outage, not a solution.",
+          "D": "A stateful firewall tracks whether a connection belongs to a legitimate session but does not inspect the attack signature inside the payload.",
+          "E": "Correct. An inline IPS both performs content-based detection and drops the malicious packet immediately."
+        },
+        "keyConcept": "A firewall filters by header; an IDS inspects content but only alerts (passive); an IPS inspects content and blocks (inline).",
+        "examTip": "'Detect' → IDS is enough; 'detect and block' → IPS; 'allow/block at port/IP level' → firewall.",
+        "simpleExplanation": "A packet-filtering firewall is like a sign at the building entrance saying 'entry only through door number 443'; it does not look at what is in the bag of the person coming through the door. An IDS is the security camera at the door: it sees something suspicious and sounds the alarm, but it cannot stop anyone. An IPS is the security guard standing at the door: it checks the bag and, if it sees something dangerous, does not let it in. Because the traffic must be both inspected and blocked before it reaches its destination, what is needed is an IPS placed on the path the traffic passes through (inline)."
+      },
       "optionExplanations": {
         "A": "IDS pasif çalışır; ayna porttan kopya trafik aldığı için paketi engelleyemez, yalnızca alarm üretir. 'Hedefe ulaşmadan engelleme' gereksinimini karşılamaz.",
         "B": "NAC, ağa bağlanan uç cihazların kimliğini ve uyumluluğunu denetler; internetten gelen trafiğin içeriğini incelemez.",
@@ -7217,6 +7855,28 @@
       "correctAnswer": "A",
       "explanation": "NIST SP 800-61 Rev. 2'ye göre olay müdahale yaşam döngüsü dört aşamadan oluşur (2025'te yayımlanan Rev. 3, aynı faaliyetleri CSF 2.0 işlevleri etrafında yeniden düzenler): Hazırlık (Preparation), Tespit ve Analiz (Detection and Analysis), Sınırlama-Yok etme-Kurtarma (Containment, Eradication, Recovery) ve Olay Sonrası Faaliyet (Post-Incident Activity). Olay tespit edildiği ve aktif olarak yayıldığı anda ilk öncelik zararın büyümesini durdurmaktır: etkilenen makineyi ağdan izole etmek ve paylaşımlara erişimini kesmek sınırlama (containment) eylemidir. Makineyi kapatıp formatlamak hem delilleri (bellek, zararlı örneği) yok eder hem de yok etme aşamasına sınırlama yapılmadan geçmek anlamına gelir. Kurtarma ve ders çıkarma daha sonra gelir.",
       "simpleExplanation": "Bir odada yangın başladığında ilk işiniz raporu yazmak veya evi yeniden boyamak değil, yangının diğer odalara yayılmasını engellemek için kapıyı kapatmaktır. Fidye yazılımı da şifrelemeye başlamış ve yayılıyorsa ilk adım o bilgisayarı ağdan ayırmaktır; buna 'sınırlama' denir. Bilgisayarı kapatıp formatlamak yangını söndürür gibi görünür ama 'yangın nasıl çıktı' sorusuna cevap verecek tüm izleri de yok eder. Yedekten geri yükleme ve ders çıkarma toplantısı daha sonraki adımlardır. Önce yayılmayı durdur, sonra temizle, sonra geri getir, en sonunda da öğren.",
+      "en": {
+        "subtopic": "Incident response steps",
+        "question": "A bank's SOC team has detected that ransomware has started running on a branch computer and has begun encrypting file shares. According to the NIST SP 800-61 incident response life cycle, which of the following is the action the team should take first at this moment, and the phase it belongs to?",
+        "options": {
+          "A": "Isolating the affected computer from the network and cutting off its access to the shares — Containment",
+          "B": "Shutting down the affected computer and formatting the disk — Eradication",
+          "C": "Restoring all files from backups and bringing the service back up — Recovery",
+          "D": "Holding a lessons-learned meeting on how the incident happened — Post-Incident Activity",
+          "E": "Sending a ransomware awareness e-mail to all staff — Preparation"
+        },
+        "explanation": "According to NIST SP 800-61 Rev. 2, the incident response life cycle consists of four phases (Rev. 3, published in 2025, reorganises the same activities around the CSF 2.0 functions): Preparation, Detection and Analysis, Containment-Eradication-Recovery, and Post-Incident Activity. At the moment an incident is detected and is actively spreading, the first priority is to stop the damage from growing: isolating the affected machine from the network and cutting off its access to the shares is a containment action. Shutting the machine down and formatting it both destroys evidence (memory, the malware sample) and means moving to the eradication phase without containment. Recovery and lessons learned come later.",
+        "optionExplanations": {
+          "A": "Correct. Isolation from the network to stop the spread is the first and most critical action of the containment phase; it also preserves evidence.",
+          "B": "Formatting destroys forensic evidence (memory image, malware sample, logs) and makes root-cause analysis impossible; moreover, eradication is not done before containment.",
+          "C": "Restoring backups while the malware is still active can lead to the backups being encrypted too; recovery comes after containment and eradication.",
+          "D": "Lessons learned is a post-incident activity carried out after the incident is closed; it is not done during an active attack.",
+          "E": "An awareness e-mail is a preventive action belonging to the preparation phase; it does not stop the spread in an active incident."
+        },
+        "keyConcept": "Incident response order: Preparation → Detection/Analysis → Containment → Eradication → Recovery → Lessons learned. In an active incident the first job is containment.",
+        "examTip": "In a question of the type 'it is spreading, what should be done?', the answer is always isolation (containment); the 'shut down/format' options are distractors because of evidence loss.",
+        "simpleExplanation": "When a fire starts in a room, your first job is not to write the report or repaint the house, it is to close the door to stop the fire spreading to the other rooms. If ransomware has started encrypting and is spreading, the first step is to disconnect that computer from the network; this is called 'containment'. Shutting the computer down and formatting it looks like putting out the fire, but it also destroys all the traces that would answer 'how did the fire start'. Restoring from backup and the lessons-learned meeting are later steps. First stop the spread, then clean up, then bring things back, and finally learn."
+      },
       "optionExplanations": {
         "A": "Doğru. Yayılmayı durdurmak için ağdan izolasyon, sınırlama aşamasının ilk ve en kritik eylemidir; delilleri de korur.",
         "B": "Formatlamak adli delilleri (bellek imajı, zararlı örneği, iz kayıtları) yok eder ve kök neden analizini imkânsız kılar; ayrıca yok etme, sınırlamadan önce yapılmaz.",
@@ -7267,6 +7927,28 @@
       "correctAnswer": "D",
       "explanation": "En az yetki ilkesi, her özne (insan veya servis hesabı) için yalnızca görevin gerektirdiği asgari yetkinin tanımlanmasını öngörür. Uygulamanın çalışması için DBA yetkisi gerekmez; tablolara sınırlı DML yetkisi yeterlidir. Böyle olsaydı, web zafiyeti istismar edilse bile saldırganın hareket alanı (blast radius) daralırdı. Derinlemesine savunma ise hiçbir tek katmanın yeterli sayılmamasını, birden fazla bağımsız katmanın (uygulama güvenliği, ağ segmentasyonu, erişim yetkisi, iz kaydı ve izleme) birlikte kullanılmasını ister. Senaryoda üç katman da eksik olduğu için tek zafiyet tam veri sızıntısına dönüşmüştür. İz kayıtları tespit edici kontroldür, önleyici değildir; segmentasyon ise saldırganın zaten geldiği uygulama sunucusu yolunu kapatmazdı.",
       "simpleExplanation": "'En az yetki' ilkesi, herkese sadece işini yapması için gereken anahtarları vermek demektir. Uygulamanın veritabanı hesabına 'tam yönetici' yetkisi verilmesi, bir temizlik görevlisine binanın tüm kasalarını açan anahtarı vermek gibidir: görevli dürüst olsa bile anahtar çalınırsa hırsız her şeyi alır. Uygulama yalnızca birkaç tabloyu okuyup yazsa yeterdi; saldırgan web açığından girse bile tüm müşteri verisini dışarı taşıyamazdı. 'Derinlemesine savunma' ise tek bir kilide güvenmemek, art arda birkaç engel koymaktır. Bu olayda web açığı, aşırı yetki, açık ağ ve eksik kayıt üst üste gelmiş; bir tanesi bile sağlam olsaydı zarar çok küçülürdü.",
+      "en": {
+        "subtopic": "Defence in depth and least privilege",
+        "question": "At a bank, the application service account that accesses the core banking database is defined in the database with DBA (full administrator) privileges. A web vulnerability on the application server was exploited, the credentials of this service account were captured, and the attacker exported all customer tables. The incident investigation also found that access to the database server's network segment was open from every source other than the application server, and that database access audit logs were not being kept. In terms of the principles of defence in depth and least privilege, which of the following assessments is correct?",
+        "options": {
+          "A": "If the web vulnerability had been closed, the other deficiencies would have been unimportant; defence in depth prescribes relying on a single strong layer",
+          "B": "The principle of least privilege applies only to human users; service accounts may have full privileges because of functional necessity",
+          "C": "Network segmentation and audit logs are preventive controls, so they would definitely have prevented this incident",
+          "D": "The service account's DBA privilege violates the principle of least privilege; had it been granted only SELECT/INSERT/UPDATE privileges on the tables the application needs, the possibilities for bulk export and schema changes would have been severely restricted even if the web vulnerability were exploited",
+          "E": "Under the principle of defence in depth, audit logging should have been implemented first and privilege restriction afterwards; audit logging alone prevents the breach"
+        },
+        "explanation": "The principle of least privilege prescribes that every subject (human or service account) is defined with only the minimum privilege the task requires. The application does not need DBA privileges to run; limited DML privileges on the tables are sufficient. Had that been the case, the attacker's room for manoeuvre (blast radius) would have been narrower even if the web vulnerability were exploited. Defence in depth, for its part, requires that no single layer be considered sufficient and that several independent layers (application security, network segmentation, access privileges, audit logging and monitoring) be used together. Because all three layers were missing in the scenario, a single vulnerability turned into a complete data leak. Audit logs are a detective control, not a preventive one; and segmentation would not have closed the application-server path the attacker had already come through.",
+        "optionExplanations": {
+          "A": "Defence in depth says the exact opposite: no layer is trusted on its own, and if one is breached the others must limit the damage.",
+          "B": "Least privilege applies to all subjects (humans, services, processes); because service accounts run without human oversight, excessive privilege is even more dangerous.",
+          "C": "Audit logging is a detective control, it does not prevent the attack. Nor would segmentation have blocked access from the application server (the path the attacker used), since that was already an allowed path.",
+          "D": "Correct. Granting the service account the minimum privilege needed for its task limits the impact in the event of exploitation; this is the essence of both least privilege and defence in depth.",
+          "E": "Audit logging does not prevent a breach, it makes later detection and investigation possible; nor is there any such mandatory ordering between the principles, the layers are applied together."
+        },
+        "keyConcept": "Least privilege narrows the attacker's reach when a control is bypassed; defence in depth is the combined use of independent preventive, detective and corrective layers.",
+        "examTip": "When you see the combination of service account + administrator privilege, mark the least-privilege violation; options presenting audit logs as 'preventive' are distractors.",
+        "simpleExplanation": "The 'least privilege' principle means giving everyone only the keys they need to do their job. Giving the application's database account 'full administrator' rights is like giving a cleaner the key that opens every safe in the building: even if the cleaner is honest, if the key is stolen the thief takes everything. It would have been enough for the application to read and write just a few tables; even if the attacker got in through the web hole, they could not have carried all the customer data out. 'Defence in depth' means not trusting a single lock, but putting several barriers one after another. In this incident the web hole, the excessive privilege, the open network and the missing logs all piled up; if even one of them had been solid, the damage would have been much smaller."
+      },
       "optionExplanations": {
         "A": "Derinlemesine savunma tam tersini söyler: hiçbir katman tek başına güvenilmez, birinin aşılması hâlinde diğerleri zararı sınırlamalıdır.",
         "B": "En az yetki tüm özneler (insan, servis, süreç) için geçerlidir; servis hesapları insan gözetimi olmadan çalıştığı için aşırı yetki daha da tehlikelidir.",
@@ -7317,6 +7999,28 @@
       "correctAnswer": "C",
       "explanation": "Sızma testi (penetration test) tipik olarak planlama ve kapsam belirleme, keşif (reconnaissance) ve tarama (scanning/enumeration), zafiyet analizi, istismar (exploitation), istismar sonrası (post-exploitation: hak yükseltme, yanal hareket, kalıcılık) ve raporlama aşamalarından oluşur. Senaryodaki aşamalar bu sıraya uymaktadır. Zafiyet taramasından farklı olarak sızma testi, zafiyetleri gerçekten istismar ederek etkiyi kanıtlar; dolayısıyla ters kabuk elde edilmesi yetki aşımı değil, testin doğasıdır. Hizmet dışı bırakma (DoS) testleri üretim sistemlerinde gerçek kesinti yaratabileceği için kural belirleme (rules of engagement) belgesinde sıklıkla kapsam dışı tutulur veya yalnızca test ortamında yapılır; bu, metodolojik eksiklik değil bilinçli bir risk kararıdır. DoS tek kaynaktan, DDoS (Distributed DoS) ise çok sayıda dağıtık kaynaktan (botnet) yapılan saldırıdır; bunlar aynı şey değildir.",
       "simpleExplanation": "Sızma testi, bankanın kendi izniyle tuttuğu 'iyi niyetli hırsızın' binaya girmeyi denemesidir. Önce binanın etrafını dolaşıp kapı ve pencereleri sayar (keşif), sonra zayıf bir pencereden içeri girer (istismar), içeride ilerleyip yönetici odasının anahtarına ulaşır (istismar sonrası), en sonunda da 'şuradan girdim, şunları düzeltin' diye rapor yazar. Rapordaki aşamalar tam bu sıraya uyuyor. Hizmeti çökertme (DDoS) testi ise gerçek bir binada yangın söndürme sistemini açıp 'dayanıklı mı' diye bakmaya benzer; gerçek hasar verebileceği için genellikle anlaşmada kapsam dışı bırakılır ve bu kabul edilen bir uygulamadır.",
+      "en": {
+        "subtopic": "Penetration test phases and DDoS",
+        "question": "A bank, as required by BDDK regulation, has its annual penetration test carried out by an external firm. In the test report, the firm has presented the following findings by phase: (1) The bank's subdomains and open ports were listed and the running versions identified. (2) A reverse shell was obtained via an old-version application on a test server. (3) From this server, privilege escalation against the directory service on the internal network was attempted and domain administrator privileges were reached. (4) Findings, evidence and remediation recommendations were reported. The firm has also stated that 'denial-of-service tests were excluded from scope'. Which of the following assessments of this report is correct?",
+        "options": {
+          "A": "Phase 3 corresponds to the 'reconnaissance' step in penetration testing methodology",
+          "B": "Excluding denial-of-service tests from scope is a methodological deficiency; a penetration test must always include a DDoS attack",
+          "C": "Phase 1 is reconnaissance/scanning, phase 2 is exploitation, phase 3 is post-exploitation and lateral movement, phase 4 is reporting; keeping DDoS tests out of scope in the production environment is a common and acceptable rules-of-engagement choice because of the service continuity risk",
+          "D": "Obtaining a reverse shell in phase 2 shows that the test exceeded its authorisation limits; a penetration test should be limited to vulnerability scanning only",
+          "E": "DDoS and DoS are the same thing; by load-testing from a single source the firm is deemed to have covered this scope"
+        },
+        "explanation": "A penetration test typically consists of the phases of planning and scoping, reconnaissance and scanning/enumeration, vulnerability analysis, exploitation, post-exploitation (privilege escalation, lateral movement, persistence) and reporting. The phases in the scenario follow this order. Unlike a vulnerability scan, a penetration test proves impact by actually exploiting vulnerabilities; so obtaining a reverse shell is not an overreach of authority but the nature of the test. Because denial-of-service (DoS) tests can cause real outages on production systems, they are frequently excluded from scope in the rules of engagement document or performed only in a test environment; this is a conscious risk decision, not a methodological deficiency. DoS is an attack from a single source, whereas DDoS (Distributed DoS) is carried out from a large number of distributed sources (a botnet); they are not the same thing.",
+        "optionExplanations": {
+          "A": "Reconnaissance is the phase of gathering information about the target (phase 1). Privilege escalation and moving through the internal network belong to the post-exploitation phase.",
+          "B": "Because DoS/DDoS tests carry a risk of service outage in the production environment, they are kept out of scope in most penetration tests; they are not a mandatory component.",
+          "C": "Correct. The phases conform to the standard methodology, and keeping DoS tests out of scope is a legitimate choice within the rules of engagement.",
+          "D": "The feature that distinguishes a penetration test from a vulnerability scan is precisely controlled exploitation; the authorisation boundary is drawn by the scope document, not by whether exploitation is performed.",
+          "E": "DoS is carried out from a single source, DDoS from a large number of distributed sources; a single-source load test does not measure DDoS resilience."
+        },
+        "keyConcept": "Penetration test phases: scoping → reconnaissance/scanning → exploitation → post-exploitation → reporting. The scope and rules of engagement determine which test types are performed.",
+        "examTip": "For phase questions, memorise the order 'gather information → get in → move inside → report'; DoS tests being out of scope is usually correct practice.",
+        "simpleExplanation": "A penetration test is a 'friendly burglar', hired with the bank's own permission, trying to break into the building. First they walk around the building counting the doors and windows (reconnaissance), then they get in through a weak window (exploitation), move through the inside and reach the key to the manager's office (post-exploitation), and finally write a report saying 'I got in here, fix these' (reporting). The phases in the report follow exactly this order. A test that crashes the service (DDoS) is like setting off the fire-suppression system in a real building to see 'is it resilient'; because it can do real damage, it is usually left out of scope in the agreement, and this is an accepted practice."
+      },
       "optionExplanations": {
         "A": "Keşif, hedef hakkında bilgi toplama aşamasıdır (aşama 1). Hak yükseltme ve iç ağda ilerleme istismar sonrası (post-exploitation) aşamasına aittir.",
         "B": "DoS/DDoS testleri üretim ortamında hizmet kesintisi riski taşıdığı için çoğu sızma testinde kapsam dışı tutulur; zorunlu bir bileşen değildir.",

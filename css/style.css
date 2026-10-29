@@ -243,5 +243,16 @@ textarea { width: 100%; font: inherit; font-family: var(--mono); font-size: .85r
 .tight-list { margin: 0 0 0 1.1rem; padding: 0; } .tight-list li { margin-bottom: .35rem; }
 details.facts summary { cursor: pointer; font-weight: 700; } details.facts ul { margin-top: .6rem; }
 .grid > *, .row > * { min-width: 0; }
+.lesson-sec { border: 1px solid var(--border); border-radius: 8px; padding: .3rem .9rem; margin-bottom: .6rem; background: var(--surface); }
+.lesson-sec summary { cursor: pointer; font-weight: 700; padding: .5rem 0; }
+.lesson-body p { margin: .4rem 0 .8rem; max-width: 70ch; }
+.check-form { background: var(--surface-2); border-radius: 8px; padding: .7rem .9rem; margin: .5rem 0 .8rem; }
+.check-q { margin-bottom: .5rem; }
+.flashcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .6rem; }
+.flashcard { font: inherit; text-align: left; min-height: 96px; padding: .8rem .9rem; border: 1px solid var(--border); border-radius: 10px; background: var(--primary-soft); color: var(--text); cursor: pointer; }
+.flashcard.flipped { background: var(--surface); border-color: var(--primary); }
+.flashcard .fc-front { font-weight: 700; }
+.flashcard .fc-back { font-size: .92rem; }
+.continue-card { margin: 1rem 0 0; border-color: var(--primary); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media print { .topbar, .footer, .btn-row { display: none; } }

@@ -153,6 +153,18 @@
     return shuffle(unseen.concat(seen).slice(0, Math.max(1, Math.min(n, Data.questions.length))));
   }
 
+  /** Zayıf konulara ağırlık veren seçim: weak ×4, mid ×2, nodata ×1, good ×0.5. */
+  function pickWeak(n) {
+    const stats = allTopicStats();
+    const w = {}; let anyWeak = false;
+    stats.forEach(x => { w[x.topicId] = x.status === 'weak' ? 4 : x.status === 'mid' ? 2 : x.status === 'nodata' ? 1 : 0.5; if (x.status === 'weak' || x.status === 'mid') anyWeak = true; });
+    if (!anyWeak) return [];
+    const s = Store.load();
+    const scored = Data.questions.map(q => ({ q, key: Math.random() / w[q.topic] + ((s.questions[q.id] && s.questions[q.id].attempts) ? 0.15 : 0) }));
+    scored.sort((a, b) => a.key - b.key);
+    return shuffle(scored.slice(0, Math.min(n, scored.length)).map(x => x.q));
+  }
+
   /** 40 soruluk deneme: her konudan 2 (34) + mockExtraTopics'ten 1'er (6). Eksik kalan konular en büyük havuzlardan tamamlanır. */
   function buildMockExam(size) {
     size = size || 40;
@@ -207,6 +219,6 @@
   window.Progress = {
     recordAnswer, recordSession, recordExam, getRecord, revisionQueue,
     overallStats, topicStats, allTopicStats, recommendations, recentSessions, examHistory,
-    pickForTopic, pickRandom, buildMockExam, buildPlacement, shuffle
+    pickForTopic, pickRandom, pickWeak, buildMockExam, buildPlacement, shuffle
   };
 })();

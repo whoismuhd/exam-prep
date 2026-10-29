@@ -118,7 +118,7 @@
         <div class="section concept"><strong>${t('fb.keyConceptLong')}:</strong> ${esc(q.keyConcept)}</div>
         ${q.examTip ? `<div class="section"><strong>${t('fb.examTip')}:</strong> ${esc(q.examTip)}</div>` : ''}
         ${renderSimple(q)}
-        <div class="section"><strong>${t('fb.recommendation')}:</strong> ${t('fb.recommendationText', { topic: `<a href="#/notlar/${esc(q.topic)}">${esc(Data.topicName(q.topic))}</a>`, subtopic: esc(q.subtopic) })}</div>
+        <div class="section"><strong>${t('fb.recommendation')}:</strong> ${t('fb.recommendationText', { topic: `<a href="#/ogren/${esc(q.topic)}">${esc(Data.topicName(q.topic))}</a>`, subtopic: esc(q.subtopic) })} <a class="btn btn-sm btn-ghost" href="#/ogren/${esc(q.topic)}">${t('fb.lessonLink')}</a></div>
         ${refs}
       </div>`;
   }

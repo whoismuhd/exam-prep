@@ -14,7 +14,7 @@ fs.mkdirSync(path.join(OUT, 'data'), { recursive: true });
 
 let html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const css = fs.readFileSync(path.join(ROOT, 'css', 'style.css'), 'utf8');
-const scripts = ['i18n', 'storage', 'data', 'progress', 'ui', 'quiz', 'exam', 'app']
+const scripts = ['i18n', 'storage', 'data', 'progress', 'ui', 'quiz', 'exam', 'learn', 'app']
   .map(n => fs.readFileSync(path.join(ROOT, 'js', n + '.js'), 'utf8')).join('\n\n');
 
 // Gövde içeriğini al
@@ -33,7 +33,7 @@ ${scripts.replace(/<\/script>/g, '<\\/script>')}
 </script>
 `;
 fs.writeFileSync(path.join(OUT, 'index.html'), page, 'utf8');
-for (const f of ['topics.json', 'questions.json', 'notes.json', 'plan.json', 'notes_en.json', 'plan_en.json']) {
+for (const f of ['topics.json', 'questions.json', 'notes.json', 'plan.json', 'notes_en.json', 'plan_en.json', 'lessons.json', 'lessons_en.json']) {
   const src = path.join(ROOT, 'data', f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(OUT, 'data', f));
 }

@@ -1,0 +1,2694 @@
+{
+  "IBG": {
+    "summary": "The internet and information security topic covers the principles, policies and technical controls used to protect the confidentiality, integrity and availability of information assets. The exam asks about fundamental concepts such as the CIA triad, authentication factors, firewall and VPN concepts, HTTPS/TLS, e-mail security and malware types.",
+    "concepts": [
+      "CIA triad: Confidentiality prevents unauthorised access, Integrity prevents unauthorised modification, Availability guarantees that authorised users can access when needed. Non-repudiation and accountability are added to these.",
+      "AAA: Authentication answers 'who are you', authorization 'what can you access', accounting 'what did you do'. RADIUS and TACACS+ are AAA protocols.",
+      "Authentication factors: something you know (password, PIN), something you have (token, SMS code, smart card), something you are (fingerprint, face). Multi-factor authentication (MFA) requires at least two different factor classes.",
+      "Firewall types: packet filtering (stateless, layers 3-4), stateful (connection table), application layer/proxy and next generation (NGFW, with application awareness and IPS). The DMZ is the intermediate zone where externally exposed servers are placed.",
+      "An IDS (Intrusion Detection System) detects an attack and alerts, whereas an IPS (Intrusion Prevention System) works inline and blocks the traffic. Signature-based detection looks for known patterns, anomaly-based detection looks for deviation from normal.",
+      "A VPN (Virtual Private Network) establishes an encrypted tunnel over a public network. IPsec works at the network layer (AH integrity, ESP encryption; transport and tunnel modes), SSL/TLS VPN at the application layer.",
+      "HTTPS = HTTP + TLS (Transport Layer Security), port 443. In the TLS handshake the server is authenticated with its certificate, a session key is agreed asymmetrically, and the data is carried with a symmetric cipher. TLS 1.2 and 1.3 are the current versions; SSL 3.0, TLS 1.0 and 1.1 have been deprecated.",
+      "PKI (Public Key Infrastructure): the Certificate Authority (CA) signs X.509 certificates; certificate revocation is checked with CRL or OCSP. The browser's chain of trust runs from the root CA to the leaf certificate.",
+      "Malware types: virus (attaches to a host file), worm (self-propagating), trojan (appears legitimate), ransomware (encrypts data), spyware, rootkit (hides itself), botnet (remotely controlled network of zombies).",
+      "Social engineering: phishing, spear phishing (targeted), whaling (targeting senior executives), vishing (voice), smishing (via SMS), baiting, shoulder surfing. The most effective defence is awareness training.",
+      "E-mail security: SPF defines the sender IP, DKIM the message signature, DMARC the policy for the two. S/MIME and PGP provide end-to-end e-mail encryption and signing.",
+      "Password security: Passwords are stored with slow hash functions (bcrypt, scrypt, Argon2, PBKDF2) together with a salt; storing them in plain text or as plain MD5/SHA-1 is unacceptable.",
+      "Defence in depth is the principle of layered controls, least privilege of only the necessary authority, and segregation of duties of no single person carrying out a critical process from start to finish.",
+      "Hierarchy of security policy, standard, procedure and guideline: the policy states senior management's intent, the standard the mandatory technical requirement, the procedure the step-by-step implementation, the guideline a recommendation."
+    ],
+    "comparisons": [
+      {
+        "title": "IDS vs IPS",
+        "rows": [
+          [
+            "Feature",
+            "IDS",
+            "IPS"
+          ],
+          [
+            "Position",
+            "Passive, monitors a copy of the traffic (SPAN/TAP)",
+            "Inline"
+          ],
+          [
+            "Response",
+            "Generates alert/log",
+            "Blocks, drops the connection"
+          ],
+          [
+            "Effect of false positive",
+            "Analyst time",
+            "Drops legitimate traffic"
+          ],
+          [
+            "Latency impact",
+            "None",
+            "Yes"
+          ]
+        ]
+      },
+      {
+        "title": "Authentication factors",
+        "rows": [
+          [
+            "Factor",
+            "Description",
+            "Example",
+            "Weakness"
+          ],
+          [
+            "Knowledge",
+            "Something you know",
+            "Password, PIN, secret question",
+            "Guessing, phishing, leak"
+          ],
+          [
+            "Possession",
+            "Something you have",
+            "OTP device, smart card, phone",
+            "Loss/theft, SIM swap"
+          ],
+          [
+            "Biometrics",
+            "Something you are",
+            "Fingerprint, face, iris",
+            "Cannot be changed, spoofing"
+          ]
+        ]
+      },
+      {
+        "title": "Firewall types",
+        "rows": [
+          [
+            "Type",
+            "Layer",
+            "Decision data",
+            "Note"
+          ],
+          [
+            "Packet filtering (stateless)",
+            "3-4",
+            "IP, port, protocol",
+            "Fast, no context"
+          ],
+          [
+            "Stateful",
+            "3-4",
+            "Connection state table",
+            "Recognises reply packets automatically"
+          ],
+          [
+            "Application/proxy",
+            "7",
+            "Content, URL, command",
+            "Slow but deep inspection"
+          ],
+          [
+            "WAF",
+            "7 (HTTP)",
+            "HTTP request/response",
+            "Specific to web attacks such as SQLi, XSS"
+          ]
+        ]
+      }
+    ],
+    "formulas": [],
+    "misconceptions": [
+      "Misconception: Using a password with an SMS code is two factors, and so is using a password with a secret question. Correct: Password and secret question are in the same factor class (knowledge); MFA requires at least two factors from different classes.",
+      "Misconception: HTTPS makes a site completely secure. Correct: TLS only provides confidentiality, integrity and server identity during transmission; SQL injection or weak authorisation in the application is not solved by HTTPS.",
+      "Misconception: An IDS stops the attack. Correct: An IDS detects and alerts; the blocking function belongs to the IPS.",
+      "Misconception: A virus and a worm are the same thing. Correct: A virus is bound to a host file and spreads through user action; a worm spreads on its own over the network.",
+      "Misconception: Encrypting passwords is the most correct storage method. Correct: Passwords are stored with irreversible, salted and slow hash functions; encryption exposes all passwords once the key is compromised.",
+      "Misconception: If there is a firewall, there is no need for antivirus. Correct: The firewall filters network traffic; malware arriving via USB or downloaded through a permitted channel (e-mail attachment) is caught by endpoint protection. Defence in depth is required."
+    ],
+    "example": "A bank employee clicks the link in an e-mail with the subject 'your account will be suspended' and enters their corporate password into a fake login page. This is a phishing attack. Because MFA is mandatory in the organisation, the attacker cannot log in with the password alone; moreover, if the DMARC policy had been set to 'reject', the e-mail from the spoofed sender domain would not have been delivered in the first place. After the incident the password is reset, the user is given awareness training, and the event is correlated with SIEM logs to investigate whether anyone else clicked.",
+    "references": [
+      "Stallings & Brown, Computer Security: Principles and Practice, Chapters 1, 3, 9, 22",
+      "NIST SP 800-63B (Digital Identity Guidelines, authentication)",
+      "NIST SP 800-41 Rev.1 (Guidelines on Firewalls and Firewall Policy)",
+      "RFC 8446 (TLS 1.3), RFC 7208 (SPF), RFC 6376 (DKIM), RFC 7489 (DMARC)",
+      "ISO/IEC 27002:2022 control catalogue"
+    ]
+  },
+  "NET": {
+    "summary": "The computer networking topic explains how data is carried from one end to the other through the OSI and TCP/IP layer models. In the exam, IP addressing and subnet calculation, TCP/UDP differences, well-known port numbers, which layer routing and switching devices operate at, and the function of basic protocols such as DNS/DHCP/ARP are the most frequently asked headings.",
+    "concepts": [
+      "The OSI model (Open Systems Interconnection) has 7 layers: 1 Physical, 2 Data Link, 3 Network, 4 Transport, 5 Session, 6 Presentation, 7 Application. The TCP/IP model describes the same job more practically with 4 (or 5) layers.",
+      "Encapsulation: Each layer adds its own header to the data it receives from above. Unit names: segment at the Transport layer, packet at the Network layer, frame at the Data Link layer, bit at the Physical layer.",
+      "A hub is a layer 1 device, a switch a layer 2 device (forwards by MAC address), a router a layer 3 device (routes by IP address). A layer 3 switch does both switching and routing.",
+      "An IPv4 address is 32 bits, an IPv6 address 128 bits. Private blocks in IPv4: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 (RFC 1918). 127.0.0.1 is the loopback address.",
+      "In CIDR (Classless Inter-Domain Routing) notation the /24 mask corresponds to 255.255.255.0 and gives 254 usable host addresses. The first address of a subnet is the network address, the last is the broadcast address.",
+      "TCP (Transmission Control Protocol) provides connection-oriented, reliable, ordered delivery; it establishes the connection with a three-way handshake (SYN, SYN-ACK, ACK) and performs flow and congestion control. UDP (User Datagram Protocol) is a connectionless, low-latency protocol with no delivery guarantee.",
+      "Well-known ports: FTP 20/21, SSH 22, Telnet 23, SMTP 25, DNS 53, HTTP 80, POP3 110, IMAP 143, HTTPS 443, RDP 3389, MySQL 3306, MSSQL 1433. 0-1023 are system ports, 49152-65535 are dynamic ports.",
+      "DNS (Domain Name System) translates a domain name into an IP and uses UDP 53 (TCP for large responses and zone transfers). Record types: A (IPv4), AAAA (IPv6), MX (mail), CNAME (alias), NS, PTR (reverse lookup).",
+      "DHCP (Dynamic Host Configuration Protocol) distributes IP address, mask, gateway and DNS information automatically; the DORA steps are Discover, Offer, Request, Acknowledge. ARP (Address Resolution Protocol) finds the MAC address from an IP address.",
+      "NAT (Network Address Translation) translates private IP addresses to a single public IP; PAT/NAT overload distinguishes by port number. This is the basic mechanism that has delayed IPv4 address exhaustion.",
+      "Routing protocols: RIP is distance vector (hop count, maximum 15), OSPF is link state (Dijkstra, cost metric), BGP is path vector and inter-autonomous-system (the Internet backbone). Static routing is entered manually.",
+      "ICMP (Internet Control Message Protocol) carries error and diagnostic messages; ping (Echo Request/Reply) and traceroute (TTL expired messages) rely on ICMP.",
+      "A VLAN (Virtual LAN, IEEE 802.1Q) divides a single physical switch into logical broadcast domains; routing is required for communication between VLANs. The wireless network standard is IEEE 802.11, Ethernet is IEEE 802.3.",
+      "The MTU (Maximum Transmission Unit) on Ethernet is 1500 bytes; the TTL (Time To Live) is decremented by 1 at every router and the packet is discarded when it reaches zero, which prevents infinite loops."
+    ],
+    "comparisons": [
+      {
+        "title": "TCP vs UDP",
+        "rows": [
+          [
+            "Feature",
+            "TCP",
+            "UDP"
+          ],
+          [
+            "Connection",
+            "Connection-oriented (three-way handshake)",
+            "Connectionless"
+          ],
+          [
+            "Reliability",
+            "ACK, retransmission, ordering",
+            "No guarantee"
+          ],
+          [
+            "Header size",
+            "At least 20 bytes",
+            "8 bytes"
+          ],
+          [
+            "Flow/congestion control",
+            "Yes",
+            "No"
+          ],
+          [
+            "Speed",
+            "Slower",
+            "Faster, low latency"
+          ],
+          [
+            "Typical use",
+            "HTTP, SMTP, FTP, SSH",
+            "DNS, DHCP, VoIP, video streaming"
+          ]
+        ]
+      },
+      {
+        "title": "Hub vs Switch vs Router",
+        "rows": [
+          [
+            "Feature",
+            "Hub",
+            "Switch",
+            "Router"
+          ],
+          [
+            "OSI layer",
+            "1 (Physical)",
+            "2 (Data Link)",
+            "3 (Network)"
+          ],
+          [
+            "Decision information",
+            "None, floods every port",
+            "MAC address table",
+            "IP routing table"
+          ],
+          [
+            "Collision domain",
+            "Single domain",
+            "Separate per port",
+            "Separate per port"
+          ],
+          [
+            "Broadcast domain",
+            "Single",
+            "Single (without VLANs)",
+            "Separates networks"
+          ]
+        ]
+      },
+      {
+        "title": "OSI and TCP/IP layer mapping",
+        "rows": [
+          [
+            "OSI",
+            "TCP/IP",
+            "Example protocol / unit"
+          ],
+          [
+            "7 Application, 6 Presentation, 5 Session",
+            "Application",
+            "HTTP, DNS, SMTP, TLS (presentation/session)"
+          ],
+          [
+            "4 Transport",
+            "Transport",
+            "TCP, UDP / segment"
+          ],
+          [
+            "3 Network",
+            "Internet",
+            "IP, ICMP, OSPF / packet"
+          ],
+          [
+            "2 Data Link, 1 Physical",
+            "Network access",
+            "Ethernet, ARP, Wi-Fi / frame, bit"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Number of usable hosts = 2^(32 - prefix length) - 2 (network and broadcast addresses subtracted)",
+      "Number of subnets = 2^(number of borrowed bits)",
+      "Block size for mask /n = 2^(32 - n); /26 → 64 addresses, 62 hosts",
+      "Total bits: IPv4 = 32 bits (4 octets), IPv6 = 128 bits (8 groups of 16 bits), MAC = 48 bits"
+    ],
+    "misconceptions": [
+      "Misconception: A switch forwards by looking at the IP address. Correct: A classic switch is a layer 2 device and uses the MAC address table; the device that looks at the IP is the router.",
+      "Misconception: 256 devices can be addressed in a /24 network. Correct: Of the 256 addresses, one is the network address and one the broadcast address; 254 hosts are usable.",
+      "Misconception: UDP is useless because it is unreliable. Correct: In latency-sensitive applications (VoIP, DNS queries, gaming), waiting for retransmission is more harmful; UDP is preferred.",
+      "Misconception: HTTPS uses port 80. Correct: HTTP uses port 80, HTTPS uses port 443.",
+      "Misconception: DNS uses only UDP. Correct: The default is UDP 53, but responses exceeding 512 bytes and zone transfers are done over TCP 53.",
+      "Misconception: 172.32.0.0 is a private IP address. Correct: The private block runs from 172.16.0.0 to 172.31.255.255; 172.32.x.x is a public address."
+    ],
+    "example": "A bank branch has been given the block 192.168.10.0/24, and a separate subnet is requested for each of 4 departments (tellers, operations, management, guest Wi-Fi), each hosting at most 50 devices. For 50 hosts, since 2^6 - 2 = 62 ≥ 50, the host part is 6 bits and the prefix is /26. The subnets are 192.168.10.0/26, .64/26, .128/26 and .192/26; for example, in the second subnet the network address is .64, the first host .65, the last host .126 and the broadcast address .127. Since traffic between the guest Wi-Fi subnet and the teller subnet will pass through a router or layer 3 switch, an access control list (ACL) can be applied there.",
+    "references": [
+      "Kurose & Ross, Computer Networking: A Top-Down Approach, Chapters 1-5",
+      "Tanenbaum & Wetherall, Computer Networks, Chapters 1, 4, 5, 6",
+      "RFC 791 (IP), RFC 793 (TCP), RFC 768 (UDP), RFC 1918 (private addresses), RFC 4632 (CIDR)",
+      "IANA Service Name and Transport Protocol Port Number Registry"
+    ]
+  },
+  "VTYS": {
+    "summary": "The database management systems topic covers the fundamental concepts of the relational model, data definition and querying with SQL, normalisation, transaction management and indexing. In the exam, key types, JOIN varieties, GROUP BY/HAVING, normal forms, ACID properties, concurrency problems and isolation levels are the most frequently asked areas.",
+    "concepts": [
+      "Relational model: Table (relation), row (tuple, record), column (attribute), set of allowed values (domain). The schema is the structure definition, the instance is the data at a given moment. Degree is the number of columns, cardinality the number of rows.",
+      "Keys: A super key is any set that uniquely identifies a row, a candidate key is an irreducible (minimal) super key, the primary key is the chosen candidate key (cannot be NULL, unique), alternate keys are the candidates not chosen, a foreign key references the primary key of another table.",
+      "Integrity constraints: Entity integrity (the primary key cannot be NULL), referential integrity (a foreign key is either NULL or points to an existing value), domain integrity (CHECK, NOT NULL, type). ON DELETE CASCADE / SET NULL / RESTRICT determine the referential behaviour.",
+      "SQL sublanguages: DDL (CREATE, ALTER, DROP, TRUNCATE), DML (SELECT, INSERT, UPDATE, DELETE), DCL (GRANT, REVOKE), TCL (COMMIT, ROLLBACK, SAVEPOINT). TRUNCATE is DDL, cannot be undone in most systems, and takes no WHERE.",
+      "Logical evaluation order of SELECT: FROM → WHERE → GROUP BY → HAVING → SELECT → DISTINCT → ORDER BY → LIMIT. WHERE filters rows before grouping, HAVING filters groups after grouping; an aggregate function can be used in HAVING but not in WHERE.",
+      "JOIN types: INNER JOIN returns the matching rows, LEFT (OUTER) JOIN all rows of the left table (NULL for non-matches), RIGHT JOIN all of the right, FULL OUTER JOIN all of both, CROSS JOIN the Cartesian product (m×n rows). A self join is a table joined with itself.",
+      "The aggregate functions COUNT, SUM, AVG, MIN, MAX ignore NULL values; COUNT(*) counts all rows, COUNT(column) counts the non-NULL ones. Comparison with NULL is done with IS NULL / IS NOT NULL; = NULL always returns UNKNOWN.",
+      "Normalisation: 1NF atomic values and no repeating groups; 2NF 1NF + no partial dependency (every non-key attribute depends on the whole primary key); 3NF 2NF + no transitive dependency; BCNF the left-hand side of every functional dependency is a super key. Normalisation reduces redundancy and update anomalies; denormalisation is a deliberate step back for read performance.",
+      "ACID: Atomicity (all or nothing), Consistency (constraints are preserved), Isolation (concurrent transactions do not see each other), Durability (no loss after COMMIT; ensured with the write-ahead log, WAL).",
+      "Concurrency problems: Dirty read (reading uncommitted data), non-repeatable read (the same row differs between two reads), phantom read (the set of rows changes), lost update.",
+      "Isolation levels (SQL standard): READ UNCOMMITTED (allows dirty reads), READ COMMITTED (prevents dirty reads), REPEATABLE READ (prevents non-repeatable reads), SERIALIZABLE (prevents phantoms too, slowest). Locking (2PL) and multi-version concurrency control (MVCC) are isolation mechanisms.",
+      "Index: B+ tree indexes make range and equality queries O(log n); a hash index is fast only for equality. A clustered index determines the physical order in the table and there can be only one per table; a non-clustered index is a separate structure. An index speeds up reads and increases the cost of writes.",
+      "A view is a stored query, a stored procedure is a program stored on the server, a trigger is code that runs automatically on an INSERT/UPDATE/DELETE event. A materialised view stores the result physically.",
+      "ER model: Entity, attribute, relationship; cardinality 1:1, 1:N, M:N. An M:N relationship is converted to the relational schema with an intermediate (junction) table. A weak entity has no key of its own and depends on its owner."
+    ],
+    "comparisons": [
+      {
+        "title": "JOIN types",
+        "rows": [
+          [
+            "JOIN",
+            "Rows returned",
+            "On the non-matching side"
+          ],
+          [
+            "INNER",
+            "Matches in both tables",
+            "No row"
+          ],
+          [
+            "LEFT OUTER",
+            "All of the left + matching right",
+            "Right columns NULL"
+          ],
+          [
+            "RIGHT OUTER",
+            "All of the right + matching left",
+            "Left columns NULL"
+          ],
+          [
+            "FULL OUTER",
+            "All of both",
+            "Opposite side NULL"
+          ],
+          [
+            "CROSS",
+            "Cartesian product (m × n)",
+            "No match condition"
+          ]
+        ]
+      },
+      {
+        "title": "Isolation levels and prevented problems",
+        "rows": [
+          [
+            "Level",
+            "Dirty read",
+            "Non-repeatable read",
+            "Phantom read"
+          ],
+          [
+            "READ UNCOMMITTED",
+            "Possible",
+            "Possible",
+            "Possible"
+          ],
+          [
+            "READ COMMITTED",
+            "Prevented",
+            "Possible",
+            "Possible"
+          ],
+          [
+            "REPEATABLE READ",
+            "Prevented",
+            "Prevented",
+            "Possible"
+          ],
+          [
+            "SERIALIZABLE",
+            "Prevented",
+            "Prevented",
+            "Prevented"
+          ]
+        ]
+      },
+      {
+        "title": "DELETE vs TRUNCATE vs DROP",
+        "rows": [
+          [
+            "Feature",
+            "DELETE",
+            "TRUNCATE",
+            "DROP"
+          ],
+          [
+            "Language class",
+            "DML",
+            "DDL",
+            "DDL"
+          ],
+          [
+            "WHERE",
+            "Yes",
+            "No",
+            "No"
+          ],
+          [
+            "Undo",
+            "With ROLLBACK",
+            "Not in most systems",
+            "No"
+          ],
+          [
+            "Structure",
+            "Table remains",
+            "Table remains, data goes",
+            "Table is removed entirely"
+          ],
+          [
+            "Trigger",
+            "Fires",
+            "Does not fire",
+            "-"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "CROSS JOIN row count = m × n",
+      "B+ tree search/insert/delete complexity = O(log n); sequential scan O(n)",
+      "Normal form chain: 1NF ⊃ 2NF ⊃ 3NF ⊃ BCNF (every BCNF table is also 3NF)",
+      "COUNT(*) all rows, COUNT(column) = number of non-NULL rows, AVG = SUM / COUNT(column)"
+    ],
+    "misconceptions": [
+      "Misconception: WHERE and HAVING do the same job. Correct: WHERE filters rows before grouping, HAVING filters groups after grouping; an aggregate function can only be used in HAVING.",
+      "Misconception: A primary key and a UNIQUE constraint are the same. Correct: A primary key does not accept NULL and there is one per table; a UNIQUE constraint accepts NULL (multiple NULL rows in most systems; a single NULL in SQL Server) and a table can have more than one UNIQUE constraint.",
+      "Misconception: The comparison NULL = NULL yields TRUE. Correct: The result is UNKNOWN and the row is not selected in WHERE; IS NULL is used.",
+      "Misconception: Adding many indexes to every table always improves performance. Correct: An index speeds up read queries but has to be updated on every INSERT/UPDATE/DELETE and takes up space.",
+      "Misconception: The READ COMMITTED level solves all concurrency problems. Correct: It only prevents dirty reads; non-repeatable and phantom reads are still possible.",
+      "Misconception: A table in 3NF is always in BCNF. Correct: 3NF allows the left-hand side not to be a super key in dependencies whose right-hand side is a prime attribute (part of a candidate key); BCNF removes this exception."
+    ],
+    "example": "A bank auditor is examining the query 'list the customers whose total balance exceeds 1,000,000 TL': SELECT m.musteri_id, SUM(h.bakiye) AS toplam FROM musteri m JOIN hesap h ON m.musteri_id = h.musteri_id GROUP BY m.musteri_id HAVING SUM(h.bakiye) > 1000000. If customers without an account are also to appear, LEFT JOIN is used instead of JOIN and, since SUM will return NULL, it is wrapped as COALESCE(SUM(h.bakiye),0). If the condition had been written in WHERE, an error would have occurred because SUM is computed after grouping. In a money transfer, the update of the two accounts is done within a single transaction; if the second UPDATE fails, the first is also undone with ROLLBACK (atomicity).",
+    "references": [
+      "Elmasri & Navathe, Fundamentals of Database Systems, Chapters 3, 5, 6, 14, 15, 20, 21",
+      "Silberschatz, Korth & Sudarshan, Database System Concepts, Chapters 3, 4, 7, 14, 17, 18",
+      "ISO/IEC 9075 (SQL standard) isolation level definitions",
+      "Codd, A Relational Model of Data for Large Shared Data Banks (1970)"
+    ]
+  },
+  "VYA": {
+    "summary": "Data structures and algorithms examine how data is organised in memory and how costly search, sort and traversal operations are on that organisation. The exam asks about Big-O complexity, the differences between arrays/linked lists/stacks/queues, tree traversals, binary search trees, heaps, hash tables, the complexities of sorting algorithms, and graph algorithms such as BFS/DFS/Dijkstra.",
+    "concepts": [
+      "Big-O notation gives the worst-case upper bound; the common classes in increasing order are O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2^n) < O(n!). Ω is the lower bound, Θ the tight bound. Constants and lower-order terms are dropped.",
+      "An array is contiguous memory, O(1) access by index, O(n) insertion/deletion in the middle. A linked list is node+pointer, O(1) insertion at the head, O(n) access by index. A doubly linked list also has a previous pointer.",
+      "Stack, LIFO: push, pop, peek O(1). Uses: function call stack, bracket matching, undo, DFS, infix→postfix conversion. Queue, FIFO: enqueue, dequeue O(1); BFS, printer queue, operating system scheduler. A deque is double-ended.",
+      "Binary search is O(log n) on a sorted array; the search interval halves at every step. On an unsorted array, linear search O(n) is required.",
+      "Binary tree: Every node has at most 2 children. Traversals: Preorder (root-left-right), Inorder (left-root-right), Postorder (left-right-root), Level-order (BFS). A binary tree with n nodes has n-1 edges; a full binary tree of height h has at most 2^(h+1)-1 nodes.",
+      "Binary search tree (BST): left < root < right; inorder traversal yields sorted output. Search/insert/delete average O(log n), O(n) if unbalanced (e.g. sorted insertion). AVL and Red-Black trees guarantee O(log n) by maintaining balance.",
+      "Heap: A complete binary tree; in a min-heap the root is the smallest element, in a max-heap the largest. Insertion and deletion O(log n), peeking at the min/max O(1). It is the implementation of a priority queue; in the array representation the children of i are 2i+1 and 2i+2.",
+      "Hash table: Converts the key to an index with a hash function; average O(1) insert/search/delete, worst case O(n). Collision resolution: chaining (linked list) or open addressing (linear/quadratic probing, double hashing). Load factor = number of elements / number of buckets.",
+      "Simple sorts O(n²): Bubble, selection, insertion (O(n) on nearly sorted data). Fast sorts O(n log n): Merge (stable, O(n) extra memory), quick (average O(n log n), worst O(n²), in place), heap sort (O(1) extra memory, unstable).",
+      "The lower bound of comparison-based sorting is Ω(n log n). Counting, bucket and radix sort do not compare and run in O(n+k) under certain conditions. A stable sort preserves the order of equal keys.",
+      "Graph: Vertices and edges; directed/undirected, weighted/unweighted. Representation: adjacency matrix O(V²) memory, adjacency list O(V+E). BFS uses a queue and finds the unweighted shortest path; DFS uses a stack/recursion; both are O(V+E).",
+      "Dijkstra finds single-source shortest paths in a graph with non-negative weights in O((V+E) log V) (with a binary heap); Bellman-Ford allows negative edges, O(VE); Floyd-Warshall all pairs, O(V³). For the minimum spanning tree (MST), Kruskal (edge sorting, union-find) and Prim (heap) are used.",
+      "Recursion consists of a base case and a recursive step; because it uses the call stack, deep recursion can lead to a stack overflow. Dynamic programming reduces exponential complexity to polynomial by memoising overlapping subproblems (Fibonacci O(2^n) → O(n)).",
+      "Algorithm design paradigms: Divide and conquer (merge sort, binary search), greedy (Dijkstra, Huffman, Kruskal), dynamic programming (knapsack, longest common subsequence), backtracking (N-queens)."
+    ],
+    "comparisons": [
+      {
+        "title": "Sorting algorithm complexity",
+        "rows": [
+          [
+            "Algorithm",
+            "Best",
+            "Average",
+            "Worst",
+            "Extra memory",
+            "Stable"
+          ],
+          [
+            "Bubble",
+            "O(n)",
+            "O(n²)",
+            "O(n²)",
+            "O(1)",
+            "Yes"
+          ],
+          [
+            "Selection",
+            "O(n²)",
+            "O(n²)",
+            "O(n²)",
+            "O(1)",
+            "No"
+          ],
+          [
+            "Insertion",
+            "O(n)",
+            "O(n²)",
+            "O(n²)",
+            "O(1)",
+            "Yes"
+          ],
+          [
+            "Merge",
+            "O(n log n)",
+            "O(n log n)",
+            "O(n log n)",
+            "O(n)",
+            "Yes"
+          ],
+          [
+            "Quick",
+            "O(n log n)",
+            "O(n log n)",
+            "O(n²)",
+            "O(log n)",
+            "No"
+          ],
+          [
+            "Heap",
+            "O(n log n)",
+            "O(n log n)",
+            "O(n log n)",
+            "O(1)",
+            "No"
+          ],
+          [
+            "Counting",
+            "O(n+k)",
+            "O(n+k)",
+            "O(n+k)",
+            "O(n+k)",
+            "Yes"
+          ]
+        ]
+      },
+      {
+        "title": "Data structure operation complexities (average)",
+        "rows": [
+          [
+            "Structure",
+            "Access",
+            "Search",
+            "Insert",
+            "Delete"
+          ],
+          [
+            "Array",
+            "O(1)",
+            "O(n)",
+            "O(n)",
+            "O(n)"
+          ],
+          [
+            "Sorted array",
+            "O(1)",
+            "O(log n)",
+            "O(n)",
+            "O(n)"
+          ],
+          [
+            "Linked list",
+            "O(n)",
+            "O(n)",
+            "O(1) at head",
+            "O(1) at head"
+          ],
+          [
+            "Stack / Queue",
+            "O(1) at the end",
+            "O(n)",
+            "O(1)",
+            "O(1)"
+          ],
+          [
+            "Hash table",
+            "-",
+            "O(1)",
+            "O(1)",
+            "O(1)"
+          ],
+          [
+            "Balanced BST (AVL)",
+            "O(log n)",
+            "O(log n)",
+            "O(log n)",
+            "O(log n)"
+          ],
+          [
+            "Heap",
+            "Root O(1)",
+            "O(n)",
+            "O(log n)",
+            "O(log n)"
+          ]
+        ]
+      },
+      {
+        "title": "BFS vs DFS",
+        "rows": [
+          [
+            "Feature",
+            "BFS",
+            "DFS"
+          ],
+          [
+            "Auxiliary structure",
+            "Queue",
+            "Stack / recursion"
+          ],
+          [
+            "Traversal order",
+            "Level by level",
+            "Depth first"
+          ],
+          [
+            "Complexity",
+            "O(V+E)",
+            "O(V+E)"
+          ],
+          [
+            "Typical use",
+            "Unweighted shortest path, nearest neighbours",
+            "Cycle detection, topological sort, connected components"
+          ],
+          [
+            "Memory",
+            "High on wide graphs (frontier set)",
+            "Stack depth on deep graphs"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Sum 1+2+...+n = n(n+1)/2 → O(n²) (the typical cost of two nested loops)",
+      "Binary search makes at most ⌈log₂(n+1)⌉ comparisons; 11 steps for n = 1024",
+      "Number of nodes in a full binary tree of height h ≤ 2^(h+1) - 1; in a balanced tree with n nodes h ≈ ⌊log₂ n⌋",
+      "Heap array representation (0-based): children 2i+1 and 2i+2, parent ⌊(i-1)/2⌋",
+      "Hash load factor α = n / m; average search with chaining O(1 + α)",
+      "Number of edges in an undirected complete graph = V(V-1)/2; number of edges in a tree = V - 1",
+      "Master theorem: T(n) = 2T(n/2) + O(n) → O(n log n) (merge sort); T(n) = T(n/2) + O(1) → O(log n) (binary search)"
+    ],
+    "misconceptions": [
+      "Misconception: Quick sort is always O(n log n). Correct: Average O(n log n), but with a bad pivot choice (e.g. the first element as pivot on a sorted array) it degrades to O(n²).",
+      "Misconception: A hash table is always O(1). Correct: Average O(1); with a bad hash function or a high load factor, if all keys fall into the same bucket it becomes O(n).",
+      "Misconception: Search in a BST is always O(log n). Correct: An unbalanced BST (sorted data inserted) degenerates into a linked list and becomes O(n); an AVL/Red-Black tree is needed for a guarantee.",
+      "Misconception: An O(n log n) algorithm is faster than an O(n²) algorithm for every n. Correct: Big-O is asymptotic behaviour; for small n, insertion sort can be faster than quick sort because of constants, which is why hybrid sorts use insertion sort on small partitions.",
+      "Misconception: Dijkstra also works with negative-weight edges. Correct: Its greedy approach gives wrong results with a negative edge; Bellman-Ford is used.",
+      "Misconception: Inorder traversal yields sorted output on every binary tree. Correct: Only on a binary SEARCH tree (BST) does inorder traversal produce a sorted sequence."
+    ],
+    "example": "In a payment system, 10 million transaction records must be queried quickly by customer number every day. Linear search on an unsorted array takes up to 10 million steps; sorting first with merge sort is O(n log n) ≈ 10⁷ × 23 steps, after which every query is at most 24 steps with binary search. If queries are very frequent and no range query is needed, a hash table with average O(1) is better; if there is a range query such as 'customers with a balance between X and Y', a B+ tree or a balanced BST is preferred. If the auditor sees that the application finds 'the 10 largest transactions' by sorting the whole list every time, they can suggest a 10-element min-heap with O(n log 10) ≈ O(n) instead of O(n log n).",
+    "references": [
+      "Cormen, Leiserson, Rivest & Stein (CLRS), Introduction to Algorithms, Chapters 2-4, 6-8, 10-13, 22-24",
+      "Weiss, Data Structures and Algorithm Analysis in C/Java, Chapters 2-7, 9",
+      "Sedgewick & Wayne, Algorithms, 4th ed., Chapters 1-4",
+      "Goodrich & Tamassia, Data Structures and Algorithms"
+    ]
+  },
+  "PRG": {
+    "summary": "The structured and object-oriented programming topic covers structural fundamentals such as control structures, functions, parameter passing and memory management, together with OOP principles such as class, object, inheritance, polymorphism, encapsulation and abstraction. In the exam, code output questions, pass by value/reference, the meanings of static and final, the difference between overloading and overriding, the abstract class vs interface comparison and the SOLID principles appear frequently.",
+    "concepts": [
+      "Structured programming rests on three basic constructs: sequence, selection (if/switch) and iteration (for/while/do-while). The use of goto is avoided; every block has a single entry and a single exit (Böhm-Jacopini theorem).",
+      "Pass by value sends a copy; a change inside the function is not reflected to the caller. Pass by reference gives access to the variable itself. In Java all passing is by value; since a copy of the object reference is sent, the object's contents can change but the reference cannot be reassigned.",
+      "Scope and lifetime: A local variable dies at the end of the block and is kept on the stack; dynamically allocated objects are kept on the heap. Java/C# use a garbage collector; in C, management is manual with malloc/free; memory that is not released creates a memory leak.",
+      "Integer division and type conversion: In C/Java 7/2 = 3, 7.0/2 = 3.5, 7 % 2 = 1. Implicit widening (int → double) is automatic, narrowing (double → int) requires an explicit cast and the fractional part is truncated. Prefix/postfix increment: ++i increments first then uses, i++ uses first then increments.",
+      "Short-circuit evaluation: in a && b, if a is false b is not evaluated; in a || b, if a is true b is not evaluated. If break is forgotten in a switch, fall-through into the following cases occurs.",
+      "A class is a template, an object an instance. The constructor runs when the object is created, carries the class name and has no return type; the destructor (C++) runs when the object is destroyed. this is a reference to the object itself.",
+      "Encapsulation: Fields are private, access is via getters/setters; the internal representation is hidden. Access modifiers (Java): private only within the class, default (package) same package, protected package + subclasses, public everywhere.",
+      "Inheritance: The subclass inherits the members of the superclass; an 'is-a' relationship. Java has single inheritance (a class extends only one class), C++ has multiple inheritance. super calls the superclass constructor/method. Composition is a 'has-a' relationship and is generally preferred over inheritance.",
+      "Polymorphism: The same call behaving differently in different classes. Compile-time (static) polymorphism = overloading (same name, different parameter list); run-time (dynamic) polymorphism = overriding (the subclass rewrites the method with the same signature, resolved through the virtual method table).",
+      "Abstraction: An abstract class can contain at least one abstract method, cannot be instantiated, and can hold fields and methods with bodies. An interface defines only a contract (except Java 8+ default methods); a class can implement multiple interfaces.",
+      "A static member belongs to the class, is shared by all objects and is accessed without creating an object; a static method cannot use this. A final variable is a constant (single assignment), a final method cannot be overridden, a final class cannot be inherited. The C# equivalents are sealed/readonly/const.",
+      "SOLID: Single Responsibility (S), Open-Closed (O: open to extension, closed to modification), Liskov Substitution (L: a subclass can be used in place of its superclass), Interface Segregation (I: small interfaces), Dependency Inversion (D: depend on abstractions).",
+      "Design patterns (GoF): Creational (Singleton single instance, Factory abstracts object creation, Builder step-by-step construction), Structural (Adapter interface adaptation, Decorator adding behaviour, Facade simple front), Behavioural (Observer publish-subscribe, Strategy interchangeable algorithm, Command).",
+      "Exception handling: try-catch-finally; finally runs in every case (even if there is a return). In Java a checked exception (IOException) is either caught or declared with throws; unchecked ones (RuntimeException, NullPointerException, ArithmeticException) are not mandatory. Subclass exceptions must be caught before the superclass."
+    ],
+    "comparisons": [
+      {
+        "title": "Overloading vs Overriding",
+        "rows": [
+          [
+            "Feature",
+            "Overloading",
+            "Overriding"
+          ],
+          [
+            "Location",
+            "Same class (or subclass)",
+            "Subclass"
+          ],
+          [
+            "Signature",
+            "Same name, different parameter list",
+            "Same name, same parameter list"
+          ],
+          [
+            "Return type",
+            "Makes no difference (not sufficient on its own)",
+            "Same or subtype (covariant)"
+          ],
+          [
+            "Resolution time",
+            "Compile time (static)",
+            "Run time (dynamic)"
+          ],
+          [
+            "Polymorphism type",
+            "Static",
+            "Dynamic"
+          ],
+          [
+            "Prevented by",
+            "-",
+            "final, static, private methods cannot be overridden"
+          ]
+        ]
+      },
+      {
+        "title": "Abstract class vs Interface (Java)",
+        "rows": [
+          [
+            "Feature",
+            "Abstract class",
+            "Interface"
+          ],
+          [
+            "Keyword",
+            "abstract class / extends",
+            "interface / implements"
+          ],
+          [
+            "Multiple",
+            "Single inheritance",
+            "Multiple can be implemented"
+          ],
+          [
+            "Fields",
+            "Any kind of field",
+            "Only public static final constants"
+          ],
+          [
+            "Method body",
+            "Abstract + concrete mixed",
+            "Abstract (Java 8+: default/static with body)"
+          ],
+          [
+            "Constructor",
+            "Yes (called by the subclass)",
+            "No"
+          ],
+          [
+            "Purpose",
+            "Sharing common code, 'is-a'",
+            "Capability contract, 'can-do'"
+          ]
+        ]
+      },
+      {
+        "title": "Compiler vs Interpreter",
+        "rows": [
+          [
+            "Feature",
+            "Compiler",
+            "Interpreter"
+          ],
+          [
+            "Translation time",
+            "All of it before execution",
+            "Line by line at run time"
+          ],
+          [
+            "Execution speed",
+            "High",
+            "Lower"
+          ],
+          [
+            "Error detection",
+            "In bulk at compile time",
+            "On the line at run time"
+          ],
+          [
+            "Portability",
+            "Platform-specific binary",
+            "Anywhere there is an interpreter"
+          ],
+          [
+            "Example",
+            "C, C++, Go",
+            "Python, JavaScript (hybrid with JIT), Java (bytecode + JVM)"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Integer division: 7 / 2 = 3, 7 % 2 = 1, -7 / 2 = -3 (C99/Java round toward zero), 7.0 / 2 = 3.5",
+      "Java: i = 5; x = i++ + ++i → x = 5 + 7 = 12, i = 7 (in C/C++ this expression is undefined behaviour)",
+      "Stack/heap: local variables on the stack, allocations with new/malloc on the heap",
+      "Java integer ranges: byte 8 bits (-128..127), short 16 bits, int 32 bits (±2.1 billion), long 64 bits; int overflow wraps around silently"
+    ],
+    "misconceptions": [
+      "Misconception: Java passes objects by reference. Correct: Java always passes by value; what is passed is a copy of the reference. The object's fields can be modified, but assigning a new object to the parameter does not affect the caller.",
+      "Misconception: Two methods differing only in return type are overloading. Correct: Overloading requires the parameter list to differ; a difference in return type alone is a compile error.",
+      "Misconception: An abstract class cannot contain any method with a body. Correct: An abstract class can contain concrete methods, fields and constructors; it simply cannot be instantiated. The fully abstract construct is the interface.",
+      "Misconception: A static method can be overridden. Correct: static methods are bound to the class; writing one with the same signature in a subclass is hiding, and no dynamic binding takes place.",
+      "Misconception: The finally block does not run if there is a return inside try. Correct: finally runs in every case before the return (only System.exit or a JVM crash prevents it).",
+      "Misconception: Inheritance is better than composition everywhere because it reduces code duplication. Correct: Inheritance creates tight coupling and violates the LSP in relationships that are not 'is-a'; composition is preferred for 'has-a' relationships."
+    ],
+    "example": "In a banking application the abstract class Hesap defines the bakiye field and the abstract method paraCek(miktar); VadesizHesap and KrediliMevduatHesabi override it with different rules. The transaction service loops over a List<Hesap> and calls hesap.paraCek(100), and each object runs the method of its own class; this is run-time polymorphism. Because the bakiye field is kept private and changed only through paraYatir/paraCek (encapsulation), the negative balance rule is checked in a single place. When an account type is added, the existing service code does not change (Open-Closed principle); the auditor evaluates this structure as 'a control that narrows the impact area of change'.",
+    "references": [
+      "Deitel & Deitel, Java How to Program, Chapters 2-11",
+      "Kernighan & Ritchie, The C Programming Language, Chapters 1-5",
+      "Gamma, Helm, Johnson & Vlissides (GoF), Design Patterns",
+      "Martin, Clean Architecture / Agile Software Development (SOLID principles)",
+      "Oracle, The Java Language Specification (access modifiers, overloading/overriding rules)"
+    ]
+  },
+  "IS": {
+    "summary": "The operating systems topic examines how processor, memory, file and input/output resources are shared among processes. In the exam, process states and the process/thread difference, CPU scheduling algorithms and average waiting time calculation, deadlock conditions, paging and virtual memory, page replacement algorithms, Unix file permissions and basic commands are the most frequent headings.",
+    "concepts": [
+      "The kernel is the core software that manages the hardware; there is a distinction between user mode and kernel mode. A system call is a user program's transition to a kernel service; an interrupt is a hardware/software event. Monolithic (Linux) and microkernel (Minix, QNX) architectures are distinguished.",
+      "A process is a running program; it has its own address space and a PCB (Process Control Block: PID, state, registers, counter). A thread is a lightweight execution unit sharing the address space of the same process; the stack and registers are its own, the code, data and open files are shared.",
+      "Process states: New, Ready, Running, Waiting/Blocked, Terminated. The Running → Ready transition happens when the time slice expires (preemption), Running → Waiting on an I/O request. A context switch is pure overhead.",
+      "Scheduling algorithms: FCFS (first come first served; convoy effect), SJF (shortest job first; lowest average waiting time but starvation risk, preemptive version SRTF), Priority (low priority starvation → aging as the solution), Round Robin (time slice/quantum; fair in interactive systems), Multilevel feedback queue.",
+      "Scheduling criteria: CPU utilisation, throughput, turnaround time (= finish - arrival), waiting time (= turnaround - burst time), response time (= first start of execution - arrival).",
+      "Critical section and race condition: Concurrent access to shared data. Solutions: mutex (binary lock, has ownership), semaphore (counter, wait/signal or P/V; binary and counting semaphores), monitor, spinlock. Producer-consumer, readers-writers and dining philosophers are the classic problems.",
+      "Deadlock requires 4 conditions simultaneously: mutual exclusion, hold and wait, no preemption, circular wait. Handling: prevention (break one of the conditions), avoidance (Banker's algorithm, safe state), detection and recovery, ignoring (ostrich algorithm).",
+      "Memory management: Contiguous allocation has the problems of external fragmentation (free space scattered) and internal fragmentation (unused space within an allocated block). Paging divides memory into fixed-size pages/frames (typically 4 KB) and removes external fragmentation; segmentation uses variable-size logical pieces.",
+      "Virtual memory: Logical address = page number + offset; the page table maps the page to a physical frame; the TLB (Translation Lookaside Buffer) caches this mapping. Demand paging loads a page on first access; a page fault requires fetching from disk.",
+      "Page replacement algorithms: FIFO (oldest out; Belady's anomaly: faults may increase as frames increase), Optimal (the one used furthest in the future; theoretical lower bound), LRU (least recently used; a stack algorithm, no Belady's anomaly), Clock/Second chance (LRU approximation). Thrashing is the CPU mostly handling page faults.",
+      "File system: the inode (Unix) holds file metadata and block pointers; FAT, NTFS, ext4 are example file systems. Allocation methods: contiguous, linked, indexed. Journaling (ext4, NTFS) provides consistency after a crash. A hard link points to the same inode, a symbolic link (symlink) to the path.",
+      "Unix permissions: rwx triplets for owner/group/others; r=4, w=2, x=1. 755 = rwxr-xr-x, 644 = rw-r--r--, 600 = rw-------, 777 full rights for everyone. chmod changes the permission, chown the owner, chgrp the group; umask is the mask subtracted from the default permissions (umask 022 → file 644, directory 755). setuid (4), setgid (2) and the sticky bit (1) are the special bits.",
+      "Basic Linux commands: ps/top processes, kill -9 (SIGKILL) forced termination, kill -15 (SIGTERM) graceful termination, grep search, find locating files, df disk space, du directory size, tar archive, cron scheduled jobs, /etc/passwd users, /etc/shadow password hashes (readable only by root), /var/log logs.",
+      "I/O management: Programmed I/O (polling), interrupt-driven, DMA (Direct Memory Access; direct memory-device transfer without occupying the CPU). Disk scheduling: FCFS, SSTF, SCAN (elevator), C-SCAN. RAID levels 0 (striping, no redundancy), 1 (mirroring), 5 (distributed parity, at least 3 disks, tolerates 1 disk failure), 6 (double parity, 2 failures), 10 (mirror + stripe)."
+    ],
+    "comparisons": [
+      {
+        "title": "Process vs Thread",
+        "rows": [
+          [
+            "Feature",
+            "Process",
+            "Thread"
+          ],
+          [
+            "Address space",
+            "Its own",
+            "Shared with the process"
+          ],
+          [
+            "Creation cost",
+            "High",
+            "Low"
+          ],
+          [
+            "Context switch",
+            "Expensive (address space changes)",
+            "Cheap"
+          ],
+          [
+            "Communication",
+            "IPC required",
+            "Directly via shared memory"
+          ],
+          [
+            "Fault isolation",
+            "If one process crashes, the other is unaffected",
+            "If one thread crashes, the process crashes"
+          ],
+          [
+            "Owns",
+            "Code, data, heap, open files",
+            "Stack, registers, program counter"
+          ]
+        ]
+      },
+      {
+        "title": "CPU scheduling algorithms",
+        "rows": [
+          [
+            "Algorithm",
+            "Preemptive",
+            "Advantage",
+            "Disadvantage"
+          ],
+          [
+            "FCFS",
+            "No",
+            "Simple, fair order",
+            "Convoy effect, long waits"
+          ],
+          [
+            "SJF / SRTF",
+            "No / Yes",
+            "Lowest average waiting time",
+            "Burst time unknown, long jobs starve"
+          ],
+          [
+            "Priority",
+            "Both",
+            "Critical jobs first",
+            "Starvation (solution: aging)"
+          ],
+          [
+            "Round Robin",
+            "Yes",
+            "Fair, good response time",
+            "Context switch overhead if the quantum is small"
+          ],
+          [
+            "Multilevel feedback",
+            "Yes",
+            "Adaptive, prioritises interactive jobs",
+            "Complex, parameter tuning"
+          ]
+        ]
+      },
+      {
+        "title": "Unix permission octals",
+        "rows": [
+          [
+            "Octal",
+            "Symbols",
+            "Meaning"
+          ],
+          [
+            "7",
+            "rwx",
+            "Read + write + execute"
+          ],
+          [
+            "6",
+            "rw-",
+            "Read + write"
+          ],
+          [
+            "5",
+            "r-x",
+            "Read + execute"
+          ],
+          [
+            "4",
+            "r--",
+            "Read only"
+          ],
+          [
+            "755",
+            "rwxr-xr-x",
+            "Owner full, others read/execute (script, directory)"
+          ],
+          [
+            "644",
+            "rw-r--r--",
+            "Owner writes, others read (typical file)"
+          ],
+          [
+            "600",
+            "rw-------",
+            "Owner only (private key, password file)"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Turnaround time = Finish time - Arrival time",
+      "Waiting time = Turnaround time - CPU burst time",
+      "Average waiting time = Sum of the waiting times of all processes / number of processes",
+      "Effective access time (EAT) = (1 - p) × memory access + p × page fault cost (p = page fault rate)",
+      "EAT with TLB = h × (TLB + memory) + (1 - h) × (TLB + 2 × memory) (h = TLB hit ratio)",
+      "Number of pages = Logical address space / Page size; 32-bit address, 4 KB page → 2^32 / 2^12 = 2^20 = 1,048,576 pages, 12-bit offset",
+      "Unix permission value = r(4) + w(2) + x(1); file permission = 666 - umask, directory permission = 777 - umask",
+      "RAID 5 usable capacity = (n - 1) × disk size; RAID 6 = (n - 2) × disk; RAID 1 = n/2"
+    ],
+    "misconceptions": [
+      "Misconception: In Round Robin, the smaller the time slice the better. Correct: A very small quantum increases context switch overhead and reduces throughput; a very large quantum turns into FCFS.",
+      "Misconception: A multithreaded program runs faster on a single core. Correct: On a single core the threads time-share; a speed gain occurs only if I/O waits overlap or there are multiple cores.",
+      "Misconception: More memory frames always means fewer page faults. Correct: In FIFO, because of Belady's anomaly, increasing the frames can increase page faults; this does not happen in LRU and Optimal.",
+      "Misconception: If one of the four deadlock conditions holds, deadlock occurs. Correct: Deadlock requires all four to hold AT THE SAME TIME; breaking any one of them prevents deadlock.",
+      "Misconception: chmod 777 is a safe default because 'everything works'. Correct: 777 gives everyone write permission; it counts as a critical finding in an audit. 755 is appropriate for a script, 600 for configuration/keys.",
+      "Misconception: The kill command always kills the process instantly. Correct: The default SIGTERM (15) asks the process to shut down and can be caught; SIGKILL (9) cannot be caught and terminates forcibly."
+    ],
+    "example": "Let three processes P1 (arrival 0, burst 8), P2 (arrival 1, burst 4), P3 (arrival 2, burst 2) run under FCFS: P1 0-8, P2 8-12, P3 12-14; waiting times 0, 7, 10 → average 17/3 ≈ 5.67. With non-preemptive SJF, P1 0-8, then the shortest P3 8-10, P2 10-14; waiting 0, 9, 6 → average 5. With SRTF, P1 runs for 1 unit; P2 (4), arriving at second 1, is shorter than P1's remaining 7 units, so P2 starts; at second 2, P3 (2) arrives and preempts P2 (3 remaining): P3 2-4, P2 4-7, P1 7-14; waiting 6, 2, 0 → average 8/3 ≈ 2.67. If an auditor on a bank server sees that the nightly batch process slows down the interactive branch transactions, they recommend lowering its priority with the nice value or a separate scheduling queue.",
+    "references": [
+      "Silberschatz, Galvin & Gagne, Operating System Concepts, Chapters 3-10, 13",
+      "Tanenbaum & Bos, Modern Operating Systems, Chapters 2-4, 6",
+      "Stallings, Operating Systems: Internals and Design Principles",
+      "Linux man pages: chmod(1), umask(2), kill(1), ps(1), signal(7)"
+    ]
+  },
+  "WEB": {
+    "summary": "The web technologies topic covers the HTTP protocol, client-side technologies (HTML, CSS, JavaScript), server-side architectures, REST APIs, session management and web security. In the exam, HTTP methods and status codes, the GET/POST difference, cookies and sessions, REST principles, JSON/XML, the DOM, CORS and web security headers are the most frequently asked points.",
+    "concepts": [
+      "HTTP (HyperText Transfer Protocol) is a stateless request-response protocol; port 80, HTTPS 443. HTTP/1.1 uses persistent connections (keep-alive), HTTP/2 binary framing and multiplexing, HTTP/3 QUIC (over UDP).",
+      "HTTP methods: GET (retrieve data, idempotent, safe), POST (create a new resource/perform an operation, not idempotent), PUT (replace entirely, idempotent), PATCH (partial update), DELETE (delete, idempotent), HEAD (headers only), OPTIONS (supported methods; CORS preflight).",
+      "Status codes: 1xx informational, 2xx success (200 OK, 201 Created, 204 No Content), 3xx redirection (301 permanent, 302 temporary, 304 Not Modified), 4xx client error (400 Bad Request, 401 Unauthorized=not authenticated, 403 Forbidden=no permission, 404 Not Found, 405 Method Not Allowed, 429 Too Many Requests), 5xx server error (500 Internal Server Error, 502 Bad Gateway, 503 Service Unavailable, 504 Gateway Timeout).",
+      "URL structure: scheme://user@host:port/path?query#fragment; e.g. https://ornek.com:443/hesap?id=5#ozet. URL encoding (percent-encoding) expresses special characters as e.g. %20. A URI is the general identifier, a URL is the subset that specifies a location.",
+      "HTML (HyperText Markup Language) is the structure layer, CSS (Cascading Style Sheets) the presentation layer, JavaScript the behaviour layer. HTML5 introduced semantic tags (header, nav, article, section, footer), form elements and local storage (localStorage, sessionStorage). The DOM (Document Object Model) is the tree representation of the page and is modified with JavaScript.",
+      "JavaScript is single-threaded and based on an event loop; asynchronous operations are managed with callbacks, Promises and async/await. == performs type coercion, === does not ('5' == 5 true, '5' === 5 false). let/const are block-scoped, var is function-scoped. AJAX/fetch exchange data with the server without reloading the page.",
+      "Client-server architecture: The front-end runs in the browser, the back-end on the server. Three-tier architecture: presentation, business logic, data. Web servers (Apache, Nginx, IIS) serve static content and act as reverse proxies; application servers (Tomcat, Node.js, ASP.NET) run the dynamic logic.",
+      "REST (Representational State Transfer) principles: client-server, statelessness, cacheability, uniform interface (resources via URIs, operations via HTTP methods), layered system. In a RESTful API, GET/PUT/DELETE are applied to the resource /hesaplar/123; SOAP is an XML-based, WSDL-defined, heavier protocol. GraphQL returns the fields chosen by the client from a single endpoint.",
+      "Data formats: JSON (JavaScript Object Notation) is lightweight, key-value, arrays; XML is tag-based, with schema (XSD) and namespace support. Web services generally prefer JSON; SOAP requires XML.",
+      "Session management: Because HTTP is stateless, the session identifier is carried in a cookie. Cookie flags: Secure (HTTPS only), HttpOnly (JavaScript cannot access it, against XSS), SameSite (Strict/Lax/None, against CSRF), Expires/Max-Age. Server-side session data is kept on the server; a token-based (JWT) session is carried signed on the client.",
+      "A JWT (JSON Web Token) is three Base64URL-encoded parts in the structure header.payload.signature; the signature provides integrity but the payload is not encrypted, so no confidential data is put in it. OAuth 2.0 is an authorisation framework (authorization code flow), OpenID Connect is an authentication layer on top of it.",
+      "Same-Origin Policy: scheme + host + port must be identical; CORS (Cross-Origin Resource Sharing) is the server defining an exception with the Access-Control-Allow-Origin header. A preflight OPTIONS request is sent for complex requests.",
+      "Security headers: Content-Security-Policy (source restriction against XSS), Strict-Transport-Security (HSTS, HTTPS mandatory), X-Frame-Options / frame-ancestors (clickjacking), X-Content-Type-Options: nosniff. A WAF (Web Application Firewall) blocks attack signatures at the HTTP layer.",
+      "Caching and performance: Cache-Control, ETag, Last-Modified headers; a CDN (Content Delivery Network) serves static content close to the user. A load balancer distributes requests across servers; sticky sessions or a shared session store (Redis) are required."
+    ],
+    "comparisons": [
+      {
+        "title": "GET vs POST",
+        "rows": [
+          [
+            "Feature",
+            "GET",
+            "POST"
+          ],
+          [
+            "Data location",
+            "URL query string",
+            "Request body"
+          ],
+          [
+            "Idempotent",
+            "Yes",
+            "No"
+          ],
+          [
+            "Cacheable",
+            "Yes",
+            "Generally no"
+          ],
+          [
+            "Length limit",
+            "URL limit (~2 KB in practice)",
+            "None (server setting)"
+          ],
+          [
+            "Browser history/bookmark",
+            "Saved",
+            "Not saved"
+          ],
+          [
+            "Use",
+            "Reading data, search",
+            "Form submission, resource creation, sensitive data"
+          ]
+        ]
+      },
+      {
+        "title": "REST vs SOAP",
+        "rows": [
+          [
+            "Feature",
+            "REST",
+            "SOAP"
+          ],
+          [
+            "Kind",
+            "Architectural style",
+            "Protocol"
+          ],
+          [
+            "Data format",
+            "JSON, XML, other",
+            "XML only"
+          ],
+          [
+            "Transport",
+            "HTTP",
+            "HTTP, SMTP, other"
+          ],
+          [
+            "Contract",
+            "OpenAPI (optional)",
+            "WSDL (mandatory)"
+          ],
+          [
+            "State",
+            "Stateless",
+            "Can be stateful"
+          ],
+          [
+            "Security",
+            "HTTPS, OAuth, JWT",
+            "WS-Security (message level)"
+          ],
+          [
+            "Weight",
+            "Lightweight, fast",
+            "Heavy, enterprise/legacy systems"
+          ]
+        ]
+      },
+      {
+        "title": "401 vs 403 vs 404",
+        "rows": [
+          [
+            "Code",
+            "Name",
+            "Meaning",
+            "Fix"
+          ],
+          [
+            "401",
+            "Unauthorized",
+            "Not authenticated or invalid",
+            "Log in / send a valid token"
+          ],
+          [
+            "403",
+            "Forbidden",
+            "Identity correct but no permission",
+            "Request permission; logging in again does not help"
+          ],
+          [
+            "404",
+            "Not Found",
+            "Resource does not exist",
+            "Check the URL"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Status code classes: 1xx informational, 2xx success, 3xx redirection, 4xx client error, 5xx server error",
+      "Origin = scheme + host + port; https://a.com and https://a.com:8443 are different origins",
+      "JWT = Base64URL(header) . Base64URL(payload) . Signature(HMAC or RSA/ECDSA)",
+      "Default ports: HTTP 80, HTTPS 443, alternative development 8080/8443"
+    ],
+    "misconceptions": [
+      "Misconception: 401 is an authorisation error, 403 an authentication error. Correct: The exact opposite; 401 means not authenticated (the name Unauthorized is misleading), 403 means identity correct but access not permitted.",
+      "Misconception: POST is more secure than GET because the data is encrypted. Correct: POST only moves the data from the URL into the body; encryption comes from HTTPS. The advantage of POST is that the data does not appear in the URL, in logs and in history.",
+      "Misconception: The JWT payload is encrypted, confidential data can be put in it. Correct: The payload is only Base64URL-encoded and anyone can read it; the signature only guarantees it has not been altered. For confidentiality, use JWE or do not include the data at all.",
+      "Misconception: An HttpOnly cookie prevents CSRF. Correct: HttpOnly prevents cookie theft via XSS; against CSRF the SameSite attribute and an anti-CSRF token are used.",
+      "Misconception: Because HTTP is stateless, a session cannot be kept. Correct: The protocol is stateless, but the application re-presents the session state on every request with a cookie/token.",
+      "Misconception: CORS is a firewall that protects the server. Correct: CORS is a policy enforced by the browser that restricts a script from another origin from reading the response; tools such as curl are unaffected, and server-side authorisation is still required."
+    ],
+    "example": "The mobile banking API returns 200 with JSON to the request GET /api/hesaplar/123/bakiye. The auditor notes that a request made with an expired session token should return 401 rather than 403, and that a request made to another customer's account should return 403 (or 404 to avoid leaking information) rather than 401. If they see that the money transfer endpoint has been designed with GET, they write it up as a finding: since GET is idempotent and cacheable, an unwanted transfer could be triggered through browser history/prefetching; POST + an anti-CSRF token + a SameSite=Strict cookie are required. Finally, they report the absence of HSTS and CSP in the response headers as a medium-level configuration deficiency.",
+    "references": [
+      "RFC 9110 (HTTP Semantics), RFC 9112 (HTTP/1.1), RFC 9113 (HTTP/2), RFC 9114 (HTTP/3)",
+      "RFC 6265 (HTTP State Management / Cookies), RFC 7519 (JWT), RFC 6749 (OAuth 2.0)",
+      "Fielding, Architectural Styles and the Design of Network-based Software Architectures (REST dissertation, 2000)",
+      "OWASP Cheat Sheet Series (Session Management, CSRF Prevention, HTTP Headers)",
+      "MDN Web Docs (HTTP, CORS, CSS specificity, Web Storage API)"
+    ]
+  },
+  "ERY": {
+    "summary": "Access management is the whole set of policies, processes and technical controls that determine who can access information assets, under what conditions and for how long. In bank IT audit, the user account lifecycle (joiner, mover, leaver), privileged account management, segregation of duties, the principle of least privilege, periodic access reviews and audit logs are the most frequently examined control area; the exam asks about these concepts through scenarios.",
+    "concepts": [
+      "Identification is the user claiming who they are, authentication is proving it, authorization is determining what they can access, accountability is being able to tie what was done to the user. This chain works only if every user has a unique, personal account.",
+      "Principle of least privilege: Users and services are given the minimum authority needed to do their job, and no more. The need-to-know principle is that data is seen only by those who need it for business reasons.",
+      "Segregation/separation of duties (SoD): The initiation, approval, recording and reconciliation steps of a transaction are performed by different people; this prevents a single person from committing an error or fraud. Example: the staff member who enters a transfer cannot approve it; a developer cannot move code into production. In small teams, management review or detailed logging is used as a compensating control.",
+      "Access control models: DAC (Discretionary; the resource owner grants authority, Unix permissions), MAC (Mandatory; the system decides based on labels, military classification, Bell-LaPadula), RBAC (Role-Based; authority is assigned to roles, users to roles, standard in banking), ABAC (Attribute-Based; dynamic policy based on user, resource and environment attributes, e.g. only during working hours from a branch IP).",
+      "User account lifecycle: Request → manager and data owner approval → provisioning → periodic review → updating authority on change of role → timely closure on leaving (de-provisioning). Integration with the HR system prevents a leaver's account from staying open; 'the leaver's account is still active 3 months later' is a typical finding in the exam.",
+      "Privilege creep: A user who changes role keeping their old authorities too; prevented with RBAC and periodic review. A ghost/dormant account is one unused for a long time and should be deactivated automatically.",
+      "Privileged Access Management (PAM): Highly privileged accounts such as root, administrator, DBA and service accounts are kept in a separate inventory; their passwords are stored in a vault, their use is recorded (session recording), temporary authority is granted when needed (just-in-time), shared administrator accounts are personalised or checked out before use.",
+      "Strengthening authentication: Password policy (length, complexity, history, lockout threshold, number of attempts), multi-factor authentication (especially for remote access, privileged accounts and internet banking), single sign-on (SSO) and federation (SAML, OpenID Connect), central management with a directory service (Active Directory, LDAP).",
+      "Customer-side authentication: The BDDK regulation expects the use of at least two mutually independent components in customer authentication in electronic banking, and controls such as risk-based additional verification, transaction limits and notifications for transaction security. Session timeout and device pairing are supporting controls.",
+      "Periodic access review (access recertification): Data/system owners approve user lists and authorities at set intervals (more frequently for critical systems), unnecessary authorities are removed; the results are documented. The auditor takes a sample and compares the HR list with the system user list.",
+      "Audit logs: Who did what, when, on which resource, and whether it succeeded; privileged operations, authority changes and failed logins in particular are recorded. Logs are tamper-proof (write-once/central SIEM), time-stamped (synchronised with NTP) and retained for the period the regulation prescribes; the person being logged must not be able to delete the log.",
+      "Remote access and third-party access: VPN + MFA, time-limited accounts, a sponsor and a contract for supplier staff, access closed and recorded when the work is finished. External service provider access does not remove the bank's responsibility.",
+      "Link between data classification and access: Data is classified (e.g. confidential, internal, public); the class determines the strictness of access control and the need for encryption and masking. Access to data of a customer-secret nature is subject to the need-to-know principle and to mandatory logging.",
+      "In COBIT 2019 access management is addressed through the objectives DSS05 (Managed Security Services) and DSS06 (Managed Business Process Controls), in ISO/IEC 27001:2022 through the Annex A controls on access control, identity management and privileged access rights, in ITIL through the access management process (a separate process in v3; within the information security management practice in ITIL 4). Audit testing: design effectiveness (does the control exist) and operating effectiveness (did it work throughout the period)."
+    ],
+    "comparisons": [
+      {
+        "title": "Access control models",
+        "rows": [
+          [
+            "Model",
+            "Decision maker",
+            "Flexibility",
+            "Typical use"
+          ],
+          [
+            "DAC (Discretionary)",
+            "Resource owner",
+            "High, hard to audit",
+            "File systems, Unix permissions"
+          ],
+          [
+            "MAC (Mandatory)",
+            "System policy, labels",
+            "Low, rigid",
+            "Military/classified systems"
+          ],
+          [
+            "RBAC (Role-based)",
+            "Role definitions",
+            "Medium, scalable",
+            "Banking applications, ERP"
+          ],
+          [
+            "ABAC (Attribute-based)",
+            "Policy engine (user+resource+environment)",
+            "Very high, dynamic",
+            "Cloud, zero trust, context-aware access"
+          ]
+        ]
+      },
+      {
+        "title": "Preventive vs Detective vs Corrective access controls",
+        "rows": [
+          [
+            "Type",
+            "Purpose",
+            "Access management example"
+          ],
+          [
+            "Preventive",
+            "Stop it from happening",
+            "MFA, RBAC, account lockout, segregation of duties"
+          ],
+          [
+            "Detective",
+            "Notice that it happened",
+            "Audit log review, periodic access review, SIEM alert"
+          ],
+          [
+            "Corrective",
+            "Remove its effect",
+            "Account closure, revoking authority, password reset"
+          ]
+        ]
+      },
+      {
+        "title": "Standard user account vs Privileged account management",
+        "rows": [
+          [
+            "Feature",
+            "Standard account",
+            "Privileged account"
+          ],
+          [
+            "Authority",
+            "Limited to the business role",
+            "Broad over systems/data"
+          ],
+          [
+            "Authentication",
+            "Password (+MFA preferably)",
+            "MFA mandatory, vault, session recording"
+          ],
+          [
+            "Review frequency",
+            "Periodic (e.g. annual/6 months)",
+            "More frequent (e.g. 3 months) and every use logged"
+          ],
+          [
+            "Sharing",
+            "Prohibited",
+            "Prohibited; if unavoidable, check-out and binding to a person"
+          ],
+          [
+            "Use",
+            "Daily work",
+            "Only when needed, temporary elevation"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Account lockout policy example: 5 failed attempts → 15-30 min lockout (preventive control against brute force)",
+      "Access review scope = Number of active accounts; finding rate = Accounts with unnecessary authority / Accounts reviewed",
+      "Conflict in the segregation of duties matrix: if the 'initiate' and 'approve' roles exist together on the same person, it is an SoD violation"
+    ],
+    "misconceptions": [
+      "Misconception: If there is a strong password policy, no additional control is needed for privileged accounts. Correct: Privileged accounts are the highest-impact accounts; MFA, a vault, session recording and frequent review are expected.",
+      "Misconception: Authorisation is the same thing as authentication. Correct: Authentication proves 'who you are', authorisation determines 'what you can access'; even a user who logs in with a correct identity must not be able to perform unauthorised operations.",
+      "Misconception: Changing a leaver's password is sufficient instead of deactivating the account. Correct: The account must be closed, its authorities removed and a record kept; a password change breaks traceability and does not remove the risk of shared credentials.",
+      "Misconception: In RBAC, defining a dedicated role for every user is the most secure. Correct: Role explosion creates unmanageability; roles are defined by business function and exceptions are documented.",
+      "Misconception: Segregation of duties applies only to financial transactions. Correct: In IT too, the separation of development-test-production, the requester and approver of authority being different people, and the separation of security administrator and system administrator are SoD applications.",
+      "Misconception: Collecting audit logs is enough; they do not need to be reviewed. Correct: Logging is a detective control; without regular review or SIEM correlation, the control does not achieve operating effectiveness."
+    ],
+    "example": "The auditor compares the active user list in the core banking application with the leavers list obtained from HR and sees that the account of an operations specialist who left 2 months ago is active, and that their last login falls after the leaving date. They also find that a user in the same branch has both the 'transfer entry' and 'transfer approval' roles. The first finding points to a lack of HR-IT integration in the user lifecycle (de-provisioning), the second to a segregation of duties violation. Recommendations: the HR leaving record should deactivate the account automatically, the SoD matrix should be defined as a conflict rule in the application, the quarterly access review should be documented, and the transactions in this period should be examined from the audit logs.",
+    "references": [
+      "BDDK, Regulation on Banks' Information Systems and Electronic Banking Services (Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik) (Official Gazette 15.03.2020, No. 31069), authentication, authorisation, audit log and segregation of duties provisions (at concept level)",
+      "ISO/IEC 27001:2022 and ISO/IEC 27002:2022, access control, identity management, authentication information and privileged access rights controls",
+      "COBIT 2019 Framework: Governance and Management Objectives, DSS05 and DSS06",
+      "ITIL v3 Service Operation (Access Management); ITIL 4 Information Security Management practice",
+      "NIST SP 800-53 Rev.5 AC (Access Control) family; NIST SP 800-63B (authentication)",
+      "ISACA, CISA Review Manual, Domain 5 (Protection of Information Assets)"
+    ]
+  },
+  "DGY": {
+    "summary": "Change management is the control process that prevents software, hardware, configuration and infrastructure changes in information systems from going into production in an unauthorised, untested or undocumented way. In bank audit, the change request, impact and risk analysis, approval (CAB), testing, rollback plan, deployment with segregation of duties, emergency change exceptions and the integrity of the production environment are examined; the exam asks about the risks arising from the absence of these steps as scenarios.",
+    "concepts": [
+      "Change: Any addition, modification or removal that could affect services (code, configuration, patch, infrastructure, access rule). The purpose of change management is to make beneficial changes in an authorised and traceable way while minimising service disruption and risk. ITIL 4 calls this 'change enablement'.",
+      "ITIL change types: Standard (low risk, pre-authorised, repetitive; e.g. routine password reset, approved patch), Normal (requires assessment and approval, goes on the board's agenda), Emergency (expedited approval for a service outage/security vulnerability, documentation and review afterwards).",
+      "Change lifecycle: Request (RFC, Request for Change) → recording and classification → impact, risk and cost analysis → approval (manager or CAB depending on the authority level) → development/configuration → test and acceptance → deployment plan and scheduling → implementation → review (PIR, Post-Implementation Review) → closure.",
+      "Change Advisory Board (CAB): Consists of representatives from the business unit, IT operations, security, the application owner and risk; it assesses and approves normal changes. For emergency changes a small ECAB (Emergency CAB) convenes. Approval must come from someone other than the person who requested or developed the change.",
+      "Impact analysis: Determining which systems, interfaces, data, users and regulatory obligations the change affects; the configuration management database (CMDB) and the dependency map are the sources for this analysis. The risk score is classified as impact × likelihood (low/medium/high).",
+      "Test and acceptance: The change is tested in a non-production environment (TEST/UAT/staging); unit, integration, regression, performance and security tests are selected according to the nature of the change. Business unit acceptance (UAT sign-off) is documented. Production data is used in the test environment only after masking.",
+      "Rollback/back-out plan: The steps for returning to the previous state if the change fails, the backups and the decision criteria are written in advance and tested where possible. For irreversible changes (data conversion), additional measures (backup, phased transition) are taken.",
+      "Deployment with segregation of duties: The person who developed the code cannot move it into production; deployment is done by the operations/deployment team or by an approval-gated automated pipeline. Developers have no write access to the production environment; if read access is needed it is granted temporarily and logged. It is verified that the source code matches the binary in production (version control, hash comparison).",
+      "Configuration management and the CMDB: Configuration items (CI: server, application, licence, network device) and the relationships between them are recorded; every change is updated in the CMDB. The baseline is the approved reference configuration; deviations (drift) are detected.",
+      "Patch management is a subset of change management: Vulnerability announcement → criticality assessment (CVSS) → test → deployment → verification. Defined time targets for critical security patches (e.g. critical 7-30 days) and exception approval are expected.",
+      "Emergency change control: Because speed is required, full approval cannot be obtained in advance; however, at least one authorised verbal/electronic approval, paired working (two people), detailed recording, and retrospective documentation and CAB review within 1-2 working days are mandatory. A high proportion of emergency changes in the total is an audit indicator that the process is being bypassed.",
+      "Unauthorised change detection: In the production environment, the changes that actually occurred are reconciled against the change records using file integrity monitoring (FIM), configuration comparison and change logs; a change with no record is unauthorised. The auditor takes a sample and asks for the request, approval, test and deployment evidence for each change.",
+      "Documentation and traceability: For every change the requester, approver, implementer, date, affected CIs, test results, rollback plan and PIR result are recorded. The change schedule (forward schedule of change) and freeze periods (change freeze; year end, campaigns, public holidays) are planned.",
+      "Framework links: COBIT 2019 BAI06 (Managed IT Changes) and BAI07 (Managed IT Change Acceptance and Transitioning), ISO/IEC 27001:2022 change management and development-test-production environment separation controls, ITIL 4 Change Enablement and Release Management practices, and in the BDDK regulation the expectations on the change management process, separation of test and production environments and source code security."
+    ],
+    "comparisons": [
+      {
+        "title": "ITIL change types",
+        "rows": [
+          [
+            "Feature",
+            "Standard",
+            "Normal",
+            "Emergency"
+          ],
+          [
+            "Risk",
+            "Low, known",
+            "Variable",
+            "High urgency"
+          ],
+          [
+            "Approval",
+            "Pre-authorised (template)",
+            "Manager/CAB depending on authority level",
+            "ECAB or authorised manager, expedited"
+          ],
+          [
+            "Testing",
+            "Previously proven procedure",
+            "Full test cycle",
+            "Minimum feasible testing, completed afterwards"
+          ],
+          [
+            "Documentation",
+            "Template record",
+            "Full RFC",
+            "Full retrospective documentation"
+          ],
+          [
+            "Example",
+            "Routine patch, standard server build",
+            "New module, infrastructure change",
+            "Service outage fix, zero-day patch"
+          ]
+        ]
+      },
+      {
+        "title": "Deployment strategies",
+        "rows": [
+          [
+            "Strategy",
+            "How",
+            "Risk",
+            "Rollback"
+          ],
+          [
+            "Big bang",
+            "To all users at once",
+            "High",
+            "Hard, whole system"
+          ],
+          [
+            "Phased / Pilot",
+            "Limited group/branch first",
+            "Medium",
+            "Easy, affected group is small"
+          ],
+          [
+            "Blue-Green",
+            "Two identical environments, traffic is switched",
+            "Low",
+            "Very fast, switch traffic back"
+          ],
+          [
+            "Canary",
+            "Small percentage of traffic to the new version",
+            "Low",
+            "Fast, reset the percentage to zero"
+          ]
+        ]
+      },
+      {
+        "title": "Change management vs Incident management vs Problem management (ITIL)",
+        "rows": [
+          [
+            "Feature",
+            "Change",
+            "Incident",
+            "Problem"
+          ],
+          [
+            "Purpose",
+            "Make the change in a controlled way",
+            "Restore the service as fast as possible",
+            "Find the root cause and prevent recurrence"
+          ],
+          [
+            "Trigger",
+            "Business need, problem resolution, patch",
+            "Service outage/degradation",
+            "Recurring or major incidents"
+          ],
+          [
+            "Output",
+            "Approved, tested, recorded change",
+            "Workaround, service restoration",
+            "Root cause, known error record, RFC"
+          ],
+          [
+            "Metric",
+            "Successful change rate, emergency rate",
+            "Resolution time (MTTR), SLA",
+            "Number of recurring incidents"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Change success rate = Successful changes / Total changes × 100 (changes that are rolled back or cause an incident count as failed)",
+      "Emergency change rate = Emergency changes / Total changes; a high rate indicates the process is being bypassed",
+      "Unauthorised changes = Changes detected in production − Recorded/approved changes (the reconciliation difference must be zero)",
+      "Risk class = Impact × Likelihood (e.g. 3×3 matrix: 1-3 low, 4-6 medium, 7-9 high)"
+    ],
+    "misconceptions": [
+      "Misconception: Emergency changes do not require approval and documentation. Correct: In an emergency change approval is expedited and documentation is deferred, but both are mandatory; a CAB review is carried out afterwards.",
+      "Misconception: A small configuration change (e.g. a firewall rule) is outside change management. Correct: Even a one-line rule change can cut a service or open a vulnerability; it is recorded using the standard change template.",
+      "Misconception: A developer having production access is acceptable because it speeds up the work. Correct: It is a segregation of duties violation; it creates the risk of untested code and unauthorised change. For speed, an approval-gated automated pipeline is used.",
+      "Misconception: The process ends when the change goes into production. Correct: The post-implementation review (PIR) includes assessing success and side effects, updating the CMDB and recording lessons learned.",
+      "Misconception: A copy of production data used in the test environment is not a problem because the environment is on the internal network. Correct: Test environments are generally less protected; data of a customer-secret nature must be masked or synthetic data must be used.",
+      "Misconception: Patch management is the security team's job and has nothing to do with change management. Correct: A patch is also a change; testing, approval, deployment window and rollback plan go through the same process."
+    ],
+    "example": "One night the bank's EFT module suffers an outage. The investigation reveals that a developer directly modified a stored procedure in the production database the day before, and that this change had no RFC record, test or approval. The auditor classifies this as an unauthorised change and a segregation of duties violation: the developer had write authority in production (lack of access control), there was no change monitoring on production objects (lack of a detective control), and because there was no rollback plan the outage lasted 4 hours. Recommendations: removing developers' production write authority, deploying through an approval-gated pipeline, monitoring database object changes with FIM/DDL triggers, and a monthly reconciliation of the change log against production. This incident also enters problem management as a root cause record.",
+    "references": [
+      "ITIL 4 Foundation, Change Enablement, Release Management and Deployment Management practices",
+      "COBIT 2019 Framework: Governance and Management Objectives, BAI06 (Managed IT Changes), BAI07 (Managed IT Change Acceptance and Transitioning), BAI10 (Managed Configuration)",
+      "ISO/IEC 27002:2022, change management, separation of development/test/production environments and test information controls",
+      "BDDK, Regulation on Banks' Information Systems and Electronic Banking Services (Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik) (2020), change management and environment separation provisions (at concept level)",
+      "ISACA, CISA Review Manual, Domain 3 (Information Systems Acquisition, Development and Implementation)",
+      "NIST SP 800-40 Rev.4 (Guide to Enterprise Patch Management Planning)"
+    ]
+  },
+  "SDLC": {
+    "summary": "The software engineering and SDLC topic covers the life cycle of software from requirements to maintenance, process models (waterfall, V, incremental, spiral, agile), test levels and quality criteria. In the exam, model comparisons, Scrum roles and ceremonies, test types (unit, integration, system, acceptance; black/white box), UML diagrams, CI/CD and the separation of development-test-production environments in a bank are frequently asked.",
+    "concepts": [
+      "SDLC (Software Development Life Cycle) phases: Planning/feasibility, requirements analysis, design (architectural and detailed), implementation (coding), testing, deployment, maintenance. The cost of a defect grows exponentially as the phase advances; a requirements error is the most expensive.",
+      "Requirement types: Functional (what the system does: 'the transfer limit is checked') and non-functional (how it does it: performance, security, availability, scalability). The traceability matrix shows the requirement-design-test mapping. The SRS (Software Requirements Specification) is the requirements document.",
+      "In the waterfall model the phases are sequential and there is no going back; it is suitable when the requirements are fixed and well understood, and it is closed to change. The V model pairs each development phase with a corresponding test phase (unit ↔ design, acceptance ↔ requirements) and emphasises verification/validation.",
+      "The incremental model delivers the product in functional pieces; the iterative model improves the product in every round. The spiral model is focused on risk analysis; in every round planning, risk analysis, development and evaluation take place; it suits large and risky projects. Prototyping clarifies uncertain requirements.",
+      "Agile Manifesto values: individuals and interactions, working software, customer collaboration, responding to change. Short iterations, continuous feedback and self-managing teams are essential. XP (Extreme Programming) emphasises pair programming, TDD and continuous integration.",
+      "Scrum: Roles are the Product Owner (prioritises the backlog), the Scrum Master (facilitates the process, removes impediments), the Development Team. Events: Sprint (1-4 weeks, fixed length), Sprint Planning, Daily Scrum (15 min), Sprint Review, Sprint Retrospective. Artifacts: Product Backlog, Sprint Backlog, Increment. Kanban, by contrast, uses continuous flow and a work-in-progress (WIP) limit.",
+      "Test levels: Unit test (single function/class, developer, JUnit), Integration test (interface between components; big bang, top-down, bottom-up), System test (whole system, against the requirements), Acceptance test (UAT, customer/business unit; alpha internal, beta external). Regression testing verifies that the change has not broken what already existed.",
+      "Test techniques: Black box (internal structure unknown; equivalence partitioning, boundary value analysis, decision table), White box (code known; statement/branch/path coverage), Grey box. Verification is 'are we building the product right' (conformance to the document), Validation is 'are we building the right product' (fitness for the need).",
+      "Static testing examines the code without running it (code review, static analysis tools, SAST); dynamic testing does so by running it (DAST, penetration test). An error is a human mistake, a defect/bug is the fault in the code, a failure is the deviation visible at run time.",
+      "TDD (Test-Driven Development): First write a failing test, then write the simplest code that passes, then refactor: red-green-refactor. BDD uses behaviour scenarios (Given-When-Then). Code coverage is the percentage of code tested; it does not guarantee quality on its own.",
+      "UML diagrams: Structural (class, object, component, deployment) and behavioural (use case, sequence, activity, state). Relationships in the class diagram: association, aggregation (hollow diamond), composition (filled diamond, life cycle bound), inheritance (hollow triangle arrow).",
+      "CI/CD: Continuous Integration (automatic build and test on every commit), Continuous Delivery (production-ready package, deployment with manual approval), Continuous Deployment (automatically to production). DevOps unites development and operations; DevSecOps adds security tests (SAST/DAST/dependency scanning) to the pipeline.",
+      "Environment separation: Development (DEV) → Test (TEST/QA) → User acceptance (UAT) → Pre-production (staging) → Production (PROD). In banking, a developer's direct access to production is blocked for segregation of duties; production data is used in the test environment only after data masking.",
+      "Software quality characteristics (ISO/IEC 25010): functional suitability, performance, compatibility, usability, reliability, security, maintainability, portability. Technical debt is the accumulated cost of shortcut decisions. Project estimation: function points, COCOMO, planning poker (story points). Software defect density = number of defects / KLOC."
+    ],
+    "comparisons": [
+      {
+        "title": "Waterfall vs Agile",
+        "rows": [
+          [
+            "Feature",
+            "Waterfall",
+            "Agile (Scrum)"
+          ],
+          [
+            "Phases",
+            "Sequential, single pass",
+            "Iterative, short sprints"
+          ],
+          [
+            "Requirements",
+            "Fixed at the start",
+            "Evolve continuously"
+          ],
+          [
+            "Delivery",
+            "At the end of the project",
+            "Working increment at the end of every sprint"
+          ],
+          [
+            "Customer involvement",
+            "At the start and end",
+            "Continuous"
+          ],
+          [
+            "Cost of change",
+            "High",
+            "Low"
+          ],
+          [
+            "Documentation",
+            "Comprehensive",
+            "Sufficient level"
+          ],
+          [
+            "Suited to",
+            "Fixed requirements, regulatory mandatory documentation",
+            "Uncertain/changing requirements, fast-moving market"
+          ]
+        ]
+      },
+      {
+        "title": "Test levels",
+        "rows": [
+          [
+            "Level",
+            "Scope",
+            "Who performs it",
+            "Purpose"
+          ],
+          [
+            "Unit",
+            "Single function/class",
+            "Developer",
+            "Correctness of logic"
+          ],
+          [
+            "Integration",
+            "Interface between modules",
+            "Developer/test team",
+            "Interface compatibility, data flow"
+          ],
+          [
+            "System",
+            "Whole system",
+            "Independent test team",
+            "Conformance to requirements (functional + non-functional)"
+          ],
+          [
+            "Acceptance (UAT)",
+            "Business scenarios",
+            "End user/business unit",
+            "Does it meet the need, go-live approval"
+          ]
+        ]
+      },
+      {
+        "title": "Black box vs White box testing",
+        "rows": [
+          [
+            "Feature",
+            "Black box",
+            "White box"
+          ],
+          [
+            "Knowledge",
+            "Input/output only",
+            "Source code and internal structure"
+          ],
+          [
+            "Techniques",
+            "Equivalence partitioning, boundary value, decision table, state transition",
+            "Statement, branch, condition, path coverage"
+          ],
+          [
+            "Performed by",
+            "Test specialist, user",
+            "Developer"
+          ],
+          [
+            "Level",
+            "System, acceptance",
+            "Unit, integration"
+          ],
+          [
+            "Finds",
+            "Missing function, wrong behaviour",
+            "Dead code, logic error, uncovered branch"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Defect density = Number of defects / KLOC (thousand lines of code)",
+      "Code coverage (%) = Number of statements (or branches) executed / Total number of statements (branches) × 100",
+      "Sprint velocity = Sum of story points completed in the sprint; remaining sprints ≈ remaining points / average velocity",
+      "Cyclomatic complexity (McCabe) = E - N + 2P (edges, nodes, connected components) = number of decision points + 1",
+      "SemVer: MAJOR.MINOR.PATCH (2.3.1 → 3.0.0 on an incompatible change, 2.4.0 on a feature, 2.3.2 on a fix)"
+    ],
+    "misconceptions": [
+      "Misconception: In agile there is no documentation and no plan. Correct: Agile says 'working software over comprehensive documentation'; there is sufficient documentation and sprint planning. In regulated banks, agile teams also produce traceability documents.",
+      "Misconception: The Scrum Master is the team's manager and assigns the work. Correct: The Scrum Master is a servant leader and facilitator; the team chooses the work itself, and the Product Owner sets the priority.",
+      "Misconception: 100% code coverage means defect-free software. Correct: Coverage only shows that the code was executed; a test written with the wrong expectation or a missing requirement is not caught.",
+      "Misconception: The test phase starts after coding is finished. Correct: Static tests and test design start in the requirements phase (shift-left); the V model shows this explicitly.",
+      "Misconception: Verification and validation are the same thing. Correct: Verification checks conformance to the specification (doing it right), validation checks fitness for the need (doing the right thing).",
+      "Misconception: Regression testing tests only the modified module. Correct: Regression testing verifies that the change has not broken OTHER parts of the system; that is why automation is critical."
+    ],
+    "example": "A new scoring rule is being added to the bank's credit application module. The developer writes the unit tests in the DEV environment (boundary values for the rule function: score 0, 499, 500, 1000) and the CI pipeline runs the tests and the SAST scan on every commit. The change passes integration and regression testing in the TEST environment with masked production data; the business unit accepts it in UAT with Given-When-Then scenarios. The auditor asks for evidence that the developer has no direct deployment authority to production, that the deployment was done by the operations team with change management approval, and that the requirement is linked to the test records in the traceability matrix.",
+    "references": [
+      "Pressman & Maxim, Software Engineering: A Practitioner's Approach, Chapters 2-5, 19-23",
+      "Sommerville, Software Engineering, Chapters 2-4, 8",
+      "Schwaber & Sutherland, The Scrum Guide (2020)",
+      "ISTQB Foundation Level Syllabus (test levels and techniques)",
+      "ISO/IEC/IEEE 12207 (software life cycle processes), ISO/IEC 25010 (software quality model)",
+      "Beck et al., Manifesto for Agile Software Development (2001); OMG UML 2.5 Specification"
+    ]
+  },
+  "MIM": {
+    "summary": "The computer architecture topic covers how the processor executes instructions, the memory hierarchy, and number systems and the binary representation of data. The exam asks about binary/hexadecimal conversion, two's complement, CPU components and the instruction cycle, the RISC/CISC difference, cache levels and hit ratio, pipelining and the von Neumann/Harvard architectures.",
+    "concepts": [
+      "The von Neumann architecture keeps program and data in the same memory (single bus, the von Neumann bottleneck); the Harvard architecture separates instruction and data memory (embedded systems, DSP). Modern CPUs use a 'modified Harvard' approach with separate L1 instruction/data caches inside the core.",
+      "CPU components: the ALU (Arithmetic Logic Unit) performs arithmetic/logic operations, the Control Unit (CU) decodes instructions and generates signals, registers are the fastest storage. Special registers: Program Counter (PC) address of the next instruction, Instruction Register (IR) the executing instruction, MAR/MDR memory address/data, Accumulator, Status/Flag register (zero, overflow, carry, negative).",
+      "Instruction cycle: Fetch (take the instruction from the address in the PC, increment the PC), Decode, Execute, Write-back. The clock cycle is the basic unit of time; CPI (cycles per instruction) and IPC are performance metrics.",
+      "RISC (Reduced Instruction Set Computer): few, fixed-length instructions, most instructions 1 cycle, many registers, load/store architecture, simple hardware (ARM, RISC-V, MIPS). CISC (Complex): many, variable-length instructions, memory-to-memory operations, microcode (x86). Modern x86 translates CISC instructions internally into RISC-like micro-operations.",
+      "Pipelining: Instruction stages are overlapped; a k-stage pipeline ideally increases throughput k-fold but does not reduce the latency of a single instruction. Hazards: structural (resource conflict), data (RAW dependency; solution forwarding), control (branching; solution branch prediction). A superscalar processor issues multiple instructions per cycle.",
+      "Memory hierarchy (fast to slow, expensive to cheap): Registers → L1 cache (~32-64 KB, 1-4 cycles) → L2 (~256 KB-2 MB) → L3 (MBs, shared) → Main memory DRAM (GB, ~100 ns) → SSD → HDD → magnetic tape. The principle of locality (temporal and spatial) is what makes the hierarchy work.",
+      "Cache mapping: Direct mapped (each block in one place), fully associative (anywhere, expensive comparison), set associative (n-way, compromise). Write policies: write-through (to memory immediately) and write-back (dirty bit, write on eviction). Hit and miss ratio; miss types compulsory, capacity, conflict.",
+      "SRAM is fast, expensive and needs no refresh (cache); DRAM is dense, cheap and needs periodic refresh (main memory). ROM/PROM/EPROM/EEPROM/Flash are non-volatile memories; the BIOS/UEFI is kept in flash. Volatile memory is erased when power is lost.",
+      "Number systems: Binary (2), octal (8), decimal (10), hexadecimal (16; 0-9, A-F). Each hexadecimal digit is 4 bits, each octal digit 3 bits. 1 byte = 8 bits; 1 KB = 1024 bytes (KiB) or 1000 bytes (SI); 2^10 = 1024, 2^16 = 65,536, 2^20 ≈ 1 million, 2^32 ≈ 4.29 billion.",
+      "Signed integer representations: Sign-magnitude, one's complement, two's complement (the modern standard, single zero, same hardware for addition/subtraction). The n-bit two's complement range is -2^(n-1) to 2^(n-1)-1; for 8 bits -128..127. To negate: invert the bits, add 1.",
+      "Floating point (IEEE 754): Single precision 32 bits (1 sign, 8 exponent, 23 mantissa), double precision 64 bits (1, 11, 52). The exponent is stored biased (bias 127 / 1023). Values such as 0.1 cannot be represented exactly; that is why decimal/fixed-point types (DECIMAL) are used in monetary calculations.",
+      "Logic gates: AND, OR, NOT, NAND, NOR, XOR; NAND and NOR are universal gates. A half adder is XOR (sum) + AND (carry), a full adder also takes a carry-in. Boolean algebra: De Morgan's laws ¬(A∧B) = ¬A∨¬B, ¬(A∨B) = ¬A∧¬B. Combinational circuit (output depends only on the input: adder, mux, encoder) and sequential circuit (memory element: flip-flop, register, counter).",
+      "Buses: Address bus (its width determines the amount of addressable memory: 32 bits → 4 GB), data bus (bits carried at a time), control bus. Interrupts and DMA coordinate the I/O devices with the CPU. Endianness: big-endian most significant byte at the low address (network byte order), little-endian the reverse (x86).",
+      "Amdahl's law: The overall speed-up of an improvement is limited by the proportion of the part improved; the part that cannot be parallelised constrains the speed-up. Moore's law is the observation that the transistor count doubles roughly every 2 years."
+    ],
+    "comparisons": [
+      {
+        "title": "RISC vs CISC",
+        "rows": [
+          [
+            "Feature",
+            "RISC",
+            "CISC"
+          ],
+          [
+            "Number of instructions",
+            "Few, simple",
+            "Many, complex"
+          ],
+          [
+            "Instruction length",
+            "Fixed (e.g. 32 bits)",
+            "Variable (1-15 bytes x86)"
+          ],
+          [
+            "Cycles/instruction",
+            "Generally 1",
+            "Multiple"
+          ],
+          [
+            "Memory access",
+            "load/store only",
+            "Most instructions can access memory"
+          ],
+          [
+            "Number of registers",
+            "Many (32+)",
+            "Few"
+          ],
+          [
+            "Control",
+            "Hardwired",
+            "Microcode"
+          ],
+          [
+            "Example",
+            "ARM, RISC-V, MIPS, SPARC",
+            "x86, VAX"
+          ]
+        ]
+      },
+      {
+        "title": "SRAM vs DRAM",
+        "rows": [
+          [
+            "Feature",
+            "SRAM",
+            "DRAM"
+          ],
+          [
+            "Cell structure",
+            "6 transistors (flip-flop)",
+            "1 transistor + 1 capacitor"
+          ],
+          [
+            "Refresh",
+            "Not required",
+            "Periodic refresh required"
+          ],
+          [
+            "Speed",
+            "Very fast",
+            "Slower"
+          ],
+          [
+            "Density/cost",
+            "Low density, expensive",
+            "High density, cheap"
+          ],
+          [
+            "Use",
+            "Cache (L1/L2/L3), register file",
+            "Main memory"
+          ]
+        ]
+      },
+      {
+        "title": "Memory hierarchy",
+        "rows": [
+          [
+            "Level",
+            "Typical size",
+            "Access time",
+            "Managed by"
+          ],
+          [
+            "Registers",
+            "Hundreds of bytes",
+            "< 1 ns",
+            "Compiler"
+          ],
+          [
+            "L1 cache",
+            "32-64 KB/core",
+            "~1 ns (1-4 cycles)",
+            "Hardware"
+          ],
+          [
+            "L2 cache",
+            "256 KB - 2 MB",
+            "~3-10 ns",
+            "Hardware"
+          ],
+          [
+            "L3 cache",
+            "A few - tens of MB",
+            "~10-40 ns",
+            "Hardware"
+          ],
+          [
+            "Main memory (DRAM)",
+            "GBs",
+            "~50-100 ns",
+            "Operating system"
+          ],
+          [
+            "SSD",
+            "TBs",
+            "~50-100 µs",
+            "Operating system"
+          ],
+          [
+            "HDD",
+            "TBs",
+            "~5-10 ms",
+            "Operating system"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "n-bit unsigned range 0 .. 2^n - 1; n-bit two's complement range -2^(n-1) .. 2^(n-1) - 1 (8 bits: 0..255 / -128..127)",
+      "Two's complement: -x = (invert the bits) + 1; e.g. 8-bit 5 = 00000101 → -5 = 11111011",
+      "Hexadecimal ↔ binary: each hex digit is 4 bits (0xA5 = 1010 0101 = 165); octal 3 bits",
+      "Address bus n bits → 2^n addressable locations (32 bits → 4 GiB, 16 bits → 64 KiB)",
+      "Average memory access time (AMAT) = Hit time + Miss rate × Miss penalty",
+      "CPU time = Instruction count × CPI × Clock cycle time; Clock cycle time = 1 / frequency (1 GHz → 1 ns)",
+      "Ideal pipeline speed-up ≈ number of stages k; actual speed-up is found by comparing (n × k) / (k + n - 1) cycles",
+      "Amdahl's law: Speed-up = 1 / ((1 - p) + p / s) (p the proportion improved, s the speed-up of that part)",
+      "IEEE 754 single precision: value = (-1)^sign × 1.mantissa × 2^(exponent - 127)"
+    ],
+    "misconceptions": [
+      "Misconception: A processor with a higher clock frequency is always faster. Correct: Performance = instruction count × CPI × cycle time; a processor with a lower frequency but a lower CPI or more cores can be faster.",
+      "Misconception: Pipelining shortens the execution time of every instruction. Correct: Pipelining increases throughput (instructions completed per unit time); the latency of a single instruction does not change, and even increases slightly.",
+      "Misconception: In 8-bit two's complement, 10000000 = +128. Correct: The leftmost bit is the sign bit; 10000000 = -128. The largest positive value in 8 bits is 127.",
+      "Misconception: The cache is larger and slower than main memory. Correct: The cache is SRAM-based, very small (KB-MB) and very fast; main memory is DRAM-based, large and slower.",
+      "Misconception: 0.1 + 0.2 equals exactly 0.3 in floating point. Correct: In binary floating point 0.1 and 0.2 cannot be represented exactly; the result is 0.30000000000000004. DECIMAL/BigDecimal is used in banking calculations.",
+      "Misconception: 1 KB is always 1000 bytes. Correct: In computer science 1024 bytes (correctly called KiB) is traditionally used; storage manufacturers use 1000 in the SI sense, which is why a 1 TB disk appears as ~931 GiB in the operating system."
+    ],
+    "example": "An auditor notices that an old core banking module holds the balance field as a 32-bit signed integer (in kuruş). The largest value is 2^31 - 1 = 2,147,483,647 kuruş ≈ 21.47 million TL; a corporate account balance exceeding this appears negative through overflow, and this is a data integrity risk. As a solution, a 64-bit integer (long, ±9.2 × 10^18) or DECIMAL(19,2) is recommended; floating point (float/double) is not recommended for monetary fields because it cannot represent values such as 0.1 exactly. In the same review it is confirmed that the hexadecimal value 0x7FFFFFFF is this limit and that 0x80000000 corresponds to -2,147,483,648.",
+    "references": [
+      "Patterson & Hennessy, Computer Organization and Design: The Hardware/Software Interface, Chapters 1-5",
+      "Stallings, Computer Organization and Architecture, Chapters 1-5, 9-10, 14-16",
+      "Tanenbaum & Austin, Structured Computer Organization, Chapters 2-4",
+      "IEEE 754-2019 (floating point standard)",
+      "Mano & Ciletti, Digital Design (logic gates and circuits)"
+    ]
+  },
+  "KRP": {
+    "summary": "Cryptography fundamentals cover the algorithms and protocols used to conceal data (encryption), prove it has not changed (hash and MAC) and verify its source (digital signature). In the exam, the symmetric/asymmetric distinction, AES/RSA/ECC key sizes, the SHA family, the difference in key usage between digital signature and encryption, and hybrid encryption in TLS are the most frequently asked points.",
+    "concepts": [
+      "Symmetric encryption uses a single secret key; it is fast but has the key distribution problem. Examples: AES (128/192/256-bit key, 128-bit block), 3DES (old), ChaCha20. DES, with its 56-bit key, is no longer secure.",
+      "Asymmetric (public-key) encryption uses a public and private key pair. RSA (at least 2048 bits recommended), ECC (elliptic curve, 256-bit ECC ≈ 3072-bit RSA security level), Diffie-Hellman (key agreement), ElGamal.",
+      "A block cipher processes fixed-length blocks (AES: 128 bits), a stream cipher XORs a keystream bit by bit/byte by byte (RC4 old, ChaCha20 current).",
+      "Block cipher modes: ECB (same plaintext gives same ciphertext, leaks patterns, not used), CBC (chaining, requires an IV), CTR (counter, parallel), GCM (authenticated encryption, AEAD; standard in TLS 1.3).",
+      "Hash function: Produces a fixed-length digest from input of arbitrary length; one-way, collision-resistant. MD5 (128 bits) and SHA-1 (160 bits) are broken because of collision attacks; SHA-256 (256 bits) and SHA-3 are current.",
+      "A MAC (Message Authentication Code), in particular HMAC, provides both integrity and source authentication with a shared key; it does not provide non-repudiation because both parties hold the same key.",
+      "Digital signature: The sender signs the digest of the message with their own PRIVATE key, the receiver verifies with the sender's PUBLIC key. It provides integrity, authentication and non-repudiation (RSA-PSS, ECDSA, EdDSA).",
+      "In public-key encryption, by contrast, the sender encrypts with the receiver's PUBLIC key and only the receiver decrypts with their own PRIVATE key. The key direction in signing and encryption is reversed; this is the most confused point in the exam.",
+      "Hybrid encryption: The asymmetric method is used only to share the symmetric session key securely; the data is encrypted symmetrically (AES). TLS, PGP and S/MIME use this approach.",
+      "Diffie-Hellman key exchange allows two parties to generate a shared secret key over an insecure channel; since it includes no authentication it is open to MitM on its own, which is why it is combined with signatures/certificates. ECDHE provides forward secrecy.",
+      "PKI and X.509 certificate: Binds a public key to an identity, signed by a Certificate Authority (CA). Revocation is checked with CRL or OCSP. Root CAs are in the operating system/browser trust store.",
+      "A salt is a random value added to the password; it prevents identical passwords from producing identical digests and rainbow table attacks. PBKDF2, bcrypt, scrypt and Argon2 are deliberately slowed functions for key derivation.",
+      "Kerckhoffs's principle: The security of the system must rest only on the secrecy of the key, not on the secrecy of the algorithm. Secret/proprietary algorithms (security through obscurity) are considered weak.",
+      "Classical ciphers: Caesar (shift), Vigenère (polyalphabetic), one-time pad (theoretically unbreakable if the key is as long as the message and used once). Post-quantum cryptography: in 2024 NIST published the ML-KEM (Kyber) and ML-DSA (Dilithium) standards."
+    ],
+    "comparisons": [
+      {
+        "title": "Symmetric vs Asymmetric encryption",
+        "rows": [
+          [
+            "Feature",
+            "Symmetric",
+            "Asymmetric"
+          ],
+          [
+            "Key",
+            "Single secret key",
+            "Public + private key pair"
+          ],
+          [
+            "Speed",
+            "Very fast",
+            "100-1000 times slower"
+          ],
+          [
+            "Typical key size",
+            "AES 128/256 bits",
+            "RSA 2048/3072 bits, ECC 256 bits"
+          ],
+          [
+            "Key distribution",
+            "Problematic, secure channel required",
+            "Public key is shared freely"
+          ],
+          [
+            "Number of keys for n people",
+            "n(n-1)/2",
+            "2n"
+          ],
+          [
+            "Use",
+            "Bulk data encryption",
+            "Key exchange, digital signature"
+          ]
+        ]
+      },
+      {
+        "title": "Hash vs MAC vs Digital signature",
+        "rows": [
+          [
+            "Feature",
+            "Hash",
+            "HMAC",
+            "Digital signature"
+          ],
+          [
+            "Key",
+            "None",
+            "Shared secret",
+            "Private (sign) / public (verify)"
+          ],
+          [
+            "Integrity",
+            "Yes",
+            "Yes",
+            "Yes"
+          ],
+          [
+            "Source authentication",
+            "No",
+            "Yes",
+            "Yes"
+          ],
+          [
+            "Non-repudiation",
+            "No",
+            "No",
+            "Yes"
+          ],
+          [
+            "Example",
+            "SHA-256",
+            "HMAC-SHA256",
+            "RSA-PSS, ECDSA"
+          ]
+        ]
+      },
+      {
+        "title": "Encryption vs Signing: key direction",
+        "rows": [
+          [
+            "Operation",
+            "Key used",
+            "Whose key",
+            "Provides"
+          ],
+          [
+            "Encryption",
+            "Public key",
+            "Receiver's",
+            "Confidentiality"
+          ],
+          [
+            "Decryption",
+            "Private key",
+            "Receiver's",
+            "-"
+          ],
+          [
+            "Signing",
+            "Private key",
+            "Sender's",
+            "Identity, integrity, non-repudiation"
+          ],
+          [
+            "Signature verification",
+            "Public key",
+            "Sender's",
+            "-"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Number of keys needed for n users in a symmetric system = n(n-1)/2; in an asymmetric system 2n",
+      "Brute-force key space = 2^(key bit length); average attempts 2^(k-1)",
+      "Digest lengths: MD5 128 bits, SHA-1 160 bits, SHA-256 256 bits, SHA-512 512 bits",
+      "Approximate equivalent security: AES-128 ≈ RSA-3072 ≈ ECC-256; AES-256 ≈ RSA-15360 ≈ ECC-512 (NIST SP 800-57)",
+      "Caesar cipher: C = (P + k) mod 26"
+    ],
+    "misconceptions": [
+      "Misconception: In a digital signature the sender signs the message with the receiver's public key. Correct: The signature is made with the sender's PRIVATE key and verified with the sender's PUBLIC key. The receiver's public key is used for encryption.",
+      "Misconception: Encryption and hashing are the same thing. Correct: Encryption is reversible and requires a key; a hash is one-way and keyless.",
+      "Misconception: HMAC provides non-repudiation. Correct: Since the key is held by both parties, the receiver can also produce the same MAC; non-repudiation is provided only by a digital signature.",
+      "Misconception: A 256-bit ECC key is as secure as a 256-bit AES key. Correct: ECC-256 provides roughly AES-128 level security; asymmetric and symmetric key sizes cannot be compared directly.",
+      "Misconception: A longer key always means more secure encryption. Correct: With a weak mode such as ECB or poor key management, even AES-256 leads to leakage; algorithm, mode, IV and key management are assessed together.",
+      "Misconception: SHA-256 is ideal for storing passwords. Correct: SHA-256 is very fast and billions of attempts per second are made with a GPU; for passwords, salted and slow functions such as bcrypt/Argon2 are used."
+    ],
+    "example": "The bank wants to send customer statements encrypted by e-mail. Each statement is encrypted with AES-256-GCM using a random session key; the session key is encrypted with the customer's RSA-2048 public key and added to the package (hybrid encryption). The bank also signs the SHA-256 digest of the package with its own private key; the customer verifies the signature with the public key in the bank's certificate, understands that the statement came from the bank and has not changed, then opens the session key with their own private key and reads the statement. This design meets the needs for confidentiality (AES), key distribution (RSA) and non-repudiation (signature) together.",
+    "references": [
+      "Stallings, Cryptography and Network Security: Principles and Practice, Chapters 3-14",
+      "Paar & Pelzl, Understanding Cryptography",
+      "NIST FIPS 197 (AES), FIPS 180-4 (SHA), FIPS 186-5 (Digital Signature Standard), FIPS 203/204 (ML-KEM, ML-DSA)",
+      "NIST SP 800-57 Part 1 (key management and equivalent security levels)",
+      "RFC 2104 (HMAC), RFC 8017 (PKCS #1 RSA), RFC 5280 (X.509)"
+    ]
+  },
+  "BLT": {
+    "summary": "Cloud computing fundamentals cover the on-demand, metered provision of computing resources over a network, the service and deployment models, virtualisation and container technologies, and the shared responsibility model. The exam asks about the IaaS/PaaS/SaaS distinction, private/public/hybrid cloud, NIST's five essential characteristics, the difference between a virtual machine and a container, and regulatory expectations for bank cloud use (data residency, outsourcing risk).",
+    "concepts": [
+      "The 5 essential characteristics of the NIST cloud definition: on-demand self-service, broad network access, resource pooling (multi-tenant), rapid elasticity, measured service (pay as you go).",
+      "Service models: IaaS (Infrastructure as a Service) virtual machines, storage, network (AWS EC2, Azure VM); PaaS (Platform) runtime and database management with the provider, code with the customer (Heroku, Azure App Service); SaaS (Software) ready-made application (Office 365, Salesforce). FaaS/serverless: event-triggered functions (AWS Lambda).",
+      "Deployment models: Public cloud (provider infrastructure, shared), Private cloud (belongs to a single organisation, on-premises or hosted), Hybrid (combination of the two, workloads portable), Community cloud (organisations with common needs, e.g. banks), Multi-cloud (more than one provider).",
+      "Shared responsibility model: The provider is responsible for 'security of the cloud' (physical, hypervisor, network infrastructure), the customer for 'security in the cloud' (data, identity, access, configuration, encryption keys). The customer's responsibility is widest in IaaS and narrowest in SaaS.",
+      "Virtualisation: A hypervisor runs multiple virtual machines (VMs) on physical hardware. Type 1 (bare-metal: VMware ESXi, Hyper-V, KVM, Xen) runs directly on the hardware; Type 2 (hosted: VirtualBox, VMware Workstation) runs on top of an operating system. VM escape is breaking into neighbouring VMs through a hypervisor vulnerability.",
+      "Container: A lightweight isolation unit that shares the operating system kernel and packages the application with its dependencies (Docker). An image is the template, a container the running instance. Orchestration (Kubernetes) deploys, scales and heals containers in pods.",
+      "Scalability: Vertical scaling (scale up, a more powerful machine) and horizontal scaling (scale out, more machines). Auto scaling changes the number of instances according to a load metric; the load balancer distributes traffic. Elasticity is resources automatically growing and shrinking.",
+      "Cloud storage types: Object storage (S3, Blob; accessed over HTTP, with metadata, scalable), block storage (EBS; VM disk), file storage (NFS/SMB share). Data tiers hot/cold/archive (Glacier) balance cost against access.",
+      "Cloud identity and access management (IAM): Users, groups, roles and policies; the principle of least privilege, the root account not used day to day, MFA, temporary credentials (STS/role assumption). A misconfigured publicly accessible storage bucket is the most common cause of cloud leaks.",
+      "Cloud network structures: Virtual private cloud (VPC/VNet), subnets, security groups (stateful instance-level firewall), network ACLs (subnet level), connection to the corporate network via VPN or a private line (Direct Connect/ExpressRoute), redundancy through regions and availability zones.",
+      "Cloud security tools: Encryption (KMS/HSM-managed keys for data at rest, TLS in transit), CASB (cloud access security broker), CSPM (configuration auditing), logging (CloudTrail/Activity Log); customer-managed keys (BYOK) increase the organisation's control.",
+      "Service level agreement (SLA): Availability percentage (99.9% = ~8.8 hours of downtime per year; 99.99% = ~53 minutes), outage notification periods, data deletion and exit conditions. Vendor lock-in is a portability risk.",
+      "Cloud from a bank's perspective: It is a form of outsourcing; risk assessment, the right to audit in the contract, data residency (the expectation that data is kept within the country), exit strategy, business continuity and the BDDK notification/permission processes are evaluated. The location and auditability of primary and secondary systems is a critical issue.",
+      "DevOps and cloud: Infrastructure as Code (Terraform, CloudFormation) provides repeatable and auditable environments; immutable infrastructure deploys a new image instead of updating a server. Edge computing performs processing close to the data source."
+    ],
+    "comparisons": [
+      {
+        "title": "IaaS vs PaaS vs SaaS",
+        "rows": [
+          [
+            "Feature",
+            "IaaS",
+            "PaaS",
+            "SaaS"
+          ],
+          [
+            "Provider manages",
+            "Hardware, virtualisation, network",
+            "+ Operating system, runtime, middleware",
+            "+ Application and data management"
+          ],
+          [
+            "Customer manages",
+            "Operating system, middleware, application, data",
+            "Application and data",
+            "Only usage/configuration, access"
+          ],
+          [
+            "Flexibility",
+            "Highest",
+            "Medium",
+            "Lowest"
+          ],
+          [
+            "Security responsibility (customer)",
+            "Widest",
+            "Medium",
+            "Narrowest (identity, data classification)"
+          ],
+          [
+            "Example",
+            "AWS EC2, Azure VM, GCE",
+            "Heroku, App Engine, Azure App Service",
+            "Office 365, Salesforce, Gmail"
+          ]
+        ]
+      },
+      {
+        "title": "Virtual machine vs Container",
+        "rows": [
+          [
+            "Feature",
+            "Virtual machine",
+            "Container"
+          ],
+          [
+            "Isolation",
+            "Hardware level (hypervisor)",
+            "Operating system level (namespace, cgroup)"
+          ],
+          [
+            "Operating system",
+            "Separate guest OS in each VM",
+            "Host kernel shared"
+          ],
+          [
+            "Size",
+            "GBs",
+            "MBs"
+          ],
+          [
+            "Start-up time",
+            "Minutes",
+            "Seconds"
+          ],
+          [
+            "Density",
+            "Low",
+            "High"
+          ],
+          [
+            "Security isolation",
+            "Stronger",
+            "Weaker (shared kernel)"
+          ],
+          [
+            "Tooling",
+            "VMware, Hyper-V, KVM",
+            "Docker, containerd, Kubernetes"
+          ]
+        ]
+      },
+      {
+        "title": "Public vs Private vs Hybrid cloud",
+        "rows": [
+          [
+            "Feature",
+            "Public",
+            "Private",
+            "Hybrid"
+          ],
+          [
+            "Ownership",
+            "Provider",
+            "Organisation (or hosting dedicated to the organisation)",
+            "Mixed"
+          ],
+          [
+            "Cost model",
+            "Pay as you go, low entry",
+            "High investment",
+            "Mixed"
+          ],
+          [
+            "Control/compliance",
+            "Limited",
+            "Full",
+            "Depends on the workload"
+          ],
+          [
+            "Scalability",
+            "Almost unlimited",
+            "Limited by capacity",
+            "Public for bursting"
+          ],
+          [
+            "Bank use",
+            "Low-sensitivity workloads, development/test",
+            "Core banking, customer data",
+            "Common preference"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Annual permitted downtime = (1 - availability) × 525,600 min: 99% → 5,256 min (~3.65 days), 99.9% → ~526 min (~8.8 hours), 99.99% → ~53 min, 99.999% → ~5.3 min",
+      "Total availability of components in series = A1 × A2 × ... (0.999 × 0.999 ≈ 0.998); parallel redundant = 1 - (1-A1)(1-A2)",
+      "Total cost of ownership (TCO) = Investment (CapEx) + Operations (OpEx) × years; in the cloud, CapEx → OpEx shift"
+    ],
+    "misconceptions": [
+      "Misconception: When data is moved to the cloud, the provider is entirely responsible for its security. Correct: In the shared responsibility model, data, identity, access rights and configuration are always the customer's responsibility.",
+      "Misconception: A container is a lighter version of a virtual machine with the same security. Correct: Containers share the host kernel; a kernel vulnerability affects all containers, so isolation is weaker than a VM.",
+      "Misconception: A private cloud is only ever in the organisation's own data centre. Correct: A private cloud is defined by being dedicated to a single organisation; it can be hosted by a third party (hosted private cloud).",
+      "Misconception: A 99.9% SLA means almost no downtime. Correct: It permits roughly 8.8 hours of downtime per year; that may be high for critical banking systems.",
+      "Misconception: The cloud is always cheaper than an on-premises installation. Correct: For stable and predictable high loads, on-premises can be cheaper in the long run; the cloud has the advantage for variable loads and a fast start.",
+      "Misconception: In the cloud, data backup is taken automatically and sufficiently by the provider. Correct: The provider's infrastructure redundancy does not replace a backup strategy that protects the customer from logical errors or deletion; backup is the customer's responsibility."
+    ],
+    "example": "A bank plans to run its customer communication campaign application as PaaS in the public cloud. In the risk assessment the auditor asks the following questions: In which region will the customer data be kept, and is the data residency expectation met; does the contract give the bank and the regulator the right to audit; are the encryption keys managed by the bank (BYOK); is identity management tied to the corporate directory (SSO + MFA); are the exit strategy and the evidence of data deletion defined. It is verified with a CSPM tool that the storage buckets are not 'public'. The core banking system, because of its sensitivity, stays in the private cloud; this makes it a hybrid model.",
+    "references": [
+      "NIST SP 800-145 (The NIST Definition of Cloud Computing)",
+      "NIST SP 800-144 (Guidelines on Security and Privacy in Public Cloud Computing)",
+      "ISO/IEC 27017 (information security controls for cloud services), ISO/IEC 27018 (personal data in the cloud)",
+      "CSA (Cloud Security Alliance) Security Guidance and Cloud Controls Matrix",
+      "BDDK, Regulation on Banks' Information Systems and Electronic Banking Services (Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik) (2020), outsourcing and primary/secondary system provisions (at concept level)",
+      "Erl, Mahmood & Puttini, Cloud Computing: Concepts, Technology & Architecture"
+    ]
+  },
+  "SIB": {
+    "summary": "Cybersecurity fundamentals deal with threat, vulnerability and attack types from the attacker's perspective, and with detection, response and security architecture concepts on the defence side. In the exam, the OWASP Top 10 web vulnerabilities (SQL injection, XSS, CSRF), DDoS, man-in-the-middle, the kill chain, SIEM/SOC, penetration test types and incident response steps stand out.",
+    "concepts": [
+      "A threat is a potential event that could cause harm, a vulnerability a weakness that can be exploited, an exploit the code/method that uses the vulnerability, and risk the combination of the likelihood that the threat uses the vulnerability and its impact.",
+      "SQL injection: User input being appended directly to the SQL query; authentication is bypassed with payloads such as ' OR '1'='1. Defence: parameterised queries (prepared statements), ORM, a least-privilege database account, input validation.",
+      "XSS (Cross-Site Scripting): The attacker's script running in the victim's browser. Types: stored, reflected, DOM-based. Defence: output encoding, Content Security Policy, the HttpOnly cookie flag.",
+      "CSRF (Cross-Site Request Forgery): The logged-in user's browser unknowingly sending a request prepared by the attacker. Defence: anti-CSRF token, SameSite cookie attribute, re-authentication for critical operations.",
+      "OWASP Top 10 (2021): A01 Broken Access Control, A02 Cryptographic Failures, A03 Injection, A04 Insecure Design, A05 Security Misconfiguration, A06 Vulnerable and Outdated Components, A07 Identification and Authentication Failures, A08 Software and Data Integrity Failures, A09 Security Logging and Monitoring Failures, A10 Server-Side Request Forgery (SSRF).",
+      "DoS/DDoS: Making a service unavailable by consuming resources. Volume-based (UDP flood, DNS amplification), protocol-based (SYN flood), application layer (HTTP flood). Defence: rate limiting, SYN cookies, CDN/scrubbing centre.",
+      "Man-in-the-Middle (MitM): The attacker inserting themselves between two parties and monitoring or altering the traffic; ARP poisoning, rogue Wi-Fi and SSL stripping are examples. Defence: TLS, certificate pinning, HSTS.",
+      "Brute force tries all combinations, a dictionary attack common passwords, credential stuffing leaked password pairs. Defence: account lockout, rate limiting, MFA, strong hashing.",
+      "A zero-day is a vulnerability for which there is no patch yet. CVE (Common Vulnerabilities and Exposures) is the vulnerability identifier, CVSS (a score from 0 to 10) the severity metric; 9.0-10.0 counts as critical.",
+      "Cyber Kill Chain: Reconnaissance, weaponisation, delivery, exploitation, installation, command and control (C2), actions on objectives. MITRE ATT&CK is the matrix that classifies attacker tactics and techniques.",
+      "Penetration test types: black box (no information), grey box (partial information), white box (full information). Vulnerability scanning is automated and superficial; a penetration test also attempts exploitation. The red team attacks, the blue team defends.",
+      "A SIEM (Security Information and Event Management) collects logs, correlates them and generates alerts; the SOC (Security Operations Center) is the team that monitors them 24/7. EDR performs behaviour-based detection on the endpoint, NDR on the network.",
+      "Incident response life cycle (NIST SP 800-61): Preparation, Detection and Analysis, Containment-Eradication-Recovery, Post-Incident Activity (lessons learned). In digital forensics, a hash is taken for evidence integrity and a chain of custody is maintained.",
+      "Zero trust, with the principle 'never trust, always verify', verifies every request according to identity, device and context rather than network location. Network segmentation limits lateral movement."
+    ],
+    "comparisons": [
+      {
+        "title": "SQL injection vs XSS vs CSRF",
+        "rows": [
+          [
+            "Feature",
+            "SQL injection",
+            "XSS",
+            "CSRF"
+          ],
+          [
+            "Target",
+            "Database/server",
+            "Victim's browser",
+            "Victim's session"
+          ],
+          [
+            "Where it runs",
+            "Server side",
+            "Client side",
+            "Request from client to server"
+          ],
+          [
+            "Root cause",
+            "Input concatenated into the query",
+            "Input written to the page without encoding",
+            "Request origin not verified"
+          ],
+          [
+            "Main defence",
+            "Parameterised query",
+            "Output encoding, CSP",
+            "Anti-CSRF token, SameSite"
+          ]
+        ]
+      },
+      {
+        "title": "Vulnerability scan vs Penetration test",
+        "rows": [
+          [
+            "Feature",
+            "Vulnerability scan",
+            "Penetration test"
+          ],
+          [
+            "Method",
+            "Automated tool",
+            "Expert, manual and with tools"
+          ],
+          [
+            "Depth",
+            "Lists known vulnerabilities",
+            "Exploits, demonstrates the impact"
+          ],
+          [
+            "Frequency",
+            "Continuous/weekly",
+            "Annual or after major changes"
+          ],
+          [
+            "False positives",
+            "High",
+            "Low (verified)"
+          ]
+        ]
+      },
+      {
+        "title": "Black box vs Grey box vs White box testing",
+        "rows": [
+          [
+            "Feature",
+            "Black box",
+            "Grey box",
+            "White box"
+          ],
+          [
+            "Tester's knowledge",
+            "None",
+            "Partial (user account, architecture)",
+            "Full (source code, configuration)"
+          ],
+          [
+            "Simulates",
+            "External attacker",
+            "Malicious insider",
+            "Code audit"
+          ],
+          [
+            "Duration/cost",
+            "Long reconnaissance",
+            "Medium",
+            "Comprehensive but quickly targeted"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Risk = Threat likelihood × Impact (qualitative) or Annualised loss expectancy (ALE) = Single loss expectancy (SLE) × Annualised rate of occurrence (ARO)",
+      "CVSS score ranges: 0.1-3.9 low, 4.0-6.9 medium, 7.0-8.9 high, 9.0-10.0 critical"
+    ],
+    "misconceptions": [
+      "Misconception: Validating input on the client side with JavaScript prevents SQL injection. Correct: Client-side validation can be bypassed; protection is provided on the server side with parameterised queries.",
+      "Misconception: XSS takes over the server. Correct: XSS runs in the victim's browser and creates client-side effects such as stealing the session cookie or altering the page.",
+      "Misconception: A vulnerability scan replaces a penetration test. Correct: A scan only lists known signatures; logic flaws and chained attacks are revealed by a penetration test.",
+      "Misconception: Zero-day means 'an attack carried out at hour zero of the day'. Correct: The vendor has had zero days to publish a patch, i.e. it is a vulnerability that is not yet known/patched.",
+      "Misconception: The first step in incident response is to shut the system down immediately. Correct: Detection and analysis come first and evidence is preserved; the containment strategy (isolating from the network, monitoring) is chosen according to the incident. Shutting down can destroy volatile evidence.",
+      "Misconception: If there is a strong password policy, a credential stuffing attack will not work. Correct: This attack uses real passwords leaked from other sites; the problem is not the strength of the password but its reuse, and the solution is MFA and breach checking."
+    ],
+    "example": "On the internet banking login page, an auditor types admin'-- into the username field and sees a fragment of SQL syntax in the error message. This shows that the input is appended directly to the query and that a detailed error message is being leaked (A03 Injection and A05 Misconfiguration). As findings, switching to parameterised queries, a generic error page, a WAF rule and restricting the application's database account to only the necessary tables are recommended. After remediation a retest is carried out and the finding is closed.",
+    "references": [
+      "OWASP Top 10 (2021) and OWASP Cheat Sheet Series",
+      "NIST SP 800-61 Rev.2 (Computer Security Incident Handling Guide)",
+      "NIST SP 800-115 (Technical Guide to Information Security Testing and Assessment)",
+      "MITRE ATT&CK Framework; Lockheed Martin Cyber Kill Chain",
+      "Stallings & Brown, Computer Security: Principles and Practice, Chapters 6, 7, 8, 11"
+    ]
+  },
+  "YIS": {
+    "summary": "Backup and business continuity fundamentals cover the controls that ensure data can be recovered and critical business processes resume within an acceptable time in the face of data loss and service outage risks. The exam asks, through banking scenarios, about backup types (full, incremental, differential), the 3-2-1 rule, the RPO/RTO/MTD concepts, disaster recovery site types (hot/warm/cold), business impact analysis, the difference between a business continuity plan and a disaster recovery plan, and test types.",
+    "concepts": [
+      "Backup is copying data so that it can be recovered in the event of loss, corruption, deletion or ransomware; since the purpose of backup is restore, an untested backup counts for nothing. Archiving is for long-term retention obligations, backup for operational recovery.",
+      "Backup types: Full, all data; Incremental, what changed since the last backup (full or incremental), fastest backup, slowest restore (the full + the whole chain of incrementals is needed); Differential, what changed since the last FULL backup, restore is done with the full + the last differential, backup size grows every day. Synthetic full and continuous data protection (CDP) are advanced methods.",
+      "Archive bit and restore chain: An incremental backup resets the archive bit, a differential does not. If one incremental backup in the chain is corrupt, the later points cannot be recovered; that is why periodic full backups and integrity verification (hash/checksum) are needed.",
+      "3-2-1 rule: At least 3 copies, on 2 different media types, 1 copy at a different location (off-site). The 3-2-1-1-0 extension against ransomware: 1 copy offline or immutable/air-gapped, 0 restore errors (tested). Backups are encrypted and access to them is restricted.",
+      "Backup retention and rotation: The retention period is set according to regulatory and business requirements; Grandfather-Father-Son (GFS: daily, weekly, monthly/yearly) rotation is common. Backup media are labelled, inventoried, protected in transit and securely destroyed at end of life.",
+      "RPO (Recovery Point Objective): The maximum acceptable period of data loss; it determines the backup/replication frequency (if the RPO is 1 hour, at least hourly backup or asynchronous replication). RTO (Recovery Time Objective): The target time for the service to be running again after an outage. MTD/MTPD (Maximum Tolerable Downtime): The longest outage the business can endure; RTO ≤ MTD must hold. WRT (Work Recovery Time) is the time, after the system is up, to verify the data and return the business to normal: RTO + WRT ≤ MTD.",
+      "Business impact analysis (BIA): Identifies the critical business processes, the dependent systems and the financial/reputational/legal impact of an outage growing over time, and assigns MTD, RTO and RPO to each process. The BIA is the foundation of business continuity planning and gives the recovery priority (which system first). The risk assessment determines which threats (earthquake, fire, cyber attack, supplier failure) are to be planned for.",
+      "The business continuity plan (BCP) covers sustaining critical business processes (branch service, payment systems) by alternative means during an outage: staff, call tree, alternative workplace, manual procedures, suppliers. The disaster recovery plan (DRP) is the IT-focused subset of the BCP: bringing up the systems and data at the disaster recovery site.",
+      "Disaster recovery (DR) site types: Hot (hardware and current data ready, minutes-hours, most expensive), Warm (hardware present, data partly current, hours-days), Cold (only space and infrastructure, days-weeks, cheapest), Mirrored/active-active (synchronous, near-zero RPO/RTO), mobile and reciprocal agreement options. A bank's secondary centre must be in a different risk zone from the primary centre (outside the earthquake fault line).",
+      "Data replication: Synchronous, every write is acknowledged once committed on both sides, RPO ≈ 0, there is a distance limit (latency); Asynchronous, delayed copy, RPO seconds-minutes, long distance. Database log shipping, storage-level replication and snapshot techniques are used; a snapshot does not replace a backup because it is on the same storage.",
+      "The difference between high availability (HA) and disaster recovery: HA is redundancy at the same location against a single component failure (cluster, RAID, dual power supply, load balancer; no 'single point of failure'); DR is a different location against the loss of the whole site. RAID protects against disk failure but is not a backup against deletion, corruption or ransomware.",
+      "Business continuity life cycle (ISO 22301): Policy and scope → BIA and risk assessment → strategy selection → plan development → awareness and training → exercise/test → maintenance and review (annually or after major changes). Copies of the plan are kept off-site and accessible; the call tree and the crisis management team are defined.",
+      "Test types (in order of increasing realism): Checklist/read-through, Tabletop/structured walkthrough, Simulation (scenario enactment, production not interrupted), Parallel test (DR systems are brought up, production continues), Full interruption test (production is moved to the DR site, the riskiest and most conclusive). The BDDK expects banks to test their business continuity plans regularly and to demonstrate that the secondary centre can process real transactions.",
+      "Restore testing from backup: Periodic restores from randomly selected backups, measurement of duration and data integrity, recording of the results. The auditor asks for the backup logs (failed jobs and retries), compliance with the retention policy, the existence of the off-site copy, encryption and the date of the most recent restore test as evidence."
+    ],
+    "comparisons": [
+      {
+        "title": "Full vs Incremental vs Differential backup",
+        "rows": [
+          [
+            "Feature",
+            "Full",
+            "Incremental",
+            "Differential"
+          ],
+          [
+            "What it backs up",
+            "All data",
+            "Changes since the last backup of any kind",
+            "Changes since the last FULL backup"
+          ],
+          [
+            "Backup time/size",
+            "Longest / largest",
+            "Shortest / smallest",
+            "Medium, grows every day"
+          ],
+          [
+            "Restore",
+            "Single set, fastest",
+            "Full + all incrementals in order, slowest",
+            "Full + last differential, medium"
+          ],
+          [
+            "Archive bit",
+            "Resets",
+            "Resets",
+            "Does not reset"
+          ],
+          [
+            "Chain risk",
+            "None",
+            "High (if one link breaks, everything after is lost)",
+            "Low (only two sets)"
+          ]
+        ]
+      },
+      {
+        "title": "Disaster recovery site types",
+        "rows": [
+          [
+            "Type",
+            "Readiness level",
+            "Recovery time (RTO)",
+            "Cost",
+            "Suited to"
+          ],
+          [
+            "Mirrored / Active-active",
+            "Synchronous, live",
+            "Minutes or zero",
+            "Highest",
+            "Core banking, payment systems"
+          ],
+          [
+            "Hot",
+            "Hardware + current data",
+            "Minutes-hours",
+            "High",
+            "Critical systems"
+          ],
+          [
+            "Warm",
+            "Hardware + partly current data",
+            "Hours-days",
+            "Medium",
+            "Important but not critical"
+          ],
+          [
+            "Cold",
+            "Only space, power, cooling",
+            "Days-weeks",
+            "Low",
+            "Low-priority systems"
+          ]
+        ]
+      },
+      {
+        "title": "RPO vs RTO",
+        "rows": [
+          [
+            "Feature",
+            "RPO",
+            "RTO"
+          ],
+          [
+            "What it measures",
+            "Acceptable data loss (as time)",
+            "Acceptable outage duration"
+          ],
+          [
+            "Time axis",
+            "BACKWARDS from the outage",
+            "FORWARDS from the outage"
+          ],
+          [
+            "Technology it determines",
+            "Backup/replication frequency",
+            "DR site type, automation, staff readiness"
+          ],
+          [
+            "Example",
+            "RPO 15 min → replication at least every 15 min",
+            "RTO 2 hours → a hot DR site is needed"
+          ],
+          [
+            "Relationship",
+            "RPO and RTO are independent of each other; one can be zero while the other is hours",
+            "RTO + WRT ≤ MTD"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "RTO + WRT ≤ MTD (Maximum Tolerable Downtime)",
+      "Restore set with incremental backup = Last full backup + ALL incremental backups after it (in order)",
+      "Restore set with differential backup = Last full backup + only the LAST differential backup",
+      "3-2-1 rule: 3 copies, 2 different media, 1 copy at a different location (+1 offline/immutable, 0 restore errors)",
+      "Availability = MTBF / (MTBF + MTTR); MTBF mean time between failures, MTTR mean time to repair",
+      "Annual permitted downtime = (1 − availability) × 8,760 hours; 99.9% → ~8.8 hours, 99.99% → ~53 min"
+    ],
+    "misconceptions": [
+      "Misconception: RAID or disk mirroring replaces a backup. Correct: RAID provides availability against disk failure; accidental deletion, data corruption or ransomware affects both copies at the same time. A backup is a separate copy that can be rolled back in time.",
+      "Misconception: If backups are being taken, the data is safe. Correct: A backup with no restore test gives no assurance; the auditor asks for evidence of the last successful restore test.",
+      "Misconception: Differential backup is another name for incremental backup. Correct: Incremental takes the changes since the last backup of any kind, differential since the last FULL backup; the restore sets and archive bit behaviour differ.",
+      "Misconception: RPO and RTO measure the same thing. Correct: RPO measures backward-looking data loss, RTO forward-looking outage duration; zero RPO (synchronous replication) can coexist with an RTO of hours.",
+      "Misconception: A cold disaster recovery site is sufficient for banking systems because it is cheap. Correct: A cold site gives an RTO of days-weeks; systems with a low MTD, such as payments and core banking, require a hot or mirrored site.",
+      "Misconception: The disaster recovery site can be in the same city as the primary centre, in the same building on a different floor. Correct: It must be in a different risk zone so that it is not affected by the same disaster (earthquake, fire, flood, power outage)."
+    ],
+    "example": "The business impact analysis for the bank's credit card authorisation system has set MTD = 2 hours and RPO = 5 minutes. Currently a full backup is taken at 02:00 at night and an incremental every 6 hours during the day, and the DR site is at warm level. The auditor writes as findings that the 6-hour backup interval does not meet the 5-minute RPO (in the worst case 6 hours of transactions lost) and that the warm site's hours-to-days RTO exceeds the 2-hour MTD. Recommendation: a hot/active-active DR site with synchronous or seconds-delayed asynchronous replication for the database, 3-2-1-1-0 compliance with an immutable copy of the backups, and at least once a year an exercise in which real transactions are processed at the DR site. In addition, if it is seen that the last restore test was carried out 14 months ago, this becomes a second finding.",
+    "references": [
+      "ISO 22301:2019 (Business Continuity Management Systems) and ISO 22313 (implementation guidance)",
+      "NIST SP 800-34 Rev.1 (Contingency Planning Guide for Federal Information Systems)",
+      "BDDK, Regulation on Banks' Information Systems and Electronic Banking Services (Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik) (2020), business continuity, secondary centre, backup and testing provisions (at concept level)",
+      "ISO/IEC 27002:2022, information backup and information security continuity during disruption controls",
+      "ITIL 4, Service Continuity Management practice",
+      "ISACA, CISA Review Manual, Domain 4 (Information Systems Operations and Business Resilience)",
+      "Silberschatz, Galvin & Gagne, Operating System Concepts (RAID chapter)"
+    ]
+  },
+  "RISK": {
+    "summary": "The IT risk and controls topic covers identifying, measuring, controlling and monitoring the risks arising from information systems, and how an auditor tests those controls. It is the most critical topic for the bank inspector role: the risk management process, control types (preventive/detective/corrective, general/application controls), the three lines of defence, the COBIT/ISO 27001/BDDK framework, audit evidence and sampling concepts come up in the exam as scenario questions.",
+    "concepts": [
+      "Risk is the combination of the likelihood and the impact of a threat exploiting a vulnerability to create an adverse effect on an asset. Inherent risk is the risk with no controls, residual risk is what remains after controls are applied. Risk appetite is the total level of risk the organisation is prepared to accept, tolerance is the acceptable deviation from the target.",
+      "Risk management process (ISO 31000 / ISO/IEC 27005 / NIST RMF): Establishing the context → asset inventory and classification → risk identification (threat, vulnerability) → analysis (likelihood, impact) → evaluation (comparison with criteria) → treatment → monitoring and review → communication. The risk register holds all risks, their owners and the treatment plan.",
+      "Risk treatment options: Mitigate/control (apply a control), Accept (within appetite, documented and approved by management), Transfer/share (insurance, outsourcing contract; responsibility cannot be fully transferred), Avoid (not carrying out the activity).",
+      "Risk analysis methods: Qualitative (low/medium/high matrix, expert judgement, fast), Quantitative (monetary: SLE, ARO, ALE; cost-benefit calculation), Semi-quantitative (scoring). In quantitative analysis, if the cost of the control exceeds the ALE reduction it provides, the control is not economical.",
+      "Control: A policy, procedure, practice or technical mechanism designed to reduce risk. By function: Preventive (MFA, segregation of duties, input validation), Detective (audit log review, reconciliation, IDS), Corrective (restore from backup, patch, incident response); also deterrent, compensating and directive (policy, training) controls.",
+      "By form of implementation: Administrative (policy, training, hiring controls), Technical/logical (encryption, firewall, access list), Physical (lock, camera, security guard). Automated controls (enforced by the system, consistent) and manual controls (performed by a human, higher margin of error, require sample testing).",
+      "IT general controls (ITGC): Controls that affect all applications; access management, change management, IT operations (job scheduling, backup, incident management), program development/acquisition, physical and environmental security. If the ITGCs are weak, application controls cannot be relied upon.",
+      "Application controls: Transaction-level controls within a specific business application; input (mandatory field, format, range, check digit, limit check, authority check), processing (control totals, sequence check, duplicate check), output (report distribution control, reconciliation) and interface controls (comparison of sent/received record counts/totals).",
+      "Three lines of defence (Three Lines Model): 1st line business units and IT operations (own the risk, operate the controls), 2nd line risk management, compliance and information security (set the framework, monitor), 3rd line internal audit/inspection (provide independent assurance, report to the board/audit committee). External audit and the regulator (BDDK) provide assurance from outside the organisation.",
+      "Control testing: Design effectiveness (is the control designed to address the risk; walkthrough) and operating effectiveness (did it work consistently throughout the period; sample testing). Evidence types: inspection (documents), observation, inquiry (weakest on its own), re-performance (strongest), analytical procedures, computer-assisted audit techniques (CAAT: analysing the whole data set, duplicate records, Benford).",
+      "Audit risk = Inherent risk × Control risk × Detection risk. If control risk is high, the auditor performs more substantive testing (lowers detection risk). Materiality is the threshold at which a finding influences decision makers. A finding has 5 elements: condition, criteria, cause, effect, recommendation.",
+      "IT governance envisaged by the BDDK regulation: Ultimate responsibility of the board of directors, an information systems strategy and risk management process, an information security policy and responsible unit, inclusion of IT processes within the scope of internal control and internal audit, the expectation that primary and secondary systems are kept within the country, risk assessment and the right to audit in outsourcing, reporting of incidents and outages. In addition, periodic information systems audits are carried out by independent audit firms.",
+      "COBIT 2019: An IT governance and management framework; 5 domains (EDM Evaluate-Direct-Monitor: governance; APO Align-Plan-Organise; BAI Build-Acquire-Implement; DSS Deliver-Service-Support; MEA Monitor-Evaluate-Assess) and 40 governance/management objectives. APO12 (Managed Risk) stands out for risk, APO13 for security, MEA02 for internal control. Process maturity is measured with capability levels 0-5.",
+      "ISO/IEC 27001:2022: Information Security Management System (ISMS) requirements; risk-based approach, scope, leadership, risk assessment and treatment, Statement of Applicability (SoA), Annex A controls (4 themes in 2022: organisational, people, physical, technological; 93 controls), internal audit, management review, continual improvement (PDCA: Plan-Do-Check-Act). ISO 27001 is certifiable, ISO 27002 is the control implementation guide."
+    ],
+    "comparisons": [
+      {
+        "title": "Control types (by function)",
+        "rows": [
+          [
+            "Type",
+            "Timing",
+            "Purpose",
+            "IT example",
+            "Banking example"
+          ],
+          [
+            "Preventive",
+            "Before the event",
+            "Stop it from occurring",
+            "MFA, firewall, input validation, segregation of duties",
+            "Transfer limit, dual approval (maker-checker)"
+          ],
+          [
+            "Detective",
+            "During/after the event",
+            "Notice and report",
+            "IDS, audit log review, FIM, reconciliation",
+            "Daily account reconciliation, fraud monitoring"
+          ],
+          [
+            "Corrective",
+            "After the event",
+            "Remove the effect, fix",
+            "Restore from backup, patch, incident response",
+            "Reversal entry, customer notification"
+          ],
+          [
+            "Compensating",
+            "When the primary control is absent",
+            "Close the gap",
+            "Management review when SoD is not possible",
+            "Head office approval instead of a second signature in a small branch"
+          ]
+        ]
+      },
+      {
+        "title": "IT general controls vs Application controls",
+        "rows": [
+          [
+            "Feature",
+            "ITGC",
+            "Application controls"
+          ],
+          [
+            "Scope",
+            "All systems and applications",
+            "A single business application/transaction"
+          ],
+          [
+            "Example areas",
+            "Access, change, operations, development, physical security",
+            "Input, processing, output, interface controls"
+          ],
+          [
+            "Owner",
+            "IT management",
+            "Business process owner + IT"
+          ],
+          [
+            "Relationship",
+            "Foundation of the reliability of application controls",
+            "Unreliable if ITGCs are weak"
+          ],
+          [
+            "Test approach",
+            "Process and sample testing",
+            "Transaction testing, recalculation, CAAT"
+          ]
+        ]
+      },
+      {
+        "title": "Three lines of defence",
+        "rows": [
+          [
+            "Line",
+            "Who",
+            "Role",
+            "Independence"
+          ],
+          [
+            "1st line",
+            "Business units, IT operations",
+            "Owns the risk, operates the controls",
+            "None (process owner)"
+          ],
+          [
+            "2nd line",
+            "Risk management, compliance, information security",
+            "Framework, policy, monitoring, advice",
+            "Partial"
+          ],
+          [
+            "3rd line",
+            "Internal audit / inspection",
+            "Independent assurance, reports to the board",
+            "Full (functional independence)"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "Risk = Likelihood × Impact (qualitative matrix) or Risk = Threat × Vulnerability × Asset value",
+      "Single loss expectancy SLE = Asset value (AV) × Exposure factor (EF)",
+      "Annualised loss expectancy ALE = SLE × Annualised rate of occurrence (ARO)",
+      "Value of a control = ALE(before) − ALE(after) − Annual cost of the control (economical if positive)",
+      "Residual risk = Inherent risk − Risk reduced by the controls (conceptual)",
+      "Audit risk = Inherent risk × Control risk × Detection risk",
+      "High control risk → more substantive testing; low control risk → rely on controls, smaller sample"
+    ],
+    "misconceptions": [
+      "Misconception: Accepting a risk is ignoring the risk. Correct: Acceptance is a documented decision by authorised management that the risk has been analysed and remains within appetite; ignoring is a risk that has not been analysed.",
+      "Misconception: Transferring a risk to insurance or an outsourcing provider also transfers the responsibility. Correct: The financial impact is shared, but the responsibility towards the regulator and the customer stays with the bank; the BDDK states explicitly that the bank's responsibility continues in outsourcing.",
+      "Misconception: Residual risk must be reduced to zero. Correct: There is no zero risk and its cost is infinite; the goal is to bring residual risk down to the appetite/tolerance limit.",
+      "Misconception: Inquiry (interviewing management) is sufficient audit evidence on its own. Correct: Inquiry is the weakest type of evidence; it must be supported by document inspection, observation or re-performance.",
+      "Misconception: The existence of a control (policy written, tool installed) shows that it is effective. Correct: Design effectiveness is not enough; operating effectiveness must be tested by sampling across the period.",
+      "Misconception: Internal audit is the 2nd line of defence. Correct: Internal audit is the 3rd line, providing independent assurance; the 2nd line is the risk management, compliance and information security functions."
+    ],
+    "example": "The bank's internet banking server suffers an average of 2 service outages per year; the transaction loss and reputational cost of each outage is calculated as 400,000 TL (SLE). ALE = 400,000 × 2 = 800,000 TL. If an investment in a redundant (active-active) architecture and a load balancer, at an annual cost of 300,000 TL, will reduce the outage frequency to 0.25 per year, the new ALE = 100,000 TL; since the reduction achieved is 700,000 TL and the net benefit is 400,000 TL, the control is economically justified. In the report the auditor writes the finding as condition (a single server with no redundancy), criteria (the BDDK's service continuity and risk management expectation, the organisation's 99.9% SLA target), cause (lack of capacity planning), effect (800,000 TL annual expected loss and regulatory reporting risk), recommendation (redundant architecture + monthly KRI monitoring), and asks that management's acceptance of the remaining risk be documented.",
+    "references": [
+      "BDDK, Regulation on Banks' Information Systems and Electronic Banking Services (Bankaların Bilgi Sistemleri ve Elektronik Bankacılık Hizmetleri Hakkında Yönetmelik) (Official Gazette 15.03.2020, No. 31069), IT governance, risk management, internal control, outsourcing and audit provisions (at concept level)",
+      "BDDK, Regulation on Banks' Internal Systems and Internal Capital Adequacy Assessment Process (Bankaların İç Sistemleri ve İçsel Sermaye Yeterliliği Değerlendirme Süreci Hakkında Yönetmelik) (internal control, risk management, internal audit functions)",
+      "COBIT 2019 Framework: Introduction and Methodology; Governance and Management Objectives (APO12, APO13, MEA02)",
+      "ISO/IEC 27001:2022, ISO/IEC 27002:2022, ISO/IEC 27005:2022 (information security risk management), ISO 31000:2018",
+      "NIST SP 800-30 Rev.1 (Guide for Conducting Risk Assessments), NIST SP 800-37 Rev.2 (Risk Management Framework), NIST SP 800-53 Rev.5",
+      "IIA, The IIA's Three Lines Model (2020); ISACA, CISA Review Manual, Domains 1 and 2; ISACA, Risk IT Framework"
+    ]
+  },
+  "GT": {
+    "summary": "The emerging technologies topic covers the fundamental concepts and the risks introduced by the technologies transforming banking, such as artificial intelligence, big data, blockchain, the Internet of Things, 5G, quantum computing, open banking and digital identity. The exam asks definition-level questions (machine learning types, blockchain characteristics, the V's of big data, the API economy) and about the use of these technologies in banking and their audit/compliance consequences.",
+    "concepts": [
+      "Artificial intelligence (AI) is the general name for systems that imitate human intelligence; machine learning (ML) is the subfield that learns patterns from data; deep learning (DL) is the ML subfield using multi-layer artificial neural networks. Generative AI and large language models (LLMs; GPT, Claude, Gemini, Llama) generate text/code/images.",
+      "Machine learning types: Supervised (labelled data; classification e.g. fraud yes/no, regression e.g. credit score), Unsupervised (unlabelled; customer segmentation with clustering, anomaly detection), Reinforcement (trial and error with reward/penalty). Overfitting is memorising the training data without generalising; it is controlled with the training/validation/test split.",
+      "AI risks and governance: Data bias and discrimination (in credit decisions), explainability (black-box models), model risk and validation, data privacy, prompt injection and hallucination (LLMs). The EU AI Act (2024) classifies credit scoring as 'high risk'; the NIST AI RMF and ISO/IEC 42001 (AI management system) are governance frameworks.",
+      "Big data characteristics (the V's): Volume, Velocity, Variety, Veracity, Value. Technologies: Hadoop (HDFS distributed file system + MapReduce), Apache Spark (in-memory processing), NoSQL databases, the distinction between a data lake (raw data) and a data warehouse (structured, analytical), ETL/ELT processes.",
+      "Levels of data analytics: Descriptive (what happened), Diagnostic (why it happened), Predictive (what will happen), Prescriptive (what to do). Data governance defines data ownership, quality, dictionary and lineage; KVKK (Turkish Personal Data Protection Law, Law No. 6698) and GDPR regulate the conditions for processing personal data; anonymisation and pseudonymisation protect privacy in analytics.",
+      "Blockchain: A distributed and immutable ledger of time-stamped blocks linked by cryptographic hashes; consensus mechanisms Proof of Work (Bitcoin, energy intensive), Proof of Stake (Ethereum after 2022). Public/permissionless and permissioned/consortium (Hyperledger Fabric, R3 Corda) networks; banks prefer permissioned networks.",
+      "A smart contract is code on the blockchain that runs automatically when its conditions are met; code errors can cause irreversible damage (the DAO attack). Crypto-assets, stablecoins, central bank digital currency (CBDC; the Digital Turkish Lira project is run by the TCMB) and tokenisation (digital representation of assets) are applications relevant to banking. Blockchain does not solve every problem; a central database is faster and cheaper in most cases.",
+      "Internet of Things (IoT): Sensors and embedded devices connected to the internet; ATM/POS telemetry, smart branches, wearable payments. Risks: weak default passwords, missing patches, botnets (Mirai), a wide attack surface; network segmentation and device identity management are the defences. Edge computing processes data close to the source.",
+      "5G: High bandwidth, very low latency (~1 ms target), dense device support, network slicing. Software-defined networking (SDN) separates the control and data planes; network function virtualisation (NFV) moves hardware appliances into software; SD-WAN manages branch connections centrally.",
+      "Quantum computing: The qubit, through superposition and entanglement, speeds up certain problems exponentially. Shor's algorithm threatens RSA and ECC, Grover's algorithm symmetric key search (it halves the effective key length: AES-128 → 64 bits effective, which is why AES-256 is recommended). The transition to post-quantum cryptography (NIST FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA; 2024) is planned from today against the 'harvest now, decrypt later' risk; crypto agility is the ability to swap algorithms.",
+      "Open banking and the API economy: The bank opening account information (AISP) and payment initiation (PISP) services to third parties through standard APIs with the customer's consent; PSD2 in Europe, in Türkiye the TCMB's payment services and data sharing services regulations and BKM's open banking API infrastructure (phased in from 2021-2022). Risks: API security (OAuth 2.0, strong customer authentication), third-party risk, data sharing consent. BaaS (Banking as a Service) and fintech partnerships rest on this infrastructure.",
+      "Digital identity and payment innovations: Remote customer onboarding (identity verification by video; BDDK 2021 regulation), e-Government and e-signature/mobile signature, biometric authentication, FAST (the TCMB's instant payment system, 24/7), QR code payments, contactless and tokenised card payments (similar to Apple Pay/Google Pay), digital wallets. In fraud, deepfakes and synthetic identities are new threats.",
+      "Regulatory technology (RegTech) and supervisory technology (SupTech): AI and data analytics in compliance monitoring, suspicious transaction reporting (MASAK, the Turkish financial crimes investigation board), know-your-customer (KYC/AML) processes; continuous auditing and continuous monitoring let the auditor work on the whole data set instead of a sample.",
+      "Current approaches in cybersecurity: Zero trust architecture (NIST SP 800-207), SASE (network + security converged in the cloud), XDR (extended detection and response), security automation (SOAR), AI-assisted threat detection and attackers also using AI (automated phishing, deepfake voice fraud). Ransomware as a Service (RaaS) and supply chain attacks (SolarWinds 2020) are prominent threats."
+    ],
+    "comparisons": [
+      {
+        "title": "Machine learning types",
+        "rows": [
+          [
+            "Type",
+            "Data",
+            "Purpose",
+            "Banking example"
+          ],
+          [
+            "Supervised",
+            "Labelled",
+            "Classification, regression",
+            "Credit score, fraud classification"
+          ],
+          [
+            "Unsupervised",
+            "Unlabelled",
+            "Clustering, dimensionality reduction, anomaly",
+            "Customer segmentation, abnormal transaction detection"
+          ],
+          [
+            "Reinforcement",
+            "Reward signal",
+            "Sequential decision optimisation",
+            "Portfolio management, dynamic pricing"
+          ]
+        ]
+      },
+      {
+        "title": "Public (permissionless) vs Permissioned blockchain",
+        "rows": [
+          [
+            "Feature",
+            "Public / Permissionless",
+            "Permissioned / Consortium"
+          ],
+          [
+            "Participation",
+            "Anyone",
+            "Authorised institutions"
+          ],
+          [
+            "Consensus",
+            "PoW, PoS",
+            "Fast protocols such as PBFT, Raft"
+          ],
+          [
+            "Speed/scale",
+            "Low (Bitcoin ~7 transactions/s)",
+            "High (thousands of transactions/s)"
+          ],
+          [
+            "Privacy",
+            "Transparent, pseudonymous",
+            "Access-controlled, channel-based privacy"
+          ],
+          [
+            "Example",
+            "Bitcoin, Ethereum",
+            "Hyperledger Fabric, R3 Corda"
+          ],
+          [
+            "Bank use",
+            "Crypto-asset custody, CBDC research",
+            "Trade finance, interbank reconciliation, KYC sharing"
+          ]
+        ]
+      },
+      {
+        "title": "Data warehouse vs Data lake",
+        "rows": [
+          [
+            "Feature",
+            "Data warehouse",
+            "Data lake"
+          ],
+          [
+            "Data format",
+            "Structured, schema up front (schema-on-write)",
+            "Raw, any format, schema when reading (schema-on-read)"
+          ],
+          [
+            "User",
+            "Business analyst, reporting",
+            "Data scientist, ML"
+          ],
+          [
+            "Processing",
+            "ETL (transform, then load)",
+            "ELT (load, then transform)"
+          ],
+          [
+            "Cost",
+            "High (optimised storage)",
+            "Low (object storage)"
+          ],
+          [
+            "Risk",
+            "Low flexibility",
+            "Turning into a data swamp, governance difficulty"
+          ]
+        ]
+      }
+    ],
+    "formulas": [
+      "The 5 V's of big data: Volume, Velocity, Variety, Veracity, Value",
+      "Grover effect: the quantum effective security of an n-bit symmetric key ≈ n/2 bits (AES-128 → 64 bits, AES-256 → 128 bits)",
+      "Classification metrics: Accuracy = (TP+TN)/Total; Precision = TP/(TP+FP); Recall = TP/(TP+FN); F1 = 2·P·R/(P+R)",
+      "In fraud detection, a false positive = blocking a legitimate transaction (customer dissatisfaction), a false negative = missing the fraud (financial loss)"
+    ],
+    "misconceptions": [
+      "Misconception: Blockchain data is confidential because it is encrypted. Correct: On a public blockchain, transactions can be read by anyone; cryptography is used for immutability and signatures, not for confidentiality. Confidentiality requires a permissioned network or additional techniques.",
+      "Misconception: If an AI model gives high accuracy, it is fair and reliable. Correct: On imbalanced data, 99% accuracy can be meaningless (calling every transaction 'clean'); moreover, historical data bias leads to discriminatory decisions. Precision/recall and fairness metrics are assessed together.",
+      "Misconception: Quantum computers break all encryption. Correct: Shor's algorithm breaks asymmetric ciphers such as RSA/ECC; symmetric ciphers such as AES are only weakened by Grover, and increasing the key size is sufficient.",
+      "Misconception: The data lake replaces the data warehouse. Correct: The two meet different needs; the lake is raw and flexible, the warehouse structured and optimised for reporting. Modern architectures combine the two (lakehouse).",
+      "Misconception: Open banking is the bank sharing customer data without permission. Correct: Sharing happens only with the customer's explicit consent, to authorised third parties, with strong authentication and standard APIs.",
+      "Misconception: The information given by generative AI is always correct. Correct: LLMs can produce hallucinations (fabrications) and are open to prompt injection; in banking, human review and source verification of the outputs are required."
+    ],
+    "example": "The bank is deploying a supervised machine learning model to detect fraud in card transactions in real time. The model is trained with historical labelled transactions (fraud/clean); since only 0.1% of transactions are fraud, the accuracy metric is misleading, so the team monitors precision and recall. Within the scope of model risk, the auditor asks: was bias against particular customer groups tested in the training data, are the decisions explainable (a justification in case of a customer objection), is model performance degrading over time (drift) and does retraining go through change management, is the personal data used by the model processed in compliance with KVKK. In addition, card tokenisation and the irrevocability of instant payments via FAST make it mandatory for detection to happen within milliseconds; that is why the model is run in a low-latency architecture close to the endpoint.",
+    "references": [
+      "Russell & Norvig, Artificial Intelligence: A Modern Approach (4th ed.)",
+      "Géron, Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow",
+      "Nakamoto, Bitcoin: A Peer-to-Peer Electronic Cash System (2008); Hyperledger Fabric documentation",
+      "NIST AI Risk Management Framework (AI RMF 1.0, 2023); ISO/IEC 42001:2023; EU AI Act (2024)",
+      "NIST FIPS 203, 204, 205 (post-quantum cryptography, 2024); NIST SP 800-207 (Zero Trust Architecture)",
+      "European Union PSD2 directive; TCMB Payment Services and Electronic Money regulations; BKM Open Banking API documentation",
+      "Law No. 6698 on the Protection of Personal Data (KVKK); BDDK Regulation on Remote Identity Verification (Uzaktan Kimlik Tespiti Yönetmeliği) (2021)",
+      "Marr, Big Data: Using SMART Big Data, Analytics and Metrics"
+    ]
+  }
+}

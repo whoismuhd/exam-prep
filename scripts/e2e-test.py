@@ -43,7 +43,7 @@ with sync_playwright() as p:
     print("1. Ana sayfa")
     page.goto(BASE + "#/"); page.wait_for_selector(".stat")
     check("Bebis" in page.title(), "başlık")
-    check(page.locator(".action-card").count() == 5, "5 ana eylem")
+    check(page.locator(".action-card").count() == 6, "6 ana eylem")
     check(str(len(bank)) in page.locator(".stat").first.inner_text(), "toplam soru sayısı gerçek bankayla uyuşuyor")
     check(page.locator("#loveNote").inner_text().strip() != "", "footer notu görünüyor")
 
@@ -152,6 +152,17 @@ with sync_playwright() as p:
     check("Made with love" in page.locator("#loveNote").inner_text(), "footer notu İngilizce")
     page.goto(BASE + "#/konular"); page.wait_for_selector(".topic-card")
     check("Networking" in page.locator(".topic-card").nth(1).inner_text(), "konu adları İngilizce")
+    page.goto(BASE + "#/konu/KRP"); page.wait_for_selector("[data-n]"); page.click("[data-n='5']"); page.wait_for_selector("#qform")
+    qn = page.locator("input[type=radio]").first.get_attribute("name"); qq = by_id[qn.replace("q_", "")]
+    check(page.locator(".question-text").inner_text().strip() == qq["en"]["question"].strip(), "İngilizce modda soru metni çevrilmiş")
+    page.check(f"input[name='{qn}'][value='{qq['correctAnswer']}']"); page.click("#checkBtn"); page.wait_for_selector(".feedback.ok")
+    check(qq["en"]["explanation"][:40] in page.locator(".feedback.ok").inner_text(), "İngilizce açıklama gösteriliyor")
+    page.click("#quitBtn"); page.click("#modalOk"); page.wait_for_selector("text=Session complete")
+    page.goto(BASE + "#/notlar/NET"); page.wait_for_selector("h3")
+    check("Chapter" in page.locator("#app").inner_text() or "Key" in page.locator("#app").inner_text(), "İngilizce notlar yükleniyor")
+    page.goto(BASE + "#/plan"); page.wait_for_selector(".day")
+    check("Thursday" in page.locator(".day").first.inner_text(), "İngilizce plan")
+    page.goto(BASE + "#/")
     page.click("#langBtn"); page.wait_for_selector("text=Konu Çalış")
     check(page.evaluate("JSON.parse(localStorage.getItem('bmSinavHazirlik.v1')).settings.language") == "tr", "dil tercihi kaydedildi")
 

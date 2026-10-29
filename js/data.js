@@ -15,13 +15,15 @@
   }
 
   Data.load = async function () {
-    const [topicsFile, questionsFile, notes, plan, notesEn, planEn] = await Promise.all([
+    const [topicsFile, questionsFile, notes, plan, notesEn, planEn, lessons, lessonsEn] = await Promise.all([
       fetchJSON('data/topics.json'),
       fetchJSON('data/questions.json'),
       fetchJSON('data/notes.json').catch(() => ({})),
       fetchJSON('data/plan.json').catch(() => []),
       fetchJSON('data/notes_en.json').catch(() => ({})),
-      fetchJSON('data/plan_en.json').catch(() => [])
+      fetchJSON('data/plan_en.json').catch(() => []),
+      fetchJSON('data/lessons.json').catch(() => ({})),
+      fetchJSON('data/lessons_en.json').catch(() => ({}))
     ]);
     Data.topics = topicsFile.topics.slice().sort((a, b) => a.order - b.order);
     Data.exam = topicsFile.exam;
@@ -38,6 +40,8 @@
     Data.plan = Array.isArray(plan) ? plan : [];
     Data.notesEn = notesEn || {};
     Data.planEn = Array.isArray(planEn) ? planEn : [];
+    Data.lessons = lessons || {};
+    Data.lessonsEn = lessonsEn || {};
     Data.ready = true;
     return Data;
   };
@@ -64,6 +68,7 @@
     });
   };
   Data.notesFor = id => (en() && Data.notesEn[id]) ? Data.notesEn[id] : Data.notes[id];
+  Data.lessonFor = id => (en() && Data.lessonsEn[id]) ? Data.lessonsEn[id] : Data.lessons[id];
   Data.planList = () => (en() && Data.planEn.length) ? Data.planEn : Data.plan;
   Data.priorityLabel = p => (en()
     ? { 'yüksek': 'High priority', 'orta': 'Medium priority', 'tamamlayıcı': 'Supporting' }

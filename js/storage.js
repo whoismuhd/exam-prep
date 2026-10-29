@@ -14,7 +14,9 @@
       settings: { examTimerMinutes: 60, theme: 'light', themeChosen: false },
       placementDone: false,
       activeSession: null, // devam eden alıştırma oturumu
-      activeExam: null     // devam eden deneme
+      activeExam: null,    // devam eden deneme
+      lessons: {},         // ders takibi
+      lastLesson: null
     };
   }
 
@@ -76,6 +78,21 @@
     return state;
   }
 
+  /** Yalnızca soru kayıtlarını, oturumları ve denemeleri siler; ayarlar kalır. */
+  function resetAnswers() {
+    const s = load();
+    s.questions = {}; s.sessions = []; s.exams = []; s.activeSession = null; s.activeExam = null; s.placementDone = false;
+    save();
+  }
+  /** Tek bir konunun soru kayıtlarını siler. */
+  function resetTopic(topicId, questionIds) {
+    const s = load();
+    for (const id of questionIds) delete s.questions[id];
+    s.sessions = s.sessions.filter(x => x.topic !== topicId);
+    if (s.activeSession && s.activeSession.topicId === topicId) s.activeSession = null;
+    save();
+  }
+
   function exportJSON() {
     const copy = Object.assign({}, load());
     delete copy.corruptedNotice;
@@ -112,11 +129,13 @@
       settings: Object.assign(emptyState().settings, obj.settings || {}),
       placementDone: !!obj.placementDone,
       activeSession: obj.activeSession && typeof obj.activeSession === 'object' ? obj.activeSession : null,
-      activeExam: obj.activeExam && typeof obj.activeExam === 'object' ? obj.activeExam : null
+      activeExam: obj.activeExam && typeof obj.activeExam === 'object' ? obj.activeExam : null,
+      lessons: obj.lessons && typeof obj.lessons === 'object' ? obj.lessons : {},
+      lastLesson: typeof obj.lastLesson === 'string' ? obj.lastLesson : null
     });
     save();
     return null;
   }
 
-  window.Store = { load, save, reset, exportJSON, importJSON, isAvailable: () => available, KEY };
+  window.Store = { load, save, reset, resetAnswers, resetTopic, exportJSON, importJSON, isAvailable: () => available, KEY };
 })();
