@@ -6,10 +6,27 @@
   const $app = () => document.getElementById('app');
 
   /* ---------- Üst çubuk, dil, tema ---------- */
+  function effectiveTheme() {
+    const th = Store.load().settings.theme || 'light';
+    if (th !== 'auto') return th;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
   function applyTheme() {
-    const th = Store.load().settings.theme || 'auto';
+    const th = Store.load().settings.theme || 'light';
     if (th === 'auto') document.documentElement.removeAttribute('data-theme');
     else document.documentElement.setAttribute('data-theme', th);
+    const btn = document.getElementById('themeBtn');
+    if (btn) {
+      const dark = effectiveTheme() === 'dark';
+      btn.textContent = dark ? '☀️' : '🌙';
+      btn.setAttribute('aria-label', t(dark ? 'app.themeLight' : 'app.themeDark'));
+      btn.setAttribute('title', t(dark ? 'app.themeLight' : 'app.themeDark'));
+    }
+  }
+  function toggleTheme() {
+    const s = Store.load();
+    s.settings.theme = effectiveTheme() === 'dark' ? 'light' : 'dark';
+    Store.save(); applyTheme();
   }
 
   let currentNav = 'home';
@@ -42,6 +59,7 @@
     document.getElementById('loveNote').innerHTML = t('app.loveNote').split('\n').map(esc).join('<br>');
     document.documentElement.lang = I18n.getLang();
     setCurrentNav(currentNav);
+    applyTheme();
   }
 
   function toggleLang() {
@@ -78,7 +96,7 @@
     const topicStats = Progress.allTopicStats();
     $app().innerHTML = `
       ${s.corruptedNotice ? `<div class="banner banner-warn" role="alert">${t('app.corrupt')}</div>` : ''}
-      <h1>${t('app.title')}</h1>
+      <h1>${t('app.title')} <span class="h-heart" aria-hidden="true">❤️</span></h1>
       <p class="muted">${t('app.subtitle')} · <strong>${daysText}</strong></p>
 
       <div class="grid grid-4">
@@ -442,6 +460,7 @@
       document.getElementById('menuBtn').setAttribute('aria-expanded', String(!nav.hidden));
     });
     document.getElementById('langBtn').addEventListener('click', toggleLang);
+    document.getElementById('themeBtn').addEventListener('click', toggleTheme);
     renderChrome();
     try {
       await Data.load();

@@ -6,9 +6,9 @@
     tr: {
       'app.title': 'Bebis Vakif Bank Exam Prep',
       'app.subtitle': 'Bilgisayar Mühendisliği Sınav Hazırlık · 15 Kasım 2026',
-      'app.brand': 'Bebis Exam Prep',
+      'app.brand': 'Bebis Exam Prep ❤️',
       'app.brandSub': 'VakıfBank 2026 · Alan Bilgisi',
-      'app.lang': 'EN', 'app.langLabel': 'Switch to English',
+      'app.lang': 'EN', 'app.langLabel': 'Switch to English', 'app.themeLight': 'Açık moda geç', 'app.themeDark': 'Koyu moda geç',
       'app.loading': 'Yükleniyor…',
       'app.loadError': 'Veriler yüklenemedi. Siteyi bir web sunucusu üzerinden açın. Hata: {msg}',
       'app.storageWarn': 'Tarayıcı depolaması kapalı: ilerleme kaydedilmeyecek.',
@@ -114,9 +114,9 @@
     en: {
       'app.title': 'Bebis Vakif Bank Exam Prep',
       'app.subtitle': 'Computer Engineering Exam Prep · 15 November 2026',
-      'app.brand': 'Bebis Exam Prep',
+      'app.brand': 'Bebis Exam Prep ❤️',
       'app.brandSub': 'VakıfBank 2026 · Subject Knowledge',
-      'app.lang': 'TR', 'app.langLabel': 'Türkçeye geç',
+      'app.lang': 'TR', 'app.langLabel': 'Türkçeye geç', 'app.themeLight': 'Switch to light mode', 'app.themeDark': 'Switch to dark mode',
       'app.loading': 'Loading…',
       'app.loadError': 'Data could not be loaded. Open the site through a web server. Error: {msg}',
       'app.storageWarn': 'Browser storage is off: progress will not be saved.',

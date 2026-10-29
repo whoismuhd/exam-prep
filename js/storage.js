@@ -11,7 +11,7 @@
       questions: {},   // id -> {attempts, correct, wrong, streak, lastResult, lastAt, lastChoice}
       sessions: [],    // {t, mode, topic, total, correct}
       exams: [],       // {t, total, correct, wrong, blank, byTopic, byDifficulty, questionIds, answers, durationSec, timerMinutes}
-      settings: { examTimerMinutes: 60, theme: 'auto' },
+      settings: { examTimerMinutes: 60, theme: 'light' },
       placementDone: false
     };
   }
