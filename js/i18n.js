@@ -4,9 +4,9 @@
   'use strict';
   const DICT = {
     tr: {
-      'app.title': 'Bilgisayar Mühendisliği Sınav Hazırlık',
-      'app.subtitle': 'VakıfBank 2026 · Alan Bilgisi · 40 soru',
-      'app.brand': 'BM Sınav Hazırlık',
+      'app.title': 'Bebis Vakif Bank Exam Prep',
+      'app.subtitle': 'Bilgisayar Mühendisliği Sınav Hazırlık · 15 Kasım 2026',
+      'app.brand': 'Bebis Exam Prep',
       'app.brandSub': 'VakıfBank 2026 · Alan Bilgisi',
       'app.lang': 'EN', 'app.langLabel': 'Switch to English',
       'app.loading': 'Yükleniyor…',
@@ -112,9 +112,9 @@
       'settings.saved': 'Kaydedildi.'
     },
     en: {
-      'app.title': 'Computer Engineering Exam Prep',
-      'app.subtitle': 'VakıfBank 2026 · Subject Knowledge · 40 questions',
-      'app.brand': 'CE Exam Prep',
+      'app.title': 'Bebis Vakif Bank Exam Prep',
+      'app.subtitle': 'Computer Engineering Exam Prep · 15 November 2026',
+      'app.brand': 'Bebis Exam Prep',
       'app.brandSub': 'VakıfBank 2026 · Subject Knowledge',
       'app.lang': 'TR', 'app.langLabel': 'Türkçeye geç',
       'app.loading': 'Loading…',

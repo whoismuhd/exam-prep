@@ -42,7 +42,7 @@ with sync_playwright() as p:
 
     print("1. Ana sayfa")
     page.goto(BASE + "#/"); page.wait_for_selector(".stat")
-    check("Sınav Hazırlık" in page.title(), "başlık Türkçe")
+    check("Bebis" in page.title(), "başlık")
     check(page.locator(".action-card").count() == 5, "5 ana eylem")
     check(str(len(bank)) in page.locator(".stat").first.inner_text(), "toplam soru sayısı gerçek bankayla uyuşuyor")
     check(page.locator("#loveNote").inner_text().strip() != "", "footer notu görünüyor")
@@ -148,7 +148,7 @@ with sync_playwright() as p:
     print("7. Dil değişimi")
     page.click("#langBtn"); page.wait_for_selector("text=Study by Topic")
     check(page.locator("html").get_attribute("lang") == "en", "html lang=en")
-    check("Exam Prep" in page.title(), "İngilizce başlık")
+    check("Bebis" in page.title(), "başlık (EN)")
     check("Made with love" in page.locator("#loveNote").inner_text(), "footer notu İngilizce")
     page.goto(BASE + "#/konular"); page.wait_for_selector(".topic-card")
     check("Networking" in page.locator(".topic-card").nth(1).inner_text(), "konu adları İngilizce")

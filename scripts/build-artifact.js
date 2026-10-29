@@ -22,7 +22,7 @@ const bodyMatch = html.match(/<body>([\s\S]*)<\/body>/);
 let body = bodyMatch[1];
 body = body.replace(/\s*<script src="js\/[^"]+"><\/script>/g, '');
 
-const page = `<title>Bilgisayar Mühendisliği Sınav Hazırlık</title>
+const page = `<title>Bebis Vakif Bank Exam Prep</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 ${css}
